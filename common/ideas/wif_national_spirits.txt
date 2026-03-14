@@ -15,5 +15,20 @@ ideas = {
 				compliance_growth = -0.3
 			}
 		}
+
+		local_collaborator = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+
+			modifier = {
+				compliance_growth = 0.05
+			}
+		}
 	}
 }

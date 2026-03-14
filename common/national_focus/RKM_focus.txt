@@ -1,0 +1,71 @@
+focus_tree = {
+	id = RKM_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RKM
+		}
+	}
+	default = no
+
+	focus = {
+		id = RKM_safeguard_moskau
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 5
+		y = 0
+		cost = 5 # 35 days (cost * 7 = days)
+
+		available = {
+			has_country_leader = {
+				character = RKM_siegfried_kasche
+				ruling_only = yes
+			}
+		}
+
+		mutually_exclusive = {
+			focus = RKM_collaborate_with_invader
+		}
+
+		completion_reward = {
+			set_country_flag = RKM_moskau_renamed
+			219 = {
+				set_state_name = "Moskau"
+				add_dynamic_modifier = {
+					modifier = wif_moskau_pacification
+				}
+			}
+			set_province_name = {
+				id = 6380
+				name = "Moskau"
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_collaborate_with_invader
+		icon = GFX_goal_generic_national_unity
+		x = 7
+		y = 0
+		cost = 5 # 35 days
+
+		available = {
+			has_country_leader = {
+				character = SOV_konstantin_rodzayevsky
+				ruling_only = yes
+			}
+		}
+
+		mutually_exclusive = {
+			focus = RKM_safeguard_moskau
+		}
+
+		completion_reward = {
+			add_autonomy_ratio = {
+				value = 0.3
+				localization = RKM_collaborate_autonomy
+			}
+			add_ideas = local_collaborator
+		}
+	}
+}

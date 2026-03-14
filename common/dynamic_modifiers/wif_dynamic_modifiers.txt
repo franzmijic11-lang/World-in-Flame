@@ -1,0 +1,9 @@
+wif_moskau_pacification = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	compliance_growth = 0.2
+	resistance_growth = -0.15
+}

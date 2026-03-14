@@ -1,0 +1,12 @@
+﻿l_english:
+ RKM_safeguard_moskau:0 "Safeguard Moskau"
+ RKM_safeguard_moskau_desc:0 "Moscow must be brought firmly under German administration. We shall rename this great city and pacify its populace to secure our hold over the region."
+ wif_moskau_pacification:0 "Moskau Pacification"
+ wif_rkm.1.t:0 "Moskau Lost"
+ wif_rkm.1.desc:0 "Moscow has fallen out of German control. The renaming and pacification efforts have been undone."
+ wif_rkm.1.a:0 "A dark day..."
+ RKM_collaborate_with_invader:0 "Collaborate with the Invader"
+ RKM_collaborate_with_invader_desc:0 "Rather than resist the German occupation, we shall work with them. By proving our loyalty and usefulness, we can gain greater autonomy for our people."
+ RKM_collaborate_autonomy:0 "Collaboration Rewards"
+ local_collaborator:0 "Local Collaborator"
+ local_collaborator_desc:0 "The local administration has chosen to cooperate with the occupying forces, easing compliance efforts across the Reichskommissariat."

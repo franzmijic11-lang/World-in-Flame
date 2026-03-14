@@ -1,0 +1,23 @@
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					var:FROM.FROM = 219 # Moscow state
+					RKM = { has_country_flag = RKM_moskau_renamed }
+					NOT = {
+						FROM = {
+							OR = {
+								tag = GER
+								tag = RKM
+							}
+						}
+					}
+				}
+				RKM = {
+					country_event = { id = wif_rkm.1 }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+add_namespace = wif_rkm
+
+# Revert Moskau renaming if non-German controller takes Moscow
+country_event = {
+	id = wif_rkm.1
+	title = wif_rkm.1.t
+	desc = wif_rkm.1.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	immediate = {
+		RKM = {
+			clr_country_flag = RKM_moskau_renamed
+		}
+		219 = {
+			reset_state_name = yes
+			remove_dynamic_modifier = {
+				modifier = wif_moskau_pacification
+			}
+		}
+		reset_province_name = 6380
+	}
+
+	option = {
+		name = wif_rkm.1.a
+	}
+}
