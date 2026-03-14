@@ -163,7 +163,7 @@ recruit_character = RKM_siegfried_kasche
 
 add_ideas = {
 	war_economy
-	extensive_conscription
+	limited_conscription
 	active_russian_resistance
 	RKM_occupation_doctrine
 }
