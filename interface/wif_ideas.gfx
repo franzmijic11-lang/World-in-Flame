@@ -1,0 +1,6 @@
+spriteTypes = {
+	SpriteType = {
+		name = "GFX_idea_active_russian_resistance"
+		texturefile = "gfx/interface/goals/focus_generic_anti_fascist_diplomacy.dds"
+	}
+}
