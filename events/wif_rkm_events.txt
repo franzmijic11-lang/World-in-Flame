@@ -104,3 +104,107 @@ country_event = {
 		name = wif_rkm.4.a
 	}
 }
+
+# Germany receives Stabilise Moskau resource request
+country_event = {
+	id = wif_rkm.5
+	title = wif_rkm.5.t
+	desc = wif_rkm.5.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	# Accept - send resources
+	option = {
+		name = wif_rkm.5.a
+		ai_chance = {
+			base = 60
+		}
+
+		add_manpower = -10000
+		send_equipment = {
+			target = RKM
+			type = infantry_equipment
+			amount = 12000
+			old_prioritised = yes
+		}
+
+		RKM = {
+			country_event = { id = wif_rkm.10 }
+		}
+	}
+
+	# Refuse
+	option = {
+		name = wif_rkm.5.b
+		ai_chance = {
+			base = 40
+		}
+
+		RKM = {
+			country_event = { id = wif_rkm.6 }
+		}
+	}
+}
+
+# Germany refused Stabilise request - RKM must build up themselves
+country_event = {
+	id = wif_rkm.6
+	title = wif_rkm.6.t
+	desc = wif_rkm.6.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.6.a
+	}
+}
+
+# Stabilise Moskau completion effects (fired when resources secured)
+country_event = {
+	id = wif_rkm.10
+	title = wif_rkm.10.t
+	desc = wif_rkm.10.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.10.a
+
+		# Add Moscow as core state for RKM
+		219 = {
+			add_core_of = RKM
+		}
+
+		# Remove between 50-65% of Moscow's population (8,335,992 base)
+		# 50% = 4,167,996 | 55% = 4,584,796 | 60% = 5,001,595 | 65% = 5,418,395
+		random_list = {
+			25 = {
+				# 50%
+				219 = {
+					add_manpower = -4167996
+				}
+			}
+			25 = {
+				# 55%
+				219 = {
+					add_manpower = -4584796
+				}
+			}
+			25 = {
+				# 60%
+				219 = {
+					add_manpower = -5001595
+				}
+			}
+			25 = {
+				# 65%
+				219 = {
+					add_manpower = -5418395
+				}
+			}
+		}
+	}
+}

@@ -11,6 +11,7 @@ ideas = {
 			picture = active_russian_resistance
 
 			modifier = {
+				stability_factor = -0.39
 				resistance_growth = 0.3
 				compliance_growth = -0.3
 			}
@@ -27,6 +28,22 @@ ideas = {
 			picture = generic_intel_bonus
 
 			modifier = {
+			}
+		}
+
+		RKM_ss_cooperation = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+
+			modifier = {
+				resistance_growth = -0.1
+				compliance_growth = -0.2
 			}
 		}
 

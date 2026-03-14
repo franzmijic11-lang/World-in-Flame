@@ -1,0 +1,103 @@
+add_namespace = wuw_GER_reichskommissariats
+
+# Override: The Leadership of Moskowien - set compliance to 0 instead of 25
+country_event = {
+	id = wuw_GER_reichskommissariats.8
+	title = wuw_GER_reichskommissariats.8.t
+	desc = wuw_GER_reichskommissariats.8.desc
+	picture = GFX_report_event_german_politician_speech
+
+	immediate = {
+		hidden_effect = {
+			IF = {
+				limit = {
+					SOV = {
+						NOT = {
+							has_government = fascism
+						}
+					}
+				}
+				SOV = {
+					set_nationality = {
+					    target_country = RKM
+					    character = SOV_konstantin_rodzayevsky
+					}
+				}
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = { # We Need a German Official
+		name = wuw_GER_reichskommissariats.8.a
+		ai_chance = {
+			base = 95
+		}
+
+		RKM = {
+			add_ideas = GER_german_controlled_reichskommissariat
+		}
+
+		hidden_effect = {
+			IF = {
+				limit = {
+					SOV = {
+						NOT = {
+							has_government = fascism
+						}
+					}
+				}
+				RKM = {
+					set_nationality = {
+					    target_country = SOV
+					    character = SOV_konstantin_rodzayevsky
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			RKM = {
+				every_owned_state = {
+					set_compliance = 0
+				}
+			}
+		}
+	}
+
+	option = { # It might be wise to use a local puppet
+		name = wuw_GER_reichskommissariats.8.b
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+		ai_chance = {
+			base = 5
+		}
+
+		RKM = {
+			SOV_konstantin_rodzayevsky = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = nazism
+						expire = 1960.1.1
+						traits = { GER_reichskommissar_trait }
+					}
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = GER_local_controlled_reichskommissariat
+		}
+		hidden_effect = {
+			RKM = {
+				every_owned_state = {
+					set_compliance = 0
+				}
+			}
+		}
+	}
+}

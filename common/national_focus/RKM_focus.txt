@@ -31,6 +31,7 @@ focus_tree = {
 			set_country_flag = RKM_moskau_renamed
 			219 = {
 				set_state_name = "Moskau"
+				set_compliance = 50
 				add_dynamic_modifier = {
 					modifier = wif_moskau_pacification
 				}
@@ -107,8 +108,9 @@ focus_tree = {
 				}
 			}
 
-			# Add labour camp modifier to Ryazan
+			# Add labour camp modifier and compliance to Ryazan
 			254 = {
+				set_compliance = 40
 				add_dynamic_modifier = {
 					modifier = wif_ryazan_labour_camps
 				}
@@ -141,7 +143,7 @@ focus_tree = {
 
 	focus = {
 		id = RKM_german_equipment
-		icon = GFX_goal_generic_army_artillery2
+		icon = GFX_goal_generic_axis_build_infantry
 		x = 5
 		y = 2
 		cost = 5 # 35 days
@@ -154,6 +156,96 @@ focus_tree = {
 			GER = {
 				country_event = { id = wif_rkm.2 }
 			}
+		}
+	}
+
+	focus = {
+		id = RKM_stabilise_moskau
+		icon = GFX_focus_ger_strike_at_the_source
+		x = 5
+		y = 3
+		cost = 28.6 # 200 days
+
+		prerequisite = {
+			focus = RKM_german_equipment
+		}
+
+		available = {
+			controls_state = 219
+		}
+
+		completion_reward = {
+			# Check if RKM has enough resources, if not request from Germany
+			if = {
+				limit = {
+					has_manpower > 9999
+					has_equipment = {
+						infantry_equipment > 11999
+					}
+				}
+				# RKM has enough - spend resources and apply effects directly
+				add_manpower = -10000
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -12000
+				}
+				country_event = { id = wif_rkm.10 }
+			}
+			else = {
+				# RKM doesn't have enough - request from Germany
+				GER = {
+					country_event = { id = wif_rkm.5 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_work_with_ss
+		icon = GFX_goal_generic_secret_weapon
+		x = 4
+		y = 4
+		cost = 4.3 # 30 days
+
+		prerequisite = {
+			focus = RKM_stabilise_moskau
+		}
+
+		mutually_exclusive = {
+			focus = RKM_work_with_wehrmacht
+		}
+
+		available = {
+			controls_state = 219
+		}
+
+		completion_reward = {
+			add_ideas = RKM_ss_cooperation
+			load_oob = "RKM_ss_divisions"
+		}
+	}
+
+	focus = {
+		id = RKM_work_with_wehrmacht
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 6
+		y = 4
+		cost = 4.3 # 30 days
+
+		prerequisite = {
+			focus = RKM_stabilise_moskau
+		}
+
+		mutually_exclusive = {
+			focus = RKM_work_with_ss
+		}
+
+		available = {
+			controls_state = 219
+		}
+
+		completion_reward = {
+			load_oob = "RKM_wehrmacht_garrison"
 		}
 	}
 }
