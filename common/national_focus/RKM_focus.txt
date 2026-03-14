@@ -46,7 +46,7 @@ focus_tree = {
 	focus = {
 		id = RKM_collaborate_with_invader
 		icon = GFX_goal_generic_national_unity
-		x = 7
+		x = 9
 		y = 0
 		cost = 5 # 35 days
 
@@ -138,6 +138,9 @@ focus_tree = {
 
 			# Spawn 2 experienced divisions in Ryazan
 			load_oob = "RKM_ryazan_garrison"
+
+			# Trigger flavour event
+			country_event = { id = wif_rkm.11 }
 		}
 	}
 
@@ -213,6 +216,7 @@ focus_tree = {
 
 		mutually_exclusive = {
 			focus = RKM_work_with_wehrmacht
+			focus = RKM_work_with_russian_collaborators
 		}
 
 		available = {
@@ -246,6 +250,77 @@ focus_tree = {
 
 		completion_reward = {
 			load_oob = "RKM_wehrmacht_garrison"
+		}
+	}
+
+	focus = {
+		id = RKM_refurnish_kremlin
+		icon = GFX_focus_SOV_third_rome
+		x = 14
+		y = 0
+		cost = 10 # 70 days
+
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = RKM_form_administration
+		icon = GFX_focus_generic_treaty
+		x = 14
+		y = 1
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_refurnish_kremlin
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			army_experience = 50
+			air_experience = 50
+		}
+	}
+
+	focus = {
+		id = RKM_admin_reich_officials
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 13
+		y = 2
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_form_administration
+		}
+
+		mutually_exclusive = {
+			focus = RKM_work_with_russian_collaborators
+		}
+
+		completion_reward = {
+			load_oob = "RKM_reich_officials_garrison"
+		}
+	}
+
+	focus = {
+		id = RKM_work_with_russian_collaborators
+		icon = GFX_goal_generic_national_unity
+		x = 15
+		y = 2
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_form_administration
+		}
+
+		mutually_exclusive = {
+			focus = RKM_admin_reich_officials
+			focus = RKM_work_with_ss
+		}
+
+		completion_reward = {
+			add_stability = 0.1
 		}
 	}
 }

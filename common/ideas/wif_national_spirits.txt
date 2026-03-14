@@ -12,8 +12,10 @@ ideas = {
 
 			modifier = {
 				stability_factor = -0.39
-				resistance_growth = 0.3
-				compliance_growth = -0.3
+				war_support_factor = -0.6
+				resistance_growth = 0.42
+				compliance_growth = -0.4
+				communism_drift = 0.1
 			}
 		}
 

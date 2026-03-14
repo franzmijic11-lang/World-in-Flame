@@ -118,7 +118,24 @@ country_event = {
 	option = {
 		name = wif_rkm.5.a
 		ai_chance = {
-			base = 60
+			base = 100
+			modifier = {
+				factor = 0
+				NOT = {
+					has_equipment = {
+						infantry_equipment > 11999
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+				NOT = {
+					has_equipment = {
+						infantry_equipment > 19999
+					}
+				}
+			}
 		}
 
 		add_manpower = -10000
@@ -138,7 +155,24 @@ country_event = {
 	option = {
 		name = wif_rkm.5.b
 		ai_chance = {
-			base = 40
+			base = 0
+			modifier = {
+				add = 100
+				NOT = {
+					has_equipment = {
+						infantry_equipment > 11999
+					}
+				}
+			}
+			modifier = {
+				add = 100
+				has_war = yes
+				NOT = {
+					has_equipment = {
+						infantry_equipment > 19999
+					}
+				}
+			}
 		}
 
 		RKM = {
@@ -206,5 +240,19 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+# Ryazan Labour Camps flavour event
+country_event = {
+	id = wif_rkm.11
+	title = wif_rkm.11.t
+	desc = wif_rkm.11.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.11.a
 	}
 }

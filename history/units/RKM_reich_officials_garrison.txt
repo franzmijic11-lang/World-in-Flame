@@ -1,0 +1,42 @@
+units = {
+	division = {
+		name = "13. Moscowien Garrison Division"
+		location = 6380
+		division_template = "Moscowien Garrison Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+		start_manpower_factor = 0.5
+	}
+	division = {
+		name = "14. Moscowien Garrison Division"
+		location = 6380
+		division_template = "Moscowien Garrison Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+		start_manpower_factor = 0.5
+	}
+	division = {
+		name = "15. Moscowien Garrison Division"
+		location = 6380
+		division_template = "Moscowien Garrison Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+		start_manpower_factor = 0.5
+	}
+	division = {
+		name = "16. Moscowien Garrison Division"
+		location = 6380
+		division_template = "Moscowien Garrison Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+		start_manpower_factor = 0.5
+	}
+	division = {
+		name = "17. Moscowien Garrison Division"
+		location = 6380
+		division_template = "Moscowien Garrison Division"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.5
+		start_manpower_factor = 0.5
+	}
+}
