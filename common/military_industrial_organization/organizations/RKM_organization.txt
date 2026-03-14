@@ -1,0 +1,101 @@
+#####################
+
+###  ##  #  # # #  ##
+ #  #  # ## # # # #
+ #  #### # ## ##   #
+ #  #  # #  # # #   #
+ #  #  # #  # # # ##
+
+ ####################
+
+RKM_tank_organization = {
+	include = generic_tank_organization
+	icon = GFX_idea_generic_tank_manufacturer_1
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_heavy_tank_organization = {
+	include = generic_heavy_tank_organization
+	icon = GFX_idea_generic_tank_manufacturer_2
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_assault_guns_organization = {
+	include = generic_assault_guns_organization
+	icon = GFX_idea_generic_tank_manufacturer_3
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+#####################
+
+###  #    ##  #  # ###  ##
+#  # #   #  # ## # #   #
+###  #   #### # ## ##   #
+#    #   #  # #  # #     #
+#    ### #  # #  # ### ##
+
+#####################
+
+RKM_light_aircraft_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_1
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_medium_aircraft_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_2
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_cas_aircraft_organization = {
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_3
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+###################################
+
+#   #  ##  ### ### ###  ### ### #
+## ## #  #  #  #   #  #  #  #   #
+# # # ####  #  ##  ###   #  ##  #
+#   # #  #  #  #   #  #  #  #   #
+#   # #  #  ### #  # ### ### ###
+
+###################################
+
+RKM_infantry_equipment_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_artillery_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_artillery_manufacturer_1
+	allowed = {
+		original_tag = RKM
+	}
+}
+
+RKM_motorized_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_1
+	allowed = {
+		original_tag = RKM
+	}
+}
