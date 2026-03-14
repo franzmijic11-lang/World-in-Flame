@@ -26,3 +26,81 @@ country_event = {
 		name = wif_rkm.1.a
 	}
 }
+
+# Germany receives equipment request from RKM
+country_event = {
+	id = wif_rkm.2
+	title = wif_rkm.2.t
+	desc = wif_rkm.2.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	# Accept - send equipment and manpower
+	option = {
+		name = wif_rkm.2.a
+		ai_chance = {
+			base = 70
+		}
+
+		# Germany loses manpower and equipment
+		add_manpower = -20000
+		send_equipment = {
+			target = RKM
+			type = infantry_equipment
+			amount = 15000
+			old_prioritised = yes
+		}
+
+		# Notify RKM of acceptance
+		RKM = {
+			country_event = { id = wif_rkm.3 }
+		}
+	}
+
+	# Refuse
+	option = {
+		name = wif_rkm.2.b
+		ai_chance = {
+			base = 30
+		}
+
+		# Notify RKM of refusal
+		RKM = {
+			country_event = { id = wif_rkm.4 }
+		}
+	}
+}
+
+# RKM receives equipment and reinforcements (Germany accepted)
+country_event = {
+	id = wif_rkm.3
+	title = wif_rkm.3.t
+	desc = wif_rkm.3.desc
+	picture = GFX_report_event_generic_military_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.3.a
+
+		add_manpower = 20000
+
+		# Spawn 2 green divisions on capital
+		load_oob = "RKM_german_equipment"
+	}
+}
+
+# RKM is refused equipment (Germany declined)
+country_event = {
+	id = wif_rkm.4
+	title = wif_rkm.4.t
+	desc = wif_rkm.4.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.4.a
+	}
+}

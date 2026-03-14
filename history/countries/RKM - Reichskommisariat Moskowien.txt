@@ -165,6 +165,7 @@ add_ideas = {
 	war_economy
 	extensive_conscription
 	active_russian_resistance
+	RKM_occupation_doctrine
 }
 
 
