@@ -9,6 +9,4 @@ name="Welt in Flammen"
 supported_version="1.17.*"
 dependencies={
 	"Gotterdammerung"
-	"Arms Against Tyranny"
-	"La Resistance"
 }
