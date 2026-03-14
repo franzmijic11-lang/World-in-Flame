@@ -9,6 +9,7 @@
  ####################
 
 RKM_tank_organization = {
+	name = RKM_kommissariat_panzer_wehrke
 	include = generic_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_1
 	allowed = {
@@ -17,16 +18,9 @@ RKM_tank_organization = {
 }
 
 RKM_heavy_tank_organization = {
+	name = RKM_kommissariat_gross_panzer_wehrke
 	include = generic_heavy_tank_organization
 	icon = GFX_idea_generic_tank_manufacturer_2
-	allowed = {
-		original_tag = RKM
-	}
-}
-
-RKM_assault_guns_organization = {
-	include = generic_assault_guns_organization
-	icon = GFX_idea_generic_tank_manufacturer_3
 	allowed = {
 		original_tag = RKM
 	}
