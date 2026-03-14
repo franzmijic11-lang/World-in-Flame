@@ -68,4 +68,83 @@ focus_tree = {
 			add_ideas = local_collaborator
 		}
 	}
+
+	focus = {
+		id = RKM_ryazan_labour_camps
+		icon = GFX_goal_generic_construct_military
+		x = 5
+		y = 1
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_safeguard_moskau
+		}
+
+		available = {
+			controls_state = 219
+			controls_state = 254
+		}
+
+		completion_reward = {
+			# Transfer 30% of Moscow's population to Ryazan
+			219 = {
+				add_manpower = -2500798
+			}
+			254 = {
+				add_manpower = 2500798
+			}
+
+			# Upgrade Moscow state modifier with additional bonuses
+			219 = {
+				remove_dynamic_modifier = {
+					modifier = wif_moskau_pacification
+				}
+				add_dynamic_modifier = {
+					modifier = wif_moskau_pacification_upgraded
+				}
+			}
+
+			# Add labour camp modifier to Ryazan
+			254 = {
+				add_dynamic_modifier = {
+					modifier = wif_ryazan_labour_camps
+				}
+			}
+
+			# Build level 1 fort in Ryazan province 3257
+			254 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3257
+					instant_build = yes
+				}
+			}
+
+			# Spawn 2 experienced divisions in Ryazan
+			division_template = {
+				name = "RKM Lagerwache"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 0 y = 4 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+			create_unit = {
+				division = "name = \"1. RKM Lagerwache\" division_template = \"RKM Lagerwache\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+				owner = RKM
+				prioritize_location = 3257
+			}
+			create_unit = {
+				division = "name = \"2. RKM Lagerwache\" division_template = \"RKM Lagerwache\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+				owner = RKM
+				prioritize_location = 3257
+			}
+		}
+	}
 }
