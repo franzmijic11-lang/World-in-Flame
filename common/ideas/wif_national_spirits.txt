@@ -82,6 +82,21 @@ ideas = {
 			}
 		}
 
+		RKM_bread_and_circuses_spirit = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				consumer_goods_factor = 0.7
+			}
+		}
+
 		RKM_the_long_work_spirit = {
 			allowed = {
 				always = no

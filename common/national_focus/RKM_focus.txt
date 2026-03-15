@@ -9,10 +9,12 @@ focus_tree = {
 	}
 	default = no
 
+	continuous_focus_position = { x = 50 y = 1600 }
+
 	focus = {
 		id = RKM_safeguard_moskau
 		icon = GFX_focus_generic_anti_fascist_diplomacy
-		x = 5
+		x = 8
 		y = 0
 		cost = 5 # 35 days (cost * 7 = days)
 
@@ -46,7 +48,7 @@ focus_tree = {
 	focus = {
 		id = RKM_collaborate_with_invader
 		icon = GFX_goal_generic_national_unity
-		x = 9
+		x = 12
 		y = 0
 		cost = 5 # 35 days
 
@@ -71,9 +73,39 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RKM_bread_and_circuses
+		icon = GFX_goal_generic_consumer_goods
+		x = 12
+		y = 1
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_collaborate_with_invader
+		}
+
+		select_effect = {
+			add_ideas = RKM_bread_and_circuses_spirit
+		}
+
+		complete_tooltip = {
+			remove_ideas = RKM_bread_and_circuses_spirit
+			219 = {
+				add_core_of = RKM
+			}
+		}
+
+		completion_reward = {
+			remove_ideas = RKM_bread_and_circuses_spirit
+			219 = {
+				add_core_of = RKM
+			}
+		}
+	}
+
+	focus = {
 		id = RKM_ryazan_labour_camps
 		icon = GFX_goal_generic_construct_military
-		x = 5
+		x = 8
 		y = 1
 		cost = 10 # 70 days
 
@@ -147,7 +179,7 @@ focus_tree = {
 	focus = {
 		id = RKM_german_equipment
 		icon = GFX_goal_generic_axis_build_infantry
-		x = 5
+		x = 8
 		y = 2
 		cost = 5 # 35 days
 
@@ -165,7 +197,7 @@ focus_tree = {
 	focus = {
 		id = RKM_stabilise_moskau
 		icon = GFX_focus_ger_strike_at_the_source
-		x = 5
+		x = 8
 		y = 3
 		cost = 28.6 # 200 days
 
@@ -212,7 +244,7 @@ focus_tree = {
 	focus = {
 		id = RKM_work_with_ss
 		icon = GFX_goal_generic_secret_weapon
-		x = 4
+		x = 7
 		y = 4
 		cost = 4.3 # 30 days
 
@@ -242,7 +274,7 @@ focus_tree = {
 	focus = {
 		id = RKM_work_with_wehrmacht
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 6
+		x = 9
 		y = 4
 		cost = 4.3 # 30 days
 
@@ -270,7 +302,7 @@ focus_tree = {
 	focus = {
 		id = RKM_the_long_work
 		icon = GFX_goal_generic_construction2
-		x = 5
+		x = 8
 		y = 5
 		cost = 10 # 70 days
 
@@ -298,9 +330,141 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RKM_expand_labour_camps
+		icon = GFX_goal_generic_construct_military
+		x = 8
+		y = 6
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_the_long_work
+		}
+
+		completion_reward = {
+			# Tilt BoP 3% towards SS
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.03
+			}
+
+			# Upgrade fort in Ryazan province 3257 to level 2
+			254 = {
+				add_building_construction = {
+					type = bunker
+					level = 1
+					province = 3257
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_railroad_to_berlin
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 8
+		y = 7
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_expand_labour_camps
+		}
+
+		completion_reward = {
+			# Remove 25% of Smolensk population (1,300,028 * 0.25 = 325,007)
+			242 = {
+				add_manpower = -325007
+			}
+			# Remove 25% of Vitebsk population (1,217,854 * 0.25 = 304,464)
+			207 = {
+				add_manpower = -304464
+			}
+			# Add both to Ryazan
+			254 = {
+				add_manpower = 629471
+			}
+
+			# Upgrade Ryazan labour camps modifier to include population decline
+			254 = {
+				remove_dynamic_modifier = {
+					modifier = wif_ryazan_labour_camps
+				}
+				add_dynamic_modifier = {
+					modifier = wif_ryazan_labour_camps_expanded
+				}
+			}
+
+			# Add civilian factory in Ryazan
+			254 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_purify_the_railroad
+		icon = GFX_goal_generic_army_doctrines
+		x = 8
+		y = 8
+		cost = 7.14 # 50 days
+
+		prerequisite = {
+			focus = RKM_railroad_to_berlin
+		}
+
+		available = {
+			has_manpower > 9999
+			has_equipment = {
+				infantry_equipment > 8999
+			}
+			has_equipment = {
+				support_equipment > 99
+			}
+		}
+
+		cancel_if_invalid = yes
+
+		completion_reward = {
+			add_manpower = -10000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -9000
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -100
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_establish_death_camp
+		icon = GFX_focus_ger_strike_at_the_source
+		x = 8
+		y = 9
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_purify_the_railroad
+		}
+
+		completion_reward = {
+			264 = {
+				add_dynamic_modifier = {
+					modifier = wif_death_camps
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = RKM_refurnish_kremlin
 		icon = GFX_focus_SOV_third_rome
-		x = 14
+		x = 17
 		y = 0
 		cost = 10 # 70 days
 
@@ -312,7 +476,7 @@ focus_tree = {
 	focus = {
 		id = RKM_form_administration
 		icon = GFX_focus_generic_treaty
-		x = 14
+		x = 17
 		y = 1
 		cost = 10 # 70 days
 
@@ -330,7 +494,7 @@ focus_tree = {
 	focus = {
 		id = RKM_admin_reich_officials
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 13
+		x = 16
 		y = 2
 		cost = 10 # 70 days
 
@@ -350,7 +514,7 @@ focus_tree = {
 	focus = {
 		id = RKM_work_with_russian_collaborators
 		icon = GFX_goal_generic_national_unity
-		x = 15
+		x = 18
 		y = 2
 		cost = 10 # 70 days
 
