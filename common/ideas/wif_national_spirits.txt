@@ -49,6 +49,29 @@ ideas = {
 			}
 		}
 
+		RKM_ss_military_doctrine = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = generic_intel_bonus
+
+			equipment_bonus = {
+				infantry_equipment = {
+					breakthrough = -0.05
+				}
+				motorized_equipment = {
+					breakthrough = 0.05
+				}
+				mechanized_equipment = {
+					breakthrough = 0.05
+				}
+			}
+		}
+
 		local_collaborator = {
 			allowed = {
 				always = no

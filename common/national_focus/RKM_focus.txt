@@ -178,6 +178,12 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			# Activate the SS vs Wehrmacht Balance of Power
+			set_power_balance = {
+				id = RKM_ss_wehrmacht_balance
+				set_value = 0
+			}
+
 			# Check if RKM has enough resources, if not request from Germany
 			if = {
 				limit = {
@@ -226,6 +232,10 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = RKM_ss_cooperation
 			load_oob = "RKM_ss_divisions"
+			add_power_balance = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.15
+			}
 		}
 	}
 
@@ -250,6 +260,10 @@ focus_tree = {
 
 		completion_reward = {
 			load_oob = "RKM_wehrmacht_garrison"
+			add_power_balance = {
+				id = RKM_ss_wehrmacht_balance
+				value = 0.15
+			}
 		}
 	}
 
