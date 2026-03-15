@@ -243,6 +243,54 @@ country_event = {
 	}
 }
 
+# Russian Terror Attack - recurring event
+country_event = {
+	id = wif_rkm.20
+	title = wif_rkm.20.t
+	desc = wif_rkm.20.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_controlled_state = {
+				limit = {
+					NOT = { state = 219 }
+				}
+				save_event_target_as = terror_attack_state
+				add_dynamic_modifier = {
+					modifier = wif_large_russian_resistance
+					days = 180
+				}
+			}
+		}
+	}
+
+	option = {
+		name = wif_rkm.20.a
+
+		# Remove between 2000 and 10000 manpower
+		random_list = {
+			25 = { add_manpower = -2000 }
+			25 = { add_manpower = -5000 }
+			25 = { add_manpower = -7500 }
+			25 = { add_manpower = -10000 }
+		}
+
+		# Schedule next terror attack based on path
+		if = {
+			limit = {
+				has_completed_focus = RKM_work_with_ss
+			}
+			country_event = { id = wif_rkm.20 days = 60 }
+		}
+		else = {
+			country_event = { id = wif_rkm.20 days = 180 }
+		}
+	}
+}
+
 # Ryazan Labour Camps flavour event
 country_event = {
 	id = wif_rkm.11

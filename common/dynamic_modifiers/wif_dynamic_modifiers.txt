@@ -18,6 +18,16 @@ wif_moskau_pacification_upgraded = {
 	resistance_growth = -0.2
 }
 
+wif_large_russian_resistance = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	compliance_growth = -0.2
+	resistance_growth = 0.2
+}
+
 wif_ryazan_labour_camps = {
 	enable = { always = yes }
 	remove_trigger = { always = no }

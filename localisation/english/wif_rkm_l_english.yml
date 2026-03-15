@@ -1,4 +1,5 @@
 ﻿l_english:
+ GER_german_controlled_reichskommissariat:0 "Reichskommissariat Moskowien"
  RKM_safeguard_moskau:0 "Safeguard Moskau"
  RKM_safeguard_moskau_desc:0 "Moscow must be brought firmly under German administration. We shall rename this great city and pacify its populace to secure our hold over the region."
  wif_moskau_pacification:0 "Moskau Pacification"
@@ -82,3 +83,11 @@
  RKM_total_wehrmacht_control_desc:0 "The Wehrmacht has complete military authority over Moskowien. Their veteran officers command an efficient occupation force, and the combat experience gained strengthens all infantry operations."
  RKM_ss_military_doctrine:0 "SS Military Doctrine"
  RKM_ss_military_doctrine_desc:0 "The SS emphasis on mechanised warfare has shifted military priorities away from traditional infantry, favouring motorised and mechanised formations in Moskowien."
+ RKM_the_long_work:0 "The Long Work Begins"
+ RKM_the_long_work_desc:0 "With our chosen partners firmly in place, the real work of administering Moskowien can begin. Factories will be put to full use and resources channelled back to the Reich. But the Russian populace will not accept their fate quietly - terror attacks are inevitable."
+ RKM_the_long_work_spirit:0 "The Long Work"
+ RKM_the_long_work_spirit_desc:0 "The administration of Moskowien is now fully operational. Factories are running at increased capacity and resources are being funnelled to the overlord. However, the Russian resistance has begun a campaign of terror attacks across the Reichskommissariat."
+ wif_large_russian_resistance:0 "Large Russian Resistance"
+ wif_rkm.20.t:0 "Russian Terror Attack"
+ wif_rkm.20.desc:0 "On [GetDateText], infrastructure and buildings in [terror_attack_state.GetName] were attacked by Russian Resistance, killing both garrison and civilians."
+ wif_rkm.20.a:0 "We will destroy them eventually."

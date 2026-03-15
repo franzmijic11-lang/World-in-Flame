@@ -232,7 +232,7 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = RKM_ss_cooperation
 			load_oob = "RKM_ss_divisions"
-			add_power_balance = {
+			add_power_balance_value = {
 				id = RKM_ss_wehrmacht_balance
 				value = -0.15
 			}
@@ -260,9 +260,39 @@ focus_tree = {
 
 		completion_reward = {
 			load_oob = "RKM_wehrmacht_garrison"
-			add_power_balance = {
+			add_power_balance_value = {
 				id = RKM_ss_wehrmacht_balance
 				value = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_the_long_work
+		icon = GFX_goal_generic_construction2
+		x = 5
+		y = 5
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_work_with_ss
+			focus = RKM_work_with_wehrmacht
+		}
+
+		completion_reward = {
+			add_ideas = RKM_the_long_work_spirit
+
+			# Start terror attack timer based on which path was chosen
+			if = {
+				limit = {
+					has_completed_focus = RKM_work_with_ss
+				}
+				# SS path: attacks every 60 days
+				country_event = { id = wif_rkm.20 days = 60 }
+			}
+			else = {
+				# Wehrmacht path: attacks every 180 days
+				country_event = { id = wif_rkm.20 days = 180 }
 			}
 		}
 	}
