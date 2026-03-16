@@ -28,6 +28,26 @@ wif_large_russian_resistance = {
 	resistance_growth = 0.2
 }
 
+wif_large_russian_resistance_doubled = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	compliance_growth = -0.4
+	resistance_growth = 0.4
+}
+
+wif_large_russian_resistance_quintupled = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	compliance_growth = -1.0
+	resistance_growth = 1.0
+}
+
 wif_ryazan_labour_camps = {
 	enable = { always = yes }
 	remove_trigger = { always = no }

@@ -1,0 +1,154 @@
+wif_chase_terrorists = {
+	wif_attack_partisan_activity = {
+		icon = generic_civil_support
+
+		allowed = {
+			tag = RKM
+		}
+
+		visible = {
+			has_completed_focus = RKM_fight_the_terrorists
+		}
+
+		state_target = any_controlled_state
+
+		target_trigger = {
+			FROM = {
+				has_state_flag = wif_terror_attack_target
+			}
+		}
+
+		available = {
+			has_manpower > 9999
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = no
+
+		cost = 0
+
+		complete_effect = {
+			add_manpower = -10000
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			FROM = {
+				save_event_target_as = partisan_state
+			}
+			random_list = {
+				10 = {
+					# Complete Success
+					add_manpower = 9000
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					set_country_flag = { flag = wif_terror_attack_delayed value = 1 }
+					country_event = { id = wif_rkm.25 }
+				}
+				20 = {
+					# Terrorists Got Away But Region Stabilised
+					add_manpower = 9000
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					country_event = { id = wif_rkm.26 }
+				}
+				20 = {
+					# Harsh Battle
+					add_manpower = 5000
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					country_event = { id = wif_rkm.27 }
+				}
+				20 = {
+					# Failed to Pursue
+					add_manpower = 4000
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+					}
+					# State modifier stays
+					country_event = { id = wif_rkm.28 }
+				}
+				20 = {
+					# Forces Routed
+					add_manpower = 1000
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+						# Double the state modifier
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_doubled
+								days = 180
+							}
+						}
+					}
+					country_event = { id = wif_rkm.29 }
+				}
+				10 = {
+					# Total Defeat
+					add_political_power = -200
+					FROM = {
+						clr_state_flag = wif_terror_attack_target
+						set_state_flag = wif_demilitarized_state
+						set_demilitarized_zone = yes
+						# Quintuple the state modifier
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+					}
+					set_country_flag = { flag = wif_terror_attack_early value = 1 }
+					# Remove demilitarization after 30 days
+					country_event = { id = wif_rkm.31 days = 30 }
+					country_event = { id = wif_rkm.30 }
+				}
+			}
+		}
+	}
+}

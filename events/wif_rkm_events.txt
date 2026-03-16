@@ -263,6 +263,12 @@ country_event = {
 					modifier = wif_large_russian_resistance
 					days = 180
 				}
+				# Mark state for anti-partisan decision (available for 45 days)
+				set_state_flag = {
+					flag = wif_terror_attack_target
+					days = 45
+					value = 1
+				}
 			}
 		}
 	}
@@ -278,15 +284,41 @@ country_event = {
 			25 = { add_manpower = -10000 }
 		}
 
-		# Schedule next terror attack based on path
+		# Schedule next terror attack based on path and delay/early flags
 		if = {
 			limit = {
 				has_completed_focus = RKM_work_with_ss
 			}
-			country_event = { id = wif_rkm.20 days = 60 }
+			# SS path: base 60 days
+			if = {
+				limit = { has_country_flag = wif_terror_attack_delayed }
+				clr_country_flag = wif_terror_attack_delayed
+				country_event = { id = wif_rkm.20 days = 120 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_terror_attack_early }
+				clr_country_flag = wif_terror_attack_early
+				country_event = { id = wif_rkm.20 days = 1 }
+			}
+			else = {
+				country_event = { id = wif_rkm.20 days = 60 }
+			}
 		}
 		else = {
-			country_event = { id = wif_rkm.20 days = 180 }
+			# Other paths: base 180 days
+			if = {
+				limit = { has_country_flag = wif_terror_attack_delayed }
+				clr_country_flag = wif_terror_attack_delayed
+				country_event = { id = wif_rkm.20 days = 240 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_terror_attack_early }
+				clr_country_flag = wif_terror_attack_early
+				country_event = { id = wif_rkm.20 days = 80 }
+			}
+			else = {
+				country_event = { id = wif_rkm.20 days = 180 }
+			}
 		}
 	}
 }
@@ -408,5 +440,115 @@ country_event = {
 				modifier = wif_death_camps
 			}
 		}
+	}
+}
+
+# Anti-partisan outcome: Complete Success
+country_event = {
+	id = wif_rkm.25
+	title = wif_rkm.25.t
+	desc = wif_rkm.25.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.25.a
+	}
+}
+
+# Anti-partisan outcome: Terrorists Got Away But Region Stabilised
+country_event = {
+	id = wif_rkm.26
+	title = wif_rkm.26.t
+	desc = wif_rkm.26.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.26.a
+	}
+}
+
+# Anti-partisan outcome: Harsh Battle
+country_event = {
+	id = wif_rkm.27
+	title = wif_rkm.27.t
+	desc = wif_rkm.27.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.27.a
+	}
+}
+
+# Anti-partisan outcome: Failed to Pursue
+country_event = {
+	id = wif_rkm.28
+	title = wif_rkm.28.t
+	desc = wif_rkm.28.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.28.a
+	}
+}
+
+# Anti-partisan outcome: Forces Routed
+country_event = {
+	id = wif_rkm.29
+	title = wif_rkm.29.t
+	desc = wif_rkm.29.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.29.a
+	}
+}
+
+# Anti-partisan outcome: Total Defeat
+country_event = {
+	id = wif_rkm.30
+	title = wif_rkm.30.t
+	desc = wif_rkm.30.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.30.a
+	}
+}
+
+# Remove demilitarization from state after 30 days
+country_event = {
+	id = wif_rkm.31
+	title = wif_rkm.31.t
+	desc = wif_rkm.31.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			every_controlled_state = {
+				limit = {
+					has_state_flag = wif_demilitarized_state
+				}
+				clr_state_flag = wif_demilitarized_state
+				set_demilitarized_zone = no
+			}
+		}
+	}
+
+	option = {
+		name = wif_rkm.31.a
 	}
 }

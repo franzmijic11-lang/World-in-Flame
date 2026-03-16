@@ -9,7 +9,7 @@ focus_tree = {
 	}
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1600 }
+	continuous_focus_position = { x = 50 y = 2200 }
 
 	focus = {
 		id = RKM_safeguard_moskau
@@ -554,6 +554,23 @@ focus_tree = {
 				id = RKM_ss_wehrmacht_balance
 				value = 0.05
 			}
+		}
+	}
+
+	focus = {
+		id = RKM_fight_the_terrorists
+		icon = GFX_focus_generic_spread_fascism
+		x = 8
+		y = 11
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_to_death
+			focus = RKM_labour_for_moscowien
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = RKM_fight_the_terrorists_tt
 		}
 	}
 

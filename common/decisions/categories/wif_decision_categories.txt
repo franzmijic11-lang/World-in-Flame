@@ -1,0 +1,13 @@
+wif_chase_terrorists = {
+	icon = GFX_goal_anti_comintern_pact
+
+	allowed = {
+		tag = RKM
+	}
+
+	visible = {
+		has_completed_focus = RKM_fight_the_terrorists
+	}
+
+	priority = 50
+}
