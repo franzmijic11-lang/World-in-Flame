@@ -1,2 +1,6 @@
 spriteTypes = {
+	spriteType = {
+		name = "GFX_wif_sov_surrender"
+		texturefile = "gfx/event_pictures/wif_sov_surrender.tga"
+	}
 }

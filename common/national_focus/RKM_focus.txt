@@ -443,7 +443,7 @@ focus_tree = {
 
 	focus = {
 		id = RKM_establish_death_camp
-		icon = GFX_focus_ger_strike_at_the_source
+		icon = GFX_focus_CZE_german_puppet
 		x = 8
 		y = 9
 		cost = 10 # 70 days
@@ -457,6 +457,102 @@ focus_tree = {
 				add_dynamic_modifier = {
 					modifier = wif_death_camps
 				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_to_death
+		icon = GFX_focus_CZE_german_puppet
+		x = 7
+		y = 10
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_establish_death_camp
+		}
+
+		mutually_exclusive = {
+			focus = RKM_labour_for_moscowien
+		}
+
+		completion_reward = {
+			# Remove 30% of Smolensk population (1,300,028 * 0.30 = 390,008)
+			242 = {
+				add_manpower = -390008
+			}
+			# Remove 30% of Vitebsk population (1,217,854 * 0.30 = 365,356)
+			207 = {
+				add_manpower = -365356
+			}
+
+			# Transfer 30% of each population to Tikhvin (264)
+			264 = {
+				add_manpower = 755364
+			}
+
+			# Worsen death camp modifier to -10% population for 1 year
+			264 = {
+				remove_dynamic_modifier = {
+					modifier = wif_death_camps
+				}
+				add_dynamic_modifier = {
+					modifier = wif_death_camps_intensified
+				}
+			}
+
+			# After 365 days, revert to normal death camps
+			country_event = { id = wif_rkm.24 days = 365 }
+
+			# Shift balance of power 5% towards SS
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.05
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_labour_for_moscowien
+		icon = GFX_focus_SOV_penal_battalions
+		x = 9
+		y = 10
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_establish_death_camp
+		}
+
+		mutually_exclusive = {
+			focus = RKM_to_death
+		}
+
+		completion_reward = {
+			# Remove 10% of Smolensk population (1,300,028 * 0.10 = 130,003)
+			242 = {
+				add_manpower = -130003
+			}
+			# Remove 10% of Vitebsk population (1,217,854 * 0.10 = 121,785)
+			207 = {
+				add_manpower = -121785
+			}
+
+			# Transfer 40% of each population to Ryazan (254)
+			# Smolensk: 520,011 + Vitebsk: 487,142 = 1,007,153
+			254 = {
+				add_manpower = 1007153
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			# Shift balance of power 5% towards Wehrmacht
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = 0.05
 			}
 		}
 	}
@@ -508,6 +604,24 @@ focus_tree = {
 
 		completion_reward = {
 			load_oob = "RKM_reich_officials_garrison"
+		}
+	}
+
+	focus = {
+		id = RKM_heroes_of_barbarossa
+		icon = GFX_focus_GER_prussian_legacy
+		x = 16
+		y = 3
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_admin_reich_officials
+		}
+
+		completion_reward = {
+			GER = {
+				country_event = { id = wif_rkm.21 }
+			}
 		}
 	}
 

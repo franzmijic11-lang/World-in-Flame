@@ -47,6 +47,15 @@ wif_death_camps = {
 	monthly_population = -0.05
 }
 
+wif_death_camps_intensified = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	monthly_population = -0.10
+}
+
 wif_ryazan_labour_camps_expanded = {
 	enable = { always = yes }
 	remove_trigger = { always = no }

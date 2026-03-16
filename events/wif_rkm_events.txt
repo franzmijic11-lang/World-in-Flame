@@ -304,3 +304,109 @@ country_event = {
 		name = wif_rkm.11.a
 	}
 }
+
+# Heroes of Barbarossa - Germany receives transfer request for Paulus
+country_event = {
+	id = wif_rkm.21
+	title = wif_rkm.21.t
+	desc = wif_rkm.21.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	# Accept - transfer Paulus to RKM
+	option = {
+		name = wif_rkm.21.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+
+		# Transfer Paulus to RKM and promote to Field Marshal
+		GER_friedrich_paulus = {
+			set_nationality = RKM
+			promote_leader = yes
+		}
+
+		# Rename state 217 and its capital to Paulusberg
+		217 = {
+			set_state_name = "Paulusberg"
+		}
+		set_province_name = { id = 3529 name = "Paulusberg" }
+
+		# Notify RKM
+		RKM = {
+			country_event = { id = wif_rkm.22 }
+		}
+	}
+
+	# Decline
+	option = {
+		name = wif_rkm.21.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				has_war = yes
+			}
+		}
+
+		# Notify RKM of refusal
+		RKM = {
+			country_event = { id = wif_rkm.23 }
+		}
+	}
+}
+
+# Paulus arrives in Moskowien
+country_event = {
+	id = wif_rkm.22
+	title = wif_rkm.22.t
+	desc = wif_rkm.22.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.22.a
+	}
+}
+
+# Germany refuses to transfer Paulus
+country_event = {
+	id = wif_rkm.23
+	title = wif_rkm.23.t
+	desc = wif_rkm.23.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.23.a
+	}
+}
+
+# Death camps revert from intensified to normal after 1 year
+country_event = {
+	id = wif_rkm.24
+	title = wif_rkm.24.t
+	desc = wif_rkm.24.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.24.a
+		264 = {
+			remove_dynamic_modifier = {
+				modifier = wif_death_camps_intensified
+			}
+			add_dynamic_modifier = {
+				modifier = wif_death_camps
+			}
+		}
+	}
+}
