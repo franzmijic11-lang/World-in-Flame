@@ -1,0 +1,16 @@
+units = {
+	division = {
+		name = "3. SS-Mechanisierte Division"
+		location = 6380
+		division_template = "SS-Mechanisierte Division"
+		start_experience_factor = 0.6
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4. SS-Mechanisierte Division"
+		location = 6380
+		division_template = "SS-Mechanisierte Division"
+		start_experience_factor = 0.6
+		start_equipment_factor = 1.0
+	}
+}

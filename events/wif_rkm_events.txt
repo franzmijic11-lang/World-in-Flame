@@ -296,8 +296,28 @@ country_event = {
 				country_event = { id = wif_rkm.20 days = 120 }
 			}
 			else_if = {
+				limit = { has_country_flag = wif_mech_delay_50 }
+				clr_country_flag = wif_mech_delay_50
+				country_event = { id = wif_rkm.20 days = 110 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_delay_20 }
+				clr_country_flag = wif_mech_delay_20
+				country_event = { id = wif_rkm.20 days = 80 }
+			}
+			else_if = {
 				limit = { has_country_flag = wif_terror_attack_early }
 				clr_country_flag = wif_terror_attack_early
+				country_event = { id = wif_rkm.20 days = 1 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_early_30 }
+				clr_country_flag = wif_mech_early_30
+				country_event = { id = wif_rkm.20 days = 30 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_early_100 }
+				clr_country_flag = wif_mech_early_100
 				country_event = { id = wif_rkm.20 days = 1 }
 			}
 			else = {
@@ -312,8 +332,28 @@ country_event = {
 				country_event = { id = wif_rkm.20 days = 240 }
 			}
 			else_if = {
+				limit = { has_country_flag = wif_mech_delay_50 }
+				clr_country_flag = wif_mech_delay_50
+				country_event = { id = wif_rkm.20 days = 230 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_delay_20 }
+				clr_country_flag = wif_mech_delay_20
+				country_event = { id = wif_rkm.20 days = 200 }
+			}
+			else_if = {
 				limit = { has_country_flag = wif_terror_attack_early }
 				clr_country_flag = wif_terror_attack_early
+				country_event = { id = wif_rkm.20 days = 80 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_early_30 }
+				clr_country_flag = wif_mech_early_30
+				country_event = { id = wif_rkm.20 days = 150 }
+			}
+			else_if = {
+				limit = { has_country_flag = wif_mech_early_100 }
+				clr_country_flag = wif_mech_early_100
 				country_event = { id = wif_rkm.20 days = 80 }
 			}
 			else = {

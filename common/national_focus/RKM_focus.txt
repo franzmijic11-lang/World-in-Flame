@@ -31,6 +31,10 @@ focus_tree = {
 
 		completion_reward = {
 			set_country_flag = RKM_moskau_renamed
+			swap_ideas = {
+				remove_idea = RKM_occupation_doctrine
+				add_idea = RKM_occupation_doctrine_2
+			}
 			219 = {
 				set_state_name = "Moskau"
 				set_compliance = 50
@@ -214,6 +218,12 @@ focus_tree = {
 			set_power_balance = {
 				id = RKM_ss_wehrmacht_balance
 				set_value = 0
+			}
+
+			# Halve occupation doctrine penalty again
+			swap_ideas = {
+				remove_idea = RKM_occupation_doctrine_2
+				add_idea = RKM_occupation_doctrine_3
 			}
 
 			# Check if RKM has enough resources, if not request from Germany
@@ -554,6 +564,66 @@ focus_tree = {
 				id = RKM_ss_wehrmacht_balance
 				value = 0.05
 			}
+		}
+	}
+
+	focus = {
+		id = RKM_expand_moscowien_ss
+		icon = GFX_focus_GER_strengthen_the_waffen_ss
+		x = 6
+		y = 11
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_to_death
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.10
+			}
+			load_oob = "RKM_ss_expansion"
+		}
+	}
+
+	focus = {
+		id = RKM_secret_backdoor_deals_with_himmler
+		icon = GFX_focus_GER_expand_gestapo
+		x = 6
+		y = 12
+		cost = 14.3 # 100 days
+
+		prerequisite = {
+			focus = RKM_expand_moscowien_ss
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.05
+			}
+			load_oob = "RKM_ss_himmler"
+		}
+	}
+
+	focus = {
+		id = RKM_ss_krieg
+		icon = GFX_focus_GER_strengthen_the_waffen_ss
+		x = 6
+		y = 13
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_secret_backdoor_deals_with_himmler
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = -0.20
+			}
+			custom_effect_tooltip = RKM_ss_krieg_tt
 		}
 	}
 
