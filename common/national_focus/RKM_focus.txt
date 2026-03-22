@@ -568,6 +568,50 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RKM_mansteins_eastern_concern
+		icon = GFX_focus_GER_army
+		x = 10
+		y = 11
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_labour_for_moscowien
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = 0.10
+			}
+			load_oob = "RKM_manstein_divisions"
+		}
+	}
+
+	focus = {
+		id = RKM_ost_panzer
+		icon = GFX_focus_GER_german_army_invincible
+		x = 10
+		y = 12
+		cost = 5.71 # 40 days
+
+		prerequisite = {
+			focus = RKM_mansteins_eastern_concern
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = 0.05
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_equipment
+				amount = 200
+				producer = GER
+			}
+		}
+	}
+
+	focus = {
 		id = RKM_expand_moscowien_ss
 		icon = GFX_focus_GER_strengthen_the_waffen_ss
 		x = 6
