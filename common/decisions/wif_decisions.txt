@@ -331,4 +331,219 @@ wif_chase_terrorists = {
 			}
 		}
 	}
+
+	wif_paulus_gambit = {
+		icon = generic_civil_support
+
+		allowed = {
+			tag = RKM
+		}
+
+		visible = {
+			has_completed_focus = RKM_paulus_play
+		}
+
+		state_target = any_controlled_state
+
+		target_trigger = {
+			FROM = {
+				has_state_flag = wif_terror_attack_target
+			}
+		}
+
+		available = {
+			has_manpower > 9999
+			has_equipment = {
+				support_equipment > 199
+			}
+			has_equipment = {
+				medium_tank_chassis > 9
+			}
+			NOT = { has_country_flag = wif_anti_partisan_in_progress }
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		fire_only_once = no
+
+		cost = 0
+
+		complete_effect = {
+			add_manpower = -10000
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -200
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_chassis
+				amount = -10
+			}
+			set_country_flag = wif_anti_partisan_in_progress
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			clr_country_flag = wif_anti_partisan_in_progress
+			FROM = {
+				clr_state_flag = wif_terror_attack_target
+				save_event_target_as = partisan_state
+			}
+			random_list = {
+				20 = {
+					# Complete Success - 9800 manpower, all support equipment and tanks back
+					add_manpower = 9800
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 200
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 10
+					}
+					FROM = {
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					set_country_flag = { flag = wif_terror_attack_delayed value = 1 }
+					country_event = { id = wif_rkm.25 }
+				}
+				20 = {
+					# Terrorists Escaped - all tanks back, lose 5% support equipment (10)
+					add_manpower = 9000
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 190
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 10
+					}
+					FROM = {
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					set_country_flag = { flag = wif_mech_delay_50 value = 1 }
+					country_event = { id = wif_rkm.26 }
+				}
+				30 = {
+					# Harsh Battle - lose 12% support equipment (24), lose 1 tank
+					add_manpower = 7000
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 176
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 9
+					}
+					FROM = {
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+					}
+					country_event = { id = wif_rkm.27 }
+				}
+				10 = {
+					# Failed to Pursue - lose 20% support equipment (40), lose 2 tanks
+					add_manpower = 5000
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 160
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 8
+					}
+					# State modifier stays
+					set_country_flag = { flag = wif_mech_delay_20 value = 1 }
+					country_event = { id = wif_rkm.28 }
+				}
+				15 = {
+					# Forces Routed - lose 50% support equipment (100), lose 3 tanks
+					add_manpower = 2000
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 100
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 7
+					}
+					FROM = {
+						# Double the state modifier
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_doubled
+								days = 180
+							}
+						}
+					}
+					set_country_flag = { flag = wif_mech_early_30 value = 1 }
+					country_event = { id = wif_rkm.29 }
+				}
+				5 = {
+					# Total Defeat - lose 75% support equipment (150), lose 7 tanks
+					add_manpower = 500
+					add_equipment_to_stockpile = {
+						type = support_equipment
+						amount = 50
+					}
+					add_equipment_to_stockpile = {
+						type = medium_tank_chassis
+						amount = 3
+					}
+					add_political_power = -200
+					FROM = {
+						set_state_flag = wif_demilitarized_state
+						set_demilitarized_zone = yes
+						# Quintuple the state modifier
+						if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+					}
+					set_country_flag = { flag = wif_mech_early_100 value = 1 }
+					# Remove demilitarization after 60 days
+					country_event = { id = wif_rkm.31 days = 60 }
+					country_event = { id = wif_rkm.30 }
+				}
+			}
+		}
+	}
 }

@@ -603,11 +603,43 @@ focus_tree = {
 				id = RKM_ss_wehrmacht_balance
 				value = 0.05
 			}
-			add_equipment_to_stockpile = {
-				type = medium_tank_equipment
-				amount = 200
-				producer = GER
+			# Grant medium tank chassis tech so RKM can use the received tanks
+			if = {
+				limit = { NOT = { has_tech = basic_medium_tank_chassis } }
+				set_technology = { basic_medium_tank_chassis = 1 }
 			}
+			if = {
+				limit = { NOT = { has_tech = improved_medium_tank_chassis } }
+				set_technology = { improved_medium_tank_chassis = 1 }
+			}
+			# Transfer 200 medium tanks from Germany's stockpile
+			GER = {
+				send_equipment = {
+					target = RKM
+					type = medium_tank_chassis
+					amount = 200
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_paulus_play
+		icon = GFX_focus_GER_army
+		x = 10
+		y = 13
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_ost_panzer
+		}
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value = 0.30
+			}
+			custom_effect_tooltip = RKM_paulus_play_tt
 		}
 	}
 
