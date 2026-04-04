@@ -721,6 +721,101 @@ focus_tree = {
 	}
 
 	focus = {
+		id = RKM_settlers_from_west
+		icon = GFX_focus_GER_autarky_ambitions
+		x = 8
+		y = 12
+		cost = 10 # 70 days
+
+		prerequisite = {
+			focus = RKM_fight_the_terrorists
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = RKM_ss_krieg
+				has_completed_focus = RKM_paulus_play
+			}
+		}
+
+		completion_reward = {
+			# Remove 25% of Smolensk population (1,300,028 * 0.25 = 325,007)
+			242 = {
+				add_manpower = -325007
+			}
+			# Remove 25% of Vitebsk population (1,217,854 * 0.25 = 304,464)
+			207 = {
+				add_manpower = -304464
+			}
+
+			# Re-add 10% to both (German settlers arriving)
+			# Smolensk: 1,300,028 * 0.10 = 130,003
+			242 = {
+				add_manpower = 130003
+			}
+			# Vitebsk: 1,217,854 * 0.10 = 121,785
+			207 = {
+				add_manpower = 121785
+			}
+
+			# Add German Settlers modifier to both states
+			242 = {
+				add_dynamic_modifier = {
+					modifier = wif_german_settlers
+				}
+			}
+			207 = {
+				add_dynamic_modifier = {
+					modifier = wif_german_settlers
+				}
+			}
+
+			# Event: decide fate of removed Slavic population
+			country_event = { id = wif_rkm.32 }
+		}
+	}
+
+	focus = {
+		id = RKM_germanisation
+		icon = GFX_focus_generic_spread_fascism
+		x = 8
+		y = 13
+		cost = 28.6 # 200 days
+
+		prerequisite = {
+			focus = RKM_settlers_from_west
+		}
+
+		completion_reward = {
+			# Remove 30% of Smolensk population (1,300,028 * 0.30 = 390,008)
+			242 = {
+				add_manpower = -390008
+			}
+			# Remove 30% of Vitebsk population (1,217,854 * 0.30 = 365,356)
+			207 = {
+				add_manpower = -365356
+			}
+
+			# Re-add 15% as German settlers
+			# Smolensk: 1,300,028 * 0.15 = 195,004
+			242 = {
+				add_manpower = 195004
+			}
+			# Vitebsk: 1,217,854 * 0.15 = 182,679
+			207 = {
+				add_manpower = 182679
+			}
+
+			# Core both states
+			add_state_core = 242
+			add_state_core = 207
+
+			# Prevent terrorist attacks from hitting these states
+			set_country_flag = wif_germanised_smolensk_vitebsk
+		}
+	}
+
+	focus = {
 		id = RKM_refurnish_kremlin
 		icon = GFX_focus_SOV_third_rome
 		x = 17

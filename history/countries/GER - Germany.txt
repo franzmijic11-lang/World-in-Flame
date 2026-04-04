@@ -412,6 +412,7 @@ set_variable = { GER_inner_circle_random_days = 45 }
 set_variable = { GER_ascended_advisor_1 = 0 } #Ascended Advisor Portrait
 set_variable = { GER_ascended_advisor_2 = 0 } #Ascended Advisor Portrait
 set_variable = { GER_ascended_advisor_3 = 0 } #Ascended Advisor Portrait
+set_variable = { GER_ascended_advisor_4 = -1 } #Ascended Advisor Portrait - Locked until Aging Fuhrer focus
 
 ### SHARED FOCUS CONTROL ###
 set_variable = { GER_wonder_weapons_focus_advisor = 0 } # To know who is completing this focus. Value = Advisor ID in the Inner Circle

@@ -257,6 +257,11 @@ country_event = {
 			random_controlled_state = {
 				limit = {
 					NOT = { state = 219 }
+					if = {
+						limit = { ROOT = { has_country_flag = wif_germanised_smolensk_vitebsk } }
+						NOT = { state = 242 }
+						NOT = { state = 207 }
+					}
 				}
 				save_event_target_as = terror_attack_state
 				add_dynamic_modifier = {
@@ -590,5 +595,39 @@ country_event = {
 
 	option = {
 		name = wif_rkm.31.a
+	}
+}
+
+# Settlers from the West - fate of displaced Slavic population
+country_event = {
+	id = wif_rkm.32
+	title = wif_rkm.32.t
+	desc = wif_rkm.32.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	# Option A: Put them to death
+	option = {
+		name = wif_rkm.32.a
+		# Removed population is simply eliminated
+		add_stability = -0.05
+	}
+
+	# Option B: Send them to the labour camps in Ryazan
+	option = {
+		name = wif_rkm.32.b
+		# 80% of net removed population goes to Ryazan
+		# Net removed: Smolensk 195,004 + Vitebsk 182,679 = 377,683
+		# 80% of 377,683 = 302,146
+		254 = {
+			add_manpower = 302146
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
 	}
 }

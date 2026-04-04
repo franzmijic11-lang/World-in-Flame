@@ -1,0 +1,9 @@
+﻿l_english:
+ GER_aging_fuhrer:0 "Aging Fuhrer"
+ GER_aging_fuhrer_desc:0 "As the Fuhrer grows older, his grip on power remains unshaken - held firmly in place by the unwavering loyalty of his inner circle. But loyalty born of ambition is a fickle thing, and the whispers in the corridors of the Reich grow louder with each passing year... For now, however, the circle holds."
+ GER_aging_fuhrer_inner_circle_slot_tt:0 "Unlocks a §Y4th Inner Circle§! slot."
+ GER_inner_circle.01.d:0 "Replace [GetAscendedAdvisorName4]"
+ GER_inner_circle.01.e:0 "[GetAscendingAdvisorName] is not worthy of the Fuhrer's trust"
+ GER_inner_circle.02.d:0 "[GetAscendedAdvisorName4] will carry on the Fuhrer's legacy."
+ GER_inner_circle.02.e:0 "We are not ready for a change in leadership."
+ GER_ascended_advisor_4_name_text:0 "§Y[GetAscendedAdvisorName4]§!"

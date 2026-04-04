@@ -76,6 +76,16 @@ wif_death_camps_intensified = {
 	monthly_population = -0.10
 }
 
+wif_german_settlers = {
+	enable = { always = yes }
+	remove_trigger = { always = no }
+
+	icon = "GFX_idea_active_russian_resistance"
+
+	compliance_growth = 0.05
+	resistance_growth = -0.05
+}
+
 wif_ryazan_labour_camps_expanded = {
 	enable = { always = yes }
 	remove_trigger = { always = no }
