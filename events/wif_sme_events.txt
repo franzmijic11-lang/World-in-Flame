@@ -1,0 +1,15 @@
+add_namespace = wif_sme
+
+# Red Army Coup - fires immediately when SME comes into existence
+country_event = {
+	id = wif_sme.1
+	title = wif_sme.1.t
+	desc = wif_sme.1.desc
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme.1.a
+	}
+}

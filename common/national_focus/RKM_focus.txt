@@ -634,6 +634,10 @@ focus_tree = {
 			focus = RKM_ost_panzer
 		}
 
+		available = {
+			has_completed_focus = RKM_fight_the_terrorists
+		}
+
 		completion_reward = {
 			add_power_balance_value = {
 				id = RKM_ss_wehrmacht_balance
@@ -692,6 +696,10 @@ focus_tree = {
 
 		prerequisite = {
 			focus = RKM_secret_backdoor_deals_with_himmler
+		}
+
+		available = {
+			has_completed_focus = RKM_fight_the_terrorists
 		}
 
 		completion_reward = {

@@ -265,6 +265,36 @@ country_event = {
 
 		# === White peace between SOV and GER ===
 		white_peace = GER
+
+		# === Transfer all remaining SOV territory to SME (spawns the Soviet Military Emergency Government) ===
+		every_state = {
+			limit = { is_owned_by = SOV }
+			transfer_state_to = SME
+		}
+
+		# === SME inherits all of SOV's researched technology (vanilla + UTTNH 2.0) ===
+		SME = {
+			SME_inherit_sov_tech = yes
+		}
+
+		# === Switch the human player from SOV to SME if SOV was player-controlled ===
+		if = {
+			limit = { is_ai = no }
+			SME = { change_tag_from = ROOT }
+		}
+
+		# === SME absorbs the now-stateless SOV (captures units / equipment, removes the tag) ===
+		SME = {
+			annex_country = {
+				target = SOV
+				transfer_troops = yes
+			}
+		}
+
+		# === Fire Red Army Coup event for SME ===
+		SME = {
+			country_event = { id = wif_sme.1 days = 1 }
+		}
 	}
 
 	# We will fight on

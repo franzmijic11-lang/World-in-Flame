@@ -1,0 +1,1 @@
+SME = "countries/Soviet Military Emergency Government.txt"

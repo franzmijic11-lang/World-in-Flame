@@ -1,0 +1,21 @@
+focus_tree = {
+	id = SME_focus_tree
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SME
+		}
+	}
+	default = no
+
+	focus = {
+		id = SME_placeholder
+		icon = GFX_goal_anschluss
+		x = 0
+		y = 0
+		cost = 1
+		available = { always = no }
+		allow_branch = { always = no }
+	}
+}
