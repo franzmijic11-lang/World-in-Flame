@@ -263,6 +263,46 @@ country_event = {
 			transfer_state_to = GER
 		}
 
+		# === Strip SOV cores from all non-Russian SSR territory ===
+		# If SOV is ever revived, it should only have claim on Russian territory.
+		every_state = {
+			limit = {
+				OR = {
+					# Ukrainian SSR
+					state = 93   state = 199  state = 201  state = 202  state = 193
+					state = 203  state = 197  state = 225  state = 259  state = 226
+					state = 196  state = 200  state = 221  state = 228  state = 227
+					state = 137
+					# Belarussian SSR + Baltic SSRs (Ostland)
+					state = 94   state = 95   state = 96   state = 194  state = 204
+					state = 206  state = 11   state = 784  state = 189  state = 12
+					state = 190  state = 13   state = 191  state = 814  state = 815
+					state = 809  state = 808  state = 810  state = 813  state = 812
+					state = 811
+					# Transcaucasian SSRs (Georgia + Abkhazia, Armenia, Azerbaijan)
+					state = 229  state = 230  state = 231  state = 826
+					# Kazakh SSR
+					state = 404  state = 406  state = 407  state = 583  state = 586
+					state = 587  state = 588  state = 589  state = 590  state = 881
+					state = 882
+					# Uzbek SSR
+					state = 405  state = 585  state = 830  state = 831  state = 823
+					# Turkmen SSR
+					state = 584  state = 832
+					# Tajik SSR
+					state = 732  state = 742
+					# Additional non-Russian frontier
+					state = 402
+				}
+			}
+			remove_core_of = SOV
+		}
+
+		# === Karelia retains a core claim on Murmansk ===
+		213 = {
+			add_core_of = KAR
+		}
+
 		# === White peace between SOV and GER ===
 		white_peace = GER
 
@@ -270,6 +310,32 @@ country_event = {
 		every_state = {
 			limit = { is_owned_by = SOV }
 			transfer_state_to = SME
+		}
+
+		# === Give SME cores on its Volga / Urals heartland ===
+		every_state = {
+			limit = {
+				OR = {
+					state = 401  # Balakovo
+					state = 652  # Orenburg
+					state = 251  # Kuybyshev
+					state = 250  # Ulyanovsky
+					state = 582  # Magnitogorsk
+					state = 651  # Ufa
+					state = 249  # Kazan
+					state = 256  # Chuvashia
+					state = 833  # Mari El
+					state = 573  # Zlatoust
+					state = 399  # Udmurtia
+					state = 400  # Kirov
+					state = 398  # Perm
+					state = 397  # Syktyvkar
+					state = 581  # Northern Urals
+					state = 262  # Pechora
+					state = 825  # Nenets
+				}
+			}
+			add_core_of = SME
 		}
 
 		# === SME inherits all of SOV's researched technology (vanilla + UTTNH 2.0) ===
@@ -283,7 +349,23 @@ country_event = {
 			SME = { change_tag_from = ROOT }
 		}
 
-		# === SME absorbs the now-stateless SOV (captures units / equipment, removes the tag) ===
+		# === Transfer every remaining SOV unit (army, navy, air) and stockpile to SME ===
+		transfer_units_fraction = {
+			target = SME
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# === Move every SOV unit leader (generals, field marshals, admirals) to SME ===
+		# Catches unassigned leaders that didn't move with units above.
+		every_unit_leader = {
+			set_nationality = { target_country = SME }
+		}
+
+		# === SME absorbs the now-stateless SOV (mops up anything left and removes the tag) ===
 		SME = {
 			annex_country = {
 				target = SOV
