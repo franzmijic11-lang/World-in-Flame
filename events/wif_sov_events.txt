@@ -306,7 +306,38 @@ country_event = {
 		# === White peace between SOV and GER ===
 		white_peace = GER
 
-		# === Transfer all remaining SOV territory to SME (spawns the Soviet Military Emergency Government) ===
+		# === Pre-spawn SME via a single state transfer so we can move SOV units while SOV is still a live tag ===
+		# Nenets (825) is in SME core territory, isn't claimed by any other transfer above, and is normally SOV-owned at trigger time.
+		825 = {
+			if = {
+				limit = { is_owned_by = SOV }
+				transfer_state_to = SME
+			}
+		}
+		# Fallback: if 825 wasn't SOV-owned, grab any random SOV-owned state to bring SME into existence.
+		if = {
+			limit = { NOT = { country_exists = SME } }
+			random_owned_state = {
+				transfer_state_to = SME
+			}
+		}
+
+		# === Transfer every SOV unit (army, navy, air) and stockpile to SME while SOV still owns states ===
+		transfer_units_fraction = {
+			target = SME
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# === Move every SOV unit leader (generals, field marshals, admirals) to SME ===
+		every_unit_leader = {
+			set_nationality = { target_country = SME }
+		}
+
+		# === Transfer all remaining SOV territory to SME ===
 		every_state = {
 			limit = { is_owned_by = SOV }
 			transfer_state_to = SME
@@ -347,22 +378,6 @@ country_event = {
 		if = {
 			limit = { is_ai = no }
 			SME = { change_tag_from = ROOT }
-		}
-
-		# === Transfer every remaining SOV unit (army, navy, air) and stockpile to SME ===
-		transfer_units_fraction = {
-			target = SME
-			size = 1.0
-			stockpile_ratio = 1.0
-			army_ratio = 1.0
-			navy_ratio = 1.0
-			air_ratio = 1.0
-		}
-
-		# === Move every SOV unit leader (generals, field marshals, admirals) to SME ===
-		# Catches unassigned leaders that didn't move with units above.
-		every_unit_leader = {
-			set_nationality = { target_country = SME }
 		}
 
 		# === SME absorbs the now-stateless SOV (mops up anything left and removes the tag) ===

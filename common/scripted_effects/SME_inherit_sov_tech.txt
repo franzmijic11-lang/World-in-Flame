@@ -1,5 +1,6 @@
-# Auto-generated: copies every known tech (vanilla + UTTNH 2.0) from SOV to current scope.
-# has_tech silently returns false for techs that do not exist in the current loaded modset, so this is safe.
+# Auto-generated: copies every researchable tech from SOV to current scope.
+# Source set = UTTNH 2.0 tech files (which replace 12 vanilla files) + the 2 vanilla files UTTNH does not override.
+# Orphan/no-grid-box techs that crash the country tech tree view are excluded.
 SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = BEL_chasseurs_ardennais } } set_technology = { BEL_chasseurs_ardennais = 1 } }
 	if = { limit = { SOV = { has_tech = BEL_chasseurs_ardennais_ncns } } set_technology = { BEL_chasseurs_ardennais_ncns = 1 } }
@@ -25,14 +26,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = Helicopter_5 } } set_technology = { Helicopter_5 = 1 } }
 	if = { limit = { SOV = { has_tech = JAP_lighter_tanks } } set_technology = { JAP_lighter_tanks = 1 } }
 	if = { limit = { SOV = { has_tech = JAP_silver_wheels } } set_technology = { JAP_silver_wheels = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_CZE_establish_air_defense_zones } } set_technology = { MUN_CZE_establish_air_defense_zones = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_anti_tank_development_tech } } set_technology = { MUN_anti_tank_development_tech = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_camo_netting } } set_technology = { MUN_camo_netting = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_horska_artillery } } set_technology = { MUN_horska_artillery = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_improved_supply_dumps } } set_technology = { MUN_improved_supply_dumps = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_intergrate_fortification_engineers } } set_technology = { MUN_intergrate_fortification_engineers = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_merge_the_financial_and_state_guard_tech } } set_technology = { MUN_merge_the_financial_and_state_guard_tech = 1 } }
-	if = { limit = { SOV = { has_tech = MUN_recon_in_force } } set_technology = { MUN_recon_in_force = 1 } }
 	if = { limit = { SOV = { has_tech = NORDIC_supportCollaboration_tech } } set_technology = { NORDIC_supportCollaboration_tech = 1 } }
 	if = { limit = { SOV = { has_tech = NOR_rikstanken_tech } } set_technology = { NOR_rikstanken_tech = 1 } }
 	if = { limit = { SOV = { has_tech = PHI_battalion_combat_teams } } set_technology = { PHI_battalion_combat_teams = 1 } }
@@ -72,7 +65,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = advanced_heavy_tank } } set_technology = { advanced_heavy_tank = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_heavy_tank_chassis } } set_technology = { advanced_heavy_tank_chassis = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_heavy_td } } set_technology = { advanced_heavy_td = 1 } }
-	if = { limit = { SOV = { has_tech = advanced_helicopter_launcher } } set_technology = { advanced_helicopter_launcher = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_infantry_weapons } } set_technology = { advanced_infantry_weapons = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_infantry_weapons2 } } set_technology = { advanced_infantry_weapons2 = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_large_airframe } } set_technology = { advanced_large_airframe = 1 } }
@@ -104,7 +96,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = advanced_naval_mines } } set_technology = { advanced_naval_mines = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_oil_processing } } set_technology = { advanced_oil_processing = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_radio } } set_technology = { advanced_radio = 1 } }
-	if = { limit = { SOV = { has_tech = advanced_rocket_engines } } set_technology = { advanced_rocket_engines = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_rubber_processing } } set_technology = { advanced_rubber_processing = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_ship_hull_carrier } } set_technology = { advanced_ship_hull_carrier = 1 } }
 	if = { limit = { SOV = { has_tech = advanced_ship_hull_cruiser } } set_technology = { advanced_ship_hull_cruiser = 1 } }
@@ -128,7 +119,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = airsweep_mines } } set_technology = { airsweep_mines = 1 } }
 	if = { limit = { SOV = { has_tech = airsweep_mines_bba } } set_technology = { airsweep_mines_bba = 1 } }
 	if = { limit = { SOV = { has_tech = allow } } set_technology = { allow = 1 } }
-	if = { limit = { SOV = { has_tech = amechanised_infantry } } set_technology = { amechanised_infantry = 1 } }
 	if = { limit = { SOV = { has_tech = amechanised_infantry1 } } set_technology = { amechanised_infantry1 = 1 } }
 	if = { limit = { SOV = { has_tech = amechanised_infantry2 } } set_technology = { amechanised_infantry2 = 1 } }
 	if = { limit = { SOV = { has_tech = amechanised_infantry3 } } set_technology = { amechanised_infantry3 = 1 } }
@@ -204,7 +194,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = autocannon } } set_technology = { autocannon = 1 } }
 	if = { limit = { SOV = { has_tech = autocannon1 } } set_technology = { autocannon1 = 1 } }
 	if = { limit = { SOV = { has_tech = autocannon2 } } set_technology = { autocannon2 = 1 } }
-	if = { limit = { SOV = { has_tech = awk: } } set_technology = { awk: = 1 } }
 	if = { limit = { SOV = { has_tech = basic_battery } } set_technology = { basic_battery = 1 } }
 	if = { limit = { SOV = { has_tech = basic_battlecruiser } } set_technology = { basic_battlecruiser = 1 } }
 	if = { limit = { SOV = { has_tech = basic_battleship } } set_technology = { basic_battleship = 1 } }
@@ -226,7 +215,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = basic_heavy_tank } } set_technology = { basic_heavy_tank = 1 } }
 	if = { limit = { SOV = { has_tech = basic_heavy_tank_chassis } } set_technology = { basic_heavy_tank_chassis = 1 } }
 	if = { limit = { SOV = { has_tech = basic_heavy_td } } set_technology = { basic_heavy_td = 1 } }
-	if = { limit = { SOV = { has_tech = basic_helicopter_launcher } } set_technology = { basic_helicopter_launcher = 1 } }
 	if = { limit = { SOV = { has_tech = basic_large_airframe } } set_technology = { basic_large_airframe = 1 } }
 	if = { limit = { SOV = { has_tech = basic_light_art } } set_technology = { basic_light_art = 1 } }
 	if = { limit = { SOV = { has_tech = basic_light_battery } } set_technology = { basic_light_battery = 1 } }
@@ -255,7 +243,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = basic_torpedo } } set_technology = { basic_torpedo = 1 } }
 	if = { limit = { SOV = { has_tech = basic_train } } set_technology = { basic_train = 1 } }
 	if = { limit = { SOV = { has_tech = basic_transistor_computer } } set_technology = { basic_transistor_computer = 1 } }
-	if = { limit = { SOV = { has_tech = basic_vacuum_computer } } set_technology = { basic_vacuum_computer = 1 } }
 	if = { limit = { SOV = { has_tech = bba_early_transport_plane } } set_technology = { bba_early_transport_plane = 1 } }
 	if = { limit = { SOV = { has_tech = bba_improved_transport_plane } } set_technology = { bba_improved_transport_plane = 1 } }
 	if = { limit = { SOV = { has_tech = bba_jet_transport } } set_technology = { bba_jet_transport = 1 } }
@@ -458,7 +445,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = gwtank_chassis } } set_technology = { gwtank_chassis = 1 } }
 	if = { limit = { SOV = { has_tech = heavy_battleship } } set_technology = { heavy_battleship = 1 } }
 	if = { limit = { SOV = { has_tech = heavy_battleship2 } } set_technology = { heavy_battleship2 = 1 } }
-	if = { limit = { SOV = { has_tech = heavy_bombs } } set_technology = { heavy_bombs = 1 } }
 	if = { limit = { SOV = { has_tech = heavy_fighter1 } } set_technology = { heavy_fighter1 = 1 } }
 	if = { limit = { SOV = { has_tech = heavy_fighter10 } } set_technology = { heavy_fighter10 = 1 } }
 	if = { limit = { SOV = { has_tech = heavy_fighter2 } } set_technology = { heavy_fighter2 = 1 } }
@@ -515,7 +501,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = improved_heavy_tank } } set_technology = { improved_heavy_tank = 1 } }
 	if = { limit = { SOV = { has_tech = improved_heavy_tank_chassis } } set_technology = { improved_heavy_tank_chassis = 1 } }
 	if = { limit = { SOV = { has_tech = improved_heavy_td } } set_technology = { improved_heavy_td = 1 } }
-	if = { limit = { SOV = { has_tech = improved_helicopter_launcher } } set_technology = { improved_helicopter_launcher = 1 } }
 	if = { limit = { SOV = { has_tech = improved_infantry_weapons } } set_technology = { improved_infantry_weapons = 1 } }
 	if = { limit = { SOV = { has_tech = improved_infantry_weapons_2 } } set_technology = { improved_infantry_weapons_2 = 1 } }
 	if = { limit = { SOV = { has_tech = improved_large_airframe } } set_technology = { improved_large_airframe = 1 } }
@@ -537,7 +522,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = improved_naval_mines } } set_technology = { improved_naval_mines = 1 } }
 	if = { limit = { SOV = { has_tech = improved_oil_processing } } set_technology = { improved_oil_processing = 1 } }
 	if = { limit = { SOV = { has_tech = improved_radio } } set_technology = { improved_radio = 1 } }
-	if = { limit = { SOV = { has_tech = improved_rocket_engines } } set_technology = { improved_rocket_engines = 1 } }
 	if = { limit = { SOV = { has_tech = improved_rubber_processing } } set_technology = { improved_rubber_processing = 1 } }
 	if = { limit = { SOV = { has_tech = improved_ship_hull_carrier } } set_technology = { improved_ship_hull_carrier = 1 } }
 	if = { limit = { SOV = { has_tech = improved_ship_hull_cruiser } } set_technology = { improved_ship_hull_cruiser = 1 } }
@@ -602,7 +586,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = land_fort_tech_2 } } set_technology = { land_fort_tech_2 = 1 } }
 	if = { limit = { SOV = { has_tech = land_multi_charge_large_caliber_gun_tech } } set_technology = { land_multi_charge_large_caliber_gun_tech = 1 } }
 	if = { limit = { SOV = { has_tech = landing_craft } } set_technology = { landing_craft = 1 } }
-	if = { limit = { SOV = { has_tech = lar_decryption_bonus_tech } } set_technology = { lar_decryption_bonus_tech = 1 } }
 	if = { limit = { SOV = { has_tech = laser_guide } } set_technology = { laser_guide = 1 } }
 	if = { limit = { SOV = { has_tech = laserguidedbomb } } set_technology = { laserguidedbomb = 1 } }
 	if = { limit = { SOV = { has_tech = laserguidedbomb2 } } set_technology = { laserguidedbomb2 = 1 } }
@@ -749,7 +732,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = motorized_rocket_unit4 } } set_technology = { motorized_rocket_unit4 = 1 } }
 	if = { limit = { SOV = { has_tech = mountain_defensive_training } } set_technology = { mountain_defensive_training = 1 } }
 	if = { limit = { SOV = { has_tech = mountain_gun } } set_technology = { mountain_gun = 1 } }
-	if = { limit = { SOV = { has_tech = mountain_tanks } } set_technology = { mountain_tanks = 1 } }
 	if = { limit = { SOV = { has_tech = mountain_warfare } } set_technology = { mountain_warfare = 1 } }
 	if = { limit = { SOV = { has_tech = mountain_warfare_militias_tech } } set_technology = { mountain_warfare_militias_tech = 1 } }
 	if = { limit = { SOV = { has_tech = mountaineers_combat_1 } } set_technology = { mountaineers_combat_1 = 1 } }
@@ -917,7 +899,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = snorkel80 } } set_technology = { snorkel80 = 1 } }
 	if = { limit = { SOV = { has_tech = snorkel90 } } set_technology = { snorkel90 = 1 } }
 	if = { limit = { SOV = { has_tech = sonar } } set_technology = { sonar = 1 } }
-	if = { limit = { SOV = { has_tech = sp_advance_sabot_shells } } set_technology = { sp_advance_sabot_shells = 1 } }
 	if = { limit = { SOV = { has_tech = sp_aip_engine_advanced_tech } } set_technology = { sp_aip_engine_advanced_tech = 1 } }
 	if = { limit = { SOV = { has_tech = sp_aip_engine_improved_tech } } set_technology = { sp_aip_engine_improved_tech = 1 } }
 	if = { limit = { SOV = { has_tech = sp_armored_advanced_flamethrower_tech } } set_technology = { sp_armored_advanced_flamethrower_tech = 1 } }
@@ -939,8 +920,6 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = sp_ice_composite_runawayas } } set_technology = { sp_ice_composite_runawayas = 1 } }
 	if = { limit = { SOV = { has_tech = sp_improved_repair_ship } } set_technology = { sp_improved_repair_ship = 1 } }
 	if = { limit = { SOV = { has_tech = sp_improved_support_ship } } set_technology = { sp_improved_support_ship = 1 } }
-	if = { limit = { SOV = { has_tech = sp_land_large_caliber_kinetic_energy_sabot_gd_tech } } set_technology = { sp_land_large_caliber_kinetic_energy_sabot_gd_tech = 1 } }
-	if = { limit = { SOV = { has_tech = sp_land_large_caliber_kinetic_energy_sabot_no_gd_tech } } set_technology = { sp_land_large_caliber_kinetic_energy_sabot_no_gd_tech = 1 } }
 	if = { limit = { SOV = { has_tech = sp_multi_product_supply_ships } } set_technology = { sp_multi_product_supply_ships = 1 } }
 	if = { limit = { SOV = { has_tech = sp_naval_proximity_fuze_tech } } set_technology = { sp_naval_proximity_fuze_tech = 1 } }
 	if = { limit = { SOV = { has_tech = sp_naval_repair_ships_pick_a } } set_technology = { sp_naval_repair_ships_pick_a = 1 } }
@@ -975,13 +954,7 @@ SME_inherit_sov_tech = {
 	if = { limit = { SOV = { has_tech = submarine_mine_laying } } set_technology = { submarine_mine_laying = 1 } }
 	if = { limit = { SOV = { has_tech = suicide_charge } } set_technology = { suicide_charge = 1 } }
 	if = { limit = { SOV = { has_tech = suicide_craft } } set_technology = { suicide_craft = 1 } }
-	if = { limit = { SOV = { has_tech = super_heavy_art } } set_technology = { super_heavy_art = 1 } }
-	if = { limit = { SOV = { has_tech = super_heavy_spaa } } set_technology = { super_heavy_spaa = 1 } }
-	if = { limit = { SOV = { has_tech = super_heavy_tank } } set_technology = { super_heavy_tank = 1 } }
 	if = { limit = { SOV = { has_tech = super_heavy_tank_chassis } } set_technology = { super_heavy_tank_chassis = 1 } }
-	if = { limit = { SOV = { has_tech = super_heavy_td } } set_technology = { super_heavy_td = 1 } }
-	if = { limit = { SOV = { has_tech = supersonic_fighter1 } } set_technology = { supersonic_fighter1 = 1 } }
-	if = { limit = { SOV = { has_tech = supersonic_small_airframe } } set_technology = { supersonic_small_airframe = 1 } }
 	if = { limit = { SOV = { has_tech = supplyhub_1 } } set_technology = { supplyhub_1 = 1 } }
 	if = { limit = { SOV = { has_tech = supplyhub_2 } } set_technology = { supplyhub_2 = 1 } }
 	if = { limit = { SOV = { has_tech = supplyhub_3 } } set_technology = { supplyhub_3 = 1 } }
