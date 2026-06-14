@@ -322,6 +322,24 @@ country_event = {
 			}
 		}
 
+		# === Initialise SME's politics: history files don't apply to mid-game-spawned countries,
+		# so set ruling party / popularities explicitly. Without this, ideology-keyed flag lookups
+		# (used by on-map unit counters) fall through to a blank.
+		SME = {
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 5
+				fascism = 5
+				communism = 85
+				neutrality = 5
+			}
+		}
+
 		# === Transfer every SOV unit (army, navy, air) and stockpile to SME while SOV still owns states ===
 		transfer_units_fraction = {
 			target = SME
