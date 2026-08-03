@@ -111,10 +111,28 @@ wif_chase_terrorists = {
 					# Forces Routed
 					add_manpower = 1000
 					FROM = {
-						# Double the state modifier
+						# Escalate the state modifier one tier: none/base -> doubled -> quintupled (capped, duration refreshed)
 						if = {
-							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
-							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else = {
+							if = {
+								limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+								remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							}
 							add_dynamic_modifier = {
 								modifier = wif_large_russian_resistance_doubled
 								days = 180
@@ -129,19 +147,29 @@ wif_chase_terrorists = {
 					FROM = {
 						set_state_flag = wif_demilitarized_state
 						set_demilitarized_zone = yes
-						# Quintuple the state modifier
+						# Escalate straight to quintupled from whatever tier is present (or none), duration refreshed
 						if = {
 							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
 							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
-							add_dynamic_modifier = {
-								modifier = wif_large_russian_resistance_quintupled
-								days = 180
-							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+						add_dynamic_modifier = {
+							modifier = wif_large_russian_resistance_quintupled
+							days = 180
 						}
 					}
 					set_country_flag = { flag = wif_terror_attack_early value = 1 }
-					# Remove demilitarization after 30 days
-					country_event = { id = wif_rkm.31 days = 30 }
+					# Remove demilitarization from THIS state only, after 30 days
+					FROM = {
+						state_event = { id = wif_rkm.31 days = 30 }
+					}
 					country_event = { id = wif_rkm.30 }
 				}
 			}
@@ -289,10 +317,28 @@ wif_chase_terrorists = {
 						amount = 250
 					}
 					FROM = {
-						# Double the state modifier
+						# Escalate the state modifier one tier: none/base -> doubled -> quintupled (capped, duration refreshed)
 						if = {
-							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
-							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else = {
+							if = {
+								limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+								remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							}
 							add_dynamic_modifier = {
 								modifier = wif_large_russian_resistance_doubled
 								days = 180
@@ -313,19 +359,29 @@ wif_chase_terrorists = {
 					FROM = {
 						set_state_flag = wif_demilitarized_state
 						set_demilitarized_zone = yes
-						# Quintuple the state modifier
+						# Escalate straight to quintupled from whatever tier is present (or none), duration refreshed
 						if = {
 							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
 							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
-							add_dynamic_modifier = {
-								modifier = wif_large_russian_resistance_quintupled
-								days = 180
-							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+						add_dynamic_modifier = {
+							modifier = wif_large_russian_resistance_quintupled
+							days = 180
 						}
 					}
 					set_country_flag = { flag = wif_mech_early_100 value = 1 }
-					# Remove demilitarization after 60 days
-					country_event = { id = wif_rkm.31 days = 60 }
+					# Remove demilitarization from THIS state only, after 60 days
+					FROM = {
+						state_event = { id = wif_rkm.31 days = 60 }
+					}
 					country_event = { id = wif_rkm.30 }
 				}
 			}
@@ -500,10 +556,28 @@ wif_chase_terrorists = {
 						amount = 7
 					}
 					FROM = {
-						# Double the state modifier
+						# Escalate the state modifier one tier: none/base -> doubled -> quintupled (capped, duration refreshed)
 						if = {
-							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
-							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+							add_dynamic_modifier = {
+								modifier = wif_large_russian_resistance_quintupled
+								days = 180
+							}
+						}
+						else = {
+							if = {
+								limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
+								remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
+							}
 							add_dynamic_modifier = {
 								modifier = wif_large_russian_resistance_doubled
 								days = 180
@@ -528,19 +602,29 @@ wif_chase_terrorists = {
 					FROM = {
 						set_state_flag = wif_demilitarized_state
 						set_demilitarized_zone = yes
-						# Quintuple the state modifier
+						# Escalate straight to quintupled from whatever tier is present (or none), duration refreshed
 						if = {
 							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance } }
 							remove_dynamic_modifier = { modifier = wif_large_russian_resistance }
-							add_dynamic_modifier = {
-								modifier = wif_large_russian_resistance_quintupled
-								days = 180
-							}
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_doubled }
+						}
+						else_if = {
+							limit = { has_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled } }
+							remove_dynamic_modifier = { modifier = wif_large_russian_resistance_quintupled }
+						}
+						add_dynamic_modifier = {
+							modifier = wif_large_russian_resistance_quintupled
+							days = 180
 						}
 					}
 					set_country_flag = { flag = wif_mech_early_100 value = 1 }
-					# Remove demilitarization after 60 days
-					country_event = { id = wif_rkm.31 days = 60 }
+					# Remove demilitarization from THIS state only, after 60 days
+					FROM = {
+						state_event = { id = wif_rkm.31 days = 60 }
+					}
 					country_event = { id = wif_rkm.30 }
 				}
 			}
