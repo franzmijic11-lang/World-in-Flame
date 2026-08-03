@@ -21,6 +21,9 @@ wif_chase_terrorists = {
 		available = {
 			has_manpower > 9999
 			NOT = { has_country_flag = wif_anti_partisan_in_progress }
+			# 45-day response window lives here, NOT in target_trigger.
+			# available is only checked on click, so it cannot cancel the operation mid-countdown.
+			FROM = { has_state_flag = wif_terror_attack_window }
 		}
 
 		on_map_mode = map_and_decisions_view
@@ -31,7 +34,10 @@ wif_chase_terrorists = {
 
 		complete_effect = {
 			add_manpower = -10000
-			set_country_flag = wif_anti_partisan_in_progress
+			# Timed as a safety net: if the operation is ever cancelled without firing
+			# remove_effect, this expires on its own instead of locking out all
+			# anti-partisan decisions permanently.
+			set_country_flag = { flag = wif_anti_partisan_in_progress days = 31 value = 1 }
 		}
 
 		days_remove = 30
@@ -40,6 +46,7 @@ wif_chase_terrorists = {
 			clr_country_flag = wif_anti_partisan_in_progress
 			FROM = {
 				clr_state_flag = wif_terror_attack_target
+				clr_state_flag = wif_terror_attack_window
 				save_event_target_as = partisan_state
 			}
 			random_list = {
@@ -201,6 +208,9 @@ wif_chase_terrorists = {
 				mechanized_equipment > 499
 			}
 			NOT = { has_country_flag = wif_anti_partisan_in_progress }
+			# 45-day response window lives here, NOT in target_trigger.
+			# available is only checked on click, so it cannot cancel the operation mid-countdown.
+			FROM = { has_state_flag = wif_terror_attack_window }
 		}
 
 		on_map_mode = map_and_decisions_view
@@ -215,7 +225,10 @@ wif_chase_terrorists = {
 				type = mechanized_equipment
 				amount = -500
 			}
-			set_country_flag = wif_anti_partisan_in_progress
+			# Timed as a safety net: if the operation is ever cancelled without firing
+			# remove_effect, this expires on its own instead of locking out all
+			# anti-partisan decisions permanently.
+			set_country_flag = { flag = wif_anti_partisan_in_progress days = 31 value = 1 }
 		}
 
 		days_remove = 30
@@ -224,6 +237,7 @@ wif_chase_terrorists = {
 			clr_country_flag = wif_anti_partisan_in_progress
 			FROM = {
 				clr_state_flag = wif_terror_attack_target
+				clr_state_flag = wif_terror_attack_window
 				save_event_target_as = partisan_state
 			}
 			random_list = {
@@ -416,6 +430,9 @@ wif_chase_terrorists = {
 				medium_tank_chassis > 9
 			}
 			NOT = { has_country_flag = wif_anti_partisan_in_progress }
+			# 45-day response window lives here, NOT in target_trigger.
+			# available is only checked on click, so it cannot cancel the operation mid-countdown.
+			FROM = { has_state_flag = wif_terror_attack_window }
 		}
 
 		on_map_mode = map_and_decisions_view
@@ -434,7 +451,10 @@ wif_chase_terrorists = {
 				type = medium_tank_chassis
 				amount = -10
 			}
-			set_country_flag = wif_anti_partisan_in_progress
+			# Timed as a safety net: if the operation is ever cancelled without firing
+			# remove_effect, this expires on its own instead of locking out all
+			# anti-partisan decisions permanently.
+			set_country_flag = { flag = wif_anti_partisan_in_progress days = 31 value = 1 }
 		}
 
 		days_remove = 30
@@ -443,6 +463,7 @@ wif_chase_terrorists = {
 			clr_country_flag = wif_anti_partisan_in_progress
 			FROM = {
 				clr_state_flag = wif_terror_attack_target
+				clr_state_flag = wif_terror_attack_window
 				save_event_target_as = partisan_state
 			}
 			random_list = {

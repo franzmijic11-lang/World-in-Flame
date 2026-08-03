@@ -268,9 +268,18 @@ country_event = {
 					modifier = wif_large_russian_resistance
 					days = 180
 				}
-				# Mark state for anti-partisan decision (available for 45 days)
+				# target_trigger flag. Must outlive any operation started inside the
+				# 45-day window (last start ~day 45 + 30-day days_remove = ~day 75),
+				# or the game cancels the decision mid-countdown and remove_effect
+				# never fires. 90 days leaves margin and still self-cleans.
 				set_state_flag = {
 					flag = wif_terror_attack_target
+					days = 90
+					value = 1
+				}
+				# The actual 45-day response window, checked in available only.
+				set_state_flag = {
+					flag = wif_terror_attack_window
 					days = 45
 					value = 1
 				}
