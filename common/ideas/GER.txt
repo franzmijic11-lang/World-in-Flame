@@ -2505,6 +2505,13 @@ ideas = {
 
 			picture = triumphant_will
 
+			on_add = {
+				# Berlin dictates the economy from the moment the Reichskommissariat
+				# exists. Fires for every Reichskommissariat regardless of which event
+				# creates it, so no polling delay.
+				add_ideas = wif_reichskommissariat_economy
+			}
+
 			modifier = {
 				local_resources_factor = 0.25
 				industrial_capacity_factory = 0.1
@@ -2539,6 +2546,13 @@ ideas = {
 			removal_cost = -1
 
 			picture = triumphant_will
+
+			on_add = {
+				# Berlin dictates the economy from the moment the Reichskommissariat
+				# exists. Fires for every Reichskommissariat regardless of which event
+				# creates it, so no polling delay.
+				add_ideas = wif_reichskommissariat_economy
+			}
 
 			modifier = {
 				compliance_growth = 0.1

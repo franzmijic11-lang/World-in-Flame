@@ -1,8 +1,9 @@
 on_actions = {
-	# Catch-all so every German-run Reichskommissariat ends up on the imposed
-	# economy, including ones created by vanilla events this mod does not
-	# override (RKB, RKN, RKU, RKC ...). RKM gets it instantly in its own
-	# creation event; this backstops the rest within a week.
+	# Safety net only. Reichskommissariats now receive the law the instant the
+	# spirit is granted, via on_add on both Reichskommissariat spirits in
+	# common/ideas/GER.txt. This exists for saves where a Reichskommissariat
+	# already held the spirit before that hook was added, since on_add cannot
+	# fire retroactively. Adding an idea a country already has is a no-op.
 	# on_weekly is per-country (ROOT = the country), matching vanilla usage.
 	on_weekly = {
 		effect = {
