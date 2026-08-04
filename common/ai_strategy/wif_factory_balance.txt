@@ -72,5 +72,23 @@ wif_spare_cap_moderate = {
 	}
 }
 
-# Between 1 and 4 spare deliberately has no strategy attached, leaving vanilla
-# behaviour to run as the country approaches its ceiling.
+# Nearly capped: start leaning towards civilian industry before the ceiling is
+# actually hit, so the country raises its own limit rather than slamming into it
+# and stalling. Nothing is ever demolished now, so the only way past the ceiling
+# is more civilian factories.
+wif_near_cap_build_civilian = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = { wif_mil_headroom > 0 }
+		check_variable = { wif_mil_headroom < 5 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = -50
+	}
+}

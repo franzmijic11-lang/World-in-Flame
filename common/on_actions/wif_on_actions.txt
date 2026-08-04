@@ -12,13 +12,14 @@ on_actions = {
 		}
 	}
 
-	# Monthly enforcement. Only countries actually over their cap do any work -
-	# the trigger is a single variable comparison for everyone else.
-	on_monthly = {
-		effect = {
-			wif_enforce_factory_cap = yes
-		}
-	}
+	# No enforcement pass. Existing military factories are never removed or
+	# converted - the cap is enforced purely by blocking further construction
+	# through the wif_military_factory_ceiling spirit.
+	#
+	# The removed version looped while num_of_military_factories > wif_mil_cap,
+	# but that country property does not refresh inside a single effect, so the
+	# condition never went false and the loop ran until every arms factory in
+	# the country was gone. Do not reintroduce that pattern.
 
 	# Safety net only. Reichskommissariats now receive the law the instant the
 	# spirit is granted, via on_add on both Reichskommissariat spirits in
