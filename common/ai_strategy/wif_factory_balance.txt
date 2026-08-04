@@ -1,0 +1,50 @@
+# Stops the AI queueing military factories once it has reached the ratio cap
+# maintained in common/scripted_effects/wif_factory_balance.txt.
+#
+# wif_mil_cap is refreshed weekly in on_weekly, so this reacts within a week of
+# world tension or ideology changing. The monthly enforcement pass is the hard
+# guarantee; this is what stops the AI wasting construction on factories that
+# would only be demolished again.
+
+wif_military_factory_cap = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = {
+			num_of_military_factories = wif_mil_cap
+			compare = greater_than_or_equals
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 0
+	}
+}
+
+# While capped, push the spare construction into civilian industry instead of
+# leaving the AI idle. Civilian factories are deliberately never capped, and
+# more of them raises the military cap in turn.
+wif_build_civilian_when_capped = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = {
+			num_of_military_factories = wif_mil_cap
+			compare = greater_than_or_equals
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 10
+	}
+}

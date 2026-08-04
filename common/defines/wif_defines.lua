@@ -19,3 +19,12 @@
 -- 0.2 per point of stability below 100%, so -100% stability adds roughly
 -- +40% resistance target in occupied territory instead of the usual +20% max.
 NDefines.NCountry.MIN_STABILITY = -1.0
+
+-- Factory and dockyard output.
+-- These are the POWERED values, which is what the game shows you now that the
+-- energy system is in: 4.5 per military factory, 2.5 per dockyard.
+-- The unpowered counterparts (BASE_FACTORY_SPEED_MIL = 3.5,
+-- BASE_FACTORY_SPEED_NAV = 2.0) are deliberately left alone - raise them too if
+-- unpowered industry should keep pace.
+NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 7
+NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 4

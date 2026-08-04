@@ -1,4 +1,25 @@
 on_actions = {
+	# Record every country's starting military factories so the ratio cap can
+	# grandfather them. A nation that begins the game over its ratio keeps what
+	# it started with; only factories built afterwards can ever be taken away.
+	on_startup = {
+		effect = {
+			every_country = {
+				set_variable = { wif_mil_grandfather = num_of_military_factories }
+				set_country_flag = wif_factory_cap_init
+				wif_update_factory_cap = yes
+			}
+		}
+	}
+
+	# Monthly enforcement. Only countries actually over their cap do any work -
+	# the trigger is a single variable comparison for everyone else.
+	on_monthly = {
+		effect = {
+			wif_enforce_factory_cap = yes
+		}
+	}
+
 	# Safety net only. Reichskommissariats now receive the law the instant the
 	# spirit is granted, via on_add on both Reichskommissariat spirits in
 	# common/ideas/GER.txt. This exists for saves where a Reichskommissariat
@@ -17,6 +38,18 @@ on_actions = {
 				}
 				add_ideas = wif_reichskommissariat_economy
 			}
+
+			# Countries formed after game start never saw on_startup, so
+			# grandfather them the first time they are seen here.
+			if = {
+				limit = { NOT = { has_country_flag = wif_factory_cap_init } }
+				set_variable = { wif_mil_grandfather = num_of_military_factories }
+				set_country_flag = wif_factory_cap_init
+			}
+
+			# Refresh the cap weekly so the AI strategy reacts promptly when
+			# world tension or ideology shifts. Variable maths only, no loops.
+			wif_update_factory_cap = yes
 		}
 	}
 
