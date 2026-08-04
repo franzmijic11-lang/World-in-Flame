@@ -98,6 +98,13 @@ wif_update_factory_cap = {
 		limit = { check_variable = { wif_mil_cap < wif_mil_grandfather } }
 		set_variable = { wif_mil_cap = wif_mil_grandfather }
 	}
+
+	# Spare capacity, read by the AI strategies in
+	# common/ai_strategy/wif_factory_balance.txt. Negative or zero means the
+	# country is at its ceiling and should be building civilian industry, which
+	# is what raises the ceiling.
+	set_variable = { wif_mil_headroom = wif_mil_cap }
+	subtract_from_variable = { wif_mil_headroom = num_of_military_factories }
 }
 
 # Removes military factories built beyond the cap. Alternates conversion and

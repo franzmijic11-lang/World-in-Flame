@@ -1,24 +1,34 @@
-# Stops the AI queueing military factories once it has reached the ratio cap
-# maintained in common/scripted_effects/wif_factory_balance.txt.
+# Teaches the AI to live within the military factory ratio cap maintained in
+# common/scripted_effects/wif_factory_balance.txt.
 #
-# wif_mil_cap is refreshed weekly in on_weekly, so this reacts within a week of
-# world tension or ideology changing. The monthly enforcement pass is the hard
-# guarantee; this is what stops the AI wasting construction on factories that
-# would only be demolished again.
+# The lever is added_military_to_civilian_factory_ratio, which shifts the AI's
+# military-versus-civilian construction split. It is used rather than
+# building_target because building_target is an ABSOLUTE desired count - vanilla
+# sets it per country by size (Bulgaria 17, Germany 59, Britain 150), so any
+# fixed number here would suppress construction for large nations and inflate it
+# for small ones. The ratio lever is size independent.
+#
+# wif_mil_headroom = wif_mil_cap - num_of_military_factories, refreshed weekly.
 
-wif_military_factory_cap = {
+# At or over the cap: build civilian industry instead. This is the feedback loop
+# that matters - civilian factories raise the cap, so pushing the AI into civs
+# while capped is what lets it earn more military factories later.
+wif_capped_build_civilian = {
 	allowed = {
 		always = yes
 	}
 
 	enable = {
-		check_variable = {
-			num_of_military_factories = wif_mil_cap
-			compare = greater_than_or_equals
-		}
+		check_variable = { wif_mil_headroom < 1 }
 	}
 	abort_when_not_enabled = yes
 
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = -100
+	}
+
+	# Belt and braces. Harmless if vanilla per-country targets sum with this.
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
@@ -26,25 +36,41 @@ wif_military_factory_cap = {
 	}
 }
 
-# While capped, push the spare construction into civilian industry instead of
-# leaving the AI idle. Civilian factories are deliberately never capped, and
-# more of them raises the military cap in turn.
-wif_build_civilian_when_capped = {
+# Plenty of unused allowance: lean into military construction to use it.
+wif_spare_cap_large = {
 	allowed = {
 		always = yes
 	}
 
 	enable = {
-		check_variable = {
-			num_of_military_factories = wif_mil_cap
-			compare = greater_than_or_equals
-		}
+		check_variable = { wif_mil_headroom > 9 }
 	}
 	abort_when_not_enabled = yes
 
 	ai_strategy = {
-		type = building_target
-		id = industrial_complex
-		value = 10
+		type = added_military_to_civilian_factory_ratio
+		value = 30
 	}
 }
+
+# Some room left: a milder nudge, so the AI does not swing hard into military
+# construction only to hit the ceiling again a few factories later.
+wif_spare_cap_moderate = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = { wif_mil_headroom > 4 }
+		check_variable = { wif_mil_headroom < 10 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 15
+	}
+}
+
+# Between 1 and 4 spare deliberately has no strategy attached, leaving vanilla
+# behaviour to run as the country approaches its ceiling.
