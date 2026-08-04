@@ -1,0 +1,21 @@
+-- Welt in Flammen define overrides.
+-- Loaded after vanilla common/defines/00_defines.lua (alphabetical order), so
+-- assignments here replace the stock values. Only list what actually changes.
+
+-- Allow stability to fall to -100%. Vanilla clamps it at 0%.
+--
+-- Effects scale rather than plateau. stability_bad_modifier in
+-- common/modifiers/00_static_modifiers.txt applies below 50% stability, scaled
+-- by how far below 50% the country sits: scale = (0.5 - stability) / 0.5.
+-- Its base values are -50% factory output, -50% dockyard output and
+-- -20% political power gain, reached at 0% stability.
+--
+-- With this change the scale keeps climbing past 0%:
+--     stability   0%  -> scale 1.0  ->  -50% factories,  -20% political power
+--     stability -50%  -> scale 2.0  -> -100% factories,  -40% political power
+--     stability -100% -> scale 3.0  -> -150% factories,  -60% political power
+--
+-- Occupation is hit as well: RESISTANCE_TARGET_MODIFIER_PER_STABILITY_LOSS is
+-- 0.2 per point of stability below 100%, so -100% stability adds roughly
+-- +40% resistance target in occupied territory instead of the usual +20% max.
+NDefines.NCountry.MIN_STABILITY = -1.0
