@@ -3,4 +3,8 @@ spriteTypes = {
 		name = "GFX_idea_active_russian_resistance"
 		texturefile = "gfx/interface/goals/focus_generic_anti_fascist_diplomacy.dds"
 	}
+	SpriteType = {
+		name = "GFX_idea_wif_reichskommissariat_economy"
+		texturefile = "gfx/interface/ideas/idea_wif_reichskommissariat_economy.dds"
+	}
 }

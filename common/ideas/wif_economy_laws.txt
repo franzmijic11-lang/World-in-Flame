@@ -1,0 +1,43 @@
+# Separate file on purpose: naming this _economic.txt would replace the vanilla
+# file wholesale and delete every stock economy law. A distinct filename merges
+# into the existing economy group instead.
+ideas = {
+	economy = {
+		law = yes
+		use_list_view = yes
+
+		wif_reichskommissariat_economy = {
+			# Never handed out at game start - granted on Reichskommissariat creation
+			allowed = {
+				always = no
+			}
+
+			# Only German-run Reichskommissariats may run this economy
+			available = {
+				has_idea = GER_german_controlled_reichskommissariat
+			}
+
+			# Imposed from Berlin: while the Reichskommissariat exists it cannot
+			# legislate its way out. Gated on the spirit rather than always = no,
+			# so a country that stops being a Reichskommissariat is not left
+			# permanently locked into an economy it can never change.
+			allowed_to_remove = {
+				NOT = { has_idea = GER_german_controlled_reichskommissariat }
+			}
+
+			cost = 150
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			modifier = {
+				consumer_goods_expected_value = 0.10
+				conversion_cost_mil_to_civ_factor = 0.50
+				conversion_cost_civ_to_mil_factor = -0.30
+				factory_energy_consumption = 0.20
+				production_speed_arms_factory_factor = 0.10
+				stability_factor = -0.10
+				local_resources_factor = 0.20
+			}
+		}
+	}
+}

@@ -36,7 +36,10 @@ country_event = {
 		}
 
 		RKM = {
-			add_ideas = GER_german_controlled_reichskommissariat
+			add_ideas = {
+				GER_german_controlled_reichskommissariat
+				wif_reichskommissariat_economy
+			}
 		}
 
 		hidden_effect = {
