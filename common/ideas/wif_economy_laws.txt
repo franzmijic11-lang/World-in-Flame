@@ -7,9 +7,18 @@ ideas = {
 		use_list_view = yes
 
 		wif_reichskommissariat_economy = {
-			# Never handed out at game start - granted on Reichskommissariat creation
-			allowed = {
-				always = no
+			# Do NOT use allowed = { always = no } here. That permanently hides the
+			# law from the Economy Law list for every country - vanilla only uses
+			# it for laws handed out purely by script (SOV's new_economic_policy).
+			# Restrict by tag/spirit with visible instead, the way vanilla does
+			# for JAP's national_defense_state.
+
+			# Shows in the Economy Law list only for Reichskommissariats
+			visible = {
+				OR = {
+					has_idea = GER_german_controlled_reichskommissariat
+					has_idea = GER_local_controlled_reichskommissariat
+				}
 			}
 
 			# Any Reichskommissariat may run this economy - directly administered
