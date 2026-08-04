@@ -12,17 +12,27 @@ ideas = {
 				always = no
 			}
 
-			# Only German-run Reichskommissariats may run this economy
+			# Any Reichskommissariat may run this economy - directly administered
+			# by a Reichskommissar or run through a local collaborator alike.
+			# These are the only two Reichskommissariat spirits in the game.
 			available = {
-				has_idea = GER_german_controlled_reichskommissariat
+				OR = {
+					has_idea = GER_german_controlled_reichskommissariat
+					has_idea = GER_local_controlled_reichskommissariat
+				}
 			}
 
 			# Imposed from Berlin: while the Reichskommissariat exists it cannot
-			# legislate its way out. Gated on the spirit rather than always = no,
+			# legislate its way out. Gated on the spirits rather than always = no,
 			# so a country that stops being a Reichskommissariat is not left
 			# permanently locked into an economy it can never change.
 			allowed_to_remove = {
-				NOT = { has_idea = GER_german_controlled_reichskommissariat }
+				NOT = {
+					OR = {
+						has_idea = GER_german_controlled_reichskommissariat
+						has_idea = GER_local_controlled_reichskommissariat
+					}
+				}
 			}
 
 			cost = 150

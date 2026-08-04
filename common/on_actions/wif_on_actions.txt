@@ -8,7 +8,10 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					has_idea = GER_german_controlled_reichskommissariat
+					OR = {
+						has_idea = GER_german_controlled_reichskommissariat
+						has_idea = GER_local_controlled_reichskommissariat
+					}
 					NOT = { has_idea = wif_reichskommissariat_economy }
 				}
 				add_ideas = wif_reichskommissariat_economy
