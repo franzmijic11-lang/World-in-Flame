@@ -14,6 +14,7 @@ ideas = {
 		# drive arms factory construction speed to zero. The build button stays
 		# clickable, but nothing progresses, and this spirit tells the player
 		# exactly why.
+		# Tier 1 - at the ceiling, up to 25% over.
 		wif_military_factory_ceiling = {
 			allowed = {
 				always = no
@@ -29,6 +30,58 @@ ideas = {
 
 			modifier = {
 				production_speed_arms_factory_factor = -1.0
+				# HOI4 has no factory conversion SPEED modifier, only conversion
+				# cost, which the game itself describes as how efficiently
+				# factories convert. Doubling the cost is the closest expression
+				# of shutting civilian-to-military conversion down; the hard
+				# block is the -100% arms factory construction speed above,
+				# which a conversion also has to pay.
+				conversion_cost_civ_to_mil_factor = 1.0
+			}
+		}
+
+		# Tier 2 - 25% or more above the ceiling. Adds cheap military-to-civilian
+		# conversion so the country can unwind its overbuild.
+		wif_military_factory_ceiling_far = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				production_speed_arms_factory_factor = -1.0
+				conversion_cost_civ_to_mil_factor = 1.0
+				conversion_cost_mil_to_civ_factor = -0.4
+			}
+		}
+
+		# Tier 3 - 40% or more above the ceiling. The overbuilt industry starts
+		# eating itself.
+		wif_military_factory_ceiling_severe = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				production_speed_arms_factory_factor = -1.0
+				conversion_cost_civ_to_mil_factor = 1.0
+				conversion_cost_mil_to_civ_factor = -0.4
+				industrial_capacity_factory = -0.4
 			}
 		}
 

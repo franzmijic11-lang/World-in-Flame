@@ -106,21 +106,70 @@ wif_update_factory_cap = {
 	set_variable = { wif_mil_headroom = wif_mil_cap }
 	subtract_from_variable = { wif_mil_headroom = num_of_military_factories }
 
-	# Hard stop on further military construction while at the ceiling. The
-	# spirit carries production_speed_arms_factory_factor = -1.0, so anything
-	# queued makes no progress until allowance frees up again.
+	# Overbuild thresholds: 25% over the ceiling is "far over", 40% is severe.
+	set_variable = { wif_cap_over25 = wif_mil_cap }
+	multiply_variable = { wif_cap_over25 = 1.25 }
+	set_variable = { wif_cap_over40 = wif_mil_cap }
+	multiply_variable = { wif_cap_over40 = 1.4 }
+
+	# A nation at war may build without limit. The flag is refreshed weekly for
+	# as long as the war lasts and lives 90 days beyond the last refresh, so the
+	# ceiling returns roughly three months after peace - long enough to
+	# demilitarise voluntarily before any penalty lands.
 	if = {
-		limit = {
-			check_variable = { wif_mil_headroom < 1 }
-			NOT = { has_idea = wif_military_factory_ceiling }
-		}
-		add_ideas = wif_military_factory_ceiling
+		limit = { has_war = yes }
+		set_country_flag = { flag = wif_cap_war_grace days = 90 value = 1 }
+	}
+
+	if = {
+		limit = { has_country_flag = wif_cap_war_grace }
+		wif_clear_ceiling_spirit = yes
 	}
 	else_if = {
 		limit = {
-			check_variable = { wif_mil_headroom > 0 }
-			has_idea = wif_military_factory_ceiling
+			check_variable = { num_of_military_factories > wif_cap_over40 }
+			NOT = { has_idea = wif_military_factory_ceiling_severe }
 		}
+		wif_clear_ceiling_spirit = yes
+		add_ideas = wif_military_factory_ceiling_severe
+	}
+	else_if = {
+		limit = {
+			check_variable = { num_of_military_factories > wif_cap_over25 }
+			NOT = { check_variable = { num_of_military_factories > wif_cap_over40 } }
+			NOT = { has_idea = wif_military_factory_ceiling_far }
+		}
+		wif_clear_ceiling_spirit = yes
+		add_ideas = wif_military_factory_ceiling_far
+	}
+	else_if = {
+		limit = {
+			check_variable = { wif_mil_headroom < 1 }
+			NOT = { check_variable = { num_of_military_factories > wif_cap_over25 } }
+			NOT = { has_idea = wif_military_factory_ceiling }
+		}
+		wif_clear_ceiling_spirit = yes
+		add_ideas = wif_military_factory_ceiling
+	}
+	else_if = {
+		limit = { check_variable = { wif_mil_headroom > 0 } }
+		wif_clear_ceiling_spirit = yes
+	}
+}
+
+# Strips whichever ceiling tier is currently applied. Guarded so a country that
+# has none is left untouched rather than churning ideas every week.
+wif_clear_ceiling_spirit = {
+	if = {
+		limit = { has_idea = wif_military_factory_ceiling }
 		remove_ideas = wif_military_factory_ceiling
+	}
+	if = {
+		limit = { has_idea = wif_military_factory_ceiling_far }
+		remove_ideas = wif_military_factory_ceiling_far
+	}
+	if = {
+		limit = { has_idea = wif_military_factory_ceiling_severe }
+		remove_ideas = wif_military_factory_ceiling_severe
 	}
 }
