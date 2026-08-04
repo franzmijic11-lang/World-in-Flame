@@ -2,3 +2,5 @@
  active_russian_resistance:0 "Active Russian Resistance"
  active_russian_resistance_desc:0 "The local Russian population fiercely resists German occupation, hampering compliance efforts and fueling partisan activity."
  GER_german_controlled_reichskommissariat:0 "Reichskommissariat"
+ wif_military_factory_ceiling:0 "Military Factory Ceiling Reached"
+ wif_military_factory_ceiling_desc:0 "Our military industry has reached the limit our civilian economy can sustain at the current level of international tension. No further military factories can be completed until we expand our civilian industry or tension rises."

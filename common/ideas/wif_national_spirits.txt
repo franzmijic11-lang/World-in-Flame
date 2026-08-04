@@ -7,6 +7,31 @@ ideas = {
 		# The mod's version now lives in common/ideas/GER.txt, which overrides
 		# the vanilla file by path and is therefore the only definition.
 
+		# Applied automatically while a country sits at its military factory
+		# ceiling, and removed the moment it has allowance to spend again.
+		# HOI4 cannot grey out a building's construction button from script -
+		# common/buildings has no trigger block - so the next best thing is to
+		# drive arms factory construction speed to zero. The build button stays
+		# clickable, but nothing progresses, and this spirit tells the player
+		# exactly why.
+		wif_military_factory_ceiling = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				production_speed_arms_factory_factor = -1.0
+			}
+		}
+
 		active_russian_resistance = {
 			allowed = {
 				always = no

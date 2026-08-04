@@ -105,6 +105,24 @@ wif_update_factory_cap = {
 	# is what raises the ceiling.
 	set_variable = { wif_mil_headroom = wif_mil_cap }
 	subtract_from_variable = { wif_mil_headroom = num_of_military_factories }
+
+	# Hard stop on further military construction while at the ceiling. The
+	# spirit carries production_speed_arms_factory_factor = -1.0, so anything
+	# queued makes no progress until allowance frees up again.
+	if = {
+		limit = {
+			check_variable = { wif_mil_headroom < 1 }
+			NOT = { has_idea = wif_military_factory_ceiling }
+		}
+		add_ideas = wif_military_factory_ceiling
+	}
+	else_if = {
+		limit = {
+			check_variable = { wif_mil_headroom > 0 }
+			has_idea = wif_military_factory_ceiling
+		}
+		remove_ideas = wif_military_factory_ceiling
+	}
 }
 
 # Removes military factories built beyond the cap. Alternates conversion and
