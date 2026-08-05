@@ -20847,7 +20847,10 @@ focus_tree = {
 	focus = {
 		id = GER_aging_fuhrer
 		icon = GFX_focus_GER_loyalty_to_the_fuhrer
-		prerequisite = { focus = GER_hegemony_of_the_ss focus = GER_wunderwaffe focus = GER_integration_of_puppet_economies focus = GER_propaganda_master focus = GER_total_control_over_domestic_affairs }
+		# GER_propaganda_master dropped as a route in: it is an ordinary military
+		# line focus now, not an inner circle capstone, so it should not open
+		# this.
+		prerequisite = { focus = GER_hegemony_of_the_ss focus = GER_wunderwaffe focus = GER_integration_of_puppet_economies focus = GER_total_control_over_domestic_affairs }
 		x = 0
 		y = 5
 		relative_position_id = GER_fuhrerprinzip
@@ -20859,6 +20862,8 @@ focus_tree = {
 			custom_trigger_tooltip = {
 				tooltip = GER_a_strong_successor_trigger_tt
 				count_triggers = {
+					# Was 3 of 5. The Goebbels condition below is gone with his
+					# branch, leaving 4 conditions, so this is now 3 of 4.
 					amount = 3
 					AND = {
 						has_completed_focus = GER_wunderwaffe
@@ -20889,15 +20894,6 @@ focus_tree = {
 							check_variable = { GER_ascended_advisor_2 = 4 }
 							check_variable = { GER_ascended_advisor_3 = 4 }
 							check_variable = { GER_ascended_advisor_4 = 4 }
-						}
-					}
-					AND = {
-						has_completed_focus = GER_propaganda_master
-						OR = {
-							check_variable = { GER_ascended_advisor_1 = 5 }
-							check_variable = { GER_ascended_advisor_2 = 5 }
-							check_variable = { GER_ascended_advisor_3 = 5 }
-							check_variable = { GER_ascended_advisor_4 = 5 }
 						}
 					}
 					AND = {
