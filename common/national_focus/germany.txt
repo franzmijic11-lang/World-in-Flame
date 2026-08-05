@@ -20921,7 +20921,15 @@ focus_tree = {
 			add_country_leader_trait = GER_loyal_inner_circle
 
 			custom_effect_tooltip = GER_aging_fuhrer_inner_circle_slot_tt
-			set_variable = { GER_ascended_advisor_4 = 0 }
+			# Only open the slot if it is still locked. -1 is locked, 0 is
+			# unlocked and empty, 1-7 is an ascended advisor. Setting this
+			# unconditionally wiped whoever was already sitting in slot 4.
+			if = {
+				limit = {
+					check_variable = { GER_ascended_advisor_4 = -1 }
+				}
+				set_variable = { GER_ascended_advisor_4 = 0 }
+			}
 
 			if = {
 				limit = {
