@@ -17802,6 +17802,15 @@ focus_tree = {
 		icon = GFX_focus_GER_ascension_of_todt
 		prerequisite = { focus = GER_fuhrerprinzip }
 
+		# Todt branch removed from play. Hidden rather than deleted: roughly 55
+		# references to these three focus ids exist across WUW_Germany.txt and
+		# GER_scripted_effects.txt, and deleting the ids would leave every one
+		# of them dangling. allow_branch takes the branch out of the tree while
+		# keeping the ids valid.
+		allow_branch = {
+			always = no
+		}
+
 		x = -7
 		y = 1
 		relative_position_id = GER_fuhrerprinzip
@@ -17949,6 +17958,10 @@ focus_tree = {
 		icon = GFX_focus_GER_form_organization_todt
 		prerequisite = { focus = GER_ascension_of_todt }
 
+		allow_branch = {
+			always = no
+		}
+
 		text_icon = GER_inner_circle_focus_style
 
 		x = 0
@@ -18027,8 +18040,11 @@ focus_tree = {
 	focus = {
 		id = GER_autonomous_organization_todt
 		icon = GFX_focus_GER_autonomous_organization_todt
-		mutually_exclusive = { focus = GER_plenipotentiary_of_armaments focus = GER_plenipotentiary_of_the_four_year_plan }
 		prerequisite = { focus = GER_form_organization_todt }
+
+		allow_branch = {
+			always = no
+		}
 
 		text_icon = GER_inner_circle_focus_style
 
@@ -18151,9 +18167,13 @@ focus_tree = {
 		icon = GFX_focus_GER_ascension_of_speer
 		prerequisite = { focus = GER_fuhrerprinzip }
 
-		x = 2
-		y = 0
-		relative_position_id = GER_ascension_of_todt
+		# Was anchored to GER_ascension_of_todt at (2,0). That focus is now a
+		# hidden branch, so anchor to GER_fuhrerprinzip directly instead.
+		# Todt sat at (-7,1) from fuhrerprinzip, so (-7+2, 1+0) = (-5,1) keeps
+		# Speer exactly where he was.
+		x = -5
+		y = 1
+		relative_position_id = GER_fuhrerprinzip
 		cost = 2
 		
 		available = {
@@ -18369,8 +18389,7 @@ focus_tree = {
 	focus = {
 		id = GER_plenipotentiary_of_armaments
 		icon = GFX_focus_GER_plenipotentiary_of_armaments
-		#prerequisite = { focus = GER_form_organization_todt focus = GER_employ_philipp_holzmann focus = GER_prioritize_the_four_year_plan }
-		mutually_exclusive = { focus = GER_autonomous_organization_todt }
+		# Exclusivity with the Todt branch dropped - Speer continues unconditionally.
 		prerequisite = { focus = GER_employ_philipp_holzmann }
 
 		text_icon = GER_inner_circle_focus_style
@@ -18514,13 +18533,17 @@ focus_tree = {
 	focus = {
 		id = GER_wunderwaffe
 		icon = GFX_focus_GER_wunderwaffe_inner_circle
-		prerequisite = { focus = GER_autonomous_organization_todt focus = GER_plenipotentiary_of_armaments}
+		# Todt dropped from the OR group; Speer's focus is now the only route in.
+		prerequisite = { focus = GER_plenipotentiary_of_armaments }
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 1
+		# Was (1,1) from GER_autonomous_organization_todt, which sat at (-7,3)
+		# from fuhrerprinzip, putting this at (-6,4). GER_plenipotentiary_of_armaments
+		# is at (-5,3), so (-1,1) from it lands on the same spot.
+		x = -1
 		y = 1
-		relative_position_id = GER_autonomous_organization_todt
+		relative_position_id = GER_plenipotentiary_of_armaments
 		cost = @inner_circle_time_tier_3
 		
 		available = {
@@ -18954,7 +18977,7 @@ focus_tree = {
 	focus = {
 		id = GER_plenipotentiary_of_the_four_year_plan
 		icon = GFX_focus_GER_plenipotentiary_of_the_four_year_plan
-		mutually_exclusive = { focus = GER_autonomous_organization_todt }
+		# Exclusivity with the Todt branch dropped - Goring continues unconditionally.
 		prerequisite = { focus = GER_prioritize_the_four_year_plan }
 
 		text_icon = GER_inner_circle_focus_style
