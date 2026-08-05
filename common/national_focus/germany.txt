@@ -10289,11 +10289,14 @@ focus_tree = {
 	focus = {
 		id = GER_an_invincible_army
 		icon = GFX_focus_GER_german_army_invincible
-		prerequisite = { focus = GER_demonstration_of_military_achievements }
+		# GER_propaganda_master is now inserted between this and
+		# GER_demonstration_of_military_achievements, so it chains off that
+		# instead and shifts one row down.
+		prerequisite = { focus = GER_propaganda_master }
 
 		x = 0
 		y = 1
-		relative_position_id = GER_demonstration_of_military_achievements
+		relative_position_id = GER_propaganda_master
 		cost = 5
 		available = {
 			surrender_progress < 0.05
@@ -19911,6 +19914,14 @@ focus_tree = {
 		icon = GFX_focus_GER_ascension_of_goebbels
 		prerequisite = { focus = GER_fuhrerprinzip }
 
+		# Goebbels branch removed from play. Hidden rather than deleted so the
+		# many references to these ids in WUW_Germany.txt and
+		# GER_scripted_effects.txt stay valid. Propaganda Master was lifted out
+		# of this chain onto the main military line.
+		allow_branch = {
+			always = no
+		}
+
 		x = 3
 		y = 1
 		relative_position_id = GER_fuhrerprinzip
@@ -20049,6 +20060,10 @@ focus_tree = {
 		icon = GFX_focus_GER_reich_ministry_of_public_enlightenment
 		prerequisite = { focus = GER_ascension_of_goebbels }
 
+		allow_branch = {
+			always = no
+		}
+
 		text_icon = GER_inner_circle_focus_style
 
 		x = 0
@@ -20107,6 +20122,10 @@ focus_tree = {
 		icon = GFX_focus_GER_fund_the_film_department
 		prerequisite = { focus = GER_ministry_of_public_enlightenment }
 
+		allow_branch = {
+			always = no
+		}
+
 		text_icon = GER_inner_circle_focus_style
 
 		x = 0
@@ -20163,65 +20182,51 @@ focus_tree = {
 		}
 	}
 
+	# Pulled out of the Goebbels inner circle chain and made an ordinary focus
+	# on the main military line, sitting between Demonstration of Military
+	# Achievements and An Invincible Army. The advisor-only gate is gone, so the
+	# player can take it directly. The rewards of the whole former Goebbels
+	# chain (Ministry of Public Enlightenment, Fund the Film Department and
+	# Propaganda Master) are merged here.
+	#
+	# The GER_goebbels_reich_minister_of_propaganda idea swaps are deliberately
+	# NOT carried over: they upgrade an idea that only exists once Goebbels has
+	# been ascended, and that path no longer exists.
 	focus = {
 		id = GER_propaganda_master
 		icon = GFX_focus_GER_propaganda_master
-		prerequisite = { focus = GER_fund_the_film_department }
-
-		text_icon = GER_inner_circle_focus_style
+		prerequisite = { focus = GER_demonstration_of_military_achievements }
 
 		x = 0
 		y = 1
-		relative_position_id = GER_fund_the_film_department
-		cost = @inner_circle_time_tier_3
-		
+		relative_position_id = GER_demonstration_of_military_achievements
+		cost = 5
+
 		available = {
-			if = { #ADVISOR WORKING ON THE FOCUS (Show progress)
-				limit = {
-					has_country_flag = GER_propaganda_master_in_progress_flag
-				}
-				set_temp_variable = { temp_focus_days = @inner_circle_time_tier_3 } #For tooltip purposes
-				multiply_temp_variable = { temp_focus_days = 7 } #The constant uses focus cost which is in weeks, so convert to days
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_inner_circle_focus_in_progress_tt
-						CHARACTER = GER_joseph_goebbels
-						FLAG_DAYS = [?GER_propaganda_master_in_progress_flag:days]
-					}
-					always = no 
-				}
-			}
-			else = { #NOT BEEN WORKED ON (Just Explain)
-				custom_override_tooltip = {
-					tooltip = {
-						localization_key = GER_focus_can_only_be_completed_by_advisor_tt
-						CHARACTER = GER_joseph_goebbels
-						FOCUS = GER_ascension_of_goebbels
-					}
-					always = no
-				}
-			}
+			has_government = fascism
 		}
 
-		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_POLITICAL_CHARACTER FOCUS_FILTER_WAR_SUPPORT }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
 
 		completion_reward = {
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				swap_ideas = {
-					remove_idea = GER_goebbels_reich_minister_of_propaganda_film
-					add_idea = GER_goebbels_reich_minister_of_propaganda_master
-				}
+			# from GER_ministry_of_public_enlightenment
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
 			}
-			else = {
-				swap_ideas = {
-					remove_idea = GER_goebbels_reich_minister_of_propaganda_film
-					add_idea = GER_goebbels_reich_minister_of_propaganda_master_no_lar
-				}
+			add_stability = 0.05
+
+			# from GER_fund_the_film_department
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
 			}
-			
+			add_war_support = 0.05
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = GER_leni_riefenstahl
+
+			# from the original GER_propaganda_master
 			if = {
 				limit = {
 					has_dlc = "La Resistance"
@@ -20236,6 +20241,14 @@ focus_tree = {
 		icon = GFX_focus_GER_party_chancellor_hess
 		prerequisite = { focus = GER_fuhrerprinzip }
 		mutually_exclusive = { focus = GER_party_chancellor_bormann }
+
+		# Hess branch removed from play. Bormann keeps the shared chain:
+		# Optimize Reich Labour Service takes Hess OR Bormann, and Total Control
+		# Over Domestic Affairs is still reachable via Glorify Party Rallies.
+		allow_branch = {
+			always = no
+		}
+
 		x = 5
 		y = 1
 		relative_position_id = GER_fuhrerprinzip
@@ -20592,6 +20605,12 @@ focus_tree = {
 		icon = GFX_focus_GER_rally_the_industrialists
 		prerequisite = { focus = GER_optimize_reich_labour_service }
 		prerequisite = { focus = GER_party_chancellor_hess }
+
+		# Hess-only focus, so it goes with him. Total Control Over Domestic
+		# Affairs accepts Glorify Party Rallies as the alternative route.
+		allow_branch = {
+			always = no
+		}
 
 		text_icon = GER_inner_circle_focus_style
 
