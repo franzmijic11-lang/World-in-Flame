@@ -11409,7 +11409,9 @@ focus_tree = {
 		mutually_exclusive = { focus = GER_danzig_or_war }
 
 		x = 0
-		y = 1
+		# Shifted one row down. Everything below is anchored to this focus via
+		# relative_position_id, so the whole sub-branch follows automatically.
+		y = 2
 		relative_position_id = GER_fate_of_czechoslovakia
 
 		cost = 10
@@ -11477,7 +11479,9 @@ focus_tree = {
 		prerequisite = { focus = GER_reassert_eastern_claims }
 		mutually_exclusive = { focus = GER_danzig_for_slovakia }
 		x = 0
-		y = 3
+		# Shifted one row down, matching GER_danzig_for_slovakia. Everything
+		# below is anchored to this focus and follows automatically.
+		y = 4
 		relative_position_id = GER_reassert_eastern_claims
 		cost = 10
 
