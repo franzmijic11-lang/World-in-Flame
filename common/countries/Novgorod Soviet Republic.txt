@@ -1,5 +1,7 @@
 graphical_culture = eastern_european_gfx
 graphical_culture_2d = eastern_european_2d
 
-color = { 200 30 30 }
-color_ui = { 200 30 30 }
+# NOTE: do not put color / color_ui here. Modern HOI4 reads country colours from
+# common/countries/colors.txt only, and the values in this file are ignored.
+# Leaving a tag out of colors.txt makes its map unit counters render as a blank
+# white panel, because the counter background is tinted with the country colour.

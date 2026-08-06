@@ -1267,4 +1267,7 @@ SME = {
 	color_ui = rgb { 180 25 25 }
 }
 
-
+NSR = {
+	color = rgb { 200 30 30 }
+	color_ui = rgb { 200 30 30 }
+}
