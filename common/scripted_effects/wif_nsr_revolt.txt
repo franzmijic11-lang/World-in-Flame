@@ -198,19 +198,34 @@ wif_nsp_formation = {
 		}
 	}
 
-	# Bring them in on Moskowien's side. Germany normally leads the faction
-	# Moskowien belongs to, so try there first and fall back to Moskowien's own.
+	# Bring them in on Moskowien's side. Follow whatever faction Moskowien is
+	# actually in rather than assuming it is Germany's - only the leader of a
+	# faction can admit new members, so find that leader by matching against
+	# Moskowien's own membership.
 	if = {
-		limit = { GER = { is_faction_leader = yes } }
-		GER = { add_to_faction = NSP }
-	}
-	else_if = {
 		limit = { is_faction_leader = yes }
+		# Moskowien leads its own faction, so it admits them directly.
 		add_to_faction = NSP
 	}
-	else = {
-		# No faction to join, so at minimum guarantee them.
+	else_if = {
+		limit = { is_in_faction = yes }
+		every_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = PREV
+			}
+			add_to_faction = NSP
+		}
+	}
+
+	# Fallback: Moskowien had no faction, or admission did not take. Mutual
+	# guarantees at least bind them together. PREV rather than ROOT, since
+	# inside the NSP scope PREV is unambiguously Moskowien.
+	if = {
+		limit = {
+			NOT = { NSP = { is_in_faction_with = PREV } }
+		}
 		give_guarantee = NSP
-		NSP = { give_guarantee = RKM }
+		NSP = { give_guarantee = PREV }
 	}
 }
