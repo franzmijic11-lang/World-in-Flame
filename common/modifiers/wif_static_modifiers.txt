@@ -1,0 +1,27 @@
+# Static modifiers applied by the RKM SS/Wehrmacht balance of power.
+#
+# These exist as named modifiers rather than inline blocks because
+# has_power_balance_modifier resolves its `modifier` argument against the static
+# modifier database, not against balance-of-power range ids. The RKM ranges used
+# inline modifier blocks and were referenced by range id, which is why the log
+# filled with "missing static modifier definition".
+#
+# Vanilla does the same thing - see CZE_bop_modifier_czech_sovereignty_is_threatened
+# in common/modifiers.
+
+RKM_dominant_ss_influence = {
+	resistance_growth = -0.05
+	compliance_growth = -0.2
+}
+
+RKM_huge_ss_influence = {
+	resistance_growth = -0.07
+	compliance_growth = -0.2
+}
+
+RKM_total_ss_control = {
+	resistance_growth = -0.07
+	compliance_growth = -0.2
+	stability_factor = -0.05
+	monthly_population = -0.1
+}
