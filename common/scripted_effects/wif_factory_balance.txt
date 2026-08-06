@@ -56,7 +56,12 @@ wif_update_factory_cap = {
 			set_variable = { wif_ratio_civ = 1 }
 		}
 		else_if = {
-			limit = { has_government = democratic }
+			# Democracies that have thrown off peacetime restraint fall through
+			# to the non-aligned branch below instead.
+			limit = {
+				has_government = democratic
+				NOT = { wif_uses_non_aligned_factory_cap = yes }
+			}
 			set_variable = { wif_ratio_mil = 1 }
 			set_variable = { wif_ratio_civ = 2 }
 		}
@@ -77,7 +82,10 @@ wif_update_factory_cap = {
 			set_variable = { wif_ratio_civ = 1 }
 		}
 		else_if = {
-			limit = { has_government = democratic }
+			limit = {
+				has_government = democratic
+				NOT = { wif_uses_non_aligned_factory_cap = yes }
+			}
 			set_variable = { wif_ratio_mil = 1 }
 			set_variable = { wif_ratio_civ = 3 }
 		}

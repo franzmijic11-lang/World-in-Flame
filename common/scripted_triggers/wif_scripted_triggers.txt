@@ -1,0 +1,11 @@
+# A democratic country that should be treated as non-aligned when the military
+# factory ratio cap in common/scripted_effects/wif_factory_balance.txt is worked
+# out. Checked directly rather than via a country flag so no vanilla focus file
+# needs overriding.
+#
+# Sweden's Rapid Mobilization tears up the peacetime restraint on the armed
+# forces, so its industry is allowed to run on the non-aligned schedule rather
+# than the tighter democratic one.
+wif_uses_non_aligned_factory_cap = {
+	has_completed_focus = SWE_rapid_mobilization
+}
