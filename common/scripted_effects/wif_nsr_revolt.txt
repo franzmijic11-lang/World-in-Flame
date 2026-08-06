@@ -6,10 +6,18 @@
 #
 # Run in RKM's scope.
 wif_nsr_revolt = {
+	# Marks the civil war as running. Cleared when Moskowien has put it down,
+	# which is what triggers Saint Petersburg folding back in.
+	set_country_flag = wif_moskowien_civil_war
+
 	# Whoever breaks away from Moskowien fights with Moskowien's technology.
 	save_event_target_as = wif_tech_donor
 
-	# Novgorod first: transferring a state is what brings NSR into existence.
+	# Saint Petersburg forms FIRST, so the rebels below have something to
+	# declare war on. It is a loyalist emergency government, not a rebellion.
+	wif_nsp_formation = yes
+
+	# Novgorod: transferring a state is what brings NSR into existence.
 	263 = { transfer_state_to = NSR }
 	208 = { transfer_state_to = NSR }
 
@@ -55,6 +63,13 @@ wif_nsr_revolt = {
 		declare_war_on = {
 			target = RKM
 			type = annex_everything
+		}
+		if = {
+			limit = { country_exists = NSP }
+			declare_war_on = {
+				target = NSP
+				type = annex_everything
+			}
 		}
 	}
 
@@ -130,5 +145,72 @@ wif_ssm_mutiny = {
 			target = NSR
 			type = annex_everything
 		}
+		if = {
+			limit = { country_exists = NSP }
+			declare_war_on = {
+				target = NSP
+				type = annex_everything
+			}
+		}
+	}
+}
+
+# The loyalist emergency government in Saint Petersburg. Run in RKM's scope.
+# Formed before the rebels so they have something to declare war on.
+wif_nsp_formation = {
+	195 = { transfer_state_to = NSP }
+	244 = { transfer_state_to = NSP }
+
+	NSP = {
+		set_capital = { state = 195 }
+
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 85
+			communism = 0
+			neutrality = 10
+		}
+
+		set_research_slots = 2
+		set_stability = 0.5
+		set_war_support = 0.9
+
+		add_state_core = 195
+		add_state_core = 244
+
+		# Moskowien's technology, since Moskowien is who armed them.
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_nsp_city_defence
+
+		load_oob = "NSP_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = NSP
+		}
+	}
+
+	# Bring them in on Moskowien's side. Germany normally leads the faction
+	# Moskowien belongs to, so try there first and fall back to Moskowien's own.
+	if = {
+		limit = { GER = { is_faction_leader = yes } }
+		GER = { add_to_faction = NSP }
+	}
+	else_if = {
+		limit = { is_faction_leader = yes }
+		add_to_faction = NSP
+	}
+	else = {
+		# No faction to join, so at minimum guarantee them.
+		give_guarantee = NSP
+		NSP = { give_guarantee = RKM }
 	}
 }

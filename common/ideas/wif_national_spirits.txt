@@ -85,6 +85,26 @@ ideas = {
 			}
 		}
 
+		# The Saint Petersburg emergency government's whole reason to exist: a
+		# city militia dug into its own streets.
+		wif_nsp_city_defence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+
+			modifier = {
+				army_sub_unit_militia_defence_factor = 0.5
+			}
+		}
+
 		# Granted for 5 years to every American major that takes Germany's
 		# separate peace. Locks them out of alliances so they cannot simply
 		# rejoin the war the following year.

@@ -51,6 +51,28 @@ on_actions = {
 			# Refresh the cap weekly so the AI strategy reacts promptly when
 			# world tension or ideology shifts. Variable maths only, no loops.
 			wif_update_factory_cap = yes
+
+			# Moskowien has put the civil war down: every breakaway is gone. The
+			# Saint Petersburg emergency government hands its territory back and
+			# stands its militia down. transfer_troops = no is what disbands
+			# them - annexing with troops would fold the levy into the regular
+			# army instead, which is not what the emergency government was.
+			#
+			# Add any future civil war combatant to the NOT list below.
+			if = {
+				limit = {
+					tag = RKM
+					has_country_flag = wif_moskowien_civil_war
+					country_exists = NSP
+					NOT = { country_exists = NSR }
+					NOT = { country_exists = SSM }
+				}
+				annex_country = {
+					target = NSP
+					transfer_troops = no
+				}
+				clr_country_flag = wif_moskowien_civil_war
+			}
 		}
 	}
 

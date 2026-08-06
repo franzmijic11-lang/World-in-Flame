@@ -1276,3 +1276,8 @@ SSM = {
 	color = rgb { 40 40 45 }
 	color_ui = rgb { 40 40 45 }
 }
+
+NSP = {
+	color = rgb { 120 130 150 }
+	color_ui = rgb { 120 130 150 }
+}
