@@ -114,7 +114,8 @@ wif_ssm_mutiny = {
 		set_stability = 0.7
 		set_war_support = 0.9
 
-		add_state_core = 264
+		# No core on Tikhvin. The SS are seizing a base of operations, not
+		# reclaiming a homeland.
 
 		wif_inherit_tech_from_donor = yes
 
@@ -181,8 +182,10 @@ wif_nsp_formation = {
 		set_stability = 0.5
 		set_war_support = 0.9
 
+		# Only Saint Petersburg itself is theirs by right. Volkhov is held, not
+		# claimed - it is Moskowien territory they are garrisoning. The Saint
+		# Petersburg core passes to Moskowien on reunification.
 		add_state_core = 195
-		add_state_core = 244
 
 		# Moskowien's technology, since Moskowien is who armed them.
 		wif_inherit_tech_from_donor = yes

@@ -71,6 +71,11 @@ on_actions = {
 					target = NSP
 					transfer_troops = no
 				}
+
+				# Saint Petersburg was the emergency government's own core, and
+				# it passes to Moskowien with the city.
+				add_state_core = 195
+
 				clr_country_flag = wif_moskowien_civil_war
 			}
 		}
