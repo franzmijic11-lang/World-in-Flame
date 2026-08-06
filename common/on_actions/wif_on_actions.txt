@@ -1,4 +1,35 @@
 on_actions = {
+	# Novgorod's claim dies with Novgorod. Its cores on Novgorod and Luga are
+	# stripped whether it capitulates or is annexed outright, so the territory
+	# does not stay Novgorod-cored once the republic is finished.
+	#
+	# Saint Petersburg is deliberately NOT handled here - that core survives and
+	# passes to Moskowien in wif_rkm_civilwar.1, because the emergency
+	# government was loyalist and its claim is inherited rather than erased.
+
+	# ROOT is the country that capitulated.
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = { tag = NSR }
+				263 = { remove_core_of = NSR }
+				208 = { remove_core_of = NSR }
+			}
+		}
+	}
+
+	# ROOT is the winner, FROM is the country being annexed. Covers Moskowien
+	# integrating them, and any other victor taking them.
+	on_annex = {
+		effect = {
+			if = {
+				limit = { FROM = { tag = NSR } }
+				263 = { remove_core_of = NSR }
+				208 = { remove_core_of = NSR }
+			}
+		}
+	}
+
 	# Record every country's starting military factories so the ratio cap can
 	# grandfather them. A nation that begins the game over its ratio keeps what
 	# it started with; only factories built afterwards can ever be taken away.
