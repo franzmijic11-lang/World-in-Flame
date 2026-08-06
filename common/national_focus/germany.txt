@@ -17895,6 +17895,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 1 }
@@ -17929,6 +17930,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 1 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 1 }
 				}
 			}
 
@@ -18255,6 +18262,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 2 }
@@ -18289,6 +18297,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 2 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 2 }
 				}
 			}
 
@@ -18756,6 +18770,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 3 }
@@ -18790,6 +18805,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 3 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 3 }
 				}
 			}
 
@@ -19243,6 +19264,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 4 }
@@ -19281,6 +19303,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 4 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 4 }
 				}
 			}
 
@@ -20003,6 +20031,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 5 }
@@ -20037,6 +20066,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 5 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 5 }
 				}
 			}
 
@@ -20338,6 +20373,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 6 }
@@ -20372,6 +20408,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 6 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 6 }
 				}
 			}
 
@@ -20476,6 +20518,7 @@ focus_tree = {
 					check_variable = { GER_ascended_advisor_1 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_2 = 0 compare = not_equals }
 					check_variable = { GER_ascended_advisor_3 = 0 compare = not_equals }
+					check_variable = { GER_ascended_advisor_4 = 0 compare = not_equals }
 				}
 				hidden_effect = {
 					set_variable = { GER_ascending_advisor = 7 }
@@ -20510,6 +20553,12 @@ focus_tree = {
 						check_variable = { GER_ascended_advisor_3 = 0 }
 					}
 					set_variable = { GER_ascended_advisor_3 = 7 }
+				}
+				else_if = {
+					limit = {
+						check_variable = { GER_ascended_advisor_4 = 0 }
+					}
+					set_variable = { GER_ascended_advisor_4 = 7 }
 				}
 			}
 
