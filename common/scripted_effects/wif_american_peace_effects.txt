@@ -6,6 +6,17 @@
 # own. Inside every_country the scope is the Axis member and PREV is the
 # settling country, which is the form white_peace documents and vanilla uses.
 wif_settle_with_axis = {
+	# Record whether Japan is part of this settlement BEFORE the white peaces
+	# run, because afterwards there is no war left to test for.
+	if = {
+		limit = {
+			tag = USA
+			has_war_with = JAP
+			JAP = { is_in_faction_with = GER }
+		}
+		set_country_flag = wif_japan_in_settlement
+	}
+
 	leave_faction = yes
 
 	every_country = {
@@ -22,5 +33,50 @@ wif_settle_with_axis = {
 	add_timed_idea = {
 		idea = wif_negotiated_settlement
 		days = 1825
+	}
+
+	if = {
+		limit = { has_country_flag = wif_japan_in_settlement }
+		wif_transfer_us_pacific_to_japan = yes
+		clr_country_flag = wif_japan_in_settlement
+	}
+}
+
+# The price of peace in the Pacific. Only runs when Japan was actually part of
+# the settlement.
+wif_transfer_us_pacific_to_japan = {
+	custom_effect_tooltip = wif_pacific_islands_to_japan_tt
+
+	# Outlying possessions are conceded outright. The ownership check makes
+	# this a no-op for anything Japan has already taken.
+	every_state = {
+		limit = {
+			is_owned_by = USA
+			OR = {
+				state = 630		# Johnston Atoll
+				state = 632		# Wake Island
+				state = 638		# Guam
+				state = 642		# Phoenix Island
+				state = 650		# Attu Island
+				state = 727		# Line Islands
+				state = 1072	# American Samoa
+			}
+		}
+		transfer_state_to = JAP
+	}
+
+	# Hawaii and Midway are only given up if Japanese troops are already
+	# standing on them when terms are signed. Otherwise they stay American.
+	if = {
+		limit = {
+			629 = { is_controlled_by = JAP }
+		}
+		629 = { transfer_state_to = JAP }
+	}
+	if = {
+		limit = {
+			631 = { is_controlled_by = JAP }
+		}
+		631 = { transfer_state_to = JAP }
 	}
 }
