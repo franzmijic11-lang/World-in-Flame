@@ -57,4 +57,78 @@ wif_nsr_revolt = {
 			type = annex_everything
 		}
 	}
+
+	# If the Wehrmacht holds the balance of power when the rising breaks out, the
+	# SS will not sit under an army-run administration while it burns. Tikhvin
+	# goes with them, and they fight Moskowien and Novgorod both.
+	if = {
+		limit = {
+			power_balance_value = {
+				id = RKM_ss_wehrmacht_balance
+				value > 0
+			}
+		}
+		wif_ssm_mutiny = yes
+	}
+}
+
+# The SS breakaway. Run in RKM's scope, from wif_nsr_revolt.
+wif_ssm_mutiny = {
+	# Their equipment comes from the Reich proper, not from Moskowien.
+	GER = { save_event_target_as = wif_tech_donor }
+
+	264 = { transfer_state_to = SSM }
+
+	SSM = {
+		set_capital = { state = 264 }
+
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 0
+			fascism = 95
+			communism = 0
+			neutrality = 5
+		}
+
+		set_research_slots = 3
+		set_stability = 0.7
+		set_war_support = 0.9
+
+		add_state_core = 264
+
+		wif_inherit_tech_from_donor = yes
+
+		load_oob = "SSM_revolt"
+
+		# A small reserve on top of what the divisions carry.
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = SSM
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100
+			producer = SSM
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 100
+			producer = SSM
+		}
+
+		declare_war_on = {
+			target = RKM
+			type = annex_everything
+		}
+		declare_war_on = {
+			target = NSR
+			type = annex_everything
+		}
+	}
 }

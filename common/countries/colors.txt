@@ -1271,3 +1271,8 @@ NSR = {
 	color = rgb { 200 30 30 }
 	color_ui = rgb { 200 30 30 }
 }
+
+SSM = {
+	color = rgb { 40 40 45 }
+	color_ui = rgb { 40 40 45 }
+}
