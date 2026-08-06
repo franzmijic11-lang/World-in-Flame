@@ -5,11 +5,12 @@
 # Korea hands it to whoever pulls the puppet's strings. Only if Korea is in
 # Korean hands AND independent does it fall to the owner of Manchuria instead.
 #
-# State 525 (South Korea) stands in for Korea as a whole, and 328 (Manchukuo)
-# for Manchuria. Run from the SOV scope inside wif_sov.1, before the
-# every_state sweep that hands the rest of the Soviet Union to SME.
+# State 527 (North Korea) stands in for Korea as a whole - it is the half that
+# actually borders Vladivostok - and 328 (Manchukuo) for Manchuria. Run from the
+# SOV scope inside wif_sov.1, before the every_state sweep that hands the rest
+# of the Soviet Union to SME.
 wif_award_vladivostok = {
-	525 = {
+	527 = {
 		owner = {
 			save_event_target_as = wif_korea_owner
 		}
