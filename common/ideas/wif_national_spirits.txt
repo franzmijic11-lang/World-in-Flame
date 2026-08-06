@@ -85,6 +85,33 @@ ideas = {
 			}
 		}
 
+		# Granted for 5 years to every American major that takes Germany's
+		# separate peace. Locks them out of alliances so they cannot simply
+		# rejoin the war the following year.
+		wif_negotiated_settlement = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			rule = {
+				can_join_factions = no
+				can_create_factions = no
+			}
+
+			modifier = {
+				war_support_factor = -0.1
+				join_faction_tension = 1.0
+			}
+		}
+
 		active_russian_resistance = {
 			allowed = {
 				always = no

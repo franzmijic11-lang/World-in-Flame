@@ -1,0 +1,120 @@
+add_namespace = wif_usa_peace
+
+# Germany offers the United States a separate peace after Britain and France
+# have fallen. Fired from GER_crossing_the_atlantic, renamed "Force the
+# Americans to see Reason".
+country_event = {
+	id = wif_usa_peace.1
+	title = wif_usa_peace.1.t
+	desc = wif_usa_peace.1.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	# Accept - leave the war
+	option = {
+		name = wif_usa_peace.1.a
+
+		ai_chance = {
+			base = 90
+
+			# The worse the position in Europe looks, the more attractive a
+			# settlement is.
+			modifier = {
+				factor = 2
+				ENG = { has_capitulated = yes }
+				FRA = { has_capitulated = yes }
+			}
+			modifier = {
+				factor = 2
+				NOT = { has_war_support > 0.5 }
+			}
+			modifier = { # A country already bleeding badly wants out
+				factor = 2
+				surrender_progress > 0.1
+			}
+		}
+
+		# Other American majors settle on the same terms. Done BEFORE this
+		# country leaves, while faction membership is still intact to test
+		# against.
+		every_other_country = {
+			limit = {
+				is_major = yes
+				has_war_with = GER
+				is_in_faction_with = ROOT
+				OR = {
+					capital_scope = { is_on_continent = north_america }
+					capital_scope = { is_on_continent = south_america }
+				}
+			}
+			leave_faction = yes
+			white_peace = GER
+			add_timed_idea = {
+				idea = wif_negotiated_settlement
+				days = 1825
+			}
+		}
+
+		leave_faction = yes
+		white_peace = GER
+		add_timed_idea = {
+			idea = wif_negotiated_settlement
+			days = 1825
+		}
+
+		GER = {
+			country_event = { id = wif_usa_peace.2 }
+		}
+	}
+
+	# Decline - fight on
+	option = {
+		name = wif_usa_peace.1.b
+
+		ai_chance = {
+			base = 10
+
+			modifier = { # Still confident, keep fighting
+				factor = 3
+				has_war_support > 0.7
+			}
+		}
+
+		add_war_support = 0.05
+
+		GER = {
+			country_event = { id = wif_usa_peace.3 }
+		}
+	}
+}
+
+# Germany is told the Americans accepted
+country_event = {
+	id = wif_usa_peace.2
+	title = wif_usa_peace.2.t
+	desc = wif_usa_peace.2.desc
+	picture = GFX_report_event_generic_signing
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_usa_peace.2.a
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+# Germany is told the Americans refused
+country_event = {
+	id = wif_usa_peace.3
+	title = wif_usa_peace.3.t
+	desc = wif_usa_peace.3.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_usa_peace.3.a
+	}
+}

@@ -12838,7 +12838,7 @@ focus_tree = {
 	
 	focus = {
 		id = GER_crossing_the_atlantic
-		icon = GFX_goal_generic_build_navy
+		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = GER_operation_sea_lion }
 
 		x = 0
@@ -12847,19 +12847,28 @@ focus_tree = {
 		cost = 10
 
 		cancel_if_invalid = yes
-		
+
+		# Repurposed from the old naval invasion build-up into a negotiated
+		# settlement. Europe is already lost for the western Allies - Britain
+		# and France have both fallen - so Berlin offers Washington a way out
+		# rather than fighting across the Atlantic.
 		available = {
 			is_subject = no
+
+			has_war_with = USA
+			has_war_with = ENG
+			has_war_with = FRA
+
 			custom_trigger_tooltip = {
-				tooltip = GER_crossing_the_atlantic_trigger_tt
-				NOT = {
-					any_enemy_country = {
-						is_major = yes
-						any_controlled_state = { 
-							is_on_continent = europe
-						}
-					}
-				}
+				tooltip = GER_force_americans_allied_tt
+				USA = { is_in_faction_with = ENG }
+				FRA = { is_in_faction_with = ENG }
+			}
+
+			custom_trigger_tooltip = {
+				tooltip = GER_force_americans_capitulated_tt
+				ENG = { has_capitulated = yes }
+				FRA = { has_capitulated = yes }
 			}
 		}
 
@@ -12869,197 +12878,17 @@ focus_tree = {
 			}
 		}
 
-		will_lead_to_war_with = USA
-
 		ai_will_do = {
 			factor = 10
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
-			IF = {
-				limit = {
-					NOT = {
-						OR = {
-							has_war_with = USA
-							has_wargoal_against = {
-								target = USA
-							}
-						}
-					}
+			custom_effect_tooltip = GER_force_americans_to_see_reason_tt
 
-				}
-				create_wargoal = {
-					type = annex_everything
-					target = USA
-				}
-
-				custom_effect_tooltip = generic_skip_one_line_tt
-			}
-
-			add_tech_bonus = {
-				bonus = 0.75
-				uses = 1
-				category = marine_tech
-				name = GER_crossing_the_atlantic
-			}
-
-			IF = {
-				limit = {
-					has_dlc = "Arms Against Tyranny"
-				}
-				add_doctrine_cost_reduction = {
-					cost_reduction = 0.5
-					uses = 2
-					category = cat_marines_doctrine
-				}
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			add_ideas = GER_crossing_the_atlantic_ns
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			# Add Dockyards and Replace Mils - Cap is 10 states (20 dockyards gained & 20 mils removed) -> cap defined in variable crossing_the_atlantic_max_states_for_dockyards set in history file
-			custom_effect_tooltip = GER_crossing_the_atlantic_dockyards_tt
-
-			if = { #Tooltip so players can know where the hell the dockyards were added
-				limit = {
-					check_variable = { number_of_states_getting_dockyards > 0 }
-				}
-				custom_effect_tooltip = generic_states_affected_tt
-				every_controlled_state = {
-					limit = { has_state_flag = GER_crossing_the_atlantic_dockyards_built_flag }
-					display_individual_scopes = yes
-					add_building_construction = {
-						type = dockyard
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-
-			hidden_effect = {
-				every_controlled_state = { #Prio "self-sufficient" coastal states, with 2 mils
-					limit = {
-						is_fully_controlled_by = ROOT
-						is_on_continent = europe
-						is_coastal = yes
-						arms_factory > 1
-						NOT = { has_state_flag = GER_crossing_the_atlantic_dockyards_built_flag }
-					}
-					if = {
-						limit = {
-							check_variable = { ROOT.number_of_states_getting_dockyards < ROOT.crossing_the_atlantic_max_states_for_dockyards }
-						}
-						remove_building = {
-							type = arms_factory
-							level = 2
-						}
-						add_building_construction = {
-							type = dockyard
-							level = 2
-							instant_build = yes
-						}
-
-						set_state_flag = GER_crossing_the_atlantic_dockyards_built_flag
-						add_to_variable = { ROOT.number_of_states_getting_dockyards = 1 }
-						#log = "Number [?ROOT.number_of_states_getting_dockyards] - Built in [THIS.GetName] - Coastal with 2 mils" #Debug tool
-					}
-				}
-
-				every_controlled_state = { #Next prio coastal states with only 1 mil
-					limit = {
-						is_fully_controlled_by = ROOT
-						is_on_continent = europe
-						is_coastal = yes
-						AND = {
-							arms_factory < 2
-							arms_factory > 0
-						}
-						NOT = { has_state_flag = GER_crossing_the_atlantic_dockyards_built_flag }
-					}
-					if = {
-						limit = {
-							check_variable = { ROOT.number_of_states_getting_dockyards < ROOT.crossing_the_atlantic_max_states_for_dockyards }
-						}
-						add_extra_state_shared_building_slots = 1
-						remove_building = {
-							type = arms_factory
-							level = 1
-						}
-						add_building_construction = {
-							type = dockyard
-							level = 2
-							instant_build = yes
-						}
-						custom_effect_tooltip = GER_crossing_the_atlantic_1_factory_tt
-						hidden_effect = {
-							ROOT = {
-								random_controlled_state = {
-									limit = {
-										is_fully_controlled_by = ROOT
-										is_on_continent = europe
-										NOT = { is_coastal = yes }
-										arms_factory > 0
-									}
-									remove_building = {
-										type = arms_factory
-										level = 1
-									}
-								}
-							}
-
-							set_state_flag = GER_crossing_the_atlantic_dockyards_built_flag
-							add_to_variable = { ROOT.number_of_states_getting_dockyards = 1 }
-							#log = "Number [?ROOT.number_of_states_getting_dockyards] - Built in [THIS.GetName] - Coastal with 1 mil" #Debug tool
-						}
-					}
-				}
-
-				every_controlled_state = { #Last are coastal states with no mils on them
-					limit = {
-						is_fully_controlled_by = ROOT
-						is_on_continent = europe
-						is_coastal = yes
-						arms_factory < 1
-						NOT = { has_state_flag = GER_crossing_the_atlantic_dockyards_built_flag }
-					}
-					if = {
-						limit = {
-							check_variable = { ROOT.number_of_states_getting_dockyards < ROOT.crossing_the_atlantic_max_states_for_dockyards }
-						}
-						add_extra_state_shared_building_slots = 2
-						add_building_construction = {
-							type = dockyard
-							level = 2
-							instant_build = yes
-						}
-						custom_effect_tooltip = GER_crossing_the_atlantic_2_factories_tt
-						hidden_effect = {
-							ROOT = {
-								random_controlled_state = {
-									limit = {
-										is_fully_controlled_by = ROOT
-										is_on_continent = europe
-										NOT = { is_coastal = yes }
-										arms_factory > 1
-									}
-									remove_building = {
-										type = arms_factory
-										level = 2
-									}
-								}
-							}
-
-							set_state_flag = GER_crossing_the_atlantic_dockyards_built_flag
-							add_to_variable = { ROOT.number_of_states_getting_dockyards = 1 }
-							#log = "Number [?ROOT.number_of_states_getting_dockyards] - Built in [THIS.GetName] - Coastal with 0 mils" #Debug tool
-						}
-					}
-				}
+			USA = {
+				country_event = { id = wif_usa_peace.1 }
 			}
 		}
 	}
