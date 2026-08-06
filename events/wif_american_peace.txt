@@ -48,20 +48,10 @@ country_event = {
 					capital_scope = { is_on_continent = south_america }
 				}
 			}
-			leave_faction = yes
-			white_peace = GER
-			add_timed_idea = {
-				idea = wif_negotiated_settlement
-				days = 1825
-			}
+			wif_settle_with_axis = yes
 		}
 
-		leave_faction = yes
-		white_peace = GER
-		add_timed_idea = {
-			idea = wif_negotiated_settlement
-			days = 1825
-		}
+		wif_settle_with_axis = yes
 
 		GER = {
 			country_event = { id = wif_usa_peace.2 }
