@@ -1,0 +1,58 @@
+add_namespace = wif_rkm_civilwar
+
+# The Moskowien civil war is over. Fired from on_weekly once every breakaway is
+# gone, and it is this event that carries out the reunification.
+#
+# The work sits in immediate, wrapped in RKM = { } so it runs on Moskowien no
+# matter who is reading the news, and guarded on wif_moskowien_civil_war so it
+# is idempotent. major = yes broadcasts it, and without that guard the
+# annexation would be attempted once per recipient.
+news_event = {
+	id = wif_rkm_civilwar.1
+	title = wif_rkm_civilwar.1.t
+	desc = wif_rkm_civilwar.1.desc
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			RKM = {
+				if = {
+					limit = {
+						has_country_flag = wif_moskowien_civil_war
+						country_exists = NSP
+					}
+					annex_country = {
+						target = NSP
+						transfer_troops = no
+					}
+
+					# Saint Petersburg was the emergency government's own core
+					# and passes to Moskowien with the city.
+					add_state_core = 195
+
+					clr_country_flag = wif_moskowien_civil_war
+				}
+			}
+		}
+	}
+
+	# Moskowien's own view of it
+	option = {
+		name = wif_rkm_civilwar.1.a
+		trigger = {
+			tag = RKM
+		}
+	}
+
+	# Everyone else
+	option = {
+		name = wif_rkm_civilwar.1.b
+		trigger = {
+			NOT = { tag = RKM }
+		}
+	}
+}

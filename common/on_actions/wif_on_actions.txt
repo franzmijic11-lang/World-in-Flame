@@ -52,11 +52,9 @@ on_actions = {
 			# world tension or ideology shifts. Variable maths only, no loops.
 			wif_update_factory_cap = yes
 
-			# Moskowien has put the civil war down: every breakaway is gone. The
-			# Saint Petersburg emergency government hands its territory back and
-			# stands its militia down. transfer_troops = no is what disbands
-			# them - annexing with troops would fold the levy into the regular
-			# army instead, which is not what the emergency government was.
+			# Moskowien has put the civil war down: every breakaway is gone.
+			# Announce it, and the news event itself carries out the
+			# reunification with the Saint Petersburg emergency government.
 			#
 			# Add any future civil war combatant to the NOT list below.
 			if = {
@@ -67,16 +65,7 @@ on_actions = {
 					NOT = { country_exists = NSR }
 					NOT = { country_exists = SSM }
 				}
-				annex_country = {
-					target = NSP
-					transfer_troops = no
-				}
-
-				# Saint Petersburg was the emergency government's own core, and
-				# it passes to Moskowien with the city.
-				add_state_core = 195
-
-				clr_country_flag = wif_moskowien_civil_war
+				news_event = { id = wif_rkm_civilwar.1 }
 			}
 		}
 	}
