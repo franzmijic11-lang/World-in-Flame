@@ -9569,6 +9569,122 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			custom_effect_tooltip = GER_reichskommissariats_tt
+
+			# Absorbed from GER_mittelafrika and
+			# GER_create_asian_reichskommissariat, both deleted. The decisions
+			# themselves were retargeted in common/decisions/GER.txt, so all six
+			# Reichskommissariats now unlock from here.
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			unlock_decision_tooltip = GER_reichskommissariat_nordafrika
+			unlock_decision_tooltip = GER_reichskommissariat_mittelafrika
+			unlock_decision_tooltip = GER_reichskommissariat_arabien
+			unlock_decision_tooltip = GER_reichskommissariat_hindustan
+			unlock_decision_tooltip = GER_reichskommissariat_ostasien
+			unlock_decision_tooltip = GER_reichskommissariat_australasien
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			# Mittelafrika's African claims come too. Without them the
+			# Reichskommissariats it gates could be unlocked but never actually
+			# taken.
+			if = {
+				limit = { NOT = { 897 = { is_claimed_by = ROOT } } }
+				add_state_claim = 897
+			}
+			if = {
+				limit = { NOT = { 896 = { is_claimed_by = ROOT } } }
+				add_state_claim = 896
+			}
+			if = {
+				limit = { NOT = { 544 = { is_claimed_by = ROOT } } }
+				add_state_claim = 544
+			}
+			if = {
+				limit = { NOT = { 540 = { is_claimed_by = ROOT } } }
+				add_state_claim = 540
+			}
+			if = {
+				limit = { NOT = { 892 = { is_claimed_by = ROOT } } }
+				add_state_claim = 892
+			}
+			if = {
+				limit = { NOT = { 891 = { is_claimed_by = ROOT } } }
+				add_state_claim = 891
+			}
+			if = {
+				limit = { NOT = { 295 = { is_claimed_by = ROOT } } }
+				add_state_claim = 295
+			}
+			if = {
+				limit = { NOT = { 889 = { is_claimed_by = ROOT } } }
+				add_state_claim = 889
+			}
+			if = {
+				limit = { NOT = { 888 = { is_claimed_by = ROOT } } }
+				add_state_claim = 888
+			}
+			if = {
+				limit = { NOT = { 538 = { is_claimed_by = ROOT } } }
+				add_state_claim = 538
+			}
+			if = {
+				limit = { NOT = { 890 = { is_claimed_by = ROOT } } }
+				add_state_claim = 890
+			}
+			if = {
+				limit = { NOT = { 769 = { is_claimed_by = ROOT } } }
+				add_state_claim = 769
+			}
+			if = {
+				limit = { NOT = { 768 = { is_claimed_by = ROOT } } }
+				add_state_claim = 768
+			}
+			if = {
+				limit = { NOT = { 718 = { is_claimed_by = ROOT } } }
+				add_state_claim = 718
+			}
+			if = {
+				limit = { NOT = { 539 = { is_claimed_by = ROOT } } }
+				add_state_claim = 539
+			}
+			if = {
+				limit = { NOT = { 772 = { is_claimed_by = ROOT } } }
+				add_state_claim = 772
+			}
+			if = {
+				limit = { NOT = { 297 = { is_claimed_by = ROOT } } }
+				add_state_claim = 297
+			}
+			if = {
+				limit = { NOT = { 545 = { is_claimed_by = ROOT } } }
+				add_state_claim = 545
+			}
+			if = {
+				limit = { NOT = { 981 = { is_claimed_by = ROOT } } }
+				add_state_claim = 981
+			}
+			if = {
+				limit = { NOT = { 771 = { is_claimed_by = ROOT } } }
+				add_state_claim = 771
+			}
+			if = {
+				limit = { NOT = { 770 = { is_claimed_by = ROOT } } }
+				add_state_claim = 770
+			}
+
+			# Falkenhausen recall, from the Asian focus.
+			if = {
+				limit = {
+					NOT = { has_global_flag = falkenhausen_recalled }
+				}
+				custom_effect_tooltip = GER_japan_friend_tt
+				set_global_flag = falkenhausen_recalled
+				if = {
+					limit = { has_dlc = "Waking the Tiger" }
+					show_unit_leaders_tooltip = GER_alexander_von_falkenhausen
+				}
+			}
 		}
 	}
 
@@ -16012,256 +16128,6 @@ focus_tree = {
 
 	}
 
-	focus = {
-		id = GER_mittelafrika
-		icon = GFX_focus_GER_mittelafrika
-		prerequisite = { focus = GER_reclaim_former_african_colonies }
-
-		x = 0
-		y = 1
-		relative_position_id = GER_reclaim_former_african_colonies
-		cost = 10
-		available = {
-			is_subject = no
-			has_government = fascism
-			has_completed_focus = GER_uplift_the_rosenberg_office
-			any_controlled_state = {
-				is_on_continent = africa
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_MANPOWER }
-
-		completion_reward = {
-
-			IF = {
-				limit = {
-					NOT = {
-						897 = { #Zambia-Mocambique
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 897
-			}
-			IF = {
-				limit = {
-					NOT = {
-						896 = { #Manica e Sofala
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 896 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						544 = { #Lourenco Marques
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 544
-			}
-			IF = {
-				limit = {
-					NOT = {
-						540 = { #Luanda
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 540 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						892 = { #South West Angola
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 892
-			}
-			IF = {
-				limit = {
-					NOT = {
-						891 = { #Zambesi
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 891 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						295 = { #Leopoldville
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 295
-			}
-			IF = {
-				limit = {
-					NOT = {
-						889 = { #Elisabethville
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 889 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						888 = { #Lusambo
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 888
-			}
-			IF = {
-				limit = {
-					NOT = {
-						538 = { #Coquilhatville
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 538 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						890 = { #Costermansville
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 890
-			}
-			IF = {
-				limit = {
-					NOT = {
-						769 = { #Burundi
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 769 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						768 = { #Rwanda
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 768 
-			}
-			IF = {
-				limit = {
-					NOT = {
-						718 = { #Stanelyville
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 718
-			}
-			IF = {
-				limit = {
-					NOT = {
-						539 = { #Gabon
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 539
-			}
-			IF = {
-				limit = {
-					NOT = {
-						772 = { #Middle Congo
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 772
-			}
-			IF = {
-				limit = {
-					NOT = {
-						297 = { #Equatorial Guinea
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 297
-			}
-			IF = {
-				limit = {
-					NOT = {
-						545 = { #Rhodesia
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 545
-			}
-			IF = {
-				limit = {
-					NOT = {
-						981 = { #Barotziland
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 981
-			}
-			IF = {
-				limit = {
-					NOT = {
-						771 = { #Northeast Rhodesia
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 771
-			}
-			IF = {
-				limit = {
-					NOT = {
-						770 = { #Malawi
-							is_claimed_by = ROOT
-						}
-					}
-				}
-				add_state_claim = 770
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-
-			unlock_decision_tooltip = GER_reichskommissariat_nordafrika
-			unlock_decision_tooltip = GER_reichskommissariat_mittelafrika
-
-			custom_effect_tooltip = generic_skip_one_line_tt 
-
-			custom_effect_tooltip = GER_mittelafrika_revive_the_schutztruppe_tt
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			add_named_threat = { 
-				threat = 3
-				name = GER_mittelafrika
-			}
-
-		}
-	}
 		
 	focus = {
 		id = GER_re_establish_german_control_over_qingdao
@@ -17431,60 +17297,17 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GER_create_asian_reichskommissariat
-		icon = GFX_focus_GER_create_asian_reichskommissariat
-		prerequisite = { focus = GER_ally_chiang_kai_shek focus = GER_negotiate_old_colonies_in_the_east }
-
-		x = 2
-		y = 1
-		relative_position_id = GER_ally_chiang_kai_shek
-		cost = 10
-		available = {
-			is_subject = no
-			has_government = fascism
-			has_completed_focus = GER_uplift_the_rosenberg_office
-			any_controlled_state = {
-				is_on_continent = asia
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_MILITARY_CHARACTER }
-
-		completion_reward = {
-
-			IF = {
-				limit = {
-					NOT = {
-						has_global_flag = falkenhausen_recalled
-					}
-				}
-				custom_effect_tooltip = GER_japan_friend_tt
-				set_global_flag = falkenhausen_recalled
-				if = {
-					limit = {
-						has_dlc = "Waking the Tiger"
-					}
-					show_unit_leaders_tooltip = GER_alexander_von_falkenhausen
-				}
-			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			unlock_decision_tooltip = GER_reichskommissariat_arabien
-			unlock_decision_tooltip = GER_reichskommissariat_hindustan
-			unlock_decision_tooltip = GER_reichskommissariat_ostasien
-			unlock_decision_tooltip = GER_reichskommissariat_australasien
-		}
-	}
 	
 	focus = {
 		id = GER_south_east_asian_natural_wealth
 		icon = GFX_focus_GER_south_east_asian_natural_wealth
 		prerequisite = { focus = GER_ally_chiang_kai_shek focus = GER_negotiate_old_colonies_in_the_east }
 
-		x = 2
-		y = 0
-		relative_position_id = GER_create_asian_reichskommissariat
+		# Was (2,0) from GER_create_asian_reichskommissariat, which sat at
+		# (2,1) from Ally Chiang Kai-shek. (4,1) from that keeps it in place.
+		x = 4
+		y = 1
+		relative_position_id = GER_ally_chiang_kai_shek
 		cost = 10
 		available = {
 			is_subject = no
@@ -17519,7 +17342,7 @@ focus_tree = {
 		icon = GFX_focus_GER_the_proud_eagle_and_the_rising_dragon
 
 		prerequisite = { focus = GER_ally_chiang_kai_shek }
-		prerequisite = { focus = GER_create_asian_reichskommissariat }
+		# Second prerequisite dropped with GER_create_asian_reichskommissariat.
 
 		x = 0
 		y = 2
