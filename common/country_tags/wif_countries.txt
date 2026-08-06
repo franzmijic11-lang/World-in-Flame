@@ -1,1 +1,3 @@
 SME = "countries/Soviet Military Emergency Government.txt"
+
+NSR = "countries/Novgorod Soviet Republic.txt"

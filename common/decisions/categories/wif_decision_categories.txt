@@ -1,3 +1,17 @@
+wif_rkm_unrest = {
+	icon = GFX_decision_category_generic_political_actions
+
+	allowed = {
+		tag = RKM
+	}
+
+	visible = {
+		has_completed_focus = RKM_germanisation
+	}
+
+	priority = 100
+}
+
 wif_chase_terrorists = {
 	icon = GFX_goal_anti_comintern_pact
 

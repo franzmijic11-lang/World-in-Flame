@@ -1,0 +1,60 @@
+# The Novgorod rising.
+#
+# Deliberately NOT start_civil_war: that would split Moskowien's army between
+# the two sides. Moskowien keeps every division it has, and the rebels get
+# purpose-built formations of their own from NSR_revolt.txt instead.
+#
+# Run in RKM's scope.
+wif_nsr_revolt = {
+	# Whoever breaks away from Moskowien fights with Moskowien's technology.
+	save_event_target_as = wif_tech_donor
+
+	# Novgorod first: transferring a state is what brings NSR into existence.
+	263 = { transfer_state_to = NSR }
+	208 = { transfer_state_to = NSR }
+
+	NSR = {
+		# History files do not apply to countries created mid-game, so politics
+		# and capital have to be set explicitly.
+		set_capital = { state = 263 }
+
+		set_politics = {
+			ruling_party = communism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 5
+			communism = 90
+			neutrality = 0
+		}
+
+		set_research_slots = 3
+		set_stability = 0.6
+		set_war_support = 0.8
+
+		add_state_core = 263
+		add_state_core = 208
+
+		wif_inherit_tech_from_donor = yes
+
+		# Templates and divisions. load_oob rather than create_unit, which does
+		# not fire reliably from this kind of context.
+		load_oob = "NSR_revolt"
+
+		# A thousand rifles of the best pattern Moskowien fields. The tech copy
+		# above means infantry_equipment resolves to that same latest variant.
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = NSR
+		}
+
+		declare_war_on = {
+			target = RKM
+			type = annex_everything
+		}
+	}
+}

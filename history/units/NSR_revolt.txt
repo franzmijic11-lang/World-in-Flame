@@ -1,0 +1,106 @@
+# Rising of the Novgorod Soviet Republic.
+#
+# Two columns of militia: three battalions in the first, two in the second.
+# start_experience_factor 0 leaves them at Green, start_equipment_factor 1.0
+# means they take the field fully equipped from RKM's own arsenals.
+division_template = {
+	name = "Narodnoye Opolcheniye"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	# --- Novgorod, state 263, VP province 117 ---
+	division = {
+		name = "1-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "5-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "6-ya Novgorodskaya Diviziya"
+		location = 117
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# --- Luga, state 208, VP province 9098 ---
+	division = {
+		name = "1-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "5-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "6-ya Luzhskaya Diviziya"
+		location = 9098
+		division_template = "Narodnoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}
