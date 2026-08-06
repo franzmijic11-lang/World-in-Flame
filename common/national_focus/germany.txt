@@ -10839,7 +10839,10 @@ focus_tree = {
 		prerequisite = { focus = GER_fate_of_czechoslovakia focus = GER_integrate_czechoslovakia }
 		mutually_exclusive = { focus = GER_invade_italy }
 		x = 2
-		y = 4
+		# Shifted one row down. The Italian, Spanish and Portuguese focuses are
+		# all anchored to this one through relative_position_id chains, and
+		# nothing outside that cluster is, so the whole block follows.
+		y = 5
 		relative_position_id = GER_integrate_czechoslovakia
 		cost = 5
 
