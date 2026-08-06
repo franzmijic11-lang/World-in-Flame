@@ -6,10 +6,9 @@
 #
 # Run in RKM's scope.
 wif_nsr_revolt = {
-	# Marks the civil war as running. Global rather than a country flag on
-	# Moskowien, because the no-peace-deal rule in on_capitulation has to keep
-	# working even if Moskowien itself is the one that gets annexed.
-	set_global_flag = wif_moskowien_civil_war
+	# Marks the civil war as running. Cleared when Moskowien has put it down,
+	# which is what triggers Saint Petersburg folding back in.
+	set_country_flag = wif_moskowien_civil_war
 
 	# Whoever breaks away from Moskowien fights with Moskowien's technology.
 	save_event_target_as = wif_tech_donor

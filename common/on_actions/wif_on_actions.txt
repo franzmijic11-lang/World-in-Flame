@@ -1,45 +1,4 @@
 on_actions = {
-	# No peace conferences inside the Moskowien civil war. Whoever forces a
-	# capitulation takes the loser outright and the war carries on against
-	# whoever is left.
-	#
-	# ROOT is the country that capitulated, FROM is the winner. BOTH have to be
-	# civil war participants, so an outside power that happens to beat one of
-	# them still goes through a normal peace conference rather than swallowing
-	# it for free.
-	#
-	# transfer_troops = no: a beaten faction's forces are destroyed, not handed
-	# to the victor. Add any future combatant to both lists below.
-	on_capitulation = {
-		effect = {
-			if = {
-				limit = {
-					has_global_flag = wif_moskowien_civil_war
-					OR = {
-						tag = RKM
-						tag = NSR
-						tag = SSM
-						tag = NSP
-					}
-					FROM = {
-						OR = {
-							tag = RKM
-							tag = NSR
-							tag = SSM
-							tag = NSP
-						}
-					}
-				}
-				FROM = {
-					annex_country = {
-						target = ROOT
-						transfer_troops = no
-					}
-				}
-			}
-		}
-	}
-
 	# Record every country's starting military factories so the ratio cap can
 	# grandfather them. A nation that begins the game over its ratio keeps what
 	# it started with; only factories built afterwards can ever be taken away.
@@ -101,7 +60,7 @@ on_actions = {
 			if = {
 				limit = {
 					tag = RKM
-					has_global_flag = wif_moskowien_civil_war
+					has_country_flag = wif_moskowien_civil_war
 					country_exists = NSP
 					NOT = { country_exists = NSR }
 					NOT = { country_exists = SSM }
