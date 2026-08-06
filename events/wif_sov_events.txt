@@ -303,6 +303,11 @@ country_event = {
 			add_core_of = KAR
 		}
 
+		# === Vladivostok goes to whoever holds Korea, or Manchuria if Korea is
+		# independent. Must run before the every_state sweep further down, which
+		# would otherwise hand it to SME with the rest of Soviet territory. ===
+		wif_award_vladivostok = yes
+
 		# === White peace between SOV and GER ===
 		white_peace = GER
 

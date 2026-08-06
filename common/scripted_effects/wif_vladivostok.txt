@@ -1,0 +1,58 @@
+# Vladivostok (408) changes hands when the Soviet Union is carved up.
+#
+# It goes to whoever holds Korea, or to that country's overlord if it is itself
+# a puppet - so a Japanese-run Korea hands the port to Tokyo, and a puppet
+# Korea hands it to whoever pulls the puppet's strings. Only if Korea is in
+# Korean hands AND independent does it fall to the owner of Manchuria instead.
+#
+# State 525 (South Korea) stands in for Korea as a whole, and 328 (Manchukuo)
+# for Manchuria. Run from the SOV scope inside wif_sov.1, before the
+# every_state sweep that hands the rest of the Soviet Union to SME.
+wif_award_vladivostok = {
+	525 = {
+		owner = {
+			save_event_target_as = wif_korea_owner
+		}
+	}
+
+	if = {
+		# Korea is held by a puppet - the overlord collects.
+		limit = {
+			event_target:wif_korea_owner = { is_subject = yes }
+		}
+		event_target:wif_korea_owner = {
+			overlord = {
+				save_event_target_as = wif_vladivostok_heir
+			}
+		}
+	}
+	else_if = {
+		# Korea is held by a foreign power in its own right.
+		limit = {
+			NOT = { event_target:wif_korea_owner = { tag = KOR } }
+		}
+		event_target:wif_korea_owner = {
+			save_event_target_as = wif_vladivostok_heir
+		}
+	}
+	else = {
+		# Korea is Korean and independent - Manchuria's owner takes it.
+		328 = {
+			owner = {
+				save_event_target_as = wif_vladivostok_heir
+			}
+		}
+	}
+
+	# Only hand over a port the Soviets still hold. If someone already took it
+	# by force, it stays theirs rather than being confiscated by this clause.
+	if = {
+		limit = {
+			408 = { is_owned_by = SOV }
+			NOT = { event_target:wif_vladivostok_heir = { tag = SOV } }
+		}
+		event_target:wif_vladivostok_heir = {
+			transfer_state = 408
+		}
+	}
+}
