@@ -1,5 +1,49 @@
 add_namespace = wif_rkm_civilwar
 
+# The rising breaks out. Fired from wif_nsr_revolt the moment the breakaways are
+# created, and broadcast to the world. Purely an announcement - every mechanical
+# effect of the rising happens in the scripted effect that fires this.
+news_event = {
+	id = wif_rkm_civilwar.2
+	title = wif_rkm_civilwar.2.t
+	desc = wif_rkm_civilwar.2.desc
+	picture = GFX_wif_moskowien_civil_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	# Moskowien
+	option = {
+		name = wif_rkm_civilwar.2.a
+		trigger = {
+			tag = RKM
+		}
+	}
+
+	# Berlin
+	option = {
+		name = wif_rkm_civilwar.2.b
+		trigger = {
+			tag = GER
+		}
+	}
+
+	# Everyone else. NOT wrapping an OR, not two tags in one NOT - the latter
+	# reads as NOT(RKM and GER), which is true for everybody including Germany.
+	option = {
+		name = wif_rkm_civilwar.2.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = RKM
+					tag = GER
+				}
+			}
+		}
+	}
+}
+
 # The Moskowien civil war is over. Fired from on_weekly once every breakaway is
 # gone, and it is this event that carries out the reunification.
 #
@@ -11,7 +55,7 @@ news_event = {
 	id = wif_rkm_civilwar.1
 	title = wif_rkm_civilwar.1.t
 	desc = wif_rkm_civilwar.1.desc
-	picture = GFX_news_event_generic_sign_treaty3
+	picture = GFX_wif_moskowien_civil_war
 
 	major = yes
 

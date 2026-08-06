@@ -232,3 +232,8 @@
  wif_rkm_civilwar.1.desc:0 "The last of the risings against the Reichskommissariat has been put down. What began with partisan cells in Novgorod became a war of every faction against every other, and it ends with the Reichskommissar still in Moskau.\n\nThe Notfallregierung von Sankt Petersburg, raised in haste to hold the city and never intended to outlive the emergency, has dissolved itself back into the Reichskommissariat. Its militia have been stood down and sent home. The city and its approaches return to Moskowien's administration."
  wif_rkm_civilwar.1.a:0 "The Reichskommissariat stands. Disband the levy."
  wif_rkm_civilwar.1.b:0 "The Germans have held the east."
+ wif_rkm_civilwar.2.t:0 "Civil War in Moskowien"
+ wif_rkm_civilwar.2.desc:0 "The Reichskommissariat has come apart. What the German press had been calling banditry in the northern forests is an army, and it is marching under a red flag with the hammer still on it. Novgorod and Luga have declared themselves a Soviet republic and the garrisons there are gone.\n\nSaint Petersburg has not waited for orders from Moskau. An emergency government has taken the city in hand and raised whatever it could arm, and it means to hold the place whoever else falls.\n\nWhat comes out of the east now is smoke, and nobody in Berlin can say yet how much of it is Moskau."
+ wif_rkm_civilwar.2.a:0 "Every man who can hold a rifle. Now."
+ wif_rkm_civilwar.2.b:0 "The Reichskommissar will restore order, or he will be replaced."
+ wif_rkm_civilwar.2.c:0 "The Germans are burning in the country they conquered."

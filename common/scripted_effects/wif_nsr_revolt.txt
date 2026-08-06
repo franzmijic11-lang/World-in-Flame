@@ -13,6 +13,9 @@ wif_nsr_revolt = {
 	# Whoever breaks away from Moskowien fights with Moskowien's technology.
 	save_event_target_as = wif_tech_donor
 
+	# Tell the world the Reichskommissariat has come apart.
+	news_event = { id = wif_rkm_civilwar.2 }
+
 	# Saint Petersburg forms FIRST, so the rebels below have something to
 	# declare war on. It is a loyalist emergency government, not a rebellion.
 	wif_nsp_formation = yes

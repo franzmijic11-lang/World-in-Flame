@@ -3,4 +3,8 @@ spriteTypes = {
 		name = "GFX_wif_sov_surrender"
 		texturefile = "gfx/event_pictures/wif_sov_surrender.tga"
 	}
+	spriteType = {
+		name = "GFX_wif_moskowien_civil_war"
+		texturefile = "gfx/event_pictures/wif_moskowien_civil_war.dds"
+	}
 }
