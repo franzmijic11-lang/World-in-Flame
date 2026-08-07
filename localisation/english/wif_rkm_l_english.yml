@@ -237,3 +237,5 @@
  wif_rkm_civilwar.2.a:0 "Every man who can hold a rifle. Now."
  wif_rkm_civilwar.2.b:0 "The Reichskommissar will restore order, or he will be replaced."
  wif_rkm_civilwar.2.c:0 "The Germans are burning in the country they conquered."
+ wif_splinter_no_factions:0 "No Diplomatic Standing"
+ wif_splinter_no_factions_desc:0 "We exist because a larger state came apart, and every capital that matters knows it. Nobody will sign an alliance with a government that may not survive the year, and we are in no position to build one of our own. Whatever friends we have are the ones we started with."

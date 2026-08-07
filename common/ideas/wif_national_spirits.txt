@@ -85,6 +85,33 @@ ideas = {
 			}
 		}
 
+		# Default for every splinter state - the Moskowien civil war breakaways
+		# and the Soviet successor alike. A rump state thrown up by someone
+		# else's collapse has no business assembling an alliance bloc.
+		#
+		# To exempt one, just do not apply it, or remove_ideas it afterwards.
+		# Saint Petersburg is the existing exception in spirit: it is added to
+		# Moskowien's faction FIRST and only then locked, so the scripted
+		# alliance stands but it cannot go shopping for another.
+		wif_splinter_no_factions = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			rule = {
+				can_join_factions = no
+				can_create_factions = no
+			}
+		}
+
 		# The Saint Petersburg emergency government's whole reason to exist: a
 		# city militia dug into its own streets.
 		wif_nsp_city_defence = {

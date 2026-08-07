@@ -51,6 +51,8 @@ wif_nsr_revolt = {
 
 		wif_inherit_tech_from_donor = yes
 
+		add_ideas = wif_splinter_no_factions
+
 		# Templates and divisions. load_oob rather than create_unit, which does
 		# not fire reliably from this kind of context.
 		load_oob = "NSR_revolt"
@@ -121,6 +123,8 @@ wif_ssm_mutiny = {
 		# reclaiming a homeland.
 
 		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_splinter_no_factions
 
 		load_oob = "SSM_revolt"
 
@@ -233,5 +237,12 @@ wif_nsp_formation = {
 		}
 		give_guarantee = NSP
 		NSP = { give_guarantee = PREV }
+	}
+
+	# Locked only AFTER the faction work above, otherwise the rule would block
+	# the very alliance it is meant to have. Its scripted place beside
+	# Moskowien stands; it just cannot go looking for another.
+	NSP = {
+		add_ideas = wif_splinter_no_factions
 	}
 }

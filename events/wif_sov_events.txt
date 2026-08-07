@@ -343,6 +343,11 @@ country_event = {
 				communism = 85
 				neutrality = 5
 			}
+
+			# Splinter states do not get to assemble alliance blocs. Same rule
+			# the Moskowien civil war breakaways carry. Anything that later
+			# splinters off SME should be given this too.
+			add_ideas = wif_splinter_no_factions
 		}
 
 		# === Transfer every SOV unit (army, navy, air) and stockpile to SME while SOV still owns states ===
