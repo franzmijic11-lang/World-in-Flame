@@ -1286,3 +1286,13 @@ RLF = {
 	color = rgb { 235 200 60 }
 	color_ui = rgb { 235 200 60 }
 }
+
+WRS = {
+	color = rgb { 150 20 30 }
+	color_ui = rgb { 150 20 30 }
+}
+
+LOK = {
+	color = rgb { 210 210 215 }
+	color_ui = rgb { 210 210 215 }
+}

@@ -22,6 +22,13 @@ on_actions = {
 				255 = { remove_core_of = RLF }
 				250 = { remove_core_of = RLF }
 			}
+			if = {
+				limit = { tag = WRS }
+				220 = { remove_core_of = WRS }
+				240 = { remove_core_of = WRS }
+				260 = { remove_core_of = WRS }
+				258 = { remove_core_of = WRS }
+			}
 		}
 	}
 
@@ -40,6 +47,13 @@ on_actions = {
 				239 = { remove_core_of = RLF }
 				255 = { remove_core_of = RLF }
 				250 = { remove_core_of = RLF }
+			}
+			if = {
+				limit = { FROM = { tag = WRS } }
+				220 = { remove_core_of = WRS }
+				240 = { remove_core_of = WRS }
+				260 = { remove_core_of = WRS }
+				258 = { remove_core_of = WRS }
 			}
 		}
 	}
@@ -102,14 +116,17 @@ on_actions = {
 			# reunification with the Saint Petersburg emergency government.
 			#
 			# Add any future civil war combatant to the NOT list below.
+			# The war is over when every REBEL is gone. Deliberately not gated on
+			# a loyalist still existing: Saint Petersburg or Lokot could be
+			# overrun on the way and Moskowien still win.
 			if = {
 				limit = {
 					tag = RKM
 					has_country_flag = wif_moskowien_civil_war
-					country_exists = NSP
 					NOT = { country_exists = NSR }
 					NOT = { country_exists = SSM }
 					NOT = { country_exists = RLF }
+					NOT = { country_exists = WRS }
 				}
 				news_event = { id = wif_rkm_civilwar.1 }
 			}

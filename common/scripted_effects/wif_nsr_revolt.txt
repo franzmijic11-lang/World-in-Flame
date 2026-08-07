@@ -82,6 +82,13 @@ wif_nsr_revolt = {
 	# the Germans and the communists alike.
 	wif_rlf_rising = yes
 
+	# The labour camps of the west go up at the same time.
+	wif_wrs_rising = yes
+
+	# Lokot declares for Moskowien rather than against it, so it forms after the
+	# risings it is meant to fight.
+	wif_lok_formation = yes
+
 	# If the Wehrmacht holds the balance of power when the rising breaks out, the
 	# SS will not sit under an army-run administration while it burns. Tikhvin
 	# goes with them, and they fight Moskowien and Novgorod both.
@@ -169,6 +176,143 @@ wif_rlf_rising = {
 	}
 }
 
+# The West Russian Slave Revolt. Run in RKM's scope, from wif_nsr_revolt.
+# Does NOT declare on Novgorod: two communist risings have no quarrel.
+wif_wrs_rising = {
+	220 = { transfer_state_to = WRS }
+	240 = { transfer_state_to = WRS }
+	260 = { transfer_state_to = WRS }
+	258 = { transfer_state_to = WRS }
+
+	WRS = {
+		set_capital = { state = 220 }
+
+		set_politics = {
+			ruling_party = communism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 0
+			communism = 90
+			neutrality = 5
+		}
+
+		set_research_slots = 2
+		set_stability = 0.4
+		set_war_support = 0.9
+
+		add_state_core = 220
+		add_state_core = 240
+		add_state_core = 260
+		add_state_core = 258
+
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_splinter_no_factions
+
+		load_oob = "WRS_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = WRS
+		}
+
+		declare_war_on = {
+			target = RKM
+			type = annex_everything
+		}
+		if = {
+			limit = { country_exists = NSP }
+			declare_war_on = {
+				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = RLF }
+			declare_war_on = {
+				target = RLF
+				type = annex_everything
+			}
+		}
+	}
+}
+
+# The Lokot Autonomy. Loyalist, like Saint Petersburg: it forms on Moskowien's
+# side and folds back in if Moskowien wins. Run in RKM's scope.
+wif_lok_formation = {
+	224 = { transfer_state_to = LOK }
+
+	LOK = {
+		set_capital = { state = 224 }
+
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 85
+			communism = 0
+			neutrality = 10
+		}
+
+		set_research_slots = 2
+		set_stability = 0.5
+		set_war_support = 0.85
+
+		# Kept, and passed to Moskowien on reintegration.
+		add_state_core = 224
+
+		wif_inherit_tech_from_donor = yes
+
+		load_oob = "LOK_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = LOK
+		}
+	}
+
+	# Same faction handling as Saint Petersburg: follow Moskowien's own
+	# membership rather than assuming Germany leads it.
+	if = {
+		limit = { is_faction_leader = yes }
+		add_to_faction = LOK
+	}
+	else_if = {
+		limit = { is_in_faction = yes }
+		every_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = PREV
+			}
+			add_to_faction = LOK
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { LOK = { is_in_faction_with = PREV } }
+		}
+		give_guarantee = LOK
+		LOK = { give_guarantee = PREV }
+	}
+
+	# Locked only after the faction work, or the rule would block the alliance
+	# it exists to have.
+	LOK = {
+		add_ideas = wif_splinter_no_factions
+	}
+}
+
 # The SS breakaway. Run in RKM's scope, from wif_nsr_revolt.
 wif_ssm_mutiny = {
 	# Their equipment comes from the Reich proper, not from Moskowien.
@@ -241,6 +385,20 @@ wif_ssm_mutiny = {
 			limit = { country_exists = RLF }
 			declare_war_on = {
 				target = RLF
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = WRS }
+			declare_war_on = {
+				target = WRS
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = LOK }
+			declare_war_on = {
+				target = LOK
 				type = annex_everything
 			}
 		}

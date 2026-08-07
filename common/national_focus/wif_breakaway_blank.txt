@@ -19,6 +19,8 @@ focus_tree = {
 				tag = SSM
 				tag = NSP
 				tag = RLF
+				tag = WRS
+				tag = LOK
 			}
 		}
 	}

@@ -65,18 +65,27 @@ news_event = {
 		hidden_effect = {
 			RKM = {
 				if = {
-					limit = {
-						has_country_flag = wif_moskowien_civil_war
-						country_exists = NSP
-					}
-					annex_country = {
-						target = NSP
-						transfer_troops = no
-					}
+					limit = { has_country_flag = wif_moskowien_civil_war }
 
-					# Saint Petersburg was the emergency government's own core
-					# and passes to Moskowien with the city.
-					add_state_core = 195
+					# Each loyalist folds back in separately, so one of them
+					# being overrun during the war does not block the other.
+					if = {
+						limit = { country_exists = NSP }
+						annex_country = {
+							target = NSP
+							transfer_troops = no
+						}
+						# Their own core, passed to Moskowien with the city.
+						add_state_core = 195
+					}
+					if = {
+						limit = { country_exists = LOK }
+						annex_country = {
+							target = LOK
+							transfer_troops = no
+						}
+						add_state_core = 224
+					}
 
 					clr_country_flag = wif_moskowien_civil_war
 				}

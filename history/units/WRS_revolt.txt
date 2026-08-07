@@ -1,0 +1,90 @@
+# The West Russian Slave Revolt.
+#
+# Two militia divisions raised in each state, and a third in Kursk where it
+# started. Green and fully equipped - they took the guns from the guards.
+
+division_template = {
+	name = "Vosstavshaya Diviziya"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+
+}
+
+units = {
+	# state 220, VP province 3580
+	division = {
+		name = "1. Kurskaya Diviziya"
+		location = 3580
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Kurskaya Diviziya"
+		location = 3580
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3. Kurskaya Diviziya"
+		location = 3580
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 240, VP province 9449
+	division = {
+		name = "1. Belgorodskaya Diviziya"
+		location = 9449
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Belgorodskaya Diviziya"
+		location = 9449
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 260, VP province 413
+	division = {
+		name = "1. Voronezhskaya Diviziya"
+		location = 413
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Voronezhskaya Diviziya"
+		location = 413
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 258, VP province 6398
+	division = {
+		name = "1. Lipetskaya Diviziya"
+		location = 6398
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Lipetskaya Diviziya"
+		location = 6398
+		division_template = "Vosstavshaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}

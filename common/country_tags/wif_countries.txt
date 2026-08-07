@@ -7,3 +7,7 @@ SSM = "countries/SS Military State Moscowien.txt"
 NSP = "countries/Notfallregierung von Sankt Petersburg.txt"
 
 RLF = "countries/Russian Liberation Front.txt"
+
+WRS = "countries/West Russian Slave Revolt.txt"
+
+LOK = "countries/Lokot Autonomy.txt"
