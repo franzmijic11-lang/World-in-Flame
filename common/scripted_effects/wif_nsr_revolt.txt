@@ -10,14 +10,6 @@ wif_nsr_revolt = {
 	# which is what triggers Saint Petersburg folding back in.
 	set_country_flag = wif_moskowien_civil_war
 
-	# Stamp every state Moskowien holds right now, BEFORE a single one is
-	# handed to a breakaway. If Moskowien wins, everything carrying this flag
-	# comes back, whoever is sitting on it by then - which stops Germany or an
-	# opportunist neighbour from pocketing the wreckage of the civil war.
-	every_owned_state = {
-		set_state_flag = wif_prewar_rkm_state
-	}
-
 	# Whoever breaks away from Moskowien fights with Moskowien's technology.
 	save_event_target_as = wif_tech_donor
 
