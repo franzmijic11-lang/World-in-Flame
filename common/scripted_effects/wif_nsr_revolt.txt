@@ -128,7 +128,13 @@ wif_rlf_rising = {
 		set_stability = 0.5
 		set_war_support = 0.85
 
-		# No cores. They are seizing the ground they stand on, as the SS are.
+		# Cored, like Novgorod. This is a Russian national movement claiming
+		# Russian land, not an occupation. Stripped again on defeat in
+		# common/on_actions/wif_on_actions.txt.
+		add_state_core = 257
+		add_state_core = 239
+		add_state_core = 255
+		add_state_core = 250
 
 		wif_inherit_tech_from_donor = yes
 

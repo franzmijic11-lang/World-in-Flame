@@ -15,6 +15,13 @@ on_actions = {
 				263 = { remove_core_of = NSR }
 				208 = { remove_core_of = NSR }
 			}
+			if = {
+				limit = { tag = RLF }
+				257 = { remove_core_of = RLF }
+				239 = { remove_core_of = RLF }
+				255 = { remove_core_of = RLF }
+				250 = { remove_core_of = RLF }
+			}
 		}
 	}
 
@@ -26,6 +33,13 @@ on_actions = {
 				limit = { FROM = { tag = NSR } }
 				263 = { remove_core_of = NSR }
 				208 = { remove_core_of = NSR }
+			}
+			if = {
+				limit = { FROM = { tag = RLF } }
+				257 = { remove_core_of = RLF }
+				239 = { remove_core_of = RLF }
+				255 = { remove_core_of = RLF }
+				250 = { remove_core_of = RLF }
 			}
 		}
 	}
