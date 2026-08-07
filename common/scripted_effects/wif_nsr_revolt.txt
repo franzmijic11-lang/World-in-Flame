@@ -279,6 +279,32 @@ wif_lok_formation = {
 			amount = 300
 			producer = LOK
 		}
+
+		# Into the fight from the first day rather than waiting to be dragged in
+		# by the faction. Every rising that already exists, which is all of them
+		# except the SS - Lokot forms before that one, and the SS declare on
+		# Lokot themselves.
+		if = {
+			limit = { country_exists = NSR }
+			declare_war_on = {
+				target = NSR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = RLF }
+			declare_war_on = {
+				target = RLF
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = WRS }
+			declare_war_on = {
+				target = WRS
+				type = annex_everything
+			}
+		}
 	}
 
 	# Same faction handling as Saint Petersburg: follow Moskowien's own
