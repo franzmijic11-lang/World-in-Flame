@@ -87,6 +87,20 @@ news_event = {
 						add_state_core = 224
 					}
 
+					# Everything Moskowien held when the rising began comes
+					# back, whoever ended up holding it. Runs after the
+					# annexations so the loyalists' territory is already in
+					# hand and this only has to sweep up what changed hands
+					# during the fighting. The flag is cleared as it goes, so
+					# a later civil war starts from a clean slate.
+					every_state = {
+						limit = {
+							has_state_flag = wif_prewar_rkm_state
+						}
+						transfer_state_to = RKM
+						clr_state_flag = wif_prewar_rkm_state
+					}
+
 					clr_country_flag = wif_moskowien_civil_war
 				}
 			}
