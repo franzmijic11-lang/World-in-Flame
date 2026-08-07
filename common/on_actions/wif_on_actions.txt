@@ -95,6 +95,7 @@ on_actions = {
 					country_exists = NSP
 					NOT = { country_exists = NSR }
 					NOT = { country_exists = SSM }
+					NOT = { country_exists = RLF }
 				}
 				news_event = { id = wif_rkm_civilwar.1 }
 			}

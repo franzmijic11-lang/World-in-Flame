@@ -5,3 +5,5 @@ NSR = "countries/Novgorod Soviet Republic.txt"
 SSM = "countries/SS Military State Moscowien.txt"
 
 NSP = "countries/Notfallregierung von Sankt Petersburg.txt"
+
+RLF = "countries/Russian Liberation Front.txt"

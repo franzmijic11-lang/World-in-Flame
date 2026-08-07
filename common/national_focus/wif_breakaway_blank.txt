@@ -1,0 +1,47 @@
+# Blank focus tree for every Moskowien civil war breakaway.
+#
+# Without this they would fall through to the generic tree, which is full of
+# industry and army focuses no rump state fighting for its life should have.
+#
+# The tree carries a single focus hidden behind allow_branch = { always = no }
+# rather than being genuinely empty, so the file is a structurally valid
+# focus_tree while nothing at all renders in the panel.
+focus_tree = {
+	id = wif_breakaway_blank_focus
+
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 100
+			OR = {
+				tag = NSR
+				tag = SSM
+				tag = NSP
+				tag = RLF
+			}
+		}
+	}
+
+	default = no
+
+	focus = {
+		id = wif_breakaway_no_focuses
+		icon = GFX_goal_unknown
+
+		allow_branch = {
+			always = no
+		}
+
+		x = 0
+		y = 0
+		cost = 10
+
+		available = {
+			always = no
+		}
+
+		completion_reward = {
+		}
+	}
+}

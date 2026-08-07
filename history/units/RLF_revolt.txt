@@ -1,0 +1,138 @@
+# The Russian Liberation Front rises in the south-east.
+#
+# Same shape as the Novgorod levy - three militia battalions in the first
+# column, two in the second - but raised by Russian nationalists rather than
+# communists, so the formations carry their own names.
+division_template = {
+	name = "Osvoboditelnaya Diviziya"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	# state 257, VP province 11351
+	division = {
+		name = "1. Tambovskaya Diviziya"
+		location = 11351
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Tambovskaya Diviziya"
+		location = 11351
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3. Tambovskaya Diviziya"
+		location = 11351
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4. Tambovskaya Diviziya"
+		location = 11351
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 239, VP province 3578
+	division = {
+		name = "1. Saratovskaya Diviziya"
+		location = 3578
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Saratovskaya Diviziya"
+		location = 3578
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3. Saratovskaya Diviziya"
+		location = 3578
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4. Saratovskaya Diviziya"
+		location = 3578
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 255, VP province 9258
+	division = {
+		name = "1. Penzenskaya Diviziya"
+		location = 9258
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Penzenskaya Diviziya"
+		location = 9258
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3. Penzenskaya Diviziya"
+		location = 9258
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4. Penzenskaya Diviziya"
+		location = 9258
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# state 250, VP province 392
+	division = {
+		name = "1. Ulyanovskaya Diviziya"
+		location = 392
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2. Ulyanovskaya Diviziya"
+		location = 392
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3. Ulyanovskaya Diviziya"
+		location = 392
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "4. Ulyanovskaya Diviziya"
+		location = 392
+		division_template = "Osvoboditelnaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}
