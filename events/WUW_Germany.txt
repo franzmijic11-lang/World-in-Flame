@@ -9834,8 +9834,17 @@ country_event = {
 
 	option = { # It should be turned into a Reichsgebieten!
 		name = wuw_GER_reichskommissariats.9.a
+		# The AI gives Volga Germany to Moskowien whenever Moskowien exists.
+		# This branch stays as the fallback for when it does not, otherwise
+		# every option would sit at zero and the pick would be arbitrary.
 		ai_chance = {
-			base = 80
+			base = 0
+			modifier = {
+				add = 100
+				NOT = {
+					RKM = { exists = yes }
+				}
+			}
 		}	
 
 		add_political_power = -75
@@ -9856,8 +9865,9 @@ country_event = {
 				exists = yes
 			}
 		}
+		# Always the AI's choice when it is available at all.
 		ai_chance = {
-			base = 20
+			base = 100
 		}		
 		
 		829 = {
