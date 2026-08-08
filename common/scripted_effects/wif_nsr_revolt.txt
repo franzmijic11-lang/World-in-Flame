@@ -514,3 +514,31 @@ wif_nsp_formation = {
 		add_ideas = wif_splinter_no_factions
 	}
 }
+
+# Ryazan changes hands. Called from on_state_control_changed, where ROOT is the
+# new controller.
+#
+# Ryazan is where the labour camps are, and taking it is worth three militia
+# divisions of freed prisoners to whoever does it - but only to the risen
+# states. Moskowien is the gaoler, Sankt Petersburg and Lokot are fighting for
+# it, and the SS mutiny is not liberating anyone, so the three eligible tags are
+# named outright rather than carved out with exceptions.
+#
+# The flag is per country, so each of the three collects once and the state
+# cannot be traded back and forth to farm divisions.
+wif_ryazan_liberation_check = {
+	if = {
+		limit = {
+			OR = {
+				tag = NSR
+				tag = RLF
+				tag = WRS
+			}
+			controls_state = 254
+			NOT = { has_country_flag = wif_ryazan_liberated }
+		}
+
+		set_country_flag = wif_ryazan_liberated
+		load_oob = "wif_ryazan_liberation"
+	}
+}

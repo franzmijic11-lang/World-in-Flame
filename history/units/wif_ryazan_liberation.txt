@@ -1,0 +1,44 @@
+# Reinforcements for whoever throws the Germans out of Ryazan.
+#
+# The labour camps there are the reason half the countryside is in revolt. Take
+# the town and the survivors join whoever did it.
+#
+# Same shape as the Novgorod levy - three militia battalions in the first
+# column, two in the second - under its own template name so it does not clash
+# with the template each risen state already carries.
+division_template = {
+	name = "Ryazanskoye Opolcheniye"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	# Ryazan, state 254, VP province 11248
+	division = {
+		name = "1-ya Ryazanskaya Diviziya"
+		location = 11248
+		division_template = "Ryazanskoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Ryazanskaya Diviziya"
+		location = 11248
+		division_template = "Ryazanskoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Ryazanskaya Diviziya"
+		location = 11248
+		division_template = "Ryazanskoye Opolcheniye"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}

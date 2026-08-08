@@ -135,6 +135,10 @@ on_actions = {
 
 	on_state_control_changed = {
 		effect = {
+			# ROOT is the new controller, so this reads on whoever just took a
+			# state. The effect works out for itself whether that mattered.
+			wif_ryazan_liberation_check = yes
+
 			219 = {
 				if = {
 					limit = {
