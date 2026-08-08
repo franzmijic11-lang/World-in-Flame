@@ -11,3 +11,7 @@ RLF = "countries/Russian Liberation Front.txt"
 WRS = "countries/West Russian Slave Revolt.txt"
 
 LOK = "countries/Lokot Autonomy.txt"
+
+SRG = "countries/South Russian Provisional Government.txt"
+
+NRG = "countries/North Russian Provisional Government.txt"

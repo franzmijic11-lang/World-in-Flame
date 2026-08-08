@@ -1,0 +1,64 @@
+# The South Russian Provisional Government.
+#
+# Three militia divisions raised in each of its two states. Same 3+2 shape as
+# the Novgorod levy, under its own name.
+
+division_template = {
+	name = "Yuzhnaya Opolchenskaya Diviziya"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	# Gomel, state 241, VP province 9288 - the seat of the provisional government
+	division = {
+		name = "1-ya Gomelskaya Diviziya"
+		location = 9288
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Gomelskaya Diviziya"
+		location = 9288
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Gomelskaya Diviziya"
+		location = 9288
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# Roslavl, state 243, VP province 11336
+	division = {
+		name = "1-ya Roslavlskaya Diviziya"
+		location = 11336
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Roslavlskaya Diviziya"
+		location = 11336
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Roslavlskaya Diviziya"
+		location = 11336
+		division_template = "Yuzhnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}

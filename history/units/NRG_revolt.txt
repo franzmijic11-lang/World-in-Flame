@@ -1,0 +1,64 @@
+# The North Russian Provisional Government.
+#
+# Same establishment as its southern counterpart: three militia divisions in
+# each of its two states, on the same 3+2 template.
+
+division_template = {
+	name = "Severnaya Opolchenskaya Diviziya"
+	is_locked = yes
+	regiments = {
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 0 y = 2 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	# Pskov, state 209, VP province 11202 - the seat of the provisional government
+	division = {
+		name = "1-ya Pskovskaya Diviziya"
+		location = 11202
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Pskovskaya Diviziya"
+		location = 11202
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Pskovskaya Diviziya"
+		location = 11202
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+
+	# Nevel, state 210, VP province 11234
+	division = {
+		name = "1-ya Nevelskaya Diviziya"
+		location = 11234
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "2-ya Nevelskaya Diviziya"
+		location = 11234
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+	division = {
+		name = "3-ya Nevelskaya Diviziya"
+		location = 11234
+		division_template = "Severnaya Opolchenskaya Diviziya"
+		start_experience_factor = 0
+		start_equipment_factor = 1.0
+	}
+}

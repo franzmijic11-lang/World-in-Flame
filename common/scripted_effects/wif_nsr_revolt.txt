@@ -85,6 +85,13 @@ wif_nsr_revolt = {
 	# The labour camps of the west go up at the same time.
 	wif_wrs_rising = yes
 
+	# The two provisional governments proclaim themselves in the same days, one
+	# in the south and one in the north. They form after the risings above so
+	# each declares its wars once, in one direction - and the southern one first
+	# so the northern one can see it exists and leave it alone.
+	wif_srg_rising = yes
+	wif_nrg_rising = yes
+
 	# Lokot declares for Moskowien rather than against it, so it forms after the
 	# risings it is meant to fight.
 	wif_lok_formation = yes
@@ -242,6 +249,172 @@ wif_wrs_rising = {
 	}
 }
 
+# The South Russian Provisional Government. Run in RKM's scope, from
+# wif_nsr_revolt.
+#
+# Claims to be the legitimate government of Russia rather than a faction of it,
+# which is why it fights every other risen state as readily as it fights the
+# Germans. Starts non-aligned with the democrats holding the other half of the
+# country - the split is the whole reason it is only "provisional".
+#
+# Created before its northern counterpart, so the north can see it exists.
+wif_srg_rising = {
+	241 = { transfer_state_to = SRG }
+	243 = { transfer_state_to = SRG }
+
+	SRG = {
+		set_capital = { state = 241 }
+
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 50
+			fascism = 0
+			communism = 0
+			neutrality = 50
+		}
+
+		set_research_slots = 2
+		set_stability = 0.4
+		set_war_support = 0.9
+
+		add_state_core = 241
+		add_state_core = 243
+
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_splinter_no_factions
+
+		load_oob = "SRG_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = SRG
+		}
+
+		declare_war_on = {
+			target = RKM
+			type = annex_everything
+		}
+		if = {
+			limit = { country_exists = NSP }
+			declare_war_on = {
+				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NSR }
+			declare_war_on = {
+				target = NSR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = RLF }
+			declare_war_on = {
+				target = RLF
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = WRS }
+			declare_war_on = {
+				target = WRS
+				type = annex_everything
+			}
+		}
+		# No declaration on the northern government - it does not exist yet, and
+		# it is the one rising these two will not fight. Two halves of the same
+		# claim, arguing over the form of the state rather than over who owns it.
+	}
+}
+
+# The North Russian Provisional Government. Run in RKM's scope, from
+# wif_nsr_revolt. The same establishment as the south - same flag, same
+# strength - but the democrats are in charge here rather than out of power.
+wif_nrg_rising = {
+	209 = { transfer_state_to = NRG }
+	210 = { transfer_state_to = NRG }
+
+	NRG = {
+		set_capital = { state = 209 }
+
+		set_politics = {
+			ruling_party = democratic
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 50
+			fascism = 0
+			communism = 0
+			neutrality = 50
+		}
+
+		set_research_slots = 2
+		set_stability = 0.4
+		set_war_support = 0.9
+
+		add_state_core = 209
+		add_state_core = 210
+
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_splinter_no_factions
+
+		load_oob = "NRG_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 300
+			producer = NRG
+		}
+
+		declare_war_on = {
+			target = RKM
+			type = annex_everything
+		}
+		if = {
+			limit = { country_exists = NSP }
+			declare_war_on = {
+				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NSR }
+			declare_war_on = {
+				target = NSR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = RLF }
+			declare_war_on = {
+				target = RLF
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = WRS }
+			declare_war_on = {
+				target = WRS
+				type = annex_everything
+			}
+		}
+		# Deliberately no declaration on SRG, which by now does exist. The two
+		# provisional governments are the one pair in this war that stays out of
+		# each other's way.
+	}
+}
+
 # The Lokot Autonomy. Loyalist, like Saint Petersburg: it forms on Moskowien's
 # side and folds back in if Moskowien wins. Run in RKM's scope.
 wif_lok_formation = {
@@ -302,6 +475,20 @@ wif_lok_formation = {
 			limit = { country_exists = WRS }
 			declare_war_on = {
 				target = WRS
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = SRG }
+			declare_war_on = {
+				target = SRG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NRG }
+			declare_war_on = {
+				target = NRG
 				type = annex_everything
 			}
 		}
@@ -428,6 +615,20 @@ wif_ssm_mutiny = {
 				type = annex_everything
 			}
 		}
+		if = {
+			limit = { country_exists = SRG }
+			declare_war_on = {
+				target = SRG
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NRG }
+			declare_war_on = {
+				target = NRG
+				type = annex_everything
+			}
+		}
 	}
 }
 
@@ -521,11 +722,11 @@ wif_nsp_formation = {
 # Ryazan is where the labour camps are, and taking it is worth three militia
 # divisions of freed prisoners to whoever does it - but only to the risen
 # states. Moskowien is the gaoler, Sankt Petersburg and Lokot are fighting for
-# it, and the SS mutiny is not liberating anyone, so the three eligible tags are
-# named outright rather than carved out with exceptions.
+# it, and the SS mutiny is not liberating anyone, so the eligible tags are named
+# outright rather than carved out with exceptions.
 #
-# The flag is per country, so each of the three collects once and the state
-# cannot be traded back and forth to farm divisions.
+# The flag is per country, so each of them collects once and the state cannot be
+# traded back and forth to farm divisions.
 wif_ryazan_liberation_check = {
 	if = {
 		limit = {
@@ -533,6 +734,8 @@ wif_ryazan_liberation_check = {
 				tag = NSR
 				tag = RLF
 				tag = WRS
+				tag = SRG
+				tag = NRG
 			}
 			controls_state = 254
 			NOT = { has_country_flag = wif_ryazan_liberated }

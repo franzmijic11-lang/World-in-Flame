@@ -1296,3 +1296,13 @@ LOK = {
 	color = rgb { 210 210 215 }
 	color_ui = rgb { 210 210 215 }
 }
+
+SRG = {
+	color = rgb { 45 120 75 }
+	color_ui = rgb { 45 120 75 }
+}
+
+NRG = {
+	color = rgb { 70 160 165 }
+	color_ui = rgb { 70 160 165 }
+}

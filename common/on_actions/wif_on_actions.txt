@@ -29,6 +29,16 @@ on_actions = {
 				260 = { remove_core_of = WRS }
 				258 = { remove_core_of = WRS }
 			}
+			if = {
+				limit = { tag = SRG }
+				241 = { remove_core_of = SRG }
+				243 = { remove_core_of = SRG }
+			}
+			if = {
+				limit = { tag = NRG }
+				209 = { remove_core_of = NRG }
+				210 = { remove_core_of = NRG }
+			}
 		}
 	}
 
@@ -54,6 +64,16 @@ on_actions = {
 				240 = { remove_core_of = WRS }
 				260 = { remove_core_of = WRS }
 				258 = { remove_core_of = WRS }
+			}
+			if = {
+				limit = { FROM = { tag = SRG } }
+				241 = { remove_core_of = SRG }
+				243 = { remove_core_of = SRG }
+			}
+			if = {
+				limit = { FROM = { tag = NRG } }
+				209 = { remove_core_of = NRG }
+				210 = { remove_core_of = NRG }
 			}
 		}
 	}
@@ -127,6 +147,8 @@ on_actions = {
 					NOT = { country_exists = SSM }
 					NOT = { country_exists = RLF }
 					NOT = { country_exists = WRS }
+					NOT = { country_exists = SRG }
+					NOT = { country_exists = NRG }
 				}
 				news_event = { id = wif_rkm_civilwar.1 }
 			}

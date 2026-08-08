@@ -21,6 +21,8 @@ focus_tree = {
 				tag = RLF
 				tag = WRS
 				tag = LOK
+				tag = SRG
+				tag = NRG
 			}
 		}
 	}
