@@ -108,6 +108,37 @@ wif_nsr_revolt = {
 		}
 		wif_ssm_mutiny = yes
 	}
+
+	# With the garrisons pulled west to fight the risings, the eastern marches
+	# are simply walked into. Gorky, Kargopol and Kotlas go over to the Soviet
+	# emergency government.
+	wif_sme_eastern_annexation = yes
+}
+
+# The Soviets take the eastern marches. Run in RKM's scope, from wif_nsr_revolt.
+#
+# Guarded on SME still existing - it forms out of the Soviet collapse and may
+# well have been finished off before Moskowien ever comes apart. If it is gone,
+# the three states simply stay where they are.
+#
+# No war declaration. SME reaches Moskowien through a white peace with Germany,
+# and this is a land grab against an administration that has stopped being able
+# to hold the ground, not a new front. Cores go with the states because they are
+# being absorbed rather than occupied.
+wif_sme_eastern_annexation = {
+	if = {
+		limit = { country_exists = SME }
+
+		252 = { transfer_state_to = SME }
+		879 = { transfer_state_to = SME }
+		880 = { transfer_state_to = SME }
+
+		SME = {
+			add_state_core = 252
+			add_state_core = 879
+			add_state_core = 880
+		}
+	}
 }
 
 # The Russian nationalist rising in the south-east. Run in RKM's scope, from
