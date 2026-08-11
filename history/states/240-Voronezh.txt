@@ -1,0 +1,32 @@
+# Overrides vanilla. 9552, 11475, 3469, 11412, 3567 and 6591 came in from
+# Borisoglebsk (260). Both states are in region 133, so no region edit needed.
+
+state={
+	id=240
+	name="STATE_240" # Belgorod
+	manpower = 1364537
+	
+	state_category = town
+
+	history={
+		victory_points = {
+			9449 1
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 3 #was: 5
+		}
+		add_core_of = SOV
+		1939.1.1 = {
+			buildings = {
+				industrial_complex = 1
+			}
+		}
+	}
+
+	provinces={
+		473 534 3469 3492 3567 6432 6481 6517 6577 6591 9424 9449 9489 9518 9552 11412 11439 11475 11500 
+	}
+
+	local_supplies=0.0 
+}

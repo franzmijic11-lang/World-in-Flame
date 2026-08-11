@@ -1,0 +1,28 @@
+# Overrides vanilla. 11250, 344 and 6346 went out to Moscow (219);
+# 11039, 3077, 6056 and 6167 came in from Yaroslavl (248).
+# Both sets also moved strategic region - see map/strategicregions.
+
+state={
+	id=247
+	name="STATE_247"
+	manpower = 1331211
+	state_category = town
+
+	history={
+		owner = SOV
+		victory_points = {
+			6245 10 
+		}
+		buildings = {
+			infrastructure = 3 #was: 5
+			air_base = 2
+		}
+		add_core_of = SOV
+	}
+
+	provinces={
+		85 150 3077 3143 3176 3323 6022 6056 6122 6167 6203 6245 9046 9144 9256 11039 11084 11154 
+	}
+
+	local_supplies=0.0 
+}
