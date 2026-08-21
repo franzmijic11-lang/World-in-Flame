@@ -1,8 +1,12 @@
 wif_rkm_unrest = {
 	# A mission, not a clickable decision: it starts on its own once
 	# Germanisation and either Paulus Play or SS Krieg are done, counts down
-	# five days in the decision panel, and cannot be dismissed. available is
-	# always = no precisely so it can only ever run out.
+	# in the decision panel, and cannot be dismissed. available is always = no
+	# precisely so it can only ever run out.
+	#
+	# 185 days - the original five plus six months. Moskowien now has warning
+	# rather than a fait accompli, and time to move troops, finish focuses and
+	# build before the risings fire.
 	wif_novgorod_uprising = {
 		icon = generic_political_discourse
 
@@ -22,7 +26,7 @@ wif_rkm_unrest = {
 			always = no
 		}
 
-		days_mission_timeout = 5
+		days_mission_timeout = 185
 		fire_only_once = yes
 		is_good = no
 
