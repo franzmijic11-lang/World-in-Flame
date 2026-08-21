@@ -79,6 +79,22 @@ news_event = {
 						add_state_core = 195
 					}
 					if = {
+						limit = { country_exists = NAR }
+						annex_country = {
+							target = NAR
+							transfer_troops = no
+						}
+						add_state_core = 214
+					}
+					if = {
+						limit = { country_exists = NWG }
+						annex_country = {
+							target = NWG
+							transfer_troops = no
+						}
+						add_state_core = 217
+					}
+					if = {
 						limit = { country_exists = LOK }
 						annex_country = {
 							target = LOK
@@ -88,6 +104,10 @@ news_event = {
 					}
 
 					clr_country_flag = wif_moskowien_civil_war
+
+					# The emergency surrender limit only ever applied while the
+					# risings held Moskowien's cities. Granted in wif_nsr_revolt.
+					remove_ideas = wif_rkm_civil_war_emergency
 				}
 			}
 		}

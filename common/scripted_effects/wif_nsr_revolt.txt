@@ -10,15 +10,26 @@ wif_nsr_revolt = {
 	# which is what triggers Saint Petersburg folding back in.
 	set_country_flag = wif_moskowien_civil_war
 
+	# Everything below strips ~132 victory points of territory from Moskowien in
+	# one go, 35 of it to the loyalist emergency governments. Capitulation is
+	# enemy-held VPs over the total in states you own, so handing away friendly
+	# cities shrinks the denominator and makes every rebel gain count for more.
+	# Without this Moskowien capitulates with Moskau still in its hands.
+	# Removed in wif_rkm_civilwar.1 when the civil war is won.
+	add_ideas = wif_rkm_civil_war_emergency
+
 	# Whoever breaks away from Moskowien fights with Moskowien's technology.
 	save_event_target_as = wif_tech_donor
 
 	# Tell the world the Reichskommissariat has come apart.
 	news_event = { id = wif_rkm_civilwar.2 }
 
-	# Saint Petersburg forms FIRST, so the rebels below have something to
-	# declare war on. It is a loyalist emergency government, not a rebellion.
+	# The emergency governments form FIRST, so the rebels below have something
+	# to declare war on. These are loyalist administrations, not rebellions -
+	# the same thing happening in three cities rather than one.
 	wif_nsp_formation = yes
+	wif_nar_formation = yes
+	wif_nwg_formation = yes
 
 	# Novgorod: transferring a state is what brings NSR into existence.
 	263 = { transfer_state_to = NSR }
@@ -73,6 +84,20 @@ wif_nsr_revolt = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
 				type = annex_everything
 			}
 		}
@@ -205,6 +230,20 @@ wif_rlf_rising = {
 			}
 		}
 		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
+				type = annex_everything
+			}
+		}
+		if = {
 			limit = { country_exists = NSR }
 			declare_war_on = {
 				target = NSR
@@ -267,6 +306,20 @@ wif_wrs_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
 				type = annex_everything
 			}
 		}
@@ -336,6 +389,20 @@ wif_srg_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
 				type = annex_everything
 			}
 		}
@@ -416,6 +483,20 @@ wif_nrg_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
 				type = annex_everything
 			}
 		}
@@ -626,6 +707,20 @@ wif_ssm_mutiny = {
 			}
 		}
 		if = {
+			limit = { country_exists = NAR }
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
+		if = {
+			limit = { country_exists = NWG }
+			declare_war_on = {
+				target = NWG
+				type = annex_everything
+			}
+		}
+		if = {
 			limit = { country_exists = RLF }
 			declare_war_on = {
 				target = RLF
@@ -743,6 +838,180 @@ wif_nsp_formation = {
 	# the very alliance it is meant to have. Its scripted place beside
 	# Moskowien stands; it just cannot go looking for another.
 	NSP = {
+		add_ideas = wif_splinter_no_factions
+	}
+}
+
+
+# The loyalist emergency government in Archangelsk. Run in RKM's scope.
+# Formed before the rebels so they have something to declare war on.
+#
+# Identical in every respect to Sankt Petersburg's - see wif_nsp_formation for
+# the reasoning behind the faction handling and the ordering. Anything changed
+# there belongs here as well.
+wif_nar_formation = {
+	214 = { transfer_state_to = NAR }
+
+	NAR = {
+		set_capital = { state = 214 }
+
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 85
+			communism = 0
+			neutrality = 10
+		}
+
+		set_research_slots = 2
+		set_stability = 0.5
+		set_war_support = 0.9
+
+		# Archangelsk is theirs by right. The core passes to Moskowien on
+		# reunification.
+		add_state_core = 214
+
+		# Moskowien's technology, since Moskowien is who armed them. Saved as
+		# wif_tech_donor at the top of wif_nsr_revolt, before the SS mutiny
+		# reassigns it to Berlin.
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_nar_city_defence
+
+		load_oob = "NAR_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = NAR
+		}
+	}
+
+	# Bring them in on Moskowien's side, following whatever faction Moskowien is
+	# actually in rather than assuming it is Germany's.
+	if = {
+		limit = { is_faction_leader = yes }
+		add_to_faction = NAR
+	}
+	else_if = {
+		limit = { is_in_faction = yes }
+		every_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = PREV
+			}
+			add_to_faction = NAR
+		}
+	}
+
+	# Fallback: Moskowien had no faction, or admission did not take.
+	if = {
+		limit = {
+			NOT = { NAR = { is_in_faction_with = PREV } }
+		}
+		give_guarantee = NAR
+		NAR = { give_guarantee = PREV }
+	}
+
+	# Locked only AFTER the faction work above, otherwise the rule would block the
+	# very alliance it is meant to have.
+	NAR = {
+		add_ideas = wif_splinter_no_factions
+	}
+}
+
+# The loyalist emergency government in Wolgograd. Run in RKM's scope.
+# Formed before the rebels so they have something to declare war on.
+#
+# Identical in every respect to Sankt Petersburg's - see wif_nsp_formation for
+# the reasoning behind the faction handling and the ordering. Anything changed
+# there belongs here as well.
+wif_nwg_formation = {
+	217 = { transfer_state_to = NWG }
+
+	NWG = {
+		set_capital = { state = 217 }
+
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 5
+			fascism = 85
+			communism = 0
+			neutrality = 10
+		}
+
+		set_research_slots = 2
+		set_stability = 0.5
+		set_war_support = 0.9
+
+		# Wolgograd is theirs by right. The core passes to Moskowien on
+		# reunification.
+		add_state_core = 217
+
+		# Moskowien's technology, since Moskowien is who armed them. Saved as
+		# wif_tech_donor at the top of wif_nsr_revolt, before the SS mutiny
+		# reassigns it to Berlin.
+		wif_inherit_tech_from_donor = yes
+
+		add_ideas = wif_nwg_city_defence
+
+		load_oob = "NWG_revolt"
+
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = NWG
+		}
+	}
+
+	# The government is named after the city it holds, and the city's name is not
+	# fixed: Paulus Play renames state 217 to Paulusberg, SS Krieg leaves it as
+	# Wolgograd. wif_rkm.21 sets the flag when the rename actually goes through.
+	# Run in RKM's scope, so this reads Moskowien's flag.
+	if = {
+		limit = { has_country_flag = wif_paulusberg_renamed }
+		NWG = { set_cosmetic_tag = NWG_paulusberg }
+	}
+
+	# Bring them in on Moskowien's side, following whatever faction Moskowien is
+	# actually in rather than assuming it is Germany's.
+	if = {
+		limit = { is_faction_leader = yes }
+		add_to_faction = NWG
+	}
+	else_if = {
+		limit = { is_in_faction = yes }
+		every_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = PREV
+			}
+			add_to_faction = NWG
+		}
+	}
+
+	# Fallback: Moskowien had no faction, or admission did not take.
+	if = {
+		limit = {
+			NOT = { NWG = { is_in_faction_with = PREV } }
+		}
+		give_guarantee = NWG
+		NWG = { give_guarantee = PREV }
+	}
+
+	# Locked only AFTER the faction work above, otherwise the rule would block the
+	# very alliance it is meant to have.
+	NWG = {
 		add_ideas = wif_splinter_no_factions
 	}
 }

@@ -423,6 +423,14 @@ country_event = {
 		}
 		set_province_name = { id = 3529 name = "Paulusberg" }
 
+		# The emergency government raised in this city during the civil war is
+		# named after it, so it has to know which name the city ended up with.
+		# Set here rather than checked from the focus, because the rename only
+		# happens if Germany actually accepts the transfer.
+		RKM = {
+			set_country_flag = wif_paulusberg_renamed
+		}
+
 		# Notify RKM
 		RKM = {
 			country_event = { id = wif_rkm.22 }

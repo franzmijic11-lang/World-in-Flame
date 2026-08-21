@@ -1282,6 +1282,18 @@ NSP = {
 	color_ui = rgb { 120 130 150 }
 }
 
+# The other two emergency governments. Same family of greys as Sankt Petersburg,
+# far enough apart to tell the three of them apart on the map.
+NAR = {
+	color = rgb { 90 115 145 }
+	color_ui = rgb { 90 115 145 }
+}
+
+NWG = {
+	color = rgb { 155 160 175 }
+	color_ui = rgb { 155 160 175 }
+}
+
 RLF = {
 	color = rgb { 235 200 60 }
 	color_ui = rgb { 235 200 60 }

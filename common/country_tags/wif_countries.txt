@@ -6,6 +6,10 @@ SSM = "countries/SS Military State Moscowien.txt"
 
 NSP = "countries/Notfallregierung von Sankt Petersburg.txt"
 
+NAR = "countries/Notfallregierung von Archangelsk.txt"
+
+NWG = "countries/Notfallregierung von Wolgograd.txt"
+
 RLF = "countries/Russian Liberation Front.txt"
 
 WRS = "countries/West Russian Slave Revolt.txt"

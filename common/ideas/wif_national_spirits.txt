@@ -128,7 +128,77 @@ ideas = {
 			picture = generic_fortify_the_borders
 
 			modifier = {
-				army_sub_unit_militia_defence_factor = 0.5
+				modifier_army_sub_unit_militia_defence_factor = 0.5
+			}
+		}
+
+		# The same spirit for the other two emergency governments. Separate ideas
+		# rather than one shared one purely so each reads with its own city's
+		# name - the modifier is identical to wif_nsp_city_defence above, and any
+		# change to one belongs in all three.
+		wif_nar_city_defence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+
+			modifier = {
+				modifier_army_sub_unit_militia_defence_factor = 0.5
+			}
+		}
+
+		wif_nwg_city_defence = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+
+			modifier = {
+				modifier_army_sub_unit_militia_defence_factor = 0.5
+			}
+		}
+
+		# Held by Moskowien for the duration of the civil war, and only then.
+		#
+		# The risings hand roughly 132 victory points of Moskowien's territory to
+		# the breakaways the instant they fire, and the emergency governments
+		# account for 35 of that - Archangelsk is worth 5, Paulusberg 30. Those
+		# are friendly cities, but capitulation is measured as enemy-held victory
+		# points over the total in states you OWN, so transferring them away
+		# shrinks the denominator and every rebel gain counts for more. Without
+		# this, Moskowien can capitulate while still holding Moskau.
+		#
+		# Added in wif_nsr_revolt, removed in wif_rkm_civilwar.1 alongside
+		# clr_country_flag = wif_moskowien_civil_war.
+		wif_rkm_civil_war_emergency = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				surrender_limit = 0.20
 			}
 		}
 

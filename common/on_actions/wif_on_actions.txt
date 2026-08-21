@@ -10,6 +10,21 @@ on_actions = {
 	# ROOT is the country that capitulated.
 	on_capitulation = {
 		effect = {
+			# Moskowien lost the civil war. wif_rkm_civilwar.1 only fires on the
+			# winning path, so without this the emergency surrender limit granted
+			# in wif_nsr_revolt would never come off.
+			#
+			# The wif_moskowien_civil_war flag is deliberately left set: if
+			# Moskowien is liberated and the rebels are then destroyed, the weekly
+			# check should still be able to close the war out properly.
+			if = {
+				limit = {
+					tag = RKM
+					has_idea = wif_rkm_civil_war_emergency
+				}
+				remove_ideas = wif_rkm_civil_war_emergency
+			}
+
 			if = {
 				limit = { tag = NSR }
 				263 = { remove_core_of = NSR }
