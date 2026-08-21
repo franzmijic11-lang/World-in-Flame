@@ -18,11 +18,19 @@
 #
 # So there are only two real gaps.
 #
-# 1. Reach. 464 of UTTNH's techs have start_year 1946 or later. Vanilla AI
-#    will not look more than three years past its own date, so it stalls at
-#    the edge of its era rather than climbing. That is fixed in defines, not
-#    here: MAX_AHEAD_RESEARCH_PENALTY 3 -> 7 and RESEARCH_AHEAD_OF_TIME_FACTOR
-#    4.0 -> 1.5 in common/defines/wif_defines.lua.
+# 1. Reach. 464 of UTTNH's techs have start_year 1946 or later, and vanilla AI
+#    will not look more than three years past its own date - MAX_AHEAD_RESEARCH_
+#    PENALTY is 3. It therefore stalls at the edge of its era instead of
+#    climbing ahead of it.
+#
+#    That one cannot be fixed from here. It is a define, and defines are read
+#    once at load with no way for script to touch them. Raising it lives on the
+#    elite-ai branch (tag elite-ai-defines) alongside the rest of the AI tuning,
+#    for the planned submod.
+#
+#    Without it this file still works - it just steers the AI up the tree as
+#    each tier comes into its own year, rather than letting it run ahead. Which
+#    for a mod whose campaigns reach the sixties is most of the benefit anyway.
 #
 # 2. Direction. UTTNH sets research_weight_factor in only four of its
 #    twenty-nine ai_strategy files - ENG, GER, HUN and SOV. Every other
