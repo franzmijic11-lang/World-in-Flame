@@ -365,6 +365,28 @@ country_event = {
 			set_nationality = { target_country = SME }
 		}
 
+		# === Zhukov takes the government as well as the army ===
+		# Placed after the transfer above, so he is already an SME officer when
+		# the political role is added. The vanilla character is used rather than
+		# an SME-specific copy: that keeps exactly one Zhukov in the game, and he
+		# holds the country and his corps commander stats at the same time -
+		# which is the whole idea of a military emergency government.
+		#
+		# SOV_georgy_zhukov is defined with army portraits and no civilian one.
+		# That is not a problem: vanilla grants leader roles to army-only
+		# characters in the same way for Tojo, Dai Li and Emanuel Moravec.
+		SME = {
+			add_country_leader_role = {
+				character = SOV_georgy_zhukov
+				promote_leader = yes
+				country_leader = {
+					ideology = stalinism
+					expire = "1965.1.1.1"
+					traits = { }
+				}
+			}
+		}
+
 		# === Transfer all remaining SOV territory to SME ===
 		every_state = {
 			limit = { is_owned_by = SOV }
