@@ -1,0 +1,144 @@
+# Small naval industries build cruisers, not capital ships.
+#
+# The problem this solves: HoI4's AI decides its ship mix largely from role
+# weights that do not care how many dockyards it actually has. A country with
+# eight naval factories will happily lay down a battleship, tie up its entire
+# yard capacity for three years, and finish the war having produced one hull
+# and no escorts. Cruisers are the right answer at that scale - they are
+# useful in surface combat, they escort, and a small yard can finish them.
+#
+# How this works: ai_strategy values ACCUMULATE rather than override. Nothing
+# here replaces a vanilla or UTTNH file - these weights are added on top of
+# whatever else is in scope, which is why the numbers are moderate. Vanilla's
+# own naval role weights in common/ai_strategy/default.txt run roughly -80 to
+# +100, so treat that as the scale.
+#
+# The threshold is vanilla's: common/ai_equipment/generic_naval.txt already
+# uses num_of_naval_factories < 15 to mean "not a major naval power", so the
+# same line is used here rather than inventing one.
+#
+# Note this steers the MIX of ship roles, not the quality of the designs. The
+# designs themselves live in common/ai_equipment, where UTTNH overrides 19 of
+# 24 files - deliberately not touched.
+
+# Tier 1: a real but modest yard. Heavy cruisers become the capital ship.
+wif_small_navy_prefers_cruisers = {
+	enable = {
+		num_of_naval_factories > 4
+		num_of_naval_factories < 15
+	}
+	abort = {
+		OR = {
+			num_of_naval_factories > 14
+			num_of_naval_factories < 5
+		}
+	}
+
+	# The cruisers themselves. Heavy is weighted above light: the request was
+	# for strong cruisers, and at this industrial scale a heavy cruiser is the
+	# largest hull a yard can finish in reasonable time.
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = 50
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 30
+	}
+
+	# Screens still matter - a cruiser force without destroyers dies to
+	# submarines. Left positive but below the cruisers.
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 15
+	}
+
+	# Capital ships are what this file exists to prevent. Battleships and
+	# battlecruisers are simply beyond the yard; super-heavies are absurd.
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = -70
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = -55
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_shbb
+		value = -90
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = -60
+	}
+}
+
+# Tier 2: a token yard. Nothing above a light cruiser is realistic here, and
+# most of these countries are better served by escorts and submarines.
+wif_tiny_navy_prefers_escorts = {
+	enable = {
+		num_of_naval_factories > 0
+		num_of_naval_factories < 5
+	}
+	abort = {
+		OR = {
+			num_of_naval_factories > 4
+			num_of_naval_factories < 1
+		}
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 40
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 35
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 25
+	}
+
+	# Heavy cruisers are still too much ship for four dockyards.
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -20
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = -95
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bc
+		value = -85
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_shbb
+		value = -100
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = -90
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier_light
+		value = -60
+	}
+}

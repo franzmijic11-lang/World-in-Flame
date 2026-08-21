@@ -1,0 +1,283 @@
+# Keep the AI climbing UTTNH's post-war tech.
+#
+# WHAT IS ACTUALLY WRONG
+#
+# Less than you would think. UTTNH does not bolt a separate tree onto the
+# side - it overrides vanilla's technology files and extends them in place.
+# common/technologies/armor.txt carries 831 tech blocks against vanilla's 607,
+# the new ones sit in the same folders (nsb_armour_folder at y = @1965, @1970
+# and so on), use vanilla's categories, chain through the normal
+# path/leads_to_tech links, and carry their own ai_will_do weights. As far as
+# the engine is concerned they already are the same tree.
+#
+# Its equipment side is done too: enable_equipment_modules on those techs
+# unlocks the new modules, and UTTNH ships thirty common/ai_equipment files -
+# including generic_tank.txt, which covers every country without one of its
+# own - whose target_variant blocks already build with them. The AI knows how
+# to design a cold-war tank the moment it has the technology.
+#
+# So there are only two real gaps.
+#
+# 1. Reach. 464 of UTTNH's techs have start_year 1946 or later. Vanilla AI
+#    will not look more than three years past its own date, so it stalls at
+#    the edge of its era rather than climbing. That is fixed in defines, not
+#    here: MAX_AHEAD_RESEARCH_PENALTY 3 -> 7 and RESEARCH_AHEAD_OF_TIME_FACTOR
+#    4.0 -> 1.5 in common/defines/wif_defines.lua.
+#
+# 2. Direction. UTTNH sets research_weight_factor in only four of its
+#    twenty-nine ai_strategy files - ENG, GER, HUN and SOV. Every other
+#    country, which in this mod means Moskowien, the SME and every breakaway,
+#    gets no steer at all and wanders sideways into cheap side branches
+#    instead of following the spine. That is what this file fixes.
+#
+# HOW
+#
+# ai_strategy values accumulate rather than override, so these are added on
+# top of each tech's own ai_will_do. Nothing of UTTNH's is replaced and no
+# file is shadowed. The weights are moderate for that reason - vanilla uses
+# 100 for "make certain we take this", so 40-70 reads as "prefer this branch"
+# rather than "drop everything".
+#
+# Each block opens a few years before its techs unlock, so the AI is already
+# pointed at the branch when the ahead-of-time window from the defines above
+# brings it into reach.
+
+# ---------------------------------------------------------------- armour ---
+# The main battle tank line is the spine of UTTNH's post-war armour: each
+# chassis enables the modern_tank_chassis equipment the AI designs around, and
+# several also carry enable_equipment_modules, so following this line is what
+# unlocks things like APFSDS for the AI.
+wif_uttnh_postwar_armour = {
+	enable = {
+		date > "1947.1.1"
+	}
+	abort = { always = no }
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_1
+		value = 70
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_2
+		value = 70
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_3
+		value = 70
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_4
+		value = 65
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_5
+		value = 65
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_6
+		value = 60
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_7
+		value = 60
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_8
+		value = 55
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = main_battle_tank_chassis_9
+		value = 55
+	}
+
+	# The heavy line runs alongside it in the fifties and sixties.
+	ai_strategy = {
+		type = research_weight_factor
+		id = cw_heavy_tank_chassis_1
+		value = 40
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = cw_heavy_tank_chassis_2
+		value = 40
+	}
+
+	# Wheeled chassis: cheap, and the sensible armour for the many small
+	# countries this mod creates.
+	ai_strategy = {
+		type = research_weight_factor
+		id = wheeled_tank_chassis_00
+		value = 45
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = wheeled_tank_chassis_01
+		value = 45
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = wheeled_tank_chassis_02
+		value = 40
+	}
+}
+
+# ------------------------------------------------------------------- air ---
+# Jets and the modern airframe families. Weighted slightly above armour early
+# on: an air force that is a generation behind is punished harder than tanks.
+wif_uttnh_postwar_air = {
+	enable = {
+		date > "1947.1.1"
+	}
+	abort = { always = no }
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = advanced_turbojet_engine
+		value = 75
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = jet_fighter3
+		value = 70
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = jet_fighter4
+		value = 70
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = jet_fighter5
+		value = 65
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_small_airframe_1
+		value = 65
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_small_airframe_2
+		value = 60
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_small_airframe_3
+		value = 60
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_medium_airframe_1
+		value = 55
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_large_airframe_1
+		value = 45
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = modern_large_airframe_2
+		value = 45
+	}
+}
+
+# ----------------------------------------------------------------- naval ---
+# Post-war hulls. Deliberately the lowest weights of the three: most countries
+# in this scenario are land powers, and the naval priorities file already
+# steers small yards away from big hulls.
+wif_uttnh_postwar_naval = {
+	enable = {
+		date > "1947.1.1"
+		num_of_naval_factories > 4
+	}
+	abort = {
+		num_of_naval_factories < 5
+	}
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_light_5
+		value = 40
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_light_6
+		value = 40
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_light_7
+		value = 35
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_cruiser_5
+		value = 45
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_cruiser_6
+		value = 45
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_cruiser_7
+		value = 40
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_submarine_5
+		value = 35
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = ship_hull_submarine_6
+		value = 35
+	}
+}
+
+# ------------------------------------------------------------ helicopters ---
+# UTTNH adds a full helicopter tree from 1950. Left at low weight on purpose:
+# it is a genuine capability but not one to chase ahead of tanks and jets.
+wif_uttnh_helicopters = {
+	enable = {
+		date > "1949.1.1"
+	}
+	abort = { always = no }
+
+	ai_strategy = {
+		type = research_weight_factor
+		id = helicopter_rotor_1
+		value = 30
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = helicopter_engines_1
+		value = 30
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = helicopter_engines_2
+		value = 25
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = utility_helicopter_1
+		value = 25
+	}
+	ai_strategy = {
+		type = research_weight_factor
+		id = utility_helicopter_2
+		value = 25
+	}
+}
