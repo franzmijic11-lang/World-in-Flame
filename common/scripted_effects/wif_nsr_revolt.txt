@@ -892,36 +892,35 @@ wif_nar_formation = {
 		}
 	}
 
-	# Bring them in on Moskowien's side, following whatever faction Moskowien is
-	# actually in rather than assuming it is Germany's.
-	if = {
-		limit = { is_faction_leader = yes }
-		add_to_faction = NAR
-	}
-	else_if = {
-		limit = { is_in_faction = yes }
-		every_country = {
-			limit = {
-				is_faction_leader = yes
-				is_in_faction_with = PREV
-			}
-			add_to_faction = NAR
-		}
-	}
-
-	# Fallback: Moskowien had no faction, or admission did not take.
-	if = {
-		limit = {
-			NOT = { NAR = { is_in_faction_with = PREV } }
-		}
-		give_guarantee = NAR
-		NAR = { give_guarantee = PREV }
-	}
-
-	# Locked only AFTER the faction work above, otherwise the rule would block the
-	# very alliance it is meant to have.
+	# Archangelsk stands alone. Deliberately NO faction and NO guarantees.
+	#
+	# This is the one emergency government that does not get Moskowien's
+	# protection, and it is a design choice forced by the engine. The SME
+	# declares on it the moment it forms, and that war is meant to be a private
+	# duel - but HoI4 has no unjoinable war. A faction member who is attacked
+	# drags the whole faction in automatically, and a guarantor gets a call to
+	# arms it may well accept. The only way to keep a war between two countries
+	# is for the defender to have nobody to call.
+	#
+	# So Archangelsk is a loyalist government that Moskowien cannot reach: too
+	# far north, cut off by the risings, and left to hold the White Sea on its
+	# own. Sankt Petersburg and Paulusberg keep their faction membership as
+	# before - this applies to NAR only.
 	NAR = {
 		add_ideas = wif_splinter_no_factions
+	}
+
+	# The Soviet Military Emergency Government moves on Archangelsk at once. It
+	# wants the northern ports and it will not get a better moment than the one
+	# where Moskowien is coming apart everywhere else.
+	if = {
+		limit = { country_exists = SME }
+		SME = {
+			declare_war_on = {
+				target = NAR
+				type = annex_everything
+			}
+		}
 	}
 }
 

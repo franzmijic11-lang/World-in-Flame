@@ -10,6 +10,31 @@ on_actions = {
 	# ROOT is the country that capitulated.
 	on_capitulation = {
 		effect = {
+			# Archangelsk falls to the SME.
+			#
+			# The northern war is a private one - NAR forms with no faction and
+			# no guarantees precisely so nobody else can be dragged into it - so
+			# capitulation settles it outright rather than dragging on until a
+			# peace conference. The SME takes the city and the war ends.
+			#
+			# Moskowien cannot claw it back afterwards: the fold-back in
+			# wif_rkm_civilwar.1 is guarded on country_exists = NAR, and by this
+			# point there is no NAR to fold back in.
+			if = {
+				limit = {
+					tag = NAR
+					country_exists = SME
+					SME = { has_war_with = NAR }
+				}
+				SME = {
+					annex_country = {
+						target = NAR
+						transfer_troops = no
+					}
+					add_state_core = 214
+				}
+			}
+
 			# Moskowien lost the civil war. wif_rkm_civilwar.1 only fires on the
 			# winning path, so without this the emergency surrender limit granted
 			# in wif_nsr_revolt would never come off.

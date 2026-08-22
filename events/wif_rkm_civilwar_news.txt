@@ -103,6 +103,37 @@ news_event = {
 						add_state_core = 224
 					}
 
+					# The northern war ends with the civil war that caused it.
+					#
+					# If Archangelsk is still standing when Moskowien wins, the
+					# SME has run out of the moment it was exploiting: it takes
+					# a white peace and hands back the three states it took as
+					# the risings began. wif_sme_eastern_annexation grabbed
+					# Gorky, Kargopol and Kotlas without a declaration, on the
+					# argument that the administration had stopped being able to
+					# hold them. That argument no longer holds.
+					#
+					# If Archangelsk has already fallen, none of this runs - the
+					# SME keeps it, and the NAR fold-back above is skipped by
+					# its own country_exists check.
+					if = {
+						limit = {
+							country_exists = NAR
+							country_exists = SME
+							SME = { has_war_with = NAR }
+						}
+						SME = {
+							white_peace = NAR
+
+							252 = { transfer_state_to = RKM }
+							879 = { transfer_state_to = RKM }
+							880 = { transfer_state_to = RKM }
+						}
+						add_state_core = 252
+						add_state_core = 879
+						add_state_core = 880
+					}
+
 					# Moskau itself, if it is somehow still not core.
 					#
 					# The normal route is the stabilisation chain, which cores
