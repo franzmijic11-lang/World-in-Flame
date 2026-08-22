@@ -272,6 +272,15 @@ focus_tree = {
 		}
 
 		completion_reward = {
+			# The SS have no use for a Russian administrator, however useful he
+			# has been. He is out of the slot the day they take over - available
+			# alone would only stop him being re-hired, not evict him.
+			RKM_konstantin_rossovsky = {
+				remove_advisor_role = {
+					slot = political_advisor
+				}
+			}
+
 			add_ideas = RKM_ss_cooperation
 			load_oob = "RKM_ss_divisions"
 			add_power_balance_value = {

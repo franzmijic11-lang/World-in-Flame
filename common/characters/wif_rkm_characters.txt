@@ -1,0 +1,42 @@
+# Welt in Flammen characters for Reichskommissariat Moskowien.
+
+characters = {
+
+	# Available only on the German-officials path, and only until the SS take
+	# over. The `available` block covers the second half on its own - an
+	# advisor whose available fails cannot be hired - but RKM_work_with_ss
+	# also calls remove_advisor_role, because available does not evict a
+	# minister who is already sitting in the slot.
+	RKM_konstantin_rossovsky = {
+		name = RKM_konstantin_rossovsky
+
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_europe_3
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = RKM_konstantin_rossovsky
+			cost = 150
+
+			allowed = {
+				original_tag = RKM
+			}
+
+			available = {
+				has_completed_focus = RKM_admin_reich_officials
+				NOT = { has_completed_focus = RKM_work_with_ss }
+			}
+
+			traits = {
+				wif_collaborationist_administrator
+			}
+
+			ai_will_do = {
+				base = 3
+			}
+		}
+	}
+}

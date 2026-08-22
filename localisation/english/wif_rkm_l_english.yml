@@ -356,3 +356,8 @@
  wif_rkm.35.a:0 "Then we hold with what we have."
  wif_rkm_secure_logistics:0 "Secured Logistic Lines"
  wif_rkm_secure_logistics_desc:0 "The eastern rail net answers to one military administration instead of four competing ones. The track is no better, but the accounting is, and Moskowien no longer pays twice for the same locomotive."
+
+ RKM_konstantin_rossovsky:0 "Konstantin Rossovsky"
+ wif_collaborationist_administrator:0 "Collaborationist Administrator"
+ wif_collaborationist_administrator_desc:0 "He was a district administrator before the war and he is a district administrator now, and he has never once asked which flag the district answers to. The Reich finds him distasteful and indispensable in roughly equal measure."
+
