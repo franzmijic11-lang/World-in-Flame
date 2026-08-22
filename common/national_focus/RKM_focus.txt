@@ -911,4 +911,120 @@ focus_tree = {
 			add_stability = 0.1
 		}
 	}
+
+	# ============================================================
+	# The consolidation branch, below Germanisation.
+	#
+	# Opens once Germanisation is done AND the Reichskommissariat has
+	# committed to one of the two military patrons - Paulus Play or SS Krieg.
+	# Two prerequisite blocks are AND-ed together, and the two focuses inside
+	# the second are OR-ed, which is exactly that requirement.
+	# ============================================================
+
+	focus = {
+		id = RKM_secure_the_logistic_lines
+		icon = GFX_focus_generic_supply_line
+		x = 8
+		y = 14
+		cost = 8.57 # 60 days
+
+		prerequisite = {
+			focus = RKM_germanisation
+		}
+		prerequisite = {
+			focus = RKM_ss_krieg
+			focus = RKM_paulus_play
+		}
+
+		completion_reward = {
+			add_ideas = wif_rkm_secure_logistics
+
+			# Moskau is normally cored earlier, by Bread and Circuses. This
+			# catches the run where that focus was skipped, and is a no-op
+			# otherwise.
+			if = {
+				limit = {
+					NOT = { 219 = { is_core_of = RKM } }
+				}
+				219 = {
+					add_core_of = RKM
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_the_army_of_lebensraum
+		icon = GFX_focus_GER_german_army_invincible
+		x = 8
+		y = 15
+		cost = 5.71 # 40 days
+
+		prerequisite = {
+			focus = RKM_secure_the_logistic_lines
+		}
+
+		completion_reward = {
+			# The three templates Moskowien is handed are locked at creation, in
+			# history/units. Unlocking them is what turns a garrison force it
+			# merely holds into an army it commands.
+			set_division_template_lock = {
+				division_template = "Wehrmacht Infanterie-Division"
+				is_locked = no
+			}
+			set_division_template_lock = {
+				division_template = "Moscowien Garrison Division"
+				is_locked = no
+			}
+			set_division_template_lock = {
+				division_template = "SS-Mechanisierte Division"
+				is_locked = no
+			}
+		}
+	}
+
+	focus = {
+		id = RKM_slave_revolt
+		icon = GFX_focus_SOV_penal_battalions
+		x = 8
+		y = 16
+		cost = 11 # 77 days
+
+		prerequisite = {
+			focus = RKM_the_army_of_lebensraum
+		}
+
+		completion_reward = {
+			# Work out what to ask Berlin for.
+			#
+			# HoI4 exposes no equipment deficit variable - the shortfall shown
+			# on the equipment screen cannot be read from script. This
+			# approximates it: what the army would hold with every division at
+			# full establishment, minus what it actually holds. 1000 rifles per
+			# division is the standard infantry establishment; change that
+			# figure here if Moskowien's templates drift far from it.
+			set_variable = { wif_rkm_equip_request = num_divisions }
+			multiply_variable = { wif_rkm_equip_request = 1000 }
+			subtract_variable = { wif_rkm_equip_request = num_equipment_in_armies@infantry_equipment }
+
+			# No shortfall worth naming: ask for a flat reserve instead.
+			if = {
+				limit = {
+					check_variable = { wif_rkm_equip_request < 1 }
+				}
+				set_variable = { wif_rkm_equip_request = 2000 }
+			}
+
+			# Berlin's side of the ledger. The amount field of
+			# add_equipment_to_stockpile accepts a variable but cannot negate
+			# one, so the negative is computed here and read across in
+			# wif_rkm.33.
+			set_variable = { wif_rkm_equip_cost = wif_rkm_equip_request }
+			multiply_variable = { wif_rkm_equip_cost = -1 }
+
+			GER = {
+				country_event = { id = wif_rkm.33 }
+			}
+		}
+	}
 }

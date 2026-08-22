@@ -202,6 +202,33 @@ ideas = {
 			}
 		}
 
+		# Granted by RKM_secure_the_logistic_lines.
+		#
+		# The rail net east of the old border runs on captured stock, patched
+		# gauge and requisitioned crews. Putting the whole thing under one
+		# military administration does not fix the track, but it does mean
+		# Moskowien stops paying twice for every locomotive it builds.
+		wif_rkm_secure_logistics = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_production_bonus
+
+			equipment_bonus = {
+				train_equipment = {
+					build_cost_ic = -0.2
+					instant = yes
+				}
+			}
+		}
+
 		# Granted for 5 years to every American major that takes Germany's
 		# separate peace. Locks them out of alliances so they cannot simply
 		# rejoin the war the following year.

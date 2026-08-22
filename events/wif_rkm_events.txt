@@ -649,3 +649,106 @@ country_event = {
 		}
 	}
 }
+
+# ============================================================
+# Slave Revolt? - Moskowien asks Berlin to arm the levy.
+#
+# Fired from the RKM_slave_revolt focus, which computes
+# wif_rkm_equip_request on RKM before firing this. Germany reads it across
+# the country scope as var:RKM.wif_rkm_equip_request.
+#
+# The transfer is done with two add_equipment_to_stockpile calls rather than
+# send_equipment, because only add_equipment_to_stockpile is known to accept
+# a variable amount - send_equipment is never used that way in the base game
+# or in UTTNH, and this amount is not a fixed number.
+# ============================================================
+
+# Germany receives the request
+country_event = {
+	id = wif_rkm.33
+	title = wif_rkm.33.t
+	desc = wif_rkm.33.desc
+	picture = GFX_report_event_german_politician_speech
+
+	is_triggered_only = yes
+
+	# Arm them
+	option = {
+		name = wif_rkm.33.a
+		ai_chance = {
+			base = 65
+			modifier = {
+				factor = 0.4
+				has_war = yes
+			}
+		}
+
+		# Berlin pays for it out of its own stockpile. The negative counterpart
+		# is computed alongside the request in the focus, because the amount
+		# field takes a variable but cannot negate one.
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = var:RKM.wif_rkm_equip_cost
+			producer = GER
+		}
+
+		# RKM receives it in wif_rkm.34.
+		RKM = {
+			country_event = { id = wif_rkm.34 }
+		}
+	}
+
+	# Refuse
+	option = {
+		name = wif_rkm.33.b
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+
+		RKM = {
+			country_event = { id = wif_rkm.35 }
+		}
+	}
+}
+
+# Moskowien is armed
+country_event = {
+	id = wif_rkm.34
+	title = wif_rkm.34.t
+	desc = wif_rkm.34.desc
+	picture = GFX_report_event_generic_rifles
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = var:wif_rkm_equip_request
+				producer = GER
+			}
+		}
+	}
+
+	option = {
+		name = wif_rkm.34.a
+	}
+}
+
+# Berlin refuses
+country_event = {
+	id = wif_rkm.35
+	title = wif_rkm.35.t
+	desc = wif_rkm.35.desc
+	picture = GFX_report_event_generic_rifles
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_rkm.35.a
+	}
+}
