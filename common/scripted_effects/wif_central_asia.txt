@@ -1,0 +1,260 @@
+# The Central Asian breakup, fired from wif_sov.1 when the Union collapses and
+# the SME takes over what is left of it.
+#
+# ORDER MATTERS. This runs AFTER the every_state sweep in wif_sov.1 has handed
+# all remaining Soviet territory to the SME, so every state below is SME-owned
+# by the time we get here. Each transfer is guarded on is_owned_by = SME rather
+# than assumed: Tajikistan and Turkmenistan core two states that sit inside
+# Afghanistan (1005 Qataghan, 1007 Maymanah) which the Soviets never owned, and
+# an unguarded transfer would quietly annex Afghan land.
+#
+# The first state transferred to a tag is what brings that country into
+# existence - the same trick wif_sov.1 uses to pre-spawn the SME - so politics
+# and capitals are set afterwards, once the country is real.
+#
+# WATCH THE STATE FILENAMES. They lie. 404-Saykhin.txt is Kyzyl Orda,
+# 405-Atyrau.txt is Tashkent, 585-Uzbekistan.txt is Navoi, 584-Turkmenistan.txt
+# is Ashkhabad and 586-Kyrgyzstan.txt is Alma-Ata. Every id below was resolved
+# through the STATE_<id> localisation, not the filename.
+
+wif_central_asia_breakup = {
+
+	# =====================================================================
+	# Central Asian Red Army - the Red Army units that never went home
+	# =====================================================================
+	# Takes Kyzyl Orda, Tashkent and Navoi. Note that this cuts across the
+	# republics: Kyzyl Orda is Kazakh-cored and Tashkent and Navoi are
+	# Uzbek-cored, so the CRA is a wedge driven between them rather than a
+	# successor to any one republic. Both sets of cores are deliberately left
+	# in place, so the republics keep a claim on what the CRA is sitting on.
+	404 = { if = { limit = { is_owned_by = SME } transfer_state_to = CRA } }	# Kyzyl Orda
+	405 = { if = { limit = { is_owned_by = SME } transfer_state_to = CRA } }	# Tashkent
+	585 = { if = { limit = { is_owned_by = SME } transfer_state_to = CRA } }	# Navoi
+
+	if = {
+		limit = { country_exists = CRA }
+		CRA = {
+			set_capital = { state = 405 }
+
+			add_state_core = 404
+			add_state_core = 405
+			add_state_core = 585
+
+			# History files never apply to countries spawned mid-game, so
+			# politics have to be set explicitly or ideology-keyed flag
+			# lookups fall through to a blank counter.
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 5
+				fascism = 0
+				communism = 90
+				neutrality = 5
+			}
+
+			# Splinter states do not get to assemble alliance blocs, same rule
+			# every other breakaway in this mod carries.
+			add_ideas = wif_splinter_no_factions
+
+			# Standard Soviet rifle division, mirroring the vanilla
+			# Strelkovaya Diviziya: 3x3 infantry with artillery support.
+			division_template = {
+				name = "Strelkovaya Diviziya"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+
+			# Two divisions in each of the three states, six in total. These
+			# are regulars who kept their kit, not levies: experience 0.5 and
+			# full equipment.
+			create_unit = {
+				division = "name = \"1. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = CRA
+				count = 2
+				prioritize_location = 7597		# Kyzyl Orda
+			}
+			create_unit = {
+				division = "name = \"2. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = CRA
+				count = 2
+				prioritize_location = 1459		# Tashkent
+			}
+			create_unit = {
+				division = "name = \"3. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = CRA
+				count = 2
+				prioritize_location = 1554		# Navoi
+			}
+		}
+	}
+
+	# =====================================================================
+	# The republics
+	# =====================================================================
+	# Each declares independence on its own cores. All five get the same
+	# treatment: non-aligned nationalist governments, no faction building, and
+	# four green cavalry divisions in the capital. Green is deliberate - these
+	# are new national armies raised from whatever was to hand, not the
+	# professionals the CRA kept.
+
+	# --- Kazakhstan -------------------------------------------------------
+	402 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Akhtubinsk
+	406 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Guryev
+	407 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Ural'sk
+	583 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Kostanay
+	586 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Alma-Ata
+	587 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Ust Urt
+	588 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Semipalatinsk
+	589 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Ayaguz
+	590 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Akmolinsk
+	881 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Karagandy
+	882 = { if = { limit = { is_owned_by = SME } transfer_state_to = KAZ } }	# Pavlodar
+
+	if = {
+		limit = { country_exists = KAZ }
+		KAZ = {
+			set_capital = { state = 586 }
+			wif_central_asian_republic_setup = yes
+			create_unit = {
+				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+				owner = KAZ
+				count = 4
+				prioritize_location = 1591		# Alma-Ata
+			}
+		}
+	}
+
+	# --- Uzbekistan -------------------------------------------------------
+	# Tashkent, the historical capital, has gone to the CRA, so the government
+	# sits at Bukhara instead. This is the single biggest consequence of where
+	# the CRA spawns - Uzbekistan comes out of the collapse holding three of
+	# its five cores and without its capital.
+	823 = { if = { limit = { is_owned_by = SME } transfer_state_to = UZB } }	# Karakalpakstan
+	830 = { if = { limit = { is_owned_by = SME } transfer_state_to = UZB } }	# Bukhara
+	831 = { if = { limit = { is_owned_by = SME } transfer_state_to = UZB } }	# Khiva
+
+	if = {
+		limit = { country_exists = UZB }
+		UZB = {
+			set_capital = { state = 830 }
+			wif_central_asian_republic_setup = yes
+			create_unit = {
+				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+				owner = UZB
+				count = 4
+				prioritize_location = 1573		# Bukhara
+			}
+		}
+	}
+
+	# --- Turkmenistan -----------------------------------------------------
+	# TMS, not TKM. 1007 Maymanah is Turkmen-cored but Afghan-owned, hence the
+	# guard.
+	584  = { if = { limit = { is_owned_by = SME } transfer_state_to = TMS } }	# Ashkhabad
+	832  = { if = { limit = { is_owned_by = SME } transfer_state_to = TMS } }	# Tashauz
+	1007 = { if = { limit = { is_owned_by = SME } transfer_state_to = TMS } }	# Maymanah
+
+	if = {
+		limit = { country_exists = TMS }
+		TMS = {
+			set_capital = { state = 584 }
+			wif_central_asian_republic_setup = yes
+			create_unit = {
+				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+				owner = TMS
+				count = 4
+				prioritize_location = 12333		# Ashkhabad
+			}
+		}
+	}
+
+	# --- Kyrgyzstan -------------------------------------------------------
+	# Kyrgyzstan cores exactly one state in vanilla, so it comes out of this as
+	# a single-province rump. Four divisions is a lot of army for that, which
+	# is the point.
+	732 = { if = { limit = { is_owned_by = SME } transfer_state_to = KYR } }	# Pamir
+
+	if = {
+		limit = { country_exists = KYR }
+		KYR = {
+			set_capital = { state = 732 }
+			wif_central_asian_republic_setup = yes
+			create_unit = {
+				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+				owner = KYR
+				count = 4
+				prioritize_location = 12583		# Pamir
+			}
+		}
+	}
+
+	# --- Tajikistan -------------------------------------------------------
+	# 1005 Qataghan is Tajik-cored but Afghan-owned, hence the guard.
+	742  = { if = { limit = { is_owned_by = SME } transfer_state_to = TAJ } }	# Stalinabad
+	1005 = { if = { limit = { is_owned_by = SME } transfer_state_to = TAJ } }	# Qataghan
+
+	if = {
+		limit = { country_exists = TAJ }
+		TAJ = {
+			set_capital = { state = 742 }
+			wif_central_asian_republic_setup = yes
+			create_unit = {
+				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+				owner = TAJ
+				count = 4
+				prioritize_location = 1384		# Stalinabad
+			}
+		}
+	}
+}
+
+
+# Everything the five republics share. Called in country scope, after the
+# country has been brought into existence by its first state transfer and after
+# its capital has been set.
+wif_central_asian_republic_setup = {
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 15
+		fascism = 5
+		communism = 20
+		neutrality = 60
+	}
+
+	add_ideas = wif_splinter_no_factions
+
+	# Three regiments of two battalions - 3x2, six cavalry battalions in all.
+	# x is the regiment column, y is the battalion within it.
+	division_template = {
+		name = "Cavalry Division"
+		regiments = {
+			cavalry = { x = 0 y = 0 }
+			cavalry = { x = 0 y = 1 }
+			cavalry = { x = 1 y = 0 }
+			cavalry = { x = 1 y = 1 }
+			cavalry = { x = 2 y = 0 }
+			cavalry = { x = 2 y = 1 }
+		}
+	}
+}

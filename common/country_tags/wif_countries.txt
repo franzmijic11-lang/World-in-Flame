@@ -19,3 +19,5 @@ LOK = "countries/Lokot Autonomy.txt"
 SRG = "countries/South Russian Provisional Government.txt"
 
 NRG = "countries/North Russian Provisional Government.txt"
+
+CRA = "countries/Central Asian Red Army.txt"

@@ -419,6 +419,14 @@ country_event = {
 			add_core_of = SME
 		}
 
+		# === Central Asia goes its own way ===
+		# Must run AFTER the every_state sweep above, which is what puts the
+		# Central Asian states in SME hands - the breakup transfers them out of
+		# SME, so there is nothing to transfer if this runs first. Also runs
+		# before the SOV annex below, so the new republics are already standing
+		# when the old tag is mopped up.
+		wif_central_asia_breakup = yes
+
 		# === SME inherits all of SOV's researched technology (vanilla + UTTNH 2.0) ===
 		SME = {
 			SME_inherit_sov_tech = yes

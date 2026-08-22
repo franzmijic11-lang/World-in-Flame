@@ -1,0 +1,17 @@
+﻿l_english:
+ CRA:0 "Central Asian Red Army"
+ CRA_DEF:0 "the Central Asian Red Army"
+ CRA_communism:0 "Central Asian Red Army"
+ CRA_communism_DEF:0 "the Central Asian Red Army"
+ CRA_neutrality:0 "Turkestan"
+ CRA_neutrality_DEF:0 "Turkestan"
+ CRA_democratic:0 "Central Asian Federation"
+ CRA_democratic_DEF:0 "the Central Asian Federation"
+ CRA_fascism:0 "Turkestan Military District"
+ CRA_fascism_DEF:0 "the Turkestan Military District"
+
+ CRA_ADJ:0 "Central Asian"
+ CRA_communism_ADJ:0 "Central Asian"
+ CRA_neutrality_ADJ:0 "Turkestani"
+ CRA_democratic_ADJ:0 "Central Asian"
+ CRA_fascism_ADJ:0 "Turkestani"

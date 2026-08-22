@@ -1318,3 +1318,8 @@ NRG = {
 	color = rgb { 70 160 165 }
 	color_ui = rgb { 70 160 165 }
 }
+
+CRA = {
+	color = rgb { 150 40 60 }
+	color_ui = rgb { 150 40 60 }
+}
