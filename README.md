@@ -16,6 +16,34 @@ them will not appear, and parts of the mod will not work as intended:
 
 Supported game version: **1.19.2**
 
+## Compatibility: Germany Rework (Workshop 3607227153)
+
+Germany Rework ships `common/national_focus/germany.txt` with the focus tree id
+`german_focus` - the same filename and the same id this mod uses. Hearts of Iron IV
+loads only one file per path, so exactly one German tree is ever active:
+
+- **Germany Rework enabled, ordered after Welt in Flammen** - Germany gets the
+  Germany Rework tree.
+- **Germany Rework disabled** - Germany gets this mod's tree.
+
+Put Germany Rework **below** Welt in Flammen in the playset; further down loads later
+and wins. There is no `has_mod` trigger in Hearts of Iron IV, and `has_focus_tree`
+cannot separate the two because both trees answer to `german_focus`, so load order is
+the only lever - and it already produces exactly the behaviour above.
+
+Running both: this mod references 163 focus ids outside its own tree, and 154 of them
+also exist in the Germany Rework tree, so the overwhelming majority of the German
+content keeps working. Nine are Götterdämmerung-era focuses Germany Rework does not
+include (`GER_oppose_hitler`, `GER_aging_fuhrer`, `GER_ally_the_shade`,
+`GER_pool_technical_know_how`, `GER_shared_rd_programs`,
+`GER_rekindle_imperial_sentiment`, `GER_tackle_the_communist_threat`, and two already
+commented out). Those checks simply return false, so the affected branches never fire.
+
+This is **not** worth patching around, and the mod deliberately does not try. Vanilla's
+own files reference the same focuses more than thirty times over, and those files load
+whatever mods are active - so the dangling references exist for anyone running Germany
+Rework at all, with or without this mod.
+
 ## A note on `descriptor.mod`
 
 The required DLC are deliberately **not** listed in the `dependencies` block of
