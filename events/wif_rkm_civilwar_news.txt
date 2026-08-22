@@ -103,6 +103,20 @@ news_event = {
 						add_state_core = 224
 					}
 
+					# Moskau itself, if it is somehow still not core.
+					#
+					# The normal route is the stabilisation chain, which cores
+					# 219 in wif_rkm.10 - but that only fires if Berlin agreed
+					# to fund the operation, and Berlin can refuse. A
+					# Reichskommissariat that has just held the city through a
+					# civil war has settled the question by other means.
+					if = {
+						limit = {
+							NOT = { 219 = { is_core_of = RKM } }
+						}
+						add_state_core = 219
+					}
+
 					clr_country_flag = wif_moskowien_civil_war
 
 					# The emergency surrender limit only ever applied while the
