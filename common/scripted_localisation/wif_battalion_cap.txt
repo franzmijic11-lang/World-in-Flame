@@ -1,0 +1,39 @@
+# Penalty breakdown for the battalion cap tooltip.
+#
+# Three states, checked in order - the first matching branch wins, so the
+# grace clause has to come before the plain over-cap one:
+#
+#   1. Over the cap, but the one month demobilisation grace is still running.
+#      Nothing is being applied yet, and saying so is the whole point of
+#      having a grace period.
+#   2. Over the cap with the grace expired. The dynamic modifier is on and
+#      these are the live numbers, read straight from the same variables the
+#      modifier itself reads.
+#   3. Within the cap. No penalties.
+#
+# Localisation cannot branch on its own, which is why this exists rather than
+# the values being inlined into wif_battalion_cap_desc.
+
+defined_text = {
+	name = GetWifBattalionCapPenalties
+
+	text = {
+		trigger = {
+			check_variable = { wif_battalions_over > 0 }
+			has_country_flag = wif_bat_grace
+		}
+		localization_key = wif_cap_penalties_grace
+	}
+
+	text = {
+		trigger = {
+			check_variable = { wif_battalions_over > 0 }
+		}
+		localization_key = wif_cap_penalties_active
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_penalties_none
+	}
+}

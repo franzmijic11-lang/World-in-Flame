@@ -1,0 +1,204 @@
+# Teaches the AI to live within the battalion soft cap maintained in
+# common/scripted_effects/wif_battalion_cap.txt.
+#
+# The cap is soft, so the AI is never blocked from recruiting - it just pays
+# the overcap penalties. Left alone it would happily march past the limit and
+# sit there bleeding attrition, supply and political power forever, because
+# nothing in vanilla knows the limit exists. These strategies give it the
+# awareness.
+#
+# Two variables drive everything, both refreshed in the weekly pass:
+#
+#   wif_bat_headroom      = wif_bat_limit - wif_bat_used   (raw battalions)
+#   wif_bat_headroom_pct  = that, as a fraction of the cap (0 - 1)
+#
+# Thresholds read the FRACTION, not the count. A flat "20 battalions left"
+# means something completely different to Luxembourg and Germany, and the
+# factory cap file next door already learned that lesson the hard way with
+# building_target.
+#
+# THE RESERVE
+#
+# The last 5% of the cap is deliberately held back in peacetime. The AI stops
+# filling it with line infantry and puts what it does build into special
+# forces instead, so the remaining allowance is spent on paratroopers, marines
+# and mountaineers rather than another twenty infantry divisions.
+#
+# That reserve is released the moment the country is at war - see
+# wif_bat_reserve_peacetime being gated on has_war = no. This is the emergency
+# valve: a nation actually being invaded should be free to throw everything it
+# has into the field and eat the penalties, which is exactly what a soft cap
+# is for. It is only in peacetime that sitting at 100% of the limit with no
+# room to respond is a bad idea.
+#
+# NOTE: check_variable has no <= or >= operator, only > < =. Bands are written
+# as a pair of strict comparisons for that reason - do not "simplify" them.
+
+
+# Already over. Stop making line infantry and slow the rifle production that
+# feeds new divisions, so the country drifts back under rather than digging in
+# deeper. Deliberately not -100: the AI still needs to replace losses.
+wif_bat_over_cap = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = { wif_bat_headroom < 1 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = -50
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = -25
+	}
+
+	# Shedding existing divisions. There is no ai_strategy type for disbanding
+	# and no division-scope delete effect in the game, so this is the nearest
+	# reliable lever: spare_unit_factor governs how many surplus divisions the
+	# AI thinks it should be holding in reserve. Vanilla pushes it POSITIVE to
+	# make China hoard (WTT_china_ai_strategies.txt uses 50); pushing it
+	# negative does the reverse, so an overcap country stops sitting on units
+	# it is being punished for and lets the surplus go.
+	ai_strategy = {
+		type = spare_unit_factor
+		value = -50
+	}
+}
+
+# Badly over - more than 20% past the limit. At this point the country is
+# taking serious attrition, supply and political power damage every day, so
+# the pressure to shed units goes up rather than staying flat. Infantry
+# production is cut hard and the AI is told to hold no spare divisions at all.
+wif_bat_far_over_cap = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = { wif_bat_headroom_pct < -0.2 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -75
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = -75
+	}
+
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = -50
+	}
+
+	ai_strategy = {
+		type = spare_unit_factor
+		value = -100
+	}
+}
+
+# Into the reserve, at peace. Hold the last 5% back for special forces and for
+# having somewhere to go if a war starts. Line infantry is shut off hard while
+# the special forces roles are pushed up, so the allowance that is left gets
+# spent on the units worth spending it on.
+wif_bat_reserve_peacetime = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		has_war = no
+		check_variable = { wif_bat_headroom > 0 }
+		check_variable = { wif_bat_headroom_pct < 0.05 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -40
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = -40
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 20
+	}
+}
+
+# Getting close - the last 15% down to the reserve. A gentle taper rather than
+# a wall, so the AI eases off before it arrives at the limit instead of
+# slamming into it with a full production queue still running.
+wif_bat_near_cap = {
+	allowed = {
+		always = yes
+	}
+
+	enable = {
+		check_variable = { wif_bat_headroom_pct > 0.0499 }
+		check_variable = { wif_bat_headroom_pct < 0.15 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = -20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = paratroopers
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = marines
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = 10
+	}
+}

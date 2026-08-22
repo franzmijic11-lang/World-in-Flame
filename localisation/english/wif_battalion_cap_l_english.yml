@@ -1,0 +1,16 @@
+﻿l_english:
+ # Overcap penalty, applied as a dynamic modifier once the one month
+ # demobilisation grace has run out.
+ wif_over_battalion_cap:0 "Overstretched Army"
+ wif_over_battalion_cap_desc:0 "This nation fields more line battalions than it can sustain. Every battalion over the limit costs attrition, supply, political authority and industrial output, and the penalty grows with each one over."
+
+ # Officer corps readout, drawn under the special forces block.
+ wif_battalion_cap_count:0 "[?wif_bat_used|0]/[?wif_bat_limit|0]"
+ wif_battalion_cap_label:0 "Line Battalions"
+ wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\nBase limit: §G432§!\nTotal bonus: §G[?wif_bat_pct|%0]§! from territory, standing, conscription law, stability, war support, wartime and world tension.\n§GMajor power +100%§!, §Gfaction leader +50%§! - both re-checked every week.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+
+ # Penalty breakdown, selected by GetWifBattalionCapPenalties in
+ # common/scripted_localisation/wif_battalion_cap.txt.
+ wif_cap_penalties_none:0 "\n\n§GWithin the limit. No penalties.§!"
+ wif_cap_penalties_grace:0 "\n\n§YOver the limit by [?wif_battalions_over|0] battalions.§!\n§YDemobilisation grace is still running - no penalties yet. Get back under the limit within the month and none will be applied.§!"
+ wif_cap_penalties_active:0 "\n\n§ROver the limit by [?wif_battalions_over|0] battalions. Active penalties:§!\nAttrition: §R[?wif_over_attrition|+%1]§!\nSupply consumption: §R[?wif_over_supply|+%1]§!\nPolitical power gain: §R[?wif_over_pp|+%1]§!\nFactory output: §R[?wif_over_factory|+%1]§!"

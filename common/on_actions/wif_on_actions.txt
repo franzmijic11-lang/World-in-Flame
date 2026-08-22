@@ -127,6 +127,11 @@ on_actions = {
 				set_variable = { wif_mil_grandfather = num_of_military_factories }
 				set_country_flag = wif_factory_cap_init
 				wif_update_factory_cap = yes
+
+				# Battalion soft cap. Seeded here so the officer corps readout
+				# and the AI both have a cap to read on day one rather than a
+				# zero until the first weekly tick.
+				wif_recalculate_battalion_cap = yes
 			}
 		}
 	}
@@ -170,6 +175,12 @@ on_actions = {
 			# Refresh the cap weekly so the AI strategy reacts promptly when
 			# world tension or ideology shifts. Variable maths only, no loops.
 			wif_update_factory_cap = yes
+
+			# Battalion soft cap. Also variable maths only in the common case -
+			# it walks the country's states only on weeks where the owned or
+			# cored state count actually changed. This is the call that applies
+			# and removes the overcap penalties.
+			wif_recalculate_battalion_cap = yes
 
 			# Moskowien has put the civil war down: every breakaway is gone.
 			# Announce it, and the news event itself carries out the

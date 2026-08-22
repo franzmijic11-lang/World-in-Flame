@@ -6,7 +6,7 @@ tags={
 	"National Focuses"
 }
 name="Welt in Flammen"
-supported_version="1.17.*"
+supported_version="1.19.2"
 dependencies={
 	"Gotterdammerung"
 	"Arms Against Tyranny"

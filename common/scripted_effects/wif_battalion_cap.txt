@@ -1,0 +1,472 @@
+# Battalion soft cap.
+#
+#     CAP = 432 * ( 1 + SUM of every percentage below )
+#
+# Every bonus is a percentage OF THE 432 BASE, and they are SUMMED. Nothing
+# compounds: a +50% conscription law and a +70% war support bonus give
+# 432 * 2.2, not 432 * 1.5 * 1.7. Keep it that way - the whole design rests on
+# the player being able to add the percentages up in their head.
+#
+# 432 is a hard floor. Since no component is ever negative the sum cannot drag
+# the cap below the base, but the clamp is written out anyway so that adding a
+# malus component later cannot silently break the floor.
+#
+# Only LINE battalions count. Support companies and regiments are excluded and
+# are neither counted against the cap nor helped by it.
+#
+# This is a soft cap. Going over is always allowed; it just costs you. The
+# penalties live in common/dynamic_modifiers/wif_battalion_cap.txt.
+#
+#   Territory       per owned state: cored 0.2%, cored with a city 0.3% total,
+#                   uncored 0.05%. Linear, and deliberately blind to how many
+#                   people live in the state.
+#   Conscription    disarmed 0, volunteer 10%, limited 15%, extensive 25%,
+#                   service by requirement 35%, all adults serve 45%,
+#                   scraping the barrel 50%.
+#   Standing        major power 100%, faction leader 50%. These stack, and
+#                   both are re-read weekly so they follow the country's
+#                   actual status rather than being granted once.
+#   Stability       0-20 nothing, 21-40 5%, 41-60 7%, 61-80 9%, 81-100 10%.
+#   War support     0-20 nothing, 21-40 10%, 41-60 30%, 61-80 50%, 81-100 70%.
+#   Wartime         additive, up to +225%, ALL of it stripped the moment the
+#                   country is at peace again.
+#   World tension   highest qualifying band only, never summed with itself.
+#
+# No flat bonuses anywhere yet. If one is ever added it goes on after the
+# multiply, not into wif_bat_pct.
+
+
+# Territory component. This is the only part that needs to walk every state, so
+# it is cached in wif_terr_pct and recomputed ONLY when the country's territory
+# actually changes - see common/on_actions/wif_on_actions.txt. Running this
+# loop weekly for every country in the game is what would make the cap
+# expensive, and there is no reason to: borders do not move most weeks.
+wif_recalculate_territory_bonus = {
+	set_variable = { wif_terr_pct = 0 }
+
+	every_owned_state = {
+		if = {
+			limit = { is_core_of = PREV }
+			add_to_variable = { PREV.wif_terr_pct = 0.002 }
+
+			# A city is worth an extra 0.1% on top of the 0.2%, so a cored
+			# state with one is 0.3% in total rather than 0.2% + 0.3%.
+			# "Has a city" is read off the state category, which is the only
+			# thing in the game that actually tracks urbanisation.
+			if = {
+				limit = {
+					OR = {
+						has_state_category = city
+						has_state_category = large_city
+						has_state_category = metropolis
+						has_state_category = megalopolis
+					}
+				}
+				add_to_variable = { PREV.wif_terr_pct = 0.001 }
+			}
+		}
+		else = {
+			# Occupied ground pays a quarter of what cored ground pays.
+			add_to_variable = { PREV.wif_terr_pct = 0.0005 }
+		}
+	}
+}
+
+
+# The weekly pass. Variable maths only - no loops, no unit iteration.
+wif_recalculate_battalion_cap = {
+	# Refresh the cached territory bonus only when the country's territory has
+	# actually moved. num_owned_states and num_core_states are plain country
+	# variables, so this is two integer compares in the common case and the
+	# every_owned_state loop runs only on the weeks a border or a core changed.
+	# That is what keeps a per-country weekly pass affordable.
+	#
+	# The one thing it will not catch on its own is a state changing category
+	# (a town growing into a city) with no change to either count. That is rare
+	# and self-corrects the next time either number moves.
+	#
+	# The has_variable check also seeds countries that formed mid-game and so
+	# never saw on_startup.
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = wif_terr_pct }
+				NOT = { check_variable = { wif_terr_states = num_owned_states } }
+				NOT = { check_variable = { wif_terr_cores = num_core_states } }
+			}
+		}
+		wif_recalculate_territory_bonus = yes
+		set_variable = { wif_terr_states = num_owned_states }
+		set_variable = { wif_terr_cores = num_core_states }
+	}
+
+	# Seed the limit at the bare base before anything else touches it. This is
+	# a diagnostic as much as a safety net: the readout previously showed a
+	# limit of 0, which can only happen if the variable is never written, so
+	# seeding it here means the counter can never show 0 again. If it ever
+	# reads exactly 432 on a country that should have bonuses, the block at
+	# the bottom of this effect is not being reached.
+	set_variable = { wif_bat_limit = 432 }
+
+	set_variable = { wif_bat_pct = wif_terr_pct }
+
+	# --- Conscription law -------------------------------------------------
+	# Disarmed nation is deliberately absent: it contributes nothing, so a
+	# disarmed country sits on the bare 432 plus whatever else it has earned.
+	# These read the vanilla law ideas directly, so the recruitable population
+	# factors on the laws themselves are untouched.
+	if = {
+		limit = { has_idea = scraping_the_barrel }
+		add_to_variable = { wif_bat_pct = 0.50 }
+	}
+	else_if = {
+		limit = { has_idea = all_adults_serve }
+		add_to_variable = { wif_bat_pct = 0.45 }
+	}
+	else_if = {
+		limit = { has_idea = service_by_requirement }
+		add_to_variable = { wif_bat_pct = 0.35 }
+	}
+	else_if = {
+		limit = { has_idea = extensive_conscription }
+		add_to_variable = { wif_bat_pct = 0.25 }
+	}
+	else_if = {
+		limit = { has_idea = limited_conscription }
+		add_to_variable = { wif_bat_pct = 0.15 }
+	}
+	else_if = {
+		limit = { has_idea = volunteer_only }
+		add_to_variable = { wif_bat_pct = 0.10 }
+	}
+
+	# --- Stability --------------------------------------------------------
+	if = {
+		limit = { has_stability > 0.8 }
+		add_to_variable = { wif_bat_pct = 0.10 }
+	}
+	else_if = {
+		limit = { has_stability > 0.6 }
+		add_to_variable = { wif_bat_pct = 0.09 }
+	}
+	else_if = {
+		limit = { has_stability > 0.4 }
+		add_to_variable = { wif_bat_pct = 0.07 }
+	}
+	else_if = {
+		limit = { has_stability > 0.2 }
+		add_to_variable = { wif_bat_pct = 0.05 }
+	}
+
+	# --- War support ------------------------------------------------------
+	if = {
+		limit = { has_war_support > 0.8 }
+		add_to_variable = { wif_bat_pct = 0.70 }
+	}
+	else_if = {
+		limit = { has_war_support > 0.6 }
+		add_to_variable = { wif_bat_pct = 0.50 }
+	}
+	else_if = {
+		limit = { has_war_support > 0.4 }
+		add_to_variable = { wif_bat_pct = 0.30 }
+	}
+	else_if = {
+		limit = { has_war_support > 0.2 }
+		add_to_variable = { wif_bat_pct = 0.10 }
+	}
+
+	# --- Standing ----------------------------------------------------------
+	# Both of these are re-read from scratch every weekly pass, which is what
+	# makes them self-correcting: a minor that becomes a major picks up the
+	# +100% on the next tick, and a major that is knocked down to minor loses
+	# it just as automatically. Nothing needs to be granted or revoked by
+	# event, and there is no flag to leave stale.
+	#
+	# They stack. A major that also leads a faction gets both, +150%.
+	if = {
+		limit = { is_major = yes }
+		add_to_variable = { wif_bat_pct = 1.00 }
+	}
+	if = {
+		limit = { is_faction_leader = yes }
+		add_to_variable = { wif_bat_pct = 0.50 }
+	}
+
+	# --- Line battalions in service ---------------------------------------
+	# Computed here rather than down with the cap because the wartime clauses
+	# below weigh this country's strength against its enemies', and both sides
+	# of that comparison have to be line-only for it to mean anything.
+	#
+	# num_battalions counts EVERY sub unit in a division, support companies
+	# included, so the support total is subtracted back out.
+	wif_count_support_companies = yes
+	set_variable = { wif_bat_used = num_battalions }
+	subtract_from_variable = { wif_bat_used = wif_support_bat }
+	if = {
+		limit = { check_variable = { wif_bat_used < 0 } }
+		set_variable = { wif_bat_used = 0 }
+	}
+
+	# --- Wartime ----------------------------------------------------------
+	# Everything in this block is conditional on has_war = yes, which is what
+	# makes it evaporate at peace: the next weekly pass after the war ends
+	# simply does not add it, the cap drops, and the country has a month of
+	# grace to demobilise into the smaller number.
+	#
+	# Enemy strength is measured as the total line battalions of every country
+	# currently at war with this one, which is what makes the alliance clause
+	# work without a separate faction lookup - if the enemy is in a faction,
+	# every member that joined the war is already in this sum.
+	set_variable = { wif_enemy_bat = 0 }
+	if = {
+		limit = { has_war = yes }
+
+		# Each enemy has its own support companies stripped out the same way,
+		# so this is line battalions measured against line battalions.
+		every_enemy_country = {
+			wif_count_support_companies = yes
+			set_temp_variable = { wif_enemy_line = num_battalions }
+			subtract_from_temp_variable = { wif_enemy_line = wif_support_bat }
+			add_to_variable = { PREV.wif_enemy_bat = wif_enemy_line }
+		}
+
+		# Fighting someone your own size or smaller. The big one, and the
+		# reason a defensive war against a peer is survivable at all.
+		if = {
+			# check_variable has no <= operator - only > < = - so "enemy is the
+			# same size or smaller" has to be written as "NOT bigger". Using <=
+			# here broke the parse of this whole file.
+			limit = { NOT = { check_variable = { wif_enemy_bat > wif_bat_used } } }
+			add_to_variable = { wif_bat_pct = 1.00 }
+		}
+
+		if = {
+			limit = { has_defensive_war = yes }
+			add_to_variable = { wif_bat_pct = 0.15 }
+		}
+
+		# Outnumbered two to one, and four to one. These stack with each
+		# other by design: a country facing 4x gets both, +110% between them.
+		set_variable = { wif_enemy_bat_x2 = wif_bat_used }
+		multiply_variable = { wif_enemy_bat_x2 = 2 }
+		set_variable = { wif_enemy_bat_x4 = wif_bat_used }
+		multiply_variable = { wif_enemy_bat_x4 = 4 }
+
+		if = {
+			limit = { check_variable = { wif_enemy_bat > wif_enemy_bat_x2 } }
+			add_to_variable = { wif_bat_pct = 0.20 }
+		}
+		if = {
+			# Same restriction as above: no >= operator, so "at least four times"
+			# is written as "NOT less than four times".
+			limit = { NOT = { check_variable = { wif_enemy_bat < wif_enemy_bat_x4 } } }
+			add_to_variable = { wif_bat_pct = 0.90 }
+		}
+	}
+
+	# --- World tension ----------------------------------------------------
+	# Highest band only. Written as if/else_if precisely so 80%+ tension gives
+	# 60% and not 30+40+60.
+	if = {
+		limit = { threat > 0.7999 }
+		add_to_variable = { wif_bat_pct = 0.60 }
+	}
+	else_if = {
+		limit = { threat > 0.5999 }
+		add_to_variable = { wif_bat_pct = 0.40 }
+	}
+	else_if = {
+		limit = { threat > 0.1999 }
+		add_to_variable = { wif_bat_pct = 0.30 }
+	}
+
+	# --- Cap ---------------------------------------------------------------
+	# Deliberately NOT rounded here. round_variable sat between wif_bat_used
+	# and this variable, and wif_bat_limit was the only thing downstream of it
+	# that failed to reach the interface while wif_bat_used arrived fine - the
+	# readout showed the battalion count but no limit. The display formatter
+	# in the localisation ("|0") already rounds to whole battalions, so the
+	# rounding was never needed for presentation, and leaving the fractional
+	# value in the variable does not affect any comparison below.
+	set_variable = { wif_bat_limit = 1 }
+	add_to_variable = { wif_bat_limit = wif_bat_pct }
+	multiply_variable = { wif_bat_limit = 432 }
+
+	# 432 is the floor, always.
+	if = {
+		limit = { check_variable = { wif_bat_limit < 432 } }
+		set_variable = { wif_bat_limit = 432 }
+	}
+
+	# Spare allowance, read by the AI strategies in
+	# common/ai_strategy/wif_battalion_cap.txt.
+	#
+	# Expressed as a FRACTION of the country's own cap as well as a raw count,
+	# for the same reason the factory cap uses a ratio: a flat "20 battalions
+	# left" means nothing in common between Luxembourg and Germany, so the
+	# thresholds the AI reacts to have to be proportional. wif_bat_limit is
+	# floored at 432 above, so this can never divide by zero.
+	set_variable = { wif_bat_headroom = wif_bat_limit }
+	subtract_from_variable = { wif_bat_headroom = wif_bat_used }
+
+	set_variable = { wif_bat_headroom_pct = wif_bat_headroom }
+	divide_variable = { wif_bat_headroom_pct = wif_bat_limit }
+
+	# wif_bat_used was worked out above, before the wartime comparisons.
+	set_variable = { wif_battalions_over = wif_bat_used }
+	subtract_from_variable = { wif_battalions_over = wif_bat_limit }
+	if = {
+		limit = { check_variable = { wif_battalions_over < 0 } }
+		set_variable = { wif_battalions_over = 0 }
+	}
+
+	# Per-battalion penalty rates. These are the numbers to edit to rebalance
+	# the whole system; the dynamic modifier just reads the results.
+	#
+	# HoI4 reads these as fractions, so 0.02 is +2% attrition PER BATTALION
+	# over. Ten battalions over costs +20% attrition, +20% supply consumption
+	# and -1% factory output.
+	#
+	# Political power is deliberately the outlier at ten times the rest, chosen
+	# knowingly: -10% political power gain PER BATTALION over. That means ten
+	# over zeroes political power gain outright, and beyond ten the modifier
+	# goes past -100%. The overshoot is not clamped here - if a country sitting
+	# far over cap should stop at zero gain rather than bleed political power,
+	# clamp wif_over_pp at -1 below.
+	set_variable = { wif_over_attrition = wif_battalions_over }
+	multiply_variable = { wif_over_attrition = 0.02 }
+
+	set_variable = { wif_over_supply = wif_battalions_over }
+	multiply_variable = { wif_over_supply = 0.02 }
+
+	set_variable = { wif_over_pp = wif_battalions_over }
+	multiply_variable = { wif_over_pp = -0.1 }
+
+	set_variable = { wif_over_factory = wif_battalions_over }
+	multiply_variable = { wif_over_factory = -0.001 }
+
+	# --- Grace period ------------------------------------------------------
+	# One month to demobilise. The clock starts the week a country first goes
+	# over its cap, which covers the case the grace exists for: a war ends, the
+	# wartime bonuses vanish, and an army that was legal last week is suddenly
+	# 200 battalions over. Dip back under and the latch clears, so the next
+	# overshoot gets a fresh month rather than an already-expired one.
+	if = {
+		limit = { check_variable = { wif_battalions_over > 0 } }
+
+		if = {
+			limit = { NOT = { has_country_flag = wif_over_cap_latch } }
+			set_country_flag = wif_over_cap_latch
+			set_country_flag = { flag = wif_bat_grace days = 30 value = 1 }
+		}
+
+		if = {
+			limit = {
+				NOT = { has_country_flag = wif_bat_grace }
+				NOT = { has_dynamic_modifier = { modifier = wif_over_battalion_cap } }
+			}
+			add_dynamic_modifier = { modifier = wif_over_battalion_cap }
+		}
+	}
+	else = {
+		clr_country_flag = wif_over_cap_latch
+		clr_country_flag = wif_bat_grace
+
+		if = {
+			limit = { has_dynamic_modifier = { modifier = wif_over_battalion_cap } }
+			remove_dynamic_modifier = { modifier = wif_over_battalion_cap }
+		}
+	}
+}
+
+# NOTE: the "one civilian dies per soldier killed" population drain has now
+# been proposed and dropped twice. It is technically buildable - casualties is
+# a readable cumulative variable, so weekly deaths are a delta against last
+# week's reading, and add_manpower works in STATE scope - but it is
+# deliberately NOT part of this system. Do not add it back without asking.
+
+
+# Total support companies currently fielded.
+#
+# num_battalions counts EVERY sub unit in every division, support companies
+# included - support companies register under num_battalions_with_type@ just
+# like line battalions do. So the line-only figure the cap is built around has
+# to subtract them back out, one sub unit type at a time, because there is no
+# aggregate "all support" variable.
+#
+# This list is every vanilla sub unit whose type block contains "support",
+# generated from common/units/ rather than typed by hand. A mod that adds a
+# NEW support company will not be in here and will be miscounted as a line
+# battalion until its name is added below.
+wif_count_support_companies = {
+	set_variable = { wif_support_bat = 0 }
+
+	add_to_variable = { wif_support_bat = num_battalions_with_type@airborne_light_armor }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@anti_air }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@anti_air_battery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@anti_tank }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@anti_tank_battery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@armored_car_recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@armored_engineer }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@armored_maintenance }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@armored_signal }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@artillery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@assault_engineer }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@blackshirt_assault_battalion }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@engineer }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@field_guns }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@field_hospital }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@fire_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@heavy_flame_tank }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@heavy_sp_anti_air_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@heavy_tank_destroyer_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@helicopter_brigade }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@helicopter_field_hospital }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@helicopter_recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@helicopter_transport }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_air_liaison }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_engineer }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_field_hospital }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_logistics }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_maintenance }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_military_police }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_naval_liaison }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_signal }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_specops }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@hq_support_company }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@jungle_pioneers_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@land_cruiser }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@light_flame_tank }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@light_sp_anti_air_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@light_tank_destroyer_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@light_tank_recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@logistics_company }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@long_range_patrol_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@maintenance_company }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@medium_flame_tank }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@medium_sp_anti_air_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@medium_tank_destroyer_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@military_police }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@modern_sp_anti_air_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@modern_tank_destroyer_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@mot_fire_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@mot_recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@motorized_military_police }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@northern_territory_recon_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@pioneer_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@rangers_support }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@recon }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@rocket_artillery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@rocket_battery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@self_propelled_super_heavy_artillery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@signal_company }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@sturmtruppe_battalion }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@super_heavy_armor }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@super_heavy_artillery }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@super_heavy_sp_anti_air_brigade }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@super_heavy_sp_artillery_brigade }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@super_heavy_tank_destroyer_brigade }
+	add_to_variable = { wif_support_bat = num_battalions_with_type@winter_logistics_support }
+}

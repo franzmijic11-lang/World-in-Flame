@@ -1,0 +1,46 @@
+# Line battalion counter for the officer corps screen.
+#
+# Attached with parent_window_name rather than parent_window_token because
+# there is no token for the officer corps view.
+#
+# The parent is special_forces_header, the block itself, NOT the root window.
+# That matters: officer_core_view scrolls (verticalScrollbar) and shifts its
+# sections at runtime via spirit_row_offset (+56 when the spirit DLC is on) and
+# no_taog_offset (-57 when TAOG is off). Anchoring to the root would pin the
+# counter at a fixed height while the panel scrolled underneath it, and would
+# put it at the wrong height in half the DLC configurations. Parented to the
+# block, it inherits every one of those offsets for free.
+#
+# Nesting is fine - BlackICE attaches to officer_core_view the same way.
+#
+# IF THE COUNTER DOES NOT APPEAR AT ALL, the engine failed to resolve this
+# nested name. Fall back to parent_window_name = officer_core_view and set the
+# window position in interface/wif_battalion_cap.gui to { x = 14 y = 726 },
+# which is the same spot in that container's coordinate space.
+#
+# Deliberately a scripted GUI and NOT an override of countryofficercorpview.gui:
+# an override would make this mod own a 730 line vanilla file and re-merge it
+# every patch. Verified that no mod in the active playset overrides that file -
+# BlackICE does (it parks special_forces_header at x = -1000) but it is not
+# enabled.
+#
+# NOTE: the folder name is scripted_guis, PLURAL. The game ignores a folder
+# called scripted_gui - this mod has an empty one of those left over, which is
+# dead weight.
+
+scripted_gui = {
+	wif_battalion_cap_counter = {
+		context_type = player_context
+		window_name = "wif_battalion_cap_window"
+		parent_window_name = special_forces_header
+
+		# Nothing to click, so the AI has no reason to evaluate it.
+		ai_enabled = {
+			always = no
+		}
+
+		visible = {
+			is_ai = no
+		}
+	}
+}

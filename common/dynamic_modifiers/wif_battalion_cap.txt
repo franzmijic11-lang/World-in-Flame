@@ -1,0 +1,27 @@
+# Overcap penalties for the battalion soft cap. The cap itself is computed in
+# common/scripted_effects/wif_battalion_cap.txt.
+#
+# This is a SOFT cap, unlike the special forces cap it is modelled on. Nothing
+# blocks recruitment past the limit - the country simply pays for every
+# battalion it is over, and the penalty scales linearly with the overshoot
+# rather than snapping between tiers.
+#
+# All four values are driven by variables recalculated in the weekly pass, so
+# this file never needs touching to rebalance: the per-battalion rates live in
+# wif_recalculate_battalion_cap.
+
+wif_over_battalion_cap = {
+	# Applied by the weekly pass once a country is over cap AND its one month
+	# demobilisation grace has expired, and stripped again on the way back
+	# under. The remove_trigger is only a safety net, for saves loaded before
+	# the next weekly pass has had a chance to run.
+	enable = { always = yes }
+	remove_trigger = { check_variable = { wif_battalions_over < 1 } }
+
+	icon = "GFX_idea_generic_manpower_bonus"
+
+	attrition = wif_over_attrition
+	supply_consumption_factor = wif_over_supply
+	political_power_factor = wif_over_pp
+	industrial_capacity_factory = wif_over_factory
+}

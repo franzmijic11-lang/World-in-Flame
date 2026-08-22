@@ -1,0 +1,48 @@
+# Line battalion counter, drawn inside the officer corps screen underneath the
+# special forces block.
+#
+# Coordinates are relative to the special_forces_header block, which is what
+# this window is parented to - NOT to the officer corps root. The block is 145
+# tall; its title sits at y = 6 and its modifier grid runs y = 66 to y = 101,
+# so y = 107 is the empty strip underneath the grid with room to spare before
+# the block ends. x = 12 lines the icon up with the grid above it.
+#
+# The icon is GFX_special_forces_icon at frame 3 - the same sprite and frame
+# the vanilla special forces counter uses in interface/countryarmyview.gui - so
+# the two counters read as a matched pair.
+
+guiTypes = {
+
+	containerWindowType = {
+		name = "wif_battalion_cap_window"
+		position = { x = 12 y = 124 }
+		size = { width = 330 height = 20 }
+
+		# The block is 145 tall and its modifier grid ends at 101, leaving a
+		# 44px strip. y = 132 ran the text into the block's bottom border;
+		# y = 124 with a 20 high window ends at 144, clear of the edge.
+		# clipping stays off so a wide count cannot be cut off mid-number.
+		clipping = no
+
+		iconType = {
+			name = "wif_battalion_cap_icon"
+			spriteType = "GFX_special_forces_icon"
+			position = { x = 0 y = 0 }
+			frame = 3
+			pdx_tooltip = wif_battalion_cap_label
+			pdx_tooltip_delayed = wif_battalion_cap_desc
+		}
+
+		instantTextboxType = {
+			name = "wif_battalion_cap_count"
+			position = { x = 26 y = 1 }
+			font = "hoi_18mbs"
+			borderSize = { x = 0 y = 0 }
+			text = "wif_battalion_cap_count"
+			maxWidth = 120
+			maxHeight = 20
+			format = left
+			alwaystransparent = yes
+		}
+	}
+}
