@@ -6,9 +6,5 @@ tags={
 	"National Focuses"
 }
 name="Welt in Flammen"
+picture="thumbnail.png"
 supported_version="1.19.2"
-dependencies={
-	"Gotterdammerung"
-	"Arms Against Tyranny"
-	"La Resistance"
-}
