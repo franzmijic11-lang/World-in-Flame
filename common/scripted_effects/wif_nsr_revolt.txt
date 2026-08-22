@@ -88,13 +88,6 @@ wif_nsr_revolt = {
 			}
 		}
 		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
-				type = annex_everything
-			}
-		}
-		if = {
 			limit = { country_exists = NWG }
 			declare_war_on = {
 				target = NWG
@@ -230,13 +223,6 @@ wif_rlf_rising = {
 			}
 		}
 		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
-				type = annex_everything
-			}
-		}
-		if = {
 			limit = { country_exists = NWG }
 			declare_war_on = {
 				target = NWG
@@ -306,13 +292,6 @@ wif_wrs_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
 				type = annex_everything
 			}
 		}
@@ -389,13 +368,6 @@ wif_srg_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
 				type = annex_everything
 			}
 		}
@@ -483,13 +455,6 @@ wif_nrg_rising = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
 				type = annex_everything
 			}
 		}
@@ -703,13 +668,6 @@ wif_ssm_mutiny = {
 			limit = { country_exists = NSP }
 			declare_war_on = {
 				target = NSP
-				type = annex_everything
-			}
-		}
-		if = {
-			limit = { country_exists = NAR }
-			declare_war_on = {
-				target = NAR
 				type = annex_everything
 			}
 		}
