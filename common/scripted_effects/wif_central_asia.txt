@@ -12,6 +12,14 @@
 # existence - the same trick wif_sov.1 uses to pre-spawn the SME - so politics
 # and capitals are set afterwards, once the country is real.
 #
+# SCOPING, THE HARD-WON BIT. division_template is a COUNTRY effect and has to
+# be run inside TAG = { }. create_unit is NOT: nesting it inside TAG = { }
+# fails with "create_unit -- invalid scope state" and silently spawns nothing.
+# It belongs at the top level of the effect with owner = TAG doing the
+# targeting, which is how vanilla always writes it. Hence the split below -
+# templates inside the country block, units immediately after it. Do not
+# "tidy" the create_unit calls back inside.
+#
 # WATCH THE STATE FILENAMES. They lie. 404-Saykhin.txt is Kyzyl Orda,
 # 405-Atyrau.txt is Tashkent, 585-Uzbekistan.txt is Navoi, 584-Turkmenistan.txt
 # is Ashkhabad and 586-Kyrgyzstan.txt is Alma-Ata. Every id below was resolved
@@ -33,6 +41,7 @@ wif_central_asia_breakup = {
 
 	if = {
 		limit = { country_exists = CRA }
+
 		CRA = {
 			set_capital = { state = 405 }
 
@@ -79,28 +88,28 @@ wif_central_asia_breakup = {
 					artillery = { x = 0 y = 0 }
 				}
 			}
+		}
 
-			# Two divisions in each of the three states, six in total. These
-			# are regulars who kept their kit, not levies: experience 0.5 and
-			# full equipment.
-			create_unit = {
-				division = "name = \"1. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-				owner = CRA
-				count = 2
-				prioritize_location = 7597		# Kyzyl Orda
-			}
-			create_unit = {
-				division = "name = \"2. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-				owner = CRA
-				count = 2
-				prioritize_location = 1459		# Tashkent
-			}
-			create_unit = {
-				division = "name = \"3. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-				owner = CRA
-				count = 2
-				prioritize_location = 1554		# Navoi
-			}
+		# Two divisions in each of the three states, six in total. These are
+		# regulars who kept their kit, not levies: experience 0.5 and full
+		# equipment. Top level, not inside CRA = { } - see the header note.
+		create_unit = {
+			division = "name = \"1. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+			owner = CRA
+			count = 2
+			prioritize_location = 7597		# Kyzyl Orda
+		}
+		create_unit = {
+			division = "name = \"2. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+			owner = CRA
+			count = 2
+			prioritize_location = 1459		# Tashkent
+		}
+		create_unit = {
+			division = "name = \"3. Turkestanskaya Strelkovaya Diviziya\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+			owner = CRA
+			count = 2
+			prioritize_location = 1554		# Navoi
 		}
 	}
 
@@ -131,12 +140,12 @@ wif_central_asia_breakup = {
 		KAZ = {
 			set_capital = { state = 586 }
 			wif_central_asian_republic_setup = yes
-			create_unit = {
-				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
-				owner = KAZ
-				count = 4
-				prioritize_location = 1591		# Alma-Ata
-			}
+		}
+		create_unit = {
+			division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+			owner = KAZ
+			count = 4
+			prioritize_location = 1591		# Alma-Ata
 		}
 	}
 
@@ -154,12 +163,12 @@ wif_central_asia_breakup = {
 		UZB = {
 			set_capital = { state = 830 }
 			wif_central_asian_republic_setup = yes
-			create_unit = {
-				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
-				owner = UZB
-				count = 4
-				prioritize_location = 1573		# Bukhara
-			}
+		}
+		create_unit = {
+			division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+			owner = UZB
+			count = 4
+			prioritize_location = 1573		# Bukhara
 		}
 	}
 
@@ -175,12 +184,12 @@ wif_central_asia_breakup = {
 		TMS = {
 			set_capital = { state = 584 }
 			wif_central_asian_republic_setup = yes
-			create_unit = {
-				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
-				owner = TMS
-				count = 4
-				prioritize_location = 12333		# Ashkhabad
-			}
+		}
+		create_unit = {
+			division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+			owner = TMS
+			count = 4
+			prioritize_location = 12333		# Ashkhabad
 		}
 	}
 
@@ -195,12 +204,12 @@ wif_central_asia_breakup = {
 		KYR = {
 			set_capital = { state = 732 }
 			wif_central_asian_republic_setup = yes
-			create_unit = {
-				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
-				owner = KYR
-				count = 4
-				prioritize_location = 12583		# Pamir
-			}
+		}
+		create_unit = {
+			division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+			owner = KYR
+			count = 4
+			prioritize_location = 12583		# Pamir
 		}
 	}
 
@@ -214,12 +223,12 @@ wif_central_asia_breakup = {
 		TAJ = {
 			set_capital = { state = 742 }
 			wif_central_asian_republic_setup = yes
-			create_unit = {
-				division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
-				owner = TAJ
-				count = 4
-				prioritize_location = 1384		# Stalinabad
-			}
+		}
+		create_unit = {
+			division = "division_template = \"Cavalry Division\" start_experience_factor = 0 start_equipment_factor = 1.0"
+			owner = TAJ
+			count = 4
+			prioritize_location = 1384		# Stalinabad
 		}
 	}
 }
@@ -227,7 +236,8 @@ wif_central_asia_breakup = {
 
 # Everything the five republics share. Called in country scope, after the
 # country has been brought into existence by its first state transfer and after
-# its capital has been set.
+# its capital has been set. No create_unit in here - that is deliberate, see
+# the scoping note at the top of the file.
 wif_central_asian_republic_setup = {
 	set_politics = {
 		ruling_party = neutrality
