@@ -81,6 +81,21 @@ wif_central_asia_breakup = {
 			# every other breakaway in this mod carries.
 			add_ideas = wif_splinter_no_factions
 
+			# Andropov takes the government. Granted here rather than declared
+			# on the character, because the CRA does not exist at game start
+			# and a leader role in the character file would have nothing to
+			# attach to. Must come after set_politics above, so the ruling
+			# party is already communism when the role lands.
+			add_country_leader_role = {
+				character = CRA_yuri_andropov
+				promote_leader = yes
+				country_leader = {
+					ideology = stalinism
+					expire = "1965.1.1.1"
+					traits = { }
+				}
+			}
+
 			# Standard Soviet rifle division, mirroring the vanilla
 			# Strelkovaya Diviziya: 3x3 infantry with artillery support.
 			division_template = {

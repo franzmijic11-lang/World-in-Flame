@@ -1,0 +1,22 @@
+# Welt in Flammen characters for the Central Asian Red Army.
+
+characters = {
+
+	# Deliberately defined with NO country_leader role of its own. The CRA does
+	# not exist at game start, so a leader role here would have nothing to
+	# attach to; the role is granted with add_country_leader_role when the
+	# breakup fires, which is the same pattern wif_sov.1 uses to put Zhukov at
+	# the head of the SME.
+	CRA_yuri_andropov = {
+		name = CRA_yuri_andropov
+
+		portraits = {
+			civilian = {
+				large = GFX_portrait_CRA_yuri_andropov
+			}
+			army = {
+				large = GFX_portrait_CRA_yuri_andropov
+			}
+		}
+	}
+}

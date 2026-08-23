@@ -1,0 +1,14 @@
+# Portraits for the Central Asian Red Army.
+#
+# The texture is a .png rather than the .dds every vanilla leader uses. The
+# engine loads it fine - vanilla itself ships one .png portrait, the generic
+# Asian female scientist - and .png is what can be produced without a DDS
+# toolchain. Same 156x210 as every other large leader portrait.
+
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_portrait_CRA_yuri_andropov"
+		texturefile = "gfx/leaders/CRA/Portrait_CRA_Yuri_Andropov.png"
+	}
+}
