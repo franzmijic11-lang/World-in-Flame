@@ -13,12 +13,12 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_portrait_CRA_vasily_petrov"
-		texturefile = "gfx/leaders/CRA/Portrait_CRA_General.png"
+		name = "GFX_portrait_CRA_ivan_panfilov"
+		texturefile = "gfx/leaders/CRA/Portrait_CRA_Ivan_Panfilov.png"
 	}
 
 	spriteType = {
-		name = "GFX_portrait_CRA_vasily_petrov_small"
-		texturefile = "gfx/leaders/CRA/Portrait_CRA_General_small.png"
+		name = "GFX_portrait_CRA_ivan_panfilov_small"
+		texturefile = "gfx/leaders/CRA/Portrait_CRA_Ivan_Panfilov_small.png"
 	}
 }

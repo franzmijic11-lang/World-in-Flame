@@ -99,7 +99,7 @@ wif_central_asia_breakup = {
 			# The army it inherited needs somebody to command it. His corps
 			# commander role is declared on the character itself, so recruiting
 			# him is enough - no add_corps_commander_role needed here.
-			recruit_character = CRA_vasily_petrov
+			recruit_character = CRA_ivan_panfilov
 
 			# Standard Soviet rifle division, mirroring the vanilla
 			# Strelkovaya Diviziya: 3x3 infantry with artillery support.

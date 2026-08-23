@@ -27,13 +27,13 @@ characters = {
 	#
 	# Skill 2 as asked. The sub-skills lean defensive to match what the traits
 	# say about him: an infantry officer who fights in broken ground.
-	CRA_vasily_petrov = {
-		name = CRA_vasily_petrov
+	CRA_ivan_panfilov = {
+		name = CRA_ivan_panfilov
 
 		portraits = {
 			army = {
-				large = GFX_portrait_CRA_vasily_petrov
-				small = GFX_portrait_CRA_vasily_petrov_small
+				large = GFX_portrait_CRA_ivan_panfilov
+				small = GFX_portrait_CRA_ivan_panfilov_small
 			}
 		}
 
