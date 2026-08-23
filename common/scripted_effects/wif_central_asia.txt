@@ -81,25 +81,47 @@ wif_central_asia_breakup = {
 			# every other breakaway in this mod carries.
 			add_ideas = wif_splinter_no_factions
 
-			# Andropov takes the government. Granted here rather than declared
-			# on the character, because the CRA does not exist at game start
-			# and a leader role in the character file would have nothing to
-			# attach to. Must come after set_politics above, so the ruling
-			# party is already communism when the role lands.
-			add_country_leader_role = {
-				character = CRA_yuri_andropov
-				promote_leader = yes
-				country_leader = {
-					ideology = stalinism
-					expire = "1965.1.1.1"
-					traits = { }
-				}
+			# Andropov takes the government, and Panfilov the army.
+			#
+			# These use create_country_leader / create_corps_commander rather
+			# than defining characters in common/characters and attaching them,
+			# because neither attachment route works for a country that spawns
+			# mid-game:
+			#
+			#   add_country_leader_role  fails with "Character does not exist"
+			#                            unless the character ALREADY belongs to
+			#                            the country in scope. It does not
+			#                            recruit; it only promotes.
+			#   recruit_character        is load-time only - "should only happen
+			#                            in game/history files in order to be
+			#                            executed only at game start".
+			#
+			# The create_* effects have no such restriction: they build the
+			# character and attach it in one step, which is how vanilla hands
+			# leaders and generals to countries mid-game. Note the portrait
+			# parameter is spelled differently for each - picture for the
+			# leader, gfx for the commander.
+			#
+			# Must come after set_politics above so the ruling party is already
+			# communism when the leader lands.
+			create_country_leader = {
+				name = "Yuri Andropov"
+				picture = "GFX_portrait_CRA_yuri_andropov"
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = { }
 			}
 
-			# The army it inherited needs somebody to command it. His corps
-			# commander role is declared on the character itself, so recruiting
-			# him is enough - no add_corps_commander_role needed here.
-			recruit_character = CRA_ivan_panfilov
+			create_corps_commander = {
+				name = "Ivan Panfilov"
+				gfx = "GFX_portrait_CRA_ivan_panfilov"
+				traits = { infantry_leader hill_fighter trait_mountaineer }
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				planning_skill = 1
+				logistics_skill = 1
+			}
 
 			# Standard Soviet rifle division, mirroring the vanilla
 			# Strelkovaya Diviziya: 3x3 infantry with artillery support.
