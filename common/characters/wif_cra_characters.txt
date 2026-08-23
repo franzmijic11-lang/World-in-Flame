@@ -19,4 +19,31 @@ characters = {
 			}
 		}
 	}
+
+	# The CRA's starting general. Unlike the leader role above, the corps
+	# commander role IS declared here rather than granted by effect - a role on
+	# an unrecruited character is simply dormant, and recruit_character in the
+	# breakup effect brings him in with the role already attached.
+	#
+	# Skill 2 as asked. The sub-skills lean defensive to match what the traits
+	# say about him: an infantry officer who fights in broken ground.
+	CRA_vasily_petrov = {
+		name = CRA_vasily_petrov
+
+		portraits = {
+			army = {
+				large = GFX_portrait_CRA_vasily_petrov
+				small = GFX_portrait_CRA_vasily_petrov_small
+			}
+		}
+
+		corps_commander = {
+			traits = { infantry_leader hill_fighter trait_mountaineer }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 1
+		}
+	}
 }

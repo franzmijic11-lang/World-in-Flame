@@ -11,4 +11,14 @@ spriteTypes = {
 		name = "GFX_portrait_CRA_yuri_andropov"
 		texturefile = "gfx/leaders/CRA/Portrait_CRA_Yuri_Andropov.png"
 	}
+
+	spriteType = {
+		name = "GFX_portrait_CRA_vasily_petrov"
+		texturefile = "gfx/leaders/CRA/Portrait_CRA_General.png"
+	}
+
+	spriteType = {
+		name = "GFX_portrait_CRA_vasily_petrov_small"
+		texturefile = "gfx/leaders/CRA/Portrait_CRA_General_small.png"
+	}
 }
