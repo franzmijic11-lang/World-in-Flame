@@ -1,4 +1,25 @@
-# Blank focus tree for every Moskowien civil war breakaway.
+# Blank focus tree for every Moskowien civil war breakaway, and for the Far
+# Eastern Union.
+#
+# The FES is not a rump state - it is Stalin's government in exile with 40% of
+# the Red Army - but it has no tree of its own yet and the generic one would be
+# worse than nothing. Blank for now; give it a real tree and remove the tag.
+#
+# The Siberian Anarchy is blank for the opposite reason. It is not waiting for
+# content: a country with no government should not be offered national focuses
+# at all, so this one is permanent.
+#
+# The Central Siberian Republic, the West Siberian Marxist Republic and the
+# Central Asian Red Army are here on the same terms as the FES - placeholders
+# until they have trees of their own.
+#
+# NAR and NWG are deliberately NOT in this list. They are Moskowien's loyalist
+# emergency governments rather than breakaways, and they still fall through to
+# the vanilla generic tree. That is a gap, not a decision - add them here if
+# that is wanted.
+#
+# Add a new tag here the moment it is created, rather than leaving it to fall
+# through to the generic tree.
 #
 # Without this they would fall through to the generic tree, which is full of
 # industry and army focuses no rump state fighting for its life should have.
@@ -23,6 +44,11 @@ focus_tree = {
 				tag = LOK
 				tag = SRG
 				tag = NRG
+				tag = FES
+				tag = SBA
+				tag = CSR
+				tag = WSM
+				tag = CRA
 			}
 		}
 	}
