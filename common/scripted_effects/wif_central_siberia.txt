@@ -1,0 +1,220 @@
+# Popov's betrayal, fired from wif_sme.3 when the SME completes
+# SME_deploy_east_under_popov.
+#
+# THE FOCUS IS A LIE. Its description promises a march east to put down
+# Stalin's uprising, and its tooltip shows a declaration of war on the FES.
+# Neither happens. Marshal Popov takes the army he was given for that campaign,
+# keeps going past Irkutsk, and declares a republic of his own in Tomsk.
+#
+# Runs in SME COUNTRY scope.
+#
+# STATE IDS were resolved through the STATE_<id> localisation, never through
+# filenames.
+#
+#   578 Tomsk (capital)   571 Omsk           577 Surgut      570 Novosibirsk
+#    40 Altai Krai        569 Khakassia      654 Oyrot Region
+#   568 Krasnoyarsk       576 Yeniseisk      567 Bratsk
+#
+# Note 571 Omsk is the state that just gained provinces 4780 and 10600 from
+# Tyumen - the CSR inherits them along with it.
+#
+# ORDER MATTERS. Tomsk goes first because the first successful state transfer
+# is what brings the country into existence, the same trick every other
+# breakaway in this mod uses.
+
+wif_popov_betrayal = {
+
+	# The CSR inherits the SME's research. Popov's republic is built out of
+	# the Siberian military districts and their industry, so it starts with
+	# what the army it defected from already knew.
+	SME = { save_event_target_as = wif_tech_donor }
+
+	# =====================================================================
+	# The ten states of the Central Siberian Republic
+	# =====================================================================
+	# Guarded on is_owned_by = SME so a state somebody else has already taken
+	# by force is not quietly confiscated and handed to Popov.
+	578 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Tomsk - capital, transferred first
+	571 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Omsk
+	577 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Surgut
+	570 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Novosibirsk
+	40 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Altai Krai
+	569 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Khakassia
+	654 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Oyrot Region
+	568 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Krasnoyarsk
+	576 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Yeniseisk
+	567 = { if = { limit = { is_owned_by = SME } transfer_state_to = CSR } }	# Bratsk
+
+	if = {
+		limit = { country_exists = CSR }
+
+		CSR = {
+			set_capital = { state = 578 }			# Tomsk
+
+			add_state_core = 578
+			add_state_core = 571
+			add_state_core = 577
+			add_state_core = 570
+			add_state_core = 40
+			add_state_core = 569
+			add_state_core = 654
+			add_state_core = 568
+			add_state_core = 576
+			add_state_core = 567
+
+			# History files never apply to countries spawned mid-game, so
+			# politics have to be set explicitly or ideology-keyed flag lookups
+			# fall through to a blank counter.
+			#
+			# Democratic, but only just. Popov needed a banner that was neither
+			# Stalin's nor Zhukov's, and a republic was the one thing on offer
+			# that both of them would have to argue with rather than simply
+			# outrank. The popularities are deliberately not lopsided - this is
+			# a country that has not decided what it is yet.
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			set_popularities = {
+				democratic = 55
+				fascism = 5
+				communism = 25
+				neutrality = 15
+			}
+
+			# No Diplomatic Standing, same as every other breakaway.
+			add_ideas = wif_splinter_no_factions
+
+			wif_inherit_tech_from_donor = yes
+		}
+
+		# =================================================================
+		# A third of the army goes with him
+		# =================================================================
+		# Runs in SME scope, which is the sender.
+		#
+		# 30% of the army and 20% of the stockpile. Navy and air are pinned at
+		# zero deliberately - what walked east with Popov was an army group, so
+		# every ratio is written out explicitly rather than left to inherit the
+		# `size` default. Divisions still carry their own equipment across on
+		# top of the stockpile share.
+		#
+		# keep_unit_leaders_trigger is NOT optional: transfer_units_fraction
+		# moves unit leaders as well as divisions, so without it a random slice
+		# of the SME general staff would defect alongside Popov. He is moved by
+		# name below and is meant to be the only one who goes.
+		transfer_units_fraction = {
+			target = CSR
+			size = 0.3
+			army_ratio = 0.3
+			navy_ratio = 0
+			air_ratio = 0
+			stockpile_ratio = 0.2
+
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
+		}
+
+		# =================================================================
+		# Popov himself
+		# =================================================================
+		# Two steps, and the order is load-bearing:
+		#
+		#   1. set_nationality moves him out of the SME and into the CSR. The
+		#      country-scope form applies because this effect runs in SME
+		#      scope, which is the origin country.
+		#   2. add_country_leader_role then promotes him. It does NOT recruit -
+		#      it fails with "Character does not exist" unless the character
+		#      already belongs to the country in scope - which is exactly why
+		#      the transfer has to happen first.
+		#
+		# This is the same pattern Zhukov uses in wif_sov_events, and it leaves
+		# one Popov who is both head of state and a field commander. For a
+		# republic founded by a marshal at the head of a defecting army group,
+		# that is the whole point rather than a compromise.
+		#
+		# Guarded on has_character: if Popov has already been killed or
+		# captured, the CSR still forms and simply has no named leader, instead
+		# of throwing an error every time the branch runs.
+		if = {
+			limit = { has_character = SOV_markian_popov }
+
+			set_nationality = {
+				target_country = CSR
+				character = SOV_markian_popov
+			}
+
+			CSR = {
+				add_country_leader_role = {
+					character = SOV_markian_popov
+					promote_leader = yes
+					country_leader = {
+						ideology = conservatism
+						expire = "1965.1.1"
+						traits = { }
+					}
+				}
+			}
+		}
+
+		# =================================================================
+		# Tannu Tuva slips loose
+		# =================================================================
+		# Tuva sits directly under the Oyrot Region and Khakassia, and when
+		# central Siberia stops being administered from Moscow there is nobody
+		# left in a position to hold it. If it is not already independent when
+		# Popov declares, it becomes so.
+		#
+		# TAN starts the game independent on state 329, which is ALSO
+		# SOV-cored, so by this point it can be in one of three conditions and
+		# only two of them need doing anything about.
+		#
+		# NOTE ON THE EFFECTS. `release` is a trap here: the documentation says
+		# it "releases specified country as a puppet", so on its own it would
+		# swap one overlord for another. Full independence needs
+		# set_autonomy with autonomy_free afterwards. There is no vanilla
+		# precedent for release_autonomy + autonomy_free, so this uses the two
+		# effects vanilla actually does use - `release`, then the same
+		# set_autonomy call australia.txt and china_warlord.txt use to cut a
+		# subject loose.
+		if = {
+			# Case 1: alive but somebody's puppet. Whoever holds the leash
+			# drops it - being a subject is the definition of not independent,
+			# so this is not restricted to the SME.
+			limit = {
+				country_exists = TAN
+				TAN = { is_subject = yes }
+			}
+			TAN = {
+				overlord = {
+					set_autonomy = {
+						target = TAN
+						autonomy_state = autonomy_free
+					}
+				}
+			}
+		}
+		else_if = {
+			# Case 2: annexed outright, and the SME is sitting on it. Released
+			# as a puppet and immediately cut free.
+			#
+			# Guarded on the SME owning it, the same rule Vologda follows: if
+			# Japan or Germany took Tannu Tuva by force then it is not the
+			# SME's to let go, and prying it out of a third party is a
+			# different war rather than a consequence of Popov's defection.
+			limit = {
+				NOT = { country_exists = TAN }
+				329 = { is_owned_by = SME }
+			}
+			release = TAN
+			set_autonomy = {
+				target = TAN
+				autonomy_state = autonomy_free
+			}
+		}
+		# Case 3: already independent. Nothing to do.
+	}
+}

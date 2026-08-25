@@ -7,5 +7,14 @@
 # forces, so its industry is allowed to run on the non-aligned schedule rather
 # than the tighter democratic one.
 wif_uses_non_aligned_factory_cap = {
-	has_completed_focus = SWE_rapid_mobilization
+	OR = {
+		has_completed_focus = SWE_rapid_mobilization
+
+		# The Central Siberian Republic. Democratic on paper because Popov
+		# needed a banner that was not Stalin's and not Zhukov's, but it was
+		# founded by a marshal taking a third of an army east with him and it
+		# runs its industry accordingly. The peacetime restraint the democratic
+		# schedule assumes was never there to begin with.
+		tag = CSR
+	}
 }
