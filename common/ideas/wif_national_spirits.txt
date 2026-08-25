@@ -405,5 +405,60 @@ ideas = {
 				compliance_growth = 0.05
 			}
 		}
+
+		# The Siberian Anarchy. Not a government - the absence of one.
+		#
+		# The SBA is deliberately built to be inert rather than weak. It holds
+		# nine of the emptiest states on the map and is meant to sit there, so
+		# every lever that would let it act is either shut off or pushed far
+		# enough negative that it may as well be.
+		#
+		# The faction rules duplicate what wif_splinter_no_factions already
+		# does, and that is intentional: the SBA carries both spirits, and this
+		# one should still read as a complete description of the condition if
+		# the other is ever removed.
+		#
+		# On the -200% values: HOI4 clamps output at zero rather than letting a
+		# factor below -100% run negative, so -2 is not twice as harsh as -1 in
+		# practice. It is written as -2 because that is the specification and
+		# because it leaves no doubt about intent if a future buff is stacked
+		# on top - a +50% bonus from somewhere else still leaves this at zero.
+		wif_anarchy_zone = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			rule = {
+				can_join_factions = no
+				can_create_factions = no
+			}
+
+			modifier = {
+				# Nobody bothers to press a claim on a place with no government,
+				# and the SBA cannot press one either. Both directions.
+				justify_war_goal_time = 10
+				enemy_justify_war_goal_time = 10
+
+				# No state, no conscription. -100% zeroes the recruitable pool
+				# drawn from population outright.
+				conscription_factor = -1
+
+				# Nothing gets built, made or floated.
+				production_speed_buildings_factor = -2
+				industrial_capacity_factory = -2
+				industrial_capacity_dockyard = -2
+
+				# And anything that somehow does get raised takes twice as long.
+				training_time_factor = 1
+			}
+		}
 	}
 }
