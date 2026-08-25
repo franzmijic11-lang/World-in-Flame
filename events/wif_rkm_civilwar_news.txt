@@ -107,15 +107,31 @@ news_event = {
 					#
 					# If Archangelsk is still standing when Moskowien wins, the
 					# SME has run out of the moment it was exploiting: it takes
-					# a white peace and hands back the three states it took as
-					# the risings began. wif_sme_eastern_annexation grabbed
-					# Gorky, Kargopol and Kotlas without a declaration, on the
-					# argument that the administration had stopped being able to
-					# hold them. That argument no longer holds.
+					# a white peace and gives back KARGOPOL, and only Kargopol.
+					#
+					# wif_sme_eastern_annexation grabbed three states as the
+					# risings began - Gorky (252), Kargopol (879) and Kotlas
+					# (880) - on the argument that the administration had
+					# stopped being able to hold them. Only one of them is
+					# handed back. Kargopol is the state the northern war was
+					# actually fought over, so it is the one that reverts when
+					# that war ends in nothing. Gorky and Kotlas stay with the
+					# SME: Moskowien won its civil war, not a war against the
+					# SME, and it is in no condition to demand them.
+					#
+					# CORES ARE DELIBERATELY NOT STRIPPED. The SME keeps its
+					# core on Kargopol after handing it over, so both countries
+					# core it and the SME's claim on the Northern Dvina
+					# survives the peace. This is intentional and not the
+					# oversight it resembles - do not "fix" it by adding
+					# remove_core_of = SME here. Note the knock-on: the SME's
+					# num_core_states stays inflated by one, and that variable
+					# is the cache key wif_battalion_cap uses to decide when to
+					# recompute its territory bonus.
 					#
 					# If Archangelsk has already fallen, none of this runs - the
-					# SME keeps it, and the NAR fold-back above is skipped by
-					# its own country_exists check.
+					# SME keeps everything, and the NAR fold-back above is
+					# skipped by its own country_exists check.
 					if = {
 						limit = {
 							country_exists = NAR
@@ -125,13 +141,9 @@ news_event = {
 						SME = {
 							white_peace = NAR
 
-							252 = { transfer_state_to = RKM }
 							879 = { transfer_state_to = RKM }
-							880 = { transfer_state_to = RKM }
 						}
-						add_state_core = 252
 						add_state_core = 879
-						add_state_core = 880
 					}
 
 					# Moskau itself, if it is somehow still not core.

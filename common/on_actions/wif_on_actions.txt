@@ -32,6 +32,35 @@ on_actions = {
 						transfer_troops = no
 					}
 					add_state_core = 214
+
+					# Vologda goes too, but only if Moskowien's civil war is
+					# still running when Archangelsk falls.
+					#
+					# The northern war and the civil war are separate fights.
+					# If the SME finishes its one while Moskowien is still
+					# fighting its own, it keeps marching south and takes
+					# Vologda off a Reichskommissariat in no state to hold it.
+					# Beat the rebels first and the SME stops at Archangelsk.
+					#
+					# wif_moskowien_civil_war sits on RKM, set in
+					# wif_nsr_revolt. Note it is deliberately left set on one
+					# of the losing paths (see the comment further down this
+					# file), which is the correct reading here too: as long as
+					# that war has not been closed out, Moskowien is still
+					# distracted.
+					#
+					# Guarded on RKM still owning it. If a rebel has already
+					# taken Vologda then it is not Moskowien's to lose, and
+					# prying it out of a third party is a different war.
+					if = {
+						limit = {
+							country_exists = RKM
+							RKM = { has_country_flag = wif_moskowien_civil_war }
+							351 = { is_owned_by = RKM }
+						}
+						transfer_state = 351
+						add_state_core = 351
+					}
 				}
 			}
 
