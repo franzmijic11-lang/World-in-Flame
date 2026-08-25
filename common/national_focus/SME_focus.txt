@@ -1,21 +1,100 @@
+# Focus tree for the Soviet Military Emergency Government.
+#
+# The SME is what the Red Army leaves behind when the Union falls: a general
+# staff holding a country it never asked for. Its tree opens on the one piece
+# of unfinished business the coup left - Stalin was not in Moscow when the
+# army came for him.
+#
+# The whole tree sits at x = 10 rather than x = 0. Both focuses carry the same
+# offset, so the column stays vertical - if you move one, move the other. There
+# is nothing to the left of it yet; the gap is there so branches can be hung on
+# that side later without renumbering everything.
+#
+# COST IS IN WEEKS, not days. FOCUS_POINT_DAYS = 7 in vanilla defines and
+# Welt in Flammen does not override it, so cost = 9 is exactly 63 days. RKM's
+# tree uses the same convention and carries fractional costs (5.71, 8.57, 14.3)
+# where a round day count was wanted.
+
 focus_tree = {
 	id = SME_focus_tree
+
 	country = {
 		factor = 0
+
 		modifier = {
 			add = 10
 			tag = SME
 		}
 	}
+
 	default = no
 
+	# =====================================================================
+	# Hunt for Stalin and his loyalists
+	# =====================================================================
+	# The root of the tree. The manhunt always fails - completing it fires
+	# wif_sme.2, which reveals that Stalin reached Irkutsk ahead of the army
+	# and creates the Far Eastern Union around him.
+	#
+	# The failure is the point. The SME does not get to choose whether it has
+	# a rival; it only gets to find out how far away he is.
 	focus = {
-		id = SME_placeholder
-		icon = GFX_goal_anschluss
-		x = 0
+		id = SME_hunt_for_stalin
+		icon = GFX_focus_SOV_behead_the_snake
+
+		x = 10
 		y = 0
-		cost = 1
-		available = { always = no }
-		allow_branch = { always = no }
+
+		cost = 9			# 63 days
+
+		# No `available` gate. The tree is already SME-only through the
+		# country = { } block above, and the SME does not exist until the coup
+		# has happened, so there is nothing left to gate on.
+
+		completion_reward = {
+			country_event = { id = wif_sme.2 hours = 6 }
+		}
+	}
+
+	# =====================================================================
+	# Deploy East under Marshal Popov
+	# =====================================================================
+	# THIS FOCUS LIES TO THE PLAYER, on purpose.
+	#
+	# The description promises a march east to put down Stalin's uprising, and
+	# effect_tooltip shows a declaration of war on the FES so the focus panel
+	# displays exactly that. Neither happens. The real effect is hidden: Popov
+	# takes the army group he was handed for the campaign, keeps going past
+	# Irkutsk, and declares the Central Siberian Republic in Tomsk.
+	#
+	# effect_tooltip renders its contents WITHOUT executing them, which is the
+	# whole mechanism here - it is the standard way vanilla shows a consequence
+	# it intends to fake or to resolve elsewhere. The real work sits in
+	# hidden_effect so no second tooltip gives the game away.
+	focus = {
+		id = SME_deploy_east_under_popov
+		icon = GFX_goal_generic_major_war
+
+		prerequisite = { focus = SME_hunt_for_stalin }
+
+		x = 10
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		completion_reward = {
+			# The promise. Shown, never run.
+			effect_tooltip = {
+				declare_war_on = {
+					target = FES
+					type = annex_everything
+				}
+			}
+
+			# What actually happens.
+			hidden_effect = {
+				country_event = { id = wif_sme.3 hours = 6 }
+			}
+		}
 	}
 }

@@ -13,3 +13,104 @@ country_event = {
 		name = wif_sme.1.a
 	}
 }
+
+# Stalin escaped - fires 6 hours after SME_hunt_for_stalin completes.
+#
+# The manhunt has no success branch. Completing the focus is how the SME finds
+# out where Stalin went, not whether it caught him. The single option carries
+# the whole split: twelve far-eastern states leave for the new Far Eastern
+# Union, Rokossovsky and Vasilevsky go with them, and Khabarovsk follows
+# Vladivostok rather than either government.
+country_event = {
+	id = wif_sme.2
+	title = wif_sme.2.t
+	desc = wif_sme.2.desc
+	picture = GFX_report_event_generic_train
+
+	is_triggered_only = yes
+
+	# Stay in Moscow.
+	option = {
+		name = wif_sme.2.a
+
+		ai_chance = {
+			base = 100
+		}
+
+		wif_stalin_flees_east = yes
+	}
+
+	# Go east with him.
+	#
+	# The split runs FIRST and the tag change second - change_tag_from cannot
+	# hand the player a country that does not exist yet, and the FES is not
+	# created until wif_stalin_flees_east has transferred Irkutsk. Hence the
+	# country_exists guard: if Japan is sitting on the whole Far East then no
+	# FES was raised, there is nothing to defect to, and the player simply
+	# stays with the SME.
+	#
+	# base = 0 keeps the AI out of it. This is a player-facing choice only -
+	# an AI SME picking it would hand its own country to nobody.
+	option = {
+		name = wif_sme.2.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		wif_stalin_flees_east = yes
+
+		hidden_effect = {
+			if = {
+				limit = { country_exists = FES }
+				FES = { change_tag_from = ROOT }
+			}
+		}
+	}
+}
+
+# Popov's betrayal - fires 6 hours after SME_deploy_east_under_popov completes.
+#
+# The player was told this focus would start a war on the FES. Instead the
+# marshal sent to fight it has declared his own republic in Tomsk and taken a
+# third of the army with him. One option, because there is nothing to decide:
+# by the time Moscow hears about it, Central Siberia is already gone.
+country_event = {
+	id = wif_sme.3
+	title = wif_sme.3.t
+	desc = wif_sme.3.desc
+	picture = GFX_report_event_soviet_purge_officers_
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme.3.a
+
+		wif_popov_betrayal = yes
+	}
+}
+
+# Yagoda is alive - fires one week after the SME declares war on Archangelsk.
+#
+# Scheduled from wif_nsr_revolt, off the declaration itself rather than off any
+# outcome of the northern war. The trigger block re-checks the SME still exists
+# when it lands, since a week is long enough for the situation to have changed.
+country_event = {
+	id = wif_sme.4
+	title = wif_sme.4.t
+	desc = wif_sme.4.desc
+	picture = GFX_report_event_soviet_purge_trial
+
+	is_triggered_only = yes
+
+	trigger = {
+		tag = SME
+	}
+
+	option = {
+		name = wif_sme.4.a
+
+		wif_yagoda_rising = yes
+	}
+}
+
