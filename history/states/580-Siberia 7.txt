@@ -1,0 +1,43 @@
+# Welt in Flammen override of vanilla history/states/580-Siberia 7.txt.
+#
+# Tobolsk gains 4754 and 1880 from Tyumen (403).
+#
+# NO strategicregions edit is needed for this move. States 403, 571 and 580
+# all sit inside strategic region 14 (TransUrals), so the provinces do not
+# cross a region boundary and region 14's province list is unchanged. The
+# usual states-AND-strategicregions rule only bites when a province moves
+# between states in DIFFERENT regions.
+#
+# Filenames lie: 403-Kharabali.txt is Tyumen, 571-TS 13.txt is Omsk and
+# 580-Siberia 7.txt is Tobolsk. All three were resolved through the
+# STATE_<id> localisation.
+#
+# Nothing else is changed from vanilla - not manpower, not buildings, not
+# victory points. None of the four moved provinces carried a VP.
+
+state = {
+	id = 580
+	name = "STATE_580" # Tobolsk
+	manpower = 88126
+	
+	state_category = pastoral
+
+	history = {
+		victory_points = {
+			1659 1
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 1
+
+		}
+		add_core_of = SOV
+		add_core_of = OVO
+	}
+
+	provinces = {
+		1659 1744 1812 1880 4710 4715 4746 4754 4774 4846 7733 7768 7796 7867 7895 10592 10604 10620 12602 12630 12700 
+	}
+
+	local_supplies = 3.0 
+}

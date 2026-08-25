@@ -1,0 +1,42 @@
+# Welt in Flammen override of vanilla history/states/403-Kharabali.txt.
+#
+# Tyumen gives up four provinces: 4780 and 10600 to Omsk (571),
+# and 4754 and 1880 to Tobolsk (580).
+#
+# NO strategicregions edit is needed for this move. States 403, 571 and 580
+# all sit inside strategic region 14 (TransUrals), so the provinces do not
+# cross a region boundary and region 14's province list is unchanged. The
+# usual states-AND-strategicregions rule only bites when a province moves
+# between states in DIFFERENT regions.
+#
+# Filenames lie: 403-Kharabali.txt is Tyumen, 571-TS 13.txt is Omsk and
+# 580-Siberia 7.txt is Tobolsk. All three were resolved through the
+# STATE_<id> localisation.
+#
+# Nothing else is changed from vanilla - not manpower, not buildings, not
+# victory points. None of the four moved provinces carried a VP.
+
+state={
+	id=403
+	name="STATE_403" # Tyumen
+	manpower = 939067
+	
+	state_category = rural
+
+	history={
+		owner = SOV
+		victory_points = {
+			4824 1
+		}
+		buildings = {
+			infrastructure = 2
+		}
+		add_core_of = SOV
+	}
+
+	provinces={
+		1387 3472 4209 4659 4824 6787 7681 7774 7833 7846 9512 10659 10670 12390 12521 
+	}
+
+	local_supplies=3.0 
+}

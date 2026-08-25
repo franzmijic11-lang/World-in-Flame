@@ -1,0 +1,43 @@
+# Welt in Flammen override of vanilla history/states/256-Cheboksary.txt.
+#
+# Chuvashia gains provinces 11243, 11292 and 9354 from Kazan (249).
+#
+# NO strategicregions edit is needed. States 249 and 256 both sit inside
+# strategic region 40 (Western Russia), so the three provinces do not cross
+# a region boundary and region 40's province list is unchanged. WiF already
+# overrides 40-Western Russia.txt and all three provinces are in it either
+# way. The states-AND-strategicregions rule only bites when a province moves
+# between states in DIFFERENT regions.
+#
+# 249 is Kazan, 256 is Chuvashia - resolved through the STATE_<id>
+# localisation, not the filenames.
+#
+# Nothing else is changed from vanilla. None of the three moved provinces
+# carried a victory point (249's VP is 6338, 256's is 9259), and manpower,
+# buildings and resources are untouched on both sides.
+
+state = {
+	id = 256
+	name = "STATE_256"
+	manpower = 786030 #Was 1572061 but was divided by 2 due to the state being split in half
+	
+	state_category = town
+
+	history = {
+		victory_points = {
+			9259 1 
+		}
+		owner = SOV
+		buildings = {
+			infrastructure = 2
+		}
+		add_core_of = SOV
+		add_core_of = CHU
+	}
+
+	provinces = {
+		3282 6253 6312 6357 9244 9259 9307 9354 9373 11243 11292 11356 
+	}
+
+	local_supplies = 0.0 
+}
