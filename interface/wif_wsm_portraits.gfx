@@ -1,0 +1,14 @@
+# Portrait for the West Siberian Marxist Republic.
+#
+# .png rather than the .dds every vanilla leader uses, matching
+# wif_cra_portraits.gfx - the engine loads it fine (vanilla itself ships one
+# .png portrait) and .png is what can be produced without a DDS toolchain.
+# 156x210, the standard large leader portrait size.
+
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_portrait_WSM_genrikh_yagoda"
+		texturefile = "gfx/leaders/WSM/Portrait_WSM_Genrikh_Yagoda.png"
+	}
+}

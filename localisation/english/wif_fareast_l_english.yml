@@ -1,0 +1,120 @@
+﻿l_english:
+
+ # === The Far Eastern Union ==========================================
+ # The full name is deliberately long - it is a claim, not a label. Stalin's
+ # government does not consider itself a successor to the Union; it considers
+ # itself the Union, relocated east of Lake Baikal.
+ FES:0 "Far Eastern Union of Soviet Socialist Republics"
+ FES_DEF:0 "the Far Eastern Union of Soviet Socialist Republics"
+ FES_ADJ:0 "Far Eastern"
+
+ FES_communism:0 "Far Eastern Union of Soviet Socialist Republics"
+ FES_communism_DEF:0 "the Far Eastern Union of Soviet Socialist Republics"
+ FES_communism_ADJ:0 "Far Eastern"
+
+ # The Far Eastern Republic was a real buffer state at Chita, 1920-1922.
+ FES_neutrality:0 "Far Eastern Republic"
+ FES_neutrality_DEF:0 "the Far Eastern Republic"
+ FES_neutrality_ADJ:0 "Far Eastern"
+
+ FES_democratic:0 "Far Eastern Republic"
+ FES_democratic_DEF:0 "the Far Eastern Republic"
+ FES_democratic_ADJ:0 "Far Eastern"
+
+ FES_fascism:0 "Far Eastern Russian State"
+ FES_fascism_DEF:0 "the Far Eastern Russian State"
+ FES_fascism_ADJ:0 "Far Eastern"
+
+ # === Focus ===========================================================
+ SME_hunt_for_stalin:0 "Hunt for Stalin and his Loyalists"
+ SME_hunt_for_stalin_desc:0 "He was not in the Kremlin when the tanks arrived. He was not at the dacha, and he was not on any of the three trains we stopped outside Moscow. Someone warned him, and whoever it was is still wearing our uniform.\n\nThe Union is finished either way - but a Stalin at large is a second government waiting to be declared, and every officer who resents us knows it. Find him."
+
+ # === wif_sme.2 - Stalin escaped ======================================
+ wif_sme.2.t:0 "Stalin and his Loyalists Escaped to Irkutsk"
+ wif_sme.2.desc:0 "Sixty-three days of roadblocks, wire taps and interrogations, and the answer arrives by radio rather than by arrest: he is in Irkutsk, and he has been there for weeks.\n\nHe did not flee alone. An armoured train, most of an NKVD regiment and a column of Party functionaries went east along the Trans-Siberian while we were still searching the suburbs of Moscow. From Irkutsk he has declared that the Union endures, that the men in Moscow are usurpers, and that the Far Eastern Union of Soviet Socialist Republics is the lawful continuation of the Soviet state.\n\nWorse than the declaration is who has answered it. Marshal Rokossovsky and Marshal Vasilevsky have both left their posts and taken the eastern railway. Buryatia, Chita, the Amur, Yakutsk, Kamchatka - the whole of the Far East has gone over with them.\n\nKhabarovsk we have already lost to whoever holds Vladivostok. The rest now belongs to him."
+ wif_sme.2.a:0 "Then there are two Russias, and one of them has our marshals."
+ wif_sme.2.b:0 "The Union is wherever Stalin is. Put me on the eastern train."
+
+ # === The Siberian Anarchy ============================================
+ # Not a government. The name is what the mapmakers call the gap.
+ SBA:0 "Siberian Anarchy"
+ SBA_DEF:0 "the Siberian Anarchy"
+ SBA_ADJ:0 "Siberian"
+
+ SBA_neutrality:0 "Siberian Anarchy"
+ SBA_neutrality_DEF:0 "the Siberian Anarchy"
+ SBA_neutrality_ADJ:0 "Siberian"
+
+ SBA_communism:0 "Siberian Anarchy"
+ SBA_communism_DEF:0 "the Siberian Anarchy"
+ SBA_communism_ADJ:0 "Siberian"
+
+ SBA_democratic:0 "Siberian Anarchy"
+ SBA_democratic_DEF:0 "the Siberian Anarchy"
+ SBA_democratic_ADJ:0 "Siberian"
+
+ SBA_fascism:0 "Siberian Anarchy"
+ SBA_fascism_DEF:0 "the Siberian Anarchy"
+ SBA_fascism_ADJ:0 "Siberian"
+
+ # === The Anarchy Zone spirit =========================================
+ wif_anarchy_zone:0 "Anarchy Zone"
+ wif_anarchy_zone_desc:0 "There is no government here. The last administrator left on the last train and nobody was sent to replace him, so the settlements along the Yenisei and the Kolyma keep their own counsel and answer to nothing.\n\nNothing is built, because there is no one to order it built. Nobody is called up, because there is no one to call them. No foreign ministry will negotiate with a place that cannot sign, and no general staff will spend a year drafting a claim on ground that has nothing on it worth taking."
+
+ # === The Central Siberian Republic ===================================
+ CSR:0 "Central Siberian Republic"
+ CSR_DEF:0 "the Central Siberian Republic"
+ CSR_ADJ:0 "Central Siberian"
+
+ CSR_democratic:0 "Central Siberian Republic"
+ CSR_democratic_DEF:0 "the Central Siberian Republic"
+ CSR_democratic_ADJ:0 "Central Siberian"
+
+ CSR_neutrality:0 "Central Siberian Directory"
+ CSR_neutrality_DEF:0 "the Central Siberian Directory"
+ CSR_neutrality_ADJ:0 "Central Siberian"
+
+ CSR_communism:0 "Central Siberian Soviet Republic"
+ CSR_communism_DEF:0 "the Central Siberian Soviet Republic"
+ CSR_communism_ADJ:0 "Central Siberian"
+
+ CSR_fascism:0 "Siberian National Directory"
+ CSR_fascism_DEF:0 "the Siberian National Directory"
+ CSR_fascism_ADJ:0 "Siberian"
+
+ # === Focus: Deploy East under Marshal Popov ==========================
+ # This text is the lie. It promises the campaign against Stalin that the
+ # focus tooltip also shows and that never actually happens.
+ SME_deploy_east_under_popov:0 "Deploy East under Marshal Popov"
+ SME_deploy_east_under_popov_desc:0 "Irkutsk cannot be allowed to stand. Every week the Far Eastern Union survives is a week in which some garrison commander between here and Lake Baikal decides that the lawful government of the Union is the one with Stalin in it.\n\nMarshal Markian Popov has the Siberian districts and knows the ground east of the Urals better than any officer we have left. Give him the divisions he asks for, put the whole eastern deployment under his command, and let him finish the usurper before the winter closes the railway."
+
+ # === wif_sme.3 - Popov's betrayal ====================================
+ wif_sme.3.t:0 "Marshal Popov has Betrayed Us"
+ wif_sme.3.desc:0 "The army group reached Novosibirsk on schedule and then stopped reporting. It did not stop moving.\n\nPopov has declared a Central Siberian Republic from the governor's residence at Tomsk, with himself at the head of it. He did not go east to fight Stalin. He went east because it was the only direction in which a man could take an army away from both Moscow and Irkutsk and still have somewhere to put it.\n\nHis proclamation is careful to insult nobody. The Union has two governments and neither was elected, he says, so Siberia will hold its own. Omsk, Novosibirsk, Krasnoyarsk, the Altai, the whole central belt from the Urals to Bratsk has gone with him - and so has close to a third of the army we had left.\n\nMarshal Zhukov gave him that command personally."
+ wif_sme.3.a:0 "Three Russias, then. He might have had the decency to say so first."
+
+ # === The West Siberian Marxist Republic ==============================
+ WSM:0 "West Siberian Marxist Republic"
+ WSM_DEF:0 "the West Siberian Marxist Republic"
+ WSM_ADJ:0 "West Siberian"
+
+ WSM_communism:0 "West Siberian Marxist Republic"
+ WSM_communism_DEF:0 "the West Siberian Marxist Republic"
+ WSM_communism_ADJ:0 "West Siberian"
+
+ WSM_neutrality:0 "West Siberian Commissariat"
+ WSM_neutrality_DEF:0 "the West Siberian Commissariat"
+ WSM_neutrality_ADJ:0 "West Siberian"
+
+ WSM_democratic:0 "West Siberian Republic"
+ WSM_democratic_DEF:0 "the West Siberian Republic"
+ WSM_democratic_ADJ:0 "West Siberian"
+
+ WSM_fascism:0 "West Siberian State"
+ WSM_fascism_DEF:0 "the West Siberian State"
+ WSM_fascism_ADJ:0 "West Siberian"
+
+ # === wif_sme.4 - Yagoda is alive =====================================
+ wif_sme.4.t:0 "Yagoda is Alive"
+ wif_sme.4.desc:0 "Genrikh Grigoryevich Yagoda was shot in the cellar of the Lubyanka in March 1938. The order was signed, the sentence was carried out, and the file was closed. All three of those things are in the record and only two of them are true.\n\nWhat happened, as near as anyone will now admit, is that the men sent to do it did not. Whether they were bought, or persuaded, or simply could not bring themselves to shoot the man who had built the apparatus they served in, nobody says. What they did afterwards is the part that matters: they reported the sentence carried out. Telling Stalin that the former People's Commissar for Internal Affairs had walked out of the Lubyanka alive was a conversation none of them expected to survive, so they did not have it. The paperwork was filed. The Commissar-General of State Security ceased to exist.\n\nHe went east. For seven years he has been in the Urals and the western Siberian oblasts, among the men who owe their careers to him and the camps that are still run by his appointments, doing what he did better than anyone alive - assembling a list of people who will do what they are told.\n\nThis week the Emergency Government marched north against Archangelsk, and the Urals were left with nobody watching them. Tyumen, Sverdlovsk, Chelyabinsk and Tobolsk have declared for a West Siberian Marxist Republic. The garrisons did not resist because the garrisons are his. Ten divisions of border troops are standing in Tyumen under the old NKVD colours, and Yagoda has broadcast his own name as its chairman."
+ wif_sme.4.a:0 "We buried him seven years ago. Somebody should be shot for that - if there is anyone left who was not in on it."

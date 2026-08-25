@@ -1323,3 +1323,23 @@ CRA = {
 	color = rgb { 150 40 60 }
 	color_ui = rgb { 150 40 60 }
 }
+
+FES = {
+	color = rgb { 172 58 44 }
+	color_ui = rgb { 172 58 44 }
+}
+
+SBA = {
+	color = rgb { 186 194 190 }
+	color_ui = rgb { 186 194 190 }
+}
+
+CSR = {
+	color = rgb { 60 150 70 }
+	color_ui = rgb { 60 150 70 }
+}
+
+WSM = {
+	color = rgb { 215 60 55 }
+	color_ui = rgb { 215 60 55 }
+}

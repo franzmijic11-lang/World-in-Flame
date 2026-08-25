@@ -21,3 +21,11 @@ SRG = "countries/South Russian Provisional Government.txt"
 NRG = "countries/North Russian Provisional Government.txt"
 
 CRA = "countries/Central Asian Red Army.txt"
+
+FES = "countries/Far Eastern Union of Soviet Socialist Republics.txt"
+
+SBA = "countries/Siberian Anarchy.txt"
+
+CSR = "countries/Central Siberian Republic.txt"
+
+WSM = "countries/West Siberian Marxist Republic.txt"
