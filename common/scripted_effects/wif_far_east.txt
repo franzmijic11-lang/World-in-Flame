@@ -1,0 +1,361 @@
+# Stalin's flight east, fired from wif_sme.2 after the SME completes
+# SME_hunt_for_stalin and discovers the manhunt has failed.
+#
+# Runs in SME COUNTRY scope. By the time it fires, wif_sov.1 has already handed
+# every remaining Soviet state to the SME, so the twelve states below are
+# SME-owned - but each transfer is still guarded on is_owned_by = SME, exactly
+# as the Central Asian breakup is. Japan is the reason: a Japanese player who
+# has taken Vladivostok, Khabarovsk or the Amur before the manhunt resolves
+# must not have that land quietly confiscated and handed to Stalin.
+#
+# STATE IDS were resolved through the STATE_<id> localisation, never through
+# filenames - vanilla far-eastern state filenames are as unreliable as the
+# Central Asian ones.
+#
+#   566 Irkutsk (capital)   564 Buryatia      575 Kirensk      565 Bodaybo
+#   563 Chita               561 Amur          574 Yakutsk      657 Birobidzhan
+#   560 Nikolayevsk         562 Okhotsk       874 Magadan      637 Kamchatka
+#
+#   409 Khabarovsk goes to whoever holds 408 Vladivostok, NOT to the FES.
+#
+# ORDER MATTERS. Irkutsk is transferred first because the first successful
+# state transfer is what brings the country into existence - the same trick
+# wif_sov.1 uses to pre-spawn the SME and wif_central_asia uses for the CRA.
+# Everything that needs a real country (capital, cores, politics, leader) sits
+# behind the country_exists guard below.
+
+wif_stalin_flees_east = {
+
+	# Both breakaways below inherit the SME's research. By this point the
+	# SME has long since run SME_inherit_sov_tech, so it holds the full
+	# Soviet tree - vanilla plus UTTNH - and the donor can simply be the
+	# SME itself. (Central Asia has to use SOV instead; see the note in
+	# wif_central_asia.txt for why.)
+	SME = { save_event_target_as = wif_tech_donor }
+
+	# =====================================================================
+	# Khabarovsk's heir is decided BEFORE anything moves
+	# =====================================================================
+	# Read the owner of Vladivostok up front. wif_award_vladivostok already ran
+	# back in wif_sov.1, so 408 is in its final hands - Japan's, a Japanese
+	# puppet's overlord's, or Manchuria's owner's. Resolving it here rather
+	# than after the transfers keeps the answer independent of anything below.
+	408 = {
+		owner = {
+			save_event_target_as = wif_khabarovsk_heir
+		}
+	}
+
+	# =====================================================================
+	# The twelve states of the Far Eastern Union
+	# =====================================================================
+	566 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Irkutsk - capital, transferred first
+	564 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Buryatia
+	575 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Kirensk
+	565 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Bodaybo
+	563 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Chita
+	561 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Amur
+	574 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Yakutsk
+	657 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Birobidzhan
+	560 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Nikolayevsk
+	562 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Okhotsk
+	874 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Magadan
+	637 = { if = { limit = { is_owned_by = SME } transfer_state_to = FES } }	# Kamchatka
+
+	if = {
+		limit = { country_exists = FES }
+
+		FES = {
+			set_capital = { state = 566 }			# Irkutsk
+
+			# Cores on everything it was given. Stalin's government does not
+			# regard any of this as occupied territory - it regards itself as
+			# the Union, merely relocated.
+			add_state_core = 566
+			add_state_core = 564
+			add_state_core = 575
+			add_state_core = 565
+			add_state_core = 563
+			add_state_core = 561
+			add_state_core = 574
+			add_state_core = 657
+			add_state_core = 560
+			add_state_core = 562
+			add_state_core = 874
+			add_state_core = 637
+
+			# History files never apply to countries spawned mid-game, so
+			# politics have to be set explicitly or ideology-keyed flag lookups
+			# fall through to a blank counter.
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 0
+				fascism = 0
+				communism = 100
+				neutrality = 0
+			}
+
+			# No Diplomatic Standing, the same spirit every other breakaway in
+			# this mod carries. The FES is the strongest thing thrown up by the
+			# collapse, but it is still a government that appeared overnight in
+			# Irkutsk, and no capital that matters will sign with it.
+			add_ideas = wif_splinter_no_factions
+
+			# Stalin took the Union's research east with the rest of it.
+			wif_inherit_tech_from_donor = yes
+
+			# Stalin himself.
+			#
+			# create_country_leader rather than moving SOV_iosif_stalin across
+			# with set_nationality: by this point SOV has been annexed and no
+			# longer exists, so there is no origin country to move him out of.
+			# The two marshals below CAN be moved, because they were carried
+			# into the SME by the every_unit_leader sweep in wif_sov.1 and the
+			# SME is still very much alive.
+			#
+			# The vanilla portrait is reused deliberately - there is exactly one
+			# Stalin in the game and he should look like himself.
+			create_country_leader = {
+				name = "Iosif Stalin"
+				picture = "GFX_portrait_SOV_iosif_stalin"
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = { }
+			}
+		}
+
+		# =================================================================
+		# The loyalists take their share of the army
+		# =================================================================
+		# 40% of the army, navy and air force, and 20% of the stockpile.
+		# This runs in SME scope, which is the sender.
+		#
+		# keep_unit_leaders_trigger IS NOT OPTIONAL HERE. The documentation is
+		# explicit that transfer_units_fraction moves "the stockpiled equipment
+		# ... as well as unit leaders" - so left to itself it would drag a
+		# random 40% of the SME general staff east along with the divisions.
+		# The spec is that exactly two marshals defect, so every leader is
+		# pinned to the SME here and the two named ones are moved deliberately
+		# in the block below. The trigger returns true for a leader that STAYS
+		# with the original country, hence always = yes.
+		transfer_units_fraction = {
+			target = FES
+			size = 0.4			# default for the ratios below
+			army_ratio = 0.4
+			navy_ratio = 0.4
+			air_ratio = 0.4
+			stockpile_ratio = 0.2
+
+			keep_unit_leaders_trigger = {
+				always = yes
+			}
+		}
+
+		# =================================================================
+		# Rokossovsky and Vasilevsky change sides
+		# =================================================================
+		# This effect runs in SME scope, which is the origin country, so the
+		# country-scope form of set_nationality applies:
+		#
+		#   set_nationality = { target_country = X character = Y }
+		#
+		# Both are guarded on has_character. If a marshal has already been
+		# killed, captured or otherwise removed from the SME roster, the guard
+		# skips him rather than throwing "Character does not exist" into the
+		# error log every time the branch runs.
+		if = {
+			limit = { has_character = SOV_konstantin_rokossovsky }
+			set_nationality = {
+				target_country = FES
+				character = SOV_konstantin_rokossovsky
+			}
+		}
+		if = {
+			limit = { has_character = SOV_aleksandr_vasilevsky }
+			set_nationality = {
+				target_country = FES
+				character = SOV_aleksandr_vasilevsky
+			}
+		}
+	}
+
+
+
+	# =====================================================================
+	# The Siberian Anarchy
+	# =====================================================================
+	# Nine states across the arctic north that simply stop being governed when
+	# the SME loses its grip. This is not a secession - nobody declares
+	# anything. The administration walks away and the map has to call what is
+	# left something, so it calls it the Siberian Anarchy.
+	#
+	#   579 Salekhard    824 Yamalia      516 Dudinka
+	#   878 Khatangsky   876 Udachny      877 Verkhoyansk
+	#   644 Kolyma       822 Chukotka     875 Chukchi Peninsula
+	#
+	# EACH STATE IS INDEPENDENTLY GUARDED on the SME both owning AND
+	# controlling it. A state somebody else is sitting on has a government -
+	# theirs - so it does not fall into the anarchy and stays exactly where it
+	# is. If the SME holds all nine, all nine go. Control is checked as well as
+	# ownership because an occupied state is being governed by the occupier
+	# whatever the map says about title.
+	#
+	# This is deliberately OUTSIDE the country_exists = FES guard above. The
+	# north empties out because the SME stopped holding it, which is true
+	# whether or not Stalin managed to raise a state of his own in Irkutsk.
+	579 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Salekhard
+	824 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Yamalia
+	516 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Dudinka
+	878 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Khatangsky
+	876 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Udachny
+	877 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Verkhoyansk
+	644 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Kolyma
+	822 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Chukotka
+	875 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = SBA } }	# Chukchi Peninsula
+
+	if = {
+		limit = { country_exists = SBA }
+
+		SBA = {
+			if = {
+				limit = { 579 = { is_owned_by = SBA } }
+				set_capital = { state = 579 }		# Salekhard
+			}
+			else_if = {
+				limit = { 824 = { is_owned_by = SBA } }
+				set_capital = { state = 824 }		# Yamalia
+			}
+			else_if = {
+				limit = { 516 = { is_owned_by = SBA } }
+				set_capital = { state = 516 }		# Dudinka
+			}
+			else_if = {
+				limit = { 878 = { is_owned_by = SBA } }
+				set_capital = { state = 878 }		# Khatangsky
+			}
+			else_if = {
+				limit = { 876 = { is_owned_by = SBA } }
+				set_capital = { state = 876 }		# Udachny
+			}
+			else_if = {
+				limit = { 877 = { is_owned_by = SBA } }
+				set_capital = { state = 877 }		# Verkhoyansk
+			}
+			else_if = {
+				limit = { 644 = { is_owned_by = SBA } }
+				set_capital = { state = 644 }		# Kolyma
+			}
+			else_if = {
+				limit = { 822 = { is_owned_by = SBA } }
+				set_capital = { state = 822 }		# Chukotka
+			}
+			else_if = {
+				limit = { 875 = { is_owned_by = SBA } }
+				set_capital = { state = 875 }		# Chukchi Peninsula
+			}
+
+			# Core whatever it actually ended up with, and nothing else.
+			#
+			# Listing the nine ids here instead would core states the SBA did
+			# not get - a claim on land somebody else is holding. The FES makes
+			# exactly that claim on purpose, because Stalin says the Far East is
+			# his. An anarchy claims nothing; it is only the ground nobody
+			# turned up to govern.
+			every_owned_state = {
+				add_core_of = SBA
+			}
+
+			# History files never apply to countries spawned mid-game.
+			# Non-aligned and unanimous about it, because there is nothing to
+			# be aligned with and nobody to hold an election.
+			set_politics = {
+				ruling_party = neutrality
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 0
+				fascism = 0
+				communism = 0
+				neutrality = 100
+			}
+
+			# Both spirits. wif_splinter_no_factions is the shared one every
+			# breakaway carries; wif_anarchy_zone is what makes this one inert.
+			add_ideas = {
+				wif_splinter_no_factions
+				wif_anarchy_zone
+			}
+
+			# The SBA inherits the research too. It is nearly meaningless -
+			# wif_anarchy_zone leaves it unable to build or field anything -
+			# but the knowledge did not evaporate when the administration
+			# walked out, and it matters if anyone ever annexes the place.
+			wif_inherit_tech_from_donor = yes
+
+			# There is no leader, and the game requires one anyway. The
+			# placeholder portrait is the point rather than a shortcut - the
+			# country panel should show an empty silhouette.
+			#
+			# anarchism is a real vanilla sub-ideology of neutrality, flagged
+			# can_be_randomly_selected = no so nothing else will ever hand it
+			# out by accident.
+			create_country_leader = {
+				name = "No Government"
+				picture = "GFX_portrait_unknown"
+				expire = "1965.1.1"
+				ideology = anarchism
+				traits = { }
+			}
+		}
+	}
+
+	# =====================================================================
+	# North Sakhalin
+	# =====================================================================
+	# Goes to Japan outright, not to whoever holds Vladivostok. The two are
+	# handled differently on purpose: Khabarovsk follows the port because the
+	# city and the port belong together whoever ends up with them, while North
+	# Sakhalin is a specifically Japanese prize. Vanilla already agrees - state
+	# 655 carries `add_claim_by = JAP` and JAP_STATE_655 is localised as Kita
+	# Karafuto, so the game has always expected Tokyo to end up with it.
+	#
+	# The island is half Japanese already: 537 South Sakhalin is Karafuto and
+	# has been Japanese since 1905. This closes the other half.
+	#
+	# Guarded twice - the SME must still hold it, and Japan must still exist.
+	# Ownership only, no core: Japan's vanilla claim is left to do its own work
+	# rather than being upgraded silently.
+	if = {
+		limit = {
+			655 = { is_owned_by = SME }
+			country_exists = JAP
+		}
+		JAP = {
+			transfer_state = 655
+		}
+	}
+
+	# =====================================================================
+	# Khabarovsk
+	# =====================================================================
+	# Follows Vladivostok, not Stalin - the port and the city behind it stay in
+	# one pair of hands. Guarded twice: only move it if the SME still holds it
+	# (someone may already have taken it by force) and only if the heir is not
+	# the SME itself, which would be a no-op that still logs.
+	if = {
+		limit = {
+			409 = { is_owned_by = SME }
+			NOT = { event_target:wif_khabarovsk_heir = { tag = SME } }
+		}
+		event_target:wif_khabarovsk_heir = {
+			transfer_state = 409
+		}
+	}
+}
