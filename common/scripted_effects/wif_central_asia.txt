@@ -39,6 +39,18 @@
 
 wif_central_asia_breakup = {
 
+	# Every republic below inherits the Union's research.
+	#
+	# THE DONOR IS SOV, NOT SME, AND THAT IS DELIBERATE. This effect is
+	# called from wif_sov.1 at a point where the SME owns the territory but
+	# has NOT yet run SME_inherit_sov_tech - that call sits a few lines
+	# below the wif_central_asia_breakup call in the event. Pointing the
+	# donor at the SME here would copy an empty tech tree. SOV still exists
+	# at this point (it is annexed later in the same option) and its set is
+	# exactly what the SME is about to receive, so the result is identical
+	# to inheriting from the SME - it just works.
+	SOV = { save_event_target_as = wif_tech_donor }
+
 	# =====================================================================
 	# Central Asian Red Army - the Red Army units that never went home
 	# =====================================================================
@@ -80,6 +92,9 @@ wif_central_asia_breakup = {
 			# Splinter states do not get to assemble alliance blocs, same rule
 			# every other breakaway in this mod carries.
 			add_ideas = wif_splinter_no_factions
+
+			# The Red Army units that stayed put keep the Red Army's research.
+			wif_inherit_tech_from_donor = yes
 
 			# Andropov takes the government, and Panfilov the army.
 			#
@@ -316,6 +331,12 @@ wif_central_asian_republic_setup = {
 	}
 
 	add_ideas = wif_splinter_no_factions
+
+	# Each republic inherits the Union's research - the factories, the
+	# institutes and the men who worked in them were all standing on its
+	# soil the day before independence. Donor is set once at the top of
+	# wif_central_asia_breakup.
+	wif_inherit_tech_from_donor = yes
 
 	# Three regiments of two battalions - 3x2, six cavalry battalions in all.
 	# x is the regiment column, y is the battalion within it.
