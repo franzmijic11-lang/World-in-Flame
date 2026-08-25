@@ -1,0 +1,149 @@
+# Yagoda's rising, fired from wif_sme.4 one week after the SME declares war on
+# Archangelsk.
+#
+# Runs in SME COUNTRY scope. The SME is the country these four states leave, and
+# the timing is the point: the emergency government has just committed itself to
+# a war in the far north, and the Urals are the other end of the country.
+#
+# STATE IDS resolved through the STATE_<id> localisation, not filenames.
+#
+#   403 Tyumen (capital)   572 Chelyabinsk   653 Sverdlovsk   580 Tobolsk
+#
+# Note 403 Tyumen and 580 Tobolsk are the two states reshaped earlier by the
+# province move - Tyumen gave 4780 and 10600 to Omsk and 4754 and 1880 to
+# Tobolsk. The WSM inherits both in their current shape.
+#
+# ORDER MATTERS. Tyumen goes first because the first successful state transfer
+# is what brings the country into existence.
+
+wif_yagoda_rising = {
+
+	# The WSM inherits the SME's research. Yagoda's people are NKVD officers
+	# and Urals factory managers, not partisans - they take the institutions
+	# with them.
+	SME = { save_event_target_as = wif_tech_donor }
+
+	# =====================================================================
+	# The four states of the West Siberian Marxist Republic
+	# =====================================================================
+	# Guarded on the SME both owning and controlling each state. Anything
+	# somebody else is holding does not join the rising.
+	403 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = WSM } }	# Tyumen - capital
+	572 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = WSM } }	# Chelyabinsk
+	653 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = WSM } }	# Sverdlovsk
+	580 = { if = { limit = { is_owned_by = SME is_controlled_by = SME } transfer_state_to = WSM } }	# Tobolsk
+
+	if = {
+		limit = { country_exists = WSM }
+
+		WSM = {
+			# Capital falls back through the list, because set_capital only
+			# takes a literal state id and Tyumen might not have transferred.
+			if = {
+				limit = { 403 = { is_owned_by = WSM } }
+				set_capital = { state = 403 }		# Tyumen
+			}
+			else_if = {
+				limit = { 653 = { is_owned_by = WSM } }
+				set_capital = { state = 653 }		# Sverdlovsk
+			}
+			else_if = {
+				limit = { 572 = { is_owned_by = WSM } }
+				set_capital = { state = 572 }		# Chelyabinsk
+			}
+			else_if = {
+				limit = { 580 = { is_owned_by = WSM } }
+				set_capital = { state = 580 }		# Tobolsk
+			}
+
+			# Core only what it actually holds.
+			every_owned_state = {
+				add_core_of = WSM
+			}
+
+			# History files never apply to countries spawned mid-game.
+			set_politics = {
+				ruling_party = communism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 0
+				fascism = 0
+				communism = 95
+				neutrality = 5
+			}
+
+			add_ideas = wif_splinter_no_factions
+
+			wif_inherit_tech_from_donor = yes
+
+			# Yagoda.
+			#
+			# create_country_leader rather than moving a character across:
+			# SOV_genrikh_yagoda is not a character this mod stack defines as
+			# recruitable, and the whole conceit is that he has been off the
+			# books since 1938. He is built here from nothing, which is exactly
+			# what the fiction says happened.
+			create_country_leader = {
+				name = "Genrikh Yagoda"
+				picture = "GFX_portrait_WSM_genrikh_yagoda"
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = { }
+			}
+
+			# The NKVD divisions.
+			#
+			# Copied from vanilla's "NKVD Pogranichnaya Diviziya" in
+			# history/units/SOV_1936.txt - 2x3 infantry with a military police
+			# support company, and template_counter 104 so it keeps the NKVD
+			# counter icon on the map.
+			#
+			# ONE DELIBERATE DIFFERENCE: vanilla's version carries
+			# `is_locked = yes`, which is what stops the player editing it or
+			# training more. That line is omitted here on purpose. Do not add
+			# it back - being able to edit and reinforce these is the point.
+			# `priority = 0` is dropped with it, since that only mattered for
+			# the locked garrison role.
+			division_template = {
+				name = "NKVD Pogranichnaya Diviziya"
+				division_names_group = SOV_GAR_01
+				template_counter = 104
+
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					military_police = { x = 0 y = 0 }
+				}
+			}
+		}
+
+		# Ten divisions, fully equipped, in the capital.
+		#
+		# create_unit needs STATE scope - in COUNTRY scope it fails with
+		# "create_unit -- invalid scope state" and silently spawns nothing.
+		# The state scope is also what places them, which is why there is no
+		# prioritize_location here.
+		#
+		# Guarded on Tyumen actually being the WSM's: if the rising started
+		# without it, the divisions would have nowhere to stand.
+		if = {
+			limit = { 403 = { is_owned_by = WSM } }
+			403 = {
+				create_unit = {
+					division = "name = \"NKVD Pogranichnaya Diviziya\" division_template = \"NKVD Pogranichnaya Diviziya\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+					owner = WSM
+					count = 10
+				}
+			}
+		}
+	}
+}

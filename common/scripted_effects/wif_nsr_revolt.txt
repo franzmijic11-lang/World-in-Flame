@@ -878,6 +878,16 @@ wif_nar_formation = {
 				target = NAR
 				type = annex_everything
 			}
+
+			# ...and a week later it finds out what committing to the far north
+			# cost it. wif_sme.4 is Yagoda's rising in the Urals.
+			#
+			# Scheduled off the DECLARATION, not off Archangelsk falling: the
+			# whole point is that the rising happens while the northern war is
+			# still being fought, at the moment the SME's attention is furthest
+			# from the Urals. The event re-checks that the SME still exists
+			# when it fires.
+			country_event = { id = wif_sme.4 days = 7 }
 		}
 	}
 }
