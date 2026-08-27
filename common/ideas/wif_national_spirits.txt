@@ -14,6 +14,19 @@ ideas = {
 		# drive arms factory construction speed to zero. The build button stays
 		# clickable, but nothing progresses, and this spirit tells the player
 		# exactly why.
+		#
+		# WHY -10.0 AND NOT -1.0. Construction speed modifiers are ADDITIVE, so
+		# a flat -100% is not a floor - it is a number that other bonuses add
+		# back. A late-game industrial power with construction tech, an
+		# industrial concern, a construction advisor and the right spirits can
+		# clear +100% arms factory speed on its own and build straight through
+		# a -100% penalty as though the ceiling did not exist. -1000% leaves
+		# roughly a thousand points of headroom, which nothing in the game
+		# stacks to, so the ceiling holds at every stage of a campaign.
+		#
+		# The engine clamps the resulting speed at zero rather than running it
+		# negative, so this is not ten times slower than -1.0 - it is the same
+		# full stop, made unreachable by bonuses. All three tiers carry it.
 		# Tier 1 - at the ceiling, up to 25% over.
 		wif_military_factory_ceiling = {
 			allowed = {
@@ -29,7 +42,7 @@ ideas = {
 			picture = generic_goods_red_bonus
 
 			modifier = {
-				production_speed_arms_factory_factor = -1.0
+				production_speed_arms_factory_factor = -10.0
 				# HOI4 has no factory conversion SPEED modifier, only conversion
 				# cost, which the game itself describes as how efficiently
 				# factories convert. Doubling the cost is the closest expression
@@ -56,7 +69,7 @@ ideas = {
 			picture = generic_goods_red_bonus
 
 			modifier = {
-				production_speed_arms_factory_factor = -1.0
+				production_speed_arms_factory_factor = -10.0
 				conversion_cost_civ_to_mil_factor = 1.0
 				conversion_cost_mil_to_civ_factor = -0.4
 			}
@@ -78,7 +91,7 @@ ideas = {
 			picture = generic_goods_red_bonus
 
 			modifier = {
-				production_speed_arms_factory_factor = -1.0
+				production_speed_arms_factory_factor = -10.0
 				conversion_cost_civ_to_mil_factor = 1.0
 				conversion_cost_mil_to_civ_factor = -0.4
 				industrial_capacity_factory = -0.4
