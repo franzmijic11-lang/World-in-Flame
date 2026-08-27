@@ -325,15 +325,17 @@ wif_recalculate_battalion_cap = {
 	# the whole system; the dynamic modifier just reads the results.
 	#
 	# HoI4 reads these as fractions, so 0.02 is +2% attrition PER BATTALION
-	# over. Ten battalions over costs +20% attrition, +20% supply consumption
-	# and -1% factory output.
+	# over. Ten battalions over costs +20% attrition, +20% supply consumption,
+	# -10% political power gain and -1% factory output.
 	#
-	# Political power is deliberately the outlier at ten times the rest, chosen
-	# knowingly: -10% political power gain PER BATTALION over. That means ten
-	# over zeroes political power gain outright, and beyond ten the modifier
-	# goes past -100%. The overshoot is not clamped here - if a country sitting
-	# far over cap should stop at zero gain rather than bleed political power,
-	# clamp wif_over_pp at -1 below.
+	# Political power used to be the outlier at -0.1, ten times the rest, which
+	# zeroed political power gain at only ten battalions over. It is now -0.01:
+	# -1% per battalion over, in line with attrition and supply. Gain now
+	# reaches zero at a hundred over rather than ten.
+	#
+	# The overshoot is still NOT clamped. A country 150 over runs at -150% and
+	# bleeds political power rather than merely stopping earning it. If it
+	# should stop at zero instead, clamp wif_over_pp at -1 below.
 	set_variable = { wif_over_attrition = wif_battalions_over }
 	multiply_variable = { wif_over_attrition = 0.02 }
 
@@ -341,7 +343,7 @@ wif_recalculate_battalion_cap = {
 	multiply_variable = { wif_over_supply = 0.02 }
 
 	set_variable = { wif_over_pp = wif_battalions_over }
-	multiply_variable = { wif_over_pp = -0.1 }
+	multiply_variable = { wif_over_pp = -0.01 }
 
 	set_variable = { wif_over_factory = wif_battalions_over }
 	multiply_variable = { wif_over_factory = -0.001 }
