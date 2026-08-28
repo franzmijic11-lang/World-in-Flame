@@ -211,6 +211,15 @@ on_actions = {
 			# and removes the overcap penalties.
 			wif_recalculate_battalion_cap = yes
 
+			# Then let the AI act on the result. This is the only thing in the
+			# mod that destroys units, so read the header on
+			# wif_disband_over_cap before touching it: AI only, rear divisions
+			# before frontline ones, and hard capped at five divisions a week
+			# so a country converges over months rather than losing an army in
+			# one tick. It no-ops entirely for the player and for anyone under
+			# their cap or still inside the demobilisation grace month.
+			wif_disband_over_cap = yes
+
 			# Moskowien has put the civil war down: every breakaway is gone.
 			# Announce it, and the news event itself carries out the
 			# reunification with the Saint Petersburg emergency government.

@@ -382,6 +382,180 @@ wif_recalculate_battalion_cap = {
 	}
 }
 
+# --- AI demobilisation -------------------------------------------------------
+#
+# Makes the AI actually shed divisions when it is over the cap, rather than
+# only slowing recruitment and sitting there bleeding penalties forever. The
+# ai_strategy file next door stops it building MORE; this is what brings an
+# army that is already over back down.
+#
+# AI ONLY. A player who chooses to sit over the cap and eat the penalties is
+# making a decision, and having divisions vanish out from under them without
+# asking would be indefensible. The AI cannot make that decision for itself,
+# so it gets made here.
+#
+# REAR FIRST. Divisions are taken from states with no enemy-controlled
+# neighbour before anything near the fighting is touched. The frontline pass
+# only runs for a country more than 20% over the limit, which is the same
+# threshold wif_bat_far_over_cap uses - at that point the country is losing so
+# much to attrition and supply that holding the line with a bloated army is
+# worse than holding it with a smaller one.
+#
+# The rear/front test is vanilla's own, from CHI_decisions.txt: a state is on
+# the front if any neighbouring state is controlled by somebody at war with
+# us. At peace nothing is at war with us, so every state reads as rear and the
+# first pass covers the whole country - which is correct, since a country at
+# peace has no front to protect.
+#
+# WHY destroy_unit AND NOT delete_unit. delete_unit can refund equipment and
+# manpower with disband = yes, which is what the player's own disband button
+# does, but it is COUNTRY scope and its only aim is a template or a whole
+# state - pointing it at a state deletes EVERY division standing there.
+# destroy_unit is division scope, so it takes exactly the one division we
+# picked, at the cost of no refund. Precision is worth more here than the
+# refund: a blunt state-wide delete is the same shape as the arms factory loop
+# that ate every factory in the country, and that mistake is not being made
+# twice.
+#
+# BUDGETED, AND SPREAD OVER WEEKS. num_divisions and wif_bat_used do not
+# refresh inside a single effect - that is exactly what broke the factory
+# enforcement pass - so nothing here re-reads them mid-loop. The number of
+# divisions to remove is worked out ONCE up front into wif_disband_budget, and
+# the loops decrement that variable, which does refresh because we own it. The
+# budget is capped at 5 a week on purpose: the weekly pass recomputes the cap
+# from scratch every time, so a badly overweight country converges over a
+# couple of months instead of losing half its army in a single tick.
+#
+# No round_variable anywhere. A fractional budget needs no rounding - 0.7 is
+# still > 0, so it buys one division and then goes negative and stops, which
+# rounds up exactly the way we want.
+wif_disband_over_cap = {
+	if = {
+		limit = {
+			is_ai = yes
+			check_variable = { wif_battalions_over > 0 }
+			NOT = { has_country_flag = wif_bat_grace }
+			check_variable = { num_divisions > 0 }
+		}
+
+		# The country, reachable from inside division scope. PREV chains get
+		# three and four levels deep in the loops below and are miserable to
+		# read; this is the same trick vanilla uses for the China leader.
+		save_event_target_as = wif_disband_country
+
+		# How many battalions an average division is worth, so the overshoot in
+		# battalions can be turned into a number of divisions. Floored at 1 so
+		# the division below can never blow up.
+		set_variable = { wif_disband_avg = wif_bat_used }
+		divide_variable = { wif_disband_avg = num_divisions }
+		if = {
+			limit = { check_variable = { wif_disband_avg < 1 } }
+			set_variable = { wif_disband_avg = 1 }
+		}
+
+		set_variable = { wif_disband_budget = wif_battalions_over }
+		divide_variable = { wif_disband_budget = wif_disband_avg }
+
+		if = {
+			limit = { check_variable = { wif_disband_budget > 5 } }
+			set_variable = { wif_disband_budget = 5 }
+		}
+
+		# Pass 1 - the rear, worst divisions first.
+		#
+		# A division below a third strength in a rear area is a formation that
+		# has already been chewed up and pulled out to rebuild. Folding it is
+		# the cheapest possible way to get under the cap, so it goes before any
+		# intact unit is considered.
+		every_owned_state = {
+			limit = {
+				is_controlled_by = PREV
+				NOT = {
+					any_neighbor_state = {
+						controller = { has_war_with = event_target:wif_disband_country }
+					}
+				}
+			}
+			every_state_division = {
+				limit = { unit_strength < 0.34 }
+				if = {
+					limit = {
+						event_target:wif_disband_country = {
+							check_variable = { wif_disband_budget > 0 }
+						}
+					}
+					# Decrement BEFORE the kill. destroy_unit removes the scope
+					# this block is standing in, and nothing after it should be
+					# relied on to run.
+					event_target:wif_disband_country = {
+						subtract_from_variable = { wif_disband_budget = 1 }
+					}
+					destroy_unit = yes
+				}
+			}
+		}
+
+		# Pass 2 - the rear, anything at all. Only if the depleted units did not
+		# cover the overshoot on their own.
+		if = {
+			limit = { check_variable = { wif_disband_budget > 0 } }
+			every_owned_state = {
+				limit = {
+					is_controlled_by = PREV
+					NOT = {
+						any_neighbor_state = {
+							controller = { has_war_with = event_target:wif_disband_country }
+						}
+					}
+				}
+				every_state_division = {
+					if = {
+						limit = {
+							event_target:wif_disband_country = {
+								check_variable = { wif_disband_budget > 0 }
+							}
+						}
+						event_target:wif_disband_country = {
+							subtract_from_variable = { wif_disband_budget = 1 }
+						}
+						destroy_unit = yes
+					}
+				}
+			}
+		}
+
+		# Pass 3 - the front, and only for a country badly over.
+		#
+		# There is nothing left in the rear to take at this point, so the choice
+		# is between a smaller army on the line and a bigger one paying 20%+
+		# attrition and supply for every battalion over. Weakest divisions
+		# first, and still inside the same 5-a-week budget.
+		if = {
+			limit = {
+				check_variable = { wif_disband_budget > 0 }
+				check_variable = { wif_bat_headroom_pct < -0.2 }
+			}
+			every_owned_state = {
+				limit = { is_controlled_by = PREV }
+				every_state_division = {
+					limit = { unit_strength < 0.5 }
+					if = {
+						limit = {
+							event_target:wif_disband_country = {
+								check_variable = { wif_disband_budget > 0 }
+							}
+						}
+						event_target:wif_disband_country = {
+							subtract_from_variable = { wif_disband_budget = 1 }
+						}
+						destroy_unit = yes
+					}
+				}
+			}
+		}
+	}
+}
+
 # NOTE: the "one civilian dies per soldier killed" population drain has now
 # been proposed and dropped twice. It is technically buildable - casualties is
 # a readable cumulative variable, so weekly deaths are a delta against last

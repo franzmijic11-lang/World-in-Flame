@@ -66,13 +66,21 @@ wif_bat_over_cap = {
 		value = -25
 	}
 
-	# Shedding existing divisions. There is no ai_strategy type for disbanding
-	# and no division-scope delete effect in the game, so this is the nearest
-	# reliable lever: spare_unit_factor governs how many surplus divisions the
-	# AI thinks it should be holding in reserve. Vanilla pushes it POSITIVE to
-	# make China hoard (WTT_china_ai_strategies.txt uses 50); pushing it
-	# negative does the reverse, so an overcap country stops sitting on units
-	# it is being punished for and lets the surplus go.
+	# Shedding existing divisions. There is still no ai_strategy type for
+	# disbanding, so this remains the only lever available on the AI side:
+	# spare_unit_factor governs how many surplus divisions the AI thinks it
+	# should be holding in reserve. Vanilla pushes it POSITIVE to make China
+	# hoard (WTT_china_ai_strategies.txt uses 50); pushing it negative does the
+	# reverse, so an overcap country stops sitting on units it is being
+	# punished for and lets the surplus go.
+	#
+	# The actual disbanding is NOT done here and cannot be - it is done in
+	# script, by wif_disband_over_cap in
+	# common/scripted_effects/wif_battalion_cap.txt, called from on_weekly.
+	# An earlier note in this file claimed no division-scope delete effect
+	# existed; that was wrong. destroy_unit is division scope, and
+	# every_state_division reaches it, which is what makes rear-before-front
+	# targeting possible.
 	ai_strategy = {
 		type = spare_unit_factor
 		value = -50
