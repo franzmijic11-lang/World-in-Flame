@@ -121,12 +121,47 @@ wif_update_factory_cap = {
 	multiply_variable = { wif_cap_over40 = 1.4 }
 
 	# A nation at war may build without limit. The flag is refreshed weekly for
-	# as long as the war lasts and lives 90 days beyond the last refresh, so the
-	# ceiling returns roughly three months after peace - long enough to
-	# demilitarise voluntarily before any penalty lands.
+	# as long as the war lasts and lives 30 days beyond the last refresh, so the
+	# ceiling returns one month after peace.
+	#
+	# It was 90 days. Three months proved long enough that a country could finish
+	# a war, sit on an enormous overbuild for a full season and never once meet
+	# the penalty it had earned, which made the ceiling feel absent rather than
+	# merely deferred. One month is what the battalion cap already allows for
+	# demobilisation, so the two systems now agree on what a reasonable wind-down
+	# looks like.
+	#
+	# The clock is keyed on the LAST WEEKLY TICK SPENT AT WAR, not on the peace
+	# deal, so it runs one month from the last tick of fighting rather than one
+	# month from the treaty. Those are within seven days of each other.
 	if = {
 		limit = { has_war = yes }
-		set_country_flag = { flag = wif_cap_war_grace days = 90 value = 1 }
+		set_country_flag = { flag = wif_cap_war_grace days = 30 value = 1 }
+	}
+
+	# One-time fix-up for campaigns saved while the grace was still 90 days.
+	#
+	# Shortening the number above only takes effect the next time the flag is
+	# SET, and it is only ever set while at war - so a country already at peace
+	# would quietly run out the old ninety day clock and never see the change.
+	# Re-issuing the flag overwrites that timer, giving one month from now
+	# instead of up to three.
+	#
+	# wif_cap_grace_migrated is set unconditionally the first time a country
+	# reaches this line, so the re-issue happens at most once and can never hand
+	# a country still at war a second helping on top of its own weekly refresh.
+	# Safe to delete once no pre-change save is in use.
+	if = {
+		limit = { NOT = { has_country_flag = wif_cap_grace_migrated } }
+		set_country_flag = wif_cap_grace_migrated
+
+		if = {
+			limit = {
+				has_war = no
+				has_country_flag = wif_cap_war_grace
+			}
+			set_country_flag = { flag = wif_cap_war_grace days = 30 value = 1 }
+		}
 	}
 
 	if = {
