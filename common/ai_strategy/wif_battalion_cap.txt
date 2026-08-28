@@ -80,7 +80,10 @@ wif_bat_over_cap = {
 	# An earlier note in this file claimed nothing in the game could remove a
 	# division from script; that was wrong. delete_unit disbands with a full
 	# equipment and manpower refund and can be aimed at a single state, which
-	# is what makes rear-before-front targeting possible.
+	# is what makes rear-before-front targeting possible. That pass never
+	# takes more than the overshoot, so these strategies remain the only thing
+	# shaping what the AI builds - the disbanding only cleans up what it has
+	# already overbuilt.
 	ai_strategy = {
 		type = spare_unit_factor
 		value = -50
