@@ -1,7 +1,245 @@
-# Penalty breakdown for the battalion cap tooltip.
+# Tooltip text for the battalion cap readout in the officer corps screen.
 #
-# Three states, checked in order - the first matching branch wins, so the
-# grace clause has to come before the plain over-cap one:
+# Localisation cannot branch, cannot loop and cannot hide a line, which is why
+# every conditional word in that tooltip has to come through here.
+#
+# TWO KINDS OF ENTRY LIVE IN THIS FILE
+#
+# 1. The breakdown lines. One defined_text per bonus, each with exactly two
+#    branches: the bonus is live, or it is not. A bonus that is not live
+#    resolves to wif_cap_line_none, which is a genuinely empty string, so the
+#    line disappears from the tooltip entirely rather than showing "+0%".
+#    That is the whole point - the player should see the seven things paying
+#    for their army, not eighteen rows of which eleven are zero.
+#
+#    Every one of these reads the same wif_src_* variable the cap maths wrote
+#    in common/scripted_effects/wif_battalion_cap.txt. They cannot drift out of
+#    agreement with the real number, because there is only one number.
+#
+# 2. The penalty breakdown, which was here first and is unchanged.
+#
+# ADDING A NEW BONUS TO THE CAP means four edits, and missing any of them
+# leaves the tooltip quietly lying: bank it in a wif_src_* variable, zero that
+# variable at the top of the pass, add it to the summation block, then add a
+# defined_text here and its line to the localisation file.
+
+
+# The conscription law's own name, so the tooltip can say WHICH law is paying
+# out rather than just how much. Ordered exactly like the cap maths, and the
+# final branch catches Disarmed Nation, which contributes nothing.
+defined_text = {
+	name = GetWifCapLawName
+
+	text = {
+		trigger = { has_idea = scraping_the_barrel }
+		localization_key = wif_cap_law_barrel
+	}
+
+	text = {
+		trigger = { has_idea = all_adults_serve }
+		localization_key = wif_cap_law_adults
+	}
+
+	text = {
+		trigger = { has_idea = service_by_requirement }
+		localization_key = wif_cap_law_requirement
+	}
+
+	text = {
+		trigger = { has_idea = extensive_conscription }
+		localization_key = wif_cap_law_extensive
+	}
+
+	text = {
+		trigger = { has_idea = limited_conscription }
+		localization_key = wif_cap_law_limited
+	}
+
+	text = {
+		trigger = { has_idea = volunteer_only }
+		localization_key = wif_cap_law_volunteer
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_law_disarmed
+	}
+}
+
+
+# Territory. Always live for a country that owns anything, but it is the
+# smallest of the bonuses and worth showing precisely because players
+# underestimate it.
+defined_text = {
+	name = GetWifCapTerritory
+
+	text = {
+		trigger = { check_variable = { wif_terr_pct > 0 } }
+		localization_key = wif_cap_line_terr
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Conscription law. Absent under Disarmed Nation, which pays nothing.
+defined_text = {
+	name = GetWifCapConscription
+
+	text = {
+		trigger = { check_variable = { wif_src_consc > 0 } }
+		localization_key = wif_cap_line_consc
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Stability band. Absent below 20% stability.
+defined_text = {
+	name = GetWifCapStability
+
+	text = {
+		trigger = { check_variable = { wif_src_stab > 0 } }
+		localization_key = wif_cap_line_stab
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# War support band. Absent below 20% war support.
+defined_text = {
+	name = GetWifCapWarSupport
+
+	text = {
+		trigger = { check_variable = { wif_src_ws > 0 } }
+		localization_key = wif_cap_line_ws
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Major power. Re-read every week, so it appears and disappears on its own.
+defined_text = {
+	name = GetWifCapMajor
+
+	text = {
+		trigger = { check_variable = { wif_src_major > 0 } }
+		localization_key = wif_cap_line_major
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Faction leader. Stacks with major power; a major leading a faction shows
+# both lines.
+defined_text = {
+	name = GetWifCapFaction
+
+	text = {
+		trigger = { check_variable = { wif_src_faction > 0 } }
+		localization_key = wif_cap_line_faction
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# The big wartime clause, and the one that makes a defensive war against a
+# peer survivable at all. Gone the moment the war ends.
+defined_text = {
+	name = GetWifCapWarEven
+
+	text = {
+		trigger = { check_variable = { wif_src_war_even > 0 } }
+		localization_key = wif_cap_line_war_even
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Defensive war.
+defined_text = {
+	name = GetWifCapWarDef
+
+	text = {
+		trigger = { check_variable = { wif_src_war_def > 0 } }
+		localization_key = wif_cap_line_war_def
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Outnumbered two to one.
+defined_text = {
+	name = GetWifCapWar2x
+
+	text = {
+		trigger = { check_variable = { wif_src_war_2x > 0 } }
+		localization_key = wif_cap_line_war_2x
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Outnumbered four to one or worse. Stacks with the two to one line.
+defined_text = {
+	name = GetWifCapWar4x
+
+	text = {
+		trigger = { check_variable = { wif_src_war_4x > 0 } }
+		localization_key = wif_cap_line_war_4x
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# World tension, highest band only - never more than one of these.
+defined_text = {
+	name = GetWifCapTension
+
+	text = {
+		trigger = { check_variable = { wif_src_tension > 0 } }
+		localization_key = wif_cap_line_tension
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+
+# Penalty breakdown, unchanged. Three states, checked in order - the first
+# matching branch wins, so the grace clause has to come before the plain
+# over-cap one:
 #
 #   1. Over the cap, but the one month demobilisation grace is still running.
 #      Nothing is being applied yet, and saying so is the whole point of
@@ -10,9 +248,6 @@
 #      these are the live numbers, read straight from the same variables the
 #      modifier itself reads.
 #   3. Within the cap. No penalties.
-#
-# Localisation cannot branch on its own, which is why this exists rather than
-# the values being inlined into wif_battalion_cap_desc.
 
 defined_text = {
 	name = GetWifBattalionCapPenalties

@@ -42,7 +42,14 @@ guiTypes = {
 			maxWidth = 120
 			maxHeight = 20
 			format = left
-			alwaystransparent = yes
+
+			# The numbers carry the same tooltip as the icon. Previously this was
+			# alwaystransparent, so the mouse fell straight through the count and
+			# only the 20px icon was hoverable - which is not where anyone points
+			# when they want to know why their limit is what it is. Nothing sits
+			# underneath this strip, so capturing the mouse here costs nothing.
+			pdx_tooltip = wif_battalion_cap_label
+			pdx_tooltip_delayed = wif_battalion_cap_desc
 		}
 	}
 }

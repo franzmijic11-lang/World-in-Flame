@@ -7,7 +7,38 @@
  # Officer corps readout, drawn under the special forces block.
  wif_battalion_cap_count:0 "[?wif_bat_used|0]/[?wif_bat_limit|0]"
  wif_battalion_cap_label:0 "Line Battalions"
- wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\nBase limit: §G432§!\nTotal bonus: §G[?wif_bat_pct|%0]§! from territory, standing, conscription law, stability, war support, wartime and world tension.\n§GMajor power +100%§!, §Gfaction leader +50%§! - both re-checked every week.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+ wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G432§! battalions, for every country.[GetWifCapTerritory][GetWifCapConscription][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapWarEven][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension]\n\n§HTotal: §G+[?wif_bat_pct|%0]§! of the base, giving §G[?wif_bat_limit|0]§!\n\nBonuses add together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+
+ # --- Cap breakdown -------------------------------------------------------
+ # One line per bonus, emitted by the defined_texts in
+ # common/scripted_localisation/wif_battalion_cap.txt. A bonus that is not
+ # live resolves to wif_cap_line_none instead, so its line vanishes rather
+ # than showing +0%.
+ #
+ # Each line states the payout first and the reason second, so the column of
+ # green numbers reads straight down.
+ wif_cap_line_none:0 ""
+ wif_cap_line_terr:0 "\n §G+[?wif_terr_pct|%0]§! Territory §g([?wif_terr_states|0] states, [?wif_terr_cores|0] cored)§!"
+ wif_cap_line_consc:0 "\n §G+[?wif_src_consc|%0]§! Conscription §g([GetWifCapLawName])§!"
+ wif_cap_line_stab:0 "\n §G+[?wif_src_stab|%0]§! Stability §g(at [?wif_val_stab|%0])§!"
+ wif_cap_line_ws:0 "\n §G+[?wif_src_ws|%0]§! War support §g(at [?wif_val_ws|%0])§!"
+ wif_cap_line_major:0 "\n §G+[?wif_src_major|%0]§! Major power"
+ wif_cap_line_faction:0 "\n §G+[?wif_src_faction|%0]§! Faction leader"
+ wif_cap_line_war_even:0 "\n §G+[?wif_src_war_even|%0]§! At war, enemy no larger than you §g([?wif_enemy_bat|0] enemy battalions to your [?wif_bat_used|0])§!"
+ wif_cap_line_war_def:0 "\n §G+[?wif_src_war_def|%0]§! Fighting a defensive war"
+ wif_cap_line_war_2x:0 "\n §G+[?wif_src_war_2x|%0]§! Outnumbered more than two to one"
+ wif_cap_line_war_4x:0 "\n §G+[?wif_src_war_4x|%0]§! Outnumbered four to one or worse"
+ wif_cap_line_tension:0 "\n §G+[?wif_src_tension|%0]§! World tension §g(at [?wif_val_tension|%0])§!"
+
+ # Conscription law names, chosen by GetWifCapLawName. Written out rather than
+ # referenced from vanilla's keys so a loc change upstream cannot blank them.
+ wif_cap_law_barrel:0 "Scraping the Barrel"
+ wif_cap_law_adults:0 "All Adults Serve"
+ wif_cap_law_requirement:0 "Service by Requirement"
+ wif_cap_law_extensive:0 "Extensive Conscription"
+ wif_cap_law_limited:0 "Limited Conscription"
+ wif_cap_law_volunteer:0 "Volunteer Only"
+ wif_cap_law_disarmed:0 "Disarmed Nation - contributes nothing"
 
  # Penalty breakdown, selected by GetWifBattalionCapPenalties in
  # common/scripted_localisation/wif_battalion_cap.txt.

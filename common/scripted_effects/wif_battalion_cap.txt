@@ -108,7 +108,31 @@ wif_recalculate_battalion_cap = {
 	# the bottom of this effect is not being reached.
 	set_variable = { wif_bat_limit = 432 }
 
-	set_variable = { wif_bat_pct = wif_terr_pct }
+	# Every bonus below is banked in its own wif_src_* variable instead of being
+	# added straight into a running total, so the officer corps tooltip can show
+	# the player exactly which bonuses are live and what each one is worth. They
+	# are summed into wif_bat_pct in one place, further down.
+	#
+	# All of them are zeroed every pass. That is what makes the breakdown honest:
+	# a bonus that stopped applying this week reads 0 rather than keeping last
+	# week's value, and the tooltip hides any line sitting at 0.
+	set_variable = { wif_src_consc = 0 }
+	set_variable = { wif_src_stab = 0 }
+	set_variable = { wif_src_ws = 0 }
+	set_variable = { wif_src_major = 0 }
+	set_variable = { wif_src_faction = 0 }
+	set_variable = { wif_src_war_even = 0 }
+	set_variable = { wif_src_war_def = 0 }
+	set_variable = { wif_src_war_2x = 0 }
+	set_variable = { wif_src_war_4x = 0 }
+	set_variable = { wif_src_tension = 0 }
+
+	# The inputs themselves, copied so the tooltip can state the reason a band
+	# was picked ("Stability 72%") next to what it paid out. Read here rather
+	# than in localisation so the tooltip can never disagree with the maths.
+	set_variable = { wif_val_stab = has_stability }
+	set_variable = { wif_val_ws = has_war_support }
+	set_variable = { wif_val_tension = threat }
 
 	# --- Conscription law -------------------------------------------------
 	# Disarmed nation is deliberately absent: it contributes nothing, so a
@@ -117,63 +141,63 @@ wif_recalculate_battalion_cap = {
 	# factors on the laws themselves are untouched.
 	if = {
 		limit = { has_idea = scraping_the_barrel }
-		add_to_variable = { wif_bat_pct = 0.50 }
+		set_variable = { wif_src_consc = 0.50 }
 	}
 	else_if = {
 		limit = { has_idea = all_adults_serve }
-		add_to_variable = { wif_bat_pct = 0.45 }
+		set_variable = { wif_src_consc = 0.45 }
 	}
 	else_if = {
 		limit = { has_idea = service_by_requirement }
-		add_to_variable = { wif_bat_pct = 0.35 }
+		set_variable = { wif_src_consc = 0.35 }
 	}
 	else_if = {
 		limit = { has_idea = extensive_conscription }
-		add_to_variable = { wif_bat_pct = 0.25 }
+		set_variable = { wif_src_consc = 0.25 }
 	}
 	else_if = {
 		limit = { has_idea = limited_conscription }
-		add_to_variable = { wif_bat_pct = 0.15 }
+		set_variable = { wif_src_consc = 0.15 }
 	}
 	else_if = {
 		limit = { has_idea = volunteer_only }
-		add_to_variable = { wif_bat_pct = 0.10 }
+		set_variable = { wif_src_consc = 0.10 }
 	}
 
 	# --- Stability --------------------------------------------------------
 	if = {
 		limit = { has_stability > 0.8 }
-		add_to_variable = { wif_bat_pct = 0.10 }
+		set_variable = { wif_src_stab = 0.10 }
 	}
 	else_if = {
 		limit = { has_stability > 0.6 }
-		add_to_variable = { wif_bat_pct = 0.09 }
+		set_variable = { wif_src_stab = 0.09 }
 	}
 	else_if = {
 		limit = { has_stability > 0.4 }
-		add_to_variable = { wif_bat_pct = 0.07 }
+		set_variable = { wif_src_stab = 0.07 }
 	}
 	else_if = {
 		limit = { has_stability > 0.2 }
-		add_to_variable = { wif_bat_pct = 0.05 }
+		set_variable = { wif_src_stab = 0.05 }
 	}
 
 	# --- War support ------------------------------------------------------
 	if = {
 		limit = { has_war_support > 0.8 }
-		add_to_variable = { wif_bat_pct = 0.70 }
+		set_variable = { wif_src_ws = 0.70 }
 	}
 	else_if = {
 		limit = { has_war_support > 0.6 }
-		add_to_variable = { wif_bat_pct = 0.50 }
+		set_variable = { wif_src_ws = 0.50 }
 	}
 	else_if = {
 		limit = { has_war_support > 0.4 }
-		add_to_variable = { wif_bat_pct = 0.30 }
+		set_variable = { wif_src_ws = 0.30 }
 	}
 	else_if = {
 		limit = { has_war_support > 0.2 }
-		add_to_variable = { wif_bat_pct = 0.10 }
+		set_variable = { wif_src_ws = 0.10 }
 	}
 
 	# --- Standing ----------------------------------------------------------
@@ -186,11 +210,11 @@ wif_recalculate_battalion_cap = {
 	# They stack. A major that also leads a faction gets both, +150%.
 	if = {
 		limit = { is_major = yes }
-		add_to_variable = { wif_bat_pct = 1.00 }
+		set_variable = { wif_src_major = 1.00 }
 	}
 	if = {
 		limit = { is_faction_leader = yes }
-		add_to_variable = { wif_bat_pct = 0.50 }
+		set_variable = { wif_src_faction = 0.50 }
 	}
 
 	# --- Line battalions in service ---------------------------------------
@@ -238,12 +262,12 @@ wif_recalculate_battalion_cap = {
 			# same size or smaller" has to be written as "NOT bigger". Using <=
 			# here broke the parse of this whole file.
 			limit = { NOT = { check_variable = { wif_enemy_bat > wif_bat_used } } }
-			add_to_variable = { wif_bat_pct = 1.00 }
+			set_variable = { wif_src_war_even = 1.00 }
 		}
 
 		if = {
 			limit = { has_defensive_war = yes }
-			add_to_variable = { wif_bat_pct = 0.15 }
+			set_variable = { wif_src_war_def = 0.15 }
 		}
 
 		# Outnumbered two to one, and four to one. These stack with each
@@ -255,13 +279,13 @@ wif_recalculate_battalion_cap = {
 
 		if = {
 			limit = { check_variable = { wif_enemy_bat > wif_enemy_bat_x2 } }
-			add_to_variable = { wif_bat_pct = 0.20 }
+			set_variable = { wif_src_war_2x = 0.20 }
 		}
 		if = {
 			# Same restriction as above: no >= operator, so "at least four times"
 			# is written as "NOT less than four times".
 			limit = { NOT = { check_variable = { wif_enemy_bat < wif_enemy_bat_x4 } } }
-			add_to_variable = { wif_bat_pct = 0.90 }
+			set_variable = { wif_src_war_4x = 0.90 }
 		}
 	}
 
@@ -270,16 +294,34 @@ wif_recalculate_battalion_cap = {
 	# 60% and not 30+40+60.
 	if = {
 		limit = { threat > 0.7999 }
-		add_to_variable = { wif_bat_pct = 0.60 }
+		set_variable = { wif_src_tension = 0.60 }
 	}
 	else_if = {
 		limit = { threat > 0.5999 }
-		add_to_variable = { wif_bat_pct = 0.40 }
+		set_variable = { wif_src_tension = 0.40 }
 	}
 	else_if = {
 		limit = { threat > 0.1999 }
-		add_to_variable = { wif_bat_pct = 0.30 }
+		set_variable = { wif_src_tension = 0.30 }
 	}
+
+	# --- Total -------------------------------------------------------------
+	# The one place every bonus is combined. Territory is already a single
+	# cached variable of its own; the rest come from the wif_src_* set above.
+	# Nothing else may add to wif_bat_pct - a bonus that skips this block would
+	# be invisible in the tooltip breakdown, which is exactly the kind of quiet
+	# disagreement between display and maths this structure exists to prevent.
+	set_variable = { wif_bat_pct = wif_terr_pct }
+	add_to_variable = { wif_bat_pct = wif_src_consc }
+	add_to_variable = { wif_bat_pct = wif_src_stab }
+	add_to_variable = { wif_bat_pct = wif_src_ws }
+	add_to_variable = { wif_bat_pct = wif_src_major }
+	add_to_variable = { wif_bat_pct = wif_src_faction }
+	add_to_variable = { wif_bat_pct = wif_src_war_even }
+	add_to_variable = { wif_bat_pct = wif_src_war_def }
+	add_to_variable = { wif_bat_pct = wif_src_war_2x }
+	add_to_variable = { wif_bat_pct = wif_src_war_4x }
+	add_to_variable = { wif_bat_pct = wif_src_tension }
 
 	# --- Cap ---------------------------------------------------------------
 	# Deliberately NOT rounded here. round_variable sat between wif_bat_used
