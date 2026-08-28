@@ -7,7 +7,7 @@
  # Officer corps readout, drawn under the special forces block.
  wif_battalion_cap_count:0 "[?wif_bat_used|0]/[?wif_bat_limit|0]"
  wif_battalion_cap_label:0 "Line Battalions"
- wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G432§! battalions, for every country.[GetWifCapTerritory][GetWifCapConscription][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapWarEven][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension]\n\n§HTotal: §G+[?wif_bat_pct|%0]§! of the base, giving §G[?wif_bat_limit|0]§!\n\nBonuses add together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+ wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G432§! battalions, for every country.[GetWifCapTerritory][GetWifCapConscription][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapWarBalance][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension]\n\n§HTotal: §G+[?wif_bat_pct|%0]§! of the base, giving §G[?wif_bat_limit|0]§!\n\nBonuses add together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
 
  # --- Cap breakdown -------------------------------------------------------
  # One line per bonus, emitted by the defined_texts in
@@ -24,7 +24,9 @@
  wif_cap_line_ws:0 "\n §G+[?wif_src_ws|%0]§! War support §g(at [?wif_val_ws|%0])§!"
  wif_cap_line_major:0 "\n §G+[?wif_src_major|%0]§! Major power"
  wif_cap_line_faction:0 "\n §G+[?wif_src_faction|%0]§! Faction leader"
- wif_cap_line_war_even:0 "\n §G+[?wif_src_war_even|%0]§! At war, enemy no larger than you §g([?wif_enemy_bat|0] enemy battalions to your [?wif_bat_used|0])§!"
+ wif_cap_line_war_weaker:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is weaker §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
+ wif_cap_line_war_even:0 "\n §G+[?wif_src_war_bal|%0]§! At war, evenly matched §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
+ wif_cap_line_war_stronger:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is stronger §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
  wif_cap_line_war_def:0 "\n §G+[?wif_src_war_def|%0]§! Fighting a defensive war"
  wif_cap_line_war_2x:0 "\n §G+[?wif_src_war_2x|%0]§! Outnumbered more than two to one"
  wif_cap_line_war_4x:0 "\n §G+[?wif_src_war_4x|%0]§! Outnumbered four to one or worse"

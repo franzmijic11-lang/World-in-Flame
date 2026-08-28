@@ -28,8 +28,9 @@
 #                   actual status rather than being granted once.
 #   Stability       0-20 nothing, 21-40 5%, 41-60 7%, 61-80 9%, 81-100 10%.
 #   War support     0-20 nothing, 21-40 10%, 41-60 30%, 61-80 50%, 81-100 70%.
-#   Wartime         additive, up to +225%, ALL of it stripped the moment the
-#                   country is at peace again.
+#   Wartime         additive, up to +185%, ALL of it stripped the moment the
+#                   country is at peace again. The headline clause is a
+#                   three-way read on the balance of strength - see below.
 #   World tension   highest qualifying band only, never summed with itself.
 #
 # No flat bonuses anywhere yet. If one is ever added it goes on after the
@@ -121,7 +122,7 @@ wif_recalculate_battalion_cap = {
 	set_variable = { wif_src_ws = 0 }
 	set_variable = { wif_src_major = 0 }
 	set_variable = { wif_src_faction = 0 }
-	set_variable = { wif_src_war_even = 0 }
+	set_variable = { wif_src_war_bal = 0 }
 	set_variable = { wif_src_war_def = 0 }
 	set_variable = { wif_src_war_2x = 0 }
 	set_variable = { wif_src_war_4x = 0 }
@@ -238,11 +239,12 @@ wif_recalculate_battalion_cap = {
 	# simply does not add it, the cap drops, and the country has a month of
 	# grace to demobilise into the smaller number.
 	#
-	# Enemy strength is measured as the total line battalions of every country
-	# currently at war with this one, which is what makes the alliance clause
-	# work without a separate faction lookup - if the enemy is in a faction,
-	# every member that joined the war is already in this sum.
+	# Enemy strength is summed across every country currently at war with this
+	# one, which is what makes the alliance clause work without a separate
+	# faction lookup - if the enemy is in a faction, every member that joined
+	# the war is already in the totals.
 	set_variable = { wif_enemy_bat = 0 }
+	set_variable = { wif_enemy_mil = 0 }
 	if = {
 		limit = { has_war = yes }
 
@@ -253,16 +255,82 @@ wif_recalculate_battalion_cap = {
 			set_temp_variable = { wif_enemy_line = num_battalions }
 			subtract_from_temp_variable = { wif_enemy_line = wif_support_bat }
 			add_to_variable = { PREV.wif_enemy_bat = wif_enemy_line }
+			add_to_variable = { PREV.wif_enemy_mil = num_of_military_factories }
 		}
 
-		# Fighting someone your own size or smaller. The big one, and the
-		# reason a defensive war against a peer is survivable at all.
+		# --- Balance of strength -------------------------------------------
+		# The headline wartime clause. It used to be a single flat +100% for
+		# "enemy no larger than you", judged on battalions alone, which paid a
+		# small industrial power the same as a giant and rewarded exactly the
+		# countries that needed it least.
+		#
+		# Strength is now a WEIGHTED RATIO, 40% battalions and 60% military
+		# factories:
+		#
+		#     ratio = 0.4 * (enemy battalions / yours)
+		#           + 0.6 * (enemy mil factories / yours)
+		#
+		# Ratios rather than raw totals, deliberately. Adding battalions and
+		# factories together directly would be meaningless - a major fields
+		# thousands of the first and hundreds of the second, so the factory
+		# term would vanish into rounding and the 60/40 split would not be the
+		# split it claims to be. Comparing each dimension against your own and
+		# THEN weighting keeps both terms dimensionless and keeps the weights
+		# honest.
+		#
+		# Factories carry more weight than battalions because an army in the
+		# field is what you have now, while an arms industry is what you will
+		# still be fielding in a year. A country out-produced two to one is in
+		# more trouble than one merely outnumbered, and the cap should give it
+		# the room to answer.
+		#
+		#     ratio < 0.9    enemy is weaker      +20%
+		#     0.9 - 1.1      evenly matched       +25%
+		#     ratio > 1.1    enemy is stronger    +60%
+		#
+		# Beating someone smaller than you is no longer a reason to be handed a
+		# vast army allowance; being outmatched is.
+		#
+		# Both denominators are floored at 1 so a country with no army, or none
+		# of its own arms industry, cannot divide by zero.
+		set_temp_variable = { wif_own_bat_safe = wif_bat_used }
 		if = {
-			# check_variable has no <= operator - only > < = - so "enemy is the
-			# same size or smaller" has to be written as "NOT bigger". Using <=
-			# here broke the parse of this whole file.
-			limit = { NOT = { check_variable = { wif_enemy_bat > wif_bat_used } } }
-			set_variable = { wif_src_war_even = 1.00 }
+			limit = { check_variable = { wif_own_bat_safe < 1 } }
+			set_temp_variable = { wif_own_bat_safe = 1 }
+		}
+
+		set_temp_variable = { wif_own_mil_safe = num_of_military_factories }
+		if = {
+			limit = { check_variable = { wif_own_mil_safe < 1 } }
+			set_temp_variable = { wif_own_mil_safe = 1 }
+		}
+
+		set_temp_variable = { wif_ratio_bat = wif_enemy_bat }
+		divide_temp_variable = { wif_ratio_bat = wif_own_bat_safe }
+		multiply_temp_variable = { wif_ratio_bat = 0.4 }
+
+		set_temp_variable = { wif_ratio_mil = wif_enemy_mil }
+		divide_temp_variable = { wif_ratio_mil = wif_own_mil_safe }
+		multiply_temp_variable = { wif_ratio_mil = 0.6 }
+
+		# Kept as a country variable rather than a temp one so the officer
+		# corps tooltip can show the player the figure the band was chosen on.
+		set_variable = { wif_val_enemy_ratio = wif_ratio_bat }
+		add_to_variable = { wif_val_enemy_ratio = wif_ratio_mil }
+
+		# check_variable has no <= or >= operator, only > < = - which is why
+		# the even band is the else rather than a pair of bounds. Using <=
+		# here once broke the parse of this whole file.
+		if = {
+			limit = { check_variable = { wif_val_enemy_ratio < 0.9 } }
+			set_variable = { wif_src_war_bal = 0.20 }
+		}
+		else_if = {
+			limit = { check_variable = { wif_val_enemy_ratio > 1.1 } }
+			set_variable = { wif_src_war_bal = 0.60 }
+		}
+		else = {
+			set_variable = { wif_src_war_bal = 0.25 }
 		}
 
 		if = {
@@ -317,7 +385,7 @@ wif_recalculate_battalion_cap = {
 	add_to_variable = { wif_bat_pct = wif_src_ws }
 	add_to_variable = { wif_bat_pct = wif_src_major }
 	add_to_variable = { wif_bat_pct = wif_src_faction }
-	add_to_variable = { wif_bat_pct = wif_src_war_even }
+	add_to_variable = { wif_bat_pct = wif_src_war_bal }
 	add_to_variable = { wif_bat_pct = wif_src_war_def }
 	add_to_variable = { wif_bat_pct = wif_src_war_2x }
 	add_to_variable = { wif_bat_pct = wif_src_war_4x }

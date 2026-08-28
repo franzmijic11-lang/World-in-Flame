@@ -160,13 +160,31 @@ defined_text = {
 	}
 }
 
-# The big wartime clause, and the one that makes a defensive war against a
-# peer survivable at all. Gone the moment the war ends.
+# Balance of strength. Three live branches rather than the usual one, because
+# the clause pays out in every war - what changes is which band, so the tooltip
+# has to name the band rather than merely show a number. Ordered weakest enemy
+# first, matching the cap maths.
 defined_text = {
-	name = GetWifCapWarEven
+	name = GetWifCapWarBalance
 
 	text = {
-		trigger = { check_variable = { wif_src_war_even > 0 } }
+		trigger = {
+			check_variable = { wif_src_war_bal > 0 }
+			check_variable = { wif_val_enemy_ratio < 0.9 }
+		}
+		localization_key = wif_cap_line_war_weaker
+	}
+
+	text = {
+		trigger = {
+			check_variable = { wif_src_war_bal > 0 }
+			check_variable = { wif_val_enemy_ratio > 1.1 }
+		}
+		localization_key = wif_cap_line_war_stronger
+	}
+
+	text = {
+		trigger = { check_variable = { wif_src_war_bal > 0 } }
 		localization_key = wif_cap_line_war_even
 	}
 
