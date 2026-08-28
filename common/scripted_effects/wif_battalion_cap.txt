@@ -391,164 +391,176 @@ wif_recalculate_battalion_cap = {
 #
 # AI ONLY. A player who chooses to sit over the cap and eat the penalties is
 # making a decision, and having divisions vanish out from under them without
-# asking would be indefensible. The AI cannot make that decision for itself,
-# so it gets made here.
+# asking would be indefensible. The AI cannot make that decision for itself.
 #
-# REAR FIRST. Divisions are taken from states with no enemy-controlled
-# neighbour before anything near the fighting is touched. The frontline pass
-# only runs for a country more than 20% over the limit, which is the same
-# threshold wif_bat_far_over_cap uses - at that point the country is losing so
-# much to attrition and supply that holding the line with a bloated army is
-# worse than holding it with a smaller one.
+# WHY THIS WORKS PER STATE AND NOT PER DIVISION
 #
-# The rear/front test is vanilla's own, from CHI_decisions.txt: a state is on
-# the front if any neighbouring state is controlled by somebody at war with
-# us. At peace nothing is at war with us, so every state reads as rear and the
-# first pass covers the whole country - which is correct, since a country at
-# peace has no front to protect.
+# The engine has two ways to remove a division and they trade off against each
+# other:
 #
-# WHY destroy_unit AND NOT delete_unit. delete_unit can refund equipment and
-# manpower with disband = yes, which is what the player's own disband button
-# does, but it is COUNTRY scope and its only aim is a template or a whole
-# state - pointing it at a state deletes EVERY division standing there.
-# destroy_unit is division scope, so it takes exactly the one division we
-# picked, at the cost of no refund. Precision is worth more here than the
-# refund: a blunt state-wide delete is the same shape as the arms factory loop
-# that ate every factory in the country, and that mistake is not being made
-# twice.
+#   destroy_unit  - division scope, so it takes exactly one chosen division,
+#                   but there is no refund. The equipment and the men are gone.
+#   delete_unit   - refunds equipment and manpower with disband = yes, which is
+#                   what the player's own disband button does, but it is
+#                   COUNTRY scope and cannot be aimed at a single division. Its
+#                   finest aim is a template, or a state.
 #
-# BUDGETED, AND SPREAD OVER WEEKS. num_divisions and wif_bat_used do not
-# refresh inside a single effect - that is exactly what broke the factory
-# enforcement pass - so nothing here re-reads them mid-loop. The number of
-# divisions to remove is worked out ONCE up front into wif_disband_budget, and
-# the loops decrement that variable, which does refresh because we own it. The
-# budget is capped at 5 a week on purpose: the weekly pass recomputes the cap
-# from scratch every time, so a badly overweight country converges over a
-# couple of months instead of losing half its army in a single tick.
+# The refund is worth more than per-division aim, so this uses delete_unit and
+# accepts that the unit of work is a STATE: every division standing in a chosen
+# state is disbanded together. To stop that being the arms-factory loop all
+# over again, a state is only ever chosen if its garrison is small enough that
+# clearing it cannot gut the army - three divisions in the rear, six for a
+# country badly over, two on the front. A big rear stack is simply skipped.
 #
-# No round_variable anywhere. A fractional budget needs no rounding - 0.7 is
-# still > 0, so it buys one division and then goes negative and stops, which
-# rounds up exactly the way we want.
+# The whole shape is vanilla's, from Finland's crack_down_on_the_military
+# focus: iterate controlled states, test divisions_in_state from country scope
+# with state = PREV, then step back up with PREV = { delete_unit = { state =
+# PREV ... } }. PREV resolves back down to the state from inside the country
+# block, and if does not change scope, so the chain survives the budget guard.
+#
+# REAR FIRST. Divisions come from states with no enemy-controlled neighbour
+# before anything near the fighting is touched. The rear/front test is
+# vanilla's own, from CHI_decisions.txt: a state is on the front if any
+# neighbouring state is controlled by somebody at war with us. At peace nothing
+# is at war with us, so every state reads as rear and the first passes cover
+# the whole country - which is correct, since a country at peace has no front.
+#
+# BUDGETED IN STATES PER WEEK. Two states a week normally, four for a country
+# more than 20% over - the same threshold wif_bat_far_over_cap uses. Combined
+# with the garrison limits that is at most six divisions in an ordinary week
+# and at most about twenty-six in the worst case, against a cap whose floor is
+# 432 battalions. The weekly pass recomputes everything from scratch, so a
+# bloated country walks back down over a couple of months instead of losing an
+# army in a single tick.
+#
+# Nothing here re-reads num_divisions or wif_bat_used mid-loop. Those do not
+# refresh inside a single effect, which is exactly what made the old factory
+# enforcement pass eat every arms factory in the country. The loops decrement
+# wif_disband_budget instead, which does refresh because we own it, and the
+# guard is an if inside the loop body rather than a condition in limit, so it
+# is re-evaluated for every state rather than baked in when the list was built.
 wif_disband_over_cap = {
 	if = {
 		limit = {
 			is_ai = yes
 			check_variable = { wif_battalions_over > 0 }
 			NOT = { has_country_flag = wif_bat_grace }
-			check_variable = { num_divisions > 0 }
 		}
 
-		# The country, reachable from inside division scope. PREV chains get
-		# three and four levels deep in the loops below and are miserable to
-		# read; this is the same trick vanilla uses for the China leader.
+		# The country, reachable from inside the state loops. PREV alone would
+		# do for one level, but the neighbour test below is two scopes deep and
+		# an event target reads far better than PREV.PREV.PREV.
 		save_event_target_as = wif_disband_country
 
-		# How many battalions an average division is worth, so the overshoot in
-		# battalions can be turned into a number of divisions. Floored at 1 so
-		# the division below can never blow up.
-		set_variable = { wif_disband_avg = wif_bat_used }
-		divide_variable = { wif_disband_avg = num_divisions }
+		# States to clear this week.
+		set_variable = { wif_disband_budget = 2 }
 		if = {
-			limit = { check_variable = { wif_disband_avg < 1 } }
-			set_variable = { wif_disband_avg = 1 }
+			limit = { check_variable = { wif_bat_headroom_pct < -0.2 } }
+			set_variable = { wif_disband_budget = 4 }
 		}
 
-		set_variable = { wif_disband_budget = wif_battalions_over }
-		divide_variable = { wif_disband_budget = wif_disband_avg }
-
-		if = {
-			limit = { check_variable = { wif_disband_budget > 5 } }
-			set_variable = { wif_disband_budget = 5 }
-		}
-
-		# Pass 1 - the rear, worst divisions first.
+		# Pass 1 - the rear, small garrisons.
 		#
-		# A division below a third strength in a rear area is a formation that
-		# has already been chewed up and pulled out to rebuild. Folding it is
-		# the cheapest possible way to get under the cap, so it goes before any
-		# intact unit is considered.
-		every_owned_state = {
+		# A rear state holding one to three divisions is a depot or a garrison
+		# posting, not a formation anybody is relying on. This is where almost
+		# all demobilisation should happen and usually the only pass that runs.
+		every_controlled_state = {
 			limit = {
-				is_controlled_by = PREV
 				NOT = {
 					any_neighbor_state = {
 						controller = { has_war_with = event_target:wif_disband_country }
 					}
 				}
+				PREV = { divisions_in_state = { state = PREV size > 0 } }
+				PREV = { NOT = { divisions_in_state = { state = PREV size > 3 } } }
 			}
-			every_state_division = {
-				limit = { unit_strength < 0.34 }
+			if = {
+				limit = {
+					event_target:wif_disband_country = {
+						check_variable = { wif_disband_budget > 0 }
+					}
+				}
+				PREV = {
+					subtract_from_variable = { wif_disband_budget = 1 }
+					delete_unit = {
+						state = PREV
+						disband = yes
+					}
+				}
+			}
+		}
+
+		# Pass 2 - the rear, bigger garrisons, for a country badly over.
+		#
+		# Without this a country whose rear is organised into stacks of five or
+		# six can never get under the cap, because pass 1 skips every one of
+		# them. Only opened up once the country is more than 20% over, where
+		# the attrition and supply bill justifies breaking up a real garrison.
+		if = {
+			limit = {
+				check_variable = { wif_disband_budget > 0 }
+				check_variable = { wif_bat_headroom_pct < -0.2 }
+			}
+			every_controlled_state = {
+				limit = {
+					NOT = {
+						any_neighbor_state = {
+							controller = { has_war_with = event_target:wif_disband_country }
+						}
+					}
+					PREV = { divisions_in_state = { state = PREV size > 0 } }
+					PREV = { NOT = { divisions_in_state = { state = PREV size > 6 } } }
+				}
 				if = {
 					limit = {
 						event_target:wif_disband_country = {
 							check_variable = { wif_disband_budget > 0 }
 						}
 					}
-					# Decrement BEFORE the kill. destroy_unit removes the scope
-					# this block is standing in, and nothing after it should be
-					# relied on to run.
-					event_target:wif_disband_country = {
+					PREV = {
 						subtract_from_variable = { wif_disband_budget = 1 }
-					}
-					destroy_unit = yes
-				}
-			}
-		}
-
-		# Pass 2 - the rear, anything at all. Only if the depleted units did not
-		# cover the overshoot on their own.
-		if = {
-			limit = { check_variable = { wif_disband_budget > 0 } }
-			every_owned_state = {
-				limit = {
-					is_controlled_by = PREV
-					NOT = {
-						any_neighbor_state = {
-							controller = { has_war_with = event_target:wif_disband_country }
+						delete_unit = {
+							state = PREV
+							disband = yes
 						}
-					}
-				}
-				every_state_division = {
-					if = {
-						limit = {
-							event_target:wif_disband_country = {
-								check_variable = { wif_disband_budget > 0 }
-							}
-						}
-						event_target:wif_disband_country = {
-							subtract_from_variable = { wif_disband_budget = 1 }
-						}
-						destroy_unit = yes
 					}
 				}
 			}
 		}
 
-		# Pass 3 - the front, and only for a country badly over.
+		# Pass 3 - the front, last resort.
 		#
-		# There is nothing left in the rear to take at this point, so the choice
-		# is between a smaller army on the line and a bigger one paying 20%+
-		# attrition and supply for every battalion over. Weakest divisions
-		# first, and still inside the same 5-a-week budget.
+		# Only reached by a country more than 20% over that has already run its
+		# rear dry, and capped at two divisions per state so clearing one
+		# cannot open a breach the way emptying a six-division sector would.
+		# This pass can only ever fire during a war: at peace every state reads
+		# as rear and passes 1 and 2 will have taken the budget first.
+		#
+		# If this turns out to be too aggressive in play, deleting this block
+		# leaves a rear-only system that still converges once a war ends and
+		# every state becomes rear again.
 		if = {
 			limit = {
 				check_variable = { wif_disband_budget > 0 }
 				check_variable = { wif_bat_headroom_pct < -0.2 }
 			}
-			every_owned_state = {
-				limit = { is_controlled_by = PREV }
-				every_state_division = {
-					limit = { unit_strength < 0.5 }
-					if = {
-						limit = {
-							event_target:wif_disband_country = {
-								check_variable = { wif_disband_budget > 0 }
-							}
-						}
+			every_controlled_state = {
+				limit = {
+					PREV = { divisions_in_state = { state = PREV size > 0 } }
+					PREV = { NOT = { divisions_in_state = { state = PREV size > 2 } } }
+				}
+				if = {
+					limit = {
 						event_target:wif_disband_country = {
-							subtract_from_variable = { wif_disband_budget = 1 }
+							check_variable = { wif_disband_budget > 0 }
 						}
-						destroy_unit = yes
+					}
+					PREV = {
+						subtract_from_variable = { wif_disband_budget = 1 }
+						delete_unit = {
+							state = PREV
+							disband = yes
+						}
 					}
 				}
 			}

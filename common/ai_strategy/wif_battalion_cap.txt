@@ -77,10 +77,10 @@ wif_bat_over_cap = {
 	# The actual disbanding is NOT done here and cannot be - it is done in
 	# script, by wif_disband_over_cap in
 	# common/scripted_effects/wif_battalion_cap.txt, called from on_weekly.
-	# An earlier note in this file claimed no division-scope delete effect
-	# existed; that was wrong. destroy_unit is division scope, and
-	# every_state_division reaches it, which is what makes rear-before-front
-	# targeting possible.
+	# An earlier note in this file claimed nothing in the game could remove a
+	# division from script; that was wrong. delete_unit disbands with a full
+	# equipment and manpower refund and can be aimed at a single state, which
+	# is what makes rear-before-front targeting possible.
 	ai_strategy = {
 		type = spare_unit_factor
 		value = -50

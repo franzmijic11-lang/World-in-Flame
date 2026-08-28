@@ -212,10 +212,12 @@ on_actions = {
 			wif_recalculate_battalion_cap = yes
 
 			# Then let the AI act on the result. This is the only thing in the
-			# mod that destroys units, so read the header on
-			# wif_disband_over_cap before touching it: AI only, rear divisions
-			# before frontline ones, and hard capped at five divisions a week
-			# so a country converges over months rather than losing an army in
+			# mod that removes units, so read the header on
+			# wif_disband_over_cap before touching it: AI only, disbanded with
+			# a full equipment and manpower refund, rear states before
+			# frontline ones, and budgeted at two states a week - four for a
+			# country badly over - with a garrison size limit on top, so a
+			# country walks back down over months rather than losing an army in
 			# one tick. It no-ops entirely for the player and for anyone under
 			# their cap or still inside the demobilisation grace month.
 			wif_disband_over_cap = yes
