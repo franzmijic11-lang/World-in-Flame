@@ -1,0 +1,105 @@
+# The Russian Federation.
+#
+# A hundred days after Kazan goes democratic, the two Russian republics stop
+# pretending they are two countries. The Central Siberian Republic - Popov's
+# state, founded by a marshal who took an army east rather than serve either
+# Stalin or Zhukov - absorbs the SME and takes a new name.
+#
+# THE TIMER IS A TIMED COUNTRY FLAG, not a variable countdown. wif_sme_union_pending
+# is set with days = 100 by wif_sme_coup_democratic and expires on its own; the
+# daily check below simply notices it has gone. That means the engine keeps the
+# clock and it survives a save reload without any bookkeeping.
+
+wif_russian_federation_check = {
+
+	# The flag has expired and the SME is still democratic and still exists.
+	if = {
+		limit = {
+			has_country_flag = wif_sme_went_democratic
+			NOT = { has_country_flag = wif_sme_union_pending }
+			NOT = { has_country_flag = wif_sme_union_done }
+			has_government = democratic
+			country_exists = CSR
+		}
+
+		set_country_flag = wif_sme_union_done
+
+		# Mark the ground before it changes hands. annex_country has NO core
+		# parameter - it takes target and transfer_troops and nothing else, and
+		# writing core = yes there is what broke this whole file's parse, which
+		# in turn took wif_sme_coup_check down with it and stopped the coup ever
+		# firing. Cores have to be added afterwards, and by then the SME is gone,
+		# so its states are flagged first.
+		every_owned_state = {
+			set_state_flag = wif_was_emergency_government
+		}
+
+		CSR = {
+			annex_country = {
+				target = SME
+				transfer_troops = yes
+			}
+
+			# Now core what was just taken - and only that. The Federation holds
+			# the old Emergency Government's ground as its own.
+			every_owned_state = {
+				limit = { has_state_flag = wif_was_emergency_government }
+				add_core_of = CSR
+			}
+
+			set_cosmetic_tag = CSR_russian_federation
+			set_country_flag = wif_is_russian_federation
+
+			# Yagoda's republic is the last piece of the Union still calling
+			# itself the Union. The Federation does not intend to leave it
+			# there.
+			#
+			# The wargoal is created before the declaration so the war has
+			# something to be about; annex_everything is what makes victory
+			# actually transfer the ground.
+			if = {
+				limit = { country_exists = WSM }
+
+				create_wargoal = {
+					type = annex_everything
+					target = WSM
+				}
+
+				declare_war_on = {
+					target = WSM
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+# Coring what the war brings in.
+#
+# Run weekly for the Federation. The four states are Yagoda's - Tyumen,
+# Chelyabinsk, Sverdlovsk and Tobolsk, the same four wif_yagoda_rising hands him
+# in common/scripted_effects/wif_west_siberia.txt.
+#
+# Deliberately NOT every_owned_state: a Federation that goes on to take Warsaw
+# should not wake up with cores on Poland. This cores the Russian ground and
+# nothing else, and it is idempotent - a state already cored is skipped, so it
+# can run every week for the rest of the game at no cost.
+wif_russian_federation_core_check = {
+	if = {
+		limit = { has_country_flag = wif_is_russian_federation }
+
+		every_state = {
+			limit = {
+				OR = {
+					state = 403
+					state = 572
+					state = 653
+					state = 580
+				}
+				is_owned_by = ROOT
+				NOT = { is_core_of = ROOT }
+			}
+			add_core_of = ROOT
+		}
+	}
+}

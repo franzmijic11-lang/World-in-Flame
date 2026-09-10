@@ -1,0 +1,372 @@
+# The White Question: the three loyalty readouts, and in time the decisions
+# that court, buy, split or break each faction.
+#
+# THESE ARE NOT ACTIONS. A decision category can only contain decisions, so a
+# row of text has to be written as one - that is the only way HoI4 will draw
+# text inside a decision panel without a custom scripted_gui and its own .gui
+# file. Each of these is permanently unavailable and does nothing when clicked.
+#
+# always = no wrapped in custom_trigger_tooltip is what keeps them tidy: without
+# it the panel prints a red cross and a bare failed condition under every row.
+# With it, each row says plainly that it is a readout.
+#
+# The numbers come from wif_whites_dem_loyalty, wif_whites_fas_loyalty and
+# wif_whites_mon_loyalty, set by wif_open_second_civil_war_watch in
+# common/scripted_effects/wif_second_civil_war.txt and printed by the [?variable]
+# tokens in the localisation. Decisions that move them come later; when they do,
+# they go in this file and the readouts need no changes at all.
+wif_the_white_question = {
+
+	# =====================================================================
+	# The Duma road
+	# =====================================================================
+	# ONE SHARED COOLDOWN ACROSS THE WHOLE CATEGORY. Acting on one faction is
+	# public, and the other two are watching, so taking any decision here shuts
+	# the rest for a time. That is the timed country flag
+	# wif_white_decision_cooldown, checked by every decision's available block -
+	# days_re_enable would only have closed the decision that was taken.
+	#
+	# THE SPIRIT CHANGE IS TEMPORARY AND THE COOLDOWN IS LONGER THAN IT. The
+	# promise runs 100 days, the silence runs 120, so there is a stretch at the
+	# end where the concession has lapsed and you still cannot make another. A
+	# promise is not a policy.
+
+	# Promise the Democrats a Duma. 30 political power, and the cheapest thing
+	# in the category, because it costs nothing but words.
+	wif_promise_the_democrats_a_duma = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+			original_tag = SME
+		}
+
+		# Gone for good once the promise has run its course - the road moves on
+		# to the local dumas and there is no going back to promising.
+		visible = {
+			has_country_flag = wif_watching_the_whites
+			NOT = { has_country_flag = wif_duma_promised_expired }
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_white_decision_cooldown }
+			has_idea = wif_sme_the_whites_return
+		}
+
+		fire_only_once = yes
+
+		cost = var:wif_cost_duma_promise
+
+		days_remove = 100
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = wif_sme_the_whites_return
+				add_idea = wif_sme_the_whites_return_duma
+			}
+
+			add_to_variable = { wif_whites_dem_loyalty = 5 }
+			add_to_variable = { wif_whites_fas_loyalty = -5 }
+			wif_clamp_white_loyalty = yes
+
+			set_country_flag = { flag = wif_white_decision_cooldown days = 120 value = 1 }
+		}
+
+		# The promise lapses. The flag both closes this decision permanently and
+		# opens the next one.
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = wif_sme_the_whites_return_duma
+				add_idea = wif_sme_the_whites_return
+			}
+
+			set_country_flag = wif_duma_promised_expired
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Establish Temporary Local Dumas. 500 political power - actually seating
+	# assemblies costs a great deal more than promising them.
+	wif_establish_local_dumas = {
+
+		icon = GFX_decision_generic_form_nation
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_duma_promised_expired
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_white_decision_cooldown }
+			has_idea = wif_sme_the_whites_return
+		}
+
+		fire_only_once = yes
+
+		cost = var:wif_cost_local_dumas
+
+		days_remove = 180
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = wif_sme_the_whites_return
+				add_idea = wif_sme_the_whites_return_local_dumas
+			}
+
+			add_to_variable = { wif_whites_dem_loyalty = 15 }
+			add_to_variable = { wif_whites_fas_loyalty = -10 }
+			add_to_variable = { wif_whites_mon_loyalty = -5 }
+			wif_clamp_white_loyalty = yes
+
+			# Negative is the council. See common/bop/SME.txt - the council is
+			# the LEFT side and runs negative, Zhukov is the RIGHT and runs
+			# positive. A sign slip here would hand the assemblies to the marshal.
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.20
+				tooltip_side = SME_leadership_council_side
+			}
+
+			set_country_flag = { flag = wif_white_decision_cooldown days = 110 value = 1 }
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = wif_sme_the_whites_return_local_dumas
+				add_idea = wif_sme_the_whites_return
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# =====================================================================
+	# The Romanov road
+	# =====================================================================
+	# Three steps, each unlocked by the last finishing, and they get steadily
+	# harder to walk back: a funeral, a land settlement, and a Tsar.
+
+	# THE FUNERAL IS THE EXCEPTION IN THIS FILE. It neither sets the shared
+	# cooldown nor swaps the national spirit - it ADDS a timed one alongside
+	# whatever is held, so it can run at the same time as a Duma and the two
+	# stack. Burying the dead is not a policy anyone has to be silent about.
+	wif_arrange_tsar_funeral = {
+
+		icon = GFX_decision_generic_monarchy
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_watching_the_whites
+			NOT = { has_country_flag = wif_tsar_funeral_done }
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_white_decision_cooldown }
+		}
+
+		fire_only_once = yes
+
+		cost = var:wif_cost_tsar_funeral
+
+		days_remove = 100
+
+		complete_effect = {
+			add_timed_idea = {
+				idea = wif_sme_tsar_funeral
+				days = 100
+			}
+
+			add_to_variable = { wif_whites_mon_loyalty = 10 }
+			wif_clamp_white_loyalty = yes
+		}
+
+		remove_effect = {
+			set_country_flag = wif_tsar_funeral_done
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# The land settlement. This one demands the room to itself: no funeral still
+	# running, no Duma spirit in place, and it takes the shared cooldown for its
+	# whole hundred days so nothing starts underneath it.
+	wif_return_tsarist_land = {
+
+		icon = GFX_decision_generic_form_nation
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_tsar_funeral_done
+			NOT = { has_country_flag = wif_tsarist_land_returned }
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_white_decision_cooldown }
+
+			# Nothing else may be in effect. has_idea on the BASE spirit is what
+			# proves no Duma variant is swapped in - the variants replace it.
+			NOT = { has_idea = wif_sme_tsar_funeral }
+			has_idea = wif_sme_the_whites_return
+		}
+
+		fire_only_once = yes
+
+		cost = var:wif_cost_tsarist_land
+
+		days_remove = 100
+
+		complete_effect = {
+			set_country_flag = { flag = wif_white_decision_cooldown days = 100 value = 1 }
+		}
+
+		remove_effect = {
+			# Permanent. Nothing removes this one.
+			add_ideas = wif_marxist_white_compromise
+
+			add_to_variable = { wif_whites_mon_loyalty = 7 }
+			add_to_variable = { wif_whites_dem_loyalty = -10 }
+			add_to_variable = { wif_whites_fas_loyalty = -5 }
+			wif_clamp_white_loyalty = yes
+
+			set_country_flag = wif_tsarist_land_returned
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# The Tsar himself.
+	wif_invite_vladimir_iii = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_tsarist_land_returned
+			NOT = { has_country_flag = wif_vladimir_invited }
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_white_decision_cooldown }
+		}
+
+		fire_only_once = yes
+
+		cost = var:wif_cost_vladimir
+
+		days_remove = 50
+
+		remove_effect = {
+			add_ideas = wif_honourary_tsar_vladimir
+
+			add_to_variable = { wif_whites_mon_loyalty = 10 }
+			wif_clamp_white_loyalty = yes
+
+			set_country_flag = wif_vladimir_invited
+
+			country_event = { id = wif_sme.5 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	wif_whites_dem_loyalty_readout = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_watching_the_whites
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_loyalty_readout_tt
+				always = no
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	wif_whites_fas_loyalty_readout = {
+
+		icon = GFX_decision_generic_nationalism
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_watching_the_whites
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_loyalty_readout_tt
+				always = no
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	wif_whites_mon_loyalty_readout = {
+
+		icon = GFX_decision_generic_monarchy
+
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			has_country_flag = wif_watching_the_whites
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_loyalty_readout_tt
+				always = no
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

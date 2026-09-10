@@ -1343,3 +1343,10 @@ WSM = {
 	color = rgb { 215 60 55 }
 	color_ui = rgb { 215 60 55 }
 }
+
+# The West Russian Republic - the tricolour's blue, so it reads as Russian
+# rather than as another shade of German grey on the map.
+WRD = {
+	color = rgb { 46 84 160 }
+	color_ui = rgb { 46 84 160 }
+}

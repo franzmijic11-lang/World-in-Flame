@@ -1,0 +1,72 @@
+# Arming the Moskowien partisans, unlocked by the SME focus
+# SME_arm_the_partisans.
+#
+# Every use halves the time until Moskowien's next terror raid. That is only
+# possible because the raid timer is now a countdown variable on RKM rather than
+# a scheduled event - see the on_daily_RKM block in
+# common/on_actions/wif_on_actions.txt for why it had to change.
+wif_arm_the_partisans_category = {
+
+	wif_arm_the_partisans = {
+
+		icon = GFX_decision_generic_army_support
+
+		# Deliberately NOT fire_only_once, and no cooldown: the seven thousand
+		# rifles are the limiter. Spend them as often as you can find them.
+		allowed = {
+			original_tag = SME
+		}
+
+		visible = {
+			country_exists = RKM
+		}
+
+		available = {
+			# There is nobody to arm until Moskowien has actually been hit once.
+			# The flag is set in wif_rkm.20.
+			RKM = {
+				has_country_flag = wif_first_terror_attack
+
+				# Halving a timer already down to 1 does nothing, and halving
+				# one that is not running does less.
+				check_variable = { wif_terror_days > 1 }
+			}
+
+			has_equipment = {
+				infantry_equipment > 6999
+			}
+		}
+
+		cost = 0
+
+		complete_effect = {
+			# ANY infantry equipment, oldest first. Passing the ARCHETYPE rather
+			# than a variant is what does that - the engine drains
+			# infantry_equipment_1 before it touches the newer marks, which is
+			# right for rifles being handed quietly over a border.
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -7000
+			}
+
+			RKM = {
+				divide_variable = { wif_terror_days = 2 }
+			}
+
+			custom_effect_tooltip = wif_arm_the_partisans_effect_tt
+		}
+
+		# The AI arms them whenever it can spare the rifles. The bar is 9,000
+		# rather than 7,000 so it keeps a margin instead of stripping itself.
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 50
+				has_equipment = {
+					infantry_equipment > 9000
+				}
+			}
+		}
+	}
+}

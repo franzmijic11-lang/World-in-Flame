@@ -1,0 +1,50 @@
+# Leaders of the SME after the coup.
+#
+# NOTE THE CASE: spriteType, not SpriteType. Vanilla writes it lowercase
+# everywhere and so do the CRA and WRD files that are known to work in game.
+#
+# Portraits are .png at 156x210, with a 67x67 _small beside each, matching the
+# CRA and WRD portraits already in this mod.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_SME_anastasii_vonsiatskii"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Anastasii_Vonsiatskii.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_anastasii_vonsiatskii_small"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Anastasii_Vonsiatskii_small.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_sergej_vojcechovsky"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Sergej_Vojcechovsky.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_sergej_vojcechovsky_small"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Sergej_Vojcechovsky_small.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_vladimir_iii"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Vladimir_III.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_vladimir_iii_small"
+		texturefile = "gfx/leaders/SME/Portrait_SME_Vladimir_III_small.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_nakita_paskarov"
+		texturefile = "gfx/leaders/SME/Portrait_SME_nakita_paskarov.png"
+	}
+	spriteType = {
+		name = "GFX_idea_SME_nakita_paskarov"
+		texturefile = "gfx/interface/ideas/idea_SME_nakita_paskarov.dds"
+	}
+	spriteType = {
+		name = "GFX_portrait_SME_yuri_dnoroutsi"
+		texturefile = "gfx/leaders/SME/Portrait_SME_yuri_dnoroutsi.png"
+	}
+	spriteType = {
+		name = "GFX_idea_SME_yuri_dnoroutsi"
+		texturefile = "gfx/interface/ideas/idea_SME_yuri_dnoroutsi.dds"
+	}
+}

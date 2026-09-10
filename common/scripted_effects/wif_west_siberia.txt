@@ -23,6 +23,13 @@ wif_yagoda_rising = {
 	# with them.
 	SME = { save_event_target_as = wif_tech_donor }
 
+	# The rising can only happen once. Two things can now bring it about - the
+	# war with Archangelsk, and the SME's own communism collapsing below 49%
+	# (see the weekly check in common/on_actions/wif_on_actions.txt) - so the
+	# flag is set HERE rather than at either trigger, where a second route
+	# would not see it.
+	SME = { set_country_flag = wif_yagoda_risen }
+
 	# =====================================================================
 	# The four states of the West Siberian Marxist Republic
 	# =====================================================================
@@ -76,6 +83,57 @@ wif_yagoda_rising = {
 			}
 
 			add_ideas = wif_splinter_no_factions
+
+			# The NKVD goes with Yagoda.
+			#
+			# He ran it; the officers are his. The SME loses it on the same tick,
+			# so the counter-intelligence, the drift and the weekly sweep that
+			# keeps the Osobyi Otryad alive all change hands at once - the sweep
+			# is keyed on this spirit and nothing else.
+			#
+			# WHICHEVER FORM IT IS IN. The two focuses under SME_rebuild_the_nkvd
+			# swap the base spirit for a variant, so the handover has to move the
+			# one the SME actually holds rather than assuming the base. Testing
+			# for the base alone would have handed over nothing at all to a
+			# player who had taken either focus.
+			#
+			# Guarded on the SME having rebuilt it: a rising that happens before
+			# SME_rebuild_the_nkvd hands over nothing.
+			if = {
+				limit = { SME = { wif_has_nkvd = yes } }
+
+				if = {
+					limit = { SME = { has_idea = wif_nkvd_marshals_police } }
+					add_ideas = wif_nkvd_marshals_police
+					SME = { remove_ideas = wif_nkvd_marshals_police }
+				}
+				else_if = {
+					limit = { SME = { has_idea = wif_nkvd_auditable } }
+					add_ideas = wif_nkvd_auditable
+					SME = { remove_ideas = wif_nkvd_auditable }
+				}
+				else = {
+					add_ideas = wif_nkvd
+					SME = { remove_ideas = wif_nkvd }
+				}
+
+				# The SME's Otryad is DISBANDED, not destroyed: disband = yes
+				# refunds its equipment and manpower, so the Emergency
+				# Government gets the kit back into its stockpile rather than
+				# losing nine battalions' worth outright. The men went east with
+				# Yagoda; the rifles stayed.
+				#
+				# Filtered on the id create_unit gave it, so a player who built
+				# more divisions from the same template keeps every one of them.
+				# Only the granted Otryad goes.
+				#
+				SME = {
+					delete_unit = {
+						id = 9471
+						disband = yes
+					}
+				}
+			}
 
 			wif_inherit_tech_from_donor = yes
 

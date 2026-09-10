@@ -29,3 +29,5 @@ SBA = "countries/Siberian Anarchy.txt"
 CSR = "countries/Central Siberian Republic.txt"
 
 WSM = "countries/West Siberian Marxist Republic.txt"
+
+WRD = "countries/West Russian Republic.txt"

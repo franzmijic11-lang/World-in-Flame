@@ -7,8 +7,11 @@
  GER_inner_circle.02.d:0 "[GetAscendedAdvisorName4] will carry on the Fuhrer's legacy."
  GER_inner_circle.02.e:0 "We are not ready for a change in leadership."
  GER_ascended_advisor_4_name_text:0 "§Y[GetAscendedAdvisorName4]§!"
- GER_crossing_the_atlantic:0 "Force the Americans to see Reason"
- GER_crossing_the_atlantic_desc:0 "Britain has fallen and France with her. The Atlantic is a moat, not a road, and no army of ours will march on Washington. But the Americans are practical people, and a war fought for allies who no longer exist is a war fought for nothing. Let us put terms to them and see whether reason prevails."
+
+ # Single-focus form of vanilla GER_inner_circle_industrial_me_focuses_tt.
+ # That one names two focuses; Todt's branch is gone, so Speer and Goring
+ # each lock only one focus now.
+ wif_inner_circle_industrial_me_focus_tt:0 "(Completing this focus will §Rlock§! §Y$FOCUS_1$§! for its respective $GER_inner_circle_member_title$)"
  GER_force_americans_to_see_reason_tt:0 "The §YUnited States§! will be offered a §Yseparate peace§!"
  GER_force_americans_allied_tt:0 "The §YUnited States§! and §YFrance§! are in a faction with the §YUnited Kingdom§!"
  GER_force_americans_capitulated_tt:0 "The §YUnited Kingdom§! and §YFrance§! have both §Rcapitulated§!"

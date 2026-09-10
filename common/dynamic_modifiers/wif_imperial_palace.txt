@@ -1,0 +1,16 @@
+# The new imperial palace at Kuybyshev.
+#
+# A STATE-scope dynamic modifier, added to state 251 by the event wif_sme.5. It
+# has no remove_trigger and nothing removes it: the palace is built, and a built
+# thing does not go away because the politics change.
+#
+# local_building_slots is the flat one - "Max Factories in State" - as opposed
+# to local_building_slots_factor, which is a percentage of what the state
+# already has and would give a small state almost nothing.
+wif_new_imperial_palace = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_generic_construction_speed
+
+	local_building_slots = 1
+}

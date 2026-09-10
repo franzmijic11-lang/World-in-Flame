@@ -238,7 +238,7 @@
  wif_rkm_civilwar.2.b:0 "The Reichskommissar will restore order, or he will be replaced."
  wif_rkm_civilwar.2.c:0 "The Germans are burning in the country they conquered."
  wif_splinter_no_factions:0 "No Diplomatic Standing"
- wif_splinter_no_factions_desc:0 "We exist because a larger state came apart, and every capital that matters knows it. Nobody will sign an alliance with a government that may not survive the year, and we are in no position to build one of our own. Whatever friends we have are the ones we started with."
+ wif_splinter_no_factions_desc:0 "We exist because a larger state came apart, and every capital that matters knows it. Nobody will sign an alliance with a government that may not survive the year, and we are in no position to build one of our own. Whatever friends we have are the ones we started with.\n\n§RNo faction may be joined or founded. No country may be guaranteed. No volunteers may be sent, and any sent to us are turned back. No lend-lease may be offered or asked for.§!"
  RLF:0 "Russian Liberation Front"
  RLF_DEF:0 "the Russian Liberation Front"
  RLF_neutrality:0 "Russian Liberation Front"
@@ -361,3 +361,32 @@
  wif_collaborationist_administrator:0 "Collaborationist Administrator"
  wif_collaborationist_administrator_desc:0 "He was a district administrator before the war and he is a district administrator now, and he has never once asked which flag the district answers to. The Reich finds him distasteful and indispensable in roughly equal measure."
 
+ # === The West Russian Republic / Duchy of Moscow ====================
+ # One tag, two countries: HoI4 names a country from its ruling ideology,
+ # so WRD reads as the Republic under a democratic government and as the
+ # Duchy under a non-aligned one. Raised by wif_form_west_russia when a
+ # Germany that is not fascist forces the Soviet surrender.
+ WRD:0 "West Russian Republic"
+ WRD_DEF:0 "the West Russian Republic"
+ WRD_ADJ:0 "West Russian"
+
+ WRD_democratic:0 "West Russian Republic"
+ WRD_democratic_DEF:0 "the West Russian Republic"
+ WRD_democratic_ADJ:0 "West Russian"
+
+ WRD_neutrality:0 "Duchy of Moscow"
+ WRD_neutrality_DEF:0 "the Duchy of Moscow"
+ WRD_neutrality_ADJ:0 "Muscovite"
+
+ WRD_fascism:0 "Russian National State"
+ WRD_fascism_DEF:0 "the Russian National State"
+ WRD_fascism_ADJ:0 "Russian"
+
+ WRD_communism:0 "Russian Soviet Republic"
+ WRD_communism_DEF:0 "the Russian Soviet Republic"
+ WRD_communism_ADJ:0 "Russian"
+
+ WRD_democratic_party:0 "Provisional Assembly"
+ WRD_democratic_party_long:0 "West Russian Provisional Assembly"
+ WRD_neutrality_party:0 "The Crown"
+ WRD_neutrality_party_long:0 "Grand Ducal Government of Moscow"

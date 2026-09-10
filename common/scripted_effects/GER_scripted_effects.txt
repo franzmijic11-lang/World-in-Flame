@@ -2325,13 +2325,7 @@ GER_remove_replaced_advisor_4_effects = {
 
 # Adding the new advisor effects after having replaced someone else
 GER_add_replacing_advisor_effects = {
-	if = { # TODT ADDED
-		limit = {
-			check_variable = { GER_ascending_advisor = 1 }
-		}
-		GER_add_todt_effects = yes
-	}
-	else_if = { # SPEER ADDED
+	if = { # SPEER ADDED
 		limit = {
 			check_variable = { GER_ascending_advisor = 2 }
 		}
@@ -2372,22 +2366,6 @@ GER_add_replacing_advisor_effects = {
 	}
 }
 
-# ADD/REMOVE TODT EFFECTS
-GER_add_todt_effects = {
-	if = {
-		limit = {
-			has_completed_focus = GER_autonomous_organization_todt
-		}
-		add_ideas = GER_todt_reich_minister_of_armaments
-	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_ascension_of_todt
-		}
-		add_ideas = GER_todt_reich_engineer
-	}
-}
-
 GER_remove_todt_effects = {
 	if = {
 		limit = {
@@ -2405,21 +2383,7 @@ GER_remove_todt_effects = {
 		log = "NOTHING TO REMOVE FROM TODT"
 	}
 
-	if = { #STOP ANY FOCUS IN-PROGRESS (WITH SHINY EFFECT)
-		limit = {
-			has_shine_effect_on_focus = GER_form_organization_todt
-		}
-		deactivate_shine_on_focus = GER_form_organization_todt
-		clr_country_flag = GER_form_organization_todt_in_progress_flag
-	}
-	else_if = {
-		limit = {
-			has_shine_effect_on_focus = GER_autonomous_organization_todt
-		}
-		deactivate_shine_on_focus = GER_autonomous_organization_todt
-		clr_country_flag = GER_autonomous_organization_todt_in_progress_flag
-	}
-	else_if = {
+	if = {
 		limit = {
 			has_shine_effect_on_focus = GER_wunderwaffe
 			check_variable = { GER_wonder_weapons_focus_advisor = 1 }
@@ -2427,13 +2391,6 @@ GER_remove_todt_effects = {
 		deactivate_shine_on_focus = GER_wunderwaffe
 		clr_country_flag = GER_wunderwaffe_in_progress_flag
 		set_variable = { GER_wonder_weapons_focus_advisor = 0 }
-	}
-
-	#Uncomplete Ascension focus so that he can be picked later on
-	uncomplete_national_focus = {
-		focus = GER_ascension_of_todt
-		uncomplete_children = no
-		refund_political_power = no
 	}
 
 	if = { # REMOVE TODT FROM ASCENDED ADVISOR
@@ -2516,7 +2473,6 @@ GER_remove_speer_effects = {
 		set_variable = { GER_wonder_weapons_focus_advisor = 0 }
 	}
 
-	#Uncomplete Ascension focus so that he can be picked later on
 	uncomplete_national_focus = {
 		focus = GER_ascension_of_speer
 		uncomplete_children = no
@@ -2601,7 +2557,6 @@ GER_remove_goring_effects = {
 		clr_country_flag = GER_integration_of_puppet_economies_in_progress_flag
 	}
 
-	#Uncomplete Ascension focus so that he can be picked later on
 	uncomplete_national_focus = {
 		focus = GER_ascension_of_goring
 		uncomplete_children = no
@@ -2720,7 +2675,6 @@ GER_remove_himmler_effects = {
 		clr_country_flag = GER_hegemony_of_the_ss_in_progress_flag
 	}
 
-	#Uncomplete Ascension focus so that he can be picked later on
 	uncomplete_national_focus = {
 		focus = GER_ascension_of_himmler
 		uncomplete_children = no
@@ -2761,24 +2715,6 @@ GER_add_goebbels_effects = {
 		}
 		add_ideas = GER_goebbels_reich_minister_of_propaganda_master
 	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_fund_the_film_department
-		}
-		add_ideas = GER_goebbels_reich_minister_of_propaganda_film
-	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_ministry_of_public_enlightenment
-		}
-		add_ideas = GER_goebbels_reich_minister_of_propaganda_ministry
-	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_ascension_of_goebbels
-		}
-		add_ideas = GER_goebbels_reich_minister_of_propaganda
-	}
 }
 
 GER_remove_goebbels_effects = {
@@ -2807,33 +2743,12 @@ GER_remove_goebbels_effects = {
 		remove_ideas = GER_goebbels_reich_minister_of_propaganda
 	}
 
-	if = { #STOP ANY FOCUS IN-PROGRESS (WITH SHINY EFFECT)
-		limit = {
-			has_shine_effect_on_focus = GER_ministry_of_public_enlightenment
-		}
-		deactivate_shine_on_focus = GER_ministry_of_public_enlightenment
-		clr_country_flag = GER_ministry_of_public_enlightenment_in_progress_flag
-	}
-	else_if = {
-		limit = {
-			has_shine_effect_on_focus = GER_fund_the_film_department
-		}
-		deactivate_shine_on_focus = GER_fund_the_film_department
-		clr_country_flag = GER_fund_the_film_department_in_progress_flag
-	}
-	else_if = {
+	if = {
 		limit = {
 			has_shine_effect_on_focus = GER_propaganda_master
 		}
 		deactivate_shine_on_focus = GER_propaganda_master
 		clr_country_flag = GER_propaganda_master_in_progress_flag
-	}
-
-	#Uncomplete Ascension focus so that he can be picked later on
-	uncomplete_national_focus = {
-		focus = GER_ascension_of_goebbels
-		uncomplete_children = no
-		refund_political_power = no
 	}
 
 	if = { # REMOVE GOEBBELS FROM ASCENDED ADVISOR
@@ -2877,26 +2792,6 @@ GER_add_hess_effects = {
 		else = {
 			add_ideas = GER_hess_first_among_equals_no_aat
 		}
-	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_rally_the_industrialists
-		}
-		if = {
-			limit = {
-				has_dlc = "Arms Against Tyranny"
-			}
-			add_ideas = GER_hess_party_chancellor_improved
-		}
-		else = {
-			add_ideas = GER_hess_party_chancellor_improved_no_aat
-		}
-	}
-	else_if = {
-		limit = {
-			has_completed_focus = GER_party_chancellor_hess
-		}
-		add_ideas = GER_hess_party_chancellor
 	}
 }
 
@@ -2953,26 +2848,12 @@ GER_remove_hess_effects = {
 	}
 	else_if = {
 		limit = {
-			has_shine_effect_on_focus = GER_rally_the_industrialists
-		}
-		deactivate_shine_on_focus = GER_rally_the_industrialists
-		clr_country_flag = GER_rally_the_industrialists_in_progress_flag
-	}
-	else_if = {
-		limit = {
 			has_shine_effect_on_focus = GER_total_control_over_domestic_affairs
 			check_variable = { GER_total_control_over_domestic_affairs_focus_advisor = 6 }
 		}
 		deactivate_shine_on_focus = GER_total_control_over_domestic_affairs
 		clr_country_flag = GER_total_control_over_domestic_affairs_in_progress_flag
 		set_variable = { GER_total_control_over_domestic_affairs_focus_advisor = 0 }
-	}
-
-	#Uncomplete Ascension focus so that he can be picked later on
-	uncomplete_national_focus = {
-		focus = GER_party_chancellor_hess
-		uncomplete_children = no
-		refund_political_power = no
 	}
 
 	if = { # REMOVE HESS FROM ASCENDED ADVISOR
@@ -3069,7 +2950,6 @@ GER_remove_bormann_effects = {
 		set_variable = { GER_total_control_over_domestic_affairs_focus_advisor = 0 }
 	}
 
-	#Uncomplete Ascension focus so that he can be picked later on
 	uncomplete_national_focus = {
 		focus = GER_party_chancellor_bormann
 		uncomplete_children = no
@@ -3137,12 +3017,6 @@ GER_replace_goring_as_prevailing_industrialist = {
 				has_completed_focus = GER_employ_philipp_holzmann
 			}
 			set_variable = { GER_industrialist_prevailed = 2 }
-		}
-		else_if = { #TODT COMPLETED ANY FOCUS
-			limit = {
-				has_completed_focus = GER_form_organization_todt
-			}
-			set_variable = { GER_industrialist_prevailed = 1 }
 		}
 		else = { #NO ONE COMPLETED ANY FOCUS OR IS ASCENDED - PICK SPEER over Todt
 			set_variable = { GER_industrialist_prevailed = 2 }

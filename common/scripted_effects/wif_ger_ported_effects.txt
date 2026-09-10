@@ -1,0 +1,49 @@
+# Effects referenced by the ported Germany Rework focus tree but never ported
+# with it.
+#
+# GER_establish_socialist_republic_effect is called six times in
+# common/national_focus/germany.txt and was defined nowhere - not in this mod,
+# not in vanilla, and not in any installed mod, since Germany Rework itself is
+# not in the playset. The game logged "Unknown effect-type" on every focus that
+# used it and the focus reward silently did nothing.
+#
+# RECONSTRUCTED, NOT PORTED. The original definition is unavailable, so this is
+# built from how the call sites use it: it runs in the TARGET country's scope,
+# inside every_country over Holland, Belgium and Luxembourg (and the equivalent
+# groups on the other five focuses), and the reward is followed by
+# unlock_decision_tooltip for the decision that integrates them into the union.
+# So the effect has to leave them communist and subject to Germany, or that
+# decision has nothing to act on.
+#
+# If Germany Rework is ever added to the playset, replace this with its own
+# definition rather than keeping both.
+wif_ger_establish_socialist_republic = {
+
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+
+	add_popularity = {
+		ideology = communism
+		popularity = 0.6
+	}
+
+	# ROOT is the country that completed the focus - Germany. The target is
+	# saved first because inside ROOT's scope the country being converted is no
+	# longer the one in scope.
+	save_event_target_as = wif_ger_socialist_republic_target
+
+	if = {
+		limit = { NOT = { is_subject_of = ROOT } }
+		ROOT = {
+			puppet = event_target:wif_ger_socialist_republic_target
+		}
+	}
+}
+
+# The name the focus tree actually calls. Kept as a thin alias so the ported
+# tree needs no edits and stays diffable against its source.
+GER_establish_socialist_republic_effect = {
+	wif_ger_establish_socialist_republic = yes
+}

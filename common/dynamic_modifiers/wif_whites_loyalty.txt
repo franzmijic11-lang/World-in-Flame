@@ -1,0 +1,20 @@
+# What the White factions are currently worth to the state.
+#
+# The values are VARIABLES, not numbers: the modifier reads whatever
+# wif_whites_loyalty_update last wrote, so it tracks loyalty continuously with
+# no bands and no stepping. Vanilla writes Sweden's folkhemmet modifier the same
+# way. It also means there is exactly one place the arithmetic lives.
+#
+# This one DOES carry an icon, unlike the sub-ideology modifiers: the player is
+# meant to watch this number and it should be somewhere they can find it.
+wif_whites_in_the_state = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_flag = wif_watching_the_whites } }
+
+	icon = "GFX_idea_generic_reserve_divisions"
+
+	political_power_gain = wif_whites_pp_total
+
+	production_speed_buildings_factor = wif_whites_construction
+	industrial_capacity_factory = wif_whites_factory
+}

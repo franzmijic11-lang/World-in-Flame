@@ -161,6 +161,11 @@ set_popularities = {
 
 recruit_character = RKM_siegfried_kasche
 
+# The collaborationist administrator, defined in
+# common/characters/wif_rkm_characters.txt. He was never recruited, so the
+# advisor has never once appeared in game - the same bug as the SME's two.
+recruit_character = RKM_konstantin_rossovsky
+
 add_ideas = {
 	war_economy
 	limited_conscription

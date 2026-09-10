@@ -6,6 +6,66 @@ ideas = {
 		law = yes
 		use_list_view = yes
 
+		# The economy of a country that is holding ground it has no title to.
+		#
+		# Granted automatically to every Russian warlord state and locked there
+		# - see wif_is_russian_warlord in
+		# common/scripted_triggers/wif_scripted_triggers.txt for the list, and
+		# common/on_actions/wif_on_actions.txt for the grant, which re-applies
+		# weekly and so also repairs a save where it was somehow lost.
+		#
+		# Same shape as the Reichskommissariat economy below, and for the same
+		# reasons: `visible` rather than `allowed = { always = no }`, so the law
+		# shows in the Economy Law list for the countries that can hold it and
+		# nowhere else; `allowed_to_remove` gated on the spirit rather than on
+		# always = no, so a country that stops being a warlord is not locked
+		# into an economy it can never leave.
+		#
+		# It has NO ENTRY in the battalion cap's economy band, so it pays 0%
+		# there, exactly like Early Mobilisation. That is a deliberate blank,
+		# not an oversight: warlords already carry the Russian Warlord spirit
+		# and its +80%. If this law should move the cap as well, it needs a
+		# branch in wif_recalculate_battalion_cap and a name in
+		# common/scripted_localisation/wif_battalion_cap.txt.
+		wif_russian_warlord_economy = {
+			# Only a warlord ever sees it in the law list.
+			visible = {
+				has_idea = wif_russian_warlord
+			}
+
+			available = {
+				has_idea = wif_russian_warlord
+			}
+
+			# Locked while the country is a warlord. There is no legislating
+			# your way out of holding a country by the army.
+			allowed_to_remove = {
+				NOT = { has_idea = wif_russian_warlord }
+			}
+
+			cost = 150
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			modifier = {
+				# Consumer Goods - the share of civilian industry the country
+				# has to spend on itself. Positive is the bad direction.
+				consumer_goods_factor = 0.15
+
+				stability_factor = -0.05
+
+				# Factory Output, military.
+				industrial_capacity_factory = 0.05
+
+				production_speed_buildings_factor = -0.60
+
+				# A warlord state does not do research. The institutes that
+				# would have are in somebody else's territory, or were never
+				# rebuilt, or answer to a ministry that no longer exists.
+				research_speed_factor = -0.10
+			}
+		}
+
 		wif_reichskommissariat_economy = {
 			# Do NOT use allowed = { always = no } here. That permanently hides the
 			# law from the Economy Law list for every country - vanilla only uses

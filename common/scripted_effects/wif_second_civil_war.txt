@@ -1,0 +1,30 @@
+# The three loyalties watched by the decision category
+# wif_the_white_question, opened by SME_curb_their_influence.
+#
+# VARIABLES, NOT TEXT. Nothing moves these yet - the decisions that will are the
+# next piece of work - but they are stored as real country variables from the
+# start so that when those decisions arrive they have something to add to and
+# subtract from, and so the readout in the decision panel is showing the actual
+# state rather than three hard-coded numbers that would then have to be replaced.
+#
+# Each is a percentage from 0 to 100. The ceiling is written into the readout as
+# a plain 100 rather than a second variable, because it is not intended to move;
+# if it ever should, it becomes wif_whites_*_loyalty_max here and in the
+# localisation, and nothing else has to change.
+wif_open_second_civil_war_watch = {
+
+	# The Whites came back divided and they have stayed that way. The democrats
+	# are the largest faction and the least hostile, the fascists are the
+	# smallest and the most, and the monarchists sit between the two waiting to
+	# be asked.
+	set_variable = { wif_whites_dem_loyalty = 50 }
+	set_variable = { wif_whites_fas_loyalty = 20 }
+	set_variable = { wif_whites_mon_loyalty = 29 }
+
+	# Guards the decision category. Kept separate from has_completed_focus so
+	# that a later event could open the watch without the focus, or close it.
+	# Price the decisions before any of them can be reached.
+	wif_price_white_decisions = yes
+
+	set_country_flag = wif_watching_the_whites
+}

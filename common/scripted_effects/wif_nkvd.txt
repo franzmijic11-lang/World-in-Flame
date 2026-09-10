@@ -1,0 +1,96 @@
+# Rebuilding the NKVD.
+#
+# THE DIVISION IS A ONE-TIME GRANT. It was not: the weekly sweep used to recreate
+# it whenever it could not find it, and it could never find it, so the SME got a
+# fresh Osobyi Otryad every tick.
+#
+# WHY IT COULD NEVER FIND IT. The division was spawned with
+# officer = { name = WIF_NKVD_COMMISSAR } inside create_unit's quoted division
+# string and checked with has_officer_name. That field works in a history OOB
+# file - see vanilla history/units/ETH_1936_bba.txt - but create_unit's string
+# parser drops it. It appears in no create_unit call in vanilla and in none of
+# the installed mods; vanilla only ever passes name, division_template,
+# start_experience_factor and start_equipment_factor. No error is logged. So the
+# check was always false and the respawn always fired.
+#
+# UNDEFEATABLE IS NOT CURRENTLY DELIVERED, and saying so is better than leaving a
+# division mill running. HoI4 has no invincibility flag, no on_action for a
+# destroyed division, and only six triggers that work in a division scope - none
+# of which can single out one particular division. Resurrection needs an identity
+# the engine will not give. The one identity that DOES work is create_unit's id,
+# which delete_unit can filter on; that is how the handover to Yagoda finds this
+# division, and it is exact.
+
+wif_rebuild_the_nkvd = {
+
+	# The agency itself. Named, and flying the Soviet service's own insignia
+	# rather than the generic one, because the SME is the Union's successor
+	# and the NKVD is the Union's service.
+	create_intelligence_agency = {
+		name = "NKVD"
+		icon = "GFX_intelligence_agency_logo_sov"
+	}
+
+	# The template. Nine rifle battalions with divisional artillery.
+	division_template = {
+		name = "Osobyi Otryad NKVD"
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 2 y = 0 }
+			infantry = { x = 2 y = 1 }
+			infantry = { x = 2 y = 2 }
+		}
+		support = {
+			artillery = { x = 0 y = 0 }
+		}
+	}
+
+	wif_nkvd_spawn_division = yes
+
+	add_ideas = wif_nkvd
+}
+
+# Placing the division. Kazan by preference; the capital if Kazan has been lost
+# or was never held, so the effect cannot silently do nothing.
+#
+# owner = PREV inside the state scope is how vanilla writes this - see
+# common/decisions/AUS.txt.
+#
+# GUARDED BY A FLAG, so this can only ever produce one. The focus is not
+# repeatable, but the guard is what actually holds the line: no future caller -
+# an event, a decision, a second focus - can turn this back into a mill by
+# accident. The id is what lets the Yagoda handover disband this exact division.
+wif_nkvd_spawn_division = {
+	if = {
+		limit = { NOT = { has_country_flag = wif_nkvd_otryad_raised } }
+
+		set_country_flag = wif_nkvd_otryad_raised
+
+		if = {
+			limit = {
+				249 = { is_owned_by = PREV }
+			}
+			249 = {
+				create_unit = {
+					division = "name = \"Osobyi Otryad NKVD\" division_template = \"Osobyi Otryad NKVD\" start_experience_factor = 0 start_equipment_factor = 1.0"
+					owner = PREV
+					id = 9471
+				}
+			}
+		}
+		else = {
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Osobyi Otryad NKVD\" division_template = \"Osobyi Otryad NKVD\" start_experience_factor = 0 start_equipment_factor = 1.0"
+					owner = PREV
+					id = 9471
+				}
+			}
+		}
+	}
+}

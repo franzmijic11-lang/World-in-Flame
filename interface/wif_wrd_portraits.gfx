@@ -1,0 +1,19 @@
+# Portraits for the West Russian Republic / Duchy of Moscow.
+#
+# .png rather than .dds, matching wif_cra_portraits.gfx - the engine loads it
+# fine and it is what can be produced without a DDS toolchain. 156x210, the
+# same as every other large leader portrait.
+#
+# NOTE THE CASE: spriteType, not SpriteType. Vanilla writes it lowercase
+# everywhere and so does the CRA file that is known to work in game.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_WRD_friedrich_reuss"
+		texturefile = "gfx/leaders/WRD/Portrait_WRD_Friedrich_Reuss.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_WRD_valery_legasov"
+		texturefile = "gfx/leaders/WRD/Portrait_WRD_Valery_Legasov.png"
+	}
+}

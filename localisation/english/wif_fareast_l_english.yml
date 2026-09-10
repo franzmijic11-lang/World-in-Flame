@@ -88,10 +88,94 @@
  SME_deploy_east_under_popov:0 "Deploy East under Marshal Popov"
  SME_deploy_east_under_popov_desc:0 "Irkutsk cannot be allowed to stand. Every week the Far Eastern Union survives is a week in which some garrison commander between here and Lake Baikal decides that the lawful government of the Union is the one with Stalin in it.\n\nMarshal Markian Popov has the Siberian districts and knows the ground east of the Urals better than any officer we have left. Give him the divisions he asks for, put the whole eastern deployment under his command, and let him finish the usurper before the winter closes the railway."
 
+ # === Focus: Prepare to Take Back What the Germans Took =============
+ SME_prepare_to_take_back:0 "Prepare to Take Back What the Germans Took"
+ SME_prepare_to_take_back_desc:0 "The armistice line runs where the Wehrmacht stopped, not where the Union ended. Behind it lie the Donbass, the Dnieper dams and half the plant that built the Red Army - not destroyed, not even idle, but turned around and running for somebody else. Every month it stays there it is a month of German shells made with Ukrainian steel.\n\nNothing is declared. Nothing is announced. What goes out to the Urals is a production schedule and nothing more: longer shifts, wider tolerances, and a quota written against a war that is not on any calendar yet. The men on the line will draw their own conclusions, and they will be right."
+ wif_sme_prepare_to_take_back:0 "Prepare to Take Back What the Germans Took"
+ wif_sme_prepare_to_take_back_desc:0 "The plants are running to a quota nobody has explained. The general staff has not said what it is for, and does not need to."
+
+ # === Focus: Address the Fracturing Leadership ======================
+ # The political branch off Deploy East. It does not undo Popov - it makes
+ # what he left behind governable.
+ SME_address_fracturing_leadership:0 "Address the Fracturing Leadership"
+ SME_address_fracturing_leadership_desc:0 "Popov did not have to fight his way out. He asked for divisions, he was given them, and he drove east with the general staff's own signature in his pocket.\n\nThe question in every district command since is the one nobody will put in writing: if it was that simple for him, who else has already done the arithmetic? Officers are moved before they can settle. Commissars are asked for opinions they were never appointed to hold. Orders leave Moscow and arrive somewhere east of it as suggestions.\n\nThis does not mend the Union, and it does not bring Siberia back. It mends the chain of command - enough of it that an order given here is still an order by the time it reaches Kazan."
+ wif_sme_fractured_government:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_desc:0 "A marshal took an army group east and made a country out of it. Nobody in Moscow can say with any confidence which of the others would not do the same, and every command in the country knows that nobody can say it."
+ wif_sme_fractured_government_addressed:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_addressed_desc:0 "The reshuffles have done what reshuffles can. The chain of command holds again - not because the question was ever answered, but because asking it out loud now costs a man his command."
+
+ # === The leadership balance of power ==============================
+ # Created by SME_address_fracturing_leadership. The council runs
+ # negative and Zhukov positive; see common/bop/SME.txt.
+ SME_leadership_balance:0 "Who Speaks for the Union"
+ SME_leadership_balance_desc:0 "Nothing in the founding of the Emergency Government ever said whether the marshal answers to the council or the council to the marshal. It did not need saying while there was a war on. It needs saying now."
+ SME_leadership_balance_neutral:0 "An Open Question"
+ SME_leadership_balance_neutral_desc:0 "The council meets. The marshal attends. Nothing is decided, and both sides find that they can live with it."
+
+ SME_leadership_council_side:0 "Soviet Emergency Military Council"
+ SME_leadership_council_1:0 "The Council Sits"
+ SME_leadership_council_1_desc:0 "Orders leave Moscow with a committee's signature on them again. It is slower, and it is obeyed."
+ SME_leadership_council_2:0 "The Council Decides"
+ SME_leadership_council_2_desc:0 "Appointments go through the council now, and the men appointed know it."
+ SME_leadership_council_3:0 "The Council Governs"
+ SME_leadership_council_3_desc:0 "The general staff submits its plans for approval, and waits for it."
+ SME_leadership_council_4:0 "A Government of Laws"
+ SME_leadership_council_4_desc:0 "There is a civilian authority in Moscow again, and an army that reports to it. Whether it can fight is a question for later."
+
+ SME_leadership_zhukov_side:0 "Marshal Zhukov"
+ SME_leadership_zhukov_1:0 "The Marshal's Word"
+ SME_leadership_zhukov_1_desc:0 "On matters of the army the council has stopped arguing, which is not the same as agreeing."
+ SME_leadership_zhukov_2:0 "The Marshal's Men"
+ SME_leadership_zhukov_2_desc:0 "The commands that matter are held by officers who owe them to one man. Governing costs more than it did."
+ SME_leadership_zhukov_3:0 "The Marshal's Government"
+ SME_leadership_zhukov_3_desc:0 "The council is consulted afterwards, as a courtesy. The country has decided it would rather be defended than governed."
+ SME_leadership_zhukov_4:0 "The Marshal Alone"
+ SME_leadership_zhukov_4_desc:0 "There is no longer any distinction between the general staff and the government of the Union. There is only Zhukov, and the army, and the war he says is coming."
+
+ # === Focus: Industries of Siberia ==================================
+ SME_industries_of_siberia:0 "Industries of Siberia"
+ SME_industries_of_siberia_desc:0 "Tyumen, Sverdlovsk, Kazan and Syktyvkar were evacuation towns. Plant came east ahead of the Wehrmacht in 1941, was set down wherever there was rail and a river, and has been running ever since on the understanding that it would all go back one day.\n\nIt is not going back. The order signed this week makes the temporary permanent: new floor space, new slots cleared for more of it, and the arms works at Tyumen expanded until the town is an arsenal with a population attached. What was salvage becomes the industrial base of a state that intends to fight again."
+
+ # === Focus: the two rail branches ==================================
+ SME_connect_south:0 "Connecting the South with the Capital"
+ SME_connect_south_desc:0 "Kuybyshev, Kazan, Ufa and the Magnitogorsk works are four of the largest things the Emergency Government still owns, and not one of them can reach another without a detour. Track, in the straightest line the ground allows."
+ SME_connect_north:0 "Connect the North"
+ SME_connect_north_desc:0 "North of Kirov the map stops being a country and starts being a distance. A single line to Syktyvkar, on through the Pechora and out to the Nenets coast, with depots at both ends to make it mean something."
+
+ # === Focus: Zlatoust Ural Military District ========================
+ SME_zlatoust_ural_military_district:0 "Zlatoust Ural Military District"
+ SME_zlatoust_ural_military_district_desc:0 "Both lines run to Zlatoust now, and a town that was a steel works with a railway station attached becomes the point on the map where the Urals can be defended from.\n\nThe district command is stood up in the old arsenal offices. Five new works go up around it, the sidings are doubled, and the guns that were meant for the front are bolted to the roofs instead - because a factory that cannot be bombed is worth more than one that is merely closer to the fighting."
+
+ # === Focus and decision: Arm the Partisans ========================
+ SME_arm_the_partisans:0 "Arm the Partisans"
+ SME_arm_the_partisans_desc:0 "Zlatoust turns out more rifles than we have shoulders to carry them. West of the armistice line there are people with the opposite problem.\n\nNothing is signed and nothing is admitted. Crates go west on the ore trains and come back empty, and what becomes of them after that is written down nowhere. Berlin will know within a month who armed them. It will not be able to prove it, and it will not be able to stop it."
+ wif_arm_the_partisans_unlock_tt:0 "Unlocks the decision §YArm the Partisans§!"
+
+ wif_arm_the_partisans_category:0 "Partisans"
+ wif_arm_the_partisans:0 "Arm the Partisans"
+ wif_arm_the_partisans_desc:0 "Seven thousand rifles go west, out of the oldest racks first - the ones stamped before the war, which nobody will miss and nobody can trace. What they buy is impatience: the next raid comes in half the time it would have."
+ wif_arm_the_partisans_effect_tt:0 "§YThe time until Moskowien's next terror raid is halved§!"
+
+ # === Focuses: the two answers to the fractured leadership =========
+ SME_checks_and_balances:0 "Checks and Balances"
+ SME_checks_and_balances_desc:0 "The council cannot govern an army it cannot audit. Every district command files its returns through the secretariat now, every requisition carries a countersignature, and every officer who signs one learns whose name sits above his own.\n\nNone of it is aimed at the Marshal. All of it is.\n\n§YShifts the balance of power eleven points towards the Council, enough to leave neutral ground.§!"
+ SME_root_out_german_collaborators:0 "Root Out German Collaborators"
+ SME_root_out_german_collaborators_desc:0 "There are men in this government who were taking German pay while the front was still moving, and everybody knows which men they are. What nobody has had is the authority to arrest them.\n\nThe Marshal has that authority, because he has the divisions. The council will approve it afterwards, and in approving it will concede who is actually in charge.\n\n§YShifts the balance of power eleven points towards Zhukov, enough to leave neutral ground.§!"
+
+ # === Focus: Invite the Whites Back ================================
+ SME_invite_the_whites_back:0 "Invite the Whites Back"
+ SME_invite_the_whites_back_desc:0 "There are men in Paris and Harbin and Belgrade who have spent fifteen years waiting to be asked. Some of them commanded armies against us. Some of them are the only people alive who know how to run a rolling mill.\n\nThe quarrel that drove them out was about what Russia should be. That quarrel has been overtaken: there may not be a Russia to argue over much longer. Whatever they are, they are not Germans, and they are not staying away.\n\nLet them come home. We can finish the argument once there is a country left to have it in."
+ wif_sme_the_whites_return:0 "The Whites Return"
+ wif_sme_the_whites_return_desc:0 "The emigration is coming back - officers who left in 1920, engineers who spent fifteen years building somebody else's factories, and a political tradition that lost the civil war and never once conceded the point.\n\nThey bring hands, and skills, and opinions. The last of those is not free.\n\n§YEvery ideology but communism gains 0.1 support a day.§!"
+
+ wif_marshal_of_the_union:0 "Marshal of the Union"
+ wif_marshal_of_the_union_desc:0 "He has never given a speech that anybody remembers and has no opinion on agriculture. What he has is an army that still answers when he calls, and a record nobody in Russia is willing to argue with."
+
  # === wif_sme.3 - Popov's betrayal ====================================
  wif_sme.3.t:0 "Marshal Popov has Betrayed Us"
  wif_sme.3.desc:0 "The army group reached Novosibirsk on schedule and then stopped reporting. It did not stop moving.\n\nPopov has declared a Central Siberian Republic from the governor's residence at Tomsk, with himself at the head of it. He did not go east to fight Stalin. He went east because it was the only direction in which a man could take an army away from both Moscow and Irkutsk and still have somewhere to put it.\n\nHis proclamation is careful to insult nobody. The Union has two governments and neither was elected, he says, so Siberia will hold its own. Omsk, Novosibirsk, Krasnoyarsk, the Altai, the whole central belt from the Urals to Bratsk has gone with him - and so has close to a third of the army we had left.\n\nMarshal Zhukov gave him that command personally."
  wif_sme.3.a:0 "Three Russias, then. He might have had the decency to say so first."
+ wif_sme.3.b:0 "He is right that neither government was elected. Have a train made ready for Tomsk."
 
  # === The West Siberian Marxist Republic ==============================
  WSM:0 "West Siberian Marxist Republic"
@@ -118,3 +202,130 @@
  wif_sme.4.t:0 "Yagoda is Alive"
  wif_sme.4.desc:0 "Genrikh Grigoryevich Yagoda was shot in the cellar of the Lubyanka in March 1938. The order was signed, the sentence was carried out, and the file was closed. All three of those things are in the record and only two of them are true.\n\nWhat happened, as near as anyone will now admit, is that the men sent to do it did not. Whether they were bought, or persuaded, or simply could not bring themselves to shoot the man who had built the apparatus they served in, nobody says. What they did afterwards is the part that matters: they reported the sentence carried out. Telling Stalin that the former People's Commissar for Internal Affairs had walked out of the Lubyanka alive was a conversation none of them expected to survive, so they did not have it. The paperwork was filed. The Commissar-General of State Security ceased to exist.\n\nHe went east. For seven years he has been in the Urals and the western Siberian oblasts, among the men who owe their careers to him and the camps that are still run by his appointments, doing what he did better than anyone alive - assembling a list of people who will do what they are told.\n\nThis week the Emergency Government marched north against Archangelsk, and the Urals were left with nobody watching them. Tyumen, Sverdlovsk, Chelyabinsk and Tobolsk have declared for a West Siberian Marxist Republic. The garrisons did not resist because the garrisons are his. Ten divisions of border troops are standing in Tyumen under the old NKVD colours, and Yagoda has broadcast his own name as its chairman."
  wif_sme.4.a:0 "We buried him seven years ago. Somebody should be shot for that - if there is anyone left who was not in on it."
+ wif_sme.4.b:0 "He built the apparatus every one of us serves in, and it is still his. I am going to Tyumen."
+
+ # === Rebuild the NKVD =============================================
+ SME_rebuild_the_nkvd:0 "Rebuild the NKVD"
+ SME_rebuild_the_nkvd_desc:0 "The Commissariat was not abolished. It was scattered - officers in Kazan, files in Sverdlovsk, and a great many men who have spent two years insisting they were only ever clerks. Calling them back together is a decision about what the Emergency Government intends to be, and everyone who answers the summons understands that perfectly well."
+ wif_nkvd:0 "The NKVD"
+ wif_nkvd_desc:0 "The People's Commissariat for Internal Affairs, reassembled. It watches the borders and it watches the ministries, and it has never been especially clear to anyone which of the two it takes more seriously. The Party's position in the Union is a great deal steadier for its return - and a great deal harder to argue with."
+ WIF_NKVD_COMMISSAR:0 "Commissar of State Security"
+
+ # === Who the NKVD answers to ======================================
+ SME_marshals_secret_police:0 "The Marshal's Secret Police"
+ SME_marshals_secret_police_desc:0 "Zhukov does not ask for the Commissariat. He simply begins to be told things first, and the men who tell him find their careers improving. By the time anyone thinks to object, the objection would have to be filed with people who already report to him. An army that holds the borders and the files behind them is not a branch of the government - it is the government, wearing the government's coat."
+ wif_nkvd_marshals_police:0 "The Marshal's Secret Police"
+ wif_nkvd_marshals_police_desc:0 "The Commissariat answers to Zhukov now, and has stopped pretending otherwise. It works with the particular energy of an institution that finally knows whose it is - and every file it opens is one the marshal could read tonight, which most officers find is enough."
+ SME_make_them_auditable:0 "Make Them Auditable"
+ SME_make_them_auditable_desc:0 "A secret police answerable to a soldier is a soldier's secret police. The Commissariat was built to serve the Party and it will serve the Party: its warrants countersigned, its budgets read, its officers answerable to a committee that can end them. Nobody enjoys the arrangement. That is rather the point of it - an institution nobody can audit is an institution that has already changed sides."
+ wif_nkvd_auditable:0 "An Auditable Commissariat"
+ wif_nkvd_auditable_desc:0 "Every warrant countersigned, every budget read, every officer answerable to a committee of men who will outlast him. The Commissariat resented it for about a month and then discovered what it had gained: nobody can now accuse it of belonging to anyone but the Party, and it has become considerably more useful for being able to say so."
+
+ # === Curb Their Influence / Prevent a Second Civil War =============
+ SME_curb_their_influence:0 "Curb Their Influence"
+ SME_curb_their_influence_desc:0 "They have been worth every concession. The staff officers can read a map, the engineers can read a ledger, and the Emergency Government has needed both badly enough to stop asking where they learned. What nobody accounted for is that men who came back to serve a state do not necessarily believe in it - and they have been talking. In the academies, in the ministries, in the officers' messes where the Union's next generation is being formed. Nothing that could be called a conspiracy. Simply three answers to the question of what Russia is for, none of them ours, all of them being given patiently to people who have never heard them before."
+ # The category and the panel it draws.
+ wif_the_white_question:0 "The White Question"
+ wif_the_white_question_desc:0 "The Whites did not come back as one thing. They came back as three, and each of them keeps a quiet account of what the Emergency Government has earned. A faction can be courted, bought, set against its rivals or broken outright - and every one of those is a decision somebody will have to answer for later. These are the ledgers as our people read them."
+ # The three readouts. [?variable|0] prints the live value, no decimals.
+ wif_whites_dem_loyalty_readout:0 "Loyalty of the Russian Democratic Faction: §Y[?wif_whites_dem_loyalty|0]%§!/§H100%§!"
+ wif_whites_fas_loyalty_readout:0 "Loyalty of the Russian Fascist Party: §Y[?wif_whites_fas_loyalty|0]%§!/§H100%§!"
+ wif_whites_mon_loyalty_readout:0 "Loyalty of the Monarchists: §Y[?wif_whites_mon_loyalty|0]%§!/§H100%§!"
+ wif_whites_dem_loyalty_readout_desc:0 "The largest of the three factions and the least openly hostile, which is not the same as friendly. They talk about a constituent assembly the way other men talk about the weather - constantly, and as though it were coming whatever anyone does.\n\n§YTheir standing:§! [WIF_WhitesDemStatus]\n\n§YWhat they are worth right now:§!\n Daily political power: [?wif_whites_dem_pp|+2]\n Loyalty: §H[?wif_whites_dem_loyalty|0]%§!  of 100"
+ wif_whites_fas_loyalty_readout_desc:0 "The smallest faction and by some distance the most dangerous. They have no interest in an assembly, no interest in the Union, and a very clear interest in the moment the other two stop cooperating with us.\n\n§YTheir standing:§! [WIF_WhitesFasStatus]\n\n§YWhat they are worth right now:§!\n Daily political power: [?wif_whites_fas_pp|+2]\n Loyalty: §H[?wif_whites_fas_loyalty|0]%§!  of 100"
+ wif_whites_mon_loyalty_readout_desc:0 "They ask for nothing and refuse nothing, and they are waiting - for a name, an heir, a bad enough winter. Of the three they are the easiest to keep and the hardest to read.\n\n§YTheir standing:§! [WIF_WhitesMonStatus]\n\n§YWhat they are worth right now:§!\n Daily political power: [?wif_whites_mon_pp|+2]\n Loyalty: §H[?wif_whites_mon_loyalty|0]%§!  of 100"
+ wif_loyalty_readout_tt:0 "This is a reading, not an action."
+
+ # The status line, chosen by common/scripted_localisation/wif_whites_loyalty.txt.
+ wif_whites_status_loyal:0 "§Gloyal - paying into the treasury§!"
+ wif_whites_status_neutral:0 "§Hneither an asset nor a liability§!"
+ wif_whites_status_disaffected:0 "§Rdisaffected - costing you political power§!"
+ wif_whites_status_absent:0 "§Rabsent from the ministries - costing you construction and factory output§!"
+ wif_whites_status_irrelevant:0 "§Htoo small to matter - under 15% of the vote§!"
+
+ # The panel itself.
+ wif_whites_in_the_state:0 "The Whites in the State"
+ wif_whites_in_the_state_desc:0 "Three factions sit inside the Emergency Government, and each of them is keeping an account. What they are owed, what they have been given, and how long they intend to go on waiting."
+
+ # === The Duma road ================================================
+ wif_promise_the_democrats_a_duma:0 "Promise the Democrats a Duma"
+ wif_promise_the_democrats_a_duma_desc:0 "It costs nothing to say it. A constituent assembly, once the emergency is over, once the front is stable, once the harvest is in - the conditions can be written afterwards and there will be a great many of them. What matters is that the word has been said out loud by someone entitled to say it, and that every democrat in the ministries has now heard it. They will work twice as hard for a year on the strength of a sentence. The fascists heard it too."
+ wif_establish_local_dumas:0 "Establish Temporary Local Dumas"
+ wif_establish_local_dumas_desc:0 "The promise has lapsed and been noticed. So the assemblies are seated - district ones, temporary ones, with powers carefully enumerated and a sunset clause nobody expects to be honoured by either side. It is enormously expensive and it works: men who were drafting manifestos are now drafting drainage budgets, and a man arguing about drainage is not arguing about the government. The officers regard the whole business as the beginning of the end, and say so where they think they are not heard."
+
+ # The temporary spirits these two swap in.
+ wif_sme_the_whites_return_duma:0 "The Whites Return: A Duma Promised"
+ wif_sme_the_whites_return_duma_desc:0 "A sentence spoken in a room in Kazan, repeated in every ministry within the week. The democrats have decided to believe it. The officers have decided to remember it."
+ wif_sme_the_whites_return_local_dumas:0 "The Whites Return: The Assemblies Sit"
+ wif_sme_the_whites_return_local_dumas_desc:0 "District assemblies with enumerated powers and a sunset clause. The democrats are inside the structure now rather than outside it, which is either the safest place for them or the most dangerous, depending on which marshal you ask."
+
+ wif_white_decision_cooldown:0 "The Whites Are Watching"
+
+ # === The fall of the Emergency Government =========================
+ CSR_russian_federation:0 "Russian Federation"
+ CSR_russian_federation_DEF:0 "the Russian Federation"
+ CSR_russian_federation_democratic:0 "Russian Federation"
+ CSR_russian_federation_democratic_DEF:0 "the Russian Federation"
+ CSR_russian_federation_communism:0 "Russian Federation"
+ CSR_russian_federation_communism_DEF:0 "the Russian Federation"
+ CSR_russian_federation_fascism:0 "Russian Federation"
+ CSR_russian_federation_fascism_DEF:0 "the Russian Federation"
+ CSR_russian_federation_neutrality:0 "Russian Federation"
+ CSR_russian_federation_neutrality_DEF:0 "the Russian Federation"
+
+ # The fascist SME. Spelling is the author's own.
+ SME_novo_russkey_league:0 "Novo Rysskey Leauge"
+ SME_novo_russkey_league_DEF:0 "the Novo Rysskey Leauge"
+ SME_novo_russkey_league_fascism:0 "Novo Rysskey Leauge"
+ SME_novo_russkey_league_fascism_DEF:0 "the Novo Rysskey Leauge"
+
+ # The authoritarian SME.
+ SME_russian_empire:0 "Russian Empire"
+ SME_russian_empire_DEF:0 "the Russian Empire"
+ SME_russian_empire_neutrality:0 "Russian Empire"
+ SME_russian_empire_neutrality_DEF:0 "the Russian Empire"
+
+ # === The Romanov road =============================================
+ wif_arrange_tsar_funeral:0 "Arrange a Funeral for the Tsar and his Children"
+ wif_arrange_tsar_funeral_desc:0 "They have been in a mineshaft outside Yekaterinburg for eighteen years and everyone in the Union knows roughly where. Bringing them up and burying them properly is not an endorsement of anything - it is an admission that they were people, and that shooting the children was a decision somebody made. The monarchists will weep. The Party will note who attended."
+ wif_sme_tsar_funeral:0 "The Ekaterinburg Reburial"
+ wif_sme_tsar_funeral_desc:0 "A funeral with no flags on the coffins, which everyone present understood to be the point. It has cost the government nothing it can name and bought it something it cannot name either."
+ wif_return_tsarist_land:0 "Give Former Tsarist Landowners Back Their Property"
+ wif_return_tsarist_land_desc:0 "This one cannot be dressed as a gesture. Estates seized in 1918 go back to the families that held them, or to whichever of their sons is still alive to sign for them, and the men working that land are told the revolution has been amended. It is the single most expensive thing the Emergency Government can do to itself - and the whites have made it perfectly clear that nothing further is on offer until it is done."
+ wif_marxist_white_compromise:0 "The Marxist-White Compromise"
+ wif_marxist_white_compromise_desc:0 "Estates restored, ministries shared, and a working arrangement that satisfies nobody and holds anyway. The economy carries the cost of two ruling classes where it had budgeted for none."
+ wif_invite_vladimir_iii:0 "Invite Vladimir III Back as a Figurehead"
+ wif_invite_vladimir_iii_desc:0 "A private citizen of no particular occupation is invited to return to a country he left as a child, on the strict understanding that he will open hospitals and sign nothing. Every party in Kazan believes it has outmanoeuvred the others by agreeing to it. One of them is right."
+ wif_honourary_tsar_vladimir:0 "Honourary Tsar Vladimir III Romanov"
+ wif_honourary_tsar_vladimir_desc:0 "He has no powers, no ministry and no army, and he is photographed everywhere. The arrangement was designed to make a monarchy harmless by making it ceremonial, which is a thing that has been tried before."
+ wif_new_imperial_palace:0 "New Imperial Palace"
+ wif_new_imperial_palace_desc:0 "Built quickly, in the wrong architectural century, by men who were told not to ask what it was for."
+
+ wif_sme.5.t:0 "Return of a Romanov"
+ wif_sme.5.d:0 "He came by train, which the newspapers were instructed to call unremarkable, and thirty thousand people were at the station to see something unremarkable happen.\n\nThe Party has not taken it well. Whatever the arrangement says on paper, half the Red Army command watched a Romanov step onto a platform in Russia and drew the obvious conclusion about what the last twenty years were for. The whites, for their part, have spent the week explaining that Kuybyshev must be cleared of troops - the Tsar is not safe, they say, among soldiers who remember Yekaterinburg. Nobody is certain whom that argument is meant to reassure.\n\nThe palace is already going up."
+ wif_sme.5.a:0 "He signs nothing. That was the arrangement."
+
+ # === The NKVD's advisors ==========================================
+ SME_nakita_paskarov:0 "Nakita Paskarov"
+ SME_yuri_dnoroutsi:0 "Yuri Dnoroutsi"
+ # The trait name is what the game prints as the job title.
+ wif_political_commissar:0 "Political Commissar"
+ wif_political_commissar_desc:0 "He attends meetings he was not invited to and writes down what was said. Nobody has established who reads the notebooks, and the uncertainty is doing more work than the notebooks are. The Party has never been more confident of itself, and the country has never been less relaxed."
+ wif_propaganda_master:0 "Propaganda Master"
+ wif_propaganda_master_desc:0 "He was a poster designer in Kazan and is now the reason the Emergency Government is popular. He does not argue with the whites; he simply arrives first, in larger letters, and by the time anyone answers him the answer sounds defensive. Even the negotiations go easier - it is remarkable what a faction will settle for when the public has already been told it agreed."
+
+ # === Breaking the democrats =======================================
+ SME_infiltrate_democratic_opposition:0 "Infiltrate the Democratic Opposition"
+ SME_infiltrate_democratic_opposition_desc:0 "Nothing is done to them. Men are simply placed - a clerk in the press office, a driver, somebody's nephew who needed the work - and then the Commissariat waits. It is the cheapest operation the NKVD will ever run and the only one with no possible failure state, because at this stage there is nothing to fail at. We are only listening."
+ SME_find_scandals:0 "Find Scandals"
+ SME_find_scandals_desc:0 "Everything the listening turned up, printed. A contract, a hotel register, a cousin in Berlin who should not have been written to. None of it is invented and none of it is quite a crime, which is precisely what makes it usable - a man defending himself against something true has already lost the argument he was actually having."
+ SME_frame_leaders:0 "Frame the Leaders"
+ SME_frame_leaders_desc:0 "The material ran out before the leadership did, so the Commissariat is now supplying its own. This is the step nobody in Kazan will be able to describe honestly afterwards, and everybody involved understands that. What it buys is real: the democratic faction is being decapitated at a steady rate, week after week, for exactly as long as Paskarov is left in his post."
+
+ # The advisor upgrades these focuses grant.
+ wif_nkvd_infiltration:0 "Infiltration of the Opposition"
+ wif_nkvd_infiltration_desc:0 "Our people are inside their offices. While the propaganda master is in post, he knows what they will say before they say it."
+ wif_nkvd_scandals:0 "The Files on the Democrats"
+ wif_nkvd_scandals_desc:0 "A drawer of true things, released at chosen moments. Only useful while there is somebody in post to choose the moments."
+ wif_nkvd_framing:0 "Manufactured Evidence"
+ wif_nkvd_framing_desc:0 "The Commissar of State Security is no longer waiting for the democrats to give him something. Effective, and entirely dependent on his remaining in office."

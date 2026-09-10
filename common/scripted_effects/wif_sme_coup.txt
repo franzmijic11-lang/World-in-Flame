@@ -1,0 +1,206 @@
+# The overthrow of the Emergency Government.
+#
+# WHEN. Any one of the three opposition parties reaching 60% of the vote ends
+# the Emergency Government. Checked weekly for the SME in
+# common/on_actions/wif_on_actions.txt.
+#
+# BLOODLESS OR NOT, AND WHY THAT IS THE LOYALTY'S JOB. The government falls
+# either way - the vote is the vote. What loyalty buys is whether the handover
+# is a transfer of power or a war. Above 60 loyalty the faction taking over has
+# spent years inside the ministries and simply keeps the machinery running.
+# At or below it, the communists do not accept the result, and the civil war is
+# fought with the ROLES REVERSED: the new government is the state, and the Red
+# Army command are the rebels.
+#
+# That is why start_civil_war below revolts the COMMUNISTS, not the winner. The
+# winner has already won.
+#
+# The 60/60 pair is deliberate: the same number for votes and for loyalty, so a
+# player watching one is watching the other.
+
+wif_sme_coup_check = {
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = wif_sme_overthrown }
+			has_government = communism
+			check_variable = { party_popularity_100@democratic > 59.999 }
+		}
+		set_country_flag = wif_sme_overthrown
+		wif_sme_coup_democratic = yes
+	}
+
+	else_if = {
+		limit = {
+			NOT = { has_country_flag = wif_sme_overthrown }
+			has_government = communism
+			check_variable = { party_popularity_100@fascism > 59.999 }
+		}
+		set_country_flag = wif_sme_overthrown
+		wif_sme_coup_fascist = yes
+	}
+
+	else_if = {
+		limit = {
+			NOT = { has_country_flag = wif_sme_overthrown }
+			has_government = communism
+			check_variable = { party_popularity_100@neutrality > 59.999 }
+		}
+		set_country_flag = wif_sme_overthrown
+		wif_sme_coup_authoritarian = yes
+	}
+}
+
+# The communists refuse the result. Called by each of the three below when the
+# winning faction's loyalty is 60 or less.
+#
+# ruling_party is the ideology the COUNTRY now holds, passed by the caller
+# having already set it - so this must be called after set_politics, never
+# before.
+wif_sme_coup_civil_war = {
+	start_civil_war = {
+		ideology = communism
+		size = 0.4
+	}
+}
+
+# ---------------------------------------------------------------- democratic
+#
+# The one path that does not end with the SME still on the map. Kazan gets the
+# Union's own democratic flag rather than anything new - the point of this
+# ending is that the Republic was there all along, waiting.
+wif_sme_coup_democratic = {
+
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+
+	create_country_leader = {
+		name = "Provisional Committee"
+		picture = "GFX_portrait_europe_generic_land_13"
+		expire = "1965.1.1"
+		ideology = liberalism
+		traits = { }
+	}
+
+	if = {
+		limit = { NOT = { check_variable = { wif_whites_dem_loyalty > 60 } } }
+		wif_sme_coup_civil_war = yes
+	}
+
+	# A hundred days to arrange the terms. See wif_sme_union_with_csr.
+	set_country_flag = { flag = wif_sme_union_pending days = 100 value = 1 }
+	set_country_flag = wif_sme_went_democratic
+}
+
+# ------------------------------------------------------------------ fascist
+wif_sme_coup_fascist = {
+
+	set_politics = {
+		ruling_party = fascism
+		elections_allowed = no
+	}
+
+	create_country_leader = {
+		name = "Anastasii Vonsiatskii"
+		picture = "GFX_portrait_SME_anastasii_vonsiatskii"
+		expire = "1965.1.1"
+		ideology = fascism_ideology
+		traits = { }
+	}
+
+	# The state takes the League's own name.
+	set_cosmetic_tag = SME_novo_russkey_league
+
+	if = {
+		limit = { NOT = { check_variable = { wif_whites_fas_loyalty > 60 } } }
+		wif_sme_coup_civil_war = yes
+	}
+}
+
+# ----------------------------------------------------------- authoritarian
+#
+# Specifically Regential Monarchism, not plain authoritarian rule: the crown
+# exists, the succession is disputed, and Vojcechovsky rules in a king's name.
+# wif_become_regential_monarchy sets the party, bars elections and attaches the
+# sub-ideology's own statistics - see
+# common/scripted_effects/wif_subideology_modifiers.txt.
+#
+# It is called BEFORE create_country_leader on purpose. The effect sets the
+# leader's ideology on whoever is leader at the time, so the new leader has to
+# be installed after it and carry the sub-ideology himself.
+wif_sme_coup_authoritarian = {
+
+	# WHICH MONARCHY DEPENDS ON WHETHER THERE IS A MONARCH.
+	#
+	# If Vladimir has already been brought back as a figurehead - the spirit
+	# wif_honourary_tsar_vladimir, granted by the third Romanov decision - then
+	# there is a Tsar in the country and he simply stops being honourary. That is
+	# ABSOLUTE monarchy, and he rules in his own name.
+	#
+	# Without him the crown is vacant, so Vojcechovsky rules in a king's name and
+	# the sub-ideology is REGENTIAL. A regency is what you have when you have no
+	# king; produce the king and the regency has no reason to exist.
+	if = {
+		limit = { has_idea = wif_honourary_tsar_vladimir }
+
+		wif_become_absolute_monarchy = yes
+
+		create_country_leader = {
+			name = "Vladimir III Romanov"
+			picture = "GFX_portrait_SME_vladimir_iii"
+			expire = "1965.1.1"
+			ideology = wif_absolute_monarchism
+			traits = { }
+		}
+	}
+	else = {
+		wif_become_regential_monarchy = yes
+
+		create_country_leader = {
+			name = "Sergej Vojcechovsky"
+			picture = "GFX_portrait_SME_sergej_vojcechovsky"
+			expire = "1965.1.1"
+			ideology = wif_regential_monarchism
+			traits = { }
+		}
+	}
+
+	# And again, so the modifier lands on the leader just created rather than
+	# on the one he replaced.
+	wif_apply_subideology_modifiers = yes
+
+	# The Empire restored, in name at least.
+	set_cosmetic_tag = SME_russian_empire
+
+	# Vyatka. Kirov was Vyatka until 1934, when it was renamed for a murdered
+	# Bolshevik - so a restored monarchy taking the old name back is the point,
+	# and it is also why the capital goes there rather than staying in Kazan.
+	#
+	# TWO SEPARATE EFFECTS, because a state's name and a victory point's name are
+	# different things. set_state_name renames the state in the state scope;
+	# set_province_name renames province 6124, which is what the victory point
+	# marker on the map actually reads. Doing only the first leaves a state
+	# called Vyatka with a victory point still labelled Kirov.
+	400 = {
+		set_state_name = "Vyatka"
+	}
+
+	set_province_name = {
+		id = 6124
+		name = "Vyatka"
+	}
+
+	# Only if it is actually held. A capital in a state somebody else owns is
+	# worse than a capital in Kazan.
+	if = {
+		limit = { 400 = { is_owned_by = PREV } }
+		set_capital = { state = 400 }
+	}
+
+	if = {
+		limit = { NOT = { check_variable = { wif_whites_mon_loyalty > 60 } } }
+		wif_sme_coup_civil_war = yes
+	}
+}

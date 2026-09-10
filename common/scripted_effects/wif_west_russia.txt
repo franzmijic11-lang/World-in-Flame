@@ -1,0 +1,180 @@
+# The West Russian Republic - what Germany leaves behind in Moscow when the
+# government that took Berlin was not the Nazi one.
+#
+# The Reichskommissariat path is unchanged and still fires for a fascist
+# Germany. This is the other two:
+#
+#   democratic Germany   the West Russian Republic, a SUPERVISED STATE. An
+#                        occupation with an end date written into it, at least
+#                        on paper.
+#   non-aligned Germany  the Duchy of Moscow, a COLONY. A crown handing out a
+#                        crown, and rather less pretence about what it is.
+#
+# Both are the same tag. HoI4 names a country from its ruling ideology, so WRD
+# reads as the West Russian Republic under a democratic government and as the
+# Duchy of Moscow under a non-aligned one - one tag, two countries, no second
+# set of flags or files. The flags follow the same rule: tricolour and eagle for
+# democratic, non-aligned and fascist, and the Soviet flag if it ever turns
+# communist.
+#
+# THE ONE REAL DIFFERENCE FROM RKM: this country gets CORES on what it holds.
+# The Reichskommissariat is administered territory and never cores anything,
+# which is what keeps it a German possession with a Russian population. The
+# Republic and the Duchy are meant to be states in their own right, however
+# they were founded, so the ground is theirs.
+#
+# Run from wif_sov.1 in SOV scope, before the every_state sweep that hands
+# Moscow's states out - the same position the RKM block occupies, and for the
+# same reason: the first successful transfer is what brings the country into
+# existence.
+#
+# It has NO FOCUS TREE, deliberately. Nothing is registered in
+# common/national_focus, so the country simply has no focus button.
+wif_form_west_russia = {
+
+	# Moscow first. The first state transferred is what creates the tag.
+	219 = {
+		transfer_state_to = WRD
+		add_compliance = 25
+	}
+
+	# Instrumentation. These log lines exist because this path failed once with a
+	# country that had a generic leader and a blank portrait, and there was no
+	# way to tell from outside which step had not run. They cost nothing and
+	# they answer the question in one line of game.log.
+	if = {
+		limit = { NOT = { country_exists = WRD } }
+		log = "wif_form_west_russia: FAILED - transferring Moscow did not create the WRD tag."
+	}
+
+	if = {
+		limit = { country_exists = WRD }
+		log = "wif_form_west_russia: WRD exists after the Moscow transfer."
+
+		WRD = {
+			set_capital = { state = 219 }
+
+			# History files never apply to a country spawned mid-game, so the
+			# politics have to be set explicitly or every ideology-keyed lookup
+			# - the flag included - falls through to a blank.
+			#
+			# The government mirrors Berlin's, because it is Berlin's creature
+			# either way.
+			if = {
+				limit = { GER = { has_government = democratic } }
+
+				set_politics = {
+					ruling_party = democratic
+					last_election = "1936.1.1"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+				set_popularities = {
+					democratic = 55
+					fascism = 10
+					communism = 20
+					neutrality = 15
+				}
+
+				log = "wif_form_west_russia: Berlin is DEMOCRATIC - raising the West Russian Republic under Legasov."
+
+				create_country_leader = {
+					name = "Valery Legasov"
+					picture = "GFX_portrait_WRD_valery_legasov"
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = { }
+				}
+			}
+			else = {
+				set_politics = {
+					ruling_party = neutrality
+					last_election = "1936.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					neutrality = 60
+					democratic = 15
+					fascism = 10
+					communism = 15
+				}
+
+				log = "wif_form_west_russia: Berlin is NOT democratic - raising the Duchy of Moscow under Reuss."
+
+				create_country_leader = {
+					# Typographic quotes, not "..." - HoI4's parser has no escape
+					# sequence, so a straight quote inside a quoted string ends
+					# the string early and takes the rest of the file with it.
+					# Vanilla never escapes a quote in a name anywhere.
+					name = "Friedrich “Peter” Reuss"
+					picture = "GFX_portrait_WRD_friedrich_reuss"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { }
+				}
+			}
+
+			# NO DIPLOMATIC STANDING IS DELIBERATELY ABSENT, and should stay
+			# absent. The Reichskommissariat does not carry it either - the
+			# spirit belongs to the splinter states that break away from
+			# somebody, not to a government Berlin sets up on purpose.
+			#
+			# It would also be actively wrong here. The spirit blocks
+			# guarantees, volunteers and lend-lease in both directions, which
+			# would leave a supervised state that its own patron cannot arm.
+
+			# The starting package, matched to what the Reichskommissariat gets
+			# so neither path is the obviously better prize.
+			add_manpower = 80000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 1000
+				producer = GER
+			}
+			inherit_technology = GER
+			add_offsite_building = { type = arms_factory level = 3 }
+		}
+
+		# Supervised state for a democratic Germany, colony for a non-aligned
+		# one. Both are vanilla autonomy levels - autonomy_supervised_state and
+		# autonomy_colony in common/autonomous_states.
+		GER = {
+			if = {
+				limit = { has_government = democratic }
+				set_autonomy = {
+					target = WRD
+					autonomy_state = autonomy_supervised_state
+				}
+			}
+			else = {
+				set_autonomy = {
+					target = WRD
+					autonomy_state = autonomy_colony
+				}
+			}
+		}
+	}
+}
+
+# Cores on everything the Republic ended up with.
+#
+# Called AFTER the state sweep in wif_sov.1, not before, because at the point
+# the country is founded it owns exactly one state. Walking its own territory
+# afterwards is what makes this one line instead of a second copy of the
+# thirty-nine state list.
+wif_core_west_russia = {
+	if = {
+		limit = { country_exists = WRD }
+		WRD = {
+			every_owned_state = {
+				add_core_of = WRD
+			}
+		}
+	}
+}

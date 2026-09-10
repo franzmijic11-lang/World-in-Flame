@@ -1,0 +1,5 @@
+﻿l_english:
+
+ # Victory point names. A VP is named by VICTORY_POINTS_<province id>; without
+ # this key the map would label it with the bare province number.
+ VICTORY_POINTS_10133:0 "Yekaterinburg"

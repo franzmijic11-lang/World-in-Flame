@@ -1,0 +1,257 @@
+# GENERATED FILE - do not edit by hand.
+# Regenerate with tools/city_provinces.py after any change to state province
+# lists or to the map.
+#
+# HoI4 script has no province scope. There is no province iterator and
+# has_terrain is COUNTRY scope only ("has any province of this terrain"), so
+# "how many city provinces are in this state" cannot be asked at runtime. It is
+# therefore measured off the map here and baked into a state variable.
+#
+# A CITY PROVINCE IS A PROVINCE WITH urban TERRAIN in map/definition.csv -
+# the ones that draw as built-up ground. There are 265 of them on the map.
+# State membership comes from history/states, with this mod's 19 overriding
+# files applied on top of vanilla's, so the province moves this mod makes are
+# reflected here.
+#
+# Only states with at least one are listed. An unset variable reads as 0 in
+# HoI4, so every state omitted here correctly counts as having no city.
+#
+# 233 states have a city province: 204 with one, 26 with two, 3 with three.
+#
+# Run once from on_startup, guarded by a global flag - province membership
+# cannot change during a game, so this never needs repeating.
+wif_seed_city_provinces = {
+	2 = { set_variable = { wif_city_provs = 2 } }
+	3 = { set_variable = { wif_city_provs = 2 } }
+	4 = { set_variable = { wif_city_provs = 1 } }
+	6 = { set_variable = { wif_city_provs = 1 } }
+	7 = { set_variable = { wif_city_provs = 3 } }
+	9 = { set_variable = { wif_city_provs = 1 } }
+	10 = { set_variable = { wif_city_provs = 1 } }
+	11 = { set_variable = { wif_city_provs = 1 } }
+	15 = { set_variable = { wif_city_provs = 2 } }
+	16 = { set_variable = { wif_city_provs = 2 } }
+	19 = { set_variable = { wif_city_provs = 1 } }
+	20 = { set_variable = { wif_city_provs = 1 } }
+	21 = { set_variable = { wif_city_provs = 1 } }
+	24 = { set_variable = { wif_city_provs = 1 } }
+	28 = { set_variable = { wif_city_provs = 1 } }
+	29 = { set_variable = { wif_city_provs = 1 } }
+	30 = { set_variable = { wif_city_provs = 1 } }
+	31 = { set_variable = { wif_city_provs = 1 } }
+	35 = { set_variable = { wif_city_provs = 1 } }
+	37 = { set_variable = { wif_city_provs = 1 } }
+	41 = { set_variable = { wif_city_provs = 1 } }
+	43 = { set_variable = { wif_city_provs = 1 } }
+	46 = { set_variable = { wif_city_provs = 1 } }
+	47 = { set_variable = { wif_city_provs = 1 } }
+	48 = { set_variable = { wif_city_provs = 1 } }
+	49 = { set_variable = { wif_city_provs = 1 } }
+	50 = { set_variable = { wif_city_provs = 1 } }
+	51 = { set_variable = { wif_city_provs = 2 } }
+	52 = { set_variable = { wif_city_provs = 1 } }
+	54 = { set_variable = { wif_city_provs = 1 } }
+	55 = { set_variable = { wif_city_provs = 1 } }
+	57 = { set_variable = { wif_city_provs = 1 } }
+	58 = { set_variable = { wif_city_provs = 2 } }
+	59 = { set_variable = { wif_city_provs = 2 } }
+	61 = { set_variable = { wif_city_provs = 1 } }
+	63 = { set_variable = { wif_city_provs = 1 } }
+	64 = { set_variable = { wif_city_provs = 2 } }
+	65 = { set_variable = { wif_city_provs = 2 } }
+	66 = { set_variable = { wif_city_provs = 1 } }
+	67 = { set_variable = { wif_city_provs = 1 } }
+	75 = { set_variable = { wif_city_provs = 1 } }
+	79 = { set_variable = { wif_city_provs = 1 } }
+	85 = { set_variable = { wif_city_provs = 1 } }
+	86 = { set_variable = { wif_city_provs = 1 } }
+	87 = { set_variable = { wif_city_provs = 1 } }
+	88 = { set_variable = { wif_city_provs = 2 } }
+	91 = { set_variable = { wif_city_provs = 1 } }
+	94 = { set_variable = { wif_city_provs = 1 } }
+	107 = { set_variable = { wif_city_provs = 1 } }
+	109 = { set_variable = { wif_city_provs = 1 } }
+	110 = { set_variable = { wif_city_provs = 1 } }
+	111 = { set_variable = { wif_city_provs = 1 } }
+	112 = { set_variable = { wif_city_provs = 1 } }
+	113 = { set_variable = { wif_city_provs = 1 } }
+	114 = { set_variable = { wif_city_provs = 1 } }
+	115 = { set_variable = { wif_city_provs = 1 } }
+	117 = { set_variable = { wif_city_provs = 1 } }
+	119 = { set_variable = { wif_city_provs = 1 } }
+	121 = { set_variable = { wif_city_provs = 1 } }
+	122 = { set_variable = { wif_city_provs = 1 } }
+	126 = { set_variable = { wif_city_provs = 2 } }
+	128 = { set_variable = { wif_city_provs = 1 } }
+	130 = { set_variable = { wif_city_provs = 3 } }
+	131 = { set_variable = { wif_city_provs = 1 } }
+	132 = { set_variable = { wif_city_provs = 2 } }
+	133 = { set_variable = { wif_city_provs = 1 } }
+	137 = { set_variable = { wif_city_provs = 1 } }
+	140 = { set_variable = { wif_city_provs = 1 } }
+	141 = { set_variable = { wif_city_provs = 1 } }
+	158 = { set_variable = { wif_city_provs = 2 } }
+	159 = { set_variable = { wif_city_provs = 1 } }
+	160 = { set_variable = { wif_city_provs = 1 } }
+	161 = { set_variable = { wif_city_provs = 1 } }
+	162 = { set_variable = { wif_city_provs = 1 } }
+	165 = { set_variable = { wif_city_provs = 1 } }
+	166 = { set_variable = { wif_city_provs = 1 } }
+	167 = { set_variable = { wif_city_provs = 1 } }
+	169 = { set_variable = { wif_city_provs = 1 } }
+	173 = { set_variable = { wif_city_provs = 1 } }
+	180 = { set_variable = { wif_city_provs = 1 } }
+	192 = { set_variable = { wif_city_provs = 1 } }
+	195 = { set_variable = { wif_city_provs = 1 } }
+	200 = { set_variable = { wif_city_provs = 1 } }
+	202 = { set_variable = { wif_city_provs = 1 } }
+	206 = { set_variable = { wif_city_provs = 1 } }
+	207 = { set_variable = { wif_city_provs = 1 } }
+	217 = { set_variable = { wif_city_provs = 1 } }
+	218 = { set_variable = { wif_city_provs = 1 } }
+	219 = { set_variable = { wif_city_provs = 1 } }
+	220 = { set_variable = { wif_city_provs = 1 } }
+	221 = { set_variable = { wif_city_provs = 1 } }
+	222 = { set_variable = { wif_city_provs = 1 } }
+	223 = { set_variable = { wif_city_provs = 1 } }
+	224 = { set_variable = { wif_city_provs = 1 } }
+	226 = { set_variable = { wif_city_provs = 2 } }
+	227 = { set_variable = { wif_city_provs = 1 } }
+	228 = { set_variable = { wif_city_provs = 1 } }
+	229 = { set_variable = { wif_city_provs = 1 } }
+	230 = { set_variable = { wif_city_provs = 1 } }
+	231 = { set_variable = { wif_city_provs = 1 } }
+	234 = { set_variable = { wif_city_provs = 1 } }
+	236 = { set_variable = { wif_city_provs = 1 } }
+	239 = { set_variable = { wif_city_provs = 1 } }
+	241 = { set_variable = { wif_city_provs = 1 } }
+	242 = { set_variable = { wif_city_provs = 1 } }
+	246 = { set_variable = { wif_city_provs = 1 } }
+	247 = { set_variable = { wif_city_provs = 1 } }
+	248 = { set_variable = { wif_city_provs = 1 } }
+	249 = { set_variable = { wif_city_provs = 1 } }
+	251 = { set_variable = { wif_city_provs = 1 } }
+	252 = { set_variable = { wif_city_provs = 1 } }
+	260 = { set_variable = { wif_city_provs = 1 } }
+	261 = { set_variable = { wif_city_provs = 1 } }
+	266 = { set_variable = { wif_city_provs = 1 } }
+	267 = { set_variable = { wif_city_provs = 1 } }
+	276 = { set_variable = { wif_city_provs = 2 } }
+	278 = { set_variable = { wif_city_provs = 1 } }
+	279 = { set_variable = { wif_city_provs = 1 } }
+	282 = { set_variable = { wif_city_provs = 2 } }
+	285 = { set_variable = { wif_city_provs = 1 } }
+	290 = { set_variable = { wif_city_provs = 1 } }
+	291 = { set_variable = { wif_city_provs = 1 } }
+	300 = { set_variable = { wif_city_provs = 1 } }
+	326 = { set_variable = { wif_city_provs = 1 } }
+	327 = { set_variable = { wif_city_provs = 1 } }
+	328 = { set_variable = { wif_city_provs = 1 } }
+	338 = { set_variable = { wif_city_provs = 1 } }
+	339 = { set_variable = { wif_city_provs = 1 } }
+	357 = { set_variable = { wif_city_provs = 1 } }
+	358 = { set_variable = { wif_city_provs = 2 } }
+	359 = { set_variable = { wif_city_provs = 1 } }
+	360 = { set_variable = { wif_city_provs = 2 } }
+	361 = { set_variable = { wif_city_provs = 1 } }
+	363 = { set_variable = { wif_city_provs = 1 } }
+	373 = { set_variable = { wif_city_provs = 1 } }
+	375 = { set_variable = { wif_city_provs = 1 } }
+	378 = { set_variable = { wif_city_provs = 2 } }
+	386 = { set_variable = { wif_city_provs = 1 } }
+	393 = { set_variable = { wif_city_provs = 1 } }
+	395 = { set_variable = { wif_city_provs = 1 } }
+	398 = { set_variable = { wif_city_provs = 1 } }
+	405 = { set_variable = { wif_city_provs = 1 } }
+	408 = { set_variable = { wif_city_provs = 1 } }
+	409 = { set_variable = { wif_city_provs = 1 } }
+	415 = { set_variable = { wif_city_provs = 1 } }
+	416 = { set_variable = { wif_city_provs = 1 } }
+	423 = { set_variable = { wif_city_provs = 2 } }
+	425 = { set_variable = { wif_city_provs = 3 } }
+	427 = { set_variable = { wif_city_provs = 2 } }
+	428 = { set_variable = { wif_city_provs = 1 } }
+	429 = { set_variable = { wif_city_provs = 1 } }
+	430 = { set_variable = { wif_city_provs = 1 } }
+	431 = { set_variable = { wif_city_provs = 1 } }
+	435 = { set_variable = { wif_city_provs = 1 } }
+	438 = { set_variable = { wif_city_provs = 1 } }
+	439 = { set_variable = { wif_city_provs = 1 } }
+	447 = { set_variable = { wif_city_provs = 1 } }
+	448 = { set_variable = { wif_city_provs = 1 } }
+	454 = { set_variable = { wif_city_provs = 1 } }
+	458 = { set_variable = { wif_city_provs = 1 } }
+	459 = { set_variable = { wif_city_provs = 1 } }
+	461 = { set_variable = { wif_city_provs = 1 } }
+	468 = { set_variable = { wif_city_provs = 1 } }
+	478 = { set_variable = { wif_city_provs = 1 } }
+	500 = { set_variable = { wif_city_provs = 1 } }
+	501 = { set_variable = { wif_city_provs = 1 } }
+	506 = { set_variable = { wif_city_provs = 1 } }
+	517 = { set_variable = { wif_city_provs = 1 } }
+	519 = { set_variable = { wif_city_provs = 1 } }
+	521 = { set_variable = { wif_city_provs = 1 } }
+	522 = { set_variable = { wif_city_provs = 1 } }
+	525 = { set_variable = { wif_city_provs = 1 } }
+	527 = { set_variable = { wif_city_provs = 1 } }
+	528 = { set_variable = { wif_city_provs = 2 } }
+	529 = { set_variable = { wif_city_provs = 1 } }
+	531 = { set_variable = { wif_city_provs = 2 } }
+	532 = { set_variable = { wif_city_provs = 1 } }
+	554 = { set_variable = { wif_city_provs = 1 } }
+	572 = { set_variable = { wif_city_provs = 1 } }
+	586 = { set_variable = { wif_city_provs = 1 } }
+	590 = { set_variable = { wif_city_provs = 1 } }
+	592 = { set_variable = { wif_city_provs = 1 } }
+	594 = { set_variable = { wif_city_provs = 1 } }
+	595 = { set_variable = { wif_city_provs = 1 } }
+	596 = { set_variable = { wif_city_provs = 1 } }
+	600 = { set_variable = { wif_city_provs = 1 } }
+	602 = { set_variable = { wif_city_provs = 1 } }
+	607 = { set_variable = { wif_city_provs = 2 } }
+	608 = { set_variable = { wif_city_provs = 2 } }
+	613 = { set_variable = { wif_city_provs = 1 } }
+	653 = { set_variable = { wif_city_provs = 1 } }
+	656 = { set_variable = { wif_city_provs = 1 } }
+	671 = { set_variable = { wif_city_provs = 1 } }
+	677 = { set_variable = { wif_city_provs = 1 } }
+	716 = { set_variable = { wif_city_provs = 1 } }
+	729 = { set_variable = { wif_city_provs = 1 } }
+	731 = { set_variable = { wif_city_provs = 1 } }
+	735 = { set_variable = { wif_city_provs = 1 } }
+	736 = { set_variable = { wif_city_provs = 1 } }
+	743 = { set_variable = { wif_city_provs = 1 } }
+	744 = { set_variable = { wif_city_provs = 1 } }
+	745 = { set_variable = { wif_city_provs = 1 } }
+	750 = { set_variable = { wif_city_provs = 1 } }
+	762 = { set_variable = { wif_city_provs = 1 } }
+	763 = { set_variable = { wif_city_provs = 1 } }
+	784 = { set_variable = { wif_city_provs = 1 } }
+	792 = { set_variable = { wif_city_provs = 1 } }
+	797 = { set_variable = { wif_city_provs = 1 } }
+	808 = { set_variable = { wif_city_provs = 1 } }
+	812 = { set_variable = { wif_city_provs = 1 } }
+	845 = { set_variable = { wif_city_provs = 1 } }
+	849 = { set_variable = { wif_city_provs = 1 } }
+	907 = { set_variable = { wif_city_provs = 1 } }
+	976 = { set_variable = { wif_city_provs = 1 } }
+	982 = { set_variable = { wif_city_provs = 1 } }
+	990 = { set_variable = { wif_city_provs = 1 } }
+	995 = { set_variable = { wif_city_provs = 1 } }
+	1000 = { set_variable = { wif_city_provs = 1 } }
+	1019 = { set_variable = { wif_city_provs = 1 } }
+	1021 = { set_variable = { wif_city_provs = 1 } }
+	1030 = { set_variable = { wif_city_provs = 1 } }
+	1034 = { set_variable = { wif_city_provs = 1 } }
+	1035 = { set_variable = { wif_city_provs = 1 } }
+	1036 = { set_variable = { wif_city_provs = 2 } }
+	1037 = { set_variable = { wif_city_provs = 1 } }
+	1038 = { set_variable = { wif_city_provs = 1 } }
+	1041 = { set_variable = { wif_city_provs = 1 } }
+	1051 = { set_variable = { wif_city_provs = 1 } }
+	1058 = { set_variable = { wif_city_provs = 1 } }
+	1060 = { set_variable = { wif_city_provs = 1 } }
+	1066 = { set_variable = { wif_city_provs = 1 } }
+	1076 = { set_variable = { wif_city_provs = 1 } }
+	1079 = { set_variable = { wif_city_provs = 1 } }
+}

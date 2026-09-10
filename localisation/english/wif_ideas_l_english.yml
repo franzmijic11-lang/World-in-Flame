@@ -2,6 +2,17 @@
  active_russian_resistance:0 "Active Russian Resistance"
  active_russian_resistance_desc:0 "The local Russian population fiercely resists German occupation, hampering compliance efforts and fueling partisan activity."
  GER_german_controlled_reichskommissariat:0 "Reichskommissariat"
+ # The named threat source used by on_declare_war to refund the world
+ # tension of a war between two Russian successor states. Named threats
+ # are listed by key in the world tension breakdown, so this string is
+ # what the player sees against the discount.
+ wif_threat_russian_civil_war:0 "Russian civil war - a matter for Russians"
+ wif_russian_warlord_economy:0 "Russian Warlord"
+ wif_russian_warlord_economy_desc:0 "The factories that still turn are the ones with soldiers at the gate. Everything else is requisition, barter and the promise of payment from a treasury that does not exist.\n\nNothing new is built. What is built already is made to work, and the men who work it are fed before anyone else.\n\n§RThis law cannot be changed while the country is held by its army.§!"
+ wif_chinese_millions:0 "The Millions of China"
+ wif_chinese_millions_desc:0 "Every other army in the world is counted in divisions. Ours is counted in provinces, and there is always another province.\n\nWhat we cannot match in steel we can match in men, and we will go on matching it long after an enemy has run out of either.\n\n§YDoubles the sustainable battalion limit.§! This is applied to the finished figure, after every other bonus."
+ wif_russian_warlord:0 "Russian Warlord"
+ wif_russian_warlord_desc:0 "There is no Union left to serve and no border anyone will recognise. There are the divisions that answered when we called, and the ground they are standing on.\n\nEvery man the Union trained is still under arms somewhere, and there is no government left in Moscow with the authority to send him home.\n\n§YRaises the sustainable battalion limit by 80%.§! The limit itself is on the officer corps screen."
  wif_military_factory_ceiling:0 "Military Factory Ceiling Reached"
  wif_military_factory_ceiling_desc:0 "Our military industry has reached the limit our civilian economy can sustain at the current level of international tension. No further military factories can be completed until we expand our civilian industry or tension rises."
  wif_military_factory_ceiling_far:0 "Military Factory Ceiling Exceeded"

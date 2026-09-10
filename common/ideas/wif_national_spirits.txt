@@ -119,9 +119,47 @@ ideas = {
 
 			picture = generic_disjointed_gov
 
+			# TWO KINDS OF BLOCK HERE, and the difference matters.
+			#
+			# The rule block is absolute: the engine refuses the action
+			# outright. Only these three rules exist for what is wanted -
+			# there is no rule for guaranteeing, for being guaranteed, or
+			# for lend-lease.
 			rule = {
 				can_join_factions = no
 				can_create_factions = no
+				can_send_volunteers = no
+			}
+
+			# The modifiers below are WALLS, not rules. Each is a tension
+			# threshold or a cost, and the numbers are absurd on purpose:
+			# world tension runs 0 to 1, so a requirement of 10 is a
+			# thousand percent and can never be met. That is as close to
+			# "cannot" as the engine allows for these actions.
+			#
+			# WHAT THIS STILL CANNOT DO. Every wall here governs an action
+			# THIS country takes. Nothing stops a foreign power guaranteeing
+			# us or opening a lend-lease to us: those are their actions, and
+			# HoI4 exposes nothing on the receiving side - no rule, no
+			# modifier, no remove_guarantee and no cancel_lend_lease.
+			# Volunteers are the one exception, and they are handled the
+			# hard way by a weekly recall in
+			# common/on_actions/wif_on_actions.txt.
+			modifier = {
+				# Guaranteeing anybody else.
+				guarantee_tension = 10
+				guarantee_cost = 10
+
+				# Volunteers. The rule above already forbids sending them;
+				# these make the attempt impossible as well, so nothing is
+				# resting on the rule alone.
+				send_volunteers_tension = 10
+				send_volunteer_size = -100
+
+				# Lend-lease, in the two directions this country controls:
+				# offering it, and asking for it.
+				lend_lease_tension = 10
+				request_lease_tension = 10
 			}
 		}
 
@@ -473,5 +511,448 @@ ideas = {
 				training_time_factor = 1
 			}
 		}
+		# Granted by the SME focus SME_prepare_to_take_back.
+		#
+		# A focus cannot carry a country modifier by itself - focuses run effects,
+		# and a lasting modifier has to live on an idea - so the bonuses the focus
+		# advertises are all here, and the focus does nothing but add_ideas this.
+		#
+		# allowed = { always = no } keeps it off every country at game start; it is
+		# only ever granted by the focus. allowed_civil_war = yes so a splinter off
+		# the SME keeps it, matching every other spirit in this file.
+		wif_sme_prepare_to_take_back = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_improved_industries
+
+			modifier = {
+				# Factory Efficiency Growth. NOT
+				# production_factory_max_efficiency_factor, which is the ceiling
+				# rather than the rate of climb towards it.
+				production_factory_efficiency_gain_factor = 0.10
+
+				# Factory Output.
+				industrial_capacity_factory = 0.10
+
+				# Consumer Goods. Negative is the good direction here - it is the
+				# share of civilian industry the country must spend on itself.
+				consumer_goods_factor = -0.10
+			}
+		}
+
+		# China and Communist China. Doubles the battalion cap outright.
+		#
+		# THE ONLY MULTIPLIER IN THE WHOLE SYSTEM. Everything else is a
+		# percentage of the 324 base or a flat count of battalions, and both
+		# of those are additive; this one is applied to the finished figure,
+		# after the flat sources, so it doubles whatever the country has
+		# managed to earn rather than adding a fixed amount to it.
+		#
+		# Empty modifier block for the same reason as the warlord spirit: the
+		# cap is script maths, not a game modifier, and the number lives in
+		# the description.
+		wif_chinese_millions = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+		}
+
+		# Granted by the SME focus SME_invite_the_whites_back.
+		#
+		# The emigration comes home: officers who left in 1920, engineers who
+		# have spent fifteen years building somebody else's factories, and a
+		# political tradition that lost the civil war and never stopped
+		# arguing about it.
+		#
+		# THE THREE DRIFTS ARE THE COST, not a bonus. Every ideology except
+		# communism gains ground daily, because that is what letting the Whites
+		# back in actually does to a Soviet successor state. A country that
+		# takes this focus for the industry should expect to be a different
+		# country in a few years.
+		# The whites, with a Duma promised to them.
+		#
+		# A TIMED REPLACEMENT for wif_sme_the_whites_return, swapped in by a
+		# decision in common/decisions/wif_white_question.txt and swapped back by
+		# that decision's remove_effect when its days_remove expires. It is never
+		# held alongside the base spirit.
+		#
+		# Everything that is not a drift is copied from the base spirit
+		# unchanged - the manpower, the construction, the factory output. Only
+		# the political arithmetic moves.
+		# The Tsar's funeral. Timed, 100 days, added by a decision in
+		# common/decisions/wif_white_question.txt.
+		#
+		# AN ADDITIONAL SPIRIT, NOT A SWAP. The other White Question decisions
+		# replace wif_sme_the_whites_return with a variant; this one sits
+		# alongside whatever is held, which is what lets the funeral run at the
+		# same time as a Duma and have the two stack. Authoritarian support
+		# reads 0.15 with the base spirit - 0.10 from it, 0.05 from here.
+		wif_sme_tsar_funeral = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				neutrality_drift = 0.05
+				communism_drift = 0.08
+			}
+		}
+
+		# The land settlement. PERMANENT - no timer, no swap, and nothing
+		# removes it. The estates have been handed back and that is that.
+		wif_marxist_white_compromise = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				consumer_goods_factor = 0.10
+
+				neutrality_drift = 0.05
+				communism_drift = 0.05
+			}
+		}
+
+		# The Tsar himself, at Kuybyshev. Also permanent.
+		wif_honourary_tsar_vladimir = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = wif_honourary_tsar_vladimir
+
+			modifier = {
+				# A crown signs nothing and settles everything. Ministers who
+				# could not agree in a year agree in an afternoon rather than
+				# be seen disagreeing in front of him.
+				political_power_factor = 0.15
+
+				neutrality_drift = 0.10
+				communism_drift = 0.05
+			}
+		}
+
+		wif_sme_the_whites_return_duma = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				democratic_drift = 0.15
+				fascism_drift = 0.02
+				neutrality_drift = 0.10
+				communism_drift = 0.05
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		# The whites, with local assemblies actually sitting.
+		#
+		# A TIMED REPLACEMENT for wif_sme_the_whites_return, swapped in by a
+		# decision in common/decisions/wif_white_question.txt and swapped back by
+		# that decision's remove_effect when its days_remove expires. It is never
+		# held alongside the base spirit.
+		#
+		# Everything that is not a drift is copied from the base spirit
+		# unchanged - the manpower, the construction, the factory output. Only
+		# the political arithmetic moves.
+		wif_sme_the_whites_return_local_dumas = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				democratic_drift = 0.20
+				fascism_drift = 0.01
+				neutrality_drift = 0.04
+				communism_drift = 0.10
+
+				# The assemblies are real, and real assemblies take decisions out
+				# of the government's hands. This is the price of that: the
+				# democrats now hold political power that used to be yours.
+				political_power_factor = -0.05
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		wif_sme_the_whites_return = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				fascism_drift = 0.1
+				democratic_drift = 0.1
+				neutrality_drift = 0.1
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		# Held by every Russian warlord state - see wif_is_russian_warlord in
+		# common/scripted_triggers/wif_scripted_triggers.txt for the list, and
+		# common/on_actions/wif_on_actions.txt for the weekly grant.
+		#
+		# THE MODIFIER BLOCK IS EMPTY ON PURPOSE. Its entire effect is +80% to
+		# the battalion cap, and the cap is not a game modifier - it is script
+		# maths in common/scripted_effects/wif_battalion_cap.txt, which reads
+		# this idea directly through wif_src_warlord. Adding a modifier block
+		# here would be a second, separate effect, not a description of that
+		# one. The description carries the number instead.
+		# The People's Commissariat for Internal Affairs, put back together by
+		# SME_rebuild_the_nkvd.
+		#
+		# This spirit is the NKVD. It carries the counter-intelligence, it drives
+		# the Party's support, and the weekly sweep that keeps the Osobyi Otryad
+		# alive is keyed on it - see common/scripted_effects/wif_nkvd.txt. So
+		# when it moves to Yagoda in wif_yagoda_rising the whole apparatus moves
+		# with it, and nothing else has to be told.
+		# The marshal's own service.
+		#
+		# The NKVD after the question of who it answers to has been settled. The
+		# counter-intelligence is unchanged; what changes is the drift, 0.15 to
+		# 0.20, because a service that knows whose service it is works harder.
+		#
+		# Swapped in for wif_nkvd, never added alongside it. Both this and its
+		# opposite number are matched by the scripted trigger wif_has_nkvd, which
+		# is what the weekly sweep and the Yagoda transfer actually test - add a
+		# fourth variant and it goes in that trigger too, or the Osobyi Otryad
+		# quietly stops being undefeatable.
+		wif_nkvd_marshals_police = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = nkvd
+
+			modifier = {
+				communism_drift = 0.20
+				intelligence_agency_defense = 1
+			}
+		}
+
+		# The Party's service, and audited as such.
+		#
+		# The NKVD after the question of who it answers to has been settled. The
+		# counter-intelligence is unchanged; what changes is the drift, 0.15 to
+		# 0.20, because a service that knows whose service it is works harder.
+		#
+		# Swapped in for wif_nkvd, never added alongside it. Both this and its
+		# opposite number are matched by the scripted trigger wif_has_nkvd, which
+		# is what the weekly sweep and the Yagoda transfer actually test - add a
+		# fourth variant and it goes in that trigger too, or the Osobyi Otryad
+		# quietly stops being undefeatable.
+		wif_nkvd_auditable = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = nkvd
+
+			modifier = {
+				communism_drift = 0.20
+				intelligence_agency_defense = 1
+			}
+		}
+
+		wif_nkvd = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = nkvd
+
+			modifier = {
+				communism_drift = 0.15
+				intelligence_agency_defense = 1
+			}
+		}
+
+		wif_russian_warlord = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			# A shattered red star in a laurel wreath - the Union in pieces, which
+			# is what a warlord state is. It was generic_army_war_college, a
+			# classroom of officers, which said nothing about holding ground.
+			picture = SOV_factionalism_modifier
+		}
+
+		# Granted by wif_sme.3, the event that reveals Popov's betrayal. The
+		# grant itself sits inside the scripted effect wif_popov_betrayal so
+		# that both options of that event carry it.
+		#
+		# This is the SME finding out that a marshal it trusted with an army
+		# group can simply leave with it, and that nobody in Moscow knows which
+		# of the remaining commands has already done the same arithmetic. The
+		# military penalties are not battlefield damage - they are what an army
+		# does while it is working out who it reports to.
+		#
+		# SME_address_fracturing_leadership swaps this for the _addressed copy
+		# below. KEEP THE TWO BLOCKS SIDE BY SIDE: they differ in exactly three
+		# numbers and nothing else, and a modifier added to one and forgotten in
+		# the other silently disappears the moment the focus fires.
+		wif_sme_fractured_government = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.20
+				stability_factor = -0.20
+				war_support_factor = -0.30
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.10
+				army_org_factor = -0.10
+			}
+		}
+
+		# The same spirit after SME_address_fracturing_leadership.
+		#
+		# Three numbers move, three do not:
+		#   political power    -20% -> -15%
+		#   stability          -20% -> -17%
+		#   division defence   -10% ->  -5%   (halved)
+		#
+		# War support, division attack and organisation are deliberately
+		# untouched. The focus buys the general staff its authority back; it
+		# does not persuade the country that the war is going well.
+		wif_sme_fractured_government_addressed = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.17
+				war_support_factor = -0.30
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = -0.10
+			}
+		}
+
 	}
 }

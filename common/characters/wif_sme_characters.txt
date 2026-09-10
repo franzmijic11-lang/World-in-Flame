@@ -1,0 +1,91 @@
+# The SME's political advisors.
+#
+# Both unlock on SME_rebuild_the_nkvd and neither is visible before it - the
+# Commissariat is what puts these two in a position to be hired at all.
+#
+# NO visible BLOCK, DELIBERATELY. available alone is what was asked for - the
+# advisors are "only available after the focus" - and it is also the shape that
+# is known to work in this mod: the RKM advisor next door has available and no
+# visible. They now appear in the political advisor list from the start, greyed
+# out, and become hirable when Rebuild the NKVD completes. That also means a
+# player can see what the Commissariat will eventually offer them.
+#
+# THE SLOT ICON MUST BE civilian = { small = ... }. It was army = { small },
+# with only a large under civilian, and the advisors never appeared at all -
+# not greyed out, absent, and the game reported their idea tokens as invalid.
+# A political advisor draws its slot icon from the civilian small portrait; with
+# none there, there is nothing to put in the slot. Every working advisor in this
+# mod and 36 of vanilla's put the small portrait under civilian.
+#
+# THE EFFECTS ARE IN THE TRAITS, not here. common/country_leader/wif_traits.txt
+# holds wif_political_commissar and wif_propaganda_master; this file only says
+# which slot they fill, what they cost and when they appear. The trait's name is
+# also what the game prints as the job title under the portrait.
+characters = {
+
+	SME_nakita_paskarov = {
+		name = SME_nakita_paskarov
+
+		portraits = {
+			civilian = {
+				large = "GFX_portrait_SME_nakita_paskarov"
+				small = "GFX_idea_SME_nakita_paskarov"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SME_nakita_paskarov
+			cost = 50
+
+			allowed = {
+				original_tag = SME
+			}
+
+			available = {
+				has_completed_focus = SME_rebuild_the_nkvd
+			}
+
+			traits = {
+				wif_political_commissar
+			}
+
+			ai_will_do = {
+				base = 2
+			}
+		}
+	}
+
+	SME_yuri_dnoroutsi = {
+		name = SME_yuri_dnoroutsi
+
+		portraits = {
+			civilian = {
+				large = "GFX_portrait_SME_yuri_dnoroutsi"
+				small = "GFX_idea_SME_yuri_dnoroutsi"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SME_yuri_dnoroutsi
+			cost = 90
+
+			allowed = {
+				original_tag = SME
+			}
+
+			available = {
+				has_completed_focus = SME_rebuild_the_nkvd
+			}
+
+			traits = {
+				wif_propaganda_master
+			}
+
+			ai_will_do = {
+				base = 2
+			}
+		}
+	}
+}

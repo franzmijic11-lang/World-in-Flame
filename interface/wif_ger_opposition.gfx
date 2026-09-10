@@ -1,0 +1,175 @@
+# Ported from Germany Rework (Workshop 3607227153) to support the Rally the
+# Wehrmacht opposition branch in common/national_focus/germany.txt.
+#
+# Kept in its own file rather than merged into an existing one: nothing here
+# is Welt in Flammen's own work, and keeping it separate means the whole port
+# can be found, updated or removed in one place.
+#
+# NOTE THE CASE: spriteType, not SpriteType - vanilla writes it lowercase.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_focus_GER_agreement_with_uk"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_agreement_with_uk.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_austria_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_austria_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_benelux_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_benelux_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_britain_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_britain_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_commonwealth_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_commonwealth_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_france_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_france_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_italy"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_italy.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_poland_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_poland_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_scandinavia_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_scandinavia_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_the_netherlands"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_the_netherlands.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_attack_usa_communist"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_attack_usa_communist.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_austrian_unification_referendum"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_austrian_unification_referendum.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_befriend_australia"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_befriend_australia.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_befriend_netherlands"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_befriend_netherlands.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_befriend_poland"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_befriend_poland.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_benelux"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_benelux.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_central_european_alliance"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_central_european_alliance.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_confederation_compromise"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_confederation_compromise.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_crush_ussr_spider"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_crush_ussr_spider.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_ddr_logo"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_ddr_logo.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_disrupt_monroe"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_disrupt_monroe.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_eliminate_austrian_nazis"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_eliminate_austrian_nazis.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_fight_socialism"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_fight_socialism.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_german_republicanism_better"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_german_republicanism_better.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_germany_leads"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_germany_leads.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_great_america"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_great_america.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_great_war_communism_v_capitalism"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_great_war_communism_v_capitalism.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_independent_commonwealth"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_independent_commonwealth.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_integrate_american_german_speakers"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_integrate_american_german_speakers.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_new_german_state"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_new_german_state.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_poland_vote"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_poland_vote.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_prussian_democracy"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_prussian_democracy.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_reconsider_colonization_of_the_americas"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_reconsider_colonization_of_the_americas.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_remove_eastern_claims"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_remove_eastern_claims.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_stamp_out_imperial_nationalism"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_stamp_out_imperial_nationalism.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_stressman"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_stressman.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_sudeten_solution"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_sudeten_solution.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_towards_a_united_germania"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_towards_a_united_germania.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_uk_german_naval_jacks"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_uk_german_naval_jacks.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_uk_ireland"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_uk_ireland.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_GER_unite_our_people"
+		texturefile = "gfx/interface/goals/ger_opposition/focus_GER_unite_our_people.dds"
+	}
+}

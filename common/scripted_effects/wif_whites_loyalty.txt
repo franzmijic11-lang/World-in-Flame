@@ -1,0 +1,297 @@
+
+# Keeping loyalty inside 0-100.
+#
+# The decisions move these by whole handfuls of points, so without this a
+# faction sitting at 3 that takes a -10 would read -7 in the panel and go on
+# subtracting political power for ever. Called from the weekly pass and from
+# every decision that touches a loyalty.
+wif_clamp_white_loyalty = {
+
+	if = {
+		limit = { check_variable = { wif_whites_dem_loyalty < 0 } }
+		set_variable = { wif_whites_dem_loyalty = 0 }
+	}
+	if = {
+		limit = { check_variable = { wif_whites_dem_loyalty > 100 } }
+		set_variable = { wif_whites_dem_loyalty = 100 }
+	}
+	if = {
+		limit = { check_variable = { wif_whites_fas_loyalty < 0 } }
+		set_variable = { wif_whites_fas_loyalty = 0 }
+	}
+	if = {
+		limit = { check_variable = { wif_whites_fas_loyalty > 100 } }
+		set_variable = { wif_whites_fas_loyalty = 100 }
+	}
+	if = {
+		limit = { check_variable = { wif_whites_mon_loyalty < 0 } }
+		set_variable = { wif_whites_mon_loyalty = 0 }
+	}
+	if = {
+		limit = { check_variable = { wif_whites_mon_loyalty > 100 } }
+		set_variable = { wif_whites_mon_loyalty = 100 }
+	}
+}
+
+# The three White factions in the state.
+#
+# Recomputed every week from the loyalty variables. The values feed the dynamic
+# modifier wif_whites_in_the_state, which reads them straight out of the
+# variables - vanilla does the same in Sweden's folkhemmet modifier - so the
+# effects move smoothly with loyalty instead of jumping between bands.
+#
+# A FACTION ONLY COUNTS IF ITS PARTY IS LARGER THAN 15%. A faction nobody votes
+# for is a debating society, however it feels about the government. That gate is
+# on every rule here, the civil war included.
+#
+# THE 39/40 GAP IS DELIBERATE. Above 40 pays, 39 and below costs, and the point
+# between is dead - the line where the whites are neither asset nor liability.
+# check_variable has no <= operator, and using one breaks the whole file's parse,
+# so "39 or lower" is written NOT = { ... > 39 }, which is exact.
+
+wif_whites_loyalty_update = {
+
+	wif_clamp_white_loyalty = yes
+
+	# Paskarov's weekly work on the democrats.
+	#
+	# A dynamic modifier can change a drift but it cannot subtract from a
+	# variable, so the loyalty half of Frame the Leaders has to be script. Both
+	# halves are keyed the same way: the focus must be done AND the commissar
+	# must actually be in post. Sack him and the arrests stop.
+	if = {
+		limit = {
+			has_completed_focus = SME_frame_leaders
+			has_idea = SME_nakita_paskarov
+		}
+		add_to_variable = { wif_whites_dem_loyalty = -1 }
+		wif_clamp_white_loyalty = yes
+	}
+
+	wif_price_white_decisions = yes
+
+	set_variable = { wif_whites_pp_total = 0 }
+	set_variable = { wif_whites_construction = 0 }
+	set_variable = { wif_whites_factory = 0 }
+
+
+	# ------------------------------------------------------- Russian Democratic Faction
+	set_variable = { wif_whites_dem_pp = 0 }
+
+	if = {
+		limit = { check_variable = { party_popularity_100@democratic > 15 } }
+
+		if = {
+			# Loyal. +0.01 political power for every point above 40.
+			limit = { check_variable = { wif_whites_dem_loyalty > 40 } }
+
+			set_variable = { wif_whites_dem_pp = wif_whites_dem_loyalty }
+			subtract_from_variable = { wif_whites_dem_pp = 40 }
+			multiply_variable = { wif_whites_dem_pp = 0.01 }
+		}
+		else_if = {
+			# Disaffected. -0.01 for every point below 39.
+			limit = { NOT = { check_variable = { wif_whites_dem_loyalty > 39 } } }
+
+			set_variable = { wif_whites_dem_pp = 39 }
+			subtract_from_variable = { wif_whites_dem_pp = wif_whites_dem_loyalty }
+			multiply_variable = { wif_whites_dem_pp = -0.01 }
+		}
+
+		# Below 12 they stop turning up. The ministries and the plants notice.
+		if = {
+			limit = { check_variable = { wif_whites_dem_loyalty < 12 } }
+			add_to_variable = { wif_whites_construction = -0.05 }
+			add_to_variable = { wif_whites_factory = -0.05 }
+		}
+	}
+
+	add_to_variable = { wif_whites_pp_total = wif_whites_dem_pp }
+
+	# ------------------------------------------------------- Russian Fascist Party
+	set_variable = { wif_whites_fas_pp = 0 }
+
+	if = {
+		limit = { check_variable = { party_popularity_100@fascism > 15 } }
+
+		if = {
+			# Loyal. +0.01 political power for every point above 40.
+			limit = { check_variable = { wif_whites_fas_loyalty > 40 } }
+
+			set_variable = { wif_whites_fas_pp = wif_whites_fas_loyalty }
+			subtract_from_variable = { wif_whites_fas_pp = 40 }
+			multiply_variable = { wif_whites_fas_pp = 0.01 }
+		}
+		else_if = {
+			# Disaffected. -0.01 for every point below 39.
+			limit = { NOT = { check_variable = { wif_whites_fas_loyalty > 39 } } }
+
+			set_variable = { wif_whites_fas_pp = 39 }
+			subtract_from_variable = { wif_whites_fas_pp = wif_whites_fas_loyalty }
+			multiply_variable = { wif_whites_fas_pp = -0.01 }
+		}
+
+		# Below 12 they stop turning up. The ministries and the plants notice.
+		if = {
+			limit = { check_variable = { wif_whites_fas_loyalty < 12 } }
+			add_to_variable = { wif_whites_construction = -0.05 }
+			add_to_variable = { wif_whites_factory = -0.05 }
+		}
+	}
+
+	add_to_variable = { wif_whites_pp_total = wif_whites_fas_pp }
+
+	# ------------------------------------------------------- Monarchists
+	set_variable = { wif_whites_mon_pp = 0 }
+
+	if = {
+		limit = { check_variable = { party_popularity_100@neutrality > 15 } }
+
+		if = {
+			# Loyal. +0.01 political power for every point above 40.
+			limit = { check_variable = { wif_whites_mon_loyalty > 40 } }
+
+			set_variable = { wif_whites_mon_pp = wif_whites_mon_loyalty }
+			subtract_from_variable = { wif_whites_mon_pp = 40 }
+			multiply_variable = { wif_whites_mon_pp = 0.01 }
+		}
+		else_if = {
+			# Disaffected. -0.01 for every point below 39.
+			limit = { NOT = { check_variable = { wif_whites_mon_loyalty > 39 } } }
+
+			set_variable = { wif_whites_mon_pp = 39 }
+			subtract_from_variable = { wif_whites_mon_pp = wif_whites_mon_loyalty }
+			multiply_variable = { wif_whites_mon_pp = -0.01 }
+		}
+
+		# Below 12 they stop turning up. The ministries and the plants notice.
+		if = {
+			limit = { check_variable = { wif_whites_mon_loyalty < 12 } }
+			add_to_variable = { wif_whites_construction = -0.05 }
+			add_to_variable = { wif_whites_factory = -0.05 }
+		}
+	}
+
+	add_to_variable = { wif_whites_pp_total = wif_whites_mon_pp }
+}
+
+
+# The second civil war.
+#
+# A faction goes to war when it is both POPULAR and BETRAYED: above 45% of the
+# vote and below 13 loyalty. Popularity alone is a grievance with no army;
+# disloyalty alone is a grumble with no following. It takes both.
+#
+# THE CASCADE. Once one faction is shooting, any OTHER faction under 20 loyalty
+# leaves too - not because it agrees with the first, but because the moment the
+# Red Army is committed is the moment to go. Each is a separate start_civil_war,
+# fired in sequence off whatever is left of the SME.
+#
+# Fires once. The flag is set before any of it, so a cascade cannot re-enter.
+#
+# SIZES ARE THE TUNING DIAL: the first faction takes a third of the country, a
+# faction joining the pile-on takes half that.
+wif_whites_civil_war_check = {
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = wif_second_civil_war_fired }
+			check_variable = { party_popularity_100@democratic > 45 }
+			check_variable = { wif_whites_dem_loyalty < 13 }
+		}
+
+		set_country_flag = wif_second_civil_war_fired
+
+		start_civil_war = {
+			ideology = democratic
+			ruling_party = communism
+			size = 0.35
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_fas_loyalty < 20 } }
+			start_civil_war = {
+				ideology = fascism
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_mon_loyalty < 20 } }
+			start_civil_war = {
+				ideology = neutrality
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = wif_second_civil_war_fired }
+			check_variable = { party_popularity_100@fascism > 45 }
+			check_variable = { wif_whites_fas_loyalty < 13 }
+		}
+
+		set_country_flag = wif_second_civil_war_fired
+
+		start_civil_war = {
+			ideology = fascism
+			ruling_party = communism
+			size = 0.35
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_dem_loyalty < 20 } }
+			start_civil_war = {
+				ideology = democratic
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_mon_loyalty < 20 } }
+			start_civil_war = {
+				ideology = neutrality
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_flag = wif_second_civil_war_fired }
+			check_variable = { party_popularity_100@neutrality > 45 }
+			check_variable = { wif_whites_mon_loyalty < 13 }
+		}
+
+		set_country_flag = wif_second_civil_war_fired
+
+		start_civil_war = {
+			ideology = neutrality
+			ruling_party = communism
+			size = 0.35
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_dem_loyalty < 20 } }
+			start_civil_war = {
+				ideology = democratic
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+
+		if = {
+			limit = { check_variable = { wif_whites_fas_loyalty < 20 } }
+			start_civil_war = {
+				ideology = fascism
+				ruling_party = communism
+				size = 0.15
+			}
+		}
+	}
+}

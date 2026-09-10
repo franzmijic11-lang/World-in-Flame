@@ -1,0 +1,201 @@
+# The Soviet Emergency Military Government's balance of power, created by the
+# focus SME_address_fracturing_leadership.
+#
+# The question the focus asks is who the Emergency Government actually is: the
+# marshal who holds the army, or the council that is supposed to hold the
+# marshal. Nothing in the SME's founding ever settled it, and Popov walking east
+# with an army group is what made the question urgent.
+#
+# ORIENTATION. The council is the LEFT side and runs negative; Zhukov is the
+# RIGHT side and runs positive, the same way vanilla puts Italy's Grand Council
+# left and Mussolini right. Getting this backwards silently swaps every modifier
+# in the file, so if the two ever need to trade places, move the icons and the
+# localisation as well as the ranges.
+#
+# FOUR STEPS EACH WAY, plus a dead centre that pays nothing. The bands are not
+# even widths: the first step off centre is the widest at 0.20, and they narrow
+# to 0.20 again at the extreme, so drifting slightly is easy and going all the
+# way is not.
+#
+# There is deliberately NO decision_category. Nothing moves this balance yet -
+# it is created by the focus and then sits where it was put until an event, a
+# focus or a decision pushes it with add_power_balance_value. That is the next
+# piece of work, not an oversight; a commented-out category in vanilla's own
+# _test.txt confirms the field is optional.
+SME_leadership_balance = {
+	initial_value = 0
+
+	left_side = SME_leadership_council_side
+	right_side = SME_leadership_zhukov_side
+
+	### Neither side. The council meets, the marshal attends, nothing is decided.
+	range = {
+		id = SME_leadership_balance_neutral
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+	}
+
+	### The Soviet Emergency Military Council
+	side = {
+		id = SME_leadership_council_side
+		icon = GFX_bop_SME_council_side
+
+		range = {
+			id = SME_leadership_council_1
+			min = -0.30
+			max = -0.10
+			modifier = {
+				stability_factor = 0.02
+				production_speed_buildings_factor = 0.03
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.09
+			}
+		}
+
+		range = {
+			id = SME_leadership_council_2
+			min = -0.55
+			max = -0.30
+			modifier = {
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				political_power_factor = 0.05
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.12
+			}
+		}
+
+		range = {
+			id = SME_leadership_council_3
+			min = -0.80
+			max = -0.55
+			modifier = {
+				stability_factor = 0.10
+				production_speed_buildings_factor = 0.07
+				political_power_factor = 0.10
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.16
+			}
+		}
+
+		# The third step again, with four points added to every line of it.
+		range = {
+			id = SME_leadership_council_4
+			min = -1.00
+			max = -0.80
+			modifier = {
+				stability_factor = 0.14
+				production_speed_buildings_factor = 0.11
+				political_power_factor = 0.14
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.19
+			}
+		}
+	}
+
+	### Marshal Zhukov
+	side = {
+		id = SME_leadership_zhukov_side
+		icon = GFX_bop_SME_zhukov_side
+
+		range = {
+			id = SME_leadership_zhukov_1
+			min = 0.10
+			max = 0.30
+			modifier = {
+				army_attack_factor = 0.03
+				army_defence_factor = 0.02
+				army_org_factor = 0.04
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.09
+			}
+		}
+
+		# The army starts costing the government something to keep happy.
+		range = {
+			id = SME_leadership_zhukov_2
+			min = 0.30
+			max = 0.55
+			modifier = {
+				army_attack_factor = 0.06
+				army_defence_factor = 0.03
+				army_org_factor = 0.07
+				political_power_factor = -0.02
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.12
+			}
+		}
+
+		range = {
+			id = SME_leadership_zhukov_3
+			min = 0.55
+			max = 0.80
+			modifier = {
+				army_attack_factor = 0.08
+				army_defence_factor = 0.05
+				army_org_factor = 0.09
+				political_power_factor = -0.05
+				war_support_factor = 0.10
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.16
+			}
+		}
+
+		range = {
+			id = SME_leadership_zhukov_4
+			min = 0.80
+			max = 1.00
+			modifier = {
+				army_attack_factor = 0.15
+				army_defence_factor = 0.10
+				army_org_factor = 0.15
+				political_power_factor = -0.07
+				war_support_factor = 0.15
+
+				# Both sides feed the Party. Arguing about who runs the Union is
+				# still arguing in the Union's own terms, and the louder the
+				# argument gets the more central the Party is to it - so this
+				# climbs with the band and is identical on the council's side and
+				# on Zhukov's. Neither man is the one making the SME communist.
+				communism_drift = 0.19
+			}
+		}
+	}
+}

@@ -18,3 +18,96 @@ wif_uses_non_aligned_factory_cap = {
 		tag = CSR
 	}
 }
+
+
+# The Soviet successor states - everything that comes out of the Union falling
+# apart, and everything that later breaks off the wreckage.
+#
+# These are exempt from the military factory ratio cap entirely: no ceiling
+# spirit, and no cap-aware AI behaviour either (the strategies in
+# common/ai_strategy/wif_factory_balance.txt all test this).
+#
+# The reasoning is that the cap models a state rationing its industry between
+# guns and everything else. None of these countries is in that position. They
+# are emergency governments and breakaway republics that came into existence
+# mid-war holding whatever plant happened to be inside their borders, with no
+# peacetime economy to protect and nothing to ration it against. Capping them
+# against a civilian base they never built would throttle countries that are
+# already the weakest things on the map.
+#
+# NOT included, deliberately:
+#   * the Reichskommissariats, Finland and Germany - they take Soviet land in
+#     wif_sov.1 but they are the conquerors, not successors, and they have
+#     ordinary economies to balance
+#   * the Moskowien civil war breakaways (NSR, NSP, NAR, NWG, RLF, WRS, LOK,
+#     SRG, NRG, SSM) - they break off the Reichskommissariat, not the Union
+#   * TAN, which the CSR merely releases - Tannu Tuva exists from 1936 and is
+#     not a successor to anything
+# The warlord set: who holds a piece of Russia by force of arms rather than by
+# any claim anybody recognises.
+#
+# NOT the same list as wif_is_soviet_successor below. The five Central Asian
+# republics - KAZ KYR TAJ TMS UZB - are successors but not warlords: they were
+# cut loose as nations by the collapse rather than seized by whoever had the
+# divisions. Only the Central Asian Red Army, which took its territory the
+# other way, is here.
+#
+#   SME   the Emergency Government, the Red Army holding Moscow
+#   CRA   the Central Asian Red Army
+#   FES   Stalin at Irkutsk
+#   CSR   Popov at Tomsk
+#   WSM   Yagoda in the Urals
+#   SBA   the Siberian Anarchy in the far north
+#
+# The last four are the splits off the SME itself. Anything added to that list
+# later belongs here too - and in wif_is_soviet_successor.
+wif_is_russian_warlord = {
+	OR = {
+		tag = SME
+		tag = CRA
+		tag = FES
+		tag = CSR
+		tag = WSM
+		tag = SBA
+	}
+}
+
+wif_is_soviet_successor = {
+	OR = {
+		# The Union's own remnant.
+		tag = SME
+
+		# Central Asia, cut loose by wif_central_asia_breakup, which runs
+		# inside wif_sov.1 as the Union collapses.
+		tag = CRA
+		tag = KAZ
+		tag = KYR
+		tag = TAJ
+		tag = TMS
+		tag = UZB
+
+		# Later splits off the SME.
+		tag = FES		# Far Eastern Union, around Stalin at Irkutsk
+		tag = CSR		# Central Siberian Republic, Popov's
+		tag = WSM		# West Siberian Marxist Republic, Yagoda's
+		tag = SBA		# Siberian Anarchy, the far north
+	}
+}
+
+# Does this country hold the NKVD, in any of its forms?
+#
+# The focus SME_rebuild_the_nkvd grants wif_nkvd, and the two focuses under it
+# SWAP that spirit for a variant. Anything that tests for the NKVD therefore has
+# to test for all three, or it silently stops working the moment the player takes
+# one of those focuses - which is exactly what would have happened to the weekly
+# sweep in common/scripted_effects/wif_nkvd.txt and to the handover in
+# wif_yagoda_rising.
+#
+# ADD ANY FUTURE NKVD SPIRIT HERE.
+wif_has_nkvd = {
+	OR = {
+		has_idea = wif_nkvd
+		has_idea = wif_nkvd_marshals_police
+		has_idea = wif_nkvd_auditable
+	}
+}

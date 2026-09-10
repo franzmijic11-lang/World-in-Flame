@@ -1,0 +1,96 @@
+# Status lines for the three loyalty readouts in the decision panel.
+#
+# Localisation cannot branch, so every conditional word in those tooltips comes
+# through here. Each faction gets one line saying what it is doing for you or to
+# you right now, chosen from the same variables the maths uses - so the tooltip
+# cannot drift out of agreement with the effect.
+
+defined_text = {
+	name = WIF_WhitesDemStatus
+
+	# Below 15% of the vote nothing applies at all, so say that first.
+	text = {
+		trigger = { NOT = { check_variable = { party_popularity_100@democratic > 15 } } }
+		localization_key = wif_whites_status_irrelevant
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_dem_loyalty < 12 } }
+		localization_key = wif_whites_status_absent
+	}
+
+	text = {
+		trigger = { NOT = { check_variable = { wif_whites_dem_loyalty > 39 } } }
+		localization_key = wif_whites_status_disaffected
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_dem_loyalty > 40 } }
+		localization_key = wif_whites_status_loyal
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_whites_status_neutral
+	}
+}
+
+defined_text = {
+	name = WIF_WhitesFasStatus
+
+	# Below 15% of the vote nothing applies at all, so say that first.
+	text = {
+		trigger = { NOT = { check_variable = { party_popularity_100@fascism > 15 } } }
+		localization_key = wif_whites_status_irrelevant
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_fas_loyalty < 12 } }
+		localization_key = wif_whites_status_absent
+	}
+
+	text = {
+		trigger = { NOT = { check_variable = { wif_whites_fas_loyalty > 39 } } }
+		localization_key = wif_whites_status_disaffected
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_fas_loyalty > 40 } }
+		localization_key = wif_whites_status_loyal
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_whites_status_neutral
+	}
+}
+
+defined_text = {
+	name = WIF_WhitesMonStatus
+
+	# Below 15% of the vote nothing applies at all, so say that first.
+	text = {
+		trigger = { NOT = { check_variable = { party_popularity_100@neutrality > 15 } } }
+		localization_key = wif_whites_status_irrelevant
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_mon_loyalty < 12 } }
+		localization_key = wif_whites_status_absent
+	}
+
+	text = {
+		trigger = { NOT = { check_variable = { wif_whites_mon_loyalty > 39 } } }
+		localization_key = wif_whites_status_disaffected
+	}
+
+	text = {
+		trigger = { check_variable = { wif_whites_mon_loyalty > 40 } }
+		localization_key = wif_whites_status_loyal
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_whites_status_neutral
+	}
+}

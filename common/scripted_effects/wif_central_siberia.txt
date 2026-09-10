@@ -29,6 +29,21 @@ wif_popov_betrayal = {
 	# what the army it defected from already knew.
 	SME = { save_event_target_as = wif_tech_donor }
 
+	# The government fractures the moment the news reaches Moscow.
+	#
+	# Granted here rather than in wif_sme.3 so that BOTH options of that event
+	# carry it: the player who stays inherits the doubt, and so does the AI SME
+	# left behind by the player who takes the train to Tomsk. Being inside a
+	# scripted effect it still shows up in the option tooltip.
+	#
+	# Scoped explicitly to SME for the same reason as the line above, even
+	# though this effect already runs in SME scope.
+	#
+	# The SME focus SME_address_fracturing_leadership swaps this for the milder
+	# wif_sme_fractured_government_addressed. Both live in
+	# common/ideas/wif_national_spirits.txt.
+	SME = { add_ideas = wif_sme_fractured_government }
+
 	# =====================================================================
 	# The ten states of the Central Siberian Republic
 	# =====================================================================

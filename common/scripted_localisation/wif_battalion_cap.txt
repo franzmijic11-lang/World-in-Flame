@@ -74,8 +74,74 @@ defined_text = {
 	name = GetWifCapTerritory
 
 	text = {
-		trigger = { check_variable = { wif_terr_pct > 0 } }
+		trigger = { check_variable = { wif_terr_bat > 0 } }
 		localization_key = wif_cap_line_terr
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Russian warlord. One spirit, one flat percentage, so the only question is
+# whether the country has it.
+defined_text = {
+	name = GetWifCapWarlord
+
+	text = {
+		trigger = { check_variable = { wif_src_warlord > 0 } }
+		localization_key = wif_cap_line_warlord
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# The doubling. Not a line of the sum at all - it multiplies the result - so
+# it reads as an operation rather than as a quantity.
+defined_text = {
+	name = GetWifCapDouble
+
+	text = {
+		trigger = { check_variable = { wif_cap_multiplier > 1 } }
+		localization_key = wif_cap_line_double
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# The Red Army. Flat battalions rather than a percentage, and the only line in
+# the tooltip whose size doubles on a single focus, so it is worth showing the
+# number rather than a label.
+defined_text = {
+	name = GetWifCapRedArmy
+
+	text = {
+		trigger = { check_variable = { wif_src_redarmy > 0 } }
+		localization_key = wif_cap_line_redarmy
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# Single state. Only ever a penalty, and only ever visible to a country that
+# owns exactly one state - which is rare enough that most players will never
+# see this line, and unmissable for the one who does.
+defined_text = {
+	name = GetWifCapOneState
+
+	text = {
+		trigger = { check_variable = { wif_src_onestate < 0 } }
+		localization_key = wif_cap_line_onestate
 	}
 
 	text = {
@@ -96,6 +162,119 @@ defined_text = {
 	text = {
 		trigger = { always = yes }
 		localization_key = wif_cap_line_none
+	}
+}
+
+# Economy law. THE ONLY LINE IN THIS TOOLTIP THAT CAN BE A PENALTY, so unlike
+# every other bonus it has three branches rather than two: paying out, costing,
+# or absent. The two live branches point at different localisation keys because
+# the sign and the colour both have to change - a penalty renders red and
+# carries its own minus, and the "+" the other lines hardcode would otherwise
+# print as "+-15%".
+#
+# Absent means Early Mobilisation, the 0% law, which is hidden exactly like
+# Disarmed Nation is on the conscription line.
+defined_text = {
+	name = GetWifCapEconomy
+
+	text = {
+		trigger = { check_variable = { wif_src_econ > 0 } }
+		localization_key = wif_cap_line_econ
+	}
+
+	text = {
+		trigger = { check_variable = { wif_src_econ < 0 } }
+		localization_key = wif_cap_line_econ_neg
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# The economy law's own name, so the line can say which law is doing it. Same
+# shape as GetWifCapLawName above, and ordered the same way as the cap maths.
+# The final branch catches Early Mobilisation, which is the only law with no
+# entry of its own because it is worth nothing.
+defined_text = {
+	name = GetWifCapEconomyName
+
+	text = {
+		trigger = { has_idea = totaler_krieg_economy }
+		localization_key = wif_cap_econ_totaler_krieg
+	}
+
+	text = {
+		trigger = { has_idea = war_economy }
+		localization_key = wif_cap_econ_war
+	}
+
+	text = {
+		trigger = { has_idea = national_defense_state }
+		localization_key = wif_cap_econ_nds
+	}
+
+	text = {
+		trigger = { has_idea = wif_reichskommissariat_economy }
+		localization_key = wif_cap_econ_rk
+	}
+
+	text = {
+		trigger = { has_idea = tot_economic_mobilisation }
+		localization_key = wif_cap_econ_total
+	}
+
+	text = {
+		trigger = { has_idea = partial_economic_mobilisation }
+		localization_key = wif_cap_econ_partial
+	}
+
+	text = {
+		trigger = { has_idea = new_economic_policy }
+		localization_key = wif_cap_econ_nep
+	}
+
+	text = {
+		trigger = { has_idea = capital_investment_model }
+		localization_key = wif_cap_econ_cim
+	}
+
+	text = {
+		trigger = { has_idea = civilian_economy }
+		localization_key = wif_cap_econ_civilian
+	}
+
+	text = {
+		trigger = { has_idea = isolation }
+		localization_key = wif_cap_econ_isolation
+	}
+
+	text = {
+		trigger = { has_idea = undisturbed_isolation }
+		localization_key = wif_cap_econ_undisturbed
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_econ_early
+	}
+}
+
+# The total. It used to be written straight into the tooltip as "+[?wif_bat_pct]"
+# with the plus sign as literal text, which was safe while nothing could be
+# negative. It no longer is, so the sign comes from here.
+defined_text = {
+	name = GetWifCapTotal
+
+	text = {
+		trigger = { check_variable = { wif_bat_pct < 0 } }
+		localization_key = wif_cap_total_neg
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_total_pos
 	}
 }
 

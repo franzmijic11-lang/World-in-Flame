@@ -1,0 +1,35 @@
+# What the White Question decisions cost.
+#
+# The costs are VARIABLES rather than literals because Yuri Dnoroutsi, the
+# propaganda master, takes ten political power off each of them. A decision's
+# cost field accepts var:<name> - vanilla does the same thing in
+# common/decisions/AST.txt with AST_call_on_fascists_cost.
+#
+# SEEDED, NOT JUST REFRESHED. An unset variable reads as zero, and a decision
+# costing zero is worse than one costing full price - so this is called from
+# wif_open_second_civil_war_watch the moment the category opens, as well as
+# every week afterwards. Every decision in the category is gated behind that
+# same watch, so nothing can be reached before the prices exist.
+#
+# ADDING A DECISION TO THE CATEGORY means adding its variable here and using
+# var:<name> as its cost. A literal cost simply will not see the discount.
+wif_price_white_decisions = {
+
+	set_variable = { wif_white_decision_discount = 0 }
+
+	if = {
+		limit = { has_idea = SME_yuri_dnoroutsi }
+		set_variable = { wif_white_decision_discount = 10 }
+	}
+
+	set_variable = { wif_cost_duma_promise = 30 }
+	subtract_from_variable = { wif_cost_duma_promise = wif_white_decision_discount }
+	set_variable = { wif_cost_local_dumas = 500 }
+	subtract_from_variable = { wif_cost_local_dumas = wif_white_decision_discount }
+	set_variable = { wif_cost_tsar_funeral = 20 }
+	subtract_from_variable = { wif_cost_tsar_funeral = wif_white_decision_discount }
+	set_variable = { wif_cost_tsarist_land = 125 }
+	subtract_from_variable = { wif_cost_tsarist_land = wif_white_decision_discount }
+	set_variable = { wif_cost_vladimir = 50 }
+	subtract_from_variable = { wif_cost_vladimir = wif_white_decision_discount }
+}

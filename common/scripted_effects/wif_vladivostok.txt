@@ -9,46 +9,73 @@
 # actually borders Vladivostok - and 328 (Manchukuo) for Manchuria. Run from the
 # SOV scope inside wif_sov.1, before the every_state sweep that hands the rest
 # of the Soviet Union to SME.
+#
+# EVERY EVENT TARGET IS GUARDED BEFORE IT IS READ. save_event_target_as inside
+# a state's owner scope does nothing at all if that state has no owner, and the
+# target then stays unset - but the script went on referencing it regardless,
+# which produced "invalid event target" a hundred and fifty times a run and, on
+# the branch that mattered, silently handed the port to nobody.
+#
+# There is no trigger for "was this event target set", so a country flag stands
+# in for one. It is cleared at both ends so it cannot leak into a later call.
 wif_award_vladivostok = {
-	527 = {
-		owner = {
-			save_event_target_as = wif_korea_owner
-		}
-	}
+
+	clr_country_flag = wif_vladivostok_heir_found
 
 	if = {
-		# Korea is held by a puppet - the overlord collects.
-		limit = {
-			event_target:wif_korea_owner = { is_subject = yes }
+		# Korea is owned by somebody.
+		limit = { any_country = { owns_state = 527 } }
+
+		527 = {
+			owner = { save_event_target_as = wif_korea_owner }
 		}
-		event_target:wif_korea_owner = {
-			overlord = {
+
+		if = {
+			# Korea is held by a puppet - the overlord collects.
+			limit = { event_target:wif_korea_owner = { is_subject = yes } }
+
+			event_target:wif_korea_owner = {
+				overlord = { save_event_target_as = wif_vladivostok_heir }
+			}
+			set_country_flag = wif_vladivostok_heir_found
+		}
+		else_if = {
+			# Korea is held by a foreign power in its own right.
+			limit = { NOT = { event_target:wif_korea_owner = { tag = KOR } } }
+
+			event_target:wif_korea_owner = {
 				save_event_target_as = wif_vladivostok_heir
 			}
+			set_country_flag = wif_vladivostok_heir_found
 		}
-	}
-	else_if = {
-		# Korea is held by a foreign power in its own right.
-		limit = {
-			NOT = { event_target:wif_korea_owner = { tag = KOR } }
-		}
-		event_target:wif_korea_owner = {
-			save_event_target_as = wif_vladivostok_heir
+		else = {
+			# Korea is Korean and independent - Manchuria's owner takes it.
+			if = {
+				limit = { any_country = { owns_state = 328 } }
+				328 = {
+					owner = { save_event_target_as = wif_vladivostok_heir }
+				}
+				set_country_flag = wif_vladivostok_heir_found
+			}
 		}
 	}
 	else = {
-		# Korea is Korean and independent - Manchuria's owner takes it.
-		328 = {
-			owner = {
-				save_event_target_as = wif_vladivostok_heir
+		# Nobody holds Korea at all. Fall through to Manchuria.
+		if = {
+			limit = { any_country = { owns_state = 328 } }
+			328 = {
+				owner = { save_event_target_as = wif_vladivostok_heir }
 			}
+			set_country_flag = wif_vladivostok_heir_found
 		}
 	}
 
-	# Only hand over a port the Soviets still hold. If someone already took it
-	# by force, it stays theirs rather than being confiscated by this clause.
+	# Only hand over a port the Soviets still hold, and only to an heir that
+	# was actually found. If someone already took it by force, it stays theirs
+	# rather than being confiscated by this clause.
 	if = {
 		limit = {
+			has_country_flag = wif_vladivostok_heir_found
 			408 = { is_owned_by = SOV }
 			NOT = { event_target:wif_vladivostok_heir = { tag = SOV } }
 		}
@@ -56,4 +83,6 @@ wif_award_vladivostok = {
 			transfer_state = 408
 		}
 	}
+
+	clr_country_flag = wif_vladivostok_heir_found
 }

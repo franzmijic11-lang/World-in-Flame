@@ -17,4 +17,45 @@ leader_traits = {
 		compliance_growth = 0.10
 		resistance_target = -0.10
 	}
+	# Marshal Zhukov as head of the Emergency Government.
+	#
+	# He is not a politician and does not pretend to be one; what he is, is the
+	# last man in Russia whose communism nobody can question, standing in front
+	# of an army that still answers to him. That is worth a little support every
+	# day to a government that has otherwise stopped being convincing.
+	#
+	# 0.05 daily, which reads as +0.05 on the leader's tooltip. It is a
+	# deliberate counterweight to The Whites Return, whose three drifts pull
+	# 0.3 a day the other way - Zhukov slows that, he does not stop it.
+	wif_marshal_of_the_union = {
+		random = no
+		sprite = 13
+
+		communism_drift = 0.05
+	}
+
+	# ADVISOR TRAITS. An advisor's effects come from its traits, not from the
+	# advisor block - that block only says which slot, what it costs and when it
+	# unlocks. The trait's own name is what the game prints as the job title
+	# under the portrait, which is why these are named for the post rather than
+	# for the man.
+	#
+	# Drift here is on the same scale as everywhere else in this mod: 0.05 reads
+	# as +0.05 daily on the tooltip. Remember the popularity curve scales all of
+	# it down in play - see the note in the memory on party drift.
+	wif_political_commissar = {
+		random = no
+		sprite = 13
+
+		communism_drift = 0.05
+		stability_factor = -0.05
+	}
+
+	wif_propaganda_master = {
+		random = no
+		sprite = 13
+
+		communism_drift = 0.10
+		stability_factor = 0.10
+	}
 }

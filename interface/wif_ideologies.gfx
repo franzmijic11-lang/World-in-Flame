@@ -1,0 +1,23 @@
+# Ideology icons for the three Authoritarian monarchies.
+#
+# They reuse vanilla focus artwork by pointing at the same texture, so no
+# new art ships and nothing can go missing: Regential Monarchism uses the
+# Imperial Loyalists goal, Absolute Monarchism uses God Save the King, and
+# Semi-Constitutional Monarchy uses the German monarchy compromise.
+#
+# spriteType lowercase, as vanilla writes it.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_ideology_wif_regential_monarchism"
+		texturefile = "gfx/interface/goals/goal_tfv_strengthen_commonwealth_ties.dds"
+	}
+	spriteType = {
+		name = "GFX_ideology_wif_absolute_monarchism"
+		texturefile = "gfx/interface/goals/focus_eng_god_save_the_king.dds"
+	}
+	spriteType = {
+		name = "GFX_ideology_wif_semi_constitutional_monarchy"
+		texturefile = "gfx/interface/goals/focus_GER_monarchy_compromise.dds"
+	}
+}

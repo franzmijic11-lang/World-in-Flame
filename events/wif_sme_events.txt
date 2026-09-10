@@ -83,10 +83,43 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Stay in Moscow.
 	option = {
 		name = wif_sme.3.a
 
+		ai_chance = {
+			base = 100
+		}
+
 		wif_popov_betrayal = yes
+	}
+
+	# Go east with Popov.
+	#
+	# Same shape as wif_sme.2.b: the split runs first and the tag change
+	# second, because change_tag_from cannot hand the player a country that
+	# does not exist yet, and the CSR is not created until Tomsk has actually
+	# transferred. Hence the country_exists guard - if the SME no longer owns
+	# a single one of the ten states then no republic was proclaimed, there is
+	# nothing to defect to, and the player stays where they are.
+	#
+	# base = 0 keeps the AI out of it. An AI SME picking this would hand its
+	# own country to nobody.
+	option = {
+		name = wif_sme.3.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		wif_popov_betrayal = yes
+
+		hidden_effect = {
+			if = {
+				limit = { country_exists = CSR }
+				CSR = { change_tag_from = ROOT }
+			}
+		}
 	}
 }
 
@@ -107,10 +140,74 @@ country_event = {
 		tag = SME
 	}
 
+	# Stay in Moscow.
 	option = {
 		name = wif_sme.4.a
 
+		ai_chance = {
+			base = 100
+		}
+
 		wif_yagoda_rising = yes
+	}
+
+	# Go over to Yagoda.
+	#
+	# The rising runs first and the tag change second, for the same reason as
+	# wif_sme.2.b and wif_sme.3.b - the WSM does not exist until a state has
+	# transferred to it. The country_exists guard covers the case where the
+	# SME had already lost all four Urals states, in which case nothing was
+	# declared and there is nowhere to go.
+	#
+	# base = 0 keeps the AI out of it.
+	option = {
+		name = wif_sme.4.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		wif_yagoda_rising = yes
+
+		hidden_effect = {
+			if = {
+				limit = { country_exists = WSM }
+				WSM = { change_tag_from = ROOT }
+			}
+		}
 	}
 }
 
+# Return of a Romanov. Fired by the decision wif_invite_vladimir_iii.
+#
+# The Party did not agree to this and is not being asked. Fifteen points of
+# stability is what it costs to put a Romanov back on Russian soil while calling
+# yourself a workers' state.
+#
+# Kuybyshev is demilitarised because the whites insisted on it - a Tsar in a
+# garrison town is a Tsar with an army around him, which is precisely what the
+# people who agreed to this were promised would not happen. The palace is the
+# consolation: one extra building slot in the state, and it stays built whatever
+# the politics do afterwards.
+country_event = {
+	id = wif_sme.5
+	title = wif_sme.5.t
+	desc = wif_sme.5.d
+	picture = GFX_report_event_generic_rally
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme.5.a
+
+		add_stability = -0.15
+
+		251 = {
+			set_demilitarized_zone = yes
+
+			add_dynamic_modifier = {
+				modifier = wif_new_imperial_palace
+			}
+		}
+	}
+}

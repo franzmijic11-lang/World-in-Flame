@@ -2797,18 +2797,6 @@ on_actions = {
 				}
 				if = {
 					limit = {
-						has_country_flag = { flag = GER_todt_ascension_flag days > 20 }
-					}
-					#This looks ridiculous but it's the only way
-					unlock_national_focus = GER_ascension_of_todt
-					uncomplete_national_focus = {
-						focus = GER_ascension_of_todt
-						refund_political_power = yes
-					}
-					clr_country_flag = GER_todt_ascension_flag
-				}
-				else_if = {
-					limit = {
 						has_country_flag = { flag = GER_speer_ascension_flag days > 20 }
 					}
 					unlock_national_focus = GER_ascension_of_speer
@@ -2839,28 +2827,6 @@ on_actions = {
 						refund_political_power = yes
 					}
 					clr_country_flag = GER_himmler_ascension_flag
-				}
-				else_if = {
-					limit = {
-						has_country_flag = { flag = GER_goebbels_ascension_flag days > 20 }
-					}
-					unlock_national_focus = GER_ascension_of_goebbels
-					uncomplete_national_focus = {
-						focus = GER_ascension_of_goebbels
-						refund_political_power = yes
-					}
-					clr_country_flag = GER_goebbels_ascension_flag
-				}
-				else_if = {
-					limit = {
-						has_country_flag = { flag = GER_hess_ascension_flag days > 20 }
-					}
-					unlock_national_focus = GER_party_chancellor_hess
-					uncomplete_national_focus = {
-						focus = GER_party_chancellor_hess
-						refund_political_power = yes
-					}
-					clr_country_flag = GER_hess_ascension_flag
 				}
 				else_if = {
 					limit = {

@@ -1,0 +1,3095 @@
+state_id,state_name,state_file,province_id,province_name,blocked_by
+136,Aberdeenshire,136-Aberdeenshire.txt,200,Aberdeen,naval slots
+136,Aberdeenshire,136-Aberdeenshire.txt,3150,Dundee,naval slots
+136,Aberdeenshire,136-Aberdeenshire.txt,9161,,naval slots
+136,Aberdeenshire,136-Aberdeenshire.txt,11136,,naval slots
+136,Aberdeenshire,136-Aberdeenshire.txt,11207,,naval slots
+136,Aberdeenshire,136-Aberdeenshire.txt,11306,,rocket_site_spawn
+826,Abkhazia,826 - Abkhazia.txt,11599,,naval slots
+826,Abkhazia,826 - Abkhazia.txt,11617,Sukhumi,naval slots
+826,Abkhazia,826 - Abkhazia.txt,11647,,rocket_site_spawn + naval slots
+157,Abruzzo,157-Abruzzo.txt,925,Ancona,naval slots
+157,Abruzzo,157-Abruzzo.txt,967,,naval slots
+157,Abruzzo,157-Abruzzo.txt,3966,,naval slots
+157,Abruzzo,157-Abruzzo.txt,6831,,rocket_site_spawn + naval slots
+157,Abruzzo,157-Abruzzo.txt,9838,,naval slots
+658,Abu Dhabi,658-Arab UK 1.txt,2048,,naval slots
+658,Abu Dhabi,658-Arab UK 1.txt,7960,Abu Dhabi,naval slots
+658,Abu Dhabi,658-Arab UK 1.txt,8108,,rocket_site_spawn + naval slots
+658,Abu Dhabi,658-Arab UK 1.txt,10904,Dubai,naval slots
+940,Acre,940 - Acre.txt,13279,,rocket_site_spawn
+187,Aegean Islands,187-Aegean Islands.txt,3401,,naval slots
+187,Aegean Islands,187-Aegean Islands.txt,6550,Samos,rocket_site_spawn + naval slots
+187,Aegean Islands,187-Aegean Islands.txt,8435,Mitilini,naval slots
+908,Afar,908-Afar.txt,5041,,rocket_site_spawn
+343,Afyon,343-Afyon.txt,3856,Kütahya,rocket_site_spawn
+922,Agder,922-Agder.txt,3129,,rocket_site_spawn
+922,Agder,922-Agder.txt,9096,,naval slots
+922,Agder,922-Agder.txt,9296,Kristiansand,naval slots
+922,Agder,922-Agder.txt,11176,,naval slots
+922,Agder,922-Agder.txt,11367,,naval slots
+402,Akhtubinsk,402-Akhtubinsk.txt,4638,,rocket_site_spawn
+590,Akmolinsk,590-Northern Kazakhstan.txt,4281,,rocket_site_spawn
+1010,Al Anbar,1010-Al Anbar.txt,12413,Rumadiyah,rocket_site_spawn
+1011,Al Basrah,1011-Al Basrah.txt,78,Amarah,rocket_site_spawn
+1011,Al Basrah,1011-Al Basrah.txt,2089,Basrah,naval slots
+675,Al Hajara,675-Al Hajara.txt,12879,Samawah,rocket_site_spawn
+857,Al-Qassim,857-Ha'il.txt,10892,,rocket_site_spawn
+367,Alabama,367-Alabama.txt,7480,Mobile,naval slots
+367,Alabama,367-Alabama.txt,7640,,rocket_site_spawn
+367,Alabama,367-Alabama.txt,10520,,naval slots
+463,Alaska,463-Alaska.txt,1135,,naval slots
+463,Alaska,463-Alaska.txt,1830,,naval slots
+463,Alaska,463-Alaska.txt,4833,,naval slots
+463,Alaska,463-Alaska.txt,4848,,naval slots
+463,Alaska,463-Alaska.txt,7855,,naval slots
+463,Alaska,463-Alaska.txt,7884,,naval slots
+463,Alaska,463-Alaska.txt,10679,,naval slots
+463,Alaska,463-Alaska.txt,10694,,rocket_site_spawn + naval slots
+463,Alaska,463-Alaska.txt,10707,,naval slots
+463,Alaska,463-Alaska.txt,12661,,naval slots
+463,Alaska,463-Alaska.txt,13090,Unalaska,naval slots
+463,Alaska,463-Alaska.txt,13091,Anchorage,naval slots
+463,Alaska,463-Alaska.txt,13202,,naval slots
+463,Alaska,463-Alaska.txt,13203,,naval slots
+470,Alberta,470-Alberta.txt,12166,,rocket_site_spawn
+677,Aleppo,677-Aleppo.txt,1088,Latakia,naval slots
+677,Aleppo,677-Aleppo.txt,7671,,rocket_site_spawn
+677,Aleppo,677-Aleppo.txt,10087,,naval slots
+447,Alexandria,447-Alexandria.txt,1071,El-Alamein,naval slots
+447,Alexandria,447-Alexandria.txt,4076,Alexandria,naval slots
+447,Alexandria,447-Alexandria.txt,4145,,rocket_site_spawn + naval slots
+447,Alexandria,447-Alexandria.txt,7091,,naval slots
+447,Alexandria,447-Alexandria.txt,11964,Damietta,naval slots
+514,Algerian Desert,514-North Africa.txt,1901,,rocket_site_spawn
+459,Algiers,459-Western Algeria.txt,1013,,naval slots
+459,Algiers,459-Western Algeria.txt,1145,Algiers,naval slots
+459,Algiers,459-Western Algeria.txt,4116,,rocket_site_spawn + naval slots
+459,Algiers,459-Western Algeria.txt,7132,Oran,naval slots
+459,Algiers,459-Western Algeria.txt,9964,,naval slots
+459,Algiers,459-Western Algeria.txt,11923,,naval slots
+459,Algiers,459-Western Algeria.txt,11939,,naval slots
+586,Alma-Ata,586-Kyrgyzstan.txt,7706,,rocket_site_spawn
+32,Alpes,32-Rhone Alpes.txt,762,,rocket_site_spawn
+28,Alsace-Lorraine,28-Alcase.txt,549,Haguenau,rocket_site_spawn
+40,Altai Krai,40-USSR.txt,1779,,rocket_site_spawn
+1040,Alxa,1040 - Alxa.txt,7727,,rocket_site_spawn
+939,Amapá,939 - Amapa.txt,4980,Macapá,naval slots
+939,Amapá,939 - Amapa.txt,13276,,rocket_site_spawn + naval slots
+798,Amasya,798-Amasya.txt,3964,,rocket_site_spawn
+495,Amazonas,495-Amazonas.txt,13328,,rocket_site_spawn
+1072,American Samoa,1072 - American Samoa.txt,13080,Pago Pago,rocket_site_spawn + naval slots
+561,Amur,561-TS 3.txt,7785,,rocket_site_spawn
+733,Andaman,733-Andaman.txt,10321,,naval slots
+733,Andaman,733-Andaman.txt,12251,Port Blair,rocket_site_spawn + naval slots
+606,Anhui,606-China 6.txt,10079,,rocket_site_spawn
+49,Ankara,49-Turkey.txt,909,,rocket_site_spawn
+342,Antalya,342-Antalya.txt,1005,Antalya,naval slots
+342,Antalya,342-Antalya.txt,1119,,naval slots
+342,Antalya,342-Antalya.txt,9941,,naval slots
+342,Antalya,342-Antalya.txt,10122,,naval slots
+342,Antalya,342-Antalya.txt,11917,,rocket_site_spawn
+342,Antalya,342-Antalya.txt,12096,,naval slots
+506,Antofagasta,506-Northern Chile.txt,5171,,naval slots
+506,Antofagasta,506-Northern Chile.txt,12994,,rocket_site_spawn + naval slots
+506,Antofagasta,506-Northern Chile.txt,13301,,naval slots
+977,Antwerp,977 - Antwerp.txt,6598,Antwerp,naval slots
+977,Antwerp,977 - Antwerp.txt,11419,,rocket_site_spawn
+19,Aquitaine,19-Aquitaine.txt,6621,,naval slots
+19,Aquitaine,19-Aquitaine.txt,6762,,rocket_site_spawn
+19,Aquitaine,19-Aquitaine.txt,6777,,naval slots
+19,Aquitaine,19-Aquitaine.txt,9737,Bordeaux,naval slots
+19,Aquitaine,19-Aquitaine.txt,11565,,naval slots
+997,Arakan,997-Arakan.txt,1014,,naval slots
+997,Arakan,997-Arakan.txt,1142,,naval slots
+997,Arakan,997-Arakan.txt,3651,,naval slots
+997,Arakan,997-Arakan.txt,4147,,rocket_site_spawn
+997,Arakan,997-Arakan.txt,10182,,naval slots
+997,Arakan,997-Arakan.txt,12090,,naval slots
+950,Araucanía,950 - Araucania.txt,5121,Temuco,naval slots
+950,Araucanía,950 - Araucania.txt,5169,Puerto Montt,naval slots
+950,Araucanía,950 - Araucania.txt,12954,,rocket_site_spawn + naval slots
+950,Araucanía,950 - Araucania.txt,13297,,naval slots
+980,Ardennes,980 - Ardennes.txt,6537,,rocket_site_spawn
+492,Arequipa,492-Piura.txt,2182,,rocket_site_spawn
+492,Arequipa,492-Piura.txt,2225,,naval slots
+492,Arequipa,492-Piura.txt,5202,,naval slots
+492,Arequipa,492-Piura.txt,13288,Mollendo,naval slots
+951,Arica y Tarapacá,951 - Arica.txt,5131,Arica,naval slots
+951,Arica y Tarapacá,951 - Arica.txt,8217,Iquique,rocket_site_spawn + naval slots
+951,Arica y Tarapacá,951 - Arica.txt,13303,,naval slots
+377,Arizona,377-Arizona.txt,7920,,rocket_site_spawn
+372,Arkansas,372-Arkansas.txt,1646,,rocket_site_spawn
+214,Arkhangelsk,214-Arkhangelsk.txt,312,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,3080,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,3092,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,3168,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,3338,Archangelsk,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,9041,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,9248,,naval slots
+214,Arkhangelsk,214-Arkhangelsk.txt,11038,,rocket_site_spawn + naval slots
+230,Armenia,230-Armenia.txt,12450,,rocket_site_spawn
+738,Aru Islands,738-Aru Islands.txt,4579,Dobo,rocket_site_spawn + naval slots
+738,Aru Islands,738-Aru Islands.txt,13400,,naval slots
+434,Arunachal Pradesh,434-Arunachal Pradesh.txt,10810,,rocket_site_spawn
+703,Ascension,703-Ascension.txt,13013,,rocket_site_spawn + naval slots
+584,Ashkhabad,584-Turkmenistan.txt,10510,,rocket_site_spawn
+856,Asir-Makkah,856-Asir-Makkah.txt,1923,,naval slots
+856,Asir-Makkah,856-Asir-Makkah.txt,8073,,naval slots
+856,Asir-Makkah,856-Asir-Makkah.txt,12883,Jeddah,rocket_site_spawn + naval slots
+432,Assam,432-Assam.txt,997,,rocket_site_spawn
+236,Astrakhan,236-Astrakhan.txt,9753,Astrakhan,rocket_site_spawn
+790,Asturias,790-Asturias.txt,3729,,rocket_site_spawn
+790,Asturias,790-Asturias.txt,6749,,naval slots
+790,Asturias,790-Asturias.txt,9703,,naval slots
+790,Asturias,790-Asturias.txt,9719,,naval slots
+790,Asturias,790-Asturias.txt,11688,,naval slots
+790,Asturias,790-Asturias.txt,11707,Oviedo,naval slots
+790,Asturias,790-Asturias.txt,13218,,naval slots
+456,Aswan,456-Luxor.txt,7030,,rocket_site_spawn
+952,Atacama,952 - Atacama.txt,5192,,rocket_site_spawn
+952,Atacama,952 - Atacama.txt,5228,Copiapó,naval slots
+952,Atacama,952 - Atacama.txt,11000,,naval slots
+1050,Atjeh,1050-Ajteh.txt,1648,,naval slots
+1050,Atjeh,1050-Ajteh.txt,7658,,naval slots
+1050,Atjeh,1050-Ajteh.txt,10509,,rocket_site_spawn + naval slots
+1050,Atjeh,1050-Ajteh.txt,12488,,naval slots
+1050,Atjeh,1050-Ajteh.txt,13396,,naval slots
+1050,Atjeh,1050-Ajteh.txt,13398,Banda Aceh,naval slots
+1050,Atjeh,1050-Ajteh.txt,13399,,naval slots
+1050,Atjeh,1050-Ajteh.txt,13401,,naval slots
+47,Attica,47-Greece.txt,863,Karditsa,rocket_site_spawn
+47,Attica,47-Greece.txt,976,Lamia,naval slots
+47,Attica,47-Greece.txt,1109,,naval slots
+47,Attica,47-Greece.txt,3864,Volos,naval slots
+47,Attica,47-Greece.txt,3973,Larissa,naval slots
+47,Attica,47-Greece.txt,3988,Kórinthos,naval slots
+47,Attica,47-Greece.txt,4109,Athens,naval slots
+47,Attica,47-Greece.txt,7127,Chalcis,naval slots
+650,Attu Island,650-Attu Island.txt,13067,Attu,rocket_site_spawn + naval slots
+1079,Auckland,1079-Auckland.txt,1565,,naval slots
+1079,Auckland,1079-Auckland.txt,1713,,naval slots
+1079,Auckland,1079-Auckland.txt,4543,Auckland,naval slots
+1079,Auckland,1079-Auckland.txt,4615,,naval slots
+1079,Auckland,1079-Auckland.txt,4718,Tauranga,naval slots
+1079,Auckland,1079-Auckland.txt,4748,,naval slots
+1079,Auckland,1079-Auckland.txt,7742,,naval slots
+1079,Auckland,1079-Auckland.txt,7887,Hamilton,naval slots
+1079,Auckland,1079-Auckland.txt,10334,,naval slots
+1079,Auckland,1079-Auckland.txt,10373,,naval slots
+1079,Auckland,1079-Auckland.txt,10609,Waikaremoana,naval slots
+1079,Auckland,1079-Auckland.txt,10710,,naval slots
+1079,Auckland,1079-Auckland.txt,12362,,naval slots
+1079,Auckland,1079-Auckland.txt,12664,,rocket_site_spawn + naval slots
+815,Aukštaitija,815-Aukstaitija.txt,9246,,rocket_site_spawn
+26,Auvergne,26-Bourgogne.txt,590,,rocket_site_spawn
+589,Ayaguz,589-Eastern Kazakhstan.txt,12529,,rocket_site_spawn
+949,Aysén,949 - Aysen.txt,2161,Coyhaique,naval slots
+949,Aysén,949 - Aysen.txt,5118,,naval slots
+949,Aysén,949 - Aysen.txt,5159,,naval slots
+949,Aysén,949 - Aysen.txt,8198,,rocket_site_spawn + naval slots
+949,Aysén,949 - Aysen.txt,10961,,naval slots
+949,Aysén,949 - Aysen.txt,13295,,naval slots
+229,Azerbaijan,229-baku.txt,11674,Ganja,rocket_site_spawn
+698,Azores,698-Azores.txt,1751,Ponta Delgada,rocket_site_spawn + naval slots
+775,B.E.T.,775-B.E.T..txt,5136,,rocket_site_spawn
+978,Baden,978 - Actual Baden.txt,6568,,rocket_site_spawn
+291,Baghdad,291-Iraq.txt,10876,,rocket_site_spawn
+989,Bahawalpur,989-Bahawalpur.txt,12792,,rocket_site_spawn
+499,Bahia,499-Bahia.txt,8143,,naval slots
+499,Bahia,499-Bahia.txt,8177,,rocket_site_spawn
+499,Bahia,499-Bahia.txt,8197,,naval slots
+499,Bahia,499-Bahia.txt,10419,,naval slots
+499,Bahia,499-Bahia.txt,10946,Salvador,naval slots
+499,Bahia,499-Bahia.txt,11002,,naval slots
+885,Bahr al Ghazal,885-Bahr al Ghazal.txt,1953,,rocket_site_spawn
+1014,Bahrain,1014 - Bahrain.txt,13313,Manama,rocket_site_spawn + naval slots
+484,Baja California,484-Baja California.txt,1892,Ensenada,naval slots
+484,Baja California,484-Baja California.txt,1904,,rocket_site_spawn + naval slots
+484,Baja California,484-Baja California.txt,7964,,naval slots
+484,Baja California,484-Baja California.txt,8119,,naval slots
+484,Baja California,484-Baja California.txt,12461,Tijuana,naval slots
+484,Baja California,484-Baja California.txt,12736,La Paz,naval slots
+484,Baja California,484-Baja California.txt,12859,,naval slots
+484,Baja California,484-Baja California.txt,13216,,naval slots
+401,Balakovo,401-Engels.txt,3490,,rocket_site_spawn
+836,Bale,836-Bale.txt,4995,,rocket_site_spawn
+1052,Bali,1052-Bali.txt,4273,,naval slots
+1052,Bali,1052-Bali.txt,13385,,rocket_site_spawn + naval slots
+1052,Bali,1052-Bali.txt,13386,Denpasar,naval slots
+834,Balta-Tiraspol,834 - Balta.txt,741,Tiraspol,rocket_site_spawn
+556,Bamako,556-Mali.txt,12794,,rocket_site_spawn
+82,Banat,82-Banat.txt,3649,,rocket_site_spawn
+1047,Bangka-Belitung,1047-Bangka-Belitung.txt,4211,,naval slots
+1047,Bangka-Belitung,1047-Bangka-Belitung.txt,7384,Pangkalpinang,rocket_site_spawn + naval slots
+1047,Bangka-Belitung,1047-Bangka-Belitung.txt,7396,,naval slots
+1076,Bangkok State,1076 - Bangkok.txt,1427,,naval slots
+1076,Bangkok State,1076 - Bangkok.txt,7408,Bangkok,rocket_site_spawn + naval slots
+981,Barotseland,981 - Barotseland.txt,697,Mongu,rocket_site_spawn
+1068,Bassac,1068 - Bassac.txt,7426,,rocket_site_spawn
+984,Bastar,984 - Bastar.txt,4557,,rocket_site_spawn
+1027,Bataan,1027 - Bataan.txt,1415,Dagupan,naval slots
+1027,Bataan,1027 - Bataan.txt,7275,,naval slots
+1027,Bataan,1027 - Bataan.txt,7351,Bataan,rocket_site_spawn + naval slots
+1027,Bataan,1027 - Bataan.txt,10280,,naval slots
+1027,Bataan,1027 - Bataan.txt,12253,,naval slots
+1058,Batavia,1058-Batavia.txt,7381,Batavia,naval slots
+1058,Batavia,1058-Batavia.txt,12249,,rocket_site_spawn + naval slots
+1067,Battambang,1067 - Battambang.txt,10177,,rocket_site_spawn
+542,Bechuanaland,542-Bechuana Land.txt,12940,,rocket_site_spawn
+841,Begemder,841-Begemder.txt,2040,,rocket_site_spawn
+179,Beja,179-Beja.txt,970,Setúbal,naval slots
+179,Beja,179-Beja.txt,980,,naval slots
+179,Beja,179-Beja.txt,3790,Portimão,naval slots
+179,Beja,179-Beja.txt,3866,,naval slots
+179,Beja,179-Beja.txt,6880,Faro,naval slots
+179,Beja,179-Beja.txt,6884,,rocket_site_spawn
+240,Belgorod,240-Voronezh.txt,534,,rocket_site_spawn
+450,Benghasi,450-Benghasi.txt,1127,,naval slots
+450,Benghasi,450-Benghasi.txt,4120,,naval slots
+450,Benghasi,450-Benghasi.txt,10123,,rocket_site_spawn + naval slots
+450,Benghasi,450-Benghasi.txt,11954,Bengasi,naval slots
+900,Benue,900-Benue.txt,1992,,rocket_site_spawn
+900,Benue,900-Benue.txt,8034,Enugu,naval slots
+900,Benue,900-Benue.txt,10831,,naval slots
+696,Bermuda,696-Bermuda.txt,13010,Hamilton,rocket_site_spawn + naval slots
+78,Bessarabia,78-Bessarabia.txt,3577,,rocket_site_spawn
+324,Bhutan,324-Bhutan.txt,8010,Punakha,rocket_site_spawn
+97,Białystok,97-Bialystok.txt,347,,rocket_site_spawn
+435,Bihar,435-Bihar.txt,1569,,rocket_site_spawn
+657,Birobidzhan,657-Border state.txt,12654,,rocket_site_spawn
+737,Bismarck,737-New Britain.txt,1286,,naval slots
+737,Bismarck,737-New Britain.txt,1301,,naval slots
+737,Bismarck,737-New Britain.txt,1329,,naval slots
+737,Bismarck,737-New Britain.txt,1361,,naval slots
+737,Bismarck,737-New Britain.txt,4304,,naval slots
+737,Bismarck,737-New Britain.txt,4332,,naval slots
+737,Bismarck,737-New Britain.txt,4352,,naval slots
+737,Bismarck,737-New Britain.txt,4421,,naval slots
+737,Bismarck,737-New Britain.txt,7251,Rabaul,naval slots
+737,Bismarck,737-New Britain.txt,7324,,naval slots
+737,Bismarck,737-New Britain.txt,7339,,naval slots
+737,Bismarck,737-New Britain.txt,7352,,naval slots
+737,Bismarck,737-New Britain.txt,7412,,naval slots
+737,Bismarck,737-New Britain.txt,10166,,rocket_site_spawn + naval slots
+737,Bismarck,737-New Britain.txt,10206,,naval slots
+737,Bismarck,737-New Britain.txt,12222,,naval slots
+886,Blue Nile,886-Blue Nile.txt,4918,,rocket_site_spawn
+204,Bobruysk,204-Brest.txt,304,,rocket_site_spawn
+565,Bodaybo,565-TS 7.txt,1666,,rocket_site_spawn
+9,Bohemia,9-Czechoslovakia.txt,9429,,rocket_site_spawn
+915,Bohuslän,915-Bohuslan.txt,171,,rocket_site_spawn + naval slots
+915,Bohuslän,915-Bohuslan.txt,6310,Uddevalla,naval slots
+488,Bolivar,488-Bolivar.txt,1981,,naval slots
+488,Bolivar,488-Bolivar.txt,10736,,rocket_site_spawn
+429,Bombay,429-Bombay.txt,1349,Bombay,naval slots
+429,Bombay,429-Bombay.txt,4187,,naval slots
+429,Bombay,429-Bombay.txt,7013,,naval slots
+429,Bombay,429-Bombay.txt,7150,,naval slots
+429,Bombay,429-Bombay.txt,7232,,naval slots
+429,Bombay,429-Bombay.txt,11952,,rocket_site_spawn + naval slots
+429,Bombay,429-Bombay.txt,12269,,naval slots
+910,Bornholm,910-Bornholm.txt,6361,Rønne,rocket_site_spawn + naval slots
+901,Borno,901-Borno.txt,4997,,rocket_site_spawn
+104,Bosnia,104-Bosnia.txt,982,,rocket_site_spawn
+21,Bouches-du-Rhône,21-Bouches-du-Rhone.txt,958,,rocket_site_spawn
+21,Bouches-du-Rhône,21-Bouches-du-Rhone.txt,11834,Marseille,naval slots
+21,Bouches-du-Rhône,21-Bouches-du-Rhone.txt,11849,,naval slots
+1070,Bougainville,1070 - Bougainville.txt,1358,,naval slots
+1070,Bougainville,1070 - Bougainville.txt,4226,Buin,naval slots
+1070,Bougainville,1070 - Bougainville.txt,4378,,rocket_site_spawn + naval slots
+1070,Bougainville,1070 - Bougainville.txt,10234,Buka,naval slots
+27,Bourgogne,27-Champagne2.txt,9625,,rocket_site_spawn
+35,Brabant,35-Gelderland.txt,480,,naval slots
+35,Brabant,35-Gelderland.txt,9431,,rocket_site_spawn + naval slots
+64,Brandenburg,64-Brandenburg.txt,11359,,rocket_site_spawn
+567,Bratsk,567-TS 9.txt,7802,,rocket_site_spawn
+473,British Columbia,473-British Columbia.txt,1393,,naval slots
+473,British Columbia,473-British Columbia.txt,1408,Vancouver,naval slots
+473,British Columbia,473-British Columbia.txt,1737,,rocket_site_spawn
+473,British Columbia,473-British Columbia.txt,4385,,naval slots
+473,British Columbia,473-British Columbia.txt,4428,,naval slots
+473,British Columbia,473-British Columbia.txt,10228,,naval slots
+473,British Columbia,473-British Columbia.txt,10258,,naval slots
+473,British Columbia,473-British Columbia.txt,12231,,naval slots
+687,British Guyana,687-British Guyana.txt,4982,Georgetown,rocket_site_spawn + naval slots
+687,British Guyana,687-British Guyana.txt,12716,,naval slots
+311,British Honduras,311-BritMex.txt,2077,Belize City,rocket_site_spawn + naval slots
+269,British Somaliland,269-British Somaliland.txt,10777,,naval slots
+269,British Somaliland,269-British Somaliland.txt,10833,Berbera,naval slots
+269,British Somaliland,269-British Somaliland.txt,10921,,naval slots
+269,British Somaliland,269-British Somaliland.txt,12759,,rocket_site_spawn + naval slots
+14,Brittany,14-Brittany.txt,542,,naval slots
+14,Brittany,14-Brittany.txt,3552,Brest,naval slots
+14,Brittany,14-Brittany.txt,6536,Lorient,naval slots
+14,Brittany,14-Brittany.txt,6572,,naval slots
+14,Brittany,14-Brittany.txt,9495,Rennes,rocket_site_spawn
+14,Brittany,14-Brittany.txt,9510,,naval slots
+14,Brittany,14-Brittany.txt,9525,,naval slots
+14,Brittany,14-Brittany.txt,11508,,naval slots
+1023,Brunei,1023 - Brunei.txt,7371,,naval slots
+1023,Brunei,1023 - Brunei.txt,7387,Brunei Town,rocket_site_spawn + naval slots
+224,Bryansk,224-Bryansk.txt,6411,,rocket_site_spawn
+80,Bucovina,80-Bocovina.txt,9548,,rocket_site_spawn
+830,Bukhara,830 - Bukhara.txt,12239,,rocket_site_spawn
+211,Burgas,211-Burgas.txt,9769,Shumen,rocket_site_spawn
+211,Burgas,211-Burgas.txt,9783,Varna,naval slots
+211,Burgas,211-Burgas.txt,9902,Burgas,naval slots
+211,Burgas,211-Burgas.txt,9919,,naval slots
+975,Burgenland,975 - Burgenland.txt,3700,Eisenstadt,rocket_site_spawn
+176,Burgos,176-Burgos.txt,885,Burgos,rocket_site_spawn
+340,Bursa,340-Bursa.txt,947,Bursa,naval slots
+340,Bursa,340-Bursa.txt,3786,,rocket_site_spawn
+340,Bursa,340-Bursa.txt,3851,,naval slots
+340,Bursa,340-Bursa.txt,6864,,naval slots
+340,Bursa,340-Bursa.txt,6912,Bandırma,naval slots
+340,Bursa,340-Bursa.txt,9799,Balıkesir,naval slots
+340,Bursa,340-Bursa.txt,9887,,naval slots
+340,Bursa,340-Bursa.txt,11867,,naval slots
+769,Burundi,769-Burundi.txt,2220,Bujumbura,rocket_site_spawn
+564,Buryatia,564-TS 6.txt,12506,,rocket_site_spawn
+796,Cabinda,796-North Angola.txt,2115,Cabinda,rocket_site_spawn + naval slots
+907,Cairo,907-Cairo.txt,7117,Faiyum,rocket_site_spawn
+907,Cairo,907-Cairo.txt,10005,,naval slots
+156,Calabria,156-Calabria.txt,3901,,naval slots
+156,Calabria,156-Calabria.txt,9990,Reggio Calabria,naval slots
+156,Calabria,156-Calabria.txt,10027,,naval slots
+156,Calabria,156-Calabria.txt,12066,,naval slots
+156,Calabria,156-Calabria.txt,12098,,rocket_site_spawn + naval slots
+378,California,378-California.txt,610,,naval slots
+378,California,378-California.txt,677,,naval slots
+378,California,378-California.txt,986,,naval slots
+378,California,378-California.txt,1562,San Diego,naval slots
+378,California,378-California.txt,3644,,naval slots
+378,California,378-California.txt,3678,,naval slots
+378,California,378-California.txt,3840,,naval slots
+378,California,378-California.txt,6681,,naval slots
+378,California,378-California.txt,6699,,naval slots
+378,California,378-California.txt,6757,,naval slots
+378,California,378-California.txt,6881,,naval slots
+378,California,378-California.txt,7517,,naval slots
+378,California,378-California.txt,9637,,naval slots
+378,California,378-California.txt,9671,San Francisco,naval slots
+378,California,378-California.txt,9713,Sacramento,naval slots
+378,California,378-California.txt,9730,,naval slots
+378,California,378-California.txt,9814,Los Angeles,naval slots
+378,California,378-California.txt,11658,,naval slots
+378,California,378-California.txt,11757,,naval slots
+378,California,378-California.txt,11795,,rocket_site_spawn
+378,California,378-California.txt,11859,,naval slots
+741,Cambodia,741-Cambodia.txt,1353,,naval slots
+741,Cambodia,741-Cambodia.txt,4359,,naval slots
+741,Cambodia,741-Cambodia.txt,7319,,rocket_site_spawn
+741,Cambodia,741-Cambodia.txt,7404,,naval slots
+741,Cambodia,741-Cambodia.txt,7432,Kompong Saom,naval slots
+741,Cambodia,741-Cambodia.txt,10317,,naval slots
+773,Cameroon,773-Cameroon.txt,5036,,naval slots
+773,Cameroon,773-Cameroon.txt,5054,,rocket_site_spawn
+773,Cameroon,773-Cameroon.txt,6039,,naval slots
+117,Campania,117-Napoli.txt,819,Naples,naval slots
+117,Campania,117-Napoli.txt,851,,naval slots
+117,Campania,117-Napoli.txt,955,,naval slots
+117,Campania,117-Napoli.txt,3958,,rocket_site_spawn
+117,Campania,117-Napoli.txt,3968,,naval slots
+117,Campania,117-Napoli.txt,9826,,naval slots
+117,Campania,117-Napoli.txt,9856,,naval slots
+681,Cape,681-Soviet Lakes.txt,4528,,rocket_site_spawn + naval slots
+681,Cape,681-Soviet Lakes.txt,10415,,naval slots
+681,Cape,681-Soviet Lakes.txt,12547,,naval slots
+681,Cape,681-Soviet Lakes.txt,12589,Cape Town,naval slots
+702,Cape Verde,702-Cape Verde.txt,13014,Praia,rocket_site_spawn + naval slots
+684,Caroline Islands,684-Caroline Islands.txt,2489,Truk,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13027,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13028,Yap,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13029,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13030,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13031,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13032,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13033,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13034,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13035,,naval slots
+684,Caroline Islands,684-Caroline Islands.txt,13036,,rocket_site_spawn + naval slots
+73,Carpathian Ruthenia,73-Carpathian Ruthenia.txt,11536,,rocket_site_spawn
+461,Casablanca,461-Northern Morocco.txt,989,,naval slots
+461,Casablanca,461-Northern Morocco.txt,1194,,naval slots
+461,Casablanca,461-Northern Morocco.txt,7069,Casablanca,naval slots
+461,Casablanca,461-Northern Morocco.txt,7100,,rocket_site_spawn
+461,Casablanca,461-Northern Morocco.txt,10070,Rabat,naval slots
+461,Casablanca,461-Northern Morocco.txt,11943,,naval slots
+165,Catalonia,165-Catalonia.txt,854,,naval slots
+165,Catalonia,165-Catalonia.txt,6812,,naval slots
+165,Catalonia,165-Catalonia.txt,6927,Gerona,rocket_site_spawn + naval slots
+165,Catalonia,165-Catalonia.txt,6966,Tortosa,naval slots
+165,Catalonia,165-Catalonia.txt,9764,Barcelona,naval slots
+165,Catalonia,165-Catalonia.txt,9824,,naval slots
+935,Ceará,935 - Ceara.txt,2132,,naval slots
+935,Ceará,935 - Ceara.txt,2178,,rocket_site_spawn
+935,Ceará,935 - Ceara.txt,5107,Fortaleza,naval slots
+44,Central Albania,44-Albania.txt,3884,,naval slots
+44,Central Albania,44-Albania.txt,11767,Vlorë,naval slots
+44,Central Albania,44-Albania.txt,13255,Durrës,rocket_site_spawn + naval slots
+674,Central Australia,674-Central Australia.txt,2223,Alice Springs,rocket_site_spawn
+437,Central India,437-Central Indian Provinces.txt,2105,,rocket_site_spawn
+624,Central Islands,624-Central islands.txt,1372,,rocket_site_spawn + naval slots
+624,Central Islands,624-Central islands.txt,4228,,naval slots
+624,Central Islands,624-Central islands.txt,4377,,naval slots
+624,Central Islands,624-Central islands.txt,7307,,naval slots
+624,Central Islands,624-Central islands.txt,10306,,naval slots
+624,Central Islands,624-Central islands.txt,12279,,naval slots
+731,Central Macedonia,731-Central Macedonia.txt,895,,naval slots
+731,Central Macedonia,731-Central Macedonia.txt,3526,,rocket_site_spawn
+731,Central Macedonia,731-Central Macedonia.txt,3844,Kateríni,naval slots
+731,Central Macedonia,731-Central Macedonia.txt,3936,,naval slots
+731,Central Macedonia,731-Central Macedonia.txt,10163,,naval slots
+731,Central Macedonia,731-Central Macedonia.txt,11818,Thessaloniki,naval slots
+436,Central Provinces,436-Central Provinces.txt,10171,,rocket_site_spawn
+1077,Central Siam,1077 - Central Siam.txt,10398,Petchabun,rocket_site_spawn
+1074,Central Western Australia,1074 - Central West Australia.txt,2186,,rocket_site_spawn
+24,Centre,24-Centre.txt,3493,,rocket_site_spawn
+33,Centre-Sud,33-Centre sud.txt,651,Châteauroux,rocket_site_spawn
+945,Cerro Largo,945 - Cerro Largo.txt,1641,Melo,rocket_site_spawn
+945,Cerro Largo,945 - Cerro Largo.txt,10347,,naval slots
+422,Ceylon,422-Ceylon.txt,4219,,naval slots
+422,Ceylon,422-Ceylon.txt,7260,,naval slots
+422,Ceylon,422-Ceylon.txt,7344,,naval slots
+422,Ceylon,422-Ceylon.txt,10201,Trincomalee,rocket_site_spawn + naval slots
+422,Ceylon,422-Ceylon.txt,10229,,naval slots
+422,Ceylon,422-Ceylon.txt,12258,,naval slots
+509,Chaco Austral,509-Gran Chaco.txt,8169,,rocket_site_spawn
+688,Chaco Boreal,688-Chaco Boreal.txt,8203,,rocket_site_spawn
+774,Chad,774-Chad.txt,7919,,rocket_site_spawn
+18,Champagne,18-Champagne.txt,6545,,rocket_site_spawn
+750,Changde,750-Changde.txt,7201,,rocket_site_spawn
+821,Chechnya-Ingushetia,821 - Chenchnya-Ingushetia.txt,670,,rocket_site_spawn
+572,Chelyabinsk,572-TS 14.txt,12157,,rocket_site_spawn
+1041,Chengdu,1041 - Chengdu.txt,10132,,rocket_site_spawn
+203,Cherkasy,203-Cherkasy.txt,3468,,rocket_site_spawn
+193,Chernigov,193-Kiev.txt,3542,,rocket_site_spawn
+475,Chiapas,475-Chiapas.txt,12753,,rocket_site_spawn + naval slots
+475,Chiapas,475-Chiapas.txt,12867,,naval slots
+482,Chihuahua,482-Chihuahua.txt,12827,,rocket_site_spawn
+563,Chita,563-TS 5.txt,10683,,rocket_site_spawn
+1037,Chongqing,1037 - Chongqing.txt,12705,,rocket_site_spawn
+711,Christmas Island,711-Christmas Island.txt,13005,,rocket_site_spawn + naval slots
+955,Chubut,955 - Chubut.txt,10953,Rawson,rocket_site_spawn + naval slots
+955,Chubut,955 - Chubut.txt,13296,,naval slots
+955,Chubut,955 - Chubut.txt,13307,Puerto Madryn,naval slots
+875,Chukchi Peninsula,875-Chukchi Peninsulay.txt,13204,Lavrentiya,rocket_site_spawn + naval slots
+875,Chukchi Peninsula,875-Chukchi Peninsulay.txt,13254,,naval slots
+822,Chukotka,822 - Chukotka.txt,4744,,naval slots
+822,Chukotka,822 - Chukotka.txt,13063,Anadyr,rocket_site_spawn + naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,1177,Jeju,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,4126,Jeonju,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,7175,Gunsan,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,7204,,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,10110,Gwangju,rocket_site_spawn + naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,11948,,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,11992,,naval slots
+1031,Chungcheong-Jeolla,1031 - Chungcheong Jeolla.txt,12085,,naval slots
+256,Chuvashia,256-Cheboksary.txt,3282,,rocket_site_spawn
+175,Ciudad Real,175-Ciudad Real.txt,9778,,rocket_site_spawn
+480,Coahuila,480-Coahuila.txt,7973,,rocket_site_spawn
+1066,Cochinchina,1066 - Mekong Delta.txt,1396,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,1423,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,4223,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,4284,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,4341,,rocket_site_spawn + naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,4401,Saigon,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,7303,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,7331,,naval slots
+1066,Cochinchina,1066 - Mekong Delta.txt,12232,,naval slots
+712,Cocos Islands,712-Cocos Islands.txt,13002,,rocket_site_spawn + naval slots
+382,Colorado,382-Colorado.txt,3869,,rocket_site_spawn
+708,Comoro Islands,708-Comoro Islands.txt,13072,,rocket_site_spawn + naval slots
+134,Connaught,134-Connaught.txt,337,Donegal,naval slots
+134,Connaught,134-Connaught.txt,3396,,naval slots
+134,Connaught,134-Connaught.txt,9303,Galway,rocket_site_spawn + naval slots
+134,Connaught,134-Connaught.txt,9321,,naval slots
+134,Connaught,134-Connaught.txt,9369,,naval slots
+134,Connaught,134-Connaught.txt,11371,Sligo,naval slots
+460,Constantine,460-Eastern Algeria.txt,1160,,naval slots
+460,Constantine,460-Eastern Algeria.txt,4046,,rocket_site_spawn + naval slots
+460,Constantine,460-Eastern Algeria.txt,7081,Annaba,naval slots
+460,Constantine,460-Eastern Algeria.txt,7166,,naval slots
+460,Constantine,460-Eastern Algeria.txt,10078,,naval slots
+460,Constantine,460-Eastern Algeria.txt,12051,Constantine,naval slots
+538,Coquilhatville,538-Cameroun.txt,10951,,rocket_site_spawn
+1,Corsica,1-France.txt,3838,Ajáccio,rocket_site_spawn + naval slots
+1,Corsica,1-France.txt,9851,,naval slots
+1,Corsica,1-France.txt,11804,,naval slots
+316,Costa Rica,316-Costa Rica.txt,12878,,rocket_site_spawn + naval slots
+316,Costa Rica,316-Costa Rica.txt,13087,San Jose,naval slots
+316,Costa Rica,316-Costa Rica.txt,13092,,naval slots
+890,Costermansville,890-Costermansville.txt,1181,Goma,rocket_site_spawn
+182,Crete,182-Crete.txt,1164,,naval slots
+182,Crete,182-Crete.txt,4170,,naval slots
+182,Crete,182-Crete.txt,9940,Heraklion,rocket_site_spawn + naval slots
+182,Crete,182-Crete.txt,12058,Chania,naval slots
+137,Crimea,137-Crimea.txt,705,Simferopol,naval slots
+137,Crimea,137-Crimea.txt,3686,Sevastopol,naval slots
+137,Crimea,137-Crimea.txt,3722,,rocket_site_spawn + naval slots
+137,Crimea,137-Crimea.txt,6704,Yalta,naval slots
+137,Crimea,137-Crimea.txt,9677,Feodosia,naval slots
+137,Crimea,137-Crimea.txt,9680,Kerch,naval slots
+137,Crimea,137-Crimea.txt,9718,Dzhankoi,naval slots
+137,Crimea,137-Crimea.txt,11649,,naval slots
+83,Crisana,83-crisana.txt,6682,Arad,rocket_site_spawn
+109,Croatia,109-Eastern Croatia.txt,11580,,rocket_site_spawn
+315,Cuba,315-Cuba.txt,1550,,naval slots
+315,Cuba,315-Cuba.txt,4476,,naval slots
+315,Cuba,315-Cuba.txt,4600,,naval slots
+315,Cuba,315-Cuba.txt,7451,,naval slots
+315,Cuba,315-Cuba.txt,7546,,naval slots
+315,Cuba,315-Cuba.txt,7590,Guantánamo,rocket_site_spawn + naval slots
+315,Cuba,315-Cuba.txt,7622,Havana,naval slots
+315,Cuba,315-Cuba.txt,10374,,naval slots
+315,Cuba,315-Cuba.txt,10498,,naval slots
+315,Cuba,315-Cuba.txt,12347,,naval slots
+931,Cumbria,931-Cumbria.txt,6399,,naval slots
+931,Cumbria,931-Cumbria.txt,11332,Carlisle,rocket_site_spawn + naval slots
+306,Cundinamarca,306-Colombia.txt,2079,,rocket_site_spawn
+306,Cundinamarca,306-Colombia.txt,7936,,naval slots
+306,Cundinamarca,306-Colombia.txt,7991,,naval slots
+695,Curaçao,695-Curacao.txt,153,Willemstad,rocket_site_spawn + naval slots
+183,Cyprus,183-Cyprus.txt,7193,Limassol,rocket_site_spawn + naval slots
+183,Cyprus,183-Cyprus.txt,11984,Nicosia,naval slots
+663,Cyrenaica,663-Cyrenaica.txt,4060,,rocket_site_spawn
+789,Córdoba,789-Cordoba.txt,1192,,rocket_site_spawn
+860,Côte-Nord,860-Cote-Nord.txt,7683,,naval slots
+860,Côte-Nord,860-Cote-Nord.txt,7807,,naval slots
+860,Côte-Nord,860-Cote-Nord.txt,7810,,naval slots
+860,Côte-Nord,860-Cote-Nord.txt,10534,,naval slots
+860,Côte-Nord,860-Cote-Nord.txt,10715,,naval slots
+860,Côte-Nord,860-Cote-Nord.txt,13293,,rocket_site_spawn + naval slots
+1017,Da Nang,1017 - Trung Bo.txt,1302,,naval slots
+1017,Da Nang,1017 - Trung Bo.txt,4379,,naval slots
+1017,Da Nang,1017 - Trung Bo.txt,4397,,rocket_site_spawn + naval slots
+1017,Da Nang,1017 - Trung Bo.txt,7280,,naval slots
+1017,Da Nang,1017 - Trung Bo.txt,10016,,naval slots
+1017,Da Nang,1017 - Trung Bo.txt,11936,,naval slots
+1017,Da Nang,1017 - Trung Bo.txt,12297,,naval slots
+760,Dabancheng,760-Dabancheng.txt,1838,,rocket_site_spawn
+232,Dagestan,232-Grozny.txt,7554,,rocket_site_spawn
+776,Dahomey,776-Dahomey.txt,10919,Porto Novo,naval slots
+776,Dahomey,776-Dahomey.txt,12874,,rocket_site_spawn
+916,Dalarna,916-Dalarna.txt,9068,,rocket_site_spawn
+747,Dali,747-Dali Bai.txt,12789,,rocket_site_spawn
+745,Dalian,745-Dalian.txt,1150,Dalian,naval slots
+745,Dalian,745-Dalian.txt,6851,Zhuanghe,rocket_site_spawn + naval slots
+103,Dalmatia,103-Croatia.txt,591,,naval slots
+103,Dalmatia,103-Croatia.txt,984,,rocket_site_spawn
+103,Dalmatia,103-Croatia.txt,3868,Dubrovnik,naval slots
+103,Dalmatia,103-Croatia.txt,3924,Split,naval slots
+103,Dalmatia,103-Croatia.txt,6889,Dubrovnik,naval slots
+103,Dalmatia,103-Croatia.txt,11816,,naval slots
+103,Dalmatia,103-Croatia.txt,11901,,naval slots
+103,Dalmatia,103-Croatia.txt,13252,,naval slots
+554,Damascus,554-Syria.txt,7184,,rocket_site_spawn
+859,Dammam,859-Dammam.txt,1955,,rocket_site_spawn + naval slots
+859,Dammam,859-Dammam.txt,10791,,naval slots
+859,Dammam,859-Dammam.txt,12702,Dammam,naval slots
+85,Danzig,85-Danzig.txt,362,Danzig,rocket_site_spawn + naval slots
+970,Debar,970 - Western Macedonia.txt,11856,,rocket_site_spawn
+680,Deir-az-Zur,680-Deir-az-Zur.txt,10383,,rocket_site_spawn
+439,Delhi,439-Delhi.txt,11955,,rocket_site_spawn
+451,Derna,451-Derna.txt,1130,Tobruk,naval slots
+451,Derna,451-Derna.txt,1204,,rocket_site_spawn + naval slots
+451,Derna,451-Derna.txt,4136,,naval slots
+451,Derna,451-Derna.txt,4151,,naval slots
+451,Derna,451-Derna.txt,7082,,naval slots
+451,Derna,451-Derna.txt,9992,,naval slots
+451,Derna,451-Derna.txt,10120,,naval slots
+451,Derna,451-Derna.txt,12094,,naval slots
+1016,Dhofar,1016 - Dhofar.txt,2059,,rocket_site_spawn
+1016,Dhofar,1016 - Dhofar.txt,2103,Salalah,naval slots
+710,Diego Garcia,710-Diego Garcia.txt,13019,,rocket_site_spawn + naval slots
+866,Districts of Ontario,866-Districts of Ontario.txt,761,,rocket_site_spawn + naval slots
+866,Districts of Ontario,866-Districts of Ontario.txt,4753,,naval slots
+866,Districts of Ontario,866-Districts of Ontario.txt,13315,,naval slots
+350,Diyarbakır,350-Diyarbekir.txt,11759,,rocket_site_spawn
+226,Dnipropetrovsk,226-Nikopol.txt,9479,,rocket_site_spawn
+77,Dobrudja,77-Dobrogea.txt,11597,Dobrich,rocket_site_spawn + naval slots
+164,Dodecanese,164-Dodecanese.txt,7003,,naval slots
+164,Dodecanese,164-Dodecanese.txt,10007,Rhodes,rocket_site_spawn + naval slots
+319,Dominican Republic,319-Dominican Republic.txt,4598,Santiago de los Caballeros,naval slots
+319,Dominican Republic,319-Dominican Republic.txt,7632,,rocket_site_spawn + naval slots
+319,Dominican Republic,319-Dominican Republic.txt,7660,Santo Domingo,naval slots
+319,Dominican Republic,319-Dominican Republic.txt,10484,,naval slots
+819,Dornod,819-Dornod.txt,10647,,rocket_site_spawn
+516,Dudinka,516-Northern Siberia.txt,10635,,rocket_site_spawn
+481,Durango,481-Sinaloa.txt,1945,,rocket_site_spawn + naval slots
+481,Durango,481-Sinaloa.txt,8057,Culiacán,naval slots
+481,Durango,481-Sinaloa.txt,10895,Mazatlán,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,1546,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,4468,Sorong,rocket_site_spawn + naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,4509,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,4524,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7269,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7487,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7512,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7529,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7542,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,7585,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,10369,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,12315,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,12371,,naval slots
+669,Dutch New Guinea,669-Dutch New Guinea.txt,12386,,naval slots
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,1629,,naval slots
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,4593,,naval slots
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,7627,,naval slots
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,8235,,rocket_site_spawn
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,10505,Merauke,naval slots
+1057,Dutch Papua,1057-Dutch Southern New Guinea.txt,12457,,naval slots
+1054,Dutch Timor,1054-Dutch Timor.txt,1339,,naval slots
+1054,Dutch Timor,1054-Dutch Timor.txt,1355,Kupang,naval slots
+1054,Dutch Timor,1054-Dutch Timor.txt,4358,,rocket_site_spawn + naval slots
+618,Dzungaria,618-China 15.txt,1844,,rocket_site_spawn
+125,East Anglia,125-East Anglia.txt,221,,naval slots
+125,East Anglia,125-East Anglia.txt,271,,naval slots
+125,East Anglia,125-East Anglia.txt,322,Norwich,naval slots
+125,East Anglia,125-East Anglia.txt,3287,,naval slots
+125,East Anglia,125-East Anglia.txt,11221,,rocket_site_spawn
+1000,East Azerbaijan,1000-East Azerbaijan.txt,12793,,rocket_site_spawn
+430,East Bengal,430-Bangladesh.txt,4162,,naval slots
+430,East Bengal,430-Bangladesh.txt,4616,,rocket_site_spawn
+430,East Bengal,430-Bangladesh.txt,7078,,naval slots
+430,East Bengal,430-Bangladesh.txt,9935,,naval slots
+430,East Bengal,430-Bangladesh.txt,9991,,naval slots
+430,East Bengal,430-Bangladesh.txt,10035,,naval slots
+430,East Bengal,430-Bangladesh.txt,11911,,naval slots
+430,East Bengal,430-Bangladesh.txt,11929,Dacca,naval slots
+430,East Bengal,430-Bangladesh.txt,11968,,naval slots
+430,East Bengal,430-Bangladesh.txt,12010,,naval slots
+609,East Hebei,609-China 8.txt,900,,rocket_site_spawn
+609,East Hebei,609-China 8.txt,1052,Tangshan,naval slots
+609,East Hebei,609-China 8.txt,3900,,naval slots
+609,East Hebei,609-China 8.txt,12043,,naval slots
+1051,East Java,1051-East Java.txt,1209,,naval slots
+1051,East Java,1051-East Java.txt,1413,,naval slots
+1051,East Java,1051-East Java.txt,4306,,naval slots
+1051,East Java,1051-East Java.txt,4390,,rocket_site_spawn + naval slots
+1051,East Java,1051-East Java.txt,4608,,naval slots
+1051,East Java,1051-East Java.txt,7642,,naval slots
+1051,East Java,1051-East Java.txt,7654,,naval slots
+1051,East Java,1051-East Java.txt,10135,,naval slots
+1051,East Java,1051-East Java.txt,10479,,naval slots
+1051,East Java,1051-East Java.txt,12277,,naval slots
+1051,East Java,1051-East Java.txt,12472,,naval slots
+1051,East Java,1051-East Java.txt,13383,,naval slots
+1051,East Java,1051-East Java.txt,13403,Surabaya,naval slots
+1051,East Java,1051-East Java.txt,13405,Semarang,naval slots
+1051,East Java,1051-East Java.txt,13406,Yogyakarta,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,1252,,rocket_site_spawn + naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,1404,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,1416,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,7231,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,7296,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,7415,Tarakan,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,10138,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,10178,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,10181,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,10237,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,10325,Tanjung Selor,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12110,Banjarmasin,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12196,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12225,Balikpapan,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12243,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12252,,naval slots
+1055,East Kalimantan,1055-Eastern Kalimantan.txt,12280,,naval slots
+129,East Midlands,129-East Midlands.txt,364,,rocket_site_spawn
+129,East Midlands,129-East Midlands.txt,3353,,naval slots
+129,East Midlands,129-East Midlands.txt,9250,,naval slots
+129,East Midlands,129-East Midlands.txt,9322,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,1298,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,4301,Ende,rocket_site_spawn + naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,7321,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,10175,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,10219,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,12151,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,13393,,naval slots
+1053,East Nusa Tenggara,1053-East Nusa Tenggara.txt,13394,,naval slots
+986,East Punjab,986 - East Punjab.txt,2002,,rocket_site_spawn
+721,East Timor,721-Portuguese Timor.txt,1326,,naval slots
+721,East Timor,721-Portuguese Timor.txt,12178,,naval slots
+721,East Timor,721-Portuguese Timor.txt,12190,Dili,rocket_site_spawn + naval slots
+721,East Timor,721-Portuguese Timor.txt,12206,Pante Macassar,naval slots
+721,East Timor,721-Portuguese Timor.txt,13001,,naval slots
+948,Easter Island,948 - Easter Island.txt,13294,Hanga Roa,rocket_site_spawn + naval slots
+794,Eastern Aragón,794-Eastern Aragon.txt,798,,rocket_site_spawn
+457,Eastern Desert,457-Aswan.txt,4068,,naval slots
+457,Eastern Desert,457-Aswan.txt,4910,,rocket_site_spawn
+457,Eastern Desert,457-Aswan.txt,5069,Berenice Troglodytica,naval slots
+457,Eastern Desert,457-Aswan.txt,9957,,naval slots
+457,Eastern Desert,457-Aswan.txt,10126,,naval slots
+457,Eastern Desert,457-Aswan.txt,12002,Hurghada,naval slots
+457,Eastern Desert,457-Aswan.txt,12889,,naval slots
+1078,Eastern Siam,1078 - Eastern Siam.txt,1244,,naval slots
+1078,Eastern Siam,1078 - Eastern Siam.txt,4433,,naval slots
+1078,Eastern Siam,1078 - Eastern Siam.txt,7225,Chon Buri,naval slots
+1078,Eastern Siam,1078 - Eastern Siam.txt,7292,,naval slots
+1078,Eastern Siam,1078 - Eastern Siam.txt,10293,,rocket_site_spawn
+71,Eastern Slovakia,71-East Slovakia.txt,3581,Prešov,rocket_site_spawn
+151,Eastern Swiss Alps,151-Eastern Swiss Alps.txt,3660,,rocket_site_spawn
+305,Ecuador,305-Ecuador.txt,5120,Machala,naval slots
+305,Ecuador,305-Ecuador.txt,8047,,naval slots
+305,Ecuador,305-Ecuador.txt,8252,Guayaquil,naval slots
+305,Ecuador,305-Ecuador.txt,12798,Quito,rocket_site_spawn
+341,Edirne,341-Edirne.txt,849,Gelibolu,naval slots
+341,Edirne,341-Edirne.txt,922,,naval slots
+341,Edirne,341-Edirne.txt,3879,,naval slots
+341,Edirne,341-Edirne.txt,3893,,rocket_site_spawn
+341,Edirne,341-Edirne.txt,6895,,naval slots
+449,El Agheila,449-Libyan Coast.txt,1041,,naval slots
+449,El Agheila,449-Libyan Coast.txt,1198,,naval slots
+449,El Agheila,449-Libyan Coast.txt,4047,,naval slots
+449,El Agheila,449-Libyan Coast.txt,4057,,naval slots
+449,El Agheila,449-Libyan Coast.txt,10046,,rocket_site_spawn + naval slots
+449,El Agheila,449-Libyan Coast.txt,10117,,naval slots
+449,El Agheila,449-Libyan Coast.txt,12088,,naval slots
+314,El Salvador,314-El Salvador.txt,12823,San Salvador,rocket_site_spawn + naval slots
+314,El Salvador,314-El Salvador.txt,13093,,naval slots
+889,Elisabethville,889-Elisabethville.txt,1817,,rocket_site_spawn
+643,Ellice Islands,643-Fongafale.txt,13054,,naval slots
+643,Ellice Islands,643-Fongafale.txt,13055,,naval slots
+643,Ellice Islands,643-Fongafale.txt,13056,,rocket_site_spawn + naval slots
+643,Ellice Islands,643-Fongafale.txt,13057,,naval slots
+161,Emilia Romagna,161-Emilia Romagna.txt,782,,naval slots
+161,Emilia Romagna,161-Emilia Romagna.txt,3976,,rocket_site_spawn
+161,Emilia Romagna,161-Emilia Romagna.txt,6793,Ferrara,naval slots
+161,Emilia Romagna,161-Emilia Romagna.txt,9924,,naval slots
+829,Engels-Marxstadt,829 - Volga Germany.txt,6601,,rocket_site_spawn
+185,Epirus,185-Epirus.txt,1106,,naval slots
+185,Epirus,185-Epirus.txt,1205,Agrinio,naval slots
+185,Epirus,185-Epirus.txt,9805,,naval slots
+185,Epirus,185-Epirus.txt,9837,,rocket_site_spawn
+185,Epirus,185-Epirus.txt,9916,,naval slots
+185,Epirus,185-Epirus.txt,10203,Corfu,naval slots
+185,Epirus,185-Epirus.txt,12001,,naval slots
+660,Equatorial Africa,660-Equatorial Africa.txt,12719,,rocket_site_spawn
+297,Equatorial Guinea,297-Belgian Africa.txt,1903,Malabo,naval slots
+297,Equatorial Guinea,297-Belgian Africa.txt,8244,,rocket_site_spawn + naval slots
+550,Eritrea,550-Eritrea.txt,5047,,rocket_site_spawn + naval slots
+550,Eritrea,550-Eritrea.txt,5091,,naval slots
+550,Eritrea,550-Eritrea.txt,8043,,naval slots
+550,Eritrea,550-Eritrea.txt,12766,Massaua,naval slots
+5,Ermland-Masuren,5-Germany.txt,3380,,naval slots
+5,Ermland-Masuren,5-Germany.txt,6402,,rocket_site_spawn + naval slots
+943,Espírito Santo,943 - Espirito Santo.txt,2153,,rocket_site_spawn + naval slots
+943,Espírito Santo,943 - Espirito Santo.txt,8196,,naval slots
+943,Espírito Santo,943 - Espirito Santo.txt,10999,,naval slots
+170,Extremadura,170-Extremadura.txt,9917,,rocket_site_spawn
+299,Falkland Islands,299-Falkand Islands.txt,12960,Port Stanley,naval slots
+299,Falkland Islands,299-Falkand Islands.txt,13292,,rocket_site_spawn + naval slots
+1009,Farah,1009-Farah.txt,2062,,rocket_site_spawn
+337,Faroe Islands,337-Faroe Islands.txt,13003,Tórshavn,rocket_site_spawn + naval slots
+412,Fars,412-Fars.txt,4959,,naval slots
+412,Fars,412-Fars.txt,7982,Bandar e'Abbas,naval slots
+412,Fars,412-Fars.txt,10797,,naval slots
+412,Fars,412-Fars.txt,10881,,rocket_site_spawn
+412,Fars,412-Fars.txt,12832,Bushehr,naval slots
+412,Fars,412-Fars.txt,13312,,naval slots
+999,Federated Shan,999-Federated Shan States.txt,1566,,rocket_site_spawn
+636,Fiji,636-Fiji.txt,4286,Suva,rocket_site_spawn + naval slots
+636,Fiji,636-Fiji.txt,7302,Suva,naval slots
+636,Fiji,636-Fiji.txt,12159,,naval slots
+925,Finnmark,925-Finnmark.txt,22,,naval slots
+925,Finnmark,925-Finnmark.txt,64,,naval slots
+925,Finnmark,925-Finnmark.txt,2995,,naval slots
+925,Finnmark,925-Finnmark.txt,3016,,naval slots
+925,Finnmark,925-Finnmark.txt,3040,,naval slots
+925,Finnmark,925-Finnmark.txt,6015,,naval slots
+925,Finnmark,925-Finnmark.txt,6092,,naval slots
+925,Finnmark,925-Finnmark.txt,9042,,naval slots
+925,Finnmark,925-Finnmark.txt,9064,,naval slots
+925,Finnmark,925-Finnmark.txt,9089,,naval slots
+925,Finnmark,925-Finnmark.txt,9116,Kirkenes,naval slots
+925,Finnmark,925-Finnmark.txt,11034,,naval slots
+925,Finnmark,925-Finnmark.txt,11063,,naval slots
+925,Finnmark,925-Finnmark.txt,11077,,naval slots
+925,Finnmark,925-Finnmark.txt,11104,,rocket_site_spawn
+6,Flanders,6-Belgium.txt,516,Brussels,rocket_site_spawn
+6,Flanders,6-Belgium.txt,6446,,naval slots
+6,Flanders,6-Belgium.txt,6560,Ghent,naval slots
+366,Florida,366-Florida.txt,866,,naval slots
+366,Florida,366-Florida.txt,1556,,naval slots
+366,Florida,366-Florida.txt,1572,,naval slots
+366,Florida,366-Florida.txt,1584,,naval slots
+366,Florida,366-Florida.txt,1843,Miami,naval slots
+366,Florida,366-Florida.txt,1913,,naval slots
+366,Florida,366-Florida.txt,7388,,naval slots
+366,Florida,366-Florida.txt,9834,,naval slots
+366,Florida,366-Florida.txt,10352,,naval slots
+366,Florida,366-Florida.txt,10380,,naval slots
+366,Florida,366-Florida.txt,10407,,naval slots
+366,Florida,366-Florida.txt,10489,,rocket_site_spawn + naval slots
+366,Florida,366-Florida.txt,12381,,naval slots
+366,Florida,366-Florida.txt,12439,,naval slots
+366,Florida,366-Florida.txt,12752,,naval slots
+957,Formosa,957 - Formosa.txt,12943,,rocket_site_spawn
+17,Franche-Comte,17-Alcase Lorraine.txt,6698,,rocket_site_spawn
+54,Franken,54-Bayreuth.txt,11544,Nuremberg,rocket_site_spawn
+694,French Caribbean,694-French Caribbean.txt,177,,naval slots
+694,French Caribbean,694-French Caribbean.txt,9377,Pointe-à-Pitre,rocket_site_spawn + naval slots
+694,French Caribbean,694-French Caribbean.txt,13084,,naval slots
+310,French Guiana,310-French SA.txt,12885,Cayenne,rocket_site_spawn + naval slots
+320,French India,320-French India.txt,10149,Pondicherry,rocket_site_spawn + naval slots
+268,French Somaliland,268-French Somaliland.txt,4985,,naval slots
+268,French Somaliland,268-French Somaliland.txt,8124,Djibouti,rocket_site_spawn + naval slots
+36,Friesland,36-Friesland.txt,6336,Leeuwarden,naval slots
+36,Friesland,36-Friesland.txt,9335,Groningen,rocket_site_spawn + naval slots
+36,Friesland,36-Friesland.txt,11318,,naval slots
+595,Fujian,595-Fujian.txt,4070,,rocket_site_spawn
+595,Fujian,595-Fujian.txt,4169,,naval slots
+595,Fujian,595-Fujian.txt,4196,Fuzhou,naval slots
+595,Fujian,595-Fujian.txt,7027,,naval slots
+595,Fujian,595-Fujian.txt,7071,Xiamen,naval slots
+595,Fujian,595-Fujian.txt,10010,,naval slots
+595,Fujian,595-Fujian.txt,10069,,naval slots
+595,Fujian,595-Fujian.txt,10093,,naval slots
+595,Fujian,595-Fujian.txt,11986,,naval slots
+911,Fyn,911-Fyn.txt,3325,Odense,naval slots
+911,Fyn,911-Fyn.txt,3374,Svendborg,rocket_site_spawn + naval slots
+911,Fyn,911-Fyn.txt,13260,,naval slots
+539,Gabon,539-Gabon.txt,5139,Libreville,naval slots
+539,Gabon,539-Gabon.txt,8207,,rocket_site_spawn + naval slots
+665,Gabès,665-Gabes.txt,7005,Gabès,naval slots
+665,Gabès,665-Gabes.txt,10026,,naval slots
+665,Gabès,665-Gabes.txt,10082,,rocket_site_spawn
+665,Gabès,665-Gabes.txt,11957,,naval slots
+649,Galapagos Islands,649-Galapagos Islands.txt,5023,Puerto Ayora,rocket_site_spawn + naval slots
+171,Galicia,171-Galicia.txt,758,La Coruña,naval slots
+171,Galicia,171-Galicia.txt,3761,,naval slots
+171,Galicia,171-Galicia.txt,6734,Vigo,naval slots
+171,Galicia,171-Galicia.txt,6764,,naval slots
+171,Galicia,171-Galicia.txt,9689,,naval slots
+171,Galicia,171-Galicia.txt,11677,,rocket_site_spawn
+171,Galicia,171-Galicia.txt,11710,,naval slots
+701,Gambia,701-Gambia.txt,4989,Banjul,rocket_site_spawn + naval slots
+701,Gambia,701-Gambia.txt,13213,,naval slots
+1029,Gangwon,1029 - Gangwon.txt,1148,Chuncheon,naval slots
+1029,Gangwon,1029 - Gangwon.txt,4004,,rocket_site_spawn
+1029,Gangwon,1029 - Gangwon.txt,7021,,naval slots
+1029,Gangwon,1029 - Gangwon.txt,11912,,naval slots
+1029,Gangwon,1029 - Gangwon.txt,11958,,naval slots
+1029,Gangwon,1029 - Gangwon.txt,12011,,naval slots
+753,Gannan,753-Gannan.txt,2045,,rocket_site_spawn
+283,Gansu,283-China.txt,4313,,rocket_site_spawn
+752,Ganzi,752-Chamdo.txt,12724,Ba'an,rocket_site_spawn
+898,Gao,898-Gao.txt,7954,,rocket_site_spawn
+903,Garissa,903-Garissa.txt,10976,,naval slots
+903,Garissa,903-Garissa.txt,12927,,rocket_site_spawn
+807,Gdynia,807-Gdynia.txt,389,,rocket_site_spawn
+807,Gdynia,807-Gdynia.txt,9263,Gdynia,naval slots
+365,Georgia,365-Georgia.txt,1480,,naval slots
+365,Georgia,365-Georgia.txt,11975,,naval slots
+365,Georgia,365-Georgia.txt,12384,Atlanta,rocket_site_spawn
+231,Georgia,231-Georgia.txt,772,Poti,naval slots
+231,Georgia,231-Georgia.txt,3653,Batumi,naval slots
+231,Georgia,231-Georgia.txt,9702,,rocket_site_spawn
+274,Ghana,274-British Africa.txt,8039,,rocket_site_spawn
+274,Ghana,274-British Africa.txt,10862,Accra,naval slots
+274,Ghana,274-British Africa.txt,12742,,naval slots
+274,Ghana,274-British Africa.txt,12785,,naval slots
+118,Gibraltar,118-Gibralter.txt,4135,Gibraltar,rocket_site_spawn + naval slots
+420,Gilan,420-Gilan.txt,4637,,rocket_site_spawn
+639,Gilbert Islands,639-Maiana.txt,4387,,rocket_site_spawn + naval slots
+639,Gilbert Islands,639-Maiana.txt,7393,,naval slots
+639,Gilbert Islands,639-Maiana.txt,13020,,naval slots
+639,Gilbert Islands,639-Maiana.txt,13021,Tarawa,naval slots
+639,Gilbert Islands,639-Maiana.txt,13022,,naval slots
+338,Gloucestershire,338-Gloucestershire.txt,3369,Bristol,rocket_site_spawn + naval slots
+338,Gloucestershire,338-Gloucestershire.txt,6378,,naval slots
+338,Gloucestershire,338-Gloucestershire.txt,9484,,naval slots
+321,Goa,321-Goa.txt,1273,Goa,rocket_site_spawn + naval slots
+817,Gobi,817-Gobi.txt,1853,,rocket_site_spawn
+505,Goiás,505-Goias.txt,5148,,rocket_site_spawn
+840,Gojjam,840-Gojjam.txt,13242,Debre Markos,rocket_site_spawn
+754,Golog,754-Golog.txt,4888,,rocket_site_spawn
+241,Gomel,241-Pochep.txt,11271,,rocket_site_spawn
+252,Gorky,252-Nizhny Novogrod.txt,3303,,rocket_site_spawn
+124,Gotland,124-Gotland.txt,408,Visby,naval slots
+124,Gotland,124-Gotland.txt,6258,,rocket_site_spawn + naval slots
+173,Granada,173-Granada.txt,747,,naval slots
+173,Granada,173-Granada.txt,4065,,naval slots
+173,Granada,173-Granada.txt,7068,,naval slots
+173,Granada,173-Granada.txt,7153,,naval slots
+173,Granada,173-Granada.txt,9979,Málaga,naval slots
+173,Granada,173-Granada.txt,10063,,naval slots
+173,Granada,173-Granada.txt,11956,,rocket_site_spawn
+173,Granada,173-Granada.txt,12038,Almería,naval slots
+126,Greater London Area,126-Greater London Area.txt,9239,,rocket_site_spawn
+126,Greater London Area,126-Greater London Area.txt,11374,,naval slots
+101,Greenland,101-Greenland.txt,10245,,naval slots
+101,Greenland,101-Greenland.txt,10636,,naval slots
+101,Greenland,101-Greenland.txt,12512,Nuuk,rocket_site_spawn + naval slots
+101,Greenland,101-Greenland.txt,13066,,naval slots
+793,Guadalajara,793-Guadalajara.txt,3858,,rocket_site_spawn
+638,Guam,638-Guam.txt,12140,Hagatna,rocket_site_spawn + naval slots
+593,Guangdong,593-Guangdong.txt,4050,,naval slots
+593,Guangdong,593-Guangdong.txt,7067,,naval slots
+593,Guangdong,593-Guangdong.txt,7108,Bao'an,naval slots
+593,Guangdong,593-Guangdong.txt,9938,Shantou,naval slots
+593,Guangdong,593-Guangdong.txt,9978,,naval slots
+593,Guangdong,593-Guangdong.txt,12095,,rocket_site_spawn
+599,Guangxi,599-Guanxi.txt,7168,,rocket_site_spawn
+592,Guangzhou,592-Guangzhou.txt,1047,Guangzhou,naval slots
+592,Guangzhou,592-Guangzhou.txt,7039,,naval slots
+592,Guangzhou,592-Guangzhou.txt,7152,,rocket_site_spawn
+592,Guangzhou,592-Guangzhou.txt,9963,,naval slots
+592,Guangzhou,592-Guangzhou.txt,11938,,naval slots
+728,Guangzhouwan,728-Guangzhouwan.txt,11981,Zhanjiang,rocket_site_spawn + naval slots
+181,Guarda,181-Guarda.txt,9787,Viseu,rocket_site_spawn
+313,Guatemala,313-Guatemala.txt,10886,Guatemala,naval slots
+313,Guatemala,313-Guatemala.txt,13085,,rocket_site_spawn + naval slots
+485,Guerrero,485-Guerrero.txt,4887,Morelia,rocket_site_spawn
+485,Guerrero,485-Guerrero.txt,5066,,naval slots
+485,Guerrero,485-Guerrero.txt,8032,Manzanillo,naval slots
+485,Guerrero,485-Guerrero.txt,10730,Acapulco,naval slots
+780,Guinea,780-Guinea.txt,1909,Conakry,naval slots
+780,Guinea,780-Guinea.txt,8008,,rocket_site_spawn
+780,Guinea,780-Guinea.txt,12858,,naval slots
+603,Guizhou,603-China 3.txt,10616,,rocket_site_spawn
+428,Gujarat,428-Western Indian States.txt,1061,,rocket_site_spawn + naval slots
+428,Gujarat,428-Western Indian States.txt,1190,,naval slots
+428,Gujarat,428-Western Indian States.txt,4090,,naval slots
+428,Gujarat,428-Western Indian States.txt,4132,,naval slots
+428,Gujarat,428-Western Indian States.txt,7020,,naval slots
+428,Gujarat,428-Western Indian States.txt,7207,,naval slots
+428,Gujarat,428-Western Indian States.txt,9975,Ahmadabad,naval slots
+428,Gujarat,428-Western Indian States.txt,10118,Jamnagar,naval slots
+428,Gujarat,428-Western Indian States.txt,12037,,naval slots
+406,Guryev,406-Krasnyy Yar.txt,477,,rocket_site_spawn
+1045,Guyuan,1045 - Guyuan.txt,1985,,rocket_site_spawn
+991,Gwalior,991-Gwalior.txt,2036,,rocket_site_spawn
+525,Gyeonggi,525-South Korea.txt,7125,Seoul,rocket_site_spawn + naval slots
+525,Gyeonggi,525-South Korea.txt,7221,,naval slots
+1030,Gyeongsang,1030 - Gyeongsang.txt,1054,,naval slots
+1030,Gyeongsang,1030 - Gyeongsang.txt,4056,Busan,naval slots
+1030,Gyeongsang,1030 - Gyeongsang.txt,7121,,naval slots
+1030,Gyeongsang,1030 - Gyeongsang.txt,12060,,rocket_site_spawn + naval slots
+38,Gävleborg,38-Sweden.txt,130,Sundsvall,naval slots
+38,Gävleborg,38-Sweden.txt,205,,naval slots
+38,Gävleborg,38-Sweden.txt,3045,,naval slots
+38,Gävleborg,38-Sweden.txt,9051,,rocket_site_spawn
+38,Gävleborg,38-Sweden.txt,9088,,naval slots
+38,Gävleborg,38-Sweden.txt,9151,,naval slots
+38,Gävleborg,38-Sweden.txt,11040,,naval slots
+38,Gävleborg,38-Sweden.txt,11091,Gävle,naval slots
+38,Gävleborg,38-Sweden.txt,11147,,naval slots
+739,Haida Gwaii,739-Haida Gwaii.txt,1869,,rocket_site_spawn + naval slots
+591,Hainan,591-Hainan.txt,994,Yaxian,naval slots
+591,Hainan,591-Hainan.txt,1038,,rocket_site_spawn + naval slots
+591,Hainan,591-Hainan.txt,1070,Haikou,naval slots
+591,Hainan,591-Hainan.txt,11963,,naval slots
+591,Hainan,591-Hainan.txt,11990,,naval slots
+318,Haiti,318-Haiti.txt,1594,,rocket_site_spawn + naval slots
+318,Haiti,318-Haiti.txt,1635,,naval slots
+318,Haiti,318-Haiti.txt,4641,Port-au-Prince,naval slots
+755,Haixi,755-Haixi.txt,10865,,rocket_site_spawn
+352,Hakkari,352-Hakkari.txt,12476,Hakkâri,rocket_site_spawn
+417,Hamadan,417-Golestan.txt,8125,,rocket_site_spawn
+1028,Hamgyong,1028 - Hamgyong.txt,848,,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,898,Chongjin,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,959,,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,3852,,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,3981,,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,6822,,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,6922,,rocket_site_spawn + naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,6928,Hamhung,naval slots
+1028,Hamgyong,1028 - Hamgyong.txt,6944,,naval slots
+59,Hannover,59-Ost - Hannover.txt,374,Cuxhaven,naval slots
+59,Hannover,59-Ost - Hannover.txt,3326,Bremen,naval slots
+59,Hannover,59-Ost - Hannover.txt,6298,Lüneburg,rocket_site_spawn
+59,Hannover,59-Ost - Hannover.txt,6325,Buxtehude,naval slots
+59,Hannover,59-Ost - Hannover.txt,6349,,naval slots
+835,Hararghe,835-Haraghe.txt,7980,Dire Dawa,rocket_site_spawn
+812,Harju,812-Tallinn.txt,496,,rocket_site_spawn
+812,Harju,812-Tallinn.txt,567,,naval slots
+812,Harju,812-Tallinn.txt,3152,Tallinn,naval slots
+812,Harju,812-Tallinn.txt,11426,,naval slots
+799,Hatay,799-Hatay.txt,12029,Antakya,rocket_site_spawn + naval slots
+629,Hawaii,629-Hawaii.txt,4180,Honolulu,naval slots
+629,Hawaii,629-Hawaii.txt,7112,,naval slots
+629,Hawaii,629-Hawaii.txt,7195,,rocket_site_spawn + naval slots
+629,Hawaii,629-Hawaii.txt,10048,,naval slots
+629,Hawaii,629-Hawaii.txt,12021,Hilo,naval slots
+614,Hebei,614-China 13.txt,1188,,rocket_site_spawn
+614,Hebei,614-China 13.txt,11944,,naval slots
+1039,Hebei-Chahar,1039 - Hebei-Chahar.txt,1590,,rocket_site_spawn
+714,Heilungkiang,714-Heilungkiang.txt,7848,Mohe,rocket_site_spawn
+923,Helgeland,923-Helgeland.txt,3048,Mo i Rana,naval slots
+923,Helgeland,923-Helgeland.txt,3088,,naval slots
+923,Helgeland,923-Helgeland.txt,3126,,naval slots
+923,Helgeland,923-Helgeland.txt,6071,,naval slots
+923,Helgeland,923-Helgeland.txt,6111,,rocket_site_spawn
+923,Helgeland,923-Helgeland.txt,6187,,naval slots
+607,Henan,607-China 7.txt,11931,Luoyang,rocket_site_spawn
+415,Herat,415-South Khorasan.txt,4893,Herat,rocket_site_spawn
+804,Herzegovina,804-Herzegovina.txt,11845,,rocket_site_spawn
+55,Hessen,55-Nassau.txt,3574,,rocket_site_spawn
+63,Hinterpommern,63-WestPrussen.txt,6282,Stettin,naval slots
+63,Hinterpommern,63-WestPrussen.txt,6334,,naval slots
+63,Hinterpommern,63-WestPrussen.txt,9334,,naval slots
+63,Hinterpommern,63-WestPrussen.txt,9361,,naval slots
+63,Hinterpommern,63-WestPrussen.txt,11343,Stolp,naval slots
+63,Hinterpommern,63-WestPrussen.txt,11372,Köslin,rocket_site_spawn + naval slots
+536,Hokkaido,536-Hokkaido.txt,1512,Nemuro,naval slots
+536,Hokkaido,536-Hokkaido.txt,1642,,naval slots
+536,Hokkaido,536-Hokkaido.txt,3962,Hakodate,naval slots
+536,Hokkaido,536-Hokkaido.txt,4576,Wakkanai,naval slots
+536,Hokkaido,536-Hokkaido.txt,4646,,naval slots
+536,Hokkaido,536-Hokkaido.txt,7532,,naval slots
+536,Hokkaido,536-Hokkaido.txt,10444,Sapporo,rocket_site_spawn + naval slots
+536,Hokkaido,536-Hokkaido.txt,10512,,naval slots
+536,Hokkaido,536-Hokkaido.txt,12352,,naval slots
+536,Hokkaido,536-Hokkaido.txt,12493,,naval slots
+7,Holland,7-Holland.txt,68,,naval slots
+7,Holland,7-Holland.txt,3211,The Hague,rocket_site_spawn + naval slots
+7,Holland,7-Holland.txt,3314,,naval slots
+7,Holland,7-Holland.txt,9498,Rotterdam,naval slots
+58,Holstein,58-Schleswig - Holstein.txt,3368,Heide,naval slots
+58,Holstein,58-Schleswig - Holstein.txt,6389,Kiel,naval slots
+58,Holstein,58-Schleswig - Holstein.txt,9347,Hamburg,naval slots
+58,Holstein,58-Schleswig - Holstein.txt,11331,,rocket_site_spawn + naval slots
+312,Honduras,312-Honduras.txt,2031,,rocket_site_spawn + naval slots
+312,Honduras,312-Honduras.txt,8017,,naval slots
+312,Honduras,312-Honduras.txt,12865,Tegucigalpa,naval slots
+326,Hong Kong,326-HongKong.txt,10062,Hong Kong,rocket_site_spawn + naval slots
+749,Huangshan,749-Huangshan.txt,1153,,rocket_site_spawn
+620,Hubei,620-China 17.txt,10474,,rocket_site_spawn
+761,Hulunbuir,761-Hulunbuir.txt,4745,,rocket_site_spawn
+602,Hunan,602-China 2.txt,11918,,rocket_site_spawn
+427,Hyderabad,427-Hyderabad.txt,1405,,rocket_site_spawn
+927,Häme,927-Hame.txt,9167,Hämeenlinna,rocket_site_spawn
+100,Iceland,100-Iceland.txt,4861,,naval slots
+100,Iceland,100-Iceland.txt,12674,Reykjavik,naval slots
+100,Iceland,100-Iceland.txt,12689,,naval slots
+100,Iceland,100-Iceland.txt,13266,,rocket_site_spawn + naval slots
+100,Iceland,100-Iceland.txt,13267,,naval slots
+100,Iceland,100-Iceland.txt,13268,,naval slots
+100,Iceland,100-Iceland.txt,13271,,naval slots
+387,Idaho,387-Idaho.txt,10556,,rocket_site_spawn
+421,Ilam,421-Kurdistan.txt,829,,rocket_site_spawn
+16,Ile de France,16-Ile de France.txt,9507,,rocket_site_spawn
+395,Illinois,395-Illinois.txt,7611,,rocket_site_spawn
+838,Illubabor-Kaffa,838-Illubabor.txt,7912,Jiren,rocket_site_spawn
+396,Indiana,396-Indiana.txt,4527,,rocket_site_spawn
+1022,Interior Borneo,1022 - Interior Borneo.txt,2170,,rocket_site_spawn
+1073,Interior Papua,1073 - Interior Papua.txt,12428,,rocket_site_spawn
+392,Iowa,392-Iowa.txt,4691,,rocket_site_spawn
+566,Irkutsk,566-TS 8.txt,12647,,rocket_site_spawn
+996,Irrawaddy,996-Irrawaddy.txt,7382,,naval slots
+996,Irrawaddy,996-Irrawaddy.txt,10223,,naval slots
+996,Irrawaddy,996-Irrawaddy.txt,10267,,naval slots
+996,Irrawaddy,996-Irrawaddy.txt,12197,,rocket_site_spawn
+996,Irrawaddy,996-Irrawaddy.txt,12267,,naval slots
+868,Isan,868-Isan.txt,12360,Udon Thani,rocket_site_spawn
+411,Isfahan,411-Hormozgan.txt,5067,,rocket_site_spawn
+177,Islas Baleares,177-Balearic Islands.txt,7114,,naval slots
+177,Islas Baleares,177-Balearic Islands.txt,9793,Palma de Mallorca,rocket_site_spawn + naval slots
+177,Islas Baleares,177-Balearic Islands.txt,9845,,naval slots
+178,Islas Canarias,178-Canary islands.txt,13071,Santa Cruz de Tenerife,rocket_site_spawn + naval slots
+932,Isle of Man,932-Isle of Man.txt,3311,Douglas,rocket_site_spawn + naval slots
+797,Istanbul,797-Istanbul.txt,9833,Istanbul,rocket_site_spawn + naval slots
+797,Istanbul,797-Istanbul.txt,11829,,naval slots
+852,Istria,852-Istria.txt,11564,Rijeka,naval slots
+852,Istria,852-Istria.txt,11735,,rocket_site_spawn + naval slots
+253,Ivanovo,253-Ivanovo.txt,9159,,rocket_site_spawn
+779,Ivory Coast,779-Ivory Coast.txt,5013,,rocket_site_spawn
+779,Ivory Coast,779-Ivory Coast.txt,10762,,naval slots
+779,Ivory Coast,779-Ivory Coast.txt,10803,Abidjan,naval slots
+645,Iwo Jima,645-Iwo Jima.txt,13025,Iwo Jima,rocket_site_spawn + naval slots
+339,Izmir,339-Izmir.txt,4112,Izmir,naval slots
+339,Izmir,339-Izmir.txt,7130,,naval slots
+339,Izmir,339-Izmir.txt,10038,,naval slots
+339,Izmir,339-Izmir.txt,11848,,rocket_site_spawn + naval slots
+347,Izmit,347-Izmit.txt,904,Adapazarı,naval slots
+347,Izmit,347-Izmit.txt,6871,,rocket_site_spawn
+347,Izmit,347-Izmit.txt,11811,İzmit,naval slots
+347,Izmit,347-Izmit.txt,11866,,naval slots
+347,Izmit,347-Izmit.txt,11883,,naval slots
+478,Jalisco,478-Nayarit.txt,2051,,naval slots
+478,Jalisco,478-Nayarit.txt,12746,Puerto Vallarta,naval slots
+478,Jalisco,478-Nayarit.txt,12873,,naval slots
+478,Jalisco,478-Nayarit.txt,13089,Guadalajara,rocket_site_spawn
+689,Jamaica,689-Jamaica.txt,12304,Kingston,naval slots
+689,Jamaica,689-Jamaica.txt,12477,,rocket_site_spawn + naval slots
+914,Jan Mayen,914-JanMayen.txt,13272,,rocket_site_spawn + naval slots
+854,Jawf,854-Jawf.txt,10901,,rocket_site_spawn
+610,Jehol,610-China 9.txt,6837,,naval slots
+610,Jehol,610-China 9.txt,7575,,rocket_site_spawn
+610,Jehol,610-China 9.txt,11886,,naval slots
+598,Jiangsu,598-Jiansu.txt,1029,Donghai,naval slots
+598,Jiangsu,598-Jiansu.txt,4031,,naval slots
+598,Jiangsu,598-Jiansu.txt,4082,,rocket_site_spawn
+598,Jiangsu,598-Jiansu.txt,9953,,naval slots
+598,Jiangsu,598-Jiansu.txt,12067,,naval slots
+600,Jiangxi,600-Jiangxi.txt,4081,,rocket_site_spawn
+1038,Jinan,1038 - Jinan.txt,1124,,rocket_site_spawn
+1038,Jinan,1038 - Jinan.txt,12093,,naval slots
+756,Jiuquan,756-Jiuquan.txt,12820,,rocket_site_spawn
+630,Johnston Atoll,630-Johnston Atoll.txt,13051,,rocket_site_spawn + naval slots
+1060,Johor,1060 - Johor.txt,4424,,naval slots
+1060,Johor,1060 - Johor.txt,7427,,naval slots
+1060,Johor,1060 - Johor.txt,10313,,naval slots
+1060,Johor,1060 - Johor.txt,13376,Johor Bahru,rocket_site_spawn + naval slots
+455,Jordan,455-Jordan.txt,4115,Aqaba,naval slots
+455,Jordan,455-Jordan.txt,4562,,rocket_site_spawn
+844,Jubaland,844-jubaland.txt,12941,Kismaayo,rocket_site_spawn + naval slots
+845,Jura Mountains,845-Jura Mountains.txt,9638,Basel,rocket_site_spawn
+99,Jutland,99-Jutland.txt,316,,naval slots
+99,Jutland,99-Jutland.txt,394,Hjørring,naval slots
+99,Jutland,99-Jutland.txt,399,Esbjerg,naval slots
+99,Jutland,99-Jutland.txt,3206,Viborg,naval slots
+99,Jutland,99-Jutland.txt,3277,Kolding,naval slots
+99,Jutland,99-Jutland.txt,3341,,rocket_site_spawn
+99,Jutland,99-Jutland.txt,6235,Aalborg,naval slots
+99,Jutland,99-Jutland.txt,6364,Aarhus,naval slots
+99,Jutland,99-Jutland.txt,13259,,naval slots
+99,Jutland,99-Jutland.txt,13262,,naval slots
+99,Jutland,99-Jutland.txt,13263,,naval slots
+917,Jämtland,917-Jamtland.txt,11148,Östersund,rocket_site_spawn
+827,Kabardino-Balkaria,827 - Kabardino-Balkaria.txt,6674,,rocket_site_spawn
+267,Kabul,267-Afghanistan.txt,10852,,rocket_site_spawn
+1012,Kalat,1012-Kalat.txt,8066,Khuzdar,rocket_site_spawn
+334,Kalimantan Barat,334-Kalimantan Barat.txt,1316,,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,4279,Pontianak,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,4409,,rocket_site_spawn + naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,7227,,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,10282,,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,10310,,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,12129,,naval slots
+334,Kalimantan Barat,334-Kalimantan Barat.txt,13298,,naval slots
+247,Kalinin,247-Tver.txt,3143,,rocket_site_spawn
+237,Kalmykia,237-Elista.txt,9722,,rocket_site_spawn
+205,Kaluga,205-Hrodna.txt,9301,,rocket_site_spawn
+637,Kamchatka,637-State 1.txt,1823,,naval slots
+637,Kamchatka,637-State 1.txt,1839,,naval slots
+637,Kamchatka,637-State 1.txt,1863,,rocket_site_spawn + naval slots
+637,Kamchatka,637-State 1.txt,4728,,naval slots
+637,Kamchatka,637-State 1.txt,7878,,naval slots
+637,Kamchatka,637-State 1.txt,12207,,naval slots
+637,Kamchatka,637-State 1.txt,12522,,naval slots
+531,Kansai,531-Osaka.txt,1051,,naval slots
+531,Kansai,531-Osaka.txt,1067,,naval slots
+531,Kansai,531-Osaka.txt,1133,Kushimoto,naval slots
+531,Kansai,531-Osaka.txt,1136,Maizuru,naval slots
+531,Kansai,531-Osaka.txt,4054,Ise,naval slots
+531,Kansai,531-Osaka.txt,4142,Suzuka,naval slots
+531,Kansai,531-Osaka.txt,7072,Osaka,naval slots
+531,Kansai,531-Osaka.txt,7113,Wakayama,rocket_site_spawn + naval slots
+531,Kansai,531-Osaka.txt,9985,,naval slots
+531,Kansai,531-Osaka.txt,12031,Himeji,naval slots
+383,Kansas,383-Kansas.txt,4586,,rocket_site_spawn
+282,Kanto,282-Japan.txt,993,Utsunomiya,rocket_site_spawn
+282,Kanto,282-Japan.txt,1182,Tokyo,naval slots
+282,Kanto,282-Japan.txt,4100,Hitachi,naval slots
+282,Kanto,282-Japan.txt,4184,,naval slots
+282,Kanto,282-Japan.txt,4188,Chiba,naval slots
+282,Kanto,282-Japan.txt,7016,Iwaki,naval slots
+282,Kanto,282-Japan.txt,9998,Yokohama,naval slots
+881,Karagandy,881-Karagandy.txt,10277,,rocket_site_spawn
+823,Karakalpakstan,823 - Karakalpakstan.txt,4618,,rocket_site_spawn
+893,Karas,893-Karas.txt,2229,,naval slots
+893,Karas,893-Karas.txt,5154,,naval slots
+893,Karas,893-Karas.txt,7605,,rocket_site_spawn
+879,Kargopol,879-Kargopol.txt,11137,,rocket_site_spawn
+146,Karjala,146-Karelia.txt,3060,,naval slots
+146,Karjala,146-Karelia.txt,6150,,rocket_site_spawn
+146,Karjala,146-Karelia.txt,9100,,naval slots
+146,Karjala,146-Karelia.txt,9206,Viipuri,naval slots
+441,Kashmir,441-Kashmir.txt,5042,,rocket_site_spawn
+883,Kassala,883-Kassala.txt,1977,Halayeb,naval slots
+883,Kassala,883-Kassala.txt,2003,Tokar,naval slots
+883,Kassala,883-Kassala.txt,10902,,rocket_site_spawn
+883,Kassala,883-Kassala.txt,12725,Port Sudan,naval slots
+356,Kastamonu,356-Sinop.txt,979,,naval slots
+356,Kastamonu,356-Sinop.txt,3967,,naval slots
+356,Kastamonu,356-Sinop.txt,3982,,naval slots
+356,Kastamonu,356-Sinop.txt,6995,Sinop,naval slots
+356,Kastamonu,356-Sinop.txt,11839,,rocket_site_spawn
+762,Katowice,762-Katowice.txt,6464,Katowice,rocket_site_spawn
+11,Kaunas,11-Kaunas.txt,9404,,rocket_site_spawn
+899,Kayes-Koulikoro,899-Kayes-Koulikoro.txt,12838,,rocket_site_spawn
+348,Kayseri,348-Kayseri.txt,9830,,rocket_site_spawn
+249,Kazan,249-Kazan.txt,9401,,rocket_site_spawn
+1062,Kelantan-Terengganu,1062 - Kelantan.txt,1348,,rocket_site_spawn
+1062,Kelantan-Terengganu,1062 - Kelantan.txt,4355,,naval slots
+1062,Kelantan-Terengganu,1062 - Kelantan.txt,7329,Kota Bharu,naval slots
+1062,Kelantan-Terengganu,1062 - Kelantan.txt,12199,Kuala Terengganu,naval slots
+369,Kentucky,369-Kentucky.txt,7547,,rocket_site_spawn
+993,Kentung and Yawnghwe,993-Kentung and Yawnghwe.txt,7400,,rocket_site_spawn
+713,Kerguelen,713-Kerguelen.txt,2165,,rocket_site_spawn + naval slots
+414,Kerman,414-Kerman.txt,11249,,rocket_site_spawn
+409,Khabarovsk,409-Khabarovsk.txt,4404,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,4841,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,7249,,rocket_site_spawn
+409,Khabarovsk,409-Khabarovsk.txt,7309,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,7868,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,9604,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,11575,,naval slots
+409,Khabarovsk,409-Khabarovsk.txt,11719,,naval slots
+569,Khakassia,569-TS 11.txt,7757,Kemerovo,rocket_site_spawn
+221,Kharkov,221-Kharkov.txt,418,Kharkov,rocket_site_spawn
+551,Khartoum,551-Khartoum.txt,2046,Atbara,rocket_site_spawn
+878,Khatangsky,878-Khatangsky.txt,9224,,rocket_site_spawn
+196,Kherson,196-Kherson.txt,568,,naval slots
+196,Kherson,196-Kherson.txt,721,Kherson,naval slots
+196,Kherson,196-Kherson.txt,6771,,naval slots
+196,Kherson,196-Kherson.txt,9712,,naval slots
+196,Kherson,196-Kherson.txt,11715,,rocket_site_spawn
+831,Khiva,831 - Khiva.txt,10395,,rocket_site_spawn
+541,Khomas,541-South West Africa.txt,2207,,naval slots
+541,Khomas,541-South West Africa.txt,7770,,rocket_site_spawn
+416,Khorasan,416-Razavi Khorasan.txt,1888,,rocket_site_spawn
+1042,Khotan,1042 - Khotan.txt,1943,,rocket_site_spawn
+818,Khovd,818-Khovd.txt,4777,,rocket_site_spawn
+413,Khuzestan,413-Khuzestan.txt,5005,,naval slots
+413,Khuzestan,413-Khuzestan.txt,5089,,rocket_site_spawn + naval slots
+1006,Khyber Pass,1006-Khyber Pass.txt,5082,Gardez,rocket_site_spawn
+820,Khövsgöl,820-Khovsgol.txt,1834,,rocket_site_spawn
+90,Kielce,90-Lwow.txt,3586,,rocket_site_spawn
+202,Kiev,202-Western Kiev.txt,3543,,rocket_site_spawn
+575,Kirensk,575-Siberia 2.txt,1792,,rocket_site_spawn
+328,Kirin,328-Manchukuo.txt,1567,,rocket_site_spawn
+400,Kirov,400-Kirov.txt,10200,,rocket_site_spawn
+983,Kolhapur and Deccan,983 - Deccan States.txt,4395,,naval slots
+983,Kolhapur and Deccan,983 - Deccan States.txt,7250,,rocket_site_spawn
+983,Kolhapur and Deccan,983 - Deccan States.txt,12208,,naval slots
+644,Kolyma,644-state 3.txt,4006,,rocket_site_spawn
+346,Konya,346-Konya.txt,6894,,rocket_site_spawn
+802,Kosovo,802-Kosovo.txt,9890,,rocket_site_spawn
+583,Kostanay,583-Kazakhstan.txt,12266,,rocket_site_spawn
+880,Kotlas,880-Kotlas.txt,11074,,rocket_site_spawn
+88,Kraków,88-Kielce.txt,6522,,rocket_site_spawn
+234,Krasnodar,234-Krasodar.txt,717,,naval slots
+234,Krasnodar,234-Krasodar.txt,719,Novorossysk,naval slots
+234,Krasnodar,234-Krasodar.txt,750,,rocket_site_spawn + naval slots
+234,Krasnodar,234-Krasodar.txt,6741,,naval slots
+234,Krasnodar,234-Krasodar.txt,6755,,naval slots
+234,Krasnodar,234-Krasodar.txt,6783,,naval slots
+234,Krasnodar,234-Krasodar.txt,11668,,naval slots
+234,Krasnodar,234-Krasodar.txt,11729,,naval slots
+568,Krasnoyarsk,568-TS 10.txt,12563,,rocket_site_spawn
+894,Kunene,894-Kuneme.txt,10978,,rocket_site_spawn + naval slots
+894,Kunene,894-Kuneme.txt,12921,,naval slots
+759,Kunlun Shan,759-Kunlun.txt,5736,,rocket_site_spawn
+150,Kuopio,150-Kuopio.txt,3125,Kajaani,rocket_site_spawn
+1001,Kurdistan,1001-Kurdistan.txt,12773,,rocket_site_spawn
+549,Kurdufan,549-Sudan.txt,10795,,rocket_site_spawn
+555,Kuril Islands,555-Lagos.txt,1399,,naval slots
+555,Kuril Islands,555-Lagos.txt,1515,,naval slots
+555,Kuril Islands,555-Lagos.txt,13037,,rocket_site_spawn + naval slots
+220,Kursk,220-Kursk Area.txt,457,,rocket_site_spawn
+190,Kurzeme,190-Kurzeme.txt,3296,Ventspils,rocket_site_spawn + naval slots
+190,Kurzeme,190-Kurzeme.txt,3319,,naval slots
+190,Kurzeme,190-Kurzeme.txt,6322,,naval slots
+190,Kurzeme,190-Kurzeme.txt,9262,Liepāja,naval slots
+656,Kuwait,656-Kuwait.txt,8085,Kuwait City,naval slots
+656,Kuwait,656-Kuwait.txt,13366,,naval slots
+656,Kuwait,656-Kuwait.txt,13367,,rocket_site_spawn
+251,Kuybyshev,251-Samara.txt,11256,,rocket_site_spawn
+928,Kymi,928-Kyme.txt,3061,Kotka,naval slots
+928,Kymi,928-Kyme.txt,6186,,rocket_site_spawn + naval slots
+404,Kyzyl Orda,404-Saykhin.txt,10506,,rocket_site_spawn
+763,Königsberg,763-Konigsberg.txt,348,,rocket_site_spawn + naval slots
+763,Königsberg,763-Konigsberg.txt,6332,Königsberg,naval slots
+763,Königsberg,763-Konigsberg.txt,11265,,naval slots
+493,La Libertad,493-La Libertad.txt,1937,,naval slots
+493,La Libertad,493-La Libertad.txt,2085,,naval slots
+493,La Libertad,493-La Libertad.txt,4969,,rocket_site_spawn + naval slots
+493,La Libertad,493-La Libertad.txt,8056,,naval slots
+493,La Libertad,493-La Libertad.txt,10494,,naval slots
+493,La Libertad,493-La Libertad.txt,10864,,naval slots
+493,La Libertad,493-La Libertad.txt,12790,Cartagena,naval slots
+302,La Paz,302-bolivia.txt,10952,,rocket_site_spawn
+332,Labrador,332-Labrador.txt,1426,,rocket_site_spawn + naval slots
+332,Labrador,332-Labrador.txt,4720,,naval slots
+332,Labrador,332-Labrador.txt,12503,,naval slots
+558,Lagos,558-Nigeria.txt,2050,Lagos,naval slots
+558,Lagos,558-Nigeria.txt,4952,,rocket_site_spawn + naval slots
+1069,Lan Chang,1069 - Lan Chang.txt,10356,,rocket_site_spawn
+133,Lanark,133-Strathclyde.txt,6350,,naval slots
+133,Lanark,133-Strathclyde.txt,6385,,naval slots
+133,Lanark,133-Strathclyde.txt,6395,,naval slots
+133,Lanark,133-Strathclyde.txt,9237,,naval slots
+133,Lanark,133-Strathclyde.txt,9350,,rocket_site_spawn + naval slots
+133,Lanark,133-Strathclyde.txt,11218,Dumfries,naval slots
+132,Lancashire,132-North-west England.txt,3205,,rocket_site_spawn + naval slots
+132,Lancashire,132-North-west England.txt,6335,,naval slots
+132,Lancashire,132-North-west England.txt,6384,Liverpool,naval slots
+22,Languedoc,22-Roussillion.txt,6770,,rocket_site_spawn
+22,Languedoc,22-Roussillion.txt,6960,,naval slots
+22,Languedoc,22-Roussillion.txt,9898,Montpellier,naval slots
+22,Languedoc,22-Roussillion.txt,11877,,naval slots
+869,Lanna,869-Lanna.txt,1488,Chiang Mai,rocket_site_spawn
+670,Laos,670-Laos.txt,4568,,rocket_site_spawn
+148,Lappi,148-Lappi.txt,3055,,rocket_site_spawn
+148,Lappi,148-Lappi.txt,11125,Tornio,naval slots
+148,Lappi,148-Lappi.txt,11164,Kemi,naval slots
+810,Latgale,810-Zemgale.txt,9275,,rocket_site_spawn
+2,Lazio,2-Italy.txt,923,,naval slots
+2,Lazio,2-Italy.txt,6862,,naval slots
+2,Lazio,2-Italy.txt,9904,Rome,rocket_site_spawn
+2,Lazio,2-Italy.txt,11751,,naval slots
+2,Lazio,2-Italy.txt,11846,Anzio,naval slots
+2,Lazio,2-Italy.txt,13413,Ostia,naval slots
+553,Lebanon,553-Lebanon.txt,792,Beirut,naval slots
+553,Lebanon,553-Lebanon.txt,1108,,rocket_site_spawn + naval slots
+553,Lebanon,553-Lebanon.txt,11919,,naval slots
+308,Leeward Islands,308-Britain SA.txt,4450,,naval slots
+308,Leeward Islands,308-Britain SA.txt,7123,,rocket_site_spawn + naval slots
+113,Leinster,113-Ireland.txt,285,Wexford,naval slots
+113,Leinster,113-Ireland.txt,3359,Drogheda,naval slots
+113,Leinster,113-Ireland.txt,7377,Wicklow,rocket_site_spawn + naval slots
+113,Leinster,113-Ireland.txt,11293,Dublin,naval slots
+195,Leningrad,195-Leningrad Area.txt,3151,Leningrad,rocket_site_spawn + naval slots
+195,Leningrad,195-Leningrad Area.txt,6174,,naval slots
+174,León,174-Leon.txt,3727,,rocket_site_spawn
+751,Liangshan,751-Liangshan.txt,2067,,rocket_site_spawn
+298,Liberia,298-Liberia.txt,7959,Monrovia,naval slots
+298,Liberia,298-Liberia.txt,8006,,rocket_site_spawn + naval slots
+273,Libyan Desert,273-Italian Africa.txt,4191,,rocket_site_spawn
+303,Lima,303-Peru.txt,2156,Piura,naval slots
+303,Lima,303-Peru.txt,5190,,naval slots
+303,Lima,303-Peru.txt,8199,,naval slots
+303,Lima,303-Peru.txt,12983,,rocket_site_spawn + naval slots
+303,Lima,303-Peru.txt,12997,Lima,naval slots
+1059,Limbang,1059 - Limbang.txt,10269,,rocket_site_spawn
+1059,Limbang,1059 - Limbang.txt,13377,,naval slots
+1059,Limbang,1059 - Limbang.txt,13378,Limbang,naval slots
+25,Limousin,25-Limousin.txt,625,,rocket_site_spawn
+727,Line Islands,727-Line Islands.txt,13048,,naval slots
+727,Line Islands,727-Line Islands.txt,13049,,naval slots
+727,Line Islands,727-Line Islands.txt,13053,,rocket_site_spawn + naval slots
+258,Lipetsk,258-lipetsk.txt,9394,,rocket_site_spawn
+112,Lisbon,112-Lisbon.txt,799,,naval slots
+112,Lisbon,112-Lisbon.txt,3861,,naval slots
+112,Lisbon,112-Lisbon.txt,6924,,rocket_site_spawn + naval slots
+112,Lisbon,112-Lisbon.txt,11805,Lisbon,naval slots
+736,Litorale,736-Litorale.txt,6626,Trieste,rocket_site_spawn + naval slots
+853,Ljubljana,853-Ljubljana.txt,9627,Ljubljana,rocket_site_spawn
+30,Loire,30-Loire.txt,11465,Nantes,rocket_site_spawn + naval slots
+30,Loire,30-Loire.txt,11616,,naval slots
+159,Lombardy,159-Lombardy.txt,969,,rocket_site_spawn
+491,Loreto,491-Loreto.txt,13291,,rocket_site_spawn
+959,Los Andes,959 - Los Andes.txt,13308,,rocket_site_spawn
+121,Lothian,121-Scottish Lowlands.txt,6300,Rosyth,naval slots
+121,Lothian,121-Scottish Lowlands.txt,9314,,rocket_site_spawn
+121,Lothian,121-Scottish Lowlands.txt,9383,,naval slots
+121,Lothian,121-Scottish Lowlands.txt,9392,Edinburgh,naval slots
+121,Lothian,121-Scottish Lowlands.txt,11378,,naval slots
+371,Louisiana,371-Louisiana.txt,4507,,naval slots
+371,Louisiana,371-Louisiana.txt,4535,,naval slots
+371,Louisiana,371-Louisiana.txt,7524,,naval slots
+371,Louisiana,371-Louisiana.txt,7552,New Orleans,naval slots
+371,Louisiana,371-Louisiana.txt,7555,,rocket_site_spawn
+371,Louisiana,371-Louisiana.txt,12313,,naval slots
+371,Louisiana,371-Louisiana.txt,12398,,naval slots
+544,Lourenço Marques,544-East Africa.txt,2193,,naval slots
+544,Lourenço Marques,544-East Africa.txt,5177,,rocket_site_spawn
+544,Lourenço Marques,544-East Africa.txt,5212,,naval slots
+544,Lourenço Marques,544-East Africa.txt,8245,Lourenco Marques,naval slots
+4,Lower Austria,4-Austria.txt,11651,,rocket_site_spawn
+66,Lower Silesia,66-Niederschlesien.txt,3485,,rocket_site_spawn
+540,Luanda,540-Angola.txt,5158,,naval slots
+540,Luanda,540-Angola.txt,8219,,naval slots
+540,Luanda,540-Angola.txt,8248,Luanda,rocket_site_spawn + naval slots
+92,Lublin,92-Lublin.txt,6580,,rocket_site_spawn
+208,Luga,208-Pskov.txt,104,,naval slots
+208,Luga,208-Pskov.txt,6197,,rocket_site_spawn
+208,Luga,208-Pskov.txt,9097,,naval slots
+208,Luga,208-Pskov.txt,11186,,naval slots
+888,Lusambo,888-Lusambo.txt,2024,Bakwanga,rocket_site_spawn
+8,Luxembourg,8-Luxemburg.txt,13375,,rocket_site_spawn
+623,Luzon,623-Luzon.txt,4101,,naval slots
+623,Luzon,623-Luzon.txt,4214,,naval slots
+623,Luzon,623-Luzon.txt,4350,,naval slots
+623,Luzon,623-Luzon.txt,4368,,naval slots
+623,Luzon,623-Luzon.txt,7439,,naval slots
+623,Luzon,623-Luzon.txt,10241,,naval slots
+623,Luzon,623-Luzon.txt,10252,,naval slots
+623,Luzon,623-Luzon.txt,12213,Aparri,rocket_site_spawn + naval slots
+91,Lwów,91-Tarnopol.txt,491,,rocket_site_spawn
+295,Léopoldville,295-Congo.txt,10968,Boma,naval slots
+295,Léopoldville,295-Congo.txt,13370,,rocket_site_spawn
+729,Macau,729-Macau.txt,4189,Macau,rocket_site_spawn + naval slots
+106,Macedonia,106-Macedonia.txt,3833,,rocket_site_spawn
+543,Madagascar,543-Madagascar.txt,2200,,naval slots
+543,Madagascar,543-Madagascar.txt,5128,Antananarivo,rocket_site_spawn + naval slots
+543,Madagascar,543-Madagascar.txt,5185,,naval slots
+543,Madagascar,543-Madagascar.txt,5222,,naval slots
+543,Madagascar,543-Madagascar.txt,8180,,naval slots
+543,Madagascar,543-Madagascar.txt,8188,,naval slots
+543,Madagascar,543-Madagascar.txt,8246,,naval slots
+543,Madagascar,543-Madagascar.txt,10993,,naval slots
+543,Madagascar,543-Madagascar.txt,11015,,naval slots
+543,Madagascar,543-Madagascar.txt,12956,,naval slots
+697,Madeira,697-Madeira.txt,3118,Funchal,rocket_site_spawn + naval slots
+679,Madinah,679-Hejaz.txt,2033,,naval slots
+679,Madinah,679-Hejaz.txt,10835,,rocket_site_spawn
+982,Madras States,982 - Madras States.txt,1321,Kochin,rocket_site_spawn + naval slots
+982,Madras States,982 - Madras States.txt,7402,,naval slots
+41,Madrid,41-Madrid.txt,9767,,rocket_site_spawn
+874,Magadan,874-Magadan.txt,1865,,naval slots
+874,Magadan,874-Magadan.txt,10540,,rocket_site_spawn + naval slots
+874,Magadan,874-Magadan.txt,12683,Magadan,naval slots
+507,Magallanes,507-Southern Chile.txt,5201,Punta Delgada,naval slots
+507,Magallanes,507-Southern Chile.txt,5209,,rocket_site_spawn + naval slots
+507,Magallanes,507-Southern Chile.txt,5215,Punta Arenas,naval slots
+507,Magallanes,507-Southern Chile.txt,8218,,naval slots
+582,Magnitogorsk,582-Sourthern Urals.txt,7373,,rocket_site_spawn
+288,Magwe,288-Magwe.txt,7034,,rocket_site_spawn
+344,Malatya,344-Adana.txt,806,,naval slots
+344,Malatya,344-Adana.txt,9893,Gaziantep,rocket_site_spawn
+344,Malatya,344-Adana.txt,11746,Adana,naval slots
+770,Malawi,770-Malawi.txt,12908,,rocket_site_spawn
+281,Maldives,281-India.txt,4967,Malé,rocket_site_spawn + naval slots
+116,Malta,116-Malta.txt,12003,Valletta,rocket_site_spawn + naval slots
+1056,Manado,1056-Manado.txt,1098,,naval slots
+1056,Manado,1056-Manado.txt,1289,,naval slots
+1056,Manado,1056-Manado.txt,1484,,naval slots
+1056,Manado,1056-Manado.txt,1505,,naval slots
+1056,Manado,1056-Manado.txt,1518,,naval slots
+1056,Manado,1056-Manado.txt,4262,,naval slots
+1056,Manado,1056-Manado.txt,4307,,naval slots
+1056,Manado,1056-Manado.txt,4493,,naval slots
+1056,Manado,1056-Manado.txt,4537,,naval slots
+1056,Manado,1056-Manado.txt,7311,,naval slots
+1056,Manado,1056-Manado.txt,10153,Manado,naval slots
+1056,Manado,1056-Manado.txt,10169,Gorontalo,rocket_site_spawn + naval slots
+1056,Manado,1056-Manado.txt,10197,,naval slots
+1056,Manado,1056-Manado.txt,12358,,naval slots
+640,Mandalay,640-Mandalay.txt,4626,,rocket_site_spawn
+896,Manica e Sofala,896-Manica e Sofala.txt,2120,,naval slots
+896,Manica e Sofala,896-Manica e Sofala.txt,12935,,naval slots
+896,Manica e Sofala,896-Manica e Sofala.txt,12950,,rocket_site_spawn
+327,Manila,327-Philippines.txt,1221,Batangas,naval slots
+327,Manila,327-Philippines.txt,1288,,naval slots
+327,Manila,327-Philippines.txt,1388,,naval slots
+327,Manila,327-Philippines.txt,4233,,rocket_site_spawn + naval slots
+327,Manila,327-Philippines.txt,4288,Calapan,naval slots
+327,Manila,327-Philippines.txt,7323,,naval slots
+327,Manila,327-Philippines.txt,10236,,naval slots
+327,Manila,327-Philippines.txt,10265,Manila,naval slots
+327,Manila,327-Philippines.txt,10272,,naval slots
+327,Manila,327-Philippines.txt,12236,,naval slots
+990,Manipur,990-Manipur.txt,12322,,rocket_site_spawn
+467,Manitoba,467-Manitoba.txt,3721,,rocket_site_spawn
+497,Maranhão,497-Maranhao.txt,2150,,rocket_site_spawn
+497,Maranhão,497-Maranhao.txt,5220,,naval slots
+497,Maranhão,497-Maranhao.txt,12933,São Luís,naval slots
+648,Marcus Island,648-Marcus Island.txt,13026,,rocket_site_spawn + naval slots
+833,Mari El,833 - Mari El.txt,3361,,rocket_site_spawn
+1080,Marlborough,1080 - Marlborough.txt,4819,,naval slots
+1080,Marlborough,1080 - Marlborough.txt,7839,,naval slots
+1080,Marlborough,1080 - Marlborough.txt,8204,,rocket_site_spawn + naval slots
+1080,Marlborough,1080 - Marlborough.txt,10650,,naval slots
+1080,Marlborough,1080 - Marlborough.txt,12632,Nelson,naval slots
+462,Marrakech,462-Southern Morocco.txt,1102,,naval slots
+462,Marrakech,462-Southern Morocco.txt,4933,,rocket_site_spawn
+462,Marrakech,462-Southern Morocco.txt,5046,,naval slots
+462,Marrakech,462-Southern Morocco.txt,7203,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,1002,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13039,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13040,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13041,Kwajalein,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13042,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13043,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13044,,naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13045,,rocket_site_spawn + naval slots
+633,Marshall Islands,633-Marshall Islands.txt,13046,Eniwetok,naval slots
+361,Maryland,361-Maryland.txt,3957,Washington,naval slots
+361,Maryland,361-Maryland.txt,6892,,rocket_site_spawn + naval slots
+361,Maryland,361-Maryland.txt,6984,Baltimore,naval slots
+361,Maryland,361-Maryland.txt,9758,,naval slots
+361,Maryland,361-Maryland.txt,9786,,naval slots
+361,Maryland,361-Maryland.txt,11892,,naval slots
+280,Mato Grosso,280-Brazil.txt,2204,,rocket_site_spawn
+452,Matrouh,452-Marsa Matruh.txt,7079,,naval slots
+452,Matrouh,452-Marsa Matruh.txt,9989,Sidi Barrani,naval slots
+452,Matrouh,452-Marsa Matruh.txt,10061,Marsa Matruh,naval slots
+452,Matrouh,452-Marsa Matruh.txt,11910,,naval slots
+452,Matrouh,452-Marsa Matruh.txt,11967,,rocket_site_spawn + naval slots
+863,Maurice,863-Maurice.txt,1356,,naval slots
+863,Maurice,863-Maurice.txt,4769,,naval slots
+863,Maurice,863-Maurice.txt,12223,Saguenay,rocket_site_spawn
+557,Mauritania,557-Mauritania.txt,5034,Nouakchott,rocket_site_spawn + naval slots
+557,Mauritania,557-Mauritania.txt,7992,,naval slots
+786,Mauritanian Desert,786-Mauritanian Desert.txt,10838,,rocket_site_spawn
+707,Mauritius,707-Mauritius.txt,13018,,rocket_site_spawn + naval slots
+1007,Maymanah,1007-Maymanah.txt,12248,Kunduz,rocket_site_spawn
+61,Mecklenburg,61-Mecklenburg.txt,321,Rostock,rocket_site_spawn + naval slots
+61,Mecklenburg,61-Mecklenburg.txt,11305,Lübeck,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,1277,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,1332,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,1345,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,4364,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,4652,Medan,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,7463,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,7673,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,10225,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,12113,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,12168,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,12184,,rocket_site_spawn + naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,12302,,naval slots
+1049,Medan and Riouw,1049-Medan and Riouw.txt,13402,,naval slots
+188,Memel,188-Memel.txt,3288,Memel,rocket_site_spawn + naval slots
+511,Mendoza,511-Cuyo.txt,10964,Mendoza,rocket_site_spawn
+345,Mersin,345-Mersin.txt,1122,,rocket_site_spawn + naval slots
+345,Mersin,345-Mersin.txt,4008,,naval slots
+345,Mersin,345-Mersin.txt,4124,,naval slots
+345,Mersin,345-Mersin.txt,4127,,naval slots
+345,Mersin,345-Mersin.txt,7026,,naval slots
+345,Mersin,345-Mersin.txt,10056,Mersin,naval slots
+345,Mersin,345-Mersin.txt,11810,Tarsus,naval slots
+486,Meta,486-Meta.txt,5026,,rocket_site_spawn
+277,Mexico City,277-Mexico.txt,7913,,rocket_site_spawn
+393,Michigan,393-Michigan.txt,11731,,rocket_site_spawn
+772,Middle Congo,772-Middle Congo.txt,12975,Loango,rocket_site_spawn + naval slots
+31,Midi Pyrenees,31-Midi Pyrenees.txt,3946,,naval slots
+31,Midi Pyrenees,31-Midi Pyrenees.txt,6931,,rocket_site_spawn
+31,Midi Pyrenees,31-Midi Pyrenees.txt,9853,,naval slots
+631,Midway Island,631-Midway Island.txt,13052,Midway,rocket_site_spawn + naval slots
+265,Mikhaylovka,265-Mikhaylovka.txt,9464,,rocket_site_spawn
+930,Mikkeli,930-Mikkeli.txt,9163,,rocket_site_spawn
+245,Millerovo,245-Donetsk.txt,3519,,rocket_site_spawn
+1018,Minami Kyūshū,1018 - South Kyushu.txt,1020,Miyazaki,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,1183,,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,4102,Kagoshima,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,4198,,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,7178,,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,11949,,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,12006,,naval slots
+1018,Minami Kyūshū,1018 - South Kyushu.txt,12032,,rocket_site_spawn + naval slots
+1019,Minami Tohoku,1019 - South Tohoku.txt,1024,,naval slots
+1019,Minami Tohoku,1019 - South Tohoku.txt,4067,Sakata,rocket_site_spawn + naval slots
+1019,Minami Tohoku,1019 - South Tohoku.txt,4118,Fukushima,naval slots
+1019,Minami Tohoku,1019 - South Tohoku.txt,7169,Sendai,naval slots
+496,Minas Gerais,496-Para.txt,2167,,rocket_site_spawn
+391,Minnesota,391-Minnesota.txt,12597,,rocket_site_spawn
+206,Minsk,206-Minsk.txt,3267,,rocket_site_spawn
+307,Miranda,307-Venezuela.txt,4942,,rocket_site_spawn
+307,Miranda,307-Venezuela.txt,7968,,naval slots
+307,Miranda,307-Venezuela.txt,8113,Caracas,naval slots
+307,Miranda,307-Venezuela.txt,10767,,naval slots
+307,Miranda,307-Venezuela.txt,10823,,naval slots
+307,Miranda,307-Venezuela.txt,10912,,naval slots
+370,Mississippi,370-Mississippi.txt,4464,Biloxi,naval slots
+370,Mississippi,370-Mississippi.txt,7668,,naval slots
+370,Mississippi,370-Mississippi.txt,10753,,rocket_site_spawn
+373,Missouri,373-Missouri.txt,10391,,rocket_site_spawn
+801,Moesia,801-Moesia.txt,6842,,rocket_site_spawn
+79,Moldova,79-moldovia.txt,6584,,rocket_site_spawn
+905,Mombasa,905-Mombasa.txt,5210,Mombasa,naval slots
+905,Mombasa,905-Mombasa.txt,6020,,rocket_site_spawn
+388,Montana,388-Montana.txt,4741,,rocket_site_spawn
+105,Montenegro,105-Montenegro.txt,6913,,rocket_site_spawn
+105,Montenegro,105-Montenegro.txt,9809,Podgorica,naval slots
+105,Montenegro,105-Montenegro.txt,9821,Kotor,naval slots
+108,Morava,108-Eastern Serbia.txt,6998,,rocket_site_spawn
+75,Moravia,75-Moravia.txt,3569,Brno,rocket_site_spawn
+219,Moscow,219-Moscow Area.txt,9348,,rocket_site_spawn
+42,Moselland,42-Rhineland.txt,3558,,rocket_site_spawn
+676,Mosul,676-Mosul.txt,12372,,rocket_site_spawn
+194,Mozyr,194-Pinsk Marches.txt,215,,rocket_site_spawn
+135,Munster,135-Munster.txt,6289,,naval slots
+135,Munster,135-Munster.txt,6405,,naval slots
+135,Munster,135-Munster.txt,7394,Cork,naval slots
+135,Munster,135-Munster.txt,9284,,rocket_site_spawn
+135,Munster,135-Munster.txt,9405,,naval slots
+135,Munster,135-Munster.txt,11237,Waterford,naval slots
+135,Munster,135-Munster.txt,11334,,naval slots
+46,Muntenia,46-Romania.txt,11636,,rocket_site_spawn
+168,Murcia,168-Murcia.txt,10024,Murcia,naval slots
+168,Murcia,168-Murcia.txt,10109,,naval slots
+168,Murcia,168-Murcia.txt,11807,,rocket_site_spawn
+213,Murmansk,213-Murmansk.txt,98,,naval slots
+213,Murmansk,213-Murmansk.txt,116,,naval slots
+213,Murmansk,213-Murmansk.txt,3121,,naval slots
+213,Murmansk,213-Murmansk.txt,3134,Murmansk,naval slots
+213,Murmansk,213-Murmansk.txt,3170,,naval slots
+213,Murmansk,213-Murmansk.txt,6117,,naval slots
+213,Murmansk,213-Murmansk.txt,6181,Kandalaksha,naval slots
+213,Murmansk,213-Murmansk.txt,6194,,rocket_site_spawn
+213,Murmansk,213-Murmansk.txt,9115,,naval slots
+213,Murmansk,213-Murmansk.txt,9162,,naval slots
+213,Murmansk,213-Murmansk.txt,9165,,naval slots
+213,Murmansk,213-Murmansk.txt,9179,,naval slots
+213,Murmansk,213-Murmansk.txt,9215,,naval slots
+213,Murmansk,213-Murmansk.txt,9217,,naval slots
+213,Murmansk,213-Murmansk.txt,11140,,naval slots
+213,Murmansk,213-Murmansk.txt,11183,,naval slots
+213,Murmansk,213-Murmansk.txt,11196,,naval slots
+1013,Musandam,1013 -Musamdam.txt,13369,Khasab,rocket_site_spawn + naval slots
+197,Mykolaiv,197-Mykolaiv.txt,3755,,naval slots
+197,Mykolaiv,197-Mykolaiv.txt,11546,,naval slots
+197,Mykolaiv,197-Mykolaiv.txt,11683,Mykolaiv,rocket_site_spawn + naval slots
+425,Mysore,425-Mysore.txt,7244,Mangalore,naval slots
+425,Mysore,425-Mysore.txt,7395,,naval slots
+425,Mysore,425-Mysore.txt,12146,,rocket_site_spawn
+865,N. Saskatchewan,865-Northern Saskatchewan.txt,4695,,rocket_site_spawn
+472,N.W Territories,472-Northwest Territories.txt,7901,,rocket_site_spawn
+322,Nagqu,322-Tibet.txt,2093,,rocket_site_spawn
+547,Nairobi,547-East Africa.txt,10962,,rocket_site_spawn
+858,Najiran,858-Najiran.txt,12768,,rocket_site_spawn
+1035,Nanjing,1035 - Nanjing.txt,1099,,rocket_site_spawn
+594,Nanning,594-Nanning.txt,10459,Bose,rocket_site_spawn
+719,Natal,719-Natal.txt,1468,Durban,rocket_site_spawn + naval slots
+719,Natal,719-Natal.txt,1833,,naval slots
+719,Natal,719-Natal.txt,4696,Port Elizabeth,naval slots
+719,Natal,719-Natal.txt,7576,,naval slots
+719,Natal,719-Natal.txt,8178,,naval slots
+725,Nauru,725-Nauru.txt,13038,Nauru,rocket_site_spawn + naval slots
+172,Navarra,172-Navarre.txt,9857,,rocket_site_spawn
+585,Navoi,585-Uzbekistan.txt,7501,,rocket_site_spawn
+384,Nebraska,384-Nebraska.txt,1683,,rocket_site_spawn
+292,Nejd,292-Saudi Arabia.txt,7995,,rocket_site_spawn
+825,Nenets,825 - Nenetsia.txt,105,Naryan Mar,naval slots
+825,Nenets,825 - Nenetsia.txt,198,,naval slots
+825,Nenets,825 - Nenetsia.txt,3147,,naval slots
+825,Nenets,825 - Nenetsia.txt,6040,,rocket_site_spawn + naval slots
+825,Nenets,825 - Nenetsia.txt,6192,,naval slots
+825,Nenets,825 - Nenetsia.txt,9205,,naval slots
+825,Nenets,825 - Nenetsia.txt,10207,,naval slots
+825,Nenets,825 - Nenetsia.txt,11047,,naval slots
+825,Nenets,825 - Nenetsia.txt,11119,,naval slots
+825,Nenets,825 - Nenetsia.txt,12530,,naval slots
+323,Nepal,323-Nepal.txt,4386,,rocket_site_spawn
+379,Nevada,379-Nevada.txt,12425,,rocket_site_spawn
+210,Nevel,210-Bryansk.txt,207,,rocket_site_spawn
+465,New Brunswick,465-New Brunswick.txt,1424,Moncton,naval slots
+465,New Brunswick,465-New Brunswick.txt,4285,Saint John,naval slots
+465,New Brunswick,465-New Brunswick.txt,4342,,naval slots
+465,New Brunswick,465-New Brunswick.txt,4432,,rocket_site_spawn + naval slots
+465,New Brunswick,465-New Brunswick.txt,7379,,naval slots
+635,New Caledonia,635-New Caledonia.txt,1263,,naval slots
+635,New Caledonia,635-New Caledonia.txt,4231,,naval slots
+635,New Caledonia,635-New Caledonia.txt,4268,Noumea,naval slots
+635,New Caledonia,635-New Caledonia.txt,7264,,naval slots
+635,New Caledonia,635-New Caledonia.txt,10160,,naval slots
+635,New Caledonia,635-New Caledonia.txt,12132,,rocket_site_spawn + naval slots
+357,New England,357-New England.txt,905,,naval slots
+357,New England,357-New England.txt,1338,,naval slots
+357,New England,357-New England.txt,1619,,naval slots
+357,New England,357-New England.txt,3712,,naval slots
+357,New England,357-New England.txt,3732,,naval slots
+357,New England,357-New England.txt,3906,,naval slots
+357,New England,357-New England.txt,6732,Boston,naval slots
+357,New England,357-New England.txt,6909,,naval slots
+357,New England,357-New England.txt,7462,,naval slots
+357,New England,357-New England.txt,9832,Providence,naval slots
+357,New England,357-New England.txt,9847,,naval slots
+357,New England,357-New England.txt,10247,,rocket_site_spawn
+357,New England,357-New England.txt,11830,,naval slots
+357,New England,357-New England.txt,12459,Bangor,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,1389,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,4393,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,4418,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,7365,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,7614,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,10251,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,10423,,rocket_site_spawn + naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,12154,Madang,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,12193,,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,12237,Lae,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,12240,Wewak,naval slots
+979,New Guinea,979 - Kaiser Wilhelms Land.txt,12400,,naval slots
+359,New Jersey,359-New Jersey.txt,6882,Newark,naval slots
+359,New Jersey,359-New Jersey.txt,9801,,naval slots
+359,New Jersey,359-New Jersey.txt,9864,,naval slots
+359,New Jersey,359-New Jersey.txt,11740,,naval slots
+359,New Jersey,359-New Jersey.txt,11782,,naval slots
+359,New Jersey,359-New Jersey.txt,11900,,rocket_site_spawn + naval slots
+376,New Mexico,376-New Mexico.txt,12552,,rocket_site_spawn
+285,New South Wales,285-Austraila.txt,1611,,naval slots
+285,New South Wales,285-Austraila.txt,2114,,rocket_site_spawn
+285,New South Wales,285-Austraila.txt,4673,,naval slots
+285,New South Wales,285-Austraila.txt,4763,,naval slots
+285,New South Wales,285-Austraila.txt,4864,Cataract Dam,naval slots
+285,New South Wales,285-Austraila.txt,7450,,naval slots
+285,New South Wales,285-Austraila.txt,7520,Newcastle,naval slots
+285,New South Wales,285-Austraila.txt,12406,Sydney,naval slots
+285,New South Wales,285-Austraila.txt,12560,,naval slots
+358,New York,358-New York.txt,859,,naval slots
+358,New York,358-New York.txt,3878,New York,naval slots
+358,New York,358-New York.txt,6717,,rocket_site_spawn
+331,Newfoundland,331-Newfoundland.txt,7758,,naval slots
+331,Newfoundland,331-Newfoundland.txt,7788,,naval slots
+331,Newfoundland,331-Newfoundland.txt,12505,St. John's,naval slots
+331,Newfoundland,331-Newfoundland.txt,12680,,rocket_site_spawn + naval slots
+331,Newfoundland,331-Newfoundland.txt,12698,,naval slots
+758,Ngari,758-Ngari.txt,8029,,rocket_site_spawn
+317,Nicaragua,317-Nicaragua.txt,1988,,naval slots
+317,Nicaragua,317-Nicaragua.txt,2075,Bluefields,naval slots
+317,Nicaragua,317-Nicaragua.txt,10728,,rocket_site_spawn
+317,Nicaragua,317-Nicaragua.txt,12738,Managua,naval slots
+53,Niederbayern,53-Oberbayern.txt,11497,,rocket_site_spawn
+781,Niger,781-Niger.txt,2056,Niamey,rocket_site_spawn
+560,Nikolayevsk,560-TS 2.txt,1772,,naval slots
+560,Nikolayevsk,560-TS 2.txt,4844,,naval slots
+560,Nikolayevsk,560-TS 2.txt,7871,,naval slots
+560,Nikolayevsk,560-TS 2.txt,10577,,naval slots
+560,Nikolayevsk,560-TS 2.txt,12559,,naval slots
+560,Nikolayevsk,560-TS 2.txt,12569,,rocket_site_spawn
+616,Ningxia,616-China 14.txt,8055,,rocket_site_spawn
+466,Nord du Quebec,466-Quebec.txt,490,,naval slots
+466,Nord du Quebec,466-Quebec.txt,1712,,naval slots
+466,Nord du Quebec,466-Quebec.txt,3208,,rocket_site_spawn + naval slots
+466,Nord du Quebec,466-Quebec.txt,3691,,naval slots
+466,Nord du Quebec,466-Quebec.txt,7364,,naval slots
+466,Nord du Quebec,466-Quebec.txt,7813,,naval slots
+466,Nord du Quebec,466-Quebec.txt,12147,,naval slots
+466,Nord du Quebec,466-Quebec.txt,13196,,naval slots
+466,Nord du Quebec,466-Quebec.txt,13314,,naval slots
+29,Nord-Pas-de-Calais,29-Pas de Calais.txt,575,Dunkerque,rocket_site_spawn + naval slots
+29,Nord-Pas-de-Calais,29-Pas de Calais.txt,9500,,naval slots
+29,Nord-Pas-de-Calais,29-Pas de Calais.txt,11548,Calais,naval slots
+144,Nordland,144-Nord-Noreg.txt,38,,naval slots
+144,Nordland,144-Nord-Noreg.txt,192,Narvik,naval slots
+144,Nordland,144-Nord-Noreg.txt,3034,,rocket_site_spawn + naval slots
+144,Nordland,144-Nord-Noreg.txt,3132,,naval slots
+144,Nordland,144-Nord-Noreg.txt,3145,,naval slots
+144,Nordland,144-Nord-Noreg.txt,6214,,naval slots
+144,Nordland,144-Nord-Noreg.txt,9126,Bodø,naval slots
+144,Nordland,144-Nord-Noreg.txt,11157,,naval slots
+15,Normandy,15-Normandy.txt,485,Dieppe,naval slots
+15,Normandy,15-Normandy.txt,3579,,naval slots
+15,Normandy,15-Normandy.txt,6449,Cherbourg,naval slots
+15,Normandy,15-Normandy.txt,6599,,naval slots
+15,Normandy,15-Normandy.txt,9434,Le Havre,naval slots
+15,Normandy,15-Normandy.txt,9550,,naval slots
+15,Normandy,15-Normandy.txt,11521,,rocket_site_spawn
+15,Normandy,15-Normandy.txt,11535,,naval slots
+666,Norrbotten,666-Norrnorrland.txt,3104,,rocket_site_spawn
+666,Norrbotten,666-Norrnorrland.txt,6125,,naval slots
+666,Norrbotten,666-Norrnorrland.txt,6165,,naval slots
+666,Norrbotten,666-Norrnorrland.txt,9108,Luleå,naval slots
+666,Norrbotten,666-Norrnorrland.txt,9147,Haparanda,naval slots
+988,North Baluchistan,988-Baluchistan.txt,5105,Quetta,rocket_site_spawn
+363,North Carolina,363-North Carolina.txt,1019,,naval slots
+363,North Carolina,363-North Carolina.txt,1077,,naval slots
+363,North Carolina,363-North Carolina.txt,1132,,naval slots
+363,North Carolina,363-North Carolina.txt,1163,,naval slots
+363,North Carolina,363-North Carolina.txt,4168,,naval slots
+363,North Carolina,363-North Carolina.txt,6943,,naval slots
+363,North Carolina,363-North Carolina.txt,9876,,naval slots
+363,North Carolina,363-North Carolina.txt,12054,,rocket_site_spawn
+389,North Dakota,389-North Dakota.txt,1836,Bismarck,rocket_site_spawn
+767,North Darfur,767-North Darfur.txt,8103,,rocket_site_spawn
+1004,North Khorasan,1004-North Khorasan.txt,1521,,rocket_site_spawn
+828,North Ossetia,828 - North Ossetia.txt,9647,,rocket_site_spawn
+872,North Queensland,872-North Queensland.txt,1501,,naval slots
+872,North Queensland,872-North Queensland.txt,1514,,naval slots
+872,North Queensland,872-North Queensland.txt,1644,,naval slots
+872,North Queensland,872-North Queensland.txt,2166,,naval slots
+872,North Queensland,872-North Queensland.txt,4520,,naval slots
+872,North Queensland,872-North Queensland.txt,4648,,naval slots
+872,North Queensland,872-North Queensland.txt,7506,,naval slots
+872,North Queensland,872-North Queensland.txt,8230,,rocket_site_spawn
+872,North Queensland,872-North Queensland.txt,10338,,naval slots
+872,North Queensland,872-North Queensland.txt,10350,,naval slots
+872,North Queensland,872-North Queensland.txt,10365,,naval slots
+872,North Queensland,872-North Queensland.txt,10378,,naval slots
+872,North Queensland,872-North Queensland.txt,12367,,naval slots
+872,North Queensland,872-North Queensland.txt,12957,,naval slots
+655,North Sakhalin,655-North Sakhalin.txt,855,,rocket_site_spawn + naval slots
+655,North Sakhalin,655-North Sakhalin.txt,1742,,naval slots
+655,North Sakhalin,655-North Sakhalin.txt,1755,,naval slots
+102,North Slovenia,102-North-Eastern Slovenia.txt,3654,,rocket_site_spawn
+69,North Sudetenland,69-Sudatenland.txt,3585,Carlsbad,rocket_site_spawn
+76,North Transylvania,76-Northern Transylvania.txt,3689,,rocket_site_spawn
+870,North West Australia,870-North West Australia.txt,2201,,naval slots
+870,North West Australia,870-North West Australia.txt,5207,,naval slots
+870,North West Australia,870-North West Australia.txt,8152,,naval slots
+870,North West Australia,870-North West Australia.txt,8209,,naval slots
+870,North West Australia,870-North West Australia.txt,8247,,naval slots
+870,North West Australia,870-North West Australia.txt,10958,,rocket_site_spawn
+870,North West Australia,870-North West Australia.txt,11016,,naval slots
+690,Northern Bahamas,690-Bahama Islands.txt,4647,,naval slots
+690,Northern Bahamas,690-Bahama Islands.txt,7245,,naval slots
+690,Northern Bahamas,690-Bahama Islands.txt,10254,Nassau,rocket_site_spawn + naval slots
+971,Northern Dobruja,971 - Northern Dobruja.txt,657,Constanta,naval slots
+971,Northern Dobruja,971 - Northern Dobruja.txt,687,,naval slots
+971,Northern Dobruja,971 - Northern Dobruja.txt,9635,,rocket_site_spawn + naval slots
+805,Northern Epirus,805-Northern Epirus.txt,914,Gjirokastër,rocket_site_spawn + naval slots
+43,Northern Hungary,43-Hungary.txt,684,,rocket_site_spawn
+119,Northern Ireland,119-Northern Ireland.txt,276,,naval slots
+119,Northern Ireland,119-Northern Ireland.txt,385,Londonderry,rocket_site_spawn
+119,Northern Ireland,119-Northern Ireland.txt,3242,,naval slots
+119,Northern Ireland,119-Northern Ireland.txt,3329,,naval slots
+119,Northern Ireland,119-Northern Ireland.txt,3379,Belfast,naval slots
+787,Northern Kashmir,787-North Kashmir.txt,1910,Kotli,rocket_site_spawn
+424,Northern Madras,424-Andra Pradesh.txt,1430,,naval slots
+424,Northern Madras,424-Andra Pradesh.txt,4321,,naval slots
+424,Northern Madras,424-Andra Pradesh.txt,7297,,naval slots
+424,Northern Madras,424-Andra Pradesh.txt,7340,,naval slots
+424,Northern Madras,424-Andra Pradesh.txt,10152,,naval slots
+424,Northern Madras,424-Andra Pradesh.txt,10897,,rocket_site_spawn
+424,Northern Madras,424-Andra Pradesh.txt,12180,,naval slots
+867,Northern Manitoba,867-Northern Manitoba.txt,5239,,naval slots
+867,Northern Manitoba,867-Northern Manitoba.txt,7185,,naval slots
+867,Northern Manitoba,867-Northern Manitoba.txt,10605,,rocket_site_spawn + naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,1293,,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,1379,,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,4427,,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,10214,,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,10243,Cagayan de Oro,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,10300,,rocket_site_spawn + naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,12160,,naval slots
+1026,Northern Mindanao,1026 - North Mindanao.txt,12188,,naval slots
+682,Northern Ontario,682-Northern Ontario.txt,1769,,rocket_site_spawn
+682,Northern Ontario,682-Northern Ontario.txt,9740,,naval slots
+682,Northern Ontario,682-Northern Ontario.txt,10621,,naval slots
+520,Northern Territory,520-Northern Territory.txt,1410,,naval slots
+520,Northern Territory,520-Northern Territory.txt,1422,,naval slots
+520,Northern Territory,520-Northern Territory.txt,1431,,naval slots
+520,Northern Territory,520-Northern Territory.txt,4415,,naval slots
+520,Northern Territory,520-Northern Territory.txt,4462,,naval slots
+520,Northern Territory,520-Northern Territory.txt,7457,,naval slots
+520,Northern Territory,520-Northern Territory.txt,7481,,naval slots
+520,Northern Territory,520-Northern Territory.txt,7669,Darwin,naval slots
+520,Northern Territory,520-Northern Territory.txt,10276,,naval slots
+520,Northern Territory,520-Northern Territory.txt,10288,,naval slots
+520,Northern Territory,520-Northern Territory.txt,12246,,naval slots
+520,Northern Territory,520-Northern Territory.txt,12290,,naval slots
+520,Northern Territory,520-Northern Territory.txt,12326,,naval slots
+520,Northern Territory,520-Northern Territory.txt,12339,,rocket_site_spawn
+520,Northern Territory,520-Northern Territory.txt,12499,,naval slots
+581,Northern Urals,581-Northern Urals.txt,12502,,rocket_site_spawn
+131,Northumberland,131-Northern England.txt,351,Newcastle,rocket_site_spawn + naval slots
+131,Northumberland,131-Northern England.txt,11270,,naval slots
+131,Northumberland,131-Northern England.txt,11299,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,1354,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,4360,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,4430,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,4623,,rocket_site_spawn + naval slots
+464,Nova Scotia,464-Nova Scotia.txt,7304,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,7361,Halifax,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,7644,,naval slots
+464,Nova Scotia,464-Nova Scotia.txt,10244,,naval slots
+263,Novgorod,263-Veliky Novogrod.txt,3089,,rocket_site_spawn
+570,Novosibirsk,570-TS 12.txt,12679,,rocket_site_spawn
+95,Nowogródek,95-Nowogrodek.txt,3366,,rocket_site_spawn
+683,Nunavut,683-Northeastern Canada.txt,2947,,rocket_site_spawn
+683,Nunavut,683-Northeastern Canada.txt,10721,,naval slots
+904,Nyanza-Rift Valley,904-Nyanza-Rift Valley.txt,11145,,rocket_site_spawn
+476,Oaxaca,476-Oaxaca.txt,2021,Villahermosa,rocket_site_spawn + naval slots
+476,Oaxaca,476-Oaxaca.txt,8236,,naval slots
+476,Oaxaca,476-Oaxaca.txt,10889,Coatzacoalcos,naval slots
+476,Oaxaca,476-Oaxaca.txt,12712,,naval slots
+52,Oberbayern,52-Wuttemberg.txt,708,Augsburg,rocket_site_spawn
+192,Odessa,192-Odessa.txt,3575,,rocket_site_spawn
+192,Odessa,192-Odessa.txt,3738,Yuzhne,naval slots
+192,Odessa,192-Odessa.txt,11670,Odessa,naval slots
+192,Odessa,192-Odessa.txt,11703,,naval slots
+261,Ohio,261-USA.txt,971,,rocket_site_spawn
+562,Okhotsk,562-TS 4.txt,1714,,rocket_site_spawn
+562,Okhotsk,562-TS 4.txt,4810,,naval slots
+562,Okhotsk,562-TS 4.txt,10598,,naval slots
+562,Okhotsk,562-TS 4.txt,12518,,naval slots
+562,Okhotsk,562-TS 4.txt,12551,,naval slots
+526,Okinawa,526-Okinawa.txt,1123,,naval slots
+526,Okinawa,526-Okinawa.txt,7115,,naval slots
+526,Okinawa,526-Okinawa.txt,10124,,rocket_site_spawn + naval slots
+526,Okinawa,526-Okinawa.txt,11932,Naha,naval slots
+374,Oklahoma,374-Oklahoma.txt,8025,,rocket_site_spawn
+216,Olonets,216-Below Zero.txt,3144,,rocket_site_spawn
+81,Oltenia,81-Oltenia.txt,3645,,rocket_site_spawn
+1015,Oman,1015 - Interior Oman.txt,2018,,rocket_site_spawn
+571,Omsk,571-TS 13.txt,1835,,rocket_site_spawn
+215,Onega,215-Eastern Karelia.txt,36,,rocket_site_spawn
+215,Onega,215-Eastern Karelia.txt,86,,naval slots
+215,Onega,215-Eastern Karelia.txt,94,,naval slots
+215,Onega,215-Eastern Karelia.txt,3008,,naval slots
+215,Onega,215-Eastern Karelia.txt,3189,,naval slots
+215,Onega,215-Eastern Karelia.txt,6029,,naval slots
+215,Onega,215-Eastern Karelia.txt,9045,,naval slots
+215,Onega,215-Eastern Karelia.txt,9055,,naval slots
+215,Onega,215-Eastern Karelia.txt,9195,,naval slots
+920,Opplandene,920-Opplandene.txt,9032,,rocket_site_spawn
+746,Ordos,746-Ordos.txt,1959,,rocket_site_spawn
+385,Oregon,385-Oregon.txt,505,,naval slots
+385,Oregon,385-Oregon.txt,4380,,naval slots
+385,Oregon,385-Oregon.txt,10183,,naval slots
+385,Oregon,385-Oregon.txt,10305,,rocket_site_spawn
+385,Oregon,385-Oregon.txt,11495,,naval slots
+385,Oregon,385-Oregon.txt,12211,,naval slots
+385,Oregon,385-Oregon.txt,12281,,naval slots
+222,Orel,222-Orel.txt,328,,rocket_site_spawn
+652,Orenburg,652-Sov state 6.txt,12270,,rocket_site_spawn
+426,Orissa,426-Orissa.txt,4104,,naval slots
+426,Orissa,426-Orissa.txt,4237,,naval slots
+426,Orissa,426-Orissa.txt,10001,,naval slots
+426,Orissa,426-Orissa.txt,10088,,naval slots
+426,Orissa,426-Orissa.txt,10116,,naval slots
+426,Orissa,426-Orissa.txt,10255,,naval slots
+426,Orissa,426-Orissa.txt,11978,,rocket_site_spawn + naval slots
+426,Orissa,426-Orissa.txt,12063,,naval slots
+426,Orissa,426-Orissa.txt,12462,,naval slots
+110,Oslofjord,110-Norway.txt,14,,naval slots
+110,Oslofjord,110-Norway.txt,3171,,naval slots
+110,Oslofjord,110-Norway.txt,6115,Oslo,naval slots
+110,Oslofjord,110-Norway.txt,11151,Fredrikstad,naval slots
+110,Oslofjord,110-Norway.txt,11184,,rocket_site_spawn
+68,Ostmark,68-Wartheland.txt,444,,rocket_site_spawn
+1081,Otago,1081 - Otago.txt,2211,Dunedin,naval slots
+1081,Otago,1081 - Otago.txt,8241,Invercargill,naval slots
+1081,Otago,1081 - Otago.txt,12980,,rocket_site_spawn + naval slots
+1081,Otago,1081 - Otago.txt,12988,,naval slots
+895,Otjozondjupa,895-Kavango.txt,8136,,rocket_site_spawn
+862,Ouest du Quebec,862-ouest du quebec.txt,11682,,naval slots
+862,Ouest du Quebec,862-ouest du quebec.txt,12276,,rocket_site_spawn
+929,Oulu,929-Oulu.txt,158,Oulu,rocket_site_spawn + naval slots
+929,Oulu,929-Oulu.txt,195,,naval slots
+929,Oulu,929-Oulu.txt,11081,,naval slots
+929,Oulu,929-Oulu.txt,11121,,naval slots
+654,Oyrot Region,654-sov state 8.txt,4781,,rocket_site_spawn
+1048,Padang,1048-Padang.txt,1428,,naval slots
+1048,Padang,1048-Padang.txt,1460,,naval slots
+1048,Padang,1048-Padang.txt,4446,,rocket_site_spawn + naval slots
+1048,Padang,1048-Padang.txt,7368,,naval slots
+1048,Padang,1048-Padang.txt,8360,,naval slots
+1048,Padang,1048-Padang.txt,10194,,naval slots
+1048,Padang,1048-Padang.txt,10354,,naval slots
+1048,Padang,1048-Padang.txt,10382,Padang,naval slots
+1048,Padang,1048-Padang.txt,10522,,naval slots
+1048,Padang,1048-Padang.txt,12126,,naval slots
+1048,Padang,1048-Padang.txt,13395,,naval slots
+1048,Padang,1048-Padang.txt,13397,,naval slots
+1063,Pahang,1063 - Pahang.txt,4367,,naval slots
+1063,Pahang,1063 - Pahang.txt,7399,Kuantan,naval slots
+1063,Pahang,1063 - Pahang.txt,12271,,rocket_site_spawn + naval slots
+1043,Pailingmiao,1043 - Pailingmiao.txt,12331,Pailingmiao,rocket_site_spawn
+647,Palau,647-Palau.txt,4357,,naval slots
+647,Palau,647-Palau.txt,12103,Koror,rocket_site_spawn + naval slots
+626,Palawan,626-Palawan.txt,4429,,naval slots
+626,Palawan,626-Palawan.txt,7419,,rocket_site_spawn + naval slots
+626,Palawan,626-Palawan.txt,10145,,naval slots
+454,Palestine,454-Israel.txt,1015,Umm al-Rashrāsh,naval slots
+454,Palestine,454-Israel.txt,1065,Nazareth,naval slots
+454,Palestine,454-Israel.txt,1201,,naval slots
+454,Palestine,454-Israel.txt,4088,,rocket_site_spawn + naval slots
+454,Palestine,454-Israel.txt,4206,Tel Aviv,naval slots
+732,Pamir,732-Pamir.txt,4768,,rocket_site_spawn
+304,Panamá,304-Panama.txt,1633,,naval slots
+304,Panamá,304-Panama.txt,4611,San José de David,rocket_site_spawn + naval slots
+304,Panamá,304-Panama.txt,4624,,naval slots
+304,Panamá,304-Panama.txt,7630,Panamá,naval slots
+304,Panamá,304-Panama.txt,10482,,naval slots
+685,Panamá Canal,685-Panama Canal.txt,7617,Colón,rocket_site_spawn + naval slots
+523,Papua,523-New Guinea.txt,1222,,naval slots
+523,Papua,523-New Guinea.txt,1242,,naval slots
+523,Papua,523-New Guinea.txt,1283,Daru,naval slots
+523,Papua,523-New Guinea.txt,1310,,naval slots
+523,Papua,523-New Guinea.txt,4289,,naval slots
+523,Papua,523-New Guinea.txt,4329,Port Moresby,naval slots
+523,Papua,523-New Guinea.txt,4346,,naval slots
+523,Papua,523-New Guinea.txt,7305,Gona,naval slots
+523,Papua,523-New Guinea.txt,7333,,naval slots
+523,Papua,523-New Guinea.txt,7349,,rocket_site_spawn + naval slots
+523,Papua,523-New Guinea.txt,10147,,naval slots
+523,Papua,523-New Guinea.txt,10231,,naval slots
+523,Papua,523-New Guinea.txt,10248,,naval slots
+523,Papua,523-New Guinea.txt,10260,Alotau,naval slots
+523,Papua,523-New Guinea.txt,10974,,naval slots
+523,Papua,523-New Guinea.txt,12123,,naval slots
+523,Papua,523-New Guinea.txt,12135,,naval slots
+523,Papua,523-New Guinea.txt,12484,,naval slots
+523,Papua,523-New Guinea.txt,12995,,naval slots
+301,Paraguay,301-paraguay.txt,12901,Ciudad del Este,rocket_site_spawn
+944,Paraná,944 - Parana.txt,4533,,naval slots
+944,Paraná,944 - Parana.txt,5178,,rocket_site_spawn
+944,Paraná,944 - Parana.txt,8181,Curitiba,naval slots
+938,Pará,938 - Para.txt,2035,,naval slots
+938,Pará,938 - Para.txt,2214,,rocket_site_spawn
+938,Pará,938 - Para.txt,10874,,naval slots
+938,Pará,938 - Para.txt,12853,Belém,naval slots
+938,Pará,938 - Para.txt,12999,,naval slots
+938,Pará,938 - Para.txt,13274,,naval slots
+490,Pastaza,490-Pastaza.txt,13289,Iquitos,rocket_site_spawn
+882,Pavlodar,882-Pavlodar.txt,1879,,rocket_site_spawn
+946,Paysandú,946 - Paysandu.txt,10502,Paysandú,naval slots
+946,Paysandú,946 - Paysandu.txt,12440,,rocket_site_spawn
+792,País Vasco,792-Basque Country.txt,740,Bilbao,rocket_site_spawn + naval slots
+792,País Vasco,792-Basque Country.txt,6756,,naval slots
+262,Pechora,262-Torzhok.txt,6538,,rocket_site_spawn
+995,Pegu,995-Pegu.txt,1330,Rangoon,naval slots
+995,Pegu,995-Pegu.txt,10344,Taungoo,rocket_site_spawn
+995,Pegu,995-Pegu.txt,12127,,naval slots
+186,Peloponnese,186-Peloponnese.txt,1173,,naval slots
+186,Peloponnese,186-Peloponnese.txt,4178,,naval slots
+186,Peloponnese,186-Peloponnese.txt,4193,,naval slots
+186,Peloponnese,186-Peloponnese.txt,7096,Argos,naval slots
+186,Peloponnese,186-Peloponnese.txt,7211,Patras,naval slots
+186,Peloponnese,186-Peloponnese.txt,11965,Kalamáta,rocket_site_spawn + naval slots
+1065,Penang,1065 - Penang.txt,13408,Seberang Perai,rocket_site_spawn + naval slots
+360,Pennsylvania,360-Pennsylvania.txt,6845,Philadelphia,naval slots
+360,Pennsylvania,360-Pennsylvania.txt,11758,,rocket_site_spawn
+255,Penza,255-Penza.txt,257,,rocket_site_spawn
+1064,Perak,1064 - Perak.txt,1376,Ipoh,naval slots
+1064,Perak,1064 - Perak.txt,4310,,rocket_site_spawn
+1064,Perak,1064 - Perak.txt,12215,Dinding,naval slots
+1061,Perlis-Kedah,1061 - Perlis Kedah.txt,1291,Alor Setar,naval slots
+1061,Perlis-Kedah,1061 - Perlis Kedah.txt,7342,,rocket_site_spawn
+1061,Perlis-Kedah,1061 - Perlis Kedah.txt,12144,Kangar,naval slots
+398,Perm,398-Perm.txt,12587,,rocket_site_spawn
+936,Pernambuco,936 - Pernambuco.txt,2227,,naval slots
+936,Pernambuco,936 - Pernambuco.txt,5168,Recife,naval slots
+936,Pernambuco,936 - Pernambuco.txt,10939,,naval slots
+936,Pernambuco,936 - Pernambuco.txt,10989,,rocket_site_spawn
+936,Pernambuco,936 - Pernambuco.txt,10998,,naval slots
+442,Peshawar,442-Peshawar.txt,12763,Peshawar,rocket_site_spawn
+722,Petsamo,722-Petsamo.txt,6183,,rocket_site_spawn
+722,Petsamo,722-Petsamo.txt,9140,Petsamo,naval slots
+642,Phoenix Island,642-Phoenix Island.txt,13050,,rocket_site_spawn + naval slots
+937,Piauí,937 - Piaui.txt,2228,,naval slots
+937,Piauí,937 - Piaui.txt,10984,,rocket_site_spawn
+785,Picardy,785-Picardy.txt,9561,,rocket_site_spawn
+785,Picardy,785-Picardy.txt,11420,Amiens,naval slots
+158,Piedmont,158-Piedmont.txt,611,,rocket_site_spawn
+158,Piedmont,158-Piedmont.txt,3772,,naval slots
+158,Piedmont,158-Piedmont.txt,6788,Genoa,naval slots
+158,Piedmont,158-Piedmont.txt,11891,,naval slots
+270,Pitcairn Island,270-Pitcarin Island.txt,1280,,rocket_site_spawn + naval slots
+212,Plovdiv,212-Plovdiv.txt,6814,Stara Zagora,rocket_site_spawn
+23,Poitou,23-Poitou.txt,6657,La Rochelle,naval slots
+23,Poitou,23-Poitou.txt,9597,,naval slots
+23,Poitou,23-Poitou.txt,9631,,rocket_site_spawn
+23,Poitou,23-Poitou.txt,11600,,naval slots
+94,Polesie,94-Polesie.txt,3309,,rocket_site_spawn
+259,Poltava,259-Liski.txt,6495,,rocket_site_spawn
+180,Porto,180-Porto.txt,3892,,rocket_site_spawn
+180,Porto,180-Porto.txt,9817,Porto,naval slots
+180,Porto,180-Porto.txt,11673,Braga,naval slots
+296,Portuguese Guinea,296-Portugal Africa.txt,12747,,rocket_site_spawn + naval slots
+296,Portuguese Guinea,296-Portugal Africa.txt,12891,Bissau,naval slots
+86,Poznań,86-Poznan.txt,17,,rocket_site_spawn
+471,Prince Rupert,471-Northwestern Canada.txt,1799,,naval slots
+471,Prince Rupert,471-Northwestern Canada.txt,10548,,rocket_site_spawn + naval slots
+992,Province of Aden,992-Province of Aden.txt,5074,Aden,rocket_site_spawn + naval slots
+992,Province of Aden,992-Province of Aden.txt,13374,,naval slots
+209,Pskov,209-Smolensk.txt,11097,,rocket_site_spawn
+686,Puerto Rico,686-Puerto Rico.txt,1440,San Juan,rocket_site_spawn + naval slots
+686,Puerto Rico,686-Puerto Rico.txt,4155,,naval slots
+849,Puglia,849-Puglia.txt,883,Foggia,naval slots
+849,Puglia,849-Puglia.txt,6843,,naval slots
+849,Puglia,849-Puglia.txt,6939,,naval slots
+849,Puglia,849-Puglia.txt,6979,,naval slots
+849,Puglia,849-Puglia.txt,6980,,naval slots
+849,Puglia,849-Puglia.txt,9784,Bari,rocket_site_spawn + naval slots
+849,Puglia,849-Puglia.txt,11837,Taranto,naval slots
+849,Puglia,849-Puglia.txt,11998,Brindisi,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,912,,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,1003,Haeju,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,4052,Pyongyang,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,4107,,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,7155,,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,9790,,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,9981,,rocket_site_spawn
+527,Pyongan-Hwanghae,527-North Korea.txt,10065,,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,11835,Sinijiu,naval slots
+527,Pyongan-Hwanghae,527-North Korea.txt,12040,,naval slots
+806,Pyrénées-Atlantiques,806-French Basque Country.txt,743,,naval slots
+806,Pyrénées-Atlantiques,806-French Basque Country.txt,9710,Bayonne,naval slots
+806,Pyrénées-Atlantiques,806-French Basque Country.txt,11697,,rocket_site_spawn
+13,Pärnu,13-Estonia.txt,83,,naval slots
+13,Pärnu,13-Estonia.txt,3174,Pärnu,naval slots
+13,Pärnu,13-Estonia.txt,11291,,rocket_site_spawn + naval slots
+98,Płock,98-Mazurskie.txt,6321,,rocket_site_spawn
+1008,Qandahar,1008-Qandahar.txt,10789,,rocket_site_spawn
+1005,Qataghan,1005-Qataghan.txt,10781,Baghlan,rocket_site_spawn
+765,Qatar,765-Qatar.txt,8051,Doha,rocket_site_spawn + naval slots
+743,Qingdao,743-Qingdao.txt,10000,Qingdao,rocket_site_spawn + naval slots
+604,Qinghai,604-China 4.txt,4964,,rocket_site_spawn
+521,Queensland,521-Queensland.txt,4481,,naval slots
+521,Queensland,521-Queensland.txt,4560,,naval slots
+521,Queensland,521-Queensland.txt,7522,,naval slots
+521,Queensland,521-Queensland.txt,7535,,naval slots
+521,Queensland,521-Queensland.txt,7564,Brisbane,naval slots
+521,Queensland,521-Queensland.txt,7566,Townsville,naval slots
+521,Queensland,521-Queensland.txt,10445,,naval slots
+521,Queensland,521-Queensland.txt,10458,,naval slots
+521,Queensland,521-Queensland.txt,10460,,naval slots
+521,Queensland,521-Queensland.txt,10475,,naval slots
+521,Queensland,521-Queensland.txt,10487,,naval slots
+521,Queensland,521-Queensland.txt,12308,,naval slots
+521,Queensland,521-Queensland.txt,12382,,rocket_site_spawn
+433,Rajahsthan,433-Rajputana.txt,7998,,rocket_site_spawn
+706,Reunion,706-Reunion.txt,13017,,rocket_site_spawn + naval slots
+51,Rhineland,51-Moselland.txt,3547,Bonn,rocket_site_spawn
+545,Rhodesia,545-Rhodessa.txt,2151,,rocket_site_spawn
+20,Rhone,20-Franche-comte.txt,3770,,rocket_site_spawn
+969,Rio Branco,969-Rio Branco.txt,5214,Boa Vista,rocket_site_spawn
+500,Rio de Janeiro,500-Rio de Janerio.txt,5172,Vassouras,naval slots
+500,Rio de Janeiro,500-Rio de Janerio.txt,8190,,naval slots
+500,Rio de Janeiro,500-Rio de Janerio.txt,10980,Rio de Janeiro,rocket_site_spawn + naval slots
+500,Rio de Janeiro,500-Rio de Janerio.txt,12996,,naval slots
+699,Rio de Oro,699-Rio de Oro.txt,5012,,rocket_site_spawn + naval slots
+699,Rio de Oro,699-Rio de Oro.txt,8038,Laayoune,naval slots
+699,Rio de Oro,699-Rio de Oro.txt,8111,,naval slots
+699,Rio de Oro,699-Rio de Oro.txt,10875,,naval slots
+498,Rio Grande do Norte,498-Rio Grande.txt,2175,,rocket_site_spawn + naval slots
+498,Rio Grande do Norte,498-Rio Grande.txt,10933,Natal,naval slots
+498,Rio Grande do Norte,498-Rio Grande.txt,13273,,naval slots
+502,Rio Grande do Sul,502-Rio Grande Sul.txt,4436,,naval slots
+502,Rio Grande do Sul,502-Rio Grande Sul.txt,7638,,naval slots
+502,Rio Grande do Sul,502-Rio Grande Sul.txt,10447,Porto Alegre,rocket_site_spawn + naval slots
+502,Rio Grande do Sul,502-Rio Grande Sul.txt,12396,,naval slots
+243,Roslavl,243-Roslavl.txt,3210,,rocket_site_spawn
+218,Rostov,218-Rostov Area.txt,6445,,naval slots
+218,Rostov,218-Rostov Area.txt,9417,Rostov,naval slots
+218,Rostov,218-Rostov Area.txt,9430,Taganrog,naval slots
+218,Rostov,218-Rostov Area.txt,11434,,rocket_site_spawn
+218,Rostov,218-Rostov Area.txt,11559,,naval slots
+678,Rub al Khali,678-Rub al Khali.txt,4932,,naval slots
+678,Rub al Khali,678-Rub al Khali.txt,5081,,rocket_site_spawn
+768,Rwanda,768-Rwanda.txt,13364,Nyanza,rocket_site_spawn
+254,Ryazan,254-Ryazan.txt,330,,rocket_site_spawn
+246,Rzhev,246-Rzhev.txt,6264,,rocket_site_spawn
+808,Rīga,808-Riga.txt,9240,,naval slots
+808,Rīga,808-Riga.txt,9340,Rīga,naval slots
+808,Rīga,808-Riga.txt,10323,,rocket_site_spawn
+811,Saaremaa,811-Saaremaa.txt,185,Kuressaare,naval slots
+811,Saaremaa,811-Saaremaa.txt,6201,,rocket_site_spawn + naval slots
+1024,Sabah,1024 - Sabah.txt,1306,,naval slots
+1024,Sabah,1024 - Sabah.txt,4282,Kudat,naval slots
+1024,Sabah,1024 - Sabah.txt,7358,,rocket_site_spawn
+1024,Sabah,1024 - Sabah.txt,10143,,naval slots
+1024,Sabah,1024 - Sabah.txt,10199,Sandakan,naval slots
+1024,Sabah,1024 - Sabah.txt,10212,,naval slots
+1024,Sabah,1024 - Sabah.txt,10240,,naval slots
+1024,Sabah,1024 - Sabah.txt,12171,,naval slots
+1024,Sabah,1024 - Sabah.txt,12228,Tawau,naval slots
+65,Sachsen,65-Sachsen.txt,9441,,rocket_site_spawn
+998,Sagaing,998-Sagaing.txt,4087,,rocket_site_spawn
+861,Saguenay,861-Saguenay.txt,4666,,rocket_site_spawn
+704,Saint Helena,704-Saint Helena.txt,13016,,rocket_site_spawn + naval slots
+468,Saint Lawrence,468-Nunavut.txt,1284,,naval slots
+468,Saint Lawrence,468-Nunavut.txt,4305,,naval slots
+468,Saint Lawrence,468-Nunavut.txt,4422,,rocket_site_spawn + naval slots
+468,Saint Lawrence,468-Nunavut.txt,7433,,naval slots
+468,Saint Lawrence,468-Nunavut.txt,12149,Québec,naval slots
+468,Saint Lawrence,468-Nunavut.txt,12291,,naval slots
+646,Saipan,646-Saipan.txt,3995,Saipan,naval slots
+646,Saipan,646-Saipan.txt,13023,,rocket_site_spawn + naval slots
+646,Saipan,646-Saipan.txt,13024,,naval slots
+788,Salamanca,788-Salamanca.txt,6867,,rocket_site_spawn
+579,Salekhard,579-Siberia 6.txt,4669,,naval slots
+579,Salekhard,579-Siberia 6.txt,8461,,naval slots
+579,Salekhard,579-Siberia 6.txt,13076,,rocket_site_spawn + naval slots
+147,Salla,147-Salla.txt,9158,,rocket_site_spawn
+726,Samoa,726-Samoa.txt,7290,Apia,naval slots
+726,Samoa,726-Samoa.txt,13412,Safotulafai,rocket_site_spawn + naval slots
+355,Samsun,355-Samsun.txt,975,,naval slots
+355,Samsun,355-Samsun.txt,3935,,rocket_site_spawn
+355,Samsun,355-Samsun.txt,11881,Samsun,naval slots
+355,Samsun,355-Samsun.txt,11894,,naval slots
+960,San Juan y La Rioja,960 - San Juan.txt,8253,,rocket_site_spawn
+958,San Luis y La Pampa,958 - San Luis.txt,7550,,rocket_site_spawn
+1020,San'in,1020 - Sanin.txt,1167,,naval slots
+1020,San'in,1020 - Sanin.txt,1191,,naval slots
+1020,San'in,1020 - Sanin.txt,7050,,naval slots
+1020,San'in,1020 - Sanin.txt,7145,Matsue,naval slots
+1020,San'in,1020 - Sanin.txt,10055,Tottori,rocket_site_spawn + naval slots
+503,Santa Catarina,503-Santa Catarina.txt,4548,Florianópolis,naval slots
+503,Santa Catarina,503-Santa Catarina.txt,10405,Joinville,naval slots
+503,Santa Catarina,503-Santa Catarina.txt,12466,,rocket_site_spawn
+487,Santa Cruz,487-Amazinas.txt,12973,,rocket_site_spawn
+954,Santa Cruz,954 - Santa Cruz.txt,5173,Rio Gallegos,rocket_site_spawn + naval slots
+954,Santa Cruz,954 - Santa Cruz.txt,12952,,naval slots
+954,Santa Cruz,954 - Santa Cruz.txt,13305,,naval slots
+956,Santa Fe,956 - Santa Fe.txt,2172,,rocket_site_spawn
+795,Santarém,795-Santarem.txt,9869,Évora,rocket_site_spawn
+279,Santiago,279-Chile.txt,5191,,naval slots
+279,Santiago,279-Chile.txt,8194,Coquimbo,naval slots
+279,Santiago,279-Chile.txt,8222,Valparaíso,rocket_site_spawn + naval slots
+279,Santiago,279-Chile.txt,12984,Concepción,naval slots
+705,Sao Tome,705-Sao Tome.txt,13015,,rocket_site_spawn + naval slots
+239,Saratov,239-Saratov.txt,3426,,rocket_site_spawn
+114,Sardinia,114-Sardinia.txt,902,,naval slots
+114,Sardinia,114-Sardinia.txt,6891,,naval slots
+114,Sardinia,114-Sardinia.txt,9772,Sassari,naval slots
+114,Sardinia,114-Sardinia.txt,9863,,naval slots
+114,Sardinia,114-Sardinia.txt,11755,,naval slots
+114,Sardinia,114-Sardinia.txt,11773,Cagliari,naval slots
+114,Sardinia,114-Sardinia.txt,11824,,rocket_site_spawn + naval slots
+114,Sardinia,114-Sardinia.txt,11874,,naval slots
+469,Saskatchewan,469-Saskatchewan.txt,3769,,rocket_site_spawn
+735,Savoy,735-Savoy.txt,3959,,rocket_site_spawn
+735,Savoy,735-Savoy.txt,9909,Nice,naval slots
+909,Schleswig,909-South Schleswig.txt,317,Flensburg,rocket_site_spawn + naval slots
+909,Schleswig,909-South Schleswig.txt,3231,,naval slots
+909,Schleswig,909-South Schleswig.txt,11366,Niebüll,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,131,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,284,Oban,rocket_site_spawn + naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,3159,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,3178,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,3373,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,6046,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,6062,Stornoway,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,6104,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,6205,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,9075,Inverness,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,9090,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,11064,Scapa Flow,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,11161,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,11266,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,13269,,naval slots
+120,Scottish Highlands,120-Scottish Highlands.txt,13270,,naval slots
+588,Semipalatinsk,588-Some Mountains.txt,1749,,rocket_site_spawn
+418,Semnan,418-Semnan.txt,12704,,rocket_site_spawn
+272,Senegal,272-French Africa.txt,4948,Dakar,naval slots
+272,Senegal,272-French Africa.txt,7972,,naval slots
+272,Senegal,272-French Africa.txt,12710,,rocket_site_spawn
+272,Senegal,272-French Africa.txt,12834,,naval slots
+107,Serbia,107-Kosavo.txt,9599,,rocket_site_spawn
+169,Sevilla,169-Sevilla.txt,1048,Cádiz,naval slots
+169,Sevilla,169-Sevilla.txt,1178,,rocket_site_spawn
+169,Sevilla,169-Sevilla.txt,4080,,naval slots
+169,Sevilla,169-Sevilla.txt,9815,,naval slots
+169,Sevilla,169-Sevilla.txt,12070,,naval slots
+169,Sevilla,169-Sevilla.txt,13228,,naval slots
+709,Seychelles,709-Seychelles.txt,2188,,rocket_site_spawn + naval slots
+597,Shandong,597-Shandong.txt,1104,Yantai,naval slots
+597,Shandong,597-Shandong.txt,1184,,naval slots
+597,Shandong,597-Shandong.txt,1200,,naval slots
+597,Shandong,597-Shandong.txt,4089,,naval slots
+597,Shandong,597-Shandong.txt,4157,,naval slots
+597,Shandong,597-Shandong.txt,4186,,naval slots
+597,Shandong,597-Shandong.txt,4205,Weihaiwei,naval slots
+597,Shandong,597-Shandong.txt,7089,,rocket_site_spawn
+597,Shandong,597-Shandong.txt,7105,,naval slots
+597,Shandong,597-Shandong.txt,9971,,naval slots
+597,Shandong,597-Shandong.txt,10018,,naval slots
+597,Shandong,597-Shandong.txt,12074,,naval slots
+613,Shanghai,613-China 12.txt,7014,Shanghai,naval slots
+613,Shanghai,613-China 12.txt,12052,,rocket_site_spawn + naval slots
+613,Shanghai,613-China 12.txt,12076,,naval slots
+615,Shanxi,615-Shanxi.txt,4469,,rocket_site_spawn
+933,Shetland Islands,933-Shetland.txt,6196,Lerwick,rocket_site_spawn + naval slots
+271,Shewa,271-ethiopia.txt,5010,Addis Ababa,rocket_site_spawn
+757,Shigatse,757-Shigatse.txt,2014,,rocket_site_spawn
+530,Shikoku,530-Tokushima.txt,4094,Takamatsu,naval slots
+530,Shikoku,530-Tokushima.txt,4179,Matsuyama,naval slots
+530,Shikoku,530-Tokushima.txt,7046,,naval slots
+530,Shikoku,530-Tokushima.txt,7197,Kochi,naval slots
+530,Shikoku,530-Tokushima.txt,9965,Tokushima,naval slots
+530,Shikoku,530-Tokushima.txt,11997,,naval slots
+530,Shikoku,530-Tokushima.txt,12028,,rocket_site_spawn + naval slots
+934,Shkodër,934-Shkoder.txt,9780,Shkodër,naval slots
+934,Shkodër,934-Shkoder.txt,11762,,rocket_site_spawn
+605,Sichuan,605-China 5.txt,11865,Wanxian,rocket_site_spawn
+115,Sicily,115-Sicily.txt,1009,,rocket_site_spawn + naval slots
+115,Sicily,115-Sicily.txt,1156,,naval slots
+115,Sicily,115-Sicily.txt,3857,,naval slots
+115,Sicily,115-Sicily.txt,4014,Catania,naval slots
+115,Sicily,115-Sicily.txt,4159,Messina,naval slots
+115,Sicily,115-Sicily.txt,7059,,naval slots
+115,Sicily,115-Sicily.txt,7147,,naval slots
+115,Sicily,115-Sicily.txt,10074,Palermo,naval slots
+115,Sicily,115-Sicily.txt,13256,Siracusa,naval slots
+837,Sidamo,837-Sidamo.txt,8019,Yabello,rocket_site_spawn
+783,Sidi Ifni,783-Sidi Ifni.txt,12857,Sidi Ifni,rocket_site_spawn + naval slots
+700,Sierra Leone,700-Sierra Leone.txt,2038,Freetown,rocket_site_spawn + naval slots
+700,Sierra Leone,700-Sierra Leone.txt,2094,,naval slots
+985,Sikkim,985 - Sikkim.txt,4435,Gangtok,rocket_site_spawn
+453,Sinai,453-Sinai.txt,1112,,naval slots
+453,Sinai,453-Sinai.txt,4161,El-Arīsh,naval slots
+453,Sinai,453-Sinai.txt,10099,Sharm el-Sheikh,rocket_site_spawn + naval slots
+453,Sinai,453-Sinai.txt,11979,,naval slots
+453,Sinai,453-Sinai.txt,12073,,naval slots
+443,Sind,443-Sind.txt,3456,Karachi,naval slots
+443,Sind,443-Sind.txt,4003,,naval slots
+443,Sind,443-Sind.txt,7084,,rocket_site_spawn
+1021,Singapore,1021 - Actual Singapore.txt,12299,Singapore,rocket_site_spawn + naval slots
+662,Sirte,662-Sirte.txt,4200,,rocket_site_spawn
+410,Sistan,410-Sistan.txt,1889,,naval slots
+410,Sistan,410-Sistan.txt,2070,,rocket_site_spawn
+410,Sistan,410-Sistan.txt,4891,,naval slots
+349,Sivas,349-Silvas.txt,6965,,rocket_site_spawn
+37,Sjaelland,37-Denmark.txt,3260,,rocket_site_spawn + naval slots
+37,Sjaelland,37-Denmark.txt,3305,,naval slots
+37,Sjaelland,37-Denmark.txt,6287,Copenhagen,naval slots
+37,Sjaelland,37-Denmark.txt,6393,Roskilde,naval slots
+37,Sjaelland,37-Denmark.txt,13261,,naval slots
+138,Skåne,138-Skane.txt,3307,,naval slots
+138,Skåne,138-Skane.txt,6120,,naval slots
+138,Skåne,138-Skane.txt,6345,Helsingborg,naval slots
+138,Skåne,138-Skane.txt,6412,,rocket_site_spawn + naval slots
+138,Skåne,138-Skane.txt,9279,Malmö,naval slots
+138,Skåne,138-Skane.txt,9362,,naval slots
+138,Skåne,138-Skane.txt,11160,Kristianstad,naval slots
+138,Skåne,138-Skane.txt,11215,Karlskrona,naval slots
+138,Skåne,138-Skane.txt,11327,,naval slots
+138,Skåne,138-Skane.txt,11376,,naval slots
+242,Smolensk,242-Smolensk.txt,11384,,rocket_site_spawn
+139,Småland,139-Smaland.txt,211,Borgholm,naval slots
+139,Småland,139-Smaland.txt,299,Kalmar,naval slots
+139,Småland,139-Smaland.txt,329,,naval slots
+139,Småland,139-Smaland.txt,3229,,naval slots
+139,Småland,139-Smaland.txt,11231,,rocket_site_spawn
+233,Sochi,233-Caucasus Mountains.txt,3698,,naval slots
+233,Sochi,233-Caucasus Mountains.txt,6721,,rocket_site_spawn
+233,Sochi,233-Caucasus Mountains.txt,9663,Sochi,naval slots
+906,Socotra,906-Socotra.txt,8000,,rocket_site_spawn + naval slots
+48,Sofia,48-Bulgaria.txt,935,,rocket_site_spawn
+902,Sokoto,902-Sokoto.txt,1891,Sokoto,rocket_site_spawn
+634,Solomon Islands,634-Solomon Islands.txt,1042,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,1085,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,1269,Guadalcanal,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,1370,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,4252,,rocket_site_spawn + naval slots
+634,Solomon Islands,634-Solomon Islands.txt,4292,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,7437,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,10291,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,10319,,naval slots
+634,Solomon Islands,634-Solomon Islands.txt,12265,,naval slots
+559,Somaliland,559-Somaliland.txt,1966,,naval slots
+559,Somaliland,559-Somaliland.txt,2063,,rocket_site_spawn
+559,Somaliland,559-Somaliland.txt,5065,,naval slots
+559,Somaliland,559-Somaliland.txt,8164,,naval slots
+559,Somaliland,559-Somaliland.txt,10818,,naval slots
+559,Somaliland,559-Somaliland.txt,10891,,naval slots
+559,Somaliland,559-Somaliland.txt,10928,,naval slots
+559,Somaliland,559-Somaliland.txt,12840,,naval slots
+559,Somaliland,559-Somaliland.txt,12991,Mogadiscio,naval slots
+483,Sonora,483-Sonora.txt,2069,,naval slots
+483,Sonora,483-Sonora.txt,4908,Guaymas,naval slots
+483,Sonora,483-Sonora.txt,4977,Ciudad Obregón,rocket_site_spawn + naval slots
+483,Sonora,483-Sonora.txt,10848,,naval slots
+483,Sonora,483-Sonora.txt,12833,,naval slots
+519,South Australia,519-South Australia.txt,1773,,naval slots
+519,South Australia,519-South Australia.txt,2219,,naval slots
+519,South Australia,519-South Australia.txt,5183,,naval slots
+519,South Australia,519-South Australia.txt,5197,,naval slots
+519,South Australia,519-South Australia.txt,5225,,naval slots
+519,South Australia,519-South Australia.txt,7567,,naval slots
+519,South Australia,519-South Australia.txt,8165,,rocket_site_spawn
+519,South Australia,519-South Australia.txt,8186,,naval slots
+519,South Australia,519-South Australia.txt,8220,,naval slots
+519,South Australia,519-South Australia.txt,10925,,naval slots
+519,South Australia,519-South Australia.txt,12910,Adelaide,naval slots
+519,South Australia,519-South Australia.txt,12924,,naval slots
+444,South Baluchistan,444-Baluchistan States.txt,1179,,naval slots
+444,South Baluchistan,444-Baluchistan States.txt,5043,,rocket_site_spawn
+444,South Baluchistan,444-Baluchistan States.txt,7917,,naval slots
+444,South Baluchistan,444-Baluchistan States.txt,12774,Gwadar,naval slots
+364,South Carolina,364-South Carolina.txt,1485,,rocket_site_spawn
+364,South Carolina,364-South Carolina.txt,1547,,naval slots
+364,South Carolina,364-South Carolina.txt,7202,Charleston,naval slots
+364,South Carolina,364-South Carolina.txt,10047,,naval slots
+364,South Carolina,364-South Carolina.txt,11927,,naval slots
+390,South Dakota,390-South Dakota.txt,1747,Rapid City,rocket_site_spawn
+887,South Darfur,887-South Darfur.txt,5060,,rocket_site_spawn
+720,South Georgia,720-South Georgia.txt,10995,,rocket_site_spawn + naval slots
+1003,South Khorasan,1003-South Khorasan.txt,12739,,rocket_site_spawn
+537,South Sakhalin,537-South Sakhalin.txt,1322,,rocket_site_spawn + naval slots
+537,South Sakhalin,537-South Sakhalin.txt,1820,Shikuka,naval slots
+537,South Sakhalin,537-South Sakhalin.txt,12446,Toyohara,naval slots
+972,South Sudetenland,972 - South Sudetenland.txt,11525,Vranov Dam,rocket_site_spawn
+672,South Sumatra,672-South Sumatra.txt,1246,,naval slots
+672,South Sumatra,672-South Sumatra.txt,1342,,naval slots
+672,South Sumatra,672-South Sumatra.txt,1401,,naval slots
+672,South Sumatra,672-South Sumatra.txt,4320,,naval slots
+672,South Sumatra,672-South Sumatra.txt,4361,,naval slots
+672,South Sumatra,672-South Sumatra.txt,7308,,rocket_site_spawn + naval slots
+672,South Sumatra,672-South Sumatra.txt,7440,,naval slots
+672,South Sumatra,672-South Sumatra.txt,12138,,naval slots
+672,South Sumatra,672-South Sumatra.txt,12165,,naval slots
+672,South Sumatra,672-South Sumatra.txt,12209,,naval slots
+672,South Sumatra,672-South Sumatra.txt,12268,,naval slots
+974,South Transdanubia,974 - South Transdanubia.txt,3680,,rocket_site_spawn
+39,South Tyrol,39-South Tyrol.txt,6675,,rocket_site_spawn
+892,South West Angola,892-South West Angola.txt,12958,,naval slots
+892,South West Angola,892-South West Angola.txt,12985,,rocket_site_spawn + naval slots
+871,South West Australia,871-South West Australia.txt,2191,,naval slots
+871,South West Australia,871-South West Australia.txt,8200,,rocket_site_spawn
+871,South West Australia,871-South West Australia.txt,11011,,naval slots
+871,South West Australia,871-South West Australia.txt,12948,,naval slots
+871,South West Australia,871-South West Australia.txt,12976,,naval slots
+871,South West Australia,871-South West Australia.txt,12990,,naval slots
+873,South West Queensland,873-South West Queensland.txt,10941,,rocket_site_spawn
+123,South-West England,123-Cornwall.txt,540,Plymouth,naval slots
+123,South-West England,123-Cornwall.txt,3422,,naval slots
+123,South-West England,123-Cornwall.txt,3463,,naval slots
+123,South-West England,123-Cornwall.txt,6526,Truro,naval slots
+123,South-West England,123-Cornwall.txt,9562,,rocket_site_spawn + naval slots
+123,South-West England,123-Cornwall.txt,11406,,naval slots
+693,Southern Bahamas,693-Southern Bahamas.txt,1513,,naval slots
+693,Southern Bahamas,693-Southern Bahamas.txt,10440,,rocket_site_spawn + naval slots
+766,Southern Bessarabia,766-Southern Bessarabia.txt,3701,,naval slots
+766,Southern Bessarabia,766-Southern Bessarabia.txt,6727,Cetatea Albă,naval slots
+766,Southern Bessarabia,766-Southern Bessarabia.txt,6743,,rocket_site_spawn
+912,Southern Jutland,912-Sonderjylland.txt,332,,rocket_site_spawn + naval slots
+912,Southern Jutland,912-Sonderjylland.txt,11251,,naval slots
+912,Southern Jutland,912-Sonderjylland.txt,13258,Sønderborg,naval slots
+423,Southern Madras,423-Madras.txt,1238,,naval slots
+423,Southern Madras,423-Madras.txt,1381,,naval slots
+423,Southern Madras,423-Madras.txt,4327,,naval slots
+423,Southern Madras,423-Madras.txt,4416,,naval slots
+423,Southern Madras,423-Madras.txt,7265,,naval slots
+423,Southern Madras,423-Madras.txt,7391,,naval slots
+423,Southern Madras,423-Madras.txt,7447,,rocket_site_spawn + naval slots
+423,Southern Madras,423-Madras.txt,10190,,naval slots
+423,Southern Madras,423-Madras.txt,10278,Madras,naval slots
+423,Southern Madras,423-Madras.txt,12164,,naval slots
+276,Southern Ontario,276-Canada.txt,9585,,rocket_site_spawn
+515,Southern Sahara,515-Central Africa.txt,10758,,rocket_site_spawn
+803,Southern Serbia,803-Southern Serbia.txt,11868,,rocket_site_spawn
+724,Southern Siam,724-Southern Siam.txt,1279,,naval slots
+724,Southern Siam,724-Southern Siam.txt,1281,,naval slots
+724,Southern Siam,724-Southern Siam.txt,1308,,naval slots
+724,Southern Siam,724-Southern Siam.txt,1337,,naval slots
+724,Southern Siam,724-Southern Siam.txt,1366,,naval slots
+724,Southern Siam,724-Southern Siam.txt,4312,,naval slots
+724,Southern Siam,724-Southern Siam.txt,4371,Songkhla,naval slots
+724,Southern Siam,724-Southern Siam.txt,7236,Hat Yai,naval slots
+724,Southern Siam,724-Southern Siam.txt,10156,,naval slots
+724,Southern Siam,724-Southern Siam.txt,10158,,naval slots
+724,Southern Siam,724-Southern Siam.txt,12131,,naval slots
+724,Southern Siam,724-Southern Siam.txt,12201,,naval slots
+724,Southern Siam,724-Southern Siam.txt,12230,Phuket,rocket_site_spawn + naval slots
+724,Southern Siam,724-Southern Siam.txt,12286,,naval slots
+664,Southern Slovakia,664-Southern Slovakia.txt,6561,,rocket_site_spawn
+290,Spanish Africa,290-Spanish Africa.txt,4199,,naval slots
+290,Spanish Africa,290-Spanish Africa.txt,7215,,naval slots
+290,Spanish Africa,290-Spanish Africa.txt,9945,Ceuta,naval slots
+290,Spanish Africa,290-Spanish Africa.txt,10113,,naval slots
+290,Spanish Africa,290-Spanish Africa.txt,12087,Tétouan,naval slots
+290,Spanish Africa,290-Spanish Africa.txt,12100,Melilla,rocket_site_spawn + naval slots
+730,St Pierre and Miquelon,730-St Pierre and Miquelon .txt,373,,rocket_site_spawn + naval slots
+742,Stalinabad,742-Stalinabad.txt,1384,Stalinabad,rocket_site_spawn
+217,Stalingrad,217-Stalingrad Area.txt,9504,,rocket_site_spawn
+227,Stalino,227-Stalino.txt,3421,,naval slots
+227,Stalino,227-Stalino.txt,6420,Mariupol,naval slots
+227,Stalino,227-Stalino.txt,6474,Stalino,rocket_site_spawn
+89,Stanisławów,89-Krakow.txt,11411,,rocket_site_spawn
+718,Stanleyville,718-Stanleyville.txt,12847,,rocket_site_spawn
+1033,state 1033,1033 - Fangchenggang.txt,1018,,naval slots
+1033,state 1033,1033 - Fangchenggang.txt,4023,,naval slots
+1033,state 1033,1033 - Fangchenggang.txt,4160,,naval slots
+1033,state 1033,1033 - Fangchenggang.txt,7135,,naval slots
+1033,state 1033,1033 - Fangchenggang.txt,10004,,naval slots
+1033,state 1033,1033 - Fangchenggang.txt,10105,,rocket_site_spawn
+152,state 152,152-Upper Austria.txt,6691,,rocket_site_spawn
+154,state 154,154-Southern plain.txt,3730,,rocket_site_spawn
+155,state 155,155-Western Hungary.txt,6720,Győr,rocket_site_spawn
+199,state 199,199-Khmelnytskyi.txt,6509,,rocket_site_spawn
+278,state 278,278-Argentina.txt,1624,,naval slots
+278,state 278,278-Argentina.txt,1639,,naval slots
+278,state 278,278-Argentina.txt,4573,,naval slots
+278,state 278,278-Argentina.txt,4643,,naval slots
+278,state 278,278-Argentina.txt,7621,Mar del Plata,naval slots
+278,state 278,278-Argentina.txt,12364,Buenos Aires,naval slots
+278,state 278,278-Argentina.txt,12379,,naval slots
+278,state 278,278-Argentina.txt,12394,,rocket_site_spawn
+278,state 278,278-Argentina.txt,12494,,naval slots
+286,state 286,286-Indochina.txt,1285,,naval slots
+286,state 286,286-Indochina.txt,1300,,rocket_site_spawn + naval slots
+286,state 286,286-Indochina.txt,4255,,naval slots
+286,state 286,286-Indochina.txt,4334,,naval slots
+286,state 286,286-Indochina.txt,4405,,naval slots
+286,state 286,286-Indochina.txt,10137,,naval slots
+286,state 286,286-Indochina.txt,10162,,naval slots
+286,state 286,286-Indochina.txt,10232,,naval slots
+286,state 286,286-Indochina.txt,10309,Tourane,naval slots
+286,state 286,286-Indochina.txt,12204,Phan Rang,naval slots
+293,state 293,293-Yemen.txt,1920,,naval slots
+293,state 293,293-Yemen.txt,10752,Taizz,naval slots
+293,state 293,293-Yemen.txt,10840,Sana'a,rocket_site_spawn + naval slots
+294,state 294,294-Oman.txt,1947,,naval slots
+294,state 294,294-Oman.txt,4993,Sohar,naval slots
+294,state 294,294-Oman.txt,8002,,rocket_site_spawn + naval slots
+294,state 294,294-Oman.txt,8020,,naval slots
+294,state 294,294-Oman.txt,10760,Muscat,naval slots
+300,state 300,300-Uruguay.txt,4457,,rocket_site_spawn + naval slots
+300,state 300,300-Uruguay.txt,10362,Montevideo,naval slots
+300,state 300,300-Uruguay.txt,12336,,naval slots
+333,state 333,333-British Borneo.txt,1208,Kuching,naval slots
+333,state 333,333-British Borneo.txt,4216,,rocket_site_spawn + naval slots
+333,state 333,333-British Borneo.txt,4396,Bintulu,naval slots
+333,state 333,333-British Borneo.txt,10285,Miri,naval slots
+333,state 333,333-British Borneo.txt,12283,Sibu,naval slots
+333,state 333,333-British Borneo.txt,12905,,naval slots
+336,state 336,336-Singapore.txt,4412,Seremban,rocket_site_spawn + naval slots
+336,state 336,336-Singapore.txt,10297,Kuala Lumpur,naval slots
+336,state 336,336-Singapore.txt,13409,,naval slots
+445,state 445,445-Quetta.txt,4990,,rocket_site_spawn
+504,state 504,504-Iguacu.txt,5200,,rocket_site_spawn
+510,state 510,510-Mesopotamia.txt,1449,Paraná,rocket_site_spawn
+510,state 510,510-Mesopotamia.txt,10515,,naval slots
+510,state 510,510-Mesopotamia.txt,12453,,naval slots
+512,state 512,512-Patagonia.txt,10981,,naval slots
+512,state 512,512-Patagonia.txt,12321,Viedma,naval slots
+512,state 512,512-Patagonia.txt,12349,,naval slots
+512,state 512,512-Patagonia.txt,12982,,rocket_site_spawn
+528,state 528,528-Nagasaki.txt,1025,Kokura,rocket_site_spawn + naval slots
+528,state 528,528-Nagasaki.txt,1158,Sasebo,naval slots
+528,state 528,528-Nagasaki.txt,4027,Beppu,naval slots
+528,state 528,528-Nagasaki.txt,4164,Kurume,naval slots
+528,state 528,528-Nagasaki.txt,7110,Fukuoka,naval slots
+528,state 528,528-Nagasaki.txt,9950,Nagasaki,naval slots
+528,state 528,528-Nagasaki.txt,10011,Tsushima,naval slots
+528,state 528,528-Nagasaki.txt,10092,Oita,naval slots
+528,state 528,528-Nagasaki.txt,11925,Kumamoto,naval slots
+529,state 529,529-Hiroshima.txt,1092,Hiroshima,rocket_site_spawn + naval slots
+529,state 529,529-Hiroshima.txt,7212,Okayama,naval slots
+529,state 529,529-Hiroshima.txt,10052,Yamaguchi,naval slots
+529,state 529,529-Hiroshima.txt,11946,Fukuyama,naval slots
+529,state 529,529-Hiroshima.txt,11985,Shimonoseki,naval slots
+533,state 533,533-Akita.txt,1063,Akita,naval slots
+533,state 533,533-Akita.txt,1165,,naval slots
+533,state 533,533-Akita.txt,6870,,naval slots
+533,state 533,533-Akita.txt,6873,,naval slots
+533,state 533,533-Akita.txt,6994,Aomori,naval slots
+533,state 533,533-Akita.txt,9859,Mutsu,naval slots
+533,state 533,533-Akita.txt,9865,,rocket_site_spawn + naval slots
+533,state 533,533-Akita.txt,11847,Hachinohe,naval slots
+534,state 534,534-Niigata.txt,1117,Niigata,naval slots
+534,state 534,534-Niigata.txt,9952,Sado,naval slots
+534,state 534,534-Niigata.txt,10128,Toyama,naval slots
+534,state 534,534-Niigata.txt,11930,,naval slots
+534,state 534,534-Niigata.txt,11989,,rocket_site_spawn
+534,state 534,534-Niigata.txt,12007,,naval slots
+535,state 535,535-Nagano.txt,998,,naval slots
+535,state 535,535-Nagano.txt,7102,,naval slots
+535,state 535,535-Nagano.txt,10032,Kanazawa,rocket_site_spawn + naval slots
+601,state 601,601-China 1.txt,5102,,rocket_site_spawn
+608,state 608,608-Beijing.txt,1134,,rocket_site_spawn
+608,state 608,608-Beijing.txt,4137,,naval slots
+608,state 608,608-Beijing.txt,10068,Tianjin,naval slots
+611,state 611,611-China 10.txt,7674,,rocket_site_spawn
+612,state 612,612-China 11.txt,12554,,rocket_site_spawn
+622,state 622,622-China 19.txt,10880,,rocket_site_spawn
+625,state 625,625-Samar.txt,1224,,rocket_site_spawn + naval slots
+625,state 625,625-Samar.txt,1311,,naval slots
+625,state 625,625-Samar.txt,1340,,naval slots
+625,state 625,625-Samar.txt,4269,,naval slots
+625,state 625,625-Samar.txt,4373,,naval slots
+627,state 627,627-Mindanao.txt,1234,,naval slots
+627,state 627,627-Mindanao.txt,1407,,rocket_site_spawn
+627,state 627,627-Mindanao.txt,4241,Davao,naval slots
+627,state 627,627-Mindanao.txt,4266,,naval slots
+627,state 627,627-Mindanao.txt,7284,,naval slots
+627,state 627,627-Mindanao.txt,10328,,naval slots
+627,state 627,627-Mindanao.txt,12116,,naval slots
+627,state 627,627-Mindanao.txt,12158,,naval slots
+628,state 628,628-Cebu.txt,1261,,naval slots
+628,state 628,628-Cebu.txt,1368,,naval slots
+628,state 628,628-Cebu.txt,7385,,naval slots
+628,state 628,628-Cebu.txt,7423,,rocket_site_spawn + naval slots
+628,state 628,628-Cebu.txt,10186,,naval slots
+628,state 628,628-Cebu.txt,10302,,naval slots
+628,state 628,628-Cebu.txt,12112,,naval slots
+628,state 628,628-Cebu.txt,12118,Cebu,naval slots
+628,state 628,628-Cebu.txt,12153,,naval slots
+659,state 659,659-Arabian UK 2.txt,2029,Al Mukalla,rocket_site_spawn + naval slots
+659,state 659,659-Arabian UK 2.txt,12821,,naval slots
+659,state 659,659-Arabian UK 2.txt,13079,Al Ghaydah,naval slots
+715,state 715,715-Liaoning.txt,10429,,rocket_site_spawn
+716,state 716,716-Liaotung.txt,964,,naval slots
+716,state 716,716-Liaotung.txt,3783,,naval slots
+716,state 716,716-Liaotung.txt,6918,,naval slots
+716,state 716,716-Liaotung.txt,6981,,naval slots
+716,state 716,716-Liaotung.txt,9835,,naval slots
+716,state 716,716-Liaotung.txt,9854,,rocket_site_spawn + naval slots
+716,state 716,716-Liaotung.txt,11764,Yingkou,naval slots
+723,state 723,723-Southern Island.txt,2197,Christchurch,naval slots
+723,state 723,723-Southern Island.txt,2203,Waitaki,naval slots
+723,state 723,723-Southern Island.txt,5195,,naval slots
+723,state 723,723-Southern Island.txt,8212,,rocket_site_spawn + naval slots
+723,state 723,723-Southern Island.txt,12966,,naval slots
+723,state 723,723-Southern Island.txt,12974,,naval slots
+734,state 734,734-Nendo.txt,7390,Nendö,rocket_site_spawn + naval slots
+942,state 942,942 - Rondonia.txt,13284,,rocket_site_spawn
+961,state 961,961-Deep Amazonas.txt,12919,,rocket_site_spawn
+962,state 962,962-Deep Amazonas.txt,13330,,rocket_site_spawn
+963,state 963,963-Deep Amazonas.txt,12965,,rocket_site_spawn
+964,state 964,964-Deep Amazonas.txt,5216,,rocket_site_spawn
+965,state 965,965-Deep Amazonas.txt,2147,,rocket_site_spawn
+966,state 966,966-Deep Amazonas.txt,8172,,rocket_site_spawn
+967,state 967,967-Deep Amazonas.txt,13285,,rocket_site_spawn
+968,state 968,968-Deep Amazonas.txt,5008,,rocket_site_spawn
+973,state 973,973 - Bacs.txt,11625,,rocket_site_spawn
+235,Stavropol,235-Stravropol.txt,714,,rocket_site_spawn
+976,Steiermark-Kärnten,976 - Steiermark Karnten.txt,653,,rocket_site_spawn
+74,Sudeten Silesia,74-East Sudatenland.txt,421,,rocket_site_spawn
+446,Suez,446-Cairo.txt,1155,,rocket_site_spawn + naval slots
+446,Suez,446-Cairo.txt,4073,Suez,naval slots
+446,Suez,446-Cairo.txt,9947,,naval slots
+446,Suez,446-Cairo.txt,12049,Port Said,naval slots
+621,Suiyuan,621-China 18.txt,4525,,rocket_site_spawn
+673,Sulawesi,673-Sulawesi.txt,1589,,naval slots
+673,Sulawesi,673-Sulawesi.txt,4308,,naval slots
+673,Sulawesi,673-Sulawesi.txt,4349,,naval slots
+673,Sulawesi,673-Sulawesi.txt,4564,Kendari,naval slots
+673,Sulawesi,673-Sulawesi.txt,7336,,naval slots
+673,Sulawesi,673-Sulawesi.txt,7598,,naval slots
+673,Sulawesi,673-Sulawesi.txt,10222,,rocket_site_spawn + naval slots
+673,Sulawesi,673-Sulawesi.txt,10263,Makassar,naval slots
+673,Sulawesi,673-Sulawesi.txt,10450,,naval slots
+673,Sulawesi,673-Sulawesi.txt,10464,,naval slots
+673,Sulawesi,673-Sulawesi.txt,12330,,naval slots
+673,Sulawesi,673-Sulawesi.txt,12444,,naval slots
+225,Sumy,225-Glukhov.txt,3455,,rocket_site_spawn
+717,Sungkiang,717-Chuho.txt,10376,,rocket_site_spawn
+577,Surgut,577-Siberia 4.txt,7781,,rocket_site_spawn
+309,Suriname,309-Dutch SA.txt,10906,Paramaribo,naval slots
+309,Suriname,309-Dutch SA.txt,12828,,rocket_site_spawn + naval slots
+127,Sussex,127-South-east England.txt,3501,Dover,rocket_site_spawn + naval slots
+127,Sussex,127-South-east England.txt,6489,,naval slots
+127,Sussex,127-South-east England.txt,9458,Portsmouth,naval slots
+127,Sussex,127-South-east England.txt,11446,,naval slots
+127,Sussex,127-South-east England.txt,13070,,naval slots
+1034,Suzhou,1034 - Suzhou.txt,1089,,naval slots
+1034,Suzhou,1034 - Suzhou.txt,4091,Nantong,naval slots
+1034,Suzhou,1034 - Suzhou.txt,10076,Suzhou,rocket_site_spawn + naval slots
+1034,Suzhou,1034 - Suzhou.txt,11928,,naval slots
+653,Sverdlovsk,653-Sov state 7.txt,12696,,rocket_site_spawn
+3,Swiss Plateau,3-Swiss Plateau.txt,11604,,rocket_site_spawn
+397,Syktyvkar,397-Syktyvkar.txt,9225,,rocket_site_spawn
+501,São Paulo,501-Saol Paulo.txt,5112,Santos,naval slots
+501,São Paulo,501-Saol Paulo.txt,5167,,naval slots
+501,São Paulo,501-Saol Paulo.txt,7553,,naval slots
+501,São Paulo,501-Saol Paulo.txt,10432,,naval slots
+501,São Paulo,501-Saol Paulo.txt,11003,,rocket_site_spawn
+141,Södermanland,141-Sodermanland.txt,161,,naval slots
+141,Södermanland,141-Sodermanland.txt,3182,,rocket_site_spawn + naval slots
+141,Södermanland,141-Sodermanland.txt,6050,Stockholm,naval slots
+141,Södermanland,141-Sodermanland.txt,6209,,naval slots
+141,Södermanland,141-Sodermanland.txt,11082,,naval slots
+141,Södermanland,141-Sodermanland.txt,11278,,naval slots
+814,Sūduva,814-Suduva.txt,11312,Marijampolė,rocket_site_spawn
+855,Tabuk,855-Tabuk.txt,1033,,naval slots
+855,Tabuk,855-Tabuk.txt,2095,,naval slots
+855,Tabuk,855-Tabuk.txt,8092,,naval slots
+855,Tabuk,855-Tabuk.txt,12101,,naval slots
+855,Tabuk,855-Tabuk.txt,12455,,rocket_site_spawn
+947,Tacna-Moquegua,947 - Tacna.txt,13086,Tacna,rocket_site_spawn + naval slots
+947,Tacna-Moquegua,947 - Tacna.txt,13287,,naval slots
+641,Tahiti,641-Tahiti.txt,10188,,naval slots
+641,Tahiti,641-Tahiti.txt,12148,Pape'ete,rocket_site_spawn + naval slots
+524,Taiwan,524-Taiwan.txt,1091,,naval slots
+524,Taiwan,524-Taiwan.txt,1175,,rocket_site_spawn + naval slots
+524,Taiwan,524-Taiwan.txt,4096,,naval slots
+524,Taiwan,524-Taiwan.txt,7186,Taipei,naval slots
+524,Taiwan,524-Taiwan.txt,7214,,naval slots
+524,Taiwan,524-Taiwan.txt,9955,,naval slots
+524,Taiwan,524-Taiwan.txt,11914,,naval slots
+524,Taiwan,524-Taiwan.txt,11959,,naval slots
+524,Taiwan,524-Taiwan.txt,12068,Gaoxiong,naval slots
+287,Taklamakan,287-Sinkiang.txt,10885,,rocket_site_spawn
+479,Tamaulipas,479-Tamaulipas.txt,5015,Matamoros,naval slots
+479,Tamaulipas,479-Tamaulipas.txt,5021,,naval slots
+479,Tamaulipas,479-Tamaulipas.txt,13088,,rocket_site_spawn + naval slots
+257,Tambov,257-Livny.txt,9367,,rocket_site_spawn
+546,Tanganyika,546-Tanganyika.txt,2196,Dar es Salaam,naval slots
+546,Tanganyika,546-Tanganyika.txt,5224,,rocket_site_spawn
+546,Tanganyika,546-Tanganyika.txt,8182,,naval slots
+546,Tanganyika,546-Tanganyika.txt,8183,,naval slots
+546,Tanganyika,546-Tanganyika.txt,12944,,naval slots
+329,Tannu Tuva,329-Tannu Tuva.txt,12610,,rocket_site_spawn
+191,Tartu,191-Tartu.txt,6178,,rocket_site_spawn
+832,Tashauz,832 - Dashhowuz.txt,1493,Tashauz,rocket_site_spawn
+405,Tashkent,405-Atyrau.txt,4629,,rocket_site_spawn
+518,Tasmania,518-Tasmania.txt,2183,,naval slots
+518,Tasmania,518-Tasmania.txt,2189,,naval slots
+518,Tasmania,518-Tasmania.txt,5181,,naval slots
+518,Tasmania,518-Tasmania.txt,5187,Hobart,rocket_site_spawn + naval slots
+518,Tasmania,518-Tasmania.txt,10665,,naval slots
+518,Tasmania,518-Tasmania.txt,12645,,naval slots
+266,Tehran,266-Persia.txt,10837,Tehran,rocket_site_spawn
+921,Telemark,921-Telemark.txt,3059,,rocket_site_spawn
+921,Telemark,921-Telemark.txt,6151,Skien,naval slots
+921,Telemark,921-Telemark.txt,9174,,naval slots
+994,Tenasserim,994-Tenasserim.txt,1315,,naval slots
+994,Tenasserim,994-Tenasserim.txt,1385,,naval slots
+994,Tenasserim,994-Tenasserim.txt,1403,Moulmein,naval slots
+994,Tenasserim,994-Tenasserim.txt,4275,,naval slots
+994,Tenasserim,994-Tenasserim.txt,4336,,naval slots
+994,Tenasserim,994-Tenasserim.txt,4408,,rocket_site_spawn
+994,Tenasserim,994-Tenasserim.txt,7295,,naval slots
+994,Tenasserim,994-Tenasserim.txt,10217,,naval slots
+994,Tenasserim,994-Tenasserim.txt,12125,,naval slots
+994,Tenasserim,994-Tenasserim.txt,12292,,naval slots
+368,Tennessee,368-Tennesse.txt,1758,,rocket_site_spawn
+375,Texas,375-Texas.txt,1500,,naval slots
+375,Texas,375-Texas.txt,2042,,naval slots
+375,Texas,375-Texas.txt,3972,,rocket_site_spawn
+375,Texas,375-Texas.txt,4884,,naval slots
+375,Texas,375-Texas.txt,6785,,naval slots
+375,Texas,375-Texas.txt,10337,Houston,naval slots
+375,Texas,375-Texas.txt,12369,,naval slots
+375,Texas,375-Texas.txt,12410,,naval slots
+668,The Moluccas,668-The Moluccas.txt,1351,,naval slots
+668,The Moluccas,668-The Moluccas.txt,1419,,naval slots
+668,The Moluccas,668-The Moluccas.txt,1437,,naval slots
+668,The Moluccas,668-The Moluccas.txt,1574,,naval slots
+668,The Moluccas,668-The Moluccas.txt,7369,,naval slots
+668,The Moluccas,668-The Moluccas.txt,7413,Ternate,rocket_site_spawn + naval slots
+668,The Moluccas,668-The Moluccas.txt,7557,,naval slots
+668,The Moluccas,668-The Moluccas.txt,10141,,naval slots
+668,The Moluccas,668-The Moluccas.txt,10342,,naval slots
+668,The Moluccas,668-The Moluccas.txt,10409,,naval slots
+184,Thrace,184-Thrace.txt,9930,,naval slots
+184,Thrace,184-Thrace.txt,11774,,rocket_site_spawn + naval slots
+184,Thrace,184-Thrace.txt,11905,Alexandroupolis,naval slots
+60,Thüringen,60-Sud-Hannover.txt,425,Weimar,rocket_site_spawn
+846,Ticino,846-Ticino.txt,9600,Lugano,rocket_site_spawn
+953,Tierra del Fuego,953 - Tierra del Fuego.txt,11009,,naval slots
+953,Tierra del Fuego,953 - Tierra del Fuego.txt,13299,,naval slots
+953,Tierra del Fuego,953 - Tierra del Fuego.txt,13300,Ushuaia,rocket_site_spawn + naval slots
+842,Tigray,842-Tigray.txt,13238,Adwa,rocket_site_spawn
+264,Tikhvin,264-Tikhvin.txt,6169,,rocket_site_spawn
+513,Tlemcen,513-Southern Algeria.txt,13074,,rocket_site_spawn
+580,Tobolsk,580-Siberia 7.txt,7768,,rocket_site_spawn
+941,Tocantins,941 - Tocantins.txt,13281,,rocket_site_spawn
+777,Togo,777-Togo.txt,1951,Lomé,rocket_site_spawn + naval slots
+532,Tokai,532-Nagoya.txt,7087,Shizuoka,rocket_site_spawn + naval slots
+532,Tokai,532-Nagoya.txt,7157,,naval slots
+532,Tokai,532-Nagoya.txt,10125,Nagoya,naval slots
+532,Tokai,532-Nagoya.txt,12097,Hamamatsu,naval slots
+782,Tombouctou,782-Tombouctou.txt,1115,,rocket_site_spawn
+578,Tomsk,578-Siberia 5.txt,4681,,rocket_site_spawn
+671,Tonkin,671-Annam.txt,1073,,rocket_site_spawn
+671,Tonkin,671-Annam.txt,1157,,naval slots
+671,Tonkin,671-Annam.txt,1185,,naval slots
+671,Tonkin,671-Annam.txt,4119,Haiphong,naval slots
+671,Tonkin,671-Annam.txt,7093,,naval slots
+354,Trabzon,354-Trabzon.txt,3714,,naval slots
+354,Trabzon,354-Trabzon.txt,9932,Trabzon,naval slots
+354,Trabzon,354-Trabzon.txt,11753,,rocket_site_spawn + naval slots
+72,Trans-Olza,72-Zaolzie.txt,9567,,rocket_site_spawn
+275,Transvaal,275-South Africa.txt,12064,,rocket_site_spawn
+84,Transylvania,84-Transylvania.txt,690,Brasov,rocket_site_spawn
+850,Trentino,850-Trentino.txt,9598,Trent,rocket_site_spawn
+691,Trinidad,691-Trinidad.txt,3284,Port of Spain,rocket_site_spawn + naval slots
+691,Trinidad,691-Trinidad.txt,13012,,naval slots
+448,Tripoli,448-Tripoli.txt,1118,,naval slots
+448,Tripoli,448-Tripoli.txt,1149,Tripoli,naval slots
+448,Tripoli,448-Tripoli.txt,1189,,naval slots
+448,Tripoli,448-Tripoli.txt,4194,,rocket_site_spawn + naval slots
+448,Tripoli,448-Tripoli.txt,7209,,naval slots
+448,Tripoli,448-Tripoli.txt,9980,,naval slots
+448,Tripoli,448-Tripoli.txt,12039,,naval slots
+661,Tripolitania,661-Tripolitania.txt,10037,,rocket_site_spawn
+924,Troms,924-Troms.txt,44,,naval slots
+924,Troms,924-Troms.txt,91,,naval slots
+924,Troms,924-Troms.txt,3058,,naval slots
+924,Troms,924-Troms.txt,3082,,naval slots
+924,Troms,924-Troms.txt,6079,,naval slots
+924,Troms,924-Troms.txt,6130,,rocket_site_spawn
+924,Troms,924-Troms.txt,11050,Tromsø,naval slots
+924,Troms,924-Troms.txt,11090,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,21,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,107,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,3018,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,3022,Trondheim,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,6038,,rocket_site_spawn + naval slots
+143,Trøndelag,143-Midt-Noreg.txt,6041,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,6116,,naval slots
+143,Trøndelag,143-Midt-Noreg.txt,9132,,naval slots
+508,Tucumán,508-Argentine Northwest.txt,13309,Catamarca,rocket_site_spawn
+223,Tula,223-tula.txt,6333,,rocket_site_spawn
+353,Tunceli,353-Erzurum.txt,876,Xarpêt,rocket_site_spawn
+458,Tunisia,458-Tunisia.txt,4163,,naval slots
+458,Tunisia,458-Tunisia.txt,7162,,naval slots
+458,Tunisia,458-Tunisia.txt,9994,Bizerte,naval slots
+458,Tunisia,458-Tunisia.txt,10091,,naval slots
+458,Tunisia,458-Tunisia.txt,11921,Sfax,rocket_site_spawn + naval slots
+458,Tunisia,458-Tunisia.txt,11969,Tunis,naval slots
+926,Turku,926-Turku.txt,169,Rauma,naval slots
+926,Turku,926-Turku.txt,3083,Turku,naval slots
+926,Turku,926-Turku.txt,3117,Pori,naval slots
+926,Turku,926-Turku.txt,6066,,naval slots
+926,Turku,926-Turku.txt,9094,,rocket_site_spawn
+926,Turku,926-Turku.txt,9194,,naval slots
+162,Tuscany,162-Tuscany.txt,6875,,naval slots
+162,Tuscany,162-Tuscany.txt,6946,Lucca,rocket_site_spawn + naval slots
+162,Tuscany,162-Tuscany.txt,6973,La Spezia,naval slots
+162,Tuscany,162-Tuscany.txt,11833,Livorno,naval slots
+153,Tyrol,153-Tyrol.txt,9636,,rocket_site_spawn
+403,Tyumen,403-Kharabali.txt,9512,,rocket_site_spawn
+494,Ucayali,494-Ucayali.txt,8160,,rocket_site_spawn
+876,Udachny,876-Udachny.txt,2853,,rocket_site_spawn
+399,Udmurtia,399-Izhevsk.txt,7359,,rocket_site_spawn
+651,Ufa,651-Sov state 5.txt,12130,,rocket_site_spawn
+548,Uganda,548-Uganda.txt,8223,,rocket_site_spawn
+330,Ulaanbaatar,330-Mongolia.txt,1859,,rocket_site_spawn
+250,Ulyanovsky,250-ulyanovsky.txt,3276,,rocket_site_spawn
+438,United Provinces,438-United Provinces.txt,4045,,rocket_site_spawn
+884,Upper Nile,884-Upper Nile.txt,2096,Juba,rocket_site_spawn
+67,Upper Silesia,67-Oberschlesien.txt,479,,rocket_site_spawn
+778,Upper Volta,778-Upper Volta.txt,8071,,rocket_site_spawn
+407,Ural'sk,407-Uralsk.txt,9487,,rocket_site_spawn
+617,Urumqi,617-Xinjiang.txt,7702,,rocket_site_spawn
+587,Ust Urt,587-Western Kazakstan.txt,475,,rocket_site_spawn
+380,Utah,380-Utah.txt,12699,,rocket_site_spawn
+111,Uusimaa,111-Uusima.txt,204,,naval slots
+111,Uusimaa,111-Uusima.txt,3161,,naval slots
+111,Uusimaa,111-Uusima.txt,6009,Porvoo,naval slots
+111,Uusimaa,111-Uusima.txt,6108,,naval slots
+111,Uusimaa,111-Uusima.txt,9129,,rocket_site_spawn
+111,Uusimaa,111-Uusima.txt,11105,Helsinki,naval slots
+111,Uusimaa,111-Uusima.txt,11211,Hanko,naval slots
+149,Vaasa,149-Vaasa.txt,66,Kokkola,naval slots
+149,Vaasa,149-Vaasa.txt,3122,Vaasa,naval slots
+149,Vaasa,149-Vaasa.txt,3172,,naval slots
+149,Vaasa,149-Vaasa.txt,11065,,naval slots
+149,Vaasa,149-Vaasa.txt,11126,,rocket_site_spawn + naval slots
+167,Valencia,167-Valencia.txt,962,,naval slots
+167,Valencia,167-Valencia.txt,3873,,naval slots
+167,Valencia,167-Valencia.txt,4098,Alicante,naval slots
+167,Valencia,167-Valencia.txt,6817,,naval slots
+167,Valencia,167-Valencia.txt,6906,Valencia,naval slots
+167,Valencia,167-Valencia.txt,6959,,naval slots
+167,Valencia,167-Valencia.txt,9896,,rocket_site_spawn + naval slots
+791,Valladolid,791-Valladolid.txt,11806,,rocket_site_spawn
+800,Van,800-Van.txt,12376,Qerekose,rocket_site_spawn
+740,Vancouver Island,740-Vancouver Island.txt,1214,,naval slots
+740,Vancouver Island,740-Vancouver Island.txt,1420,,naval slots
+740,Vancouver Island,740-Vancouver Island.txt,7259,Victoria,naval slots
+740,Vancouver Island,740-Vancouver Island.txt,12259,,naval slots
+740,Vancouver Island,740-Vancouver Island.txt,12272,,rocket_site_spawn + naval slots
+1071,Vanuatu,1071 - Vanuatu.txt,1237,,rocket_site_spawn + naval slots
+1071,Vanuatu,1071 - Vanuatu.txt,4247,,naval slots
+1071,Vanuatu,1071 - Vanuatu.txt,12120,Port Vila,naval slots
+851,Var,851-Var.txt,911,Toulon,naval slots
+851,Var,851-Var.txt,956,,rocket_site_spawn
+851,Var,851-Var.txt,3928,,naval slots
+160,Veneto,160-Veneto.txt,628,,naval slots
+160,Veneto,160-Veneto.txt,3657,,rocket_site_spawn
+160,Veneto,160-Veneto.txt,9582,,naval slots
+160,Veneto,160-Veneto.txt,11584,Venice,naval slots
+477,Veracruz,477-Veracruz.txt,8079,,naval slots
+477,Veracruz,477-Veracruz.txt,10732,,naval slots
+477,Veracruz,477-Veracruz.txt,12810,Veracruz,rocket_site_spawn + naval slots
+877,Verkhoyansk,877-Verkhoyansk.txt,12549,Verkhoyansk,rocket_site_spawn
+142,Vestlandet,142-Vestlandet.txt,53,Stavanger,naval slots
+142,Vestlandet,142-Vestlandet.txt,65,,naval slots
+142,Vestlandet,142-Vestlandet.txt,122,Bergen,naval slots
+142,Vestlandet,142-Vestlandet.txt,137,,naval slots
+142,Vestlandet,142-Vestlandet.txt,188,,naval slots
+142,Vestlandet,142-Vestlandet.txt,199,,naval slots
+142,Vestlandet,142-Vestlandet.txt,3090,,naval slots
+142,Vestlandet,142-Vestlandet.txt,3096,,naval slots
+142,Vestlandet,142-Vestlandet.txt,3114,,naval slots
+142,Vestlandet,142-Vestlandet.txt,3188,,rocket_site_spawn + naval slots
+142,Vestlandet,142-Vestlandet.txt,3192,,naval slots
+142,Vestlandet,142-Vestlandet.txt,6145,,naval slots
+142,Vestlandet,142-Vestlandet.txt,6176,,naval slots
+142,Vestlandet,142-Vestlandet.txt,9127,Ålesund,naval slots
+142,Vestlandet,142-Vestlandet.txt,9216,,naval slots
+142,Vestlandet,142-Vestlandet.txt,11100,,naval slots
+517,Victoria,517-Victoria.txt,1759,,naval slots
+517,Victoria,517-Victoria.txt,4776,,rocket_site_spawn
+517,Victoria,517-Victoria.txt,4791,,naval slots
+517,Victoria,517-Victoria.txt,7798,Melbourne,naval slots
+517,Victoria,517-Victoria.txt,7811,,naval slots
+517,Victoria,517-Victoria.txt,10622,,naval slots
+517,Victoria,517-Victoria.txt,10637,,naval slots
+12,Vidzeme,12-Latvia.txt,9317,,rocket_site_spawn + naval slots
+784,Vilna,784-Ermland-Masuren.txt,3320,Vilna,rocket_site_spawn
+198,Vinnytsia,198-Vinnytsia.txt,9423,,rocket_site_spawn
+362,Virginia,362-Virginia.txt,788,Norfolk,naval slots
+362,Virginia,362-Virginia.txt,865,,naval slots
+362,Virginia,362-Virginia.txt,873,,naval slots
+362,Virginia,362-Virginia.txt,3823,,rocket_site_spawn
+362,Virginia,362-Virginia.txt,3917,,naval slots
+362,Virginia,362-Virginia.txt,6846,,naval slots
+362,Virginia,362-Virginia.txt,11738,,naval slots
+813,Virumaa,813-Rakvere.txt,4640,Narva,rocket_site_spawn + naval slots
+813,Virumaa,813-Rakvere.txt,11127,Rakvere,naval slots
+813,Virumaa,813-Rakvere.txt,11443,,naval slots
+207,Vitebsk,207-Viciebsk.txt,11220,,rocket_site_spawn
+408,Vladivostok,408-Vladivostok.txt,957,Vladivostok,naval slots
+408,Vladivostok,408-Vladivostok.txt,3739,,naval slots
+408,Vladivostok,408-Vladivostok.txt,3753,,naval slots
+408,Vladivostok,408-Vladivostok.txt,6715,,naval slots
+408,Vladivostok,408-Vladivostok.txt,6833,,naval slots
+408,Vladivostok,408-Vladivostok.txt,6961,,naval slots
+408,Vladivostok,408-Vladivostok.txt,6989,,rocket_site_spawn
+408,Vladivostok,408-Vladivostok.txt,9895,,naval slots
+408,Vladivostok,408-Vladivostok.txt,11626,,naval slots
+408,Vladivostok,408-Vladivostok.txt,11745,,naval slots
+408,Vladivostok,408-Vladivostok.txt,11879,,naval slots
+408,Vladivostok,408-Vladivostok.txt,11904,,naval slots
+45,Vojvodina,45-Yugoslavia.txt,9621,,rocket_site_spawn
+238,Volgodonsk,238-volgodonsk.txt,3464,,rocket_site_spawn
+244,Volkhov,244-Gatchina.txt,3072,,rocket_site_spawn
+351,Vologda,351-Vologda.txt,11168,,rocket_site_spawn
+848,Vorarlberg,848-Voralberg.txt,6678,,rocket_site_spawn
+260,Voronezh,260-Borisoglbsk.txt,9552,,rocket_site_spawn
+228,Voroshilovgrad,228-Taganrog.txt,9446,,rocket_site_spawn
+62,Vorpommern,62-Pommern.txt,349,,naval slots
+62,Vorpommern,62-Pommern.txt,3258,Neustrelitz,rocket_site_spawn
+62,Vorpommern,62-Pommern.txt,3340,Greifswald,naval slots
+62,Vorpommern,62-Pommern.txt,9388,Stralsund,naval slots
+62,Vorpommern,62-Pommern.txt,13257,Rügen,naval slots
+919,Värmland,919-Varmland.txt,147,,rocket_site_spawn
+918,Västerbotten,918-Vasterbotten.txt,182,,naval slots
+918,Västerbotten,918-Vasterbotten.txt,3113,,naval slots
+918,Västerbotten,918-Vasterbotten.txt,6083,,naval slots
+918,Västerbotten,918-Vasterbotten.txt,6132,Umeå,naval slots
+918,Västerbotten,918-Vasterbotten.txt,9143,,naval slots
+918,Västerbotten,918-Vasterbotten.txt,11201,,rocket_site_spawn + naval slots
+140,Västergötland,140-Vaster Gotland.txt,383,Göteborg,rocket_site_spawn + naval slots
+632,Wake Island,632-Wake Island.txt,13047,Wake,rocket_site_spawn + naval slots
+122,Wales,122-Wales.txt,377,Cardiff,naval slots
+122,Wales,122-Wales.txt,407,Swansea,rocket_site_spawn + naval slots
+122,Wales,122-Wales.txt,3274,,naval slots
+122,Wales,122-Wales.txt,6363,,naval slots
+122,Wales,122-Wales.txt,9364,,naval slots
+122,Wales,122-Wales.txt,11361,,naval slots
+34,Wallonia,34-Wallonie.txt,11519,Liège,rocket_site_spawn
+10,Warsaw,10-Poland.txt,467,,rocket_site_spawn
+386,Washington,386-Washington.txt,4296,,naval slots
+386,Washington,386-Washington.txt,4398,,naval slots
+386,Washington,386-Washington.txt,7315,Seattle,naval slots
+386,Washington,386-Washington.txt,7386,,naval slots
+386,Washington,386-Washington.txt,10157,,naval slots
+386,Washington,386-Washington.txt,10242,,naval slots
+386,Washington,386-Washington.txt,10271,,naval slots
+386,Washington,386-Washington.txt,12673,,rocket_site_spawn
+987,Waziristan,987 - Waziristan.txt,4998,,rocket_site_spawn
+839,Welega,839-Welega.txt,12856,,rocket_site_spawn
+284,Wellington,284-New Zealand.txt,1801,,naval slots
+284,Wellington,284-New Zealand.txt,1814,Wellington,naval slots
+284,Wellington,284-New Zealand.txt,4804,Mangahao,naval slots
+284,Wellington,284-New Zealand.txt,7692,,rocket_site_spawn
+284,Wellington,284-New Zealand.txt,7783,,naval slots
+284,Wellington,284-New Zealand.txt,7826,,naval slots
+284,Wellington,284-New Zealand.txt,12604,New Plymouth,naval slots
+284,Wellington,284-New Zealand.txt,12617,,naval slots
+843,Wello,843-Wello.txt,5097,Dessie,rocket_site_spawn
+56,Weser-Ems,56-Weser-Ems.txt,241,Wilhelmshaven,naval slots
+56,Weser-Ems,56-Weser-Ems.txt,11233,,rocket_site_spawn
+56,Weser-Ems,56-Weser-Ems.txt,11360,Emden,naval slots
+419,West Azerbaijan,419-Azerbaijan.txt,12861,,rocket_site_spawn
+764,West Banat,764-West Banat.txt,3614,Pančevo,rocket_site_spawn
+431,West Bengal,431-Calcutta.txt,1159,,naval slots
+431,West Bengal,431-Calcutta.txt,4062,,naval slots
+431,West Bengal,431-Calcutta.txt,4245,Calcutta,naval slots
+431,West Bengal,431-Calcutta.txt,7537,,rocket_site_spawn
+335,West Java,335-West Java.txt,1386,,naval slots
+335,West Java,335-West Java.txt,1398,,naval slots
+335,West Java,335-West Java.txt,1425,,naval slots
+335,West Java,335-West Java.txt,4434,Cilacap,naval slots
+335,West Java,335-West Java.txt,4621,,naval slots
+335,West Java,335-West Java.txt,7223,,naval slots
+335,West Java,335-West Java.txt,10279,,rocket_site_spawn + naval slots
+335,West Java,335-West Java.txt,10307,,naval slots
+335,West Java,335-West Java.txt,13382,,naval slots
+128,West Midlands,128-West Midlands.txt,11345,,rocket_site_spawn
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,7293,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,10191,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,12162,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,12219,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,12234,Waingapu,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13384,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13387,Mataram,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13388,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13389,,rocket_site_spawn + naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13390,,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13391,Bima,naval slots
+667,West Nusa Tenggara,667-West Nusa Tenggara.txt,13392,,naval slots
+440,West Punjab,440-West Punjab.txt,8106,,rocket_site_spawn
+1075,West Queensland,1075 - West Queensland.txt,10955,,rocket_site_spawn
+816,West Virginia,816-West Virginia.txt,11888,,rocket_site_spawn
+166,Western Aragón,166-Western Aragon.txt,9840,Huesca,rocket_site_spawn
+522,Western Australia,522-Western Australia.txt,1511,,naval slots
+522,Western Australia,522-Western Australia.txt,1540,,naval slots
+522,Western Australia,522-Western Australia.txt,1652,Perth,naval slots
+522,Western Australia,522-Western Australia.txt,4630,,naval slots
+522,Western Australia,522-Western Australia.txt,4645,,naval slots
+522,Western Australia,522-Western Australia.txt,5125,,naval slots
+522,Western Australia,522-Western Australia.txt,7453,,naval slots
+522,Western Australia,522-Western Australia.txt,8130,,naval slots
+522,Western Australia,522-Western Australia.txt,8228,,naval slots
+522,Western Australia,522-Western Australia.txt,8243,,naval slots
+522,Western Australia,522-Western Australia.txt,10971,,naval slots
+522,Western Australia,522-Western Australia.txt,10983,,rocket_site_spawn
+522,Western Australia,522-Western Australia.txt,12323,,naval slots
+552,Western Desert,552-Western Egypt.txt,12099,,rocket_site_spawn
+289,Western Siam,289-Western Siam.txt,4319,,rocket_site_spawn
+289,Western Siam,289-Western Siam.txt,4388,,naval slots
+289,Western Siam,289-Western Siam.txt,12122,,naval slots
+289,Western Siam,289-Western Siam.txt,12220,,naval slots
+70,Western Slovakia,70-Slovakia.txt,9539,,rocket_site_spawn
+847,Western Swiss Alps,847-Western Swiss Alps.txt,636,Gotthard Pass,rocket_site_spawn
+57,Westfalen,57-Westfalen.txt,11346,,rocket_site_spawn
+96,Wilejka,96-Wilejka.txt,9341,,rocket_site_spawn
+692,Windward Islands,692-Windward Islands.txt,379,,naval slots
+692,Windward Islands,692-Windward Islands.txt,11106,,naval slots
+692,Windward Islands,692-Windward Islands.txt,11350,Bridgetown,naval slots
+692,Windward Islands,692-Windward Islands.txt,13009,,rocket_site_spawn + naval slots
+394,Wisconsin,394-Wisconsin.txt,926,,rocket_site_spawn
+93,Wołyn,93-Volhynian.txt,3412,,rocket_site_spawn
+1036,Wuhan,1036 - Wuhan.txt,12467,Hankow,rocket_site_spawn
+1044,Wuwei,1044 - Wuwei.txt,1630,,rocket_site_spawn
+381,Wyoming,381-Wyoming.txt,12651,,rocket_site_spawn
+50,Württemberg,50-Baden.txt,6934,,rocket_site_spawn
+744,Xian,744-Xian.txt,5092,,rocket_site_spawn
+574,Yakutsk,574-Siberia 1.txt,10589,,rocket_site_spawn
+824,Yamalia,824 - Yamalia.txt,10564,,rocket_site_spawn
+1032,Yan'an,1032 - Yanan.txt,8049,Yan'an,rocket_site_spawn
+619,Yarkand,619-China 16.txt,4828,,rocket_site_spawn
+248,Yaroslavl,248-Yaroslavl.txt,11166,,rocket_site_spawn
+1002,Yazd,1002-Yazd.txt,10828,,rocket_site_spawn
+576,Yeniseisk,576-Siberia 3.txt,4842,,rocket_site_spawn
+130,Yorkshire,130-Yorkshire.txt,9315,Sheffield,rocket_site_spawn
+130,Yorkshire,130-Yorkshire.txt,11297,Hull,naval slots
+130,Yorkshire,130-Yorkshire.txt,11317,,naval slots
+474,Yucatan,474-Yucatan.txt,4904,Campeche,naval slots
+474,Yucatan,474-Yucatan.txt,4965,,rocket_site_spawn + naval slots
+474,Yucatan,474-Yucatan.txt,12715,Mérida,naval slots
+864,Yukon Territory,864-Yukon.txt,7869,,rocket_site_spawn
+1046,Yulin,1046 - Yulin.txt,7314,Yulin,rocket_site_spawn
+325,Yunnan,325-Yunnan.txt,12282,,rocket_site_spawn
+163,Zadar,163-Dalmatia.txt,3943,Zadar,rocket_site_spawn + naval slots
+891,Zambesi,891-Zambesi.txt,1552,,rocket_site_spawn
+897,Zambezia-Moçambique,897-Zambezia-Mocambique.txt,2123,,naval slots
+897,Zambezia-Moçambique,897-Zambezia-Mocambique.txt,2180,,rocket_site_spawn
+897,Zambezia-Moçambique,897-Zambezia-Mocambique.txt,2202,,naval slots
+897,Zambezia-Moçambique,897-Zambezia-Mocambique.txt,5164,,naval slots
+897,Zambezia-Moçambique,897-Zambezia-Mocambique.txt,12971,,naval slots
+771,Zambia,771-Zambia.txt,5199,Lusaka,rocket_site_spawn
+1025,Zamboanga,1025 - Zamboanga.txt,1421,Zamboanga,naval slots
+1025,Zamboanga,1025 - Zamboanga.txt,4399,,naval slots
+1025,Zamboanga,1025 - Zamboanga.txt,7360,,naval slots
+1025,Zamboanga,1025 - Zamboanga.txt,7389,,rocket_site_spawn + naval slots
+1025,Zamboanga,1025 - Zamboanga.txt,7417,,naval slots
+1025,Zamboanga,1025 - Zamboanga.txt,10184,,naval slots
+200,Zaporozhe,200-Rivne.txt,9571,,rocket_site_spawn + naval slots
+200,Zaporozhe,200-Rivne.txt,9729,Melitopol,naval slots
+200,Zaporozhe,200-Rivne.txt,11700,,naval slots
+809,Zemgale,809-Latgale.txt,3525,,naval slots
+809,Zemgale,809-Latgale.txt,6222,Jelgava,rocket_site_spawn + naval slots
+596,Zhejiang,596-Zhejiang.txt,1055,Wenzhou,naval slots
+596,Zhejiang,596-Zhejiang.txt,1096,,naval slots
+596,Zhejiang,596-Zhejiang.txt,1168,Taizhou,naval slots
+596,Zhejiang,596-Zhejiang.txt,4013,,naval slots
+596,Zhejiang,596-Zhejiang.txt,4042,,rocket_site_spawn + naval slots
+596,Zhejiang,596-Zhejiang.txt,4099,,naval slots
+596,Zhejiang,596-Zhejiang.txt,7058,,naval slots
+596,Zhejiang,596-Zhejiang.txt,7191,Hangzhou,naval slots
+596,Zhejiang,596-Zhejiang.txt,9974,Ningbo,naval slots
+596,Zhejiang,596-Zhejiang.txt,10058,,naval slots
+596,Zhejiang,596-Zhejiang.txt,11991,,naval slots
+201,Zhytomyr,201-Zhytomyr.txt,11514,,rocket_site_spawn
+573,Zlatoust,573-Ts 15.txt,361,,rocket_site_spawn
+489,Zulia,489-Monagas.txt,1944,Maracaibo,naval slots
+489,Zulia,489-Monagas.txt,1997,,naval slots
+489,Zulia,489-Monagas.txt,4526,,naval slots
+489,Zulia,489-Monagas.txt,5088,,naval slots
+489,Zulia,489-Monagas.txt,10855,,rocket_site_spawn + naval slots
+489,Zulia,489-Monagas.txt,12772,,naval slots
+748,Zunyi,748-Zunyi.txt,4325,,rocket_site_spawn
+145,Åland,145-Aland.txt,9228,Mariehamn,rocket_site_spawn + naval slots
+913,Östergötland,913-Ostergotland.txt,11380,Norrköping,naval slots
+913,Östergötland,913-Ostergotland.txt,11390,,naval slots
+913,Östergötland,913-Ostergotland.txt,13265,,rocket_site_spawn
+87,Łódz,87-Lodz.txt,9546,,rocket_site_spawn
+189,Žemaitija,189-Kaunas.txt,3337,,rocket_site_spawn
+189,Žemaitija,189-Kaunas.txt,6314,Palanga,naval slots

@@ -1,0 +1,1140 @@
+# Ported from Germany Rework (Workshop 3607227153) to support the Rally the
+# Wehrmacht opposition branch in common/national_focus/germany.txt.
+#
+# Kept in its own file rather than merged into an existing one: nothing here
+# is Welt in Flammen's own work, and keeping it separate means the whole port
+# can be found, updated or removed in one place.
+
+GER_ugsr_integration_decisions = {
+
+	GER_integrate_country_ugsr_alberta = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 467
+					state = 469
+					state = 470
+					state = 472
+					state = 865
+					state = 683
+					state = 867
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 467
+				controls_state = 469
+				controls_state = 470
+				controls_state = 472
+				controls_state = 865
+				controls_state = 683
+				controls_state = 867
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 467
+				add_state_core = 469
+				add_state_core = 470
+				add_state_core = 472
+				add_state_core = 865
+				add_state_core = 683
+				add_state_core = 867
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_atlantic = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 332
+					state = 331
+					state = 465
+					state = 464
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 332
+				controls_state = 331
+				controls_state = 465
+				controls_state = 464
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 332
+				add_state_core = 331
+				add_state_core = 465
+				add_state_core = 464
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_california = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 386
+					state = 385
+					state = 378
+					state = 379
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 386
+				controls_state = 385
+				controls_state = 378
+				controls_state = 379
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 386
+				add_state_core = 385
+				add_state_core = 378
+				add_state_core = 379
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_chicago = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 394
+					state = 395
+					state = 391
+					state = 392
+					state = 373
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 394
+				controls_state = 395
+				controls_state = 391
+				controls_state = 392
+				controls_state = 373
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 394
+				add_state_core = 395
+				add_state_core = 391
+				add_state_core = 392
+				add_state_core = 373
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_columbia = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 50
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 473
+					state = 740
+					state = 471
+					state = 739
+					state = 864
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 473
+				controls_state = 740
+				controls_state = 471
+				controls_state = 739
+				controls_state = 864
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 473
+				add_state_core = 740
+				add_state_core = 471
+				add_state_core = 739
+				add_state_core = 864
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_state_core = 463
+			add_state_core = 650
+		}
+    }
+
+	GER_integrate_country_ugsr_denmark = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 99
+					state = 912
+					state = 911
+					state = 37
+					state = 910
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_scandinavian_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 99
+				controls_state = 912
+				controls_state = 911
+				controls_state = 37
+				controls_state = 910
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 99
+				add_state_core = 912
+				add_state_core = 911
+				add_state_core = 37
+				add_state_core = 910
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_dixie = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 364
+					state = 365
+					state = 366
+					state = 367
+					state = 370
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 364
+				controls_state = 365
+				controls_state = 366
+				controls_state = 367
+				controls_state = 370
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 364
+				add_state_core = 365
+				add_state_core = 366
+				add_state_core = 367
+				add_state_core = 370
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_east_australia = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 517
+					state = 285
+					state = 518
+					state = 873
+					state = 521
+					state = 872
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 517
+				controls_state = 285
+				controls_state = 518
+				controls_state = 873
+				controls_state = 521
+				controls_state = 872
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 517
+				add_state_core = 285
+				add_state_core = 518
+				add_state_core = 873
+				add_state_core = 521
+				add_state_core = 872
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_england = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 200
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 338
+					state = 127
+					state = 123
+					state = 126
+					state = 125
+					state = 128
+					state = 129
+					state = 130
+					state = 132
+					state = 931
+					state = 131
+					state = 932
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_british_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 338
+				controls_state = 127
+				controls_state = 123
+				controls_state = 126
+				controls_state = 125
+				controls_state = 128
+				controls_state = 129
+				controls_state = 130
+				controls_state = 132
+				controls_state = 931
+				controls_state = 131
+				controls_state = 932
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 338
+				add_state_core = 127
+				add_state_core = 123
+				add_state_core = 126
+				add_state_core = 125
+				add_state_core = 128
+				add_state_core = 129
+				add_state_core = 130
+				add_state_core = 132
+				add_state_core = 931
+				add_state_core = 131
+				add_state_core = 932
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_great_plains = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 389
+					state = 390
+					state = 384
+					state = 383
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 389
+				controls_state = 390
+				controls_state = 384
+				controls_state = 383
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 389
+				add_state_core = 390
+				add_state_core = 384
+				add_state_core = 383
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_iceland = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 50
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 100
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_scandinavian_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 100
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 100
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_state_core = 337
+			add_state_core = 101
+		}
+    }
+
+	GER_integrate_country_ugsr_netherlands = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 35
+					state = 7
+					state = 36
+					state = 6
+					state = 977
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_benelux_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 35
+				controls_state = 7
+				controls_state = 36
+				controls_state = 6
+				controls_state = 977
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 35
+				add_state_core = 7
+				add_state_core = 36
+				add_state_core = 6
+				add_state_core = 977
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_new_deutschland = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 200
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 360
+					state = 261
+					state = 396
+					state = 393
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 360
+				controls_state = 261
+				controls_state = 396
+				controls_state = 393
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 360
+				add_state_core = 261
+				add_state_core = 396
+				add_state_core = 393
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_new_england = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 200
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 357
+					state = 358
+					state = 359
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 357
+				controls_state = 358
+				controls_state = 359
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 357
+				add_state_core = 358
+				add_state_core = 359
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_new_zealand = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 50
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 284
+					state = 723
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 284
+				controls_state = 723
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 284
+				add_state_core = 723
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_norway = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 110
+					state = 921
+					state = 922
+					state = 142
+					state = 920
+					state = 143
+					state = 923
+					state = 144
+					state = 924
+					state = 925
+					state = 914
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_scandinavian_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 110
+				controls_state = 921
+				controls_state = 922
+				controls_state = 142
+				controls_state = 920
+				controls_state = 143
+				controls_state = 923
+				controls_state = 144
+				controls_state = 924
+				controls_state = 925
+				controls_state = 914
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 110
+				add_state_core = 921
+				add_state_core = 922
+				add_state_core = 142
+				add_state_core = 920
+				add_state_core = 143
+				add_state_core = 923
+				add_state_core = 144
+				add_state_core = 924
+				add_state_core = 925
+				add_state_core = 914
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_ontario = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 276
+					state = 682
+					state = 866
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 276
+				controls_state = 682
+				controls_state = 866
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 276
+				add_state_core = 682
+				add_state_core = 866
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_rockies = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 388
+					state = 387
+					state = 381
+					state = 380
+					state = 382
+					state = 377
+					state = 376
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 388
+				controls_state = 387
+				controls_state = 381
+				controls_state = 380
+				controls_state = 382
+				controls_state = 377
+				controls_state = 376
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 388
+				add_state_core = 387
+				add_state_core = 381
+				add_state_core = 380
+				add_state_core = 382
+				add_state_core = 377
+				add_state_core = 376
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_scotland = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 121
+					state = 133
+					state = 120
+					state = 136
+					state = 933
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_british_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 121
+				controls_state = 133
+				controls_state = 120
+				controls_state = 136
+				controls_state = 933
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 121
+				add_state_core = 133
+				add_state_core = 120
+				add_state_core = 136
+				add_state_core = 933
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_sweden = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 100
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 138
+					state = 139
+					state = 915
+					state = 140
+					state = 141
+					state = 916
+					state = 38
+					state = 917
+					state = 918
+					state = 666
+					state = 124
+					state = 913
+					state = 919
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_scandinavian_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 138
+				controls_state = 139
+				controls_state = 915
+				controls_state = 140
+				controls_state = 141
+				controls_state = 916
+				controls_state = 38
+				controls_state = 917
+				controls_state = 918
+				controls_state = 666
+				controls_state = 124
+				controls_state = 913
+				controls_state = 919
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 138
+				add_state_core = 139
+				add_state_core = 915
+				add_state_core = 140
+				add_state_core = 141
+				add_state_core = 916
+				add_state_core = 38
+				add_state_core = 917
+				add_state_core = 918
+				add_state_core = 666
+				add_state_core = 124
+				add_state_core = 913
+				add_state_core = 919
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_texas = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 375
+					state = 374
+					state = 372
+					state = 371
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 375
+				controls_state = 374
+				controls_state = 372
+				controls_state = 371
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 375
+				add_state_core = 374
+				add_state_core = 372
+				add_state_core = 371
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_virginia = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 150
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 361
+					state = 362
+					state = 816
+					state = 369
+					state = 368
+					state = 363
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_american_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 361
+				controls_state = 362
+				controls_state = 816
+				controls_state = 369
+				controls_state = 368
+				controls_state = 363
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 361
+				add_state_core = 362
+				add_state_core = 816
+				add_state_core = 369
+				add_state_core = 368
+				add_state_core = 363
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_wales = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 50
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 122
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_british_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 122
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 122
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+		}
+    }
+
+	GER_integrate_country_ugsr_west_australia = {
+		icon = GFX_decision_SOV_secure_the_administration
+        cost = 50
+		days_remove = 70
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 519
+					state = 871
+					state = 522
+					state = 870
+					state = 520
+				}
+			}
+		}
+		fire_only_once = yes
+        visible = {
+			has_completed_focus = GER_the_commonwealth_socialist_republic
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_highlighted_states_trigger_tt
+				controls_state = 519
+				controls_state = 871
+				controls_state = 522
+				controls_state = 870
+				controls_state = 520
+			}
+        }
+		modifier = {
+			political_power_gain = -0.3
+		}
+        complete_effect = {
+        }
+		remove_effect = {
+			hidden_effect = {
+				add_state_core = 519
+				add_state_core = 871
+				add_state_core = 522
+				add_state_core = 870
+				add_state_core = 520
+			}
+			custom_effect_tooltip = GER_integrate_highlighted_states_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_state_core = 674
+		}
+    }
+}

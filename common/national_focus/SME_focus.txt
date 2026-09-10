@@ -5,10 +5,12 @@
 # of unfinished business the coup left - Stalin was not in Moscow when the
 # army came for him.
 #
-# The whole tree sits at x = 10 rather than x = 0. Both focuses carry the same
-# offset, so the column stays vertical - if you move one, move the other. There
-# is nothing to the left of it yet; the gap is there so branches can be hung on
-# that side later without renumbering everything.
+# The trunk sits at x = 10 rather than x = 0, and every focus on it carries the
+# same offset so the column stays vertical - move one, move them all. The gap to
+# the left is deliberate, so branches can be hung there later without
+# renumbering everything. Two focuses are already off the trunk: the rail pair
+# below Industries of Siberia, positioned relatively, and Address the Fracturing
+# Leadership at an absolute x = 14.
 #
 # COST IS IN WEEKS, not days. FOCUS_POINT_DAYS = 7 in vanilla defines and
 # Welt in Flammen does not override it, so cost = 9 is exactly 63 days. RKM's
@@ -95,6 +97,775 @@ focus_tree = {
 			hidden_effect = {
 				country_event = { id = wif_sme.3 hours = 6 }
 			}
+		}
+	}
+
+	# =====================================================================
+	# Prepare to Take Back What the Germans Took
+	# =====================================================================
+	# The Emergency Government turns the industry it still holds towards a war
+	# it has not declared. Nothing here is military: the west is not coming back
+	# until there is something to take it back with.
+	#
+	# The three bonuses live on the national spirit
+	# wif_sme_prepare_to_take_back in common/ideas/wif_national_spirits.txt.
+	# A focus runs effects and cannot hold a country modifier itself, so the
+	# completion reward is the spirit and nothing else.
+	focus = {
+		id = SME_prepare_to_take_back
+		icon = GFX_focus_generic_military_industry
+
+		prerequisite = { focus = SME_deploy_east_under_popov }
+
+		x = 10
+		y = 2
+
+		cost = 10			# 70 days
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = wif_sme_prepare_to_take_back
+		}
+	}
+
+	# =====================================================================
+	# Address the Fracturing Leadership
+	# =====================================================================
+	# The political answer to Popov, and the only focus on this tree that hangs
+	# off the trunk instead of continuing it. It branches from Deploy East - the
+	# focus that caused the problem - and sits at the same depth as Prepare to
+	# Take Back, so the two are alternatives for the same stretch of the game
+	# rather than one gating the other.
+	#
+	# x = 14, not the trunk's 10. Four columns clear - well past the
+	# right-hand rail branch at x = 11, with room between the two for the
+	# political side of the tree to grow into.
+	#
+	# It does not repair the fractured government, it only makes it liveable:
+	# the spirit granted by wif_sme.3 is swapped for a milder copy of itself.
+	# No has_idea guard on the swap - the prerequisite IS the focus that fires
+	# wif_sme.3, the event lands six hours after that focus completes, and this
+	# one takes fifty days, so the spirit is always on the country by the time
+	# the swap can run.
+	focus = {
+		id = SME_address_fracturing_leadership
+		icon = GFX_goal_generic_political_pressure
+
+		prerequisite = { focus = SME_deploy_east_under_popov }
+
+		x = 14
+		y = 2
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government
+				add_idea = wif_sme_fractured_government_addressed
+			}
+
+			# The question the focus is really about: who the Emergency
+			# Government is. set_default = yes makes this the balance the
+			# power-balance button opens on.
+			#
+			# NO set_value HERE. The game logs "both set_default and set_value
+			# are specified, will use set_value!" and then ignores set_default,
+			# which would leave the balance created but not the country's
+			# default one. The starting position is initial_value = 0 in
+			# common/bop/SME.txt instead, which is dead centre either way.
+			set_power_balance = {
+				id = SME_leadership_balance
+				left_side = SME_leadership_council_side
+				right_side = SME_leadership_zhukov_side
+				set_default = yes
+			}
+		}
+	}
+
+	# =====================================================================
+	# Industries of Siberia
+	# =====================================================================
+	# The build-up the previous focus only promised. Four states east of the
+	# armistice line get the plant, and the room to keep expanding it - the slots
+	# matter as much as the factories, because a state at its building limit
+	# cannot grow no matter how much construction the country has.
+	#
+	# STATE IDS resolved through the STATE_<id> localisation, never filenames:
+	#
+	#   403 Tyumen      653 Sverdlovsk      249 Kazan      397 Syktyvkar
+	#
+	# instant_build = yes throughout: this is a reward for finishing the focus,
+	# not a construction queue for the player to pay for a second time.
+	#
+	# Nothing here is guarded on ownership. Every one of the four is SME core
+	# territory - 249, 397 and 403 are in the heartland cored by wif_sov.1, and
+	# Sverdlovsk is the Urals industry the WSM breaks away with - so if the SME
+	# has lost them by this point the effect quietly does nothing to states it no
+	# longer holds, which is the correct outcome anyway.
+	focus = {
+		id = SME_industries_of_siberia
+		icon = GFX_focus_generic_industry_3
+
+		prerequisite = { focus = SME_prepare_to_take_back }
+
+		x = 10
+		y = 3
+
+		cost = 12.2857		# 86 days (86 / 7 - lands just under, so it completes on day 86)
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			# Tyumen - the deepest expansion, and no civilian industry: it is
+			# being built as an arsenal.
+			403 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+			}
+
+			# Sverdlovsk - the balanced one, arms and civilian both.
+			653 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			# Kazan and Syktyvkar - the same smaller package each.
+			249 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			397 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# =====================================================================
+	# The two rail branches off Industries of Siberia
+	# =====================================================================
+	# Both are positioned RELATIVELY off SME_industries_of_siberia rather than
+	# with the absolute x = 10 the trunk uses, so moving the trunk carries them.
+	#
+	# ROUTES ARE PINNED, not left to the pathfinder.
+	#
+	# The first version handed build_railway a start and target province and let
+	# it choose. It never got the chance: every leg was wrapped in
+	# NOT = { has_railway_connection }, and the focus itself bypassed on the same
+	# test. Kuybyshev, Kazan and Ufa ARE already rail-connected in 1936 - by a
+	# long way round through the pre-war network - so the trigger answered "yes,
+	# connected", the bypass fired and not a metre of track was laid.
+	#
+	# has_railway_connection cannot express "connected DIRECTLY". It answers
+	# only whether a route exists at any length, and has_railway_level is
+	# state-wide, so neither can carry the guard. Both are therefore gone: these
+	# focuses now simply build their lines. A stretch that already has rail on it
+	# gains a level - that is the cost of having the line appear at all.
+	#
+	# The province lists below are shortest paths computed off provinces.bmp
+	# (4-neighbour adjacency, A* biased by centroid distance so the line stays
+	# straight). Each was checked to stay inside the states it connects:
+	#
+	#   Kazan - Ufa            11 provinces, Kazan > Ufa
+	#   Kazan - Kuybyshev       7 provinces, Kazan > Kuybyshev
+	#   Magnitogorsk - Ufa      5 provinces, Magnitogorsk > Ufa
+	#   Kazan - Kirov           7 provinces, Kazan > Mari El > Kirov
+	#   Kirov - Syktyvkar       6 provinces, Kirov > Syktyvkar
+	#   Syktyvkar - 3147        5 provinces, Syktyvkar > Pechora > Nenets
+	#
+	# That last one is why the northern leg needs no separate Pechora step: the
+	# straight line from Syktyvkar to the Nenets target runs through Pechora on
+	# its own.
+	#
+	# EVERY LEG CARRIES fallback = yes AND ITS ENDPOINTS. The Kazan - Kirov line
+	# silently built nothing on the first attempt: a pinned path is all or
+	# nothing, and if the engine disagrees with one step of it the whole call is
+	# discarded without a word in the log. Its first hop, 6338 to 11387, shares
+	# about seven pixels of border - the sort of near-corner contact that need
+	# not be adjacency in the game's own graph. Border width turned out not to
+	# separate the working legs from the broken one (Kazan - Ufa gets by on
+	# eight), so rather than keep guessing at the engine's rule, fallback = yes
+	# makes the question moot: the path is a preference, and if it is refused
+	# the line is still built between start_province and target_province.
+
+	# --- right branch ----------------------------------------------------
+	focus = {
+		id = SME_connect_south
+		icon = GFX_goal_generic_construct_infrastructure
+
+		prerequisite = { focus = SME_industries_of_siberia }
+
+		relative_position_id = SME_industries_of_siberia
+		x = 1
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			# Kazan - Ufa
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 6338 372 9514 11496 355 3328 11389 6308 9349 273 1278 }
+				start_province = 6338
+				target_province = 1278
+			}
+			# Kazan - Kuybyshev
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 6338 372 9514 292 6404 339 11225 }
+				start_province = 6338
+				target_province = 11225
+			}
+			# Magnitogorsk - Ufa
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 10256 4311 4265 1258 1278 }
+				start_province = 10256
+				target_province = 1278
+			}
+			# The Magnitogorsk works get the ore and the fuel to go with the line.
+			add_resource = {
+				type = oil
+				amount = 2
+				state = 582
+			}
+			add_resource = {
+				type = steel
+				amount = 6
+				state = 582
+			}
+		}
+	}
+
+	# --- left branch -----------------------------------------------------
+	focus = {
+		id = SME_connect_north
+		icon = GFX_goal_generic_construct_infrastructure
+
+		prerequisite = { focus = SME_industries_of_siberia }
+
+		relative_position_id = SME_industries_of_siberia
+		x = -1
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			# Kazan - Kirov
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 6338 11387 9305 282 11263 6383 9370 6124 }
+				start_province = 6338
+				target_province = 6124
+			}
+			# Kirov - Syktyvkar
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 6124 6171 9114 9155 6202 108 }
+				start_province = 6124
+				target_province = 108
+			}
+			# Syktyvkar up through Pechora to the Nenets target
+			build_railway = {
+				level = 1
+				fallback = yes
+				path = { 108 7330 11200 9099 3147 }
+				start_province = 108
+				target_province = 3147
+			}
+			# The two hubs, each built inside the state that owns the province.
+			397 = {
+				add_building_construction = {
+					type = supply_node
+					province = 108			# the Syktyvkar victory point
+					level = 1
+					instant_build = yes
+				}
+			}
+			825 = {
+				add_building_construction = {
+					type = supply_node
+					province = 3147
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# =====================================================================
+	# Zlatoust Ural Military District
+	# =====================================================================
+	# Where the two rail branches meet. It needs BOTH - two separate
+	# prerequisite blocks, which HoI4 reads as AND, not as a choice. One
+	# prerequisite block listing both focuses would mean "either will do".
+	#
+	# Positioned at x = 0 off Industries of Siberia, one row below the rail
+	# pair that sits at x = -1 and x = +1, so it closes the diamond they open.
+	#
+	# STATE 573 is Zlatoust, resolved through STATE_573 in the localisation
+	# rather than off a filename.
+	#
+	# The slots come first in the list for a reason: five arms factories will
+	# not fit in a state that has no room for them, and add_building_construction
+	# does not create space of its own.
+	#
+	# Not guarded on ownership, the same as Industries of Siberia above: if the
+	# SME has lost Zlatoust by this point the effect quietly does nothing, which
+	# is the correct outcome.
+	focus = {
+		id = SME_zlatoust_ural_military_district
+		icon = GFX_focus_generic_industry_2
+
+		prerequisite = { focus = SME_connect_south }
+		prerequisite = { focus = SME_connect_north }
+
+		relative_position_id = SME_industries_of_siberia
+		x = 0
+		y = 2
+
+		cost = 10			# 70 days
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			573 = {
+				add_extra_state_shared_building_slots = 5
+
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# =====================================================================
+	# Arm the Partisans
+	# =====================================================================
+	# The Zlatoust works turn out more rifles than the SME has shoulders to
+	# carry them, so the surplus goes west over the armistice line to people
+	# who are already shooting.
+	#
+	# The focus itself does nothing but unlock a decision - the mechanic lives
+	# in common/decisions/wif_partisans.txt, because the rifles are meant to be
+	# spent again and again rather than once.
+	focus = {
+		id = SME_arm_the_partisans
+		# A rifle on a red field: arming somebody else's rising, which is
+		# exactly what this is. It was GFX_focus_generic_militia, which does
+		# not exist in the game at all - the focus would have drawn blank.
+		icon = GFX_focus_GER_support_the_proletarian_uprising
+
+		prerequisite = { focus = SME_zlatoust_ural_military_district }
+
+		relative_position_id = SME_zlatoust_ural_military_district
+		x = 0
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			custom_effect_tooltip = wif_arm_the_partisans_unlock_tt
+		}
+	}
+
+	# =====================================================================
+	# Rebuilding the NKVD
+	# =====================================================================
+	# The partisans came first for a reason: the SME arms other people's risings
+	# before it rebuilds the apparatus that used to put them down.
+	#
+	# 50 days, the same as the two focuses above it.
+	focus = {
+		id = SME_rebuild_the_nkvd
+		icon = GFX_focus_generic_secret_service_agency
+
+		prerequisite = { focus = SME_arm_the_partisans }
+
+		relative_position_id = SME_arm_the_partisans
+		x = 0
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			wif_rebuild_the_nkvd = yes
+		}
+	}
+
+	# =====================================================================
+	# Who the NKVD answers to
+	# =====================================================================
+	# Mutually exclusive, and the second argument the balance of power hosts.
+	# Both need SME_address_fracturing_leadership as well as the NKVD focus, but
+	# only the NKVD focus is a prerequisite - see the note on available below.
+	#
+	# Ten points each, against the eleven of the pair above - so a player who
+	# takes one focus from each pair on the same side clears the neutral band
+	# comfortably, and one from each side very nearly cancels out.
+	#
+	# 15 days, deliberately short. The argument about who the Commissariat
+	# answers to is settled the moment it is asked out loud; the work was all in
+	# rebuilding the thing in the first place.
+	#
+	# The spirit reward is identical on both paths: the NKVD works harder for the
+	# Party once it knows whose it is, and it does not much matter which answer
+	# it got. What differs is who ends up holding the leash.
+	focus = {
+		id = SME_marshals_secret_police
+		icon = GFX_focus_generic_secret_agent_operative
+
+		prerequisite = { focus = SME_rebuild_the_nkvd }
+
+		# Address the Fracturing Leadership is required, but as an AVAILABILITY
+		# condition rather than a prerequisite, so the tree draws no line back to
+		# it. A second prerequisite block would have been an AND and would have
+		# worked, but it would also have run an arrow across the branch.
+		#
+		# The requirement is not cosmetic: add_power_balance_value does nothing
+		# at all if the balance does not exist, and that focus is what creates
+		# it. Without this the focus could be taken early and the reward would
+		# be thrown away in silence.
+		available = {
+			has_completed_focus = SME_address_fracturing_leadership
+		}
+
+		mutually_exclusive = { focus = SME_make_them_auditable }
+
+		relative_position_id = SME_rebuild_the_nkvd
+		x = -1
+		y = 1
+
+		cost = 2.14			# 15 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = wif_nkvd
+				add_idea = wif_nkvd_marshals_police
+			}
+
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.10
+				tooltip_side = SME_leadership_zhukov_side
+			}
+		}
+	}
+
+	focus = {
+		id = SME_make_them_auditable
+		icon = GFX_focus_generic_court
+
+		prerequisite = { focus = SME_rebuild_the_nkvd }
+
+		# Address the Fracturing Leadership is required, but as an AVAILABILITY
+		# condition rather than a prerequisite, so the tree draws no line back to
+		# it. A second prerequisite block would have been an AND and would have
+		# worked, but it would also have run an arrow across the branch.
+		#
+		# The requirement is not cosmetic: add_power_balance_value does nothing
+		# at all if the balance does not exist, and that focus is what creates
+		# it. Without this the focus could be taken early and the reward would
+		# be thrown away in silence.
+		available = {
+			has_completed_focus = SME_address_fracturing_leadership
+		}
+
+		mutually_exclusive = { focus = SME_marshals_secret_police }
+
+		relative_position_id = SME_rebuild_the_nkvd
+		x = 1
+		y = 1
+
+		cost = 2.14			# 15 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = wif_nkvd
+				add_idea = wif_nkvd_auditable
+			}
+
+			# Negative is the council. See common/bop/SME.txt - the council is
+			# the LEFT side and runs negative, Zhukov is the RIGHT and runs
+			# positive. A sign slip here would send this focus to the marshal.
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.10
+				tooltip_side = SME_leadership_council_side
+			}
+		}
+	}
+
+	# =====================================================================
+	# Breaking the democrats
+	# =====================================================================
+	# A chain of three, each one further past the point of return than the last:
+	# watch them, dig up something, then invent something. All three work by
+	# making the NKVD's two advisors better at it rather than by paying out
+	# directly, so the focuses are worth nothing at all unless the men are hired.
+	#
+	# THE BONUSES ARE DYNAMIC MODIFIERS, NOT TRAIT CHANGES. A trait is a fixed
+	# block and cannot be made conditional, so each focus adds a modifier whose
+	# enable checks the relevant advisor is in post - see
+	# common/dynamic_modifiers/wif_nkvd_infiltration.txt.
+	focus = {
+		id = SME_infiltrate_democratic_opposition
+		icon = GFX_focus_generic_secret_agent_operative
+
+		prerequisite = { focus = SME_curb_their_influence }
+
+		relative_position_id = SME_curb_their_influence
+		x = 0
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		# You cannot infiltrate anything without a service to do it with.
+		available = {
+			has_intelligence_agency = yes
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_dynamic_modifier = { modifier = wif_nkvd_infiltration }
+		}
+	}
+
+	focus = {
+		id = SME_find_scandals
+		icon = GFX_goal_generic_intelligence_exchange
+
+		prerequisite = { focus = SME_infiltrate_democratic_opposition }
+
+		relative_position_id = SME_infiltrate_democratic_opposition
+		x = 0
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_dynamic_modifier = { modifier = wif_nkvd_scandals }
+
+			add_to_variable = { wif_whites_dem_loyalty = -5 }
+			wif_clamp_white_loyalty = yes
+		}
+	}
+
+	focus = {
+		id = SME_frame_leaders
+		icon = GFX_focus_SOV_purge_trotskyists
+
+		prerequisite = { focus = SME_find_scandals }
+
+		relative_position_id = SME_find_scandals
+		x = 0
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_dynamic_modifier = { modifier = wif_nkvd_framing }
+
+			add_to_variable = { wif_whites_dem_loyalty = -20 }
+			wif_clamp_white_loyalty = yes
+		}
+	}
+
+	# =====================================================================
+	# The two answers to the fractured leadership
+	# =====================================================================
+	# Mutually exclusive, and the first real chance to move the balance of
+	# power the parent focus created. Eleven points each, which is deliberate:
+	# the neutral band ends at 0.10, so either focus clears dead centre on its
+	# own and lands in the first tier of whichever side it favours. Five would
+	# not have moved the country out of neutral at all.
+	#
+	# DIRECTION IS SIGNED, AND THE SIGN IS THE WHOLE POINT. The council is the
+	# LEFT side of the balance and runs negative; Zhukov is the RIGHT side and
+	# runs positive. See common/bop/SME.txt. Getting a sign backwards here
+	# would send a focus to the opposite side of the argument.
+	#
+	# tooltip_side makes the game name the side being helped in the focus
+	# tooltip, rather than showing a bare number.
+	focus = {
+		id = SME_checks_and_balances
+		icon = GFX_goal_generic_construct_civilian
+
+		prerequisite = { focus = SME_address_fracturing_leadership }
+		mutually_exclusive = { focus = SME_root_out_german_collaborators }
+
+		relative_position_id = SME_address_fracturing_leadership
+		x = -1
+		y = 1
+
+		cost = 10			# 70 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.11
+				tooltip_side = SME_leadership_council_side
+			}
+		}
+	}
+
+	focus = {
+		id = SME_root_out_german_collaborators
+		icon = GFX_goal_generic_secret_weapon
+
+		prerequisite = { focus = SME_address_fracturing_leadership }
+		mutually_exclusive = { focus = SME_checks_and_balances }
+
+		relative_position_id = SME_address_fracturing_leadership
+		x = 1
+		y = 1
+
+		cost = 10			# 70 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.11
+				tooltip_side = SME_leadership_zhukov_side
+			}
+		}
+	}
+
+	# =====================================================================
+	# Invite the Whites Back
+	# =====================================================================
+	# The third answer to the fractured leadership, and the only one that does
+	# not touch the balance of power at all: it is not about who runs the
+	# Emergency Government, it is about who is allowed to come home and help.
+	#
+	# NOT mutually exclusive with Checks and Balances or Root Out German
+	# Collaborators. It is deliberately available alongside either - the
+	# argument about the council and the Marshal is a Soviet argument, and the
+	# emigration is outside it.
+	#
+	# x = 3 rather than 2, keeping the two-column spacing the other children of
+	# this focus use.
+	focus = {
+		id = SME_invite_the_whites_back
+		icon = GFX_goal_generic_national_unity
+
+		prerequisite = { focus = SME_address_fracturing_leadership }
+
+		relative_position_id = SME_address_fracturing_leadership
+		x = 6
+		y = 1
+
+		cost = 10			# 70 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_ideas = wif_sme_the_whites_return
+		}
+	}
+
+	# =====================================================================
+	# Curbing the Whites
+	# =====================================================================
+	# The other half of inviting them back. They are useful and they are not
+	# grateful, and every month they spend in the Union is a month spent talking
+	# to somebody.
+	#
+	# This focus opens the decision category wif_the_white_question, which
+	# is at present a READOUT: three loyalties, no decisions that move them yet.
+	# The numbers are already live variables rather than text, so the decisions
+	# that will act on them have something real to act on.
+	focus = {
+		id = SME_curb_their_influence
+		icon = GFX_goal_generic_dangerous_deal
+
+		prerequisite = { focus = SME_invite_the_whites_back }
+
+		relative_position_id = SME_invite_the_whites_back
+		x = 0
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			wif_open_second_civil_war_watch = yes
 		}
 	}
 }

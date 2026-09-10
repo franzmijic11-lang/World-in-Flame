@@ -11,15 +11,49 @@ country_event = {
 
 	trigger = {
 		tag = SOV
-		has_war_with = GER
-		GER = { has_government = fascism }
-		NOT = { has_country_flag = wif_sov_surrender_refused }
-		# Germany controls key cities
-		219 = { is_controlled_by = GER }  # Moscow
-		217 = { is_controlled_by = GER }  # Stalingrad
-		195 = { is_controlled_by = GER }  # Leningrad
-		229 = { is_controlled_by = GER }  # Baku
-		214 = { is_controlled_by = GER }  # Arkhangelsk
+
+		OR = {
+			# Debug escape. wif_debug_soviet_surrender sets this flag on SOV
+			# immediately before firing the event, and nothing else in the mod
+			# ever sets it, so this changes nothing about how the surrender
+			# arrives in a normal game.
+			#
+			# It has to exist because country_event RESPECTS an event's trigger
+			# block - firing wif_sov.1 from script does not bypass the
+			# conditions below the way the console's own `event` command does.
+			# Without this escape the debug helper is silently a no-op at any
+			# point before Germany is actually standing in all five cities.
+			has_country_flag = wif_debug_force_surrender
+
+			AND = {
+				has_war_with = GER
+
+				# Any Germany that can take the five cities can dictate terms.
+				# Which government did it decides what gets set up in Moscow
+				# afterwards, not whether the surrender happens at all: a
+				# fascist Germany raises the Reichskommissariat, a democratic
+				# or non-aligned one raises the West Russian Republic instead.
+				# See wif_form_west_russia.
+				#
+				# Communist Germany is deliberately absent. A Soviet defeat
+				# handing Moscow to a communist Berlin is a different story
+				# from this one and has no successor state written for it.
+				GER = {
+					OR = {
+						has_government = fascism
+						has_government = democratic
+						has_government = neutrality
+					}
+				}
+				NOT = { has_country_flag = wif_sov_surrender_refused }
+				# Germany controls key cities
+				219 = { is_controlled_by = GER }  # Moscow
+				217 = { is_controlled_by = GER }  # Stalingrad
+				195 = { is_controlled_by = GER }  # Leningrad
+				229 = { is_controlled_by = GER }  # Baku
+				214 = { is_controlled_by = GER }  # Arkhangelsk
+			}
+		}
 	}
 
 	mean_time_to_happen = {
@@ -144,6 +178,91 @@ country_event = {
 			}
 		}
 
+		# === Form Reichskommissariat Moskowien, if Berlin has not already ===
+		#
+		# Without this, a Germany that never took the Rosenberg decision annexes
+		# the whole Moskowien bloc outright - the else branch below hands all 38 of
+		# those states straight to GER. The surrender is the natural moment for the
+		# Reichskommissariat to exist, so it is raised here on exactly the recipe
+		# the vanilla decision uses (GER_reichskommissariat_moskowien in
+		# common/decisions/GER.txt, which this mod ships unmodified).
+		#
+		# Moscow goes first and alone. Transferring a state is what brings a
+		# country into existence - the same trick every breakaway in this mod uses
+		# - and once RKM exists the every_state sweep immediately below sees
+		# country_exists = RKM and routes the other 37 states to it instead of to
+		# Berlin. 219 is guaranteed to be German-controlled here: the event's own
+		# trigger requires it.
+		#
+		# set_autonomy runs in the OVERLORD's scope and this event fires for SOV,
+		# so it is wrapped in GER = { } rather than left bare. Same for the
+		# follow-up event, which is Germany's to answer.
+		#
+		# The decision is visible only while RKM = { exists = no }, so forming the
+		# Reichskommissariat here retires it rather than leaving it clickable for a
+		# second helping of manpower and equipment.
+		#
+		# Vanilla also stamps GER_RK_capital_state_trasferred_RKM_victim_flag and
+		# GER_reichskommissariats_puppet_flag on whoever owned Moscow. That is SOV,
+		# which this same option annexes into the SME a few lines further down, so
+		# the flags are deliberately not set - they would die with the tag.
+		# THE FORK. A fascist Germany raises the Reichskommissariat below; any
+		# other Germany that got this far raises the West Russian Republic
+		# instead, in common/scripted_effects/wif_west_russia.txt.
+		if = {
+			limit = {
+				NOT = { GER = { has_government = fascism } }
+				NOT = { country_exists = WRD }
+			}
+			wif_form_west_russia = yes
+		}
+
+		if = {
+			limit = {
+				GER = { has_government = fascism }
+				NOT = { country_exists = RKM }
+			}
+
+			219 = {
+				transfer_state_to = RKM
+				set_state_flag = GER_RK_capital_state_trasferred_RKM_flag
+				add_compliance = 25
+			}
+
+			GER = {
+				set_autonomy = {
+					target = RKM
+					autonomy_state = autonomy_integrated_puppet
+				}
+			}
+
+			# The starting package the decision grants, unchanged.
+			RKM = {
+				add_manpower = 80000
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 10000
+					producer = GER
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1000
+					producer = GER
+				}
+				inherit_technology = GER
+				add_offsite_building = { type = arms_factory level = 3 }
+				load_oob = "RK_OOB"
+			}
+
+			# Berlin still picks a German administrator or a local puppet. WiF
+			# overrides that event in events/wif_rkm_override.txt to zero compliance
+			# and add wif_reichskommissariat_economy, so the add_compliance = 25
+			# above is deliberately not the last word on it.
+			GER = {
+				country_event = { id = wuw_GER_reichskommissariats.8 hours = 0 }
+			}
+		}
+
 		# === Transfer Reichskommissariat Moskowien territorial requirements ===
 		every_state = {
 			limit = {
@@ -193,10 +312,19 @@ country_event = {
 				limit = { country_exists = RKM }
 				transfer_state_to = RKM
 			}
+			else_if = {
+				limit = { country_exists = WRD }
+				transfer_state_to = WRD
+			}
 			else = {
 				transfer_state_to = GER
 			}
 		}
+
+		# The Republic cores what it was just given. The Reichskommissariat
+		# never does - that is the difference between a state and an
+		# administration.
+		wif_core_west_russia = yes
 
 		# === Transfer Reichskommissariat Kaukasien territorial requirements ===
 		every_state = {
@@ -360,14 +488,31 @@ country_event = {
 			air_ratio = 1.0
 		}
 
+		# === Zhukov moves to the SME by name, first ===
+		#
+		# BEFORE the blanket transfer below, and explicitly rather than relying
+		# on it. add_country_leader_role further down runs inside SME = { } and
+		# can only see characters the SME actually owns; while Zhukov was still
+		# a SOV character it failed with "Character does not exist" - a hundred
+		# times a run - and the Marshal of the Union trait never once applied.
+		#
+		# The character-scope form has to be used from the ORIGIN country, which
+		# is why this is wrapped in SOV = { } and why it cannot wait until after
+		# he has already been moved.
+		SOV = {
+			SOV_georgy_zhukov = {
+				set_nationality = SME
+			}
+		}
+
 		# === Move every SOV unit leader (generals, field marshals, admirals) to SME ===
 		every_unit_leader = {
 			set_nationality = { target_country = SME }
 		}
 
 		# === Zhukov takes the government as well as the army ===
-		# Placed after the transfer above, so he is already an SME officer when
-		# the political role is added. The vanilla character is used rather than
+		# He is already an SME officer by this point - moved by name above,
+		# before the blanket unit-leader transfer. The vanilla character is used rather than
 		# an SME-specific copy: that keeps exactly one Zhukov in the game, and he
 		# holds the country and his corps commander stats at the same time -
 		# which is the whole idea of a military emergency government.
@@ -382,7 +527,11 @@ country_event = {
 				country_leader = {
 					ideology = stalinism
 					expire = "1965.1.1.1"
-					traits = { }
+
+					# Defined in common/country_leader/wif_traits.txt.
+					# +0.05 communism a day, for as long as he is the one
+					# holding the government together.
+					traits = { wif_marshal_of_the_union }
 				}
 			}
 		}

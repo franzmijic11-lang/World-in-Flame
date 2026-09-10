@@ -1,0 +1,187 @@
+# Ported from Germany Rework (Workshop 3607227153) to support the Rally the
+# Wehrmacht opposition branch in common/national_focus/germany.txt.
+#
+# Kept in its own file rather than merged into an existing one: nothing here
+# is Welt in Flammen's own work, and keeping it separate means the whole port
+# can be found, updated or removed in one place.
+
+ideas = {
+	country = {
+
+		GER_anti_imperialism_idea = {
+
+			picture = MEX_revolutionary_army
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				justify_war_goal_time = 0.15
+				democratic_drift = 0.01
+				neutrality_drift = -0.01
+				fascism_drift = -0.01
+				political_power_factor = 0.05
+				improve_relations_maintain_cost_factor = -0.2
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_deutschland_ist_geoeffnet_idea = {
+
+			picture = ARG_civilian_economy_boost
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_speed_industrial_complex_factor = 0.05
+				stability_factor = -0.05
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_dnsap_lingers_idea = {
+
+			picture = generic_fascism_drift_2
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.1
+				fascism_drift = 0.05
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_federation_compromise_idea = {
+
+			picture = generic_king_handled
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				political_power_factor = -0.1
+				stability_factor = 0.1
+				neutrality_drift = 0.01
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_germany_free_europe_idea = {
+
+			picture = GER_the_shield_of_democracy
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				research_speed_factor = 0.05
+				democratic_drift = 0.03
+				political_power_factor = 0.05
+				stability_factor = 0.05
+				offence = 0.05
+				justify_war_goal_time = 0.2
+			}
+
+		}
+
+		GER_monarchist_wehrmacht_angered_idea = {
+
+			picture = generic_monarchist_uprising
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				political_power_factor = -0.2
+				stability_factor = -0.2
+				neutrality_drift = 0.05
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_refuge_of_the_greatest_minds_idea = {
+
+			picture = GER_urburschenschaft
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				research_speed_factor = 0.06
+				special_project_speed_factor = 0.05
+				democratic_drift = 0.02
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+
+		}
+
+		GER_stressman_legacy_2_idea = {
+
+			picture = GER_german_military
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				improve_relations_maintain_cost_factor = -0.25
+				production_speed_buildings_factor = 0.05
+				democratic_drift = 0.02
+				communism_drift = -0.03
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+
+		GER_stressman_legacy_idea = {
+
+			picture = GER_german_military
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				improve_relations_maintain_cost_factor = -0.25
+				production_speed_buildings_factor = 0.05
+				democratic_drift = 0.01
+			}
+
+			cancel = {
+				has_country_flag = GER_exiled_to_austria_flag
+			}
+		}
+	}
+}

@@ -17,3 +17,19 @@ set_popularities = {
 	communism = 85
 	neutrality = 5
 }
+
+# The NKVD's advisors.
+#
+# recruit_character IS WHAT PUTS A CHARACTER IN A COUNTRY. Defining them in
+# common/characters/ only describes them; without a line here the country never
+# has them and the advisor slot stays empty - no error, no warning, nothing in
+# the log. That is exactly what happened to these two.
+#
+# It is load-time only, so it belongs in this history file and cannot be done
+# from a scripted effect later.
+#
+# Both are gated on SME_rebuild_the_nkvd by their available blocks in
+# common/characters/wif_sme_characters.txt, so recruiting them here does not
+# make them hirable before the focus - only visible.
+recruit_character = SME_nakita_paskarov
+recruit_character = SME_yuri_dnoroutsi

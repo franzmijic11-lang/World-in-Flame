@@ -7,4 +7,12 @@ spriteTypes = {
 		name = "GFX_idea_wif_reichskommissariat_economy"
 		texturefile = "gfx/interface/ideas/idea_wif_reichskommissariat_economy.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_wif_russian_warlord_economy"
+		texturefile = "gfx/interface/ideas/idea_wif_russian_warlord_economy.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_wif_honourary_tsar_vladimir"
+		texturefile = "gfx/interface/ideas/idea_wif_honourary_tsar_vladimir.dds"
+	}
 }

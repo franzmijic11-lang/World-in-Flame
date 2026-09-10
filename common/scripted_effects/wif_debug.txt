@@ -1,0 +1,181 @@
+# Console helpers for Welt in Flammen.
+#
+# Nothing in the game calls anything in this file - no decision, focus, event,
+# on_action or AI strategy - so none of it can fire by accident. It exists so
+# the long chains in this mod can be reached from the console without playing
+# up to them.
+#
+# Fire them from the console with:
+#
+#     event wif_debug.1        the Soviet surrender, to Germany as it is
+#     event wif_debug.2        the Moskowien civil war
+#     event wif_debug.3        the surrender to a DEMOCRATIC Germany
+#     event wif_debug.4        the surrender to a NON-ALIGNED Germany
+#
+# Those go through events/wif_debug_events.txt, which exists only because the
+# `effect` console command did not run these when called directly - the game
+# logged nothing at all, so use the `event` form.
+#
+# Both effects scope themselves to the country they act on, so it does not
+# matter who you are playing when you fire them.
+
+# ---------------------------------------------------------------------------
+# The Soviet surrender - "Its so Joever"
+# ---------------------------------------------------------------------------
+# Fires wif_sov.1 at the Soviet Union, bypassing its trigger block: normally it
+# needs Germany to be at war with the USSR and holding Moscow, Stalingrad,
+# Leningrad, Baku AND Archangelsk, then waits out a 7-day mean time to happen.
+#
+# The event is the choice, so this hands it over rather than resolving it. If
+# you are playing anyone but the USSR that is still effectively automatic - the
+# surrender option is ai_chance factor 100 and "we will fight on" is factor 0,
+# so an AI Moscow always takes the terms. Playing AS the USSR you get the
+# decision put to you, which is the point of the event.
+#
+# WHAT IT DOES OUT OF CONTEXT. Firing this early does not misbehave, but it is
+# not a no-op either - the option hands every Soviet state to the
+# Reichskommissariats, Finland and the SME on the spot, whoever actually
+# controls the ground. Two things worth knowing before using it as a shortcut:
+#
+#   * white_peace = GER only does anything if there IS a war with Germany.
+#     Fired at peace the rest of the option still runs and the peace step is
+#     simply skipped.
+#   * Moskowien is raised here if it does not already exist, so this is also
+#     the fastest way to get an RKM on the map to test the civil war below.
+#
+# The SOV = { } wrapper is what lets you run this from any country. Without it
+# the event would be sent to whatever tag you passed to the console.
+wif_debug_soviet_surrender = {
+	if = {
+		limit = { NOT = { country_exists = SOV } }
+		log = "wif_debug_soviet_surrender: SOV does not exist - nothing to surrender."
+	}
+	else = {
+		# Say out loud which way the fork will go, because the two paths look
+		# identical for the first few seconds and then diverge completely.
+		# wif_sov.1 reads GERMANY'S CURRENT GOVERNMENT, not anything set here,
+		# so whatever this prints is what you are about to get.
+		GER = {
+			if = {
+				limit = { has_government = fascism }
+				log = "wif_debug_soviet_surrender: Germany is FASCIST - raising Reichskommissariat Moskowien."
+			}
+			else_if = {
+				limit = { has_government = democratic }
+				log = "wif_debug_soviet_surrender: Germany is DEMOCRATIC - raising the West Russian Republic as a supervised state."
+			}
+			else_if = {
+				limit = { has_government = neutrality }
+				log = "wif_debug_soviet_surrender: Germany is NON-ALIGNED - raising the Duchy of Moscow as a colony."
+			}
+			else = {
+				log = "wif_debug_soviet_surrender: Germany is COMMUNIST - no successor state is written for this. Moscow's states will fall to Germany directly."
+			}
+		}
+
+		SOV = {
+			# The flag first. wif_sov.1 keeps its trigger block, and
+			# country_event evaluates it, so without this the event is
+			# discarded in silence at any date before Germany holds all five
+			# cities. The flag is the escape hatch wif_sov.1's trigger checks.
+			set_country_flag = wif_debug_force_surrender
+			country_event = { id = wif_sov.1 hours = 0 }
+		}
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# The same surrender, to a Germany that is not fascist
+# ---------------------------------------------------------------------------
+# The fork in wif_sov.1 reads Germany's government at the moment the option is
+# taken. In a normal debug run Berlin is fascist, so the Reichskommissariat is
+# the only path you can ever reach by firing wif_debug.1 - these two set the
+# German government first and then hand over to the same effect.
+#
+# THEY CHANGE BERLIN'S RULING PARTY. That is a real change to the save, not a
+# pretence for the duration of the event: Germany stays democratic or
+# non-aligned afterwards, with everything that follows from it. These are for
+# testing the successor states, not for playing through.
+#
+# Popularities are set alongside the ruling party so the government is not left
+# ruling on five percent support, which would collapse it again within weeks.
+wif_debug_soviet_surrender_democratic = {
+	GER = {
+		set_politics = {
+			ruling_party = democratic
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic = 60
+			fascism = 20
+			communism = 10
+			neutrality = 10
+		}
+		log = "wif_debug: Berlin switched to DEMOCRATIC for the surrender test."
+	}
+
+	wif_debug_soviet_surrender = yes
+}
+
+wif_debug_soviet_surrender_neutral = {
+	GER = {
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			neutrality = 60
+			fascism = 20
+			democratic = 10
+			communism = 10
+		}
+		log = "wif_debug: Berlin switched to NON-ALIGNED for the surrender test."
+	}
+
+	wif_debug_soviet_surrender = yes
+}
+
+# ---------------------------------------------------------------------------
+# The Moskowien civil war - the Novgorod rising
+# ---------------------------------------------------------------------------
+# Starts the rising immediately, at any date, instead of waiting out the
+# 185-day wif_novgorod_uprising mission that normally delivers it after
+# Germanisation plus either Paulus Play or SS Krieg.
+#
+# The mission is cleared BEFORE the rising runs, and that ordering is the whole
+# point. wif_novgorod_uprising is fire_only_once, but that counts firings of the
+# MISSION - calling wif_nsr_revolt straight from the console does not consume
+# it. Without the removal the timer would still be sitting there, expire later,
+# and run the entire rising a second time: every transfer_state_to in it is
+# unguarded, so the second pass would hand states to breakaways that already
+# exist and re-declare wars already in progress.
+#
+# remove_mission is the right effect rather than any of the completion ones -
+# it "removes mission without running complete or timeout effects", and the
+# timeout effect is precisely what we do not want fired twice.
+#
+# Needs RKM to exist. If it does not, run wif_debug_soviet_surrender first.
+wif_debug_start_civil_war = {
+	if = {
+		limit = { NOT = { country_exists = RKM } }
+		log = "wif_debug_start_civil_war: RKM does not exist yet - run wif_debug_soviet_surrender first."
+	}
+	else_if = {
+		limit = { RKM = { has_country_flag = wif_moskowien_civil_war } }
+		log = "wif_debug_start_civil_war: the civil war is already running - doing nothing."
+	}
+	else = {
+		RKM = {
+			if = {
+				limit = { has_decision = wif_novgorod_uprising }
+				remove_mission = wif_novgorod_uprising
+			}
+			wif_nsr_revolt = yes
+		}
+	}
+}

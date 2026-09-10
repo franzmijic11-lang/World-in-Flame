@@ -1,15 +1,23 @@
 # Battalion soft cap.
 #
-#     CAP = 432 * ( 1 + SUM of every percentage below )
+#     CAP = 324 * ( 1 + SUM of every percentage below )
 #
-# Every bonus is a percentage OF THE 432 BASE, and they are SUMMED. Nothing
+# Every bonus is a percentage OF THE 324 BASE, and they are SUMMED. Nothing
 # compounds: a +50% conscription law and a +70% war support bonus give
-# 432 * 2.2, not 432 * 1.5 * 1.7. Keep it that way - the whole design rests on
+# 324 * 2.2, not 324 * 1.5 * 1.7. Keep it that way - the whole design rests on
 # the player being able to add the percentages up in their head.
 #
-# 432 is a hard floor. Since no component is ever negative the sum cannot drag
-# the cap below the base, but the clamp is written out anyway so that adding a
-# malus component later cannot silently break the floor.
+# THE SUM CAN GO NEGATIVE. The economy law band runs from -50% under
+# Undisturbed Isolation to +25% under Totaler Krieg, so a quiet isolationist
+# country sits below the base rather than merely failing to climb above it.
+#
+# THERE IS NO DESIGN FLOOR. There used to be one at the base itself, on the
+# grounds that nothing could be negative; both that assumption and the clamp
+# are gone. All that remains at the bottom of wif_recalculate_battalion_cap is
+# a one-battalion guard, there so the headroom division cannot fail.
+#
+# TWO SOURCES ARE FLAT rather than percentages - territory and the single-state
+# penalty, both counted in battalions and both applied after the multiply.
 #
 # Only LINE battalions count. Support companies and regiments are excluded and
 # are neither counted against the cap nor helped by it.
@@ -17,15 +25,34 @@
 # This is a soft cap. Going over is always allowed; it just costs you. The
 # penalties live in common/dynamic_modifiers/wif_battalion_cap.txt.
 #
-#   Territory       per owned state: cored 0.2%, cored with a city 0.3% total,
-#                   uncored 0.05%. Linear, and deliberately blind to how many
-#                   people live in the state.
+#   Territory       MEASURED IN BATTALIONS, not percent, and added after the
+#                   multiply. Per owned state: cored with a city province 2,
+#                   plus 0.5 for each further city province in that state;
+#                   cored without one 0.5; not cored 0.1. Deliberately blind
+#                   to how many people live in the state.
+#   Russian warlord 80%, for the successor states of the Soviet collapse that
+#                   hold their territory by the army and nothing else.
+#   Red Army        216 BATTALIONS, flat, while the Red Army national spirit
+#                   is held; 432 once The Glory of the Red Army is completed.
+#                   Also applied after the multiply.
+#   Chinese millions  A MULTIPLIER, not a bonus: x2 on the finished cap, for
+#                   China and Communist China. Applied after everything else.
+#   Single state    a country owning exactly one state is pulled back to a
+#                   flat 27 battalions before other modifiers. Also in
+#                   battalions, also applied after the multiply.
 #   Conscription    disarmed 0, volunteer 10%, limited 15%, extensive 25%,
 #                   service by requirement 35%, all adults serve 45%,
 #                   scraping the barrel 50%.
-#   Standing        major power 100%, faction leader 50%. These stack, and
-#                   both are re-read weekly so they follow the country's
-#                   actual status rather than being granted once.
+#   Economy law     THE ONLY NEGATIVE SOURCE. Undisturbed isolation -50%,
+#                   isolation -25%, civilian economy -15%, early mobilisation
+#                   0, partial mobilisation 10%, war economy 20%, total
+#                   mobilisation 15%, totaler krieg 25%, national defence
+#                   state 20%, new economic policy 10%, capital investment
+#                   model 5%, reichskommissariat economy 20%.
+#   Standing        major power 864 BATTALIONS flat, faction leader 50%.
+#                   These stack, but in different units - see the standing
+#                   block. Both are re-read weekly so they follow the
+#                   country's actual status rather than being granted once.
 #   Stability       0-20 nothing, 21-40 5%, 41-60 7%, 61-80 9%, 81-100 10%.
 #   War support     0-20 nothing, 21-40 10%, 41-60 30%, 61-80 50%, 81-100 70%.
 #   Wartime         additive, up to +185%, ALL of it stripped the moment the
@@ -37,38 +64,77 @@
 # multiply, not into wif_bat_pct.
 
 
-# Territory component. This is the only part that needs to walk every state, so
-# it is cached in wif_terr_pct and recomputed ONLY when the country's territory
+# Territory component. THE ONLY PART OF THE CAP MEASURED IN BATTALIONS RATHER
+# THAN IN PERCENT, and the only part that has to walk every state, so it is
+# cached in wif_terr_bat and recomputed ONLY when the country's territory
 # actually changes - see common/on_actions/wif_on_actions.txt. Running this
 # loop weekly for every country in the game is what would make the cap
 # expensive, and there is no reason to: borders do not move most weeks.
+#
+# It is flat because it is now specified in battalions - a cored city state is
+# worth two battalions, not a fraction of the base. Flat sources are added
+# AFTER the percentage multiply, which is exactly where the header of this
+# file always said they would have to go.
+#
+#   cored, has a city province      2 battalions, plus 0.5 for every further
+#                                   city province in the same state
+#   cored, no city province         1 battalion, or 0.5 under 150k people
+#   not cored, whatever it holds    0.1 battalions
+#
+# A CITY PROVINCE IS A PROVINCE WITH urban TERRAIN, counted off the map by
+# tools/city_provinces.py and seeded into the state variable wif_city_provs by
+# common/scripted_effects/wif_city_provinces.txt. It has to be precomputed:
+# HoI4 has no province scope, no province iterator, and has_terrain is country
+# scope only, so a state cannot be asked what its provinces are made of.
+#
+# Note this is NOT has_state_category any more. The two disagree on 160 states
+# - 106 have a city province under a plain category, 54 have a city category
+# with no city province on the map - and the province is the thing the player
+# can actually see.
 wif_recalculate_territory_bonus = {
-	set_variable = { wif_terr_pct = 0 }
+	set_variable = { wif_terr_bat = 0 }
 
 	every_owned_state = {
 		if = {
 			limit = { is_core_of = PREV }
-			add_to_variable = { PREV.wif_terr_pct = 0.002 }
 
-			# A city is worth an extra 0.1% on top of the 0.2%, so a cored
-			# state with one is 0.3% in total rather than 0.2% + 0.3%.
-			# "Has a city" is read off the state category, which is the only
-			# thing in the game that actually tracks urbanisation.
 			if = {
-				limit = {
-					OR = {
-						has_state_category = city
-						has_state_category = large_city
-						has_state_category = metropolis
-						has_state_category = megalopolis
-					}
+				limit = { check_variable = { wif_city_provs > 0 } }
+				add_to_variable = { PREV.wif_terr_bat = 2 }
+
+				# Every city province after the first is worth another half a
+				# battalion. Read into a temp so the subtraction cannot touch
+				# the seeded state variable itself - that value is set once at
+				# startup and must survive the whole game.
+				set_temp_variable = { wif_tmp_extra_cities = wif_city_provs }
+				subtract_from_temp_variable = { wif_tmp_extra_cities = 1 }
+				multiply_temp_variable = { wif_tmp_extra_cities = 0.5 }
+				add_to_variable = { PREV.wif_terr_bat = wif_tmp_extra_cities }
+			}
+			else = {
+				# A cored state with no city on it is worth a whole battalion,
+				# unless there is nobody in it: under 150,000 people it pays
+				# the half battalion this tier used to pay throughout.
+				#
+				# state_population_k is the population in thousands, read into
+				# a temp first the way vanilla reads it in AST.txt - and the
+				# way num_owned_states is read further down - rather than
+				# compared inside check_variable directly.
+				set_temp_variable = { wif_tmp_pop_k = state_population_k }
+				if = {
+					limit = { check_variable = { wif_tmp_pop_k < 150 } }
+					add_to_variable = { PREV.wif_terr_bat = 0.5 }
 				}
-				add_to_variable = { PREV.wif_terr_pct = 0.001 }
+				else = {
+					add_to_variable = { PREV.wif_terr_bat = 1 }
+				}
 			}
 		}
 		else = {
-			# Occupied ground pays a quarter of what cored ground pays.
-			add_to_variable = { PREV.wif_terr_pct = 0.0005 }
+			# Occupied ground pays a token amount whatever is standing on it -
+			# a captured metropolis is worth the same as captured tundra until
+			# it is cored.
+			add_to_variable = { PREV.wif_terr_bat = 0.1 }
 		}
 	}
 }
@@ -91,7 +157,7 @@ wif_recalculate_battalion_cap = {
 	if = {
 		limit = {
 			OR = {
-				NOT = { has_variable = wif_terr_pct }
+				NOT = { has_variable = wif_terr_bat }
 				NOT = { check_variable = { wif_terr_states = num_owned_states } }
 				NOT = { check_variable = { wif_terr_cores = num_core_states } }
 			}
@@ -105,9 +171,9 @@ wif_recalculate_battalion_cap = {
 	# a diagnostic as much as a safety net: the readout previously showed a
 	# limit of 0, which can only happen if the variable is never written, so
 	# seeding it here means the counter can never show 0 again. If it ever
-	# reads exactly 432 on a country that should have bonuses, the block at
+	# reads exactly 324 on a country that should have bonuses, the block at
 	# the bottom of this effect is not being reached.
-	set_variable = { wif_bat_limit = 432 }
+	set_variable = { wif_bat_limit = 324 }
 
 	# Every bonus below is banked in its own wif_src_* variable instead of being
 	# added straight into a running total, so the officer corps tooltip can show
@@ -118,6 +184,9 @@ wif_recalculate_battalion_cap = {
 	# a bonus that stopped applying this week reads 0 rather than keeping last
 	# week's value, and the tooltip hides any line sitting at 0.
 	set_variable = { wif_src_consc = 0 }
+	set_variable = { wif_src_econ = 0 }
+	set_variable = { wif_src_warlord = 0 }
+	set_variable = { wif_src_redarmy = 0 }
 	set_variable = { wif_src_stab = 0 }
 	set_variable = { wif_src_ws = 0 }
 	set_variable = { wif_src_major = 0 }
@@ -137,7 +206,7 @@ wif_recalculate_battalion_cap = {
 
 	# --- Conscription law -------------------------------------------------
 	# Disarmed nation is deliberately absent: it contributes nothing, so a
-	# disarmed country sits on the bare 432 plus whatever else it has earned.
+	# disarmed country sits on the bare 324 plus whatever else it has earned.
 	# These read the vanilla law ideas directly, so the recruitable population
 	# factors on the laws themselves are untouched.
 	if = {
@@ -163,6 +232,162 @@ wif_recalculate_battalion_cap = {
 	else_if = {
 		limit = { has_idea = volunteer_only }
 		set_variable = { wif_src_consc = 0.10 }
+	}
+
+	# --- Economy law ------------------------------------------------------
+	# THE ONLY SOURCE THAT CAN GO NEGATIVE. An isolationist economy does not
+	# just fail to help the army, it holds it down: the plant, the transport
+	# and the political will to keep men in uniform are not there to be had.
+	#
+	# Early Mobilisation is deliberately absent from this chain, exactly as
+	# Disarmed Nation is absent from the conscription chain above. It is the
+	# neutral point at 0%, wif_src_econ is already zeroed, and a source worth
+	# nothing is hidden from the tooltip rather than shown as "+0%".
+	#
+	# TOTAL ECONOMIC MOBILISATION PAYS LESS THAN WAR ECONOMY, 15% against 20%,
+	# and that is not a typo. Total mobilisation is the economy taking the
+	# manpower; the army sees less of it, not more.
+	#
+	# Eleven of the twelve laws are vanilla, four of them normally reachable by
+	# one country only - totaler_krieg_economy (GER), national_defense_state
+	# (JAP), new_economic_policy (SOV) and capital_investment_model. The
+	# twelfth, wif_reichskommissariat_economy, is this mod's own and lives in
+	# common/ideas/wif_economy_laws.txt.
+	#
+	# A country holds exactly one economy law, so the order of these branches
+	# is presentation only. They run highest to lowest to match the way the
+	# header lists them.
+	if = {
+		limit = { has_idea = totaler_krieg_economy }
+		set_variable = { wif_src_econ = 0.25 }
+	}
+	else_if = {
+		limit = { has_idea = war_economy }
+		set_variable = { wif_src_econ = 0.20 }
+	}
+	else_if = {
+		limit = { has_idea = national_defense_state }
+		set_variable = { wif_src_econ = 0.20 }
+	}
+	else_if = {
+		limit = { has_idea = wif_reichskommissariat_economy }
+		set_variable = { wif_src_econ = 0.20 }
+	}
+	else_if = {
+		limit = { has_idea = tot_economic_mobilisation }
+		set_variable = { wif_src_econ = 0.15 }
+	}
+	else_if = {
+		limit = { has_idea = partial_economic_mobilisation }
+		set_variable = { wif_src_econ = 0.10 }
+	}
+	else_if = {
+		limit = { has_idea = new_economic_policy }
+		set_variable = { wif_src_econ = 0.10 }
+	}
+	else_if = {
+		limit = { has_idea = capital_investment_model }
+		set_variable = { wif_src_econ = 0.05 }
+	}
+	else_if = {
+		limit = { has_idea = civilian_economy }
+		set_variable = { wif_src_econ = -0.15 }
+	}
+	else_if = {
+		limit = { has_idea = isolation }
+		set_variable = { wif_src_econ = -0.25 }
+	}
+	else_if = {
+		limit = { has_idea = undisturbed_isolation }
+		set_variable = { wif_src_econ = -0.50 }
+	}
+
+	# --- Russian warlord ---------------------------------------------------
+	# The successor states hold their ground with the army they inherited and
+	# nothing else - no recognised borders, no allies, no economy that answers
+	# to them. What they do have is every man who used to serve the Union, and
+	# no government left to tell him to go home.
+	#
+	# Read off the idea rather than the tag list so a country that somehow ends
+	# up with the spirit gets the cap that goes with it, and so this stays one
+	# line no matter how many successors the collapse eventually produces. The
+	# grant is in common/on_actions/wif_on_actions.txt, gated on the trigger
+	# wif_is_russian_warlord.
+	if = {
+		limit = { has_idea = wif_russian_warlord }
+		set_variable = { wif_src_warlord = 0.80 }
+	}
+
+	# --- The Red Army ------------------------------------------------------
+	# A flat 216 battalions while the country carries the Red Army national
+	# spirit, rising to 432 once it has completed The Glory of the Red Army.
+	# Two thirds of the base, then four thirds of it.
+	#
+	# THE SPIRIT IS A DYNAMIC MODIFIER, not an idea. Vanilla builds the Red
+	# Army spirit as SOV_the_red_army_dynamic_modifier, whose every line reads
+	# a SOV_the_red_army_* variable that focuses add to - which is how one
+	# spirit accumulates a whole branch of bonuses without ever being swapped
+	# out. The fascist and neutrality path carries the _alt copy of it instead,
+	# and that is the "any spirit it turns into" case: both are read here.
+	#
+	# The focus has an _alt twin for the same reason, gated by allow_branch on
+	# government, so both spellings count.
+	#
+	# Read off the spirit rather than off tag = SOV deliberately. If a
+	# successor state ever inherits the Red Army spirit it inherits the cap
+	# that goes with it, which is the whole point of the spirit meaning
+	# something.
+	set_variable = { wif_src_redarmy = 0 }
+	if = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = SOV_the_red_army_dynamic_modifier
+				has_dynamic_modifier = SOV_the_red_army_dynamic_modifier_alt
+			}
+		}
+		set_variable = { wif_src_redarmy = 216 }
+
+		if = {
+			limit = {
+				OR = {
+					has_completed_focus = SOV_the_glory_of_the_red_army
+					has_completed_focus = SOV_the_glory_of_the_red_army_alt
+				}
+			}
+			set_variable = { wif_src_redarmy = 432 }
+		}
+	}
+
+	# --- Single state ------------------------------------------------------
+	# A country whose legal territory is one single state is not a country that
+	# can field an army, and the base of 324 says otherwise, so it is taken
+	# away again.
+	#
+	# The target is a flat 27 battalions before any other modifier - a twelfth
+	# of the base. 324 - 297 = 27, hence the -297, and the state's own
+	# territory worth is then subtracted as well so that the answer is exactly
+	# 27 whether that one state is a cored capital with three cities or a
+	# scrap of occupied ground. The penalty is defined as "whatever it takes to
+	# land on 27", not as a number that happens to be near it.
+	#
+	# Percentage bonuses still work normally on top: a one-state country at
+	# +100% reaches 324 * 2 - 297 = 351. It is the base that is taken away,
+	# not the country's ability to earn.
+	#
+	# Measured in BATTALIONS, so it is applied after the multiply with the
+	# territory. num_owned_states is the legal count, which is what was asked
+	# for - occupied ground the country does not own does not save it.
+	# Read through a temp rather than testing num_owned_states inside
+	# check_variable directly. Copying a game variable into one of ours is the
+	# form this file already proves works - it is how wif_terr_states is set -
+	# and a comparison the parser refuses would fail silently, taking the rest
+	# of the effect with it.
+	set_variable = { wif_src_onestate = 0 }
+	set_temp_variable = { wif_tmp_owned_states = num_owned_states }
+	if = {
+		limit = { check_variable = { wif_tmp_owned_states < 2 } }
+		set_variable = { wif_src_onestate = -297 }
+		subtract_from_variable = { wif_src_onestate = wif_terr_bat }
 	}
 
 	# --- Stability --------------------------------------------------------
@@ -202,16 +427,25 @@ wif_recalculate_battalion_cap = {
 	}
 
 	# --- Standing ----------------------------------------------------------
-	# Both of these are re-read from scratch every weekly pass, which is what
-	# makes them self-correcting: a minor that becomes a major picks up the
-	# +100% on the next tick, and a major that is knocked down to minor loses
-	# it just as automatically. Nothing needs to be granted or revoked by
-	# event, and there is no flag to leave stale.
+	# Both are re-read from scratch every weekly pass, which is what makes them
+	# self-correcting: a minor that becomes a major picks the bonus up on the
+	# next tick, and a major knocked down to minor loses it just as
+	# automatically. Nothing is granted or revoked by event, and there is no
+	# flag to leave stale.
 	#
-	# They stack. A major that also leads a faction gets both, +150%.
+	# THE TWO ARE MEASURED IN DIFFERENT UNITS. Major power is 864 BATTALIONS,
+	# flat, applied after the multiply with territory and the Red Army. Faction
+	# leader is still a percentage of the base. So they still stack, but not
+	# into one number: a major that also leads a faction gets 864 battalions
+	# and +50%.
+	#
+	# Flat is the point. As a percentage, being a major was worth 324
+	# battalions and grew with every other bonus the country had; as a flat
+	# 864 it is worth the same to a major that has just been knocked about as
+	# to one at the height of its powers, and it is worth far more than it was.
 	if = {
 		limit = { is_major = yes }
-		set_variable = { wif_src_major = 1.00 }
+		set_variable = { wif_src_major = 864 }
 	}
 	if = {
 		limit = { is_faction_leader = yes }
@@ -379,11 +613,14 @@ wif_recalculate_battalion_cap = {
 	# Nothing else may add to wif_bat_pct - a bonus that skips this block would
 	# be invisible in the tooltip breakdown, which is exactly the kind of quiet
 	# disagreement between display and maths this structure exists to prevent.
-	set_variable = { wif_bat_pct = wif_terr_pct }
+	# Territory is NOT here any more. It is measured in battalions and applied
+	# after the multiply, together with the single-state penalty.
+	set_variable = { wif_bat_pct = 0 }
 	add_to_variable = { wif_bat_pct = wif_src_consc }
+	add_to_variable = { wif_bat_pct = wif_src_econ }
+	add_to_variable = { wif_bat_pct = wif_src_warlord }
 	add_to_variable = { wif_bat_pct = wif_src_stab }
 	add_to_variable = { wif_bat_pct = wif_src_ws }
-	add_to_variable = { wif_bat_pct = wif_src_major }
 	add_to_variable = { wif_bat_pct = wif_src_faction }
 	add_to_variable = { wif_bat_pct = wif_src_war_bal }
 	add_to_variable = { wif_bat_pct = wif_src_war_def }
@@ -401,12 +638,53 @@ wif_recalculate_battalion_cap = {
 	# value in the variable does not affect any comparison below.
 	set_variable = { wif_bat_limit = 1 }
 	add_to_variable = { wif_bat_limit = wif_bat_pct }
-	multiply_variable = { wif_bat_limit = 432 }
+	multiply_variable = { wif_bat_limit = 324 }
 
-	# 432 is the floor, always.
+	# --- Flat battalions ---------------------------------------------------
+	# Everything above is a percentage of the base. Everything here is a count
+	# of battalions, added after the multiply so that percentage bonuses never
+	# scale it - two battalions for a city state is two battalions whether the
+	# country is Luxembourg or the Reich.
+	add_to_variable = { wif_bat_limit = wif_src_major }
+	add_to_variable = { wif_bat_limit = wif_terr_bat }
+	add_to_variable = { wif_bat_limit = wif_src_redarmy }
+	add_to_variable = { wif_bat_limit = wif_src_onestate }
+
+	# --- The multiplier ----------------------------------------------------
+	# Applied LAST, to the finished figure, which is what makes it a doubling
+	# rather than another bonus. It is deliberately not a wif_src_* variable:
+	# everything with that prefix is additive and is either zeroed and summed
+	# into wif_bat_pct or added to wif_bat_limit, and a multiplier that joined
+	# either of those sets would be wrong in a way the tooltip could not show.
+	#
+	# Reset to 1 rather than 0 every pass, for the obvious reason.
+	#
+	# One edge case, and it is harmless: a China reduced to a single state has
+	# its cap pinned to 27 by the flat penalty above, and this then doubles it
+	# to 54. A country in that position is not being held back by its cap.
+	set_variable = { wif_cap_multiplier = 1 }
 	if = {
-		limit = { check_variable = { wif_bat_limit < 432 } }
-		set_variable = { wif_bat_limit = 432 }
+		limit = { has_idea = wif_chinese_millions }
+		set_variable = { wif_cap_multiplier = 2 }
+	}
+	multiply_variable = { wif_bat_limit = wif_cap_multiplier }
+
+	# THERE IS NO LONGER A DESIGN FLOOR. The cap used to be clamped up to the
+	# base, then to half of it; both swallowed penalties that are meant to
+	# land, so both are gone. A country that has earned a small cap gets a
+	# small cap.
+	#
+	# What remains is a guard, not a floor. The headroom fraction below divides
+	# by this variable, and the AI strategy thresholds read that fraction, so a
+	# zero or negative cap would either fail the division or silently invert
+	# every threshold the AI reacts to. One battalion is the smallest value
+	# that keeps both honest.
+	#
+	# It is reachable: a single-state country on Undisturbed Isolation totals
+	# well below zero, and it is supposed to.
+	if = {
+		limit = { check_variable = { wif_bat_limit < 1 } }
+		set_variable = { wif_bat_limit = 1 }
 	}
 
 	# Spare allowance, read by the AI strategies in
@@ -416,7 +694,7 @@ wif_recalculate_battalion_cap = {
 	# for the same reason the factory cap uses a ratio: a flat "20 battalions
 	# left" means nothing in common between Luxembourg and Germany, so the
 	# thresholds the AI reacts to have to be proportional. wif_bat_limit is
-	# floored at 432 above, so this can never divide by zero.
+	# guarded at a minimum of 1 above, so this can never divide by zero.
 	set_variable = { wif_bat_headroom = wif_bat_limit }
 	subtract_from_variable = { wif_bat_headroom = wif_bat_used }
 
@@ -514,7 +792,9 @@ wif_recalculate_battalion_cap = {
 # divisions that state held, and no state is ever cleared unless its whole
 # garrison fits inside what is left. When the allowance runs out the pass
 # stops. An army ten divisions too big loses ten divisions, not an eleventh,
-# and an army at its cap loses nothing at all.
+# and an army at its cap loses nothing at all. It happens fast, in one weekly
+# pass, bounded only by the second guarantee below: no pass may take more
+# than half the divisions the country actually has.
 #
 # The 0.75 is a deliberate margin. The allowance is derived from the AVERAGE
 # division size, but the divisions actually disbanded may each be larger than
@@ -591,6 +871,38 @@ wif_disband_over_cap = {
 		set_variable = { wif_disband_allowance = wif_battalions_over }
 		divide_variable = { wif_disband_allowance = wif_disband_avg }
 		multiply_variable = { wif_disband_allowance = 0.75 }
+
+		# THE ONE THING THIS MUST NEVER DO IS EMPTY AN ARMY.
+		#
+		# Speed is wanted here - a country that has overbuilt should shed it in a
+		# week or two, not trickle down over a season - so the overshoot budget
+		# above is deliberately NOT rate limited. It is bounded instead, and the
+		# bound is a share of the army rather than a flat number of divisions, so
+		# it scales with whoever is being corrected.
+		#
+		# In the normal case this changes nothing: a country 10 divisions over with
+		# 100 in the field is bounded by the overshoot, sheds all 10 in one pass,
+		# and is back at its cap the same week.
+		#
+		# WHAT IT GUARDS. wif_disband_allowance is a count of DIVISIONS derived by
+		# dividing a count of BATTALIONS by the average division size. That average
+		# is floored at 1, and if it ever bottoms out - wif_bat_used reading low or
+		# stale against a live num_divisions, exactly the kind of desync the
+		# check_variable parse bug once caused - the allowance stops being "the
+		# divisions we are over by" and becomes "the battalions we are over by,
+		# spent as whole divisions". A country 100 battalions over would be handed
+		# an allowance of 75 divisions and disband every unit it has.
+		#
+		# Half the army per pass makes that unreachable. The overshoot bound stays
+		# the operative limit in every healthy case; this is purely the floor under
+		# a bad one.
+		set_variable = { wif_disband_max = num_divisions }
+		multiply_variable = { wif_disband_max = 0.5 }
+		clamp_variable = {
+			var = wif_disband_allowance
+			min = 0
+			max = wif_disband_max
+		}
 
 		# Pass 1 - the rear. Almost always the only pass that runs, and the only
 		# one that can run at all in peacetime.

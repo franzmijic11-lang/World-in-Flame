@@ -1,0 +1,43 @@
+# What the NKVD's two advisors do once the infiltration focuses are taken.
+#
+# WHY THESE ARE MODIFIERS AND NOT TRAIT EDITS. An advisor's effects come from
+# its trait, and a trait is a fixed block - there is no way to make one read
+# "0.10, or 0.15 once a focus is done". So the focuses add these instead, and
+# each one's enable block checks that the advisor in question is actually
+# HIRED. Sack Dnoroutsi and his half of this stops paying immediately; hire him
+# again and it resumes, with no script involved either way.
+#
+# The values here are ON TOP of the trait. Dnoroutsi's trait gives 0.10
+# communism; wif_nkvd_infiltration adds 0.05, which is the 0.15 the focus
+# promises. Change the trait in common/country_leader/wif_traits.txt and these
+# numbers no longer add up to what the focus tooltip says.
+
+# Infiltrate the Democratic Opposition.
+wif_nkvd_infiltration = {
+	enable = { has_idea = SME_yuri_dnoroutsi }
+
+	icon = "GFX_idea_generic_intel_bonus"
+
+	communism_drift = 0.05
+}
+
+# Find Scandals.
+wif_nkvd_scandals = {
+	enable = { has_idea = SME_yuri_dnoroutsi }
+
+	icon = "GFX_idea_generic_intel_bonus"
+
+	democratic_drift = -0.04
+}
+
+# Frame the Leaders. This one is Paskarov's, not Dnoroutsi's - the commissar
+# does the arresting. The weekly loyalty drain that goes with it is not here,
+# because a modifier cannot subtract from a variable; see
+# common/scripted_effects/wif_whites_loyalty.txt.
+wif_nkvd_framing = {
+	enable = { has_idea = SME_nakita_paskarov }
+
+	icon = "GFX_idea_generic_intel_bonus"
+
+	democratic_drift = -0.05
+}

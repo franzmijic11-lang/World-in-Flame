@@ -339,11 +339,11 @@ focus_tree = {
 					has_completed_focus = RKM_work_with_ss
 				}
 				# SS path: attacks every 60 days
-				country_event = { id = wif_rkm.20 days = 60 }
+				set_variable = { wif_terror_days = 60 }
 			}
 			else = {
 				# Wehrmacht path: attacks every 180 days
-				country_event = { id = wif_rkm.20 days = 180 }
+				set_variable = { wif_terror_days = 180 }
 			}
 		}
 	}

@@ -164,7 +164,26 @@ wif_update_factory_cap = {
 		}
 	}
 
+	# Soviet successor states are exempt from the ceiling outright - see
+	# wif_is_soviet_successor in common/scripted_triggers/wif_scripted_triggers.txt.
+	#
+	# This branch is FIRST so it beats the war grace and every band below it.
+	# The spirit is cleared rather than merely not added, so a country that
+	# acquires the exemption after already carrying a penalty sheds it on the
+	# next weekly pass.
+	#
+	# The variables are parked high on purpose. The AI strategies are gated on
+	# the same trigger and will not read them, but the counter and any tooltip
+	# still do, and a stale wif_mil_headroom of 0 would read as "at the cap".
 	if = {
+		limit = { wif_is_soviet_successor = yes }
+		wif_clear_ceiling_spirit = yes
+		set_variable = { wif_mil_cap = 9999 }
+		set_variable = { wif_mil_headroom = 9999 }
+		set_variable = { wif_cap_over25 = 9999 }
+		set_variable = { wif_cap_over40 = 9999 }
+	}
+	else_if = {
 		limit = { has_country_flag = wif_cap_war_grace }
 		wif_clear_ceiling_spirit = yes
 	}

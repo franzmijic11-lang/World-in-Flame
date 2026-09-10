@@ -1,0 +1,103 @@
+﻿l_english:
+ # localisation/english/replace/ is HoI4's forced-override folder: keys here
+ # beat the base game's whatever the file ordering works out to. The rename
+ # below sat in wif_ger_l_english.yml and lost to vanilla's focus_l_english
+ # anyway, with nothing else in the playset defining the key and no error in
+ # the log. This is the one place the engine guarantees.
+ GER_crossing_the_atlantic:0 "Force the Americans to see Reason"
+ GER_crossing_the_atlantic_desc:0 "Britain has fallen and France with her. The Atlantic is a moat, not a road, and no army of ours will march on Washington. But the Americans are practical people, and a war fought for allies who no longer exist is a war fought for nothing. Let us put terms to them and see whether reason prevails."
+
+ # === The three monarchies ==========================================
+ wif_regential_monarchism:0 "Regential Monarchism"
+ wif_regential_monarchism_desc:0 "A throne held in trust. The crown exists, the succession is disputed or the heir is unfit, and a regent rules in a king's name until a question nobody wants to answer is finally answered.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +25.0%§!\n §GJoin faction tension limit: +20.0%§!\n §GLend-lease tension limit: +25.0%§!\n §GSend volunteers tension limit: +25.0%§!\n §GGuarantee tension limit: +20.0%§!\n §GIdeology drift defense: +10.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ wif_absolute_monarchism:0 "Absolute Monarchism"
+ wif_absolute_monarchism_desc:0 "The monarch rules as well as reigns. There is no assembly that can gainsay him, and no election that could produce one.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +25.0%§!\n §GJoin faction tension limit: +20.0%§!\n §GLend-lease tension limit: +25.0%§!\n §GSend volunteers tension limit: +25.0%§!\n §GGuarantee tension limit: +20.0%§!\n §GIdeology drift defense: +10.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ wif_semi_constitutional_monarchy:0 "Semi-Constitutional Monarchy"
+ wif_semi_constitutional_monarchy_desc:0 "The crown keeps the army, the appointments and the last word; the country keeps its ballot papers. Both sides call the arrangement temporary and neither is in a hurry to end it.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +25.0%§!\n §GJoin faction tension limit: +20.0%§!\n §GLend-lease tension limit: +25.0%§!\n §GSend volunteers tension limit: +25.0%§!\n §GGuarantee tension limit: +20.0%§!\n §GIdeology drift defense: +10.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+
+ # === Non-Aligned renamed to Authoritarian / Authoritarianism ========
+ # Vanilla's pattern is adjective / noun: communism "Communist" and
+ # communism_noun "Communism". neutrality took the same shape.
+ neutrality:0 "Authoritarian"
+ neutrality_noun:0 "Authoritarianism"
+ neutrality_drift:0 "Daily Support for Authoritarianism"
+
+ # === and every vanilla string that spells it out by hand ============
+ AFG_support_king_zahir_tt:0 "§YKing Zahir Shah§! gains:\n Political Power Gain §G+5%§! \n Daily Support for Authoritarian §G+0.02§!"
+ ARG_reach_out_to_chile_tt:0 "They are more likely to accept if they have a §YHigh opinion of us§! and are either §YFascist§! or §YAuthoritarian§!"
+ AUS_alpine_federation_focus_tt:0 "Invites §Y[SWI.GetNameWithFlag]§!, §Y[FRA.GetNameWithFlag]§! and §Y[ITA.GetNameWithFlag]§! to your faction as long as they are §YDemocratic§! or §YAuthoritarian§! and not currently in a faction."
+ AUS_bring_back_the_habsburg_rule_tt:0 "If your current regent is either §YOtto von Habsburg§! or §YErnst Rüdiger Starhemberg§! they will be crowned Archduke of Austria and gain the trait:\n\n §YArchduke of Austria§!:\n  - Political Power Gain: §G+10%§!\n  - Recruitable Population: §Y0.50%§!\n  - Stability: §G+5%§!\n  - War Support: §G+5%§!\n  - Daily Support for Authoritarian: §G+0.03§!"
+ AUS_invite_the_entente_tt:0 "Invites §Y[YUG.GetNameWithFlag]§!, §Y[ROM.GetNameWithFlag]§! and §Y[CZE.GetNameWithFlag]§! to your faction as long as they are §YDemocratic§! or §YAuthoritarian§! and not currently in a faction."
+ AUS_reforming_the_central_powers_tt:0 "Invites §Y[GER.GetNameWithFlag]§!, §Y[TUR.GetNameWithFlag]§!, and §Y[BUL.GetNameWithFlag]§! to the §YCentral Powers§! if they are §YFascist§! or §YAuthoritarian§! and not currently in a faction."
+ AUS_the_right_to_rearm_fed_instead_tt:0 "If [ROOT.GetNameDef] was a §YAuthoritarian§! country, the effect would instead rearm no matter the consequences."
+ AUS_the_right_to_rearm_fed_tt:0 "As a §YAuthoritarian§! country, rearm no matter the consequences."
+ AUS_via_danube_to_europe_tt:0 "Replaces §Y$AUS_the_danubian_federation_category$§! decisions with §Y$BEL_closer_european_union_cat$§! decisions allowing for inviting more countries and pushing for a §YLimited Federalization§!\n\n§RThis will lock the joint focus§! ''§Y$HABSBURG_an_empire_not_just_in_name$§!'' §Rwhich, if §YAuthoritarian§!, applies a §YNational Spirit§! to all subjects with the §YJoint Focus Tree§! lowering autonomy, making full integration of subjects easier§!."
+ BEL_benelux_union_tt:0 "If they are Democratic or Authoritarian, §Y[HOL.GetNameWithFlag]§! and §Y[LUX.GetNameWithFlag]§! are invited to the §Y$BEL_benelux_union_faction$§!"
+ BRA_anti_democracy_in_south_america_tt:0 "Gain §Y$puppet_wargoal_focus$§! wargoal on all §YDemocratic and Authoritarian§! nations in §YSouth America§!"
+ BRA_end_military_interference_tt:0 "Change in popularity of Authoritarian: §G-§![?.Root.party_popularity@neutrality|%0G].\n"
+ BRA_oust_the_empires_decision_tt:0 "§YFascist§! or §YAuthoritarian§! countries §Rwill be very reluctant to give away their territories!§!"
+ BRA_united_states_of_south_america_tt:0 "Unlock §Y$BRA_us_of_south_america_cat$§! decisions to invite §YDemocratic§! or §YAuthoritarian§! faction members in South America to §Ymerge§! with [ROOT.GetNameDef]."
+ BUL_bogdan_filov_ideology_fascism_tt:0 "(Will be replaced by Daily Support for Authoritarian if Bulgaria becomes Authoritarian)\n$BUL_bogdan_filov_negotiations_tt$"
+ BUL_depose_the_tsar_cw_tt:0 "The §YAuthoritarian§! supporters start a civil war."
+ BUL_free_balkan_states_guarantees_tt:0 "Guarantee every §YDemocratic§! and §YAuthoritarian§! Balkan country independent or allied to §Y[BUL.GetNameWithFlag]§!:"
+ BUL_liberation_of_the_proletariat_tt:0 "Gains §YTopple Government§! war goal against any §YFascist§! or §YAuthoritarian§! neighbor or major European power:"
+ CHL_protect_the_easter_island_tt:0 "We will get a §YTopple Government Wargoal§! against §Y[JAP.GetName]§!, §Y[NZL.GetName]§! or §Y[AST.GetName]§! if they are §YIndependent§! and §YFascist§! or §YAuthoritarian§!, and are at war with an §YAmerican Democracy§!"
+ DOD_yugoslavia.35.desc:0 "In a recent meeting at the Berghof, [GER.GetLeader] and [YUG.GetLeader] discussed the situation in Europe, and our role in it. [GER.GetLeader] insists that Yugoslavia can not avoid taking a side in the life-or-death struggle looming in the distance. Nor could Germany tolerate an authoritarian country at her borders. \n\nIt would almost be preferable, he ended, if Yugoslavia choose to side with the Allies, just so everyone knew where they stood."
+ DR_FACTION_NEUTRALITY:0 "Authoritarian: "
+ DR_US_NEUTRAL:0 "§Y$US|U$§! is Authoritarian: "
+ FRA_national_regeneration_trigger_tt:0 "The combined total of Authoritarian and Fascist support is over 50%"
+ GER_neutrality_influence_tt:0 "§RA civil war will break out if §YAuthoritarian§! support goes above 45%!§!"
+ GER_rekindle_imperial_sentiment_tt:0 "When authoritarian support is high enough, enables decisions for these nations to reform the Austro-Hungarian Empire and join the Central Powers.\n"
+ GER_rekindle_imperial_sentiment_tt_2:0 "When authoritarian support is high enough, enables decisions for these nations to reform the Austro-Hungarian Empire and join Mitteleuropa.\n"
+ JAP_coup_mongolia_trigger_tt:0 "The combined total of Authoritarian and Fascist support is over 40%"
+ JAP_create_greater_east_asian_treaty_organization_tt:0 "Unlocks decisions to invite §YAuthoritarian§! and §YDemocratic§! §YAsian§! and §YOceanian§! nations to our faction"
+ JAP_sea_state_general_mobilization_law_tt:0 "Unlocks the ability to go to §Y$closed_economy$§! despite being §YAuthoritarian§!"
+ JAP_send_collabs_to_mongolia_trigger_tt:0 "The combined total of Authoritarian and Fascist support is over 35%"
+ PER_force_abdication_tt:0 "\n§RIf the authoritarian party has over 50% support, the Shah will launch a civil war against us!§!"
+ POR_stir_monarchist_sentiment_in_brazil_tt:0 "§Y[BRA.GetFlag][BRA.GetNameDefCap]§! will receive Daily Support for Authoritarian: §G+0.10§!§Y for 180 days§!."
+ POR_the_empire_of_brazil_potential_civil_war_tt:0 "§RIf §YBrazil§R is §RNOT §YAuthoritarian§R and has less than §Y50% Stability§R or §Y70% Neutrality§R when this focus is completed, Brazilian Monarchists will start a civil war, dragging us into it!§!§!§!§!§!§!§!§!§!§!"
+ POR_workers_of_iberia_unite_civil_war_tt:0 "§RThe §YAuthoritarian§! supporters will start a civil war§!"
+ RAJ_GOE_azad_hind_radio_unaligned:0 "Change to Authoritarian Propaganda"
+ RULE_OPTION_AUS_NEUTRALITY_FEDERATIVE_AI:0 "Authoritarian Federative"
+ RULE_OPTION_AUS_NEUTRALITY_FEDERATIVE_AI_DESC:0 "The AI will attempt to form the Danubian Federation by inviting other nations along the Danube under a authoritarian rule."
+ RULE_OPTION_GOE_INDIA_FASCISM_BOSE:0 "GOE - Authoritarian Chandra Bose"
+ RULE_OPTION_HASHEMITE_IRQ_AI:0 "Hashemite - Authoritarian"
+ RULE_OPTION_IMPERIAL_PER_AI:0 "Imperial - Authoritarian"
+ RULE_OPTION_REVOLUTION_UNALIGNED_INS_AI:0 "Sukarno's Revolution (Authoritarian)"
+ RULE_OPTION_SIDQI_IRQ_AI:0 "Bakr Sidqi - Authoritarian"
+ RULE_OPTION_SWE_UNALIGNED_DESC:0 "The Swedish AI will go down the authoritarian path, return the king to power and try to form the Great Nordic Kingdom"
+ SOV_is_unaligned_state_tt:0 "State is authoritarian"
+ SPR_crush_the_revolution_tt:0 "§RThe Authoritarian supporters will start a civil war!§!\n"
+ SSB_faction_invite_tt:0 "We will invite Saadabad signatory countries with the §YAuthoritarian§! ideology to our new faction."
+ TUR_ideological_battleground_state:0 "Is not an £faction_tur_authoritarian §YAuthoritarian State§!"
+ TUR_kemalist_state_targets_tt:0 "Two authoritarian states become §YKemalist§!\n"
+ TUR_unaligned_state_management_map_category_name:0 "These are the states that currently remain authoritarian."
+ TUR_united_against_imperialism_tt:0 "Change in popularity of Democracy or Authoritarian for §YBalkan Pact§! countries: §G10%§!.\n"
+ USB:0 "Authoritarian States of America"
+ USB_DEF:0 "the Authoritarian States of America"
+ USB_communism:0 "Authoritarian States of America"
+ USB_communism_DEF:0 "the Authoritarian States of America"
+ USB_democratic:0 "Authoritarian States of America"
+ USB_democratic_DEF:0 "the Authoritarian States of America"
+ USB_fascism:0 "Authoritarian States of America"
+ USB_fascism_DEF:0 "the Authoritarian States of America"
+ USB_neutrality:0 "Authoritarian States of America"
+ USB_neutrality_DEF:0 "the Authoritarian States of America"
+ attache_neutrality_tt:0 "Due to the amount of §YAuthoritarian§! support in our country this will have the following effect:\n"
+ ban_neutrality_party_tt:0 "Change in popularity of Authoritarian: §G-§![?.Root.party_popularity@neutrality|%0G].\n"
+ joining_rule_democratic_non_aligned:0 "Democratic or Authoritarian Countries"
+ neutrality_acceptance:0 "Acceptance of Authoritarian Diplomacy"
+ neutrality_drift_from_guarantees:0 "Foreign Authoritarian Growth from Guarantees"
+ one_nation_under_ataturk_indivisible_tt:0 "As authoritarian Turkey, have no negative state modifiers in any of your owned states."
+ portugal_guarantees_freedom_tt:0 "Guarantee the independence of all independent minor §YDemocratic§! or §YAuthoritarian§! nations in Europe."
+
+ # === Non-aligned sub-ideologies ====================================
+ # The neutrality group's modifiers = { } is empty now, so its tooltip no
+ # longer prints a list. These four keep vanilla's exact statistics, via
+ # dynamic modifiers, and restate them here so nothing is lost on screen.
+ anarchism_desc:0 "Anarchism is the rejection of authority itself, promoting the division of society into self-managing and self-governing collectives instead of a singular, centralized state.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ moderatism_desc:0 "Moderatism is a form of government which avoids the extremes of left and right by taking a moderate position or course of action.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ centrism_desc:0 "Centrism is a form of government which wants to achieve common sense solutions that appropriately address current and future needs, that support the public trust and serve the common good with consideration of risk and capacity in context of these needs.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ japan_militarism_ideology_desc:0 "Militarism is an ideology in which the leader of the nation holds only nominal control, and acts more like a puppet to the nation's military than an independent politician, constantly forwarding their agenda with the end goal of rapid expansionist policy.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ despotism_desc:0 "Despotism is a form of government in which a single person rules with absolute power.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+ oligarchism_desc:0 "Oligarchy is a form of government in which a group of people rule with absolute power.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"

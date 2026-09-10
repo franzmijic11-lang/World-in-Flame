@@ -1,0 +1,16 @@
+# Balance of power side icons.
+#
+# 72 x 88, uncompressed 32-bit BGRA with one mip level - the same format as
+# vanilla's own bop icons in gfx/interface/bop. Built by
+# tools/bop_icons.py from the source art.
+spriteTypes = {
+	spriteType = {
+		name = "GFX_bop_SME_zhukov_side"
+		texturefile = "gfx/interface/bop/wif_bop_sme_zhukov.dds"
+	}
+
+	spriteType = {
+		name = "GFX_bop_SME_council_side"
+		texturefile = "gfx/interface/bop/wif_bop_sme_council.dds"
+	}
+}

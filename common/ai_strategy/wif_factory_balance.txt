@@ -15,7 +15,11 @@
 # while capped is what lets it earn more military factories later.
 wif_capped_build_civilian = {
 	allowed = {
-		always = yes
+		# Soviet successor states have no factory cap, so they get none of the
+		# behaviour built around one - not the push into civilian industry when
+		# capped, and not the push into military industry when there is spare
+		# allowance either. They simply build what the vanilla AI wants.
+		NOT = { wif_is_soviet_successor = yes }
 	}
 
 	enable = {
@@ -39,7 +43,11 @@ wif_capped_build_civilian = {
 # Plenty of unused allowance: lean into military construction to use it.
 wif_spare_cap_large = {
 	allowed = {
-		always = yes
+		# Soviet successor states have no factory cap, so they get none of the
+		# behaviour built around one - not the push into civilian industry when
+		# capped, and not the push into military industry when there is spare
+		# allowance either. They simply build what the vanilla AI wants.
+		NOT = { wif_is_soviet_successor = yes }
 	}
 
 	enable = {
@@ -57,7 +65,11 @@ wif_spare_cap_large = {
 # construction only to hit the ceiling again a few factories later.
 wif_spare_cap_moderate = {
 	allowed = {
-		always = yes
+		# Soviet successor states have no factory cap, so they get none of the
+		# behaviour built around one - not the push into civilian industry when
+		# capped, and not the push into military industry when there is spare
+		# allowance either. They simply build what the vanilla AI wants.
+		NOT = { wif_is_soviet_successor = yes }
 	}
 
 	enable = {
@@ -78,7 +90,11 @@ wif_spare_cap_moderate = {
 # is more civilian factories.
 wif_near_cap_build_civilian = {
 	allowed = {
-		always = yes
+		# Soviet successor states have no factory cap, so they get none of the
+		# behaviour built around one - not the push into civilian industry when
+		# capped, and not the push into military industry when there is spare
+		# allowance either. They simply build what the vanilla AI wants.
+		NOT = { wif_is_soviet_successor = yes }
 	}
 
 	enable = {

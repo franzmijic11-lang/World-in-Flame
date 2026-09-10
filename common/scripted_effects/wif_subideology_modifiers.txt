@@ -1,0 +1,104 @@
+# Applying a sub-ideology's statistics.
+#
+# Table-driven, not a list of countries: it asks what the leader's ideology is
+# and attaches the matching modifier. Removal needs no code - each modifier's
+# own remove_trigger handles it.
+#
+# Called from on_startup, on_weekly, on_ruling_party_change and the three
+# wif_become_* effects. Safe on any country at any time.
+#
+# ONE BRANCH PER TYPE IN THE NEUTRALITY GROUP. A type missing from this list
+# falls through to the default at the bottom, which is correct but generic - it
+# is not a substitute for listing it.
+wif_apply_subideology_modifiers = {
+
+	if = {
+		limit = {
+			has_country_leader_ideology = despotism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_despotism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_despotism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = oligarchism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_oligarchism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_oligarchism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = anarchism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_anarchism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_anarchism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = moderatism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_moderatism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_moderatism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = centrism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_centrism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_centrism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = wif_regential_monarchism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_regential_monarchism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_regential_monarchism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = wif_absolute_monarchism
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_absolute_monarchism } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_absolute_monarchism }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = wif_semi_constitutional_monarchy
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_semi_constitutional_monarchy } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_semi_constitutional_monarchy }
+	}
+
+	if = {
+		limit = {
+			has_country_leader_ideology = japan_militarism_ideology
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_japan_militarism_ideology } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_japan_militarism_ideology }
+	}
+
+	# Anything non-aligned that matched none of the above - another mod's type.
+	if = {
+		limit = {
+			has_government = neutrality
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_neutrality_default } }
+			NOT = { has_country_leader_ideology = despotism }
+			NOT = { has_country_leader_ideology = oligarchism }
+			NOT = { has_country_leader_ideology = anarchism }
+			NOT = { has_country_leader_ideology = moderatism }
+			NOT = { has_country_leader_ideology = centrism }
+			NOT = { has_country_leader_ideology = wif_regential_monarchism }
+			NOT = { has_country_leader_ideology = wif_absolute_monarchism }
+			NOT = { has_country_leader_ideology = wif_semi_constitutional_monarchy }
+			NOT = { has_country_leader_ideology = japan_militarism_ideology }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_neutrality_default }
+	}
+}

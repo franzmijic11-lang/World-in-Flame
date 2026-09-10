@@ -1,0 +1,103 @@
+add_namespace = wif_debug
+
+# Console handles for the debug helpers in
+# common/scripted_effects/wif_debug.txt.
+#
+#     event wif_debug.1        the Soviet surrender - "Its so Joever"
+#     event wif_debug.2        the Moskowien civil war - the Novgorod rising
+#     event wif_debug.3        the surrender to a DEMOCRATIC Germany
+#     event wif_debug.4        the surrender to a NON-ALIGNED Germany
+#
+# WHICH SUCCESSOR YOU GET. wif_sov.1 forks on Germany's government at the
+# moment the surrender is accepted: fascist raises Reichskommissariat
+# Moskowien, democratic raises the West Russian Republic as a supervised
+# state, non-aligned raises the Duchy of Moscow as a colony. wif_debug.1 uses
+# whatever Berlin already is - normally fascist - so .3 and .4 exist to reach
+# the other two paths. Both of them CHANGE Berlin's ruling party for real
+# before firing, and it stays changed.
+#
+# All three write the path they are taking to the game log.
+#
+# WHY THESE EXIST. The obvious route is the console's own `effect` command,
+# which the shipped documentation describes as "Runs a scripted effect on
+# selected scope" with arguments <tag> scripted_effect_name. Called that way
+# the effects did not run - not a failure, not an error, nothing: neither
+# branch of wif_debug_soviet_surrender reached its log line, and the game log
+# had no entry for it at all. `event` is the reliable command, so these wrap
+# the effects in something it can address.
+#
+# hidden = yes on both: there is nothing to read. The events are handles, and
+# every visible consequence belongs to the chain they start.
+#
+# is_triggered_only = yes so neither can ever fire on its own. The console
+# fires an event regardless of that, which is exactly what is wanted here -
+# nothing in the mod sends either of them.
+#
+# Fire them as whoever you are playing. Both effects scope themselves to the
+# country they act on, so the recipient does not matter.
+
+# The Soviet Union takes the German terms.
+#
+# Note this sets wif_debug_force_surrender on SOV before firing wif_sov.1.
+# That flag is read by wif_sov.1's own trigger and by nothing else in the mod:
+# country_event evaluates an event's trigger block, so without the escape the
+# surrender is discarded in silence at any date before Germany is actually
+# holding Moscow, Stalingrad, Leningrad, Baku and Archangelsk.
+country_event = {
+	id = wif_debug.1
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_soviet_surrender = yes
+	}
+}
+
+# Moskowien comes apart.
+#
+# Needs RKM on the map. If it is not there yet the effect says so in the game
+# log and does nothing - run wif_debug.1 first, which raises Moskowien as part
+# of the surrender.
+country_event = {
+	id = wif_debug.2
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_start_civil_war = yes
+	}
+}
+
+# The surrender, to a democratic Germany: the West Russian Republic.
+#
+# Switches Berlin to democratic first, then runs the same effect wif_debug.1
+# does. The government change is permanent, so this is a test handle rather
+# than a way to play the branch.
+country_event = {
+	id = wif_debug.3
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_soviet_surrender_democratic = yes
+	}
+}
+
+# The surrender, to a non-aligned Germany: the Duchy of Moscow.
+country_event = {
+	id = wif_debug.4
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_soviet_surrender_neutral = yes
+	}
+}

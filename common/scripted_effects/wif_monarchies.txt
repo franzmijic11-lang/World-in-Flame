@@ -1,0 +1,47 @@
+# Adopting one of the three Authoritarian monarchies.
+#
+# The statistics live in the ideology's own type block, in
+# common/ideologies/00_ideologies.txt.
+#
+# WHY THESE EXIST. A sub-ideology cannot carry an election rule - HoI4 has no
+# such key on an ideology or its types, and elections_allowed lives on
+# set_politics, per country. So "Absolute Monarchism has no elections" has to be
+# applied when the ideology is adopted, and kept applied afterwards.
+#
+# Each effect sets the ruling party, the leader's sub-ideology and the election
+# rule in one place, so no caller can set two of the three and forget the last.
+# Run them in COUNTRY scope.
+
+wif_become_regential_monarchy = {
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	set_country_leader_ideology = wif_regential_monarchism
+
+	# Statistics on the spot, rather than at the next weekly tick.
+	wif_apply_subideology_modifiers = yes
+}
+
+wif_become_absolute_monarchy = {
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	set_country_leader_ideology = wif_absolute_monarchism
+
+	# Statistics on the spot, rather than at the next weekly tick.
+	wif_apply_subideology_modifiers = yes
+}
+
+# The one that keeps its ballot papers.
+wif_become_semi_constitutional_monarchy = {
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = yes
+	}
+	set_country_leader_ideology = wif_semi_constitutional_monarchy
+
+	# Statistics on the spot, rather than at the next weekly tick.
+	wif_apply_subideology_modifiers = yes
+}

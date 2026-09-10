@@ -254,6 +254,11 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
+			# Moskowien has now been hit at least once. Read by the SME's
+			# Arm the Partisans decision, which cannot be taken before the
+			# first raid has actually happened.
+			set_country_flag = wif_first_terror_attack
+
 			random_controlled_state = {
 				limit = {
 					NOT = { state = 219 }
@@ -307,35 +312,35 @@ country_event = {
 			if = {
 				limit = { has_country_flag = wif_terror_attack_delayed }
 				clr_country_flag = wif_terror_attack_delayed
-				country_event = { id = wif_rkm.20 days = 120 }
+				set_variable = { wif_terror_days = 120 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_delay_50 }
 				clr_country_flag = wif_mech_delay_50
-				country_event = { id = wif_rkm.20 days = 110 }
+				set_variable = { wif_terror_days = 110 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_delay_20 }
 				clr_country_flag = wif_mech_delay_20
-				country_event = { id = wif_rkm.20 days = 80 }
+				set_variable = { wif_terror_days = 80 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_terror_attack_early }
 				clr_country_flag = wif_terror_attack_early
-				country_event = { id = wif_rkm.20 days = 1 }
+				set_variable = { wif_terror_days = 1 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_early_30 }
 				clr_country_flag = wif_mech_early_30
-				country_event = { id = wif_rkm.20 days = 30 }
+				set_variable = { wif_terror_days = 30 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_early_100 }
 				clr_country_flag = wif_mech_early_100
-				country_event = { id = wif_rkm.20 days = 1 }
+				set_variable = { wif_terror_days = 1 }
 			}
 			else = {
-				country_event = { id = wif_rkm.20 days = 60 }
+				set_variable = { wif_terror_days = 60 }
 			}
 		}
 		else = {
@@ -343,35 +348,35 @@ country_event = {
 			if = {
 				limit = { has_country_flag = wif_terror_attack_delayed }
 				clr_country_flag = wif_terror_attack_delayed
-				country_event = { id = wif_rkm.20 days = 240 }
+				set_variable = { wif_terror_days = 240 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_delay_50 }
 				clr_country_flag = wif_mech_delay_50
-				country_event = { id = wif_rkm.20 days = 230 }
+				set_variable = { wif_terror_days = 230 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_delay_20 }
 				clr_country_flag = wif_mech_delay_20
-				country_event = { id = wif_rkm.20 days = 200 }
+				set_variable = { wif_terror_days = 200 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_terror_attack_early }
 				clr_country_flag = wif_terror_attack_early
-				country_event = { id = wif_rkm.20 days = 80 }
+				set_variable = { wif_terror_days = 80 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_early_30 }
 				clr_country_flag = wif_mech_early_30
-				country_event = { id = wif_rkm.20 days = 150 }
+				set_variable = { wif_terror_days = 150 }
 			}
 			else_if = {
 				limit = { has_country_flag = wif_mech_early_100 }
 				clr_country_flag = wif_mech_early_100
-				country_event = { id = wif_rkm.20 days = 80 }
+				set_variable = { wif_terror_days = 80 }
 			}
 			else = {
-				country_event = { id = wif_rkm.20 days = 180 }
+				set_variable = { wif_terror_days = 180 }
 			}
 		}
 	}

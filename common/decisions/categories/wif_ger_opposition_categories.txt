@@ -1,0 +1,15 @@
+# Ported from Germany Rework (Workshop 3607227153): the category the UGSR
+# integration decisions live in. Without it those 24 decisions load but have
+# nowhere to appear.
+
+GER_ugsr_integration_decisions = {
+	icon = GFX_decision_category_generic_communism
+	picture = GFX_decision_cat_ger_germanic_countries
+	allowed = {
+		original_tag = GER
+	}
+	priority = 5
+	visible = {
+        
+	}
+}

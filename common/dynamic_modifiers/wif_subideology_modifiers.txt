@@ -1,0 +1,199 @@
+# Sub-ideology statistics.
+#
+# HoI4 will not read modifiers out of an ideology's type block - measured, not
+# assumed - so they live here and are attached to whoever holds the ideology.
+# remove_trigger deletes each one the moment its ideology is no longer held, in
+# data rather than in script, so this behaves like a property of the ideology.
+#
+# The neutrality GROUP's own modifiers = { } is empty on purpose, so these
+# REPLACE rather than stack. That is why the six VANILLA types appear here
+# carrying vanilla's exact numbers: with the group emptied they would otherwise
+# lose them. Change those and you change vanilla behaviour.
+#
+# EVERY TYPE IN THE GROUP MUST BE LISTED HERE. despotism and oligarchism were
+# missed once, because the script that generated this file matched on the exact
+# indentation of a type block and those two are written differently. Eleven
+# vanilla countries start on despotism. If a type is added to the group, add it
+# here as well - the list is read straight out of common/ideologies.
+#
+# NO icon = { } on any of these. An icon draws a badge in the National Spirit
+# tray; without one the modifier applies silently, which is what an ideology's
+# statistics should do. Twelve vanilla dynamic modifiers are written the same way.
+
+wif_ideology_despotism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = despotism } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_oligarchism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = oligarchism } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_anarchism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = anarchism } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_moderatism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = moderatism } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_centrism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = centrism } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_regential_monarchism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = wif_regential_monarchism } }
+
+	generate_wargoal_tension = 0.25
+	join_faction_tension = 0.20
+	lend_lease_tension = 0.25
+	send_volunteers_tension = 0.25
+	guarantee_tension = 0.20
+	drift_defence_factor = 0.10
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_absolute_monarchism = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = wif_absolute_monarchism } }
+
+	generate_wargoal_tension = 0.25
+	join_faction_tension = 0.20
+	lend_lease_tension = 0.25
+	send_volunteers_tension = 0.25
+	guarantee_tension = 0.20
+	drift_defence_factor = 0.10
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_semi_constitutional_monarchy = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = wif_semi_constitutional_monarchy } }
+
+	generate_wargoal_tension = 0.25
+	join_faction_tension = 0.20
+	lend_lease_tension = 0.25
+	send_volunteers_tension = 0.25
+	guarantee_tension = 0.20
+	drift_defence_factor = 0.10
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+wif_ideology_japan_militarism_ideology = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = japan_militarism_ideology } }
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
+
+# Fallback, for a non-aligned sub-ideology added by some other mod.
+#
+# With the group emptied, an ideology nothing above matches would carry no
+# statistics at all. This catches that case and gives it vanilla's, so another
+# mod's non-aligned type behaves exactly as it did before Welt in Flammen.
+wif_ideology_neutrality_default = {
+	enable = { always = yes }
+	remove_trigger = {
+		OR = {
+			NOT = { has_government = neutrality }
+			has_country_leader_ideology = despotism
+			has_country_leader_ideology = oligarchism
+			has_country_leader_ideology = anarchism
+			has_country_leader_ideology = moderatism
+			has_country_leader_ideology = centrism
+			has_country_leader_ideology = wif_regential_monarchism
+			has_country_leader_ideology = wif_absolute_monarchism
+			has_country_leader_ideology = wif_semi_constitutional_monarchy
+			has_country_leader_ideology = japan_militarism_ideology
+		}
+	}
+
+	generate_wargoal_tension = 0.5
+	join_faction_tension = 0.4
+	lend_lease_tension = 0.6
+	send_volunteers_tension = 0.4
+	guarantee_tension = 0.4
+	drift_defence_factor = -0.3
+	civilian_intel_to_others = 20.0
+	army_intel_to_others = 10.0
+	navy_intel_to_others = 20.0
+	airforce_intel_to_others = 10.0
+}
