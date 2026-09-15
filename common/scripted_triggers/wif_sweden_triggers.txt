@@ -41,3 +41,49 @@ wif_swe_bourgeois_ministry_allowed = {
 		has_country_flag = SWE_1936_socialdemokraterna_won
 	}
 }
+
+# Has the government kept its promises?
+#
+# The Democratic War Cabinet is not formed until FOUR of the coalition
+# concessions are done, and because each branch holds exactly four, that is the
+# same as saying the government finished its own programme.
+#
+# WRITTEN AS THREE COMPLETE BRANCHES rather than as a count, because HoI4 has no
+# way to count completed focuses in a trigger - there is no focus iterator and a
+# trigger cannot do arithmetic into a variable. Spelling out the three sets is
+# exact, reads clearly in the tooltip, and cannot drift out of step with the
+# tree the way a hand-maintained tally would.
+#
+# The two shared promises appear in both bourgeois branches, which is correct:
+# Folkpartiet and Hogern sit in either ministry and collect their price from
+# whichever is in office.
+#
+# ADD ANY NEW CONCESSION FOCUS TO ITS BRANCH HERE, or the branch it belongs to
+# will still open the war cabinet one promise short.
+wif_swe_four_promises_kept = {
+	OR = {
+		# Socialdemokraterna
+		AND = {
+			has_completed_focus = SWE_dyrortsgraderade_folkpensioner
+			has_completed_focus = SWE_fri_modravard
+			has_completed_focus = SWE_sami_reconcilliation
+			has_completed_focus = SWE_form_rfsu
+		}
+
+		# Bondeforbundet - two of its own, two shared
+		AND = {
+			has_completed_focus = SWE_lika_folkpension
+			has_completed_focus = SWE_tryggade_jordbrukspriser
+			has_completed_focus = SWE_nykterhet_och_folkbildning
+			has_completed_focus = SWE_stod_at_forsvarsrorelsen
+		}
+
+		# Hogern - two of its own, the same two shared
+		AND = {
+			has_completed_focus = SWE_sparsamhet_sunda_statsfinanser
+			has_completed_focus = SWE_ett_starkare_forsvarsbeslut
+			has_completed_focus = SWE_nykterhet_och_folkbildning
+			has_completed_focus = SWE_stod_at_forsvarsrorelsen
+		}
+	}
+}

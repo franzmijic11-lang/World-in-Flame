@@ -49,3 +49,12 @@
  wif_swe_fri_modravard_desc:0 "Antenatal and maternity care free at the point of use, midwives across the whole country, and maternity payments for mothers with nothing to fall back on. Fewer women die, more children live, and the population figures stop frightening people."
  wif_swe_moderskapsreformen:0 "Moderskapsreformen"
  wif_swe_moderskapsreformen_desc:0 "The maternity bill is being pushed through the chamber, and it is taking every favour and every hour the government has. Nothing else moves while it does."
+
+ # === Högern's second promise =========================================
+ SWE_ett_starkare_forsvarsbeslut:0 "Ett Starkare Försvarsbeslut"
+ SWE_ett_starkare_forsvarsbeslut_desc:0 "Högern voted against the 1936 defence act, and not because it disliked the idea. Lindman's people wanted a larger establishment, a bigger navy estimate and the money to pay for both, and said so at every stage of the bill.\n\nThat the same party spent the rest of the session demanding a tighter budget is not a contradiction it has ever felt obliged to explain."
+ wif_swe_ett_starkare_forsvarsbeslut:0 "Ett Starkare Försvarsbeslut"
+ wif_swe_ett_starkare_forsvarsbeslut_desc:0 "The establishment the 1936 act should have voted for: more regiments, more yards, and the arms works running to fill them. It is being paid for out of the same purse that was so carefully guarded a moment ago, and everybody can see it."
+
+ # === The war cabinet's own gate ======================================
+ SWE_war_cabinet_four_promises_tt:0 "The government has §Ykept all four of its promises§!."

@@ -1664,7 +1664,7 @@ focus_tree = {
 		icon = GFX_focus_generic_industry_investment
 
 		relative_position_id = SWE_form_a_conservative_cabinet
-		x = 0
+		x = -1
 		y = 1
 
 		cost = 5
@@ -1681,6 +1681,43 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = wif_swe_sparsamhet_sunda_statsfinanser
+		}
+	}
+
+	# --- Hogern only, second of two --------------------------------------
+	# INVENTED, unlike the other six. Hogern was specified as having two
+	# promises of its own and only one was given, so this fills the slot with
+	# the party's other standing position of 1936: Lindman's people voted
+	# against the defence act because it was too small, not because they were
+	# against it. What they wanted was a bigger army, a bigger navy and the
+	# budget to pay for both - which is the opposite corner of the same argument
+	# Sparsamhet makes about the civilian budget, and is deliberately kept
+	# separate from Stod at den frivilliga forsvarsrorelsen, which is about
+	# volunteers rather than about the establishment.
+	#
+	# Say the word and the whole focus swaps for whatever was actually intended.
+	focus = {
+		id = SWE_ett_starkare_forsvarsbeslut
+		icon = GFX_focus_generic_military_mission
+
+		relative_position_id = SWE_form_a_conservative_cabinet
+		x = 1
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_a_conservative_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP }
+
+		completion_reward = {
+			add_ideas = wif_swe_ett_starkare_forsvarsbeslut
 		}
 	}
 
@@ -4259,15 +4296,25 @@ focus_tree = {
 		cost = 10
 		relative_position_id = SWE_continue_the_second_industrial_revolution
 
-		# CONNECTED NOW, and to all three branches at once. Whichever party won
-		# and whatever ministry it formed, the war cabinet is where the argument
-		# stops - so every one of the three cabinets leads into it. One
-		# prerequisite block listing all three, which HoI4 reads as OR.
+		# EVERY PROMISE LEADS HERE. All ten coalition concessions are listed in
+		# ONE prerequisite block, which HoI4 reads as OR, so the panel draws a
+		# line from each of them into this focus and whichever branch the
+		# government actually walked down visibly ends at the war cabinet.
 		#
-		# This replaces the availability condition on the election focus that
-		# used to gate it. That is now implied: no cabinet exists without a
-		# result, and no result exists without the election.
-		prerequisite = { focus = SWE_form_a_social_democratic_cabinet focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
+		# The prerequisite alone is therefore satisfied by any single promise.
+		# What gates the focus is the availability condition below.
+		prerequisite = {
+			focus = SWE_dyrortsgraderade_folkpensioner
+			focus = SWE_fri_modravard
+			focus = SWE_sami_reconcilliation
+			focus = SWE_form_rfsu
+			focus = SWE_lika_folkpension
+			focus = SWE_tryggade_jordbrukspriser
+			focus = SWE_sparsamhet_sunda_statsfinanser
+			focus = SWE_ett_starkare_forsvarsbeslut
+			focus = SWE_nykterhet_och_folkbildning
+			focus = SWE_stod_at_forsvarsrorelsen
+		}
 
 		ai_will_do = {
 			factor = 10
@@ -4275,6 +4322,22 @@ focus_tree = {
 
 		available = {
 			democratic > 0.66
+
+			# FOUR PROMISES KEPT. Each branch holds exactly four, so this is the
+			# same as saying the ministry finished its own programme. Spelled out
+			# as three complete branches in
+			# common/scripted_triggers/wif_sweden_triggers.txt, because HoI4
+			# cannot count completed focuses inside a trigger.
+			custom_trigger_tooltip = {
+				tooltip = SWE_war_cabinet_four_promises_tt
+				wif_swe_four_promises_kept = yes
+			}
+
+			# And a war worth forming a war cabinet for. BOTH, not either -
+			# Sweden reorganises its government when the west is actually
+			# fighting, not when one power is.
+			FRA = { has_war_with = GER }
+			ENG = { has_war_with = GER }
 		}
 
 		bypass = {
@@ -5931,7 +5994,11 @@ focus_tree = {
  	focus = {
 		id = SWE_the_nordic_defense_council
 		icon = GFX_focus_SWE_the_nordic_defense_council 
-		x = -5
+		# Welt in Flammen: x = -5 -> -2. The whole Nordic Defense Council branch
+		# - twelve focuses, all positioned off this one - shifts three columns
+		# right to clear the Hogern branch, which grew a second promise. The
+		# fascist branch beyond it starts at absolute x = 20 and is untouched.
+		x = -2
 		y = 2
 		#mutually_exclusive = {focus = SWE_finlands_cause_is_ours}
 		cost = 10
