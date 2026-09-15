@@ -58,4 +58,24 @@ leader_traits = {
 		communism_drift = 0.10
 		stability_factor = 0.10
 	}
+
+	# Gustaf V, after the Democratic War Cabinet.
+	#
+	# The king Sweden keeps. Vanilla's SWE_coalition_war_cabinet simply removed
+	# SWE_gustaf_v_idea and with it the king; Welt in Flammen swaps the idea for
+	# one carrying this trait instead - he stays on the throne and stops being a
+	# political actor.
+	#
+	# Everything SWE_former_autocrat gave him is gone, and that is the point:
+	# no -10% political power, no +20 fascism and neutrality acceptance, no
+	# neutrality drift, no command power. What replaces it is what a
+	# constitutional monarch is actually FOR - he is a settled question at home
+	# and a familiar face abroad.
+	SWE_constitutional_monarch = {
+		random = no
+		sprite = 13
+
+		stability_factor = 0.05
+		trade_opinion_factor = 0.10
+	}
 }

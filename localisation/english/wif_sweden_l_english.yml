@@ -1,0 +1,47 @@
+﻿l_english:
+
+ # Descriptions are kept to about four lines. The focus tooltip has a fixed
+ # width and no scrollbar, so anything much longer is cut off at the bottom and
+ # the player never sees the end of it.
+
+ # === The 1936 Election =============================================
+ # The focus name itself is overridden in localisation/english/replace/,
+ # because that key belongs to vanilla. Only new keys live here.
+ SWE_the_1936_election_tt:0 "§YThe ballot decides this one.§! One of the three results below is completed with it."
+
+ # === The three outcomes ============================================
+ SWE_socialdemokratisk_seger:0 "Socialdemokratisk Seger"
+ SWE_socialdemokratisk_seger_desc:0 "Per Albin holds the Riksdag, and this time with a majority that does not depend on the farmers' goodwill. Folkhemmet stops being a speech and becomes a building programme - housing, pensions, and the unemployment works the crash left half-finished.\n\nThe quarrel that remains is inside the party rather than outside it: how much of the programme belongs to the government, and how much to Landsorganisationen."
+ SWE_socialdemokratisk_seger_tt:0 "§YThe 1936 election was won by the Social Democrats.§!"
+
+ SWE_bondeforbundet_leder:0 "Bondeförbundet Leder"
+ SWE_bondeforbundet_leder_desc:0 "The summer government turns out not to have been a summer government. Pehrsson-Bramstorp came in as a caretaker while the Social Democrats argued among themselves, and he is still sitting in the chair when the votes are counted.\n\nIt is a farmers' ministry with a farmer's priorities - grain tariffs, rural credit, and a settled suspicion of anything decided in Stockholm."
+ SWE_bondeforbundet_leder_tt:0 "§YThe 1936 election was won by Bondeförbundet.§!"
+
+ SWE_hogern_leder:0 "Högern Leder"
+ SWE_hogern_leder_desc:0 "Bagge has the mandate. A professor of economics who came to politics late and to the party leadership later still, he inherits a right that has spent a decade being told it is finished.\n\nHe means to spend the mandate on the two things his party never stopped talking about: the defence estimates, and the church."
+ SWE_hogern_leder_tt:0 "§YThe 1936 election was won by Högern.§!"
+
+ # === The three cabinets ============================================
+ SWE_form_a_social_democratic_cabinet:0 "Form a Social Democratic Cabinet"
+ SWE_form_a_social_democratic_cabinet_desc:0 "A party government, and the first in years that need not count heads before every vote. Wigforss takes finance and the deficit budgets that go with it, Sandler keeps foreign affairs, and Undén sits beside him as the party's own lawyer.\n\nThree Social Democrats, three ministries, and nobody outside the movement to answer to."
+
+ SWE_form_an_agrarian_cabinet:0 "Form an Agrarian Cabinet"
+ SWE_form_an_agrarian_cabinet_desc:0 "Pehrsson-Bramstorp cannot govern from the farmers' benches alone, and a majority has to be bought from the other bourgeois parties.\n\nWestman takes justice for Bondeförbundet, Bagge comes in for Högern, and Bergquist for Folkpartiet. The prime minister keeps the chair; the other two keep the ministries they were promised."
+
+ SWE_form_a_conservative_cabinet:0 "Form a Conservative Cabinet"
+ SWE_form_a_conservative_cabinet_desc:0 "Bagge takes the chair, so Högern's seat at the table falls to Domö - deputy prime minister, and the man who will take the party leadership from Bagge in due course.\n\nWestman stays at justice for Bondeförbundet and Bergquist for Folkpartiet. The same three parties as the agrarian ministry, with the order of precedence reversed."
+
+ # === The two ministers vanilla does not ship =======================
+ SWE_karl_gustav_westman:0 "Karl Gustav Westman"
+ SWE_karl_gustav_westman_desc:0 "Professor of legal history before he was a politician, and Bondeförbundet's man at the Ministry of Justice from 1936. Careful, conservative and a great deal more comfortable with the letter of the law than with the press."
+ SWE_fritiof_domo:0 "Fritiof Domö"
+ SWE_fritiof_domo_desc:0 "Högern's deputy leader and a minister without portfolio - the man who does the arithmetic while Bagge makes the speeches. He will have the party leadership himself before the war is over."
+
+ # === The fifth answer at the ballot box ============================
+ AAT_Sweden.3.e:0 "Socialisterna växer starkt - the party comes back leaning on the unions."
+
+ # === The king who stays ============================================
+ SWE_constitutional_monarch:0 "Constitutional Monarch"
+ wif_swe_gustaf_v_constitutional:0 "King Gustaf V"
+ wif_swe_gustaf_v_constitutional_desc:0 "The war cabinet did not ask the King to go. It asked him to stop, which at seventy-eight is the harder request of the two.\n\nHe keeps the palace, the opening of the Riksdag and the state visits. He has given up the letters to ministers, the opinions about Germany, and the standing quarrel with the chamber over who decides what."

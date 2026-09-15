@@ -1,0 +1,114 @@
+# The 1936 Swedish general election, and what it writes into the focus tree.
+#
+# All of this is called from AAT_Sweden.3 in events/AAT_Sweden.txt - the mod
+# ships a copy of that vanilla file, and these effects are what the copy adds to
+# it. Keeping the work here rather than inline means the event file differs from
+# vanilla's by six single lines, which is as small as this could be made and
+# makes the next re-sync against a game patch readable.
+#
+# TWO GUARDS, AND BOTH ARE LOAD-BEARING.
+#
+# The election focus is mutually exclusive with SWE_the_old_enemy_stirs, which is
+# vanilla's own branch choice and is kept. A Sweden that walked down that branch
+# must NOT have the election focus forced on it: completing a focus whose
+# exclusive twin is already done leaves the tree in a state the panel cannot
+# draw. So the election focus is only completed when that twin is untaken, and
+# every party focus below it is only completed when the election focus itself
+# actually went through.
+#
+# The election still HAPPENS on the other branch - the event fires, the player
+# picks a government and the politics resolve as vanilla intended. It simply
+# leaves no mark on the tree, because on that branch the tree has no room for
+# one.
+
+# Completes the election focus itself. Called from the immediate block of
+# AAT_Sweden.3, so it runs before any option is picked.
+wif_swe_1936_election_resolved = {
+	if = {
+		limit = {
+			NOT = { has_completed_focus = SWE_the_old_enemy_stirs }
+			NOT = { has_completed_focus = SWE_continue_the_second_industrial_revolution }
+		}
+		complete_national_focus = SWE_continue_the_second_industrial_revolution
+	}
+}
+
+# The three outcomes. One line each in the event, one call each here.
+#
+# Socialdemokraterna covers TWO of vanilla's options - Per Albin Hansson
+# (AAT_Sweden.3.a) and Ernst Wigforss (AAT_Sweden.3.d). Wigforss is a Social
+# Democrat taking the party leadership off Per Albin after the summer
+# government fell; the party still won, so the marker is the same one.
+wif_swe_1936_result_socialdemokraterna = {
+	if = {
+		limit = { has_completed_focus = SWE_continue_the_second_industrial_revolution }
+		complete_national_focus = SWE_socialdemokratisk_seger
+	}
+}
+
+wif_swe_1936_result_bondeforbundet = {
+	if = {
+		limit = { has_completed_focus = SWE_continue_the_second_industrial_revolution }
+		complete_national_focus = SWE_bondeforbundet_leder
+	}
+}
+
+wif_swe_1936_result_hogern = {
+	if = {
+		limit = { has_completed_focus = SWE_continue_the_second_industrial_revolution }
+		complete_national_focus = SWE_hogern_leder
+	}
+}
+
+# "Socialisterna vaxer starkt" - the fifth option, which vanilla does not have.
+#
+# The socialists growing strong IS a Social Democratic win, so the government
+# outcome is Per Albin's, exactly as AAT_Sweden.3.a - anything else would leave
+# the country with no election result at all. What the option adds on top is the
+# thing that makes it a different answer: the party comes back leaning on the
+# unions, so Align more Closely with Landsorganisationen is taken for free.
+#
+# LO IS COMPLETED DIRECTLY, not through the election-focus guard, because it is
+# an ordinary selectable focus that exists on its own terms. Its own guard is
+# simply not completing it twice.
+wif_swe_1936_socialists_surge = {
+	retire_country_leader = yes
+	promote_character = SWE_per_albin_hansson
+
+	SWE_per_albin_hansson = {
+		add_trait = {
+			trait = SWE_solidified_mandate
+			ideology = socialism
+		}
+	}
+
+	set_party_name = {
+		ideology = democratic
+		name = SWE_democratic_party
+		long_name = SWE_democratic_party_long
+	}
+
+	hidden_effect = {
+		set_politics = {
+			ruling_party = democratic
+			last_election = "1936.11.20"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+	}
+
+	# The surge itself. The Social Democrats won, but they did not win alone.
+	add_popularity = {
+		ideology = communism
+		popularity = 0.05
+	}
+
+	wif_swe_1936_result_socialdemokraterna = yes
+
+	if = {
+		limit = {
+			NOT = { has_completed_focus = SWE_align_more_closely_with_the_landsorganisationen }
+		}
+		complete_national_focus = SWE_align_more_closely_with_the_landsorganisationen
+	}
+}

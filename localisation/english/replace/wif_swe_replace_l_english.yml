@@ -1,0 +1,17 @@
+﻿l_english:
+ # localisation/english/replace/ is HoI4's forced-override folder - the one
+ # place the engine guarantees a key beats the base game's. Both keys below
+ # belong to vanilla's aat_focus_l_english.yml.
+ #
+ # Kept SHORT deliberately: the focus tooltip has a fixed width and no
+ # scrollbar, so anything longer is cut off where the player cannot read it.
+
+ # The focus id still says "continue the second industrial revolution" and
+ # cannot be changed: two AI strategy plans this mod does not override point at
+ # it by name. See the header on the focus in common/national_focus/sweden.txt.
+ SWE_continue_the_second_industrial_revolution:0 "The 1936 Election"
+ SWE_continue_the_second_industrial_revolution_desc:0 "The Riksdag runs out of road in September. Socialdemokraterna, Bondeförbundet and Högern all go to the country; one of them comes back with it."
+
+ # Vanilla's version ends with the King being quietly retired. He is not, any
+ # more - see the focus in common/national_focus/sweden.txt.
+ SWE_coalition_war_cabinet_desc:0 "A coalition cabinet drawn from the major parties in the Riksdag, to hold the country together if the war spreads.\n\nThe King keeps his throne. He does not keep his politics."

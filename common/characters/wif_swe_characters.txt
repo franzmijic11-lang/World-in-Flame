@@ -1,0 +1,117 @@
+# Two Swedish ministers vanilla does not ship.
+#
+# WHY THEY HAD TO BE INVENTED. The cabinet focuses in
+# common/national_focus/sweden.txt want one Hogern, one Bondeforbundet and one
+# Folkpartist on each bourgeois branch. Vanilla's Swedish roster contains
+# exactly one identifiable politician from each of those parties - Gosta Bagge,
+# Axel Pehrsson-Bramstorp and Thorwald Bergquist - and on the branch each party
+# WINS, its man is the head of government and cannot sit in his own cabinet as
+# an advisor. So each of the two bourgeois parties needed a second name.
+#
+# Both are real, both were ministers in the period, and both are the obvious
+# second man in their party:
+#
+#   Karl Gustav Westman   Bondeforbundet. Justice Minister 1936-1943, which is
+#                         precisely the span this tree covers. Professor of
+#                         legal history before that.
+#   Fritiof Domo          Hogern. Minister without portfolio and deputy prime
+#                         minister in the coalition, and the man who took the
+#                         party leadership from Bagge in 1944.
+#
+# PORTRAITS ARE GENERIC, and that is not a shortcut - vanilla does the same for
+# Bergquist, who uses GFX_idea_generic_political_advisor_europe_5. There is no
+# custom art for either man in the game and none is being added.
+#
+# THEY ARE NOT RECRUITED HERE. common/characters only DESCRIBES a character;
+# recruit_character in history/countries is what actually puts one in a country,
+# it is load-time only, and vanilla never calls it at runtime. Both names are
+# therefore added to history/countries/SWE - Sweden.txt, which this mod now
+# overrides for those two lines alone. Without that they would silently not
+# exist and the cabinet focus would seat nobody.
+characters = {
+
+	SWE_karl_gustav_westman = {
+		name = SWE_karl_gustav_westman
+
+		portraits = {
+			civilian = {
+				small = "GFX_idea_generic_political_advisor_europe_4"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_karl_gustav_westman
+			cost = 150
+
+			allowed = {
+				original_tag = SWE
+			}
+
+			# Hidden until a cabinet that has a use for him is formed. Both
+			# bourgeois cabinets take the Bondeforbundet seat, so he answers to
+			# either focus.
+			#
+			# The focus seats him with add_ideas, which ignores available
+			# entirely - this block is what lets the player re-hire him after
+			# dismissing him, and what keeps him out of the advisor list in 1936.
+			visible = {
+				OR = {
+					has_completed_focus = SWE_form_an_agrarian_cabinet
+					has_completed_focus = SWE_form_a_conservative_cabinet
+				}
+			}
+
+			available = {
+				OR = {
+					has_completed_focus = SWE_form_an_agrarian_cabinet
+					has_completed_focus = SWE_form_a_conservative_cabinet
+				}
+			}
+
+			# Justice Minister, which is the post he actually held. The trait is
+			# vanilla's and is also carried by Bergquist, who held the same
+			# office later - two men, one job, at different times.
+			traits = {
+				SWE_minister_of_justice
+			}
+		}
+	}
+
+	SWE_fritiof_domo = {
+		name = SWE_fritiof_domo
+
+		portraits = {
+			civilian = {
+				small = "GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_fritiof_domo
+			cost = 150
+
+			allowed = {
+				original_tag = SWE
+			}
+
+			# Only the conservative cabinet has a use for him: he is the Hogern
+			# seat on the one branch where Bagge is prime minister and therefore
+			# unavailable.
+			visible = {
+				has_completed_focus = SWE_form_a_conservative_cabinet
+			}
+
+			available = {
+				has_completed_focus = SWE_form_a_conservative_cabinet
+			}
+
+			# Konsultativt statsrad - minister without portfolio. Vanilla's own
+			# trait for the post.
+			traits = {
+				SWE_minister_of_state
+			}
+		}
+	}
+}

@@ -1,0 +1,51 @@
+# Gustaf V after the Democratic War Cabinet.
+#
+# THE FILENAME IS NOT sweden.txt ON PURPOSE. That name would override vanilla's
+# common/ideas/sweden.txt wholesale and delete every Swedish idea in it -
+# SWE_gustaf_v_idea included, which is the one this file swaps FROM. A distinct
+# filename merges into the same groups instead, and because the key below is new
+# there is no duplicate for the engine to discard. (Contrast
+# common/ideas/wif_trade_laws.txt, which redefines eight vanilla keys and does
+# produce duplicates.)
+#
+# A COUNTRY IDEA CARRYING A LEADER TRAIT, which is how the base game models a
+# monarch as a national spirit - vanilla's SWE_gustaf_v_idea is built exactly
+# this way, with traits = { SWE_former_autocrat }. The blocks below are copied
+# from it so the king behaves identically in every respect except the trait, and
+# in particular keeps the same allowed_civil_war condition: he goes with whichever
+# Sweden is not communist, and not to a rival non-aligned Sweden.
+ideas = {
+	country = {
+
+		wif_swe_gustaf_v_constitutional = {
+
+			allowed = {
+				original_tag = SWE
+			}
+
+			picture = SWE_king_gustaf
+
+			allowed_civil_war = {
+				NOT = {
+					has_government = communism
+				}
+				NOT = {
+					any_other_country = {
+						original_tag = SWE
+						has_government = neutrality
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+			}
+
+			removal_cost = -1
+
+			# The whole change. See common/country_leader/wif_traits.txt:
+			# +5% stability, +10% trade opinion, and none of the autocrat's
+			# political baggage.
+			traits = { SWE_constitutional_monarch }
+		}
+	}
+}
