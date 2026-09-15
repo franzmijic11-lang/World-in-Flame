@@ -67,6 +67,12 @@ characters = {
 					has_completed_focus = SWE_form_an_agrarian_cabinet
 					has_completed_focus = SWE_form_a_conservative_cabinet
 				}
+
+				# And locked out for good if the Social Democrats won the
+				# election: a socialist ministry does not hire Bondeforbundet's
+				# justice minister. See
+				# common/scripted_triggers/wif_sweden_triggers.txt.
+				wif_swe_bourgeois_ministry_allowed = yes
 			}
 
 			# Justice Minister, which is the post he actually held. The trait is
@@ -105,6 +111,12 @@ characters = {
 
 			available = {
 				has_completed_focus = SWE_form_a_conservative_cabinet
+
+				# Belt and braces. The conservative cabinet cannot exist on a
+				# Social Democratic win in the first place, but the lock is
+				# written out so this advisor reads the same way as every other
+				# bourgeois one.
+				wif_swe_bourgeois_ministry_allowed = yes
 			}
 
 			# Konsultativt statsrad - minister without portfolio. Vanilla's own

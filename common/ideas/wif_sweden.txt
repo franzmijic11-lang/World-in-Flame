@@ -208,6 +208,91 @@ ideas = {
 			}
 		}
 
+		# ============================================================
+		# The Social Democratic programme
+		# ============================================================
+		# The other side of the same 1936 argument. Bondeforbundet wanted the
+		# old-age pension paid at one flat rate everywhere; the Social Democrats
+		# wanted it graded by cost of living, which is worth more in a town than
+		# on a farm. That disagreement is what brought Hansson's government down
+		# in June and what the election was fought over.
+		#
+		# The two spirits are deliberately NOT opposites in game terms - the
+		# player can never hold both, because they hang off different cabinets -
+		# so each simply does what its party said it would.
+		wif_swe_dyrortsgraderade_folkpensioner = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.05
+
+				# political_power_gain, not political_power_factor: a flat
+				# +0.05 a day. A government that delivered on the question it
+				# fell over is a government with authority.
+				political_power_gain = 0.05
+
+				# Grading the pension upwards in the towns costs more than
+				# paying one rate everywhere, and the towns are where most of
+				# the pensioners are.
+				consumer_goods_factor = 0.03
+			}
+		}
+
+		# Free maternity care, midwives across the country, and money for new
+		# mothers. The Riksdag legislated moderskapspenning and modrahjalp in
+		# 1937, immediately after the election.
+		#
+		# Split in two the same way Folkbildning is: the reform is permanent,
+		# the cost of pushing it through the chamber is not.
+		wif_swe_fri_modravard = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				monthly_population = 0.03
+				stability_factor = 0.02
+			}
+		}
+
+		# The timed half - the government's own resources and room to negotiate,
+		# spent on getting the bill through.
+		wif_swe_moderskapsreformen = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				political_power_gain = -0.05
+			}
+		}
+
 		# Hogern's own, and the one concession an agrarian ministry will not
 		# make: a stand against planhushallning, against rising state spending
 		# and against the taxes that pay for both. Granted only by a government

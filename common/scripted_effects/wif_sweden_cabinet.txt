@@ -1,0 +1,145 @@
+# Dissolving the party cabinet.
+#
+# Called by SWE_coalition_war_cabinet. A national unity government is not a
+# reshuffle - every party minister leaves, and the three political advisor
+# slots are emptied so the war cabinet can be built from scratch.
+#
+# THERE IS NO remove_all_advisors EFFECT. HoI4 has no way to clear a slot
+# generically: remove_advisor_role strips the ROLE from a character, which is
+# permanent and wrong here, and the only way to un-hire somebody is
+# remove_ideas on the idea their advisor entry is registered under. So this
+# walks the whole Swedish political advisor roster by name.
+#
+# EVERY REMOVAL IS GUARDED. remove_ideas on an idea the country does not hold
+# writes an error to the log for every name that is not currently seated, and
+# at most three of these ever are.
+#
+# GENERATED FROM common/characters/SWE.txt plus this mod's own two ministers.
+# If a future patch adds a Swedish political advisor, add it here too or the
+# war cabinet will quietly leave that one minister in office.
+wif_swe_dissolve_the_party_cabinet = {
+	if = {
+		limit = { has_idea = SWE_alva_myrdal }
+		remove_ideas = SWE_alva_myrdal
+	}
+	if = {
+		limit = { has_idea = SWE_arne_beurling }
+		remove_ideas = SWE_arne_beurling
+	}
+	if = {
+		limit = { has_idea = SWE_axel_pehrssonbramstorp }
+		remove_ideas = SWE_axel_pehrssonbramstorp
+	}
+	if = {
+		limit = { has_idea = SWE_birger_furugard }
+		remove_ideas = SWE_birger_furugard
+	}
+	if = {
+		limit = { has_idea = SWE_carl_lindhagen }
+		remove_ideas = SWE_carl_lindhagen
+	}
+	if = {
+		limit = { has_idea = SWE_christian_gunter }
+		remove_ideas = SWE_christian_gunter
+	}
+	if = {
+		limit = { has_idea = SWE_ebba_palmstierna }
+		remove_ideas = SWE_ebba_palmstierna
+	}
+	if = {
+		limit = { has_idea = SWE_ernst_wigforss }
+		remove_ideas = SWE_ernst_wigforss
+	}
+	if = {
+		limit = { has_idea = SWE_frans_severin }
+		remove_ideas = SWE_frans_severin
+	}
+	if = {
+		limit = { has_idea = SWE_fredrik_strom }
+		remove_ideas = SWE_fredrik_strom
+	}
+	if = {
+		limit = { has_idea = SWE_fritiof_domo }
+		remove_ideas = SWE_fritiof_domo
+	}
+	if = {
+		limit = { has_idea = SWE_gosta_bagge }
+		remove_ideas = SWE_gosta_bagge
+	}
+	if = {
+		limit = { has_idea = SWE_gunnar_myrdal }
+		remove_ideas = SWE_gunnar_myrdal
+	}
+	if = {
+		limit = { has_idea = SWE_herman_eriksson }
+		remove_ideas = SWE_herman_eriksson
+	}
+	if = {
+		limit = { has_idea = SWE_hugo_silen }
+		remove_ideas = SWE_hugo_silen
+	}
+	if = {
+		limit = { has_idea = SWE_karl_gustav_westman }
+		remove_ideas = SWE_karl_gustav_westman
+	}
+	if = {
+		limit = { has_idea = SWE_karl_kilbom }
+		remove_ideas = SWE_karl_kilbom
+	}
+	if = {
+		limit = { has_idea = SWE_king_gustaf_v }
+		remove_ideas = SWE_king_gustaf_v
+	}
+	if = {
+		limit = { has_idea = SWE_konrad_hallgren }
+		remove_ideas = SWE_konrad_hallgren
+	}
+	if = {
+		limit = { has_idea = SWE_natanael_beskow }
+		remove_ideas = SWE_natanael_beskow
+	}
+	if = {
+		limit = { has_idea = SWE_nils_flyg }
+		remove_ideas = SWE_nils_flyg
+	}
+	if = {
+		limit = { has_idea = SWE_osten_unden }
+		remove_ideas = SWE_osten_unden
+	}
+	if = {
+		limit = { has_idea = SWE_per_edvin_skold }
+		remove_ideas = SWE_per_edvin_skold
+	}
+	if = {
+		limit = { has_idea = SWE_raoul_wallenberg }
+		remove_ideas = SWE_raoul_wallenberg
+	}
+	if = {
+		limit = { has_idea = SWE_rickard_sandler }
+		remove_ideas = SWE_rickard_sandler
+	}
+	if = {
+		limit = { has_idea = SWE_sven_hedengren }
+		remove_ideas = SWE_sven_hedengren
+	}
+	if = {
+		limit = { has_idea = SWE_sven_hedin }
+		remove_ideas = SWE_sven_hedin
+	}
+	if = {
+		limit = { has_idea = SWE_sven_linderot }
+		remove_ideas = SWE_sven_linderot
+	}
+	if = {
+		limit = { has_idea = SWE_thorwald_bergquist }
+		remove_ideas = SWE_thorwald_bergquist
+	}
+	if = {
+		limit = { has_idea = SWE_ture_nerman }
+		remove_ideas = SWE_ture_nerman
+	}
+	if = {
+		limit = { has_idea = SWE_zeth_hoglund }
+		remove_ideas = SWE_zeth_hoglund
+	}
+}

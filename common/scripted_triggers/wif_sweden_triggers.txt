@@ -1,0 +1,43 @@
+# Who is allowed to hold office after the 1936 election.
+#
+# The election does not merely decide who governs, it decides who is
+# EMPLOYABLE. A Social Democratic ministry does not hire Hogern's front bench,
+# and a bourgeois one does not hire Wigforss - so the losing side's politicians
+# are locked out of the advisor slots for the rest of the game.
+#
+# Both read the flags set by the three result focuses in
+# common/national_focus/sweden.txt:
+#
+#   SWE_1936_socialdemokraterna_won
+#   SWE_1936_bondeforbundet_won
+#   SWE_1936_hogern_won
+#
+# WRITTEN AS "ALLOWED", NOT "LOCKED", so they drop straight into an advisor's
+# available block as one more condition. Before the election none of the flags
+# is set, both triggers pass, and every advisor behaves exactly as vanilla
+# intends - which matters, because these are added to vanilla characters in
+# common/characters/SWE.txt and must be inert until the election resolves.
+#
+# ACADEMICS ARE NOT POLITICIANS. Alva and Gunnar Myrdal were Social Democrats
+# and are deliberately NOT locked: they are hired in this game as social
+# scientists rather than as party men, they are gated behind
+# SWE_education_reform already, and a bourgeois government had every reason to
+# keep them on. Add them here if that judgement should change.
+
+# Passes unless a bourgeois party won. Put on Social Democratic politicians.
+wif_swe_socialist_ministry_allowed = {
+	NOT = {
+		OR = {
+			has_country_flag = SWE_1936_bondeforbundet_won
+			has_country_flag = SWE_1936_hogern_won
+		}
+	}
+}
+
+# Passes unless the Social Democrats won. Put on Hogern, Bondeforbundet and
+# Folkpartiet politicians.
+wif_swe_bourgeois_ministry_allowed = {
+	NOT = {
+		has_country_flag = SWE_1936_socialdemokraterna_won
+	}
+}

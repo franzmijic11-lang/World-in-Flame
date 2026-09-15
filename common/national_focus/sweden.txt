@@ -1500,54 +1500,115 @@ focus_tree = {
 
 	# ============================================================
 	# ============================================================
+	# ============================================================
 	# The coalition's price
 	# ============================================================
-	# Five concessions beneath the two bourgeois cabinets, and the reason those
-	# cabinets are worth forming. Neither Pehrsson-Bramstorp nor Bagge governs on
-	# a majority of his own, and each buys one in policy.
+	# Seven promises beneath the three cabinets, and the reason those cabinets
+	# are worth forming. Access depends on which party actually won:
 	#
-	# THREE TIERS OF ACCESS, and the prerequisites are what express them:
+	#   social democratic only  Dyrortsgraderade folkpensioner, Fri modravard
+	#   agrarian only           Lika folkpension, Tryggade jordbrukspriser
+	#   either bourgeois        Nykterhet och folkbildning, Stod at den
+	#                           frivilliga forsvarsrorelsen
+	#   conservative only       Sparsamhet och sunda statsfinanser
 	#
-	#   agrarian only     Lika folkpension, Tryggade jordbrukspriser
-	#                     Bondeforbundet's own programme. Only a government it
-	#                     leads is going to spend its majority on this.
+	# Folkpartiet and Hogern sit in BOTH bourgeois ministries, so their two
+	# prices are collected from whichever is in office. ONE prerequisite block
+	# listing both cabinets, which HoI4 reads as OR - two separate blocks would
+	# be an AND and would demand both.
 	#
-	#   either cabinet    Nykterhet och folkbildning, Stod at den frivilliga
-	#                     forsvarsrorelsen
-	#                     Folkpartiet's price and Hogern's. Both parties sit in
-	#                     both bourgeois ministries, so both collect whichever
-	#                     of the two is in office. ONE prerequisite block listing
-	#                     BOTH cabinets, which HoI4 reads as OR - two separate
-	#                     blocks would be an AND and would need both.
+	# THE TWO PENSION PROMISES ARE THE SAME ARGUMENT FROM OPPOSITE SIDES.
+	# Bondeforbundet wanted the old-age pension paid at one flat rate whatever
+	# the cost of living; the Social Democrats wanted it graded, which is worth
+	# more in a town than on a farm. That disagreement brought Hansson's
+	# government down in June 1936 and is what the election was fought over. The
+	# player can never hold both, because they hang off different cabinets.
 	#
-	#   conservative only Sparsamhet och sunda statsfinanser
-	#                     Hogern's own, and an attack on the whole reform
-	#                     programme. It takes a government Hogern actually leads.
+	# NOT MUTUALLY EXCLUSIVE within a branch. A coalition does not choose between
+	# its partners' demands; it meets all of them and lives with the bill.
 	#
-	# NOT MUTUALLY EXCLUSIVE with one another. A coalition does not choose
-	# between its partners' demands; it meets all of them and lives with the
-	# bill. Every one of these spirits carries a real cost.
-	#
-	# POSITIONS. The two shared focuses sit at absolute x = 2 and 4, between the
-	# agrarian cabinet at x = 0 and the conservative at x = 6, so the arrows
-	# arrive from both sides at roughly equal length.
+	# TWO ROWS, NOT ONE. Nine focuses now hang off this row of cabinets and the
+	# band between the Landsorganisationen branch on the left and the Nordic
+	# Defense Council branch on the right is only sixteen columns wide. The
+	# second row is what keeps four columns between neighbouring branches
+	# instead of two.
 	#
 	# HOGERN, NOT MODERATERNA. The party took that name in this period and only
-	# became Moderata samlingspartiet in 1969, so the tree calls it what it
-	# called itself.
+	# became Moderata samlingspartiet in 1969.
 	#
 	# The modifiers all live on spirits in common/ideas/wif_sweden.txt: a focus
 	# runs effects and cannot hold a lasting modifier itself.
 
+	# --- Social Democratic only, first of two ----------------------------
+	# The question that felled the government in June and decided the election.
+	focus = {
+		id = SWE_dyrortsgraderade_folkpensioner
+		icon = GFX_focus_generic_welfare
+
+		relative_position_id = SWE_form_a_social_democratic_cabinet
+		x = -1
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			add_ideas = wif_swe_dyrortsgraderade_folkpensioner
+		}
+	}
+
+	# --- Social Democratic only, second of two ---------------------------
+	# Free maternity care, midwives across the country and money for new
+	# mothers. The Riksdag legislated moderskapspenning and modrahjalp in 1937,
+	# immediately after the election.
+	focus = {
+		id = SWE_fri_modravard
+		icon = GFX_focus_SWE_hygienic_housing
+
+		relative_position_id = SWE_form_a_social_democratic_cabinet
+		x = 1
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			# The reform is permanent; the cost of getting it through the
+			# chamber is not. add_timed_idea expires by itself.
+			add_ideas = wif_swe_fri_modravard
+
+			add_timed_idea = {
+				idea = wif_swe_moderskapsreformen
+				days = 180
+			}
+		}
+	}
+
 	# --- Bondeforbundet only, first of two -------------------------------
-	# The promise that actually brought down the summer government: a flat
-	# old-age pension, the same in Kiruna as in Stockholm.
 	focus = {
 		id = SWE_lika_folkpension
 		icon = GFX_focus_generic_welfare
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = -4
+		x = 0
 		y = 1
 
 		cost = 5
@@ -1568,14 +1629,13 @@ focus_tree = {
 	}
 
 	# --- Bondeforbundet only, second of two ------------------------------
-	# The party's core question and the foundation of the 1933 kohandel: milk
-	# price equalisation, grain regulation and a tariff wall to hold both up.
+	# The party's core question and the foundation of the 1933 kohandel.
 	focus = {
 		id = SWE_tryggade_jordbrukspriser
 		icon = GFX_goal_generic_consumer_goods
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = -2
+		x = 2
 		y = 1
 
 		cost = 5
@@ -1595,76 +1655,10 @@ focus_tree = {
 		}
 	}
 
-	# --- Folkpartiet's price, from either cabinet ------------------------
-	focus = {
-		id = SWE_nykterhet_och_folkbildning
-		icon = GFX_focus_SWE_education_reform
-
-		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 2
-		y = 1
-
-		cost = 5
-
-		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
-		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
-
-		ai_will_do = {
-			factor = 10
-		}
-
-		cancel_if_invalid = no
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY }
-
-		completion_reward = {
-			# The permanent half - a settled moral order.
-			add_ideas = wif_swe_nykterhet_och_folkbildning
-
-			# And the campaign itself, which burns out. add_timed_idea expires
-			# on its own, so nothing has to remember to take it off again.
-			add_timed_idea = {
-				idea = wif_swe_nykterhetskampanjen
-				days = 180
-			}
-		}
-	}
-
-	# --- Hogern's price, from either cabinet -----------------------------
-	focus = {
-		id = SWE_stod_at_forsvarsrorelsen
-		icon = GFX_focus_SWE_lottakoren
-
-		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 4
-		y = 1
-
-		cost = 5
-
-		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
-		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
-
-		ai_will_do = {
-			factor = 10
-		}
-
-		cancel_if_invalid = no
-		continue_if_invalid = no
-		available_if_capitulated = yes
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_XP }
-
-		completion_reward = {
-			add_ideas = wif_swe_frivilliga_forsvarsrorelsen
-		}
-	}
-
 	# --- Hogern only -----------------------------------------------------
-	# The party went to the election against Social Democratic planhushallning,
-	# against rising state spending and against the taxes that paid for both.
-	# This is the one concession the agrarian ministry will not make: it is not
-	# a policy Bondeforbundet disagrees with so much as one it cannot survive
-	# putting its name to.
+	# Against planhushallning, against rising state spending and against the
+	# taxes that pay for both. Not a policy Bondeforbundet disagrees with so
+	# much as one it cannot survive putting its name to.
 	focus = {
 		id = SWE_sparsamhet_sunda_statsfinanser
 		icon = GFX_focus_generic_industry_investment
@@ -1687,6 +1681,69 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = wif_swe_sparsamhet_sunda_statsfinanser
+		}
+	}
+
+	# --- Folkpartiet's price, from either bourgeois cabinet ---------------
+	# Second row, so the first stays spacious. Positioned off the agrarian
+	# cabinet; the conservative one reaches it by prerequisite alone.
+	focus = {
+		id = SWE_nykterhet_och_folkbildning
+		icon = GFX_focus_SWE_education_reform
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = 2
+		y = 2
+
+		cost = 5
+
+		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			add_ideas = wif_swe_nykterhet_och_folkbildning
+
+			add_timed_idea = {
+				idea = wif_swe_nykterhetskampanjen
+				days = 180
+			}
+		}
+	}
+
+	# --- Hogern's price, from either bourgeois cabinet --------------------
+	focus = {
+		id = SWE_stod_at_forsvarsrorelsen
+		icon = GFX_focus_SWE_lottakoren
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = 4
+		y = 2
+
+		cost = 5
+
+		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_XP }
+
+		completion_reward = {
+			add_ideas = wif_swe_frivilliga_forsvarsrorelsen
 		}
 	}
 
@@ -1746,15 +1803,15 @@ focus_tree = {
 	focus = {
 		id = SWE_sami_reconcilliation
 		icon = GFX_focus_SWE_Sami_reconcilliation
-		# Re-parented to Socialdemokratisk Seger. Sami policy was a Social
-		# Democratic programme, and this now hangs off the party winning rather
-		# than off either union alignment or the war cabinet.
-		x = -2
-		y = 1
+		# Re-parented to Form a Social Democratic Cabinet. Sami policy was a
+		# Social Democratic programme, and it belongs to the ministry that
+		# carried it out rather than to the election result alone.
+		x = 2
+		y = 2
 
 		cost = 10
-		prerequisite = { focus = SWE_socialdemokratisk_seger }
-		relative_position_id = SWE_socialdemokratisk_seger
+		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
+		relative_position_id = SWE_form_a_social_democratic_cabinet
 		
 
 		ai_will_do = {
@@ -1851,14 +1908,14 @@ focus_tree = {
 	focus = {
 		id = SWE_form_rfsu
 		icon = GFX_focus_SWE_form_rfsu 
-		# Re-parented to Socialdemokratisk Seger, alongside Sami
+		# Re-parented to Form a Social Democratic Cabinet, alongside Sami
 		# Reconcilliation - the RFSU was a Social Democratic cause.
-		x = 2
-		y = 1
+		x = 4
+		y = 2
 
 		cost = 5
-		prerequisite = { focus = SWE_socialdemokratisk_seger }
-		relative_position_id = SWE_socialdemokratisk_seger
+		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
+		relative_position_id = SWE_form_a_social_democratic_cabinet
 
 		ai_will_do = {
 			factor = 10		
@@ -4152,8 +4209,8 @@ focus_tree = {
 	# ============================================================
 	# Democratic War Cabinet
 	# ============================================================
-	# Welt in Flammen changes three things about this focus and leaves the rest
-	# of it, and all sixteen focuses hanging below it, alone.
+	# Welt in Flammen changes four things about this focus and leaves the rest of
+	# it, and all sixteen focuses hanging below it, alone.
 	#
 	# 1. IT NO LONGER RETIRES THE KING. Vanilla's reward did
 	#    remove_ideas = SWE_gustaf_v_idea, which takes Gustaf V off the country
@@ -4162,47 +4219,62 @@ focus_tree = {
 	#    See common/ideas/wif_sweden.txt for the new idea and
 	#    common/country_leader/wif_traits.txt for the trait.
 	#
-	# 2. IT IS NO LONGER CONNECTED TO ANYTHING. The prerequisite is gone, so the
-	#    panel draws no line into it, and so is the mutual exclusivity with
-	#    Align more Closely with Landsorganisationen - the two can now both be
-	#    taken. What replaces the prerequisite is an AVAILABILITY condition on
-	#    the election focus, the same trick the SME tree uses for
-	#    SME_marshals_secret_police: it gates without drawing an arrow. Vanilla's
-	#    own democratic > 0.66 requirement is deliberately kept on top of it.
+	# 2. IT DISSOLVES THE PARTY MINISTRY. A national unity government is not a
+	#    reshuffle - every party minister leaves and all three political advisor
+	#    slots are emptied, whichever cabinet was sitting in them. See
+	#    common/scripted_effects/wif_sweden_cabinet.txt.
 	#
-	# 3. IT SITS THREE ROWS FURTHER DOWN, y = 2 -> y = 5, which is as far as it
-	#    goes. relative_position_id is unchanged, so the sixteen focuses
-	#    positioned off it - Winter Drill, Varnplikt, Hemvarnet, Rapid
-	#    Mobilization, Totalforsvar, Operation Save Denmark and the rest - move
-	#    with it as one block. The post-war branch starts at absolute y = 18
-	#    (SWE_scandinavian_defense_union at x = -4, SWE_the_threat_of_the_iron_curtain
-	#    at x = 0), and a fourth row would put SWE_swedish_shooting_movement on
-	#    top of the first of those. If this has to go lower, that branch has to
-	#    move first.
+	# 3. THE THREE BRANCHES MEET HERE. It used to have no prerequisite at all and
+	#    was gated by an availability condition on the election focus instead.
+	#    Now all three cabinets lead into it - one prerequisite block listing the
+	#    three, which HoI4 reads as OR - because whichever party won and whatever
+	#    ministry it formed, the war cabinet is where the argument stops. The
+	#    election gate is dropped as redundant: no cabinet exists without a
+	#    result and no result without the election. Vanilla's own
+	#    democratic > 0.66 requirement is kept.
 	#
-	# 4. IT HAS ONE CHILD NOW, AND IT IS A NEW ONE. Vanilla gave Sami
-	#    Reconcilliation, En Svensk Tiger and Form RFSU a prerequisite of EITHER
-	#    this focus or Landsorganisationen, which with this focus three rows
-	#    lower would have drawn all three arrows upwards. They are re-parented
-	#    instead, each to one parent and no longer to both: Sami Reconcilliation
-	#    and Form RFSU to Socialdemokratisk Seger, and En Svensk Tiger to this
-	#    focus, directly below it at x = -2. A wartime silence campaign belongs
-	#    to the government that expects a war.
+	#    The mutual exclusivity with Align more Closely with Landsorganisationen
+	#    is still gone, so the two can both be taken.
+	#
+	# 4. IT SITS FOUR ROWS FURTHER DOWN, y = 2 -> y = 6, to clear the two rows of
+	#    coalition concessions above it. relative_position_id is unchanged, so
+	#    the sixteen focuses positioned off it - Winter Drill, Varnplikt,
+	#    Hemvarnet, Rapid Mobilization, Totalforsvar, Operation Save Denmark and
+	#    the rest - move with it as one block. That block now reaches absolute
+	#    y = 20, so the post-war branch was pushed two rows down to make room:
+	#    see SWE_scandinavian_defense_union, which the whole of it hangs from.
+	#
+	#    Vanilla gave Sami Reconcilliation, En Svensk Tiger and Form RFSU a
+	#    prerequisite of EITHER this focus or Landsorganisationen, which with
+	#    this focus so much lower would have drawn all three arrows upwards.
+	#    Each is re-parented to a single parent instead: Sami Reconcilliation and
+	#    Form RFSU to Form a Social Democratic Cabinet, and En Svensk Tiger to
+	#    this focus, directly below it at x = -2. A wartime silence campaign
+	#    belongs to the government that expects a war.
 		focus = {
 		id = SWE_coalition_war_cabinet
-		icon = GFX_focus_generic_treaty 
+		icon = GFX_focus_generic_treaty
 		x = 5
-		y = 5
+		y = 6
 		cost = 10
 		relative_position_id = SWE_continue_the_second_industrial_revolution
 
+		# CONNECTED NOW, and to all three branches at once. Whichever party won
+		# and whatever ministry it formed, the war cabinet is where the argument
+		# stops - so every one of the three cabinets leads into it. One
+		# prerequisite block listing all three, which HoI4 reads as OR.
+		#
+		# This replaces the availability condition on the election focus that
+		# used to gate it. That is now implied: no cabinet exists without a
+		# result, and no result exists without the election.
+		prerequisite = { focus = SWE_form_a_social_democratic_cabinet focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
+
 		ai_will_do = {
-			factor = 10		
+			factor = 10
 		}
 
 		available = {
 			democratic > 0.66
-			has_completed_focus = SWE_continue_the_second_industrial_revolution
 		}
 
 		bypass = {
@@ -4220,6 +4292,15 @@ focus_tree = {
 				ideology = democratic
 				popularity = 0.05
 			}
+
+			# Every party minister leaves. A national unity government is not a
+			# reshuffle: the three political advisor slots are emptied so the
+			# war cabinet can be built from scratch, whichever party's ministry
+			# was sitting in them. See
+			# common/scripted_effects/wif_sweden_cabinet.txt - there is no
+			# remove_all_advisors effect in the game, so it walks the roster by
+			# name with a has_idea guard on each.
+			wif_swe_dissolve_the_party_cabinet = yes
 
 			# The king keeps his throne and loses his politics. swap_ideas
 			# rather than remove_ideas + add_ideas so the panel shows it as one
@@ -10612,8 +10693,14 @@ focus_tree = {
 		icon = GFX_focus_generic_scandinavian_alliance
 		prerequisite = { focus =  SWE_universal_basic_income }
 		mutually_exclusive = { focus = SWE_the_threat_of_the_iron_curtain}
+		# Welt in Flammen: y = 1 -> 3, x unchanged. The Democratic War Cabinet
+		# moved a row lower to make room for the coalition concessions, and its
+		# sixteen relatively positioned children came down with it -
+		# SWE_swedish_shooting_movement would otherwise land exactly on this
+		# focus. The whole post-war branch hangs off this one node, so moving it
+		# here moves all eleven.
 		x = 3
-		y = 1
+		y = 3
 		relative_position_id = SWE_universal_basic_income
 		cost = 5
 		available = {

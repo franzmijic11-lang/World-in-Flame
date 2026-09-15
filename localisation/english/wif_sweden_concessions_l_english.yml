@@ -36,3 +36,16 @@
  SWE_sparsamhet_sunda_statsfinanser_desc:0 "Högern fought the election against planhushållning - against a state that spends more every year and taxes more every year to pay for it. What it wants from a ministry it leads is a budget held straight, and private saving and private enterprise left alone to do the work.\n\nThe workshops and the yards agree with it. The union halls read the whole thing as an attack on the reform programme, and are not entirely wrong."
  wif_swe_sparsamhet_sunda_statsfinanser:0 "Sparsamhet och Sunda Statsfinanser"
  wif_swe_sparsamhet_sunda_statsfinanser_desc:0 "A budget held straight, and private capital left where it is. Industry builds cheaper and the state asks less of the household - at the price of a labour movement that has been told, in as many words, that the reforms stop here."
+
+ # === Socialdemokraterna ==============================================
+ SWE_dyrortsgraderade_folkpensioner:0 "Dyrortsgraderade Folkpensioner"
+ SWE_dyrortsgraderade_folkpensioner_desc:0 "This is the question the government fell over in June. The pension committee wants the old-age pension graded by cost of living; Bondeförbundet wants one flat rate and brought down the ministry rather than concede it.\n\nThe Social Democrats came back with a mandate and intend to use it. A pension that is worth something in a town where rent is worth something - and a bill the towns will also pay."
+ wif_swe_dyrortsgraderade_folkpensioner:0 "Dyrortsgraderade Folkpensioner"
+ wif_swe_dyrortsgraderade_folkpensioner_desc:0 "The old-age pension is graded by what living actually costs where the pensioner lives. It settles the question that brought down a government, and it costs rather more than paying one rate everywhere would have."
+
+ SWE_fri_modravard:0 "Fri Mödravård och Moderskapshjälp"
+ SWE_fri_modravard_desc:0 "The same population debate as Myrdal's book, but about care rather than housing: free antenatal and maternity care, a trained midwife within reach of every parish, and money for new mothers who have none.\n\nThe Riksdag will legislate moderskapspenning and mödrahjälp within the year. Getting it there costs the government most of what it has to bargain with."
+ wif_swe_fri_modravard:0 "Fri Mödravård"
+ wif_swe_fri_modravard_desc:0 "Antenatal and maternity care free at the point of use, midwives across the whole country, and maternity payments for mothers with nothing to fall back on. Fewer women die, more children live, and the population figures stop frightening people."
+ wif_swe_moderskapsreformen:0 "Moderskapsreformen"
+ wif_swe_moderskapsreformen_desc:0 "The maternity bill is being pushed through the chamber, and it is taking every favour and every hour the government has. Nothing else moves while it does."
