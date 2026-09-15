@@ -954,4 +954,100 @@ focus_tree = {
 			}
 		}
 	}
+
+	# =====================================================================
+	# Making peace with the monarchists
+	# =====================================================================
+	# The third way with the Whites, and the only one that gives them something
+	# they actually asked for. It runs alongside the Romanov road in the
+	# decisions - each focus waits on a decision having been taken, so the
+	# tree cannot outrun the funeral or the invitation. Sits at x = +2 off
+	# Curb Their Influence, mirroring the fascist chain at -2.
+	#
+	# The ending swaps the honourary Tsar for a red one. Everything that
+	# tests for the honourary spirit must accept both - the coup in
+	# common/scripted_effects/wif_sme_coup.txt does.
+	focus = {
+		id = SME_make_amends_with_the_whites
+		icon = GFX_focus_generic_monarchist_sentiment
+
+		prerequisite = { focus = SME_curb_their_influence }
+
+		relative_position_id = SME_curb_their_influence
+		x = 2
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		# You cannot make amends with people whose dead you have not buried.
+		available = {
+			has_country_flag = wif_tsar_funeral_done
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 200
+
+			add_to_variable = { wif_whites_mon_loyalty = 5 }
+			wif_clamp_white_loyalty = yes
+		}
+	}
+
+	focus = {
+		id = SME_wash_away_our_blood
+		icon = GFX_focus_generic_treaty
+
+		prerequisite = { focus = SME_make_amends_with_the_whites }
+
+		relative_position_id = SME_make_amends_with_the_whites
+		x = 0
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	# The honourary Tsar becomes a red one. swap_ideas rather than remove +
+	# add so the tooltip reads as one change, and Kuybyshev gets its garrison
+	# back - the demilitarisation was the whites' condition for a Romanov on
+	# Russian soil, and a Romanov who speaks for the Party needs no such
+	# guarantee. The palace slot stays; it was built.
+	focus = {
+		id = SME_speak_with_the_new_romanov
+		icon = GFX_focus_generic_monarchy_1
+
+		prerequisite = { focus = SME_wash_away_our_blood }
+
+		relative_position_id = SME_wash_away_our_blood
+		x = 0
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		# Both: the flag proves the decision was taken, the idea proves he is
+		# still honourary and not already on the throne after a coup.
+		available = {
+			has_country_flag = wif_vladimir_invited
+			has_idea = wif_honourary_tsar_vladimir
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = wif_honourary_tsar_vladimir
+				add_idea = wif_red_tsar_vladimir
+			}
+
+			251 = {
+				set_demilitarized_zone = no
+			}
+		}
+	}
 }

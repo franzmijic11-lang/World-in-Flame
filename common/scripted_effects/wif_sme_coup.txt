@@ -135,7 +135,9 @@ wif_sme_coup_authoritarian = {
 	# WHICH MONARCHY DEPENDS ON WHETHER THERE IS A MONARCH.
 	#
 	# If Vladimir has already been brought back as a figurehead - the spirit
-	# wif_honourary_tsar_vladimir, granted by the third Romanov decision - then
+	# wif_honourary_tsar_vladimir, granted by the third Romanov decision, or
+	# wif_red_tsar_vladimir once SME_speak_with_the_new_romanov has swapped
+	# it - then
 	# there is a Tsar in the country and he simply stops being honourary. That is
 	# ABSOLUTE monarchy, and he rules in his own name.
 	#
@@ -143,7 +145,12 @@ wif_sme_coup_authoritarian = {
 	# the sub-ideology is REGENTIAL. A regency is what you have when you have no
 	# king; produce the king and the regency has no reason to exist.
 	if = {
-		limit = { has_idea = wif_honourary_tsar_vladimir }
+		limit = {
+			OR = {
+				has_idea = wif_honourary_tsar_vladimir
+				has_idea = wif_red_tsar_vladimir
+			}
+		}
 
 		wif_become_absolute_monarchy = yes
 

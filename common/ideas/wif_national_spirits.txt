@@ -670,6 +670,32 @@ ideas = {
 			}
 		}
 
+		# The same man, after SME_speak_with_the_new_romanov. Swapped in for
+		# the honourary spirit, never held alongside it. Less political power
+		# than before - a Tsar who takes a side is a Tsar half the ministers
+		# now argue with - but he pulls toward the Party as hard as toward the
+		# crown. Tested in the coup alongside wif_honourary_tsar_vladimir.
+		wif_red_tsar_vladimir = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = wif_honourary_tsar_vladimir
+
+			modifier = {
+				political_power_factor = 0.10
+
+				neutrality_drift = 0.10
+				communism_drift = 0.10
+			}
+		}
+
 		wif_sme_the_whites_return_duma = {
 			allowed = {
 				always = no

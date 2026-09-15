@@ -341,3 +341,14 @@
  wif_sme_fascist_writers_desc:0 "Their columnists write for us now, which means they write about the nation and the Party in the same breath and with the same conviction. Circulation is up. So is everything else."
  wif_sme_russkiy_molodoy_merged:0 "The Russkiy Molodoy Absorbed"
  wif_sme_russkiy_molodoy_merged_desc:0 "A youth movement that used to belong to the fascists now belongs to the Komsomol, and its drill instructors to the marshal. The recruiting offices have noticed the difference."
+
+ # === Making peace with the monarchists ===========================
+ SME_make_amends_with_the_whites:0 "Make Amends with the Whites"
+ SME_make_amends_with_the_whites_desc:0 "The funeral was the first thing the Union has done for the monarchists that it did not have to. This is the second. A delegation goes to the officers who came back from Harbin with nothing and says, in a room with the door closed, that the men who shot their brothers are dead too, and that the Union which did it is not the one sitting across the table now. It is not an apology. It is the closest thing to one that a Marshal's government can afford to say aloud."
+ SME_wash_away_our_blood:0 "Wash Away Our Blood from the Civil War"
+ SME_wash_away_our_blood_desc:0 "The records of 1918 to 1921 are opened - not to the public, to the families. Names are matched to graves. Pensions struck off for the wrong surname are quietly restored. Nobody is tried and nobody is pardoned; the point is not justice, it is that the ledger is closed and both sides have watched it close."
+ SME_speak_with_the_new_romanov:0 "Speak with the New Romanov"
+ SME_speak_with_the_new_romanov_desc:0 "He has been in Kuybyshev for a season, photographed and powerless, and the arrangement has held. Now the Marshal's aide asks him a question the Whites did not anticipate: whether a Romanov might say, in public, that the workers' state is his state too. He thinks about it for a week. When he says yes, the garrison the Whites bargained away comes back to Kuybyshev, and the Party discovers it has a Tsar."
+
+ wif_red_tsar_vladimir:0 "A Red Tsar Vladimir III Romanov"
+ wif_red_tsar_vladimir_desc:0 "He still signs nothing, but he now says things, and what he says is that the Union and the crown are not enemies. Half the ministers who used to agree in front of him now argue instead - but the ones who agree, agree with the Party."
