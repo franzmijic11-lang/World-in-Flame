@@ -1014,7 +1014,7 @@ focus_tree = {
 			# figure here if Moskowien's templates drift far from it.
 			set_variable = { wif_rkm_equip_request = num_divisions }
 			multiply_variable = { wif_rkm_equip_request = 1000 }
-			subtract_variable = { wif_rkm_equip_request = num_equipment_in_armies@infantry_equipment }
+			subtract_from_variable = { wif_rkm_equip_request = num_equipment_in_armies@infantry_equipment }
 
 			# No shortfall worth naming: ask for a flat reserve instead.
 			if = {
