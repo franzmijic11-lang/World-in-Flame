@@ -1499,35 +1499,55 @@ focus_tree = {
 	}
 
 	# ============================================================
+	# ============================================================
 	# The coalition's price
 	# ============================================================
-	# Four concessions beneath the agrarian cabinet, and the reason that cabinet
-	# is worth forming at all. Pehrsson-Bramstorp governs on a minority and pays
-	# for his majority in policy: two of these are Bondeforbundet's own
-	# programme, one is Folkpartiet's price and one is Hogern's.
+	# Five concessions beneath the two bourgeois cabinets, and the reason those
+	# cabinets are worth forming. Neither Pehrsson-Bramstorp nor Bagge governs on
+	# a majority of his own, and each buys one in policy.
 	#
-	# NOT MUTUALLY EXCLUSIVE, and deliberately so. A coalition government does
-	# not choose between its partners' demands; it meets all of them and lives
-	# with the bill. Every one of these spirits carries a real cost.
+	# THREE TIERS OF ACCESS, and the prerequisites are what express them:
 	#
-	# All four hang off Form an Agrarian Cabinet rather than off Bondeforbundet
-	# Leder directly - there is nobody to bargain with until the ministries have
-	# been handed out.
+	#   agrarian only     Lika folkpension, Tryggade jordbrukspriser
+	#                     Bondeforbundet's own programme. Only a government it
+	#                     leads is going to spend its majority on this.
 	#
-	# HOGERN, NOT MODERATERNA. The party took the name Hogern in this period and
-	# only became Moderata samlingspartiet in 1969, so the tree calls it what it
+	#   either cabinet    Nykterhet och folkbildning, Stod at den frivilliga
+	#                     forsvarsrorelsen
+	#                     Folkpartiet's price and Hogern's. Both parties sit in
+	#                     both bourgeois ministries, so both collect whichever
+	#                     of the two is in office. ONE prerequisite block listing
+	#                     BOTH cabinets, which HoI4 reads as OR - two separate
+	#                     blocks would be an AND and would need both.
+	#
+	#   conservative only Sparsamhet och sunda statsfinanser
+	#                     Hogern's own, and an attack on the whole reform
+	#                     programme. It takes a government Hogern actually leads.
+	#
+	# NOT MUTUALLY EXCLUSIVE with one another. A coalition does not choose
+	# between its partners' demands; it meets all of them and lives with the
+	# bill. Every one of these spirits carries a real cost.
+	#
+	# POSITIONS. The two shared focuses sit at absolute x = 2 and 4, between the
+	# agrarian cabinet at x = 0 and the conservative at x = 6, so the arrows
+	# arrive from both sides at roughly equal length.
+	#
+	# HOGERN, NOT MODERATERNA. The party took that name in this period and only
+	# became Moderata samlingspartiet in 1969, so the tree calls it what it
 	# called itself.
 	#
 	# The modifiers all live on spirits in common/ideas/wif_sweden.txt: a focus
 	# runs effects and cannot hold a lasting modifier itself.
 
-	# --- Bondeforbundet's own, first of two -----------------------------
+	# --- Bondeforbundet only, first of two -------------------------------
+	# The promise that actually brought down the summer government: a flat
+	# old-age pension, the same in Kiruna as in Stockholm.
 	focus = {
 		id = SWE_lika_folkpension
 		icon = GFX_focus_generic_welfare
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = -3
+		x = -4
 		y = 1
 
 		cost = 5
@@ -1547,13 +1567,15 @@ focus_tree = {
 		}
 	}
 
-	# --- Bondeforbundet's own, second of two ----------------------------
+	# --- Bondeforbundet only, second of two ------------------------------
+	# The party's core question and the foundation of the 1933 kohandel: milk
+	# price equalisation, grain regulation and a tariff wall to hold both up.
 	focus = {
 		id = SWE_tryggade_jordbrukspriser
 		icon = GFX_goal_generic_consumer_goods
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = -1
+		x = -2
 		y = 1
 
 		cost = 5
@@ -1573,17 +1595,19 @@ focus_tree = {
 		}
 	}
 
-	# --- Folkpartiet's price --------------------------------------------
+	# --- Folkpartiet's price, from either cabinet ------------------------
 	focus = {
 		id = SWE_nykterhet_och_folkbildning
 		icon = GFX_focus_SWE_education_reform
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 1
+		x = 2
 		y = 1
 
 		cost = 5
-		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
 
 		ai_will_do = {
 			factor = 10
@@ -1607,17 +1631,19 @@ focus_tree = {
 		}
 	}
 
-	# --- Hogern's price --------------------------------------------------
+	# --- Hogern's price, from either cabinet -----------------------------
 	focus = {
 		id = SWE_stod_at_forsvarsrorelsen
 		icon = GFX_focus_SWE_lottakoren
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 3
+		x = 4
 		y = 1
 
 		cost = 5
-		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		# ONE block, two focuses: HoI4 reads this as EITHER cabinet.
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet focus = SWE_form_a_conservative_cabinet }
 
 		ai_will_do = {
 			factor = 10
@@ -1630,6 +1656,37 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = wif_swe_frivilliga_forsvarsrorelsen
+		}
+	}
+
+	# --- Hogern only -----------------------------------------------------
+	# The party went to the election against Social Democratic planhushallning,
+	# against rising state spending and against the taxes that paid for both.
+	# This is the one concession the agrarian ministry will not make: it is not
+	# a policy Bondeforbundet disagrees with so much as one it cannot survive
+	# putting its name to.
+	focus = {
+		id = SWE_sparsamhet_sunda_statsfinanser
+		icon = GFX_focus_generic_industry_investment
+
+		relative_position_id = SWE_form_a_conservative_cabinet
+		x = 0
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_a_conservative_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = wif_swe_sparsamhet_sunda_statsfinanser
 		}
 	}
 

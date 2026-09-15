@@ -207,5 +207,41 @@ ideas = {
 				political_advisor_cost_factor = 0.05
 			}
 		}
+
+		# Hogern's own, and the one concession an agrarian ministry will not
+		# make: a stand against planhushallning, against rising state spending
+		# and against the taxes that pay for both. Granted only by a government
+		# Hogern actually leads.
+		wif_swe_sparsamhet_sunda_statsfinanser = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_economic_increase
+
+			modifier = {
+				# THE SAME SUBSTITUTION AS THE INFRASTRUCTURE LINE ABOVE, and
+				# for the same reason: HoI4 prices construction in SPEED and has
+				# no build-cost modifier for any individual building type. A
+				# civilian factory 5% cheaper is a civilian factory 5% faster,
+				# and the player's money goes exactly as far either way.
+				production_speed_industrial_complex_factor = 0.05
+
+				# A tight budget and a defended private sector. Negative is the
+				# good direction here - it is the share of civilian industry the
+				# country has to spend on itself.
+				consumer_goods_factor = -0.02
+
+				# The labour movement reads austerity as an attack on the reform
+				# programme, and is not entirely wrong.
+				stability_factor = -0.02
+			}
+		}
 	}
 }
