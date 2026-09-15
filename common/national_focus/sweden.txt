@@ -1498,6 +1498,141 @@ focus_tree = {
 		}
 	}
 
+	# ============================================================
+	# The coalition's price
+	# ============================================================
+	# Four concessions beneath the agrarian cabinet, and the reason that cabinet
+	# is worth forming at all. Pehrsson-Bramstorp governs on a minority and pays
+	# for his majority in policy: two of these are Bondeforbundet's own
+	# programme, one is Folkpartiet's price and one is Hogern's.
+	#
+	# NOT MUTUALLY EXCLUSIVE, and deliberately so. A coalition government does
+	# not choose between its partners' demands; it meets all of them and lives
+	# with the bill. Every one of these spirits carries a real cost.
+	#
+	# All four hang off Form an Agrarian Cabinet rather than off Bondeforbundet
+	# Leder directly - there is nobody to bargain with until the ministries have
+	# been handed out.
+	#
+	# HOGERN, NOT MODERATERNA. The party took the name Hogern in this period and
+	# only became Moderata samlingspartiet in 1969, so the tree calls it what it
+	# called itself.
+	#
+	# The modifiers all live on spirits in common/ideas/wif_sweden.txt: a focus
+	# runs effects and cannot hold a lasting modifier itself.
+
+	# --- Bondeforbundet's own, first of two -----------------------------
+	focus = {
+		id = SWE_lika_folkpension
+		icon = GFX_focus_generic_welfare
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = -3
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			add_ideas = wif_swe_lika_folkpension
+		}
+	}
+
+	# --- Bondeforbundet's own, second of two ----------------------------
+	focus = {
+		id = SWE_tryggade_jordbrukspriser
+		icon = GFX_goal_generic_consumer_goods
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = -1
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_WAR_SUPPORT }
+
+		completion_reward = {
+			add_ideas = wif_swe_tryggade_jordbrukspriser
+		}
+	}
+
+	# --- Folkpartiet's price --------------------------------------------
+	focus = {
+		id = SWE_nykterhet_och_folkbildning
+		icon = GFX_focus_SWE_education_reform
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = 1
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			# The permanent half - a settled moral order.
+			add_ideas = wif_swe_nykterhet_och_folkbildning
+
+			# And the campaign itself, which burns out. add_timed_idea expires
+			# on its own, so nothing has to remember to take it off again.
+			add_timed_idea = {
+				idea = wif_swe_nykterhetskampanjen
+				days = 180
+			}
+		}
+	}
+
+	# --- Hogern's price --------------------------------------------------
+	focus = {
+		id = SWE_stod_at_forsvarsrorelsen
+		icon = GFX_focus_SWE_lottakoren
+
+		relative_position_id = SWE_form_an_agrarian_cabinet
+		x = 3
+		y = 1
+
+		cost = 5
+		prerequisite = { focus = SWE_form_an_agrarian_cabinet }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ARMY_XP }
+
+		completion_reward = {
+			add_ideas = wif_swe_frivilliga_forsvarsrorelsen
+		}
+	}
+
 	# Align more Closely with Landsorganisationen.
 	#
 	# Vanilla made this mutually exclusive with SWE_coalition_war_cabinet. That

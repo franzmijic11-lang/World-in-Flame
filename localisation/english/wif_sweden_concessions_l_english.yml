@@ -1,0 +1,33 @@
+﻿l_english:
+
+ # The four coalition concessions under Form an Agrarian Cabinet, and the
+ # spirits they grant. Descriptions run to about two short paragraphs - the
+ # focus tooltip has a fixed width and no scrollbar, so anything longer is cut
+ # off where the player cannot read it.
+
+ # === Bondeförbundet =================================================
+ SWE_lika_folkpension:0 "Lika Folkpension i Stad och Land"
+ SWE_lika_folkpension_desc:0 "The pension committee wants the old-age pension graded by cost of living, which in practice means a larger pension in Stockholm than in Norrbotten. Bondeförbundet will not have it: a farm labourer who worked forty years is owed what a tram conductor is owed.\n\nThe party gets its flat rate. The country pays the town rate everywhere."
+ wif_swe_lika_folkpension:0 "Lika Folkpension"
+ wif_swe_lika_folkpension_desc:0 "The old-age pension is paid at one rate from Ystad to Kiruna. It costs more than grading it would have, and it has done more than any speech to convince the countryside that the state is also theirs."
+
+ SWE_tryggade_jordbrukspriser:0 "Tryggade Jordbrukspriser"
+ SWE_tryggade_jordbrukspriser_desc:0 "The kohandel bought a government; the regulations are what it bought the government for. Milk price equalisation, grain regulation and a tariff wall to hold both of them up.\n\nThe farms come off the edge of ruin and the country feeds itself. The price is paid abroad, by everyone who wanted to sell us food."
+ wif_swe_tryggade_jordbrukspriser:0 "Tryggade Jordbrukspriser"
+ wif_swe_tryggade_jordbrukspriser_desc:0 "Guaranteed prices, a regulated grain market and a tariff wall around both. The countryside is solvent and confident, and rather less welcome at anyone else's negotiating table."
+
+ # === Folkpartiet ====================================================
+ SWE_nykterhet_och_folkbildning:0 "Nykterhet och Folkbildning"
+ SWE_nykterhet_och_folkbildning_desc:0 "Folkpartiet is the temperance movement, the free churches and the study circles wearing a rosette, and its price for supporting the ministry is that the state take all three seriously - the motbok enforced, the bildningsförbund funded.\n\nThe study circles repay it quickly. The motbok is another matter: half the country resents being counted at the counter."
+ wif_swe_nykterhet_och_folkbildning:0 "Folkbildning"
+ wif_swe_nykterhet_och_folkbildning_desc:0 "Study circles, lending libraries and evening classes in every parish that will have them. A settled habit by now, and one that quietly raises the ceiling on what the country can be taught."
+ wif_swe_nykterhetskampanjen:0 "Nykterhetskampanjen"
+ wif_swe_nykterhetskampanjen_desc:0 "The temperance campaign at full pitch: the ration book enforced, the lecture halls full, and a government spending political capital it will not get back on telling working men what they may drink."
+
+ # === Högern =========================================================
+ # Högern is what the party called itself in this period. It did not become
+ # Moderata samlingspartiet until 1969.
+ SWE_stod_at_forsvarsrorelsen:0 "Stöd åt den Frivilliga Försvarsrörelsen"
+ SWE_stod_at_forsvarsrorelsen_desc:0 "Lindman's people think the 1936 defence act a half-measure and say so. What they ask of this ministry is not a bigger army but a wider one: the shooting clubs, the Lottakåren and voluntary training funded and encouraged.\n\nConscripts arrive already knowing which end of a rifle is which. The labour movement notices who is being armed, and by whom."
+ wif_swe_frivilliga_forsvarsrorelsen:0 "Den Frivilliga Försvarsrörelsen"
+ wif_swe_frivilliga_forsvarsrorelsen_desc:0 "Skytteföreningar, the Lottakåren and voluntary defence training, funded by the state and run by nobody in particular. A cheap way to shorten training, and a standing quarrel with the unions over what it is really for."
