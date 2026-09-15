@@ -1242,7 +1242,7 @@ focus_tree = {
 		icon = GFX_focus_generic_social_democracy
 
 		relative_position_id = SWE_continue_the_second_industrial_revolution
-		x = -1
+		x = -5
 		y = 2
 
 		cost = 10
@@ -1274,7 +1274,7 @@ focus_tree = {
 		icon = GFX_focus_generic_farmland
 
 		relative_position_id = SWE_continue_the_second_industrial_revolution
-		x = 5
+		x = 3
 		y = 2
 
 		cost = 10
@@ -1315,7 +1315,7 @@ focus_tree = {
 		icon = GFX_focus_generic_monarchist_sentiment
 
 		relative_position_id = SWE_continue_the_second_industrial_revolution
-		x = 11
+		x = 13
 		y = 2
 
 		cost = 10
@@ -1527,11 +1527,14 @@ focus_tree = {
 	# NOT MUTUALLY EXCLUSIVE within a branch. A coalition does not choose between
 	# its partners' demands; it meets all of them and lives with the bill.
 	#
-	# TWO ROWS, NOT ONE. Nine focuses now hang off this row of cabinets and the
-	# band between the Landsorganisationen branch on the left and the Nordic
-	# Defense Council branch on the right is only sixteen columns wide. The
-	# second row is what keeps four columns between neighbouring branches
-	# instead of two.
+	# ALL TEN ON ONE LINE, at absolute y = 11. The groups read left to right
+	# as Socialdemokraterna, Bondeforbundet, the shared pair and Hogern, two
+	# columns apart inside a group and three or four between groups, so a
+	# branch is one unbroken run and the gaps are where the arrows fan out.
+	#
+	# The room for that came from two places: the Landsorganisationen branch
+	# moved eight columns further left, and the Nordic Defense Council branch
+	# three columns right.
 	#
 	# HOGERN, NOT MODERATERNA. The party took that name in this period and only
 	# became Moderata samlingspartiet in 1969.
@@ -1546,7 +1549,7 @@ focus_tree = {
 		icon = GFX_focus_generic_welfare
 
 		relative_position_id = SWE_form_a_social_democratic_cabinet
-		x = -1
+		x = -3
 		y = 1
 
 		cost = 5
@@ -1575,7 +1578,7 @@ focus_tree = {
 		icon = GFX_focus_SWE_hygienic_housing
 
 		relative_position_id = SWE_form_a_social_democratic_cabinet
-		x = 1
+		x = -1
 		y = 1
 
 		cost = 5
@@ -1608,7 +1611,7 @@ focus_tree = {
 		icon = GFX_focus_generic_welfare
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 0
+		x = -1
 		y = 1
 
 		cost = 5
@@ -1635,7 +1638,7 @@ focus_tree = {
 		icon = GFX_goal_generic_consumer_goods
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 2
+		x = 1
 		y = 1
 
 		cost = 5
@@ -1722,15 +1725,16 @@ focus_tree = {
 	}
 
 	# --- Folkpartiet's price, from either bourgeois cabinet ---------------
-	# Second row, so the first stays spacious. Positioned off the agrarian
-	# cabinet; the conservative one reaches it by prerequisite alone.
+	# Positioned off the agrarian cabinet and sitting between the two
+	# bourgeois branches; the conservative cabinet reaches it by prerequisite
+	# alone, which is why no arrow is drawn from that side.
 	focus = {
 		id = SWE_nykterhet_och_folkbildning
 		icon = GFX_focus_SWE_education_reform
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 2
-		y = 2
+		x = 4
+		y = 1
 
 		cost = 5
 
@@ -1762,8 +1766,8 @@ focus_tree = {
 		icon = GFX_focus_SWE_lottakoren
 
 		relative_position_id = SWE_form_an_agrarian_cabinet
-		x = 4
-		y = 2
+		x = 6
+		y = 1
 
 		cost = 5
 
@@ -1797,7 +1801,7 @@ focus_tree = {
 	focus = {
 		id = SWE_align_more_closely_with_the_landsorganisationen
 		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		x = -4
+		x = -12
 		y = 2
 		cost = 10
 		prerequisite = { focus = SWE_continue_the_second_industrial_revolution }
@@ -1843,8 +1847,8 @@ focus_tree = {
 		# Re-parented to Form a Social Democratic Cabinet. Sami policy was a
 		# Social Democratic programme, and it belongs to the ministry that
 		# carried it out rather than to the election result alone.
-		x = 2
-		y = 2
+		x = 1
+		y = 1
 
 		cost = 10
 		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
@@ -1947,8 +1951,8 @@ focus_tree = {
 		icon = GFX_focus_SWE_form_rfsu 
 		# Re-parented to Form a Social Democratic Cabinet, alongside Sami
 		# Reconcilliation - the RFSU was a Social Democratic cause.
-		x = 4
-		y = 2
+		x = 3
+		y = 1
 
 		cost = 5
 		prerequisite = { focus = SWE_form_a_social_democratic_cabinet }
@@ -4273,13 +4277,12 @@ focus_tree = {
 	#    The mutual exclusivity with Align more Closely with Landsorganisationen
 	#    is still gone, so the two can both be taken.
 	#
-	# 4. IT SITS FOUR ROWS FURTHER DOWN, y = 2 -> y = 6, to clear the two rows of
-	#    coalition concessions above it. relative_position_id is unchanged, so
-	#    the sixteen focuses positioned off it - Winter Drill, Varnplikt,
+	# 4. IT SITS FOUR ROWS FURTHER DOWN, y = 2 -> y = 6, leaving row 12 empty
+	#    between the concessions and itself. relative_position_id is unchanged,
+	#    so the sixteen focuses positioned off it - Winter Drill, Varnplikt,
 	#    Hemvarnet, Rapid Mobilization, Totalforsvar, Operation Save Denmark and
-	#    the rest - move with it as one block. That block now reaches absolute
-	#    y = 20, so the post-war branch was pushed two rows down to make room:
-	#    see SWE_scandinavian_defense_union, which the whole of it hangs from.
+	#    the rest - move with it as one block, down to absolute y = 20. The
+	#    post-war branch that used to sit there has been removed entirely.
 	#
 	#    Vanilla gave Sami Reconcilliation, En Svensk Tiger and Form RFSU a
 	#    prerequisite of EITHER this focus or Landsorganisationen, which with
@@ -10755,688 +10758,6 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = SWE_scandinavian_defense_union
-		icon = GFX_focus_generic_scandinavian_alliance
-		prerequisite = { focus =  SWE_universal_basic_income }
-		mutually_exclusive = { focus = SWE_the_threat_of_the_iron_curtain}
-		# Welt in Flammen: y = 1 -> 3, x unchanged. The Democratic War Cabinet
-		# moved a row lower to make room for the coalition concessions, and its
-		# sixteen relatively positioned children came down with it -
-		# SWE_swedish_shooting_movement would otherwise land exactly on this
-		# focus. The whole post-war branch hangs off this one node, so moving it
-		# here moves all eleven.
-		x = 3
-		y = 3
-		relative_position_id = SWE_universal_basic_income
-		cost = 5
-		available = {
-			OR = {
-				NOR = { 
-					AND = { 
-						exists = yes 
-						is_subject = no
-					}
-				}
-				DEN = { 
-					AND = { 
-						exists = yes 
-						is_subject = no
-					}
-				}
-				FIN = { 
-						AND = { 
-							exists = yes 
-							is_subject = no
-						}
-					}
-				ICE = { 
-					AND = { 
-						exists = yes 
-						is_subject = no
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}	
-		}
-	                
-		search_filters = {}
-		bypass = {
-			hidden_trigger = {
-				OR = {
-					is_subject = yes
-                    AND = {
-                        is_ai = yes
-                        is_historical_focus_on = yes
-                    }
-                    is_in_faction = yes
-                }
-			}
-		}
-		completion_reward = {
-			create_faction_from_template = {
-				template = faction_template_NORDIC_alliance_democratic
-				name = scandinavian_defense_union
-				icon = GFX_faction_logo_generic_9
-			}
-			NOR = {	SWE_scandinavian_defense_union_invite = yes	}
-			DEN = {	SWE_scandinavian_defense_union_invite = yes	}
-			FIN = {	SWE_scandinavian_defense_union_invite = yes	}
-			ICE = {	SWE_scandinavian_defense_union_invite = yes	}
-		}
-	}
-	focus = {
-		id = SWE_the_threat_of_the_iron_curtain
-		icon = GFX_focus_SWE_the_threat_of_the_iron_curtain
-		prerequisite = { focus =  SWE_universal_basic_income focus = SWE_the_cross_we_bear }
-		mutually_exclusive = { focus = SWE_scandinavian_defense_union }
-		x = 4 
-		y = 0
-		relative_position_id = SWE_scandinavian_defense_union
-		cost = 10
-		bypass = {
-			OR = {
-				ROOT = {
-					is_in_faction = yes
-				}
-				hidden_trigger = {
-					is_ai = yes
-					is_historical_focus_on = yes
-				}
-				is_subject = yes
-			}
-		}
-		available = {
-			any_other_country = {
-				is_major = yes
-				is_faction_leader = yes
-				has_government = ROOT
-				NOT = { is_in_faction_with = ROOT }
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}	
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			every_other_country = {
-				limit = {
-					is_major = yes
-					is_faction_leader = yes
-					has_government = ROOT
-				}
-				country_event = {
-					id =  AAT_Sweden.23
-					hours = 1
-				}
-			}
-		}
-	}
-	focus = {
-		id = SWE_special_forces
-		icon = GFX_focus_eng_special_air_service
-		prerequisite = { focus = SWE_the_threat_of_the_iron_curtain }
-
-		x = 1 
-		y = 1
-		relative_position_id = SWE_the_threat_of_the_iron_curtain
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			country_event = {
-				id =  AAT_Sweden.25
-				hours = 1
-			}
-		}
-	}
-	focus = {
-		id = SWE_acquire_ww2_tanks_and_wrecks
-		icon = GFX_goal_generic_army_tanks
-		prerequisite = { focus = SWE_scandinavian_defense_union }
-
-		x = -1 
-		y = 1
-		relative_position_id = SWE_scandinavian_defense_union
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			#custom_effect_tooltip = "Check who won and lost ww2 to determine which vehicles you get"
-			add_equipment_to_stockpile = { 
-				type = heavy_tank_chassis_3 
-				amount = 50
-				producer = GER 
-			}
-			add_equipment_to_stockpile = { 
-				type = medium_tank_chassis_2 
-				amount = 100 
-				producer = GER 
-			}
-			add_equipment_to_stockpile = { 
-				type = medium_tank_chassis_3 
-				amount = 100
-				producer = GER 
-			}
-			add_tech_bonus = {
-				name = SWE_acquire_ww2_tanks_and_wrecks
-				bonus = 0.75
-				uses = 2
-				category = cat_medium_armor
-			
-			}
-			add_tech_bonus = {
-				name = SWE_acquire_ww2_tanks_and_wrecks
-				bonus = 1
-				uses = 1
-				category = cat_heavy_armor
-			}
-		}
-	}
-	focus = {
-		id = SWE_extend_the_time_of_preparedness
-		icon = GFX_focus_generic_little_entente
-		prerequisite = { focus = SWE_scandinavian_defense_union focus = SWE_the_threat_of_the_iron_curtain }
-
-		x = 2
-		y = 1
-		relative_position_id = SWE_scandinavian_defense_union
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_AIR_XP FOCUS_FILTER_NAVY_XP FOCUS_FILTER_WAR_SUPPORT}
-
-		completion_reward = {
-			add_war_support = 0.1
-			add_manpower = 26000
-		}
-	}
-	focus = {
-		id = SWE_increase_intelligence_funding
-		icon = GFX_goal_generic_intelligence_exchange
-		prerequisite = { focus = SWE_acquire_ww2_tanks_and_wrecks }
-
-		x = 0 
-		y = 1
-		relative_position_id = SWE_acquire_ww2_tanks_and_wrecks
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			IF = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				IF = {
-					limit = {
-						has_intelligence_agency = no 
-					}
-					create_intelligence_agency = yes
-				}
-				IF = {
-					limit = {
-						NOT = {
-							has_done_agency_upgrade = upgrade_passive_defense 
-						}				
-					}
-					upgrade_intelligence_agency = upgrade_passive_defense 
-				}
-				IF = {
-					limit = {
-						NOT = {
-							has_done_agency_upgrade = upgrade_blueprint_stealing 
-						}				
-					}
-					upgrade_intelligence_agency = upgrade_blueprint_stealing 
-				}
-
-				add_ideas = { SWE_security_service_funding }
-			}
-			ELSE = {
-				add_tech_bonus = {
-					name = SWE_electronics_bonus
-					bonus = 1
-					uses = 2
-					category = electronics
-				}
-			}
-			IF = {
-				limit = { 
-					has_dlc = "By Blood Alone" 
-					has_dlc = "La Resistance"
-				}
-				set_technology = { photo_reconnaisance = 1 }
-			}
-			else = {
-				air_experience = 50
-			}
-		}
-	}
-	focus = {
-		id = SWE_karnvapenprogram
-		icon = GFX_focus_wonderweapons
-		prerequisite = { focus = SWE_extend_the_time_of_preparedness }
-
-		x = 0 
-		y = 1
-		relative_position_id = SWE_extend_the_time_of_preparedness
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-
-			IF = {
-				limit = {
-					NOT = {
-						has_tech = atomic_research
-					}
-				}
-				add_tech_bonus = {
-					name = SWE_karnvapenprogram_nuclear_bonus
-					bonus = 0.5 # was 1
-					uses = 1
-					category = nuclear
-				}
-				add_breakthrough_progress = {
-					specialization = specialization_nuclear
-					value = 0.5
-				}
-			}
-			ELSE = {
-				add_breakthrough_progress = {
-					specialization = specialization_nuclear
-					value = 0.75
-				}
-			}
-
-			add_breakthrough_progress = {
-				specialization = specialization_air
-				value = 0.25
-			}
-
-			add_tech_bonus = {
-				name = SWE_karnvapenprogram_air_bonus
-				bonus = 0.75 # was 1
-				uses = 1
-				category = air_equipment
-			}
-
-		}
-	}
-	focus = {
-		id = SWE_specialized_equipment
-		icon = GFX_focus_generic_license_production
-		prerequisite = { focus = SWE_special_forces }
-
-		x = 0 
-		y = 1
-		relative_position_id = SWE_special_forces
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			custom_effect_tooltip = SWE_specialized_equipment_tt
-			IF = {
-				limit = {
-					has_country_flag = SWE_has_marines
-				}
-				navy_experience = 25
-				army_experience = 25
-				IF = {
-					limit = { 
-						has_dlc = "Man the Guns" 
-					}
-					IF = {
-						limit = {
-							NOT = {
-								has_tech = mtg_transport
-							}
-						}
-						set_technology = { mtg_transport = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = mtg_landing_craft
-							}
-						}
-						set_technology = { mtg_landing_craft = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = mtg_tank_landing_craft
-							}
-						}
-						set_technology = { mtg_tank_landing_craft = 1 }
-					}
-					IF = {
-						limit = { 
-							has_dlc = "No Step Back" 
-						}
-						IF = {
-							limit = {
-								NOT = { has_tech = amphibious_tank_chassis }
-							}
-						set_technology = { amphibious_tank_chassis = 1}
-						}
-						ELSE_IF = {
-							limit = {
-								NOT = { has_tech = amphibious_drive }
-							}
-							set_technology = { amphibious_drive = 1}
-						}
-					}
-					ELSE = {
-						IF = {
-							limit = {
-								NOT = { has_tech = amphibious_tank }
-							}
-							set_technology = { amphibious_tank = 1}
-						}
-						ELSE_IF = {
-							limit = {
-								NOT = { has_tech = amphibious_tank_2 }
-							}
-							set_technology = { amphibious_tank_2 = 1}
-						}
-					}	
-				}
-				ELSE = {
-					IF = {
-						limit = {
-							NOT = {
-								has_tech = transport
-							}
-						}
-						set_technology = { transport = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = landing_craft
-							}
-						}
-						set_technology = { landing_craft = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = tank_landing_craft
-							}
-						}
-						set_technology = { tank_landing_craft = 1 }
-					}
-				}
-			}
-			ELSE_IF = {
-				limit = {
-					has_country_flag = SWE_has_rangers
-				}
-				IF = {
-					limit = { NOT = { has_tech = infantry_at }}
-					set_technology = { infantry_at = 1 }
-				}
-				ELSE_IF = {
-					limit = { NOT = { has_tech = infantry_at2 }}
-					set_technology = { infantry_at2 = 1 }
-				}		
-				IF = {
-					limit = { NOT = { has_tech = night_vision }}
-					set_technology = { night_vision = 1 }
-				}
-				ELSE_IF = {
-					limit = { NOT = { has_tech = night_vision2 }}
-					set_technology = { night_vision2 = 1 }
-				}		
-				army_experience = 50
-			}
-			ELSE_IF = {
-				limit = {
-					has_country_flag = SWE_has_paratroopers
-				}
-				# Light tanks for air dropped variants
-				IF = {
-					limit = { has_dlc = "No Step Back" }
-					IF = {
-						limit = {
-							NOT = {
-								has_tech = basic_light_tank_chassis
-							}
-						}
-						set_technology = { basic_light_tank_chassis = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = improved_light_tank_chassis
-							}
-						}
-						set_technology = { improved_light_tank_chassis = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = advanced_light_tank_chassis
-							}
-						}
-						set_technology = { advanced_light_tank_chassis = 1 }
-					}
-				}
-				ELSE = {
-					IF = {
-						limit = {
-							NOT = {
-								has_tech = basic_light_tank
-							}
-						}
-						set_technology = { basic_light_tank = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = improved_light_tank
-							}
-						}
-						set_technology = { improved_light_tank = 1 }
-					}
-					ELSE_IF = {
-						limit = {
-							NOT = {
-								has_tech = advanced_light_tank
-							}
-						}
-						set_technology = { advanced_light_tank = 1 }
-					}
-				}
-				army_experience = 25
-				air_experience = 25
-			}
-		}
-	}
-	focus = {
-		id = SWE_war_games
-		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = SWE_increase_intelligence_funding focus = SWE_karnvapenprogram }
-
-		x = -1 
-		y = 1
-		relative_position_id = SWE_karnvapenprogram
-		cost = 10
-		available = {
-			any_other_country = {
-				is_major = yes
-				is_faction_leader = yes
-				NOT = {
-					is_in_faction_with = ROOT
-					has_government = ROOT
-				}
-			}
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			every_other_country = {
-				limit = {
-					is_major = yes
-					is_faction_leader = yes
-					NOT = {
-						has_government = SWE
-						is_in_faction_with = SWE
-					}
-				}
-				# I really don't like doing it this way as it's not dynamic, so I'm just adding the starting majors plus communist and nationalist china for now as they're the most likely majors most of the time.
-				IF = {
-					limit = { original_tag = SOV }
-					SWE = {
-						add_ideas = { SWE_anti_sov_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = GER }
-					SWE = {
-						add_ideas = { SWE_anti_ger_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = USA }
-					SWE = {
-						add_ideas = { SWE_anti_usa_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = ENG }
-					SWE = {
-						add_ideas = { SWE_anti_eng_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = JAP }
-					SWE = {
-						add_ideas = { SWE_anti_jap_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = ITA }
-					SWE = {
-						add_ideas = { SWE_anti_ita_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = FRA }
-					SWE = {
-						add_ideas = { SWE_anti_fra_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = PRC }
-					SWE = {
-						add_ideas = { SWE_anti_prc_cold_war }
-					}
-				}
-				IF = {
-					limit = { original_tag = CHI }
-					SWE = {
-						add_ideas = { SWE_anti_chi_cold_war }
-					}
-				}
-			}
-		}
-	}
-	focus = {
-		id = SWE_the_lion_of_the_north_rises
-		icon = GFX_focus_SWE_the_lion_of_the_north
-		prerequisite = { focus = SWE_karnvapenprogram focus = SWE_specialized_equipment }
-
-		x = 1 
-		y = 1
-		relative_position_id = SWE_karnvapenprogram
-		cost = 10
-		available = {
-		}
-	                
-		search_filters = {}
-
-		completion_reward = {
-			add_ideas = { SWE_lion_of_the_north }
-		}
-	}
-	focus = {
-		id = SWE_preemptive_strike
-		icon = GFX_focus_ger_strike_at_the_source
-		prerequisite = { focus = SWE_the_lion_of_the_north_rises focus = SWE_war_games }
-
-		x = 1 
-		y = 1
-		relative_position_id = SWE_war_games
-		cost = 10
-		available = {
-			is_subject = no
-		}
-  		bypass = {
-			hidden_trigger = {
-				is_ai = yes
-				is_historical_focus_on = yes
-			}
-		}          
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}	
-		}
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		completion_reward = {
-			every_other_country = {
-				limit = {
-					is_major = yes
-					is_faction_leader = yes
-					NOT = { has_government = SWE }
-					NOT = { is_in_faction_with = SWE }
-				}
-				SWE = {
-					create_wargoal = {
-						target = PREV
-						type = puppet_wargoal_focus
-					}
-				}
-			}
-		}
-	}
 
 	focus = {
 		id = SWE_research_slot_2
