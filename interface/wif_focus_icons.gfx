@@ -1,0 +1,12 @@
+# Focus icons drawn for Welt in Flammen's own trees. Ported vanilla-style
+# icons for the German opposition branch live in wif_ger_opposition.gfx; this
+# file is for the mod's original artwork.
+#
+# NOTE THE CASE: spriteType, not SpriteType - vanilla writes it lowercase.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_focus_SME_meet_with_the_devil"
+		texturefile = "gfx/interface/goals/sme/focus_SME_meet_with_the_devil.dds"
+	}
+}

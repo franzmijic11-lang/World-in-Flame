@@ -329,3 +329,15 @@
  wif_nkvd_scandals_desc:0 "A drawer of true things, released at chosen moments. Only useful while there is somebody in post to choose the moments."
  wif_nkvd_framing:0 "Manufactured Evidence"
  wif_nkvd_framing_desc:0 "The Commissar of State Security is no longer waiting for the democrats to give him something. Effective, and entirely dependent on his remaining in office."
+ # === Courting the fascists ========================================
+ SME_meet_with_the_devil:0 "Meet with the Devil"
+ SME_meet_with_the_devil_desc:0 "A room in Kazan, no minutes taken. The Russian Fascist Party has been told for years that it is the smallest of the three and the least welcome, and it has believed this, and it has been waiting to be proven wrong. This evening it is. Nobody promises anything. A marshal's aide sits down with men who have spent fifteen years calling the Union the enemy, and asks what they would want in exchange for calling it something else."
+ SME_integrate_their_news_network:0 "Integrate Their News Network"
+ SME_integrate_their_news_network_desc:0 "They brought their presses with them from Harbin and Berlin, and their editors, and a readership that never stopped. The offer is simple: the papers keep printing, the editors keep their desks, and the Commissariat supplies the second half of every editorial. They write about the nation; we write about the Party. Both halves are read by the same people, which is the point, and which is also the danger."
+ SME_integrate_the_russkiy_molodoy:0 "Integrate the Russkiy Molodoy with the Molodye Kommunisty"
+ SME_integrate_the_russkiy_molodoy_desc:0 "The fascists' youth wing marched in uniform, drilled on Sundays, and knew the words to songs the Komsomol had not taught them. As of this month they are the Komsomol - same drill, same Sundays, a new set of words. The Party gets a generation that already knows how to stand in a line. The marshal gets the men who taught them, and every one of them owes him rather than the council."
+
+ wif_sme_fascist_writers:0 "Fascist Writers on Our Side"
+ wif_sme_fascist_writers_desc:0 "Their columnists write for us now, which means they write about the nation and the Party in the same breath and with the same conviction. Circulation is up. So is everything else."
+ wif_sme_russkiy_molodoy_merged:0 "The Russkiy Molodoy Absorbed"
+ wif_sme_russkiy_molodoy_merged_desc:0 "A youth movement that used to belong to the fascists now belongs to the Komsomol, and its drill instructors to the marshal. The recruiting offices have noticed the difference."

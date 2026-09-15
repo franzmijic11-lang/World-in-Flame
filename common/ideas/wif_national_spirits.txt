@@ -768,6 +768,57 @@ ideas = {
 			}
 		}
 
+		# The fascist press, bought by SME_integrate_their_news_network.
+		#
+		# PERMANENT and never swapped - the White Question decisions only ever
+		# replace wif_sme_the_whites_return, and this sits alongside whatever
+		# that is. The bargain is the point: the writers push the Party as hard
+		# as they push their own people, so the two drifts are identical and
+		# both large. Compare the base spirit's 0.1 - this is six times that,
+		# and it is what makes the fascist coup a real risk of taking the road
+		# rather than a theoretical one.
+		wif_sme_fascist_writers = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+
+			modifier = {
+				communism_drift = 0.6
+				fascism_drift = 0.6
+			}
+		}
+
+		# The Russkiy Molodoy folded into the Young Communists, by
+		# SME_integrate_the_russkiy_molodoy. PERMANENT. Recruitable population
+		# is a modifier and nothing else, so the +5% has to live in a spirit
+		# rather than in the focus reward itself; the balance-of-power push
+		# stays on the focus, where it is a one-off.
+		wif_sme_russkiy_molodoy_merged = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.05
+			}
+		}
+
 		# Held by every Russian warlord state - see wif_is_russian_warlord in
 		# common/scripted_triggers/wif_scripted_triggers.txt for the list, and
 		# common/on_actions/wif_on_actions.txt for the weekly grant.

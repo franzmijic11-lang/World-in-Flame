@@ -868,4 +868,90 @@ focus_tree = {
 			wif_open_second_civil_war_watch = yes
 		}
 	}
+
+	# =====================================================================
+	# Courting the fascists
+	# =====================================================================
+	# The other way of breaking the Whites. The democrats are broken by the
+	# NKVD; the fascists are broken by being given what they want, one piece
+	# at a time, until there is nothing of their own left. Three focuses, each
+	# a deeper bargain than the last, and the price is paid in the Union's own
+	# politics: the writers push fascism as hard as they push communism, and
+	# the youth movement goes to the marshal rather than to the council.
+	#
+	# Sits at x = -2 off Curb Their Influence, two columns clear of the NKVD
+	# chain at x = 0, the same spacing the rest of the branch keeps.
+	#
+	# Loyalty edits go through wif_clamp_white_loyalty like every other one
+	# in the mod - see common/scripted_effects/wif_whites_loyalty.txt.
+	focus = {
+		id = SME_meet_with_the_devil
+		icon = GFX_focus_SME_meet_with_the_devil
+
+		prerequisite = { focus = SME_curb_their_influence }
+
+		relative_position_id = SME_curb_their_influence
+		x = -2
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_to_variable = { wif_whites_fas_loyalty = 10 }
+			wif_clamp_white_loyalty = yes
+		}
+	}
+
+	focus = {
+		id = SME_integrate_their_news_network
+		icon = GFX_focus_generic_printing_press
+
+		prerequisite = { focus = SME_meet_with_the_devil }
+
+		relative_position_id = SME_meet_with_the_devil
+		x = 0
+		y = 1
+
+		cost = 5.71			# 40 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_ideas = wif_sme_fascist_writers
+
+			add_to_variable = { wif_whites_fas_loyalty = 10 }
+			wif_clamp_white_loyalty = yes
+		}
+	}
+
+	# The Russkiy Molodoy folded into the Young Communists. The fascists get
+	# nothing here - this is the point where the bargain stops paying them and
+	# starts paying the marshal. Positive is Zhukov's side of the balance; see
+	# the note above the leadership pair and common/bop/SME.txt.
+	focus = {
+		id = SME_integrate_the_russkiy_molodoy
+		icon = GFX_focus_JAP_integrate_the_great_japan_youth_party
+
+		prerequisite = { focus = SME_integrate_their_news_network }
+
+		relative_position_id = SME_integrate_their_news_network
+		x = 0
+		y = 1
+
+		cost = 7.14			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			add_ideas = wif_sme_russkiy_molodoy_merged
+
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.10
+				tooltip_side = SME_leadership_zhukov_side
+			}
+		}
+	}
 }
