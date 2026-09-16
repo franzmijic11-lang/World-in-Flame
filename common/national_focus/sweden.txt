@@ -10907,5 +10907,109 @@ focus_tree = {
 			# Placeholder - the reward is still to be decided.
 		}
 	}
+
+	# The three sides Sweden can take. Allies and Axis exclude each other;
+	# standing with Finland does not, since Finland's war with the Soviets can
+	# sit inside either camp.
+	focus = {
+		id = SWE_join_the_allies
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = SWE_take_sides }
+		mutually_exclusive = { focus = SWE_join_the_axis }
+		x = -1
+		y = 1
+		relative_position_id = SWE_take_sides
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
+
+	# Only opens if Sweden chose "Finland's cause is ours! To war!" when
+	# Finland asked for help in the Winter War (finland.3, option c). The flag
+	# is set in this mod's copy of events/Finland.txt.
+	focus = {
+		id = SWE_stand_with_finland
+		icon = GFX_focus_SWE_swedish_finnish_defense_agreement
+		prerequisite = { focus = SWE_take_sides }
+		x = 0
+		y = 1
+		relative_position_id = SWE_take_sides
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			has_country_flag = wif_swe_finlands_cause_is_ours
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
+
+	focus = {
+		id = SWE_join_the_axis
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = SWE_take_sides }
+		mutually_exclusive = { focus = SWE_join_the_allies }
+		x = 1
+		y = 1
+		relative_position_id = SWE_take_sides
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
 }
 
