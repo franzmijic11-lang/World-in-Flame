@@ -10791,5 +10791,52 @@ focus_tree = {
 			add_research_slot = 1
 		}
 	}
+
+	############################
+	#####  Foreign policy      #
+	############################
+
+	# Stands alone in the bottom-right corner, one column clear of
+	# SWE_reclaiming_the_rus (x 27, y 20), which is the rightmost and deepest
+	# focus in the tree. No prerequisite: it opens once the war reaches
+	# Sweden's neighbourhood, whichever branch the player is in.
+	focus = {
+		id = SWE_swedish_foreign_policy
+		icon = GFX_goal_generic_neutrality_focus
+		x = 29
+		y = 20
+
+		cost = 1	# 1 x 7 = 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			OR = {
+				GER = {
+					OR = {
+						has_war_with = FRA
+						has_war_with = ENG
+						has_war_with = SOV
+					}
+				}
+				FIN = { has_war_with = SOV }
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
 }
 

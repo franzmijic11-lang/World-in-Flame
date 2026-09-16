@@ -45,3 +45,7 @@
  SWE_constitutional_monarch:0 "Constitutional Monarch"
  wif_swe_gustaf_v_constitutional:0 "King Gustaf V"
  wif_swe_gustaf_v_constitutional_desc:0 "The war cabinet did not ask the King to go. It asked him to stop, which at seventy-eight is the harder request of the two.\n\nHe keeps the palace, the opening of the Riksdag and the state visits. He has given up the letters to ministers, the opinions about Germany, and the standing quarrel with the chamber over who decides what."
+
+ # === Foreign policy ================================================
+ SWE_swedish_foreign_policy:0 "Swedish Foreign Policy"
+ SWE_swedish_foreign_policy_desc:0 "The war has reached the Baltic, and it no longer stops at someone else's border. Stockholm can keep insisting on neutrality, but it can no longer pretend that neutrality is a policy on its own.\n\nThe cabinet has to decide what Sweden stands for before somebody else decides it for Sweden."
