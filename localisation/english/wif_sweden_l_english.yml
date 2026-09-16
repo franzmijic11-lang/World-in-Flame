@@ -48,4 +48,8 @@
 
  # === Foreign policy ================================================
  SWE_swedish_foreign_policy:0 "Swedish Foreign Policy"
+ SWE_affirm_neutrality:0 "Affirm Neutrality"
+ SWE_affirm_neutrality_desc:0 "Sweden stayed out of the last great war and came out of it richer. The government restates the policy in the Riksdag and in every capital that asks: Sweden trades with all, allies with none, and will defend its borders against anyone who crosses them."
+ SWE_take_sides:0 "Take Sides"
+ SWE_take_sides_desc:0 "Neutrality kept Sweden safe while the war was far away. It is not far away any more. The cabinet concludes that a country which refuses to choose will simply have the choice made for it, and begins to look for friends while it still has something to offer them."
  SWE_swedish_foreign_policy_desc:0 "The war has reached the Baltic, and it no longer stops at someone else's border. Stockholm can keep insisting on neutrality, but it can no longer pretend that neutrality is a policy on its own.\n\nThe cabinet has to decide what Sweden stands for before somebody else decides it for Sweden."

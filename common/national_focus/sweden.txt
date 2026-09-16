@@ -10813,6 +10813,7 @@ focus_tree = {
 		}
 
 		available = {
+			has_government = democratic
 			OR = {
 				GER = {
 					OR = {
@@ -10823,6 +10824,74 @@ focus_tree = {
 				}
 				FIN = { has_war_with = SOV }
 			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
+
+	# The two answers to the question above. Mutually exclusive: Sweden either
+	# stays out or picks a side, never both.
+	focus = {
+		id = SWE_affirm_neutrality
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = SWE_swedish_foreign_policy }
+		mutually_exclusive = { focus = SWE_take_sides }
+		x = -1
+		y = 1
+		relative_position_id = SWE_swedish_foreign_policy
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			# Placeholder - the reward is still to be decided.
+		}
+	}
+
+	focus = {
+		id = SWE_take_sides
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = SWE_swedish_foreign_policy }
+		mutually_exclusive = { focus = SWE_affirm_neutrality }
+		x = 1
+		y = 1
+		relative_position_id = SWE_swedish_foreign_policy
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+
 		}
 
 		bypass = {
