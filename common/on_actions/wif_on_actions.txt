@@ -359,6 +359,35 @@ on_actions = {
 				wif_russian_federation_check = yes
 			}
 
+			# The Chelyabinsk Institute, behaving like the state modifier the
+			# engine will not let it be.
+			#
+			# research_speed_factor is a COUNTRY modifier and nothing else, so
+			# the bonus cannot live on the state that earned it. This is the
+			# half that carries it across: whoever owns 572 while the state
+			# still flies wif_chelyabinsk_institute picks the modifier up here,
+			# within a week of taking the ground. The other half is the
+			# remove_trigger in
+			# common/dynamic_modifiers/wif_chelyabinsk_institute.txt, which
+			# strips it from whoever just lost the state, immediately.
+			#
+			# Between them the bonus is attached to Chelyabinsk rather than to
+			# the SME: take the city and it is yours, lose it and it is not,
+			# and nothing has to notice the transfer. That is a state modifier
+			# in everything but the engine's bookkeeping.
+			#
+			# NOT limited to SME, deliberately - the whole point is that it
+			# works for whoever holds the place. One owns_state test a week per
+			# country is as cheap as this gets.
+			if = {
+				limit = {
+					owns_state = 572
+					572 = { has_state_flag = wif_chelyabinsk_institute }
+					NOT = { has_dynamic_modifier = { modifier = wif_chelyabinsk_institute } }
+				}
+				add_dynamic_modifier = { modifier = wif_chelyabinsk_institute }
+			}
+
 			# Coring what the Federation takes from Yagoda. Cheap and
 			# idempotent, so it simply runs for the rest of the game.
 			if = {

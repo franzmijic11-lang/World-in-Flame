@@ -1,0 +1,30 @@
+# The Institute for All Research, at Chelyabinsk.
+#
+# WHY THIS IS A COUNTRY MODIFIER AND NOT A STATE ONE. research_speed_factor is
+# a COUNTRY modifier - documentation/modifiers_documentation.md lists its
+# categories as "country, military_advancements" and nothing else. A state
+# modifier carrying it would attach cleanly and then do nothing at all, which is
+# the worst kind of bug: no error, no effect, and a tooltip that looks right.
+#
+# So the bonus is held by the country, and tied to the state by the two halves
+# below:
+#
+#   remove_trigger    takes it off the moment the holder stops owning 572.
+#                     Conquest, transfer to the West Siberian Commissariat,
+#                     a peace conference - it does not matter which.
+#   the weekly pass   gives it to whoever owns 572 next, as long as the state
+#                     still carries the flag wif_chelyabinsk_institute. That
+#                     half lives in common/on_actions/wif_on_actions.txt.
+#
+# The flag is on the STATE, not the country, because the institute is a building
+# in Chelyabinsk and buildings do not travel. Together the two halves mean the
+# bonus follows the ground: lose Chelyabinsk and you lose the institute, take
+# Chelyabinsk from somebody and you inherit it, and neither case needs an event.
+wif_chelyabinsk_institute = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { owns_state = 572 } }
+
+	icon = "GFX_idea_generic_research_bonus"
+
+	research_speed_factor = 0.10
+}

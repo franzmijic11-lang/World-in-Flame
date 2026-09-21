@@ -191,11 +191,20 @@ wif_whites_loyalty_update = {
 #
 # SIZES ARE THE TUNING DIAL: the first faction takes a third of the country, a
 # faction joining the pile-on takes half that.
+#
+# CALLED OFF FOR GOOD BY wif_white_question_settled, which the focus
+# SME_a_united_people sets. That focus also clears wif_watching_the_whites, and
+# the weekly pass in common/on_actions/wif_on_actions.txt is gated on that flag,
+# so this effect already stops being called - the test below is the second lock,
+# and it is the one that holds if anything ever reopens the watch. It is on all
+# three branches rather than wrapped round the body, so a branch added later
+# cannot quietly miss it.
 wif_whites_civil_war_check = {
 
 	if = {
 		limit = {
 			NOT = { has_country_flag = wif_second_civil_war_fired }
+			NOT = { has_country_flag = wif_white_question_settled }
 			check_variable = { party_popularity_100@democratic > 45 }
 			check_variable = { wif_whites_dem_loyalty < 13 }
 		}
@@ -230,6 +239,7 @@ wif_whites_civil_war_check = {
 	if = {
 		limit = {
 			NOT = { has_country_flag = wif_second_civil_war_fired }
+			NOT = { has_country_flag = wif_white_question_settled }
 			check_variable = { party_popularity_100@fascism > 45 }
 			check_variable = { wif_whites_fas_loyalty < 13 }
 		}
@@ -264,6 +274,7 @@ wif_whites_civil_war_check = {
 	if = {
 		limit = {
 			NOT = { has_country_flag = wif_second_civil_war_fired }
+			NOT = { has_country_flag = wif_white_question_settled }
 			check_variable = { party_popularity_100@neutrality > 45 }
 			check_variable = { wif_whites_mon_loyalty < 13 }
 		}

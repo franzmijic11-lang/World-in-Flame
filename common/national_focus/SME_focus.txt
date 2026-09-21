@@ -1050,4 +1050,154 @@ focus_tree = {
 			}
 		}
 	}
+
+	# =====================================================================
+	# A United People
+	# =====================================================================
+	# Where the three roads meet. Each ender settles one faction - the
+	# fascists absorbed, the democrats decapitated, the monarchists bought -
+	# and this is the only focus in the tree that asks for all three at once.
+	# Once there is nobody left to bargain with, the bargaining stops.
+	#
+	# It closes the White Question for good. wif_sme_the_whites_return is the
+	# spirit every road has carried since SME_invite_the_whites_back, and this
+	# is the only thing in the mod that takes it away permanently.
+	#
+	# ALL THREE VARIANTS ARE HANDLED. The decisions in
+	# common/decisions/wif_white_question.txt swap the base spirit for a TIMED
+	# variant - _duma or _local_dumas - so the country can be holding any of the
+	# three when this completes. The chain below removes whichever is actually
+	# held, and the final else covers the case where none is, so the focus can
+	# never complete and grant nothing.
+	#
+	# THE MATCHING HALF OF THAT IS IN THE DECISIONS. Their remove_effect swaps
+	# the variant back to the base spirit when the timer runs out, which would
+	# otherwise hand The Whites Return back on top of One People Gathered a
+	# hundred days after the settlement. Both remove_effects are now guarded on
+	# still holding the variant, so a promise that lapses afterwards does
+	# nothing but set its flag.
+	#
+	# CLOSING THE WHITE QUESTION IS ONE FLAG. wif_watching_the_whites gates the
+	# weekly pass in common/on_actions/wif_on_actions.txt, the remove_trigger on
+	# the dynamic modifier wif_whites_in_the_state, and the visibility of the
+	# decision category. Clearing it stops the loyalty arithmetic, takes the
+	# modifier off the country and hides the panel, in one stroke.
+	#
+	# THE SECOND CIVIL WAR IS STOPPED TWICE OVER: once because its weekly check
+	# no longer runs at all, and once by wif_white_question_settled, which
+	# wif_whites_civil_war_check now tests directly. The second is what holds if
+	# anything ever reopens the watch.
+	#
+	# LOYALTY GOES TO ITS CEILING rather than being left frozen mid-scale. The
+	# coup in common/scripted_effects/wif_sme_coup.txt is a SEPARATE system -
+	# it fires on a party reaching 60% of the vote, not on loyalty - and it
+	# reads these three variables to decide whether the handover is a transfer
+	# of power or a war. Left at what they happened to be, a post-settlement
+	# coup could still be fought. At 100 it cannot, which is the whole point of
+	# the focus: the government can still change hands, but not at gunpoint.
+	focus = {
+		id = SME_a_united_people
+		icon = GFX_goal_generic_national_unity
+
+		# Three separate lines: all three are required, not any one of them.
+		prerequisite = { focus = SME_integrate_the_russkiy_molodoy }
+		prerequisite = { focus = SME_frame_leaders }
+		prerequisite = { focus = SME_speak_with_the_new_romanov }
+
+		# Centred under the three enders, which sit at -2, 0 and +2.
+		relative_position_id = SME_curb_their_influence
+		x = 0
+		y = 4
+
+		cost = 2.8571		# 20 days (lands just under, so it completes on day 20)
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			if = {
+				limit = { has_idea = wif_sme_the_whites_return }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return
+					add_idea = wif_sme_one_people_gathered
+				}
+			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_duma }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_duma
+					add_idea = wif_sme_one_people_gathered
+				}
+			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_local_dumas }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_local_dumas
+					add_idea = wif_sme_one_people_gathered
+				}
+			}
+			else = {
+				add_ideas = wif_sme_one_people_gathered
+			}
+
+			# The watch closes. One flag takes the weekly pass, the dynamic
+			# modifier and the decision panel with it.
+			clr_country_flag = wif_watching_the_whites
+			set_country_flag = wif_white_question_settled
+
+			# Nobody is going to shoot anybody over this again.
+			set_variable = { wif_whites_dem_loyalty = 100 }
+			set_variable = { wif_whites_fas_loyalty = 100 }
+			set_variable = { wif_whites_mon_loyalty = 100 }
+
+			custom_effect_tooltip = wif_white_question_settled_tt
+		}
+	}
+
+	# =====================================================================
+	# The Chelyabinsk Institute
+	# =====================================================================
+	# The settlement's dividend. A country that has stopped arguing with itself
+	# can afford to think about the next war instead of the present one, and
+	# Chelyabinsk is where the Union already put its heavy industry.
+	#
+	# The focus grants nothing on its own. It fires wif_sme.6, which asks what
+	# the institute is for - four options, one of which is taken. An event
+	# rather than a decision category because the choice is a single moment,
+	# not a standing menu: there is no reason to let it sit unanswered, and an
+	# event option is exclusive by construction with no flag to enforce it.
+	#
+	# CONTROL AS WELL AS OWNERSHIP, because the event builds immediately and a
+	# building cannot be raised in a city somebody else is holding.
+	#
+	# OWNING THE STATE IS A REAL CONDITION, not a formality. Chelyabinsk can
+	# leave: common/scripted_effects/wif_west_siberia.txt transfers 572 to the
+	# West Siberian Commissariat when it forms, if the SME still holds it. So
+	# this focus can be reached and then blocked, and the institute it builds
+	# can change hands afterwards. That is exactly why the research bonus is
+	# written to follow the STATE rather than the country that paid for it -
+	# see common/dynamic_modifiers/wif_chelyabinsk_institute.txt.
+	focus = {
+		id = SME_chelyabinsk_institute
+		icon = GFX_goal_generic_scientific_exchange
+
+		prerequisite = { focus = SME_a_united_people }
+
+		# One row down and two columns right of A United People.
+		relative_position_id = SME_a_united_people
+		x = 2
+		y = 1
+
+		cost = 8.7142		# 61 days (lands just under, so it completes on day 61)
+
+		available = {
+			owns_state = 572
+			controls_state = 572
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			country_event = { id = wif_sme.6 }
+		}
+	}
 }

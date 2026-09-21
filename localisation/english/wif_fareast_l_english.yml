@@ -352,3 +352,36 @@
 
  wif_red_tsar_vladimir:0 "A Red Tsar Vladimir III Romanov"
  wif_red_tsar_vladimir_desc:0 "He still signs nothing, but he now says things, and what he says is that the Union and the crown are not enemies. Half the ministers who used to agree in front of him now argue instead - but the ones who agree, agree with the Party."
+
+ # === Where the three roads meet ===================================
+ SME_a_united_people:0 "A United People"
+ SME_a_united_people_desc:0 "Three settlements signed in three different rooms, and not one of them made out of affection. The fascists write our editorials. The democrats have no leadership left worth the name. A Romanov stands in Kuybyshev and calls the workers' state his own. Fifteen years of argument about what Russia is supposed to be, and it ends not because anybody won it but because of the map.\n\nThe German sits on everything west of the line and administers it by commissariat. That is the one fact in the country that every faction reads the same way, and it is the only thing any of them were ever going to agree on. So the argument is not settled. It is postponed, formally, with witnesses - and until the German is off Russian soil there is one people here, gathered, whatever they each privately intend to do the morning after."
+
+ wif_sme_one_people_gathered:0 "One People Gathered"
+ wif_sme_one_people_gathered_desc:0 "The emigration is home and has stopped being news. What is left is the work: shifts that start on time, foundations poured in the spring rather than argued over until autumn, and factories that get faster because nobody is calling a meeting about who owns them.\n\nEvery faction is still recruiting, and now the Party is recruiting too - which is new, and which is the difference between a country pulling itself apart and a country pulling."
+
+ # The effect tooltip on A United People. Flags and variables show nothing in a
+ # focus tooltip on their own, and what this focus switches off is the part the
+ # player most needs told.
+ wif_white_question_settled_tt:0 "§YThe White Question is closed.§!\nThe three White factions are no longer tracked, and the decision panel closes.\nThe second civil war can no longer begin, and no change of government will be fought over."
+
+ # === The Chelyabinsk Institute ====================================
+ SME_chelyabinsk_institute:0 "Chelyabinsk Institute"
+ SME_chelyabinsk_institute_desc:0 "The city behind the Urals that the Union spent the thirties filling with machine tools, on the theory that one day the west of the country might not be there. The theory turned out to be correct.\n\nWhat is being proposed now is not another plant. It is a place where the men who are good at one thing are put in a building together and told to be good at it full-time, with a budget and no production quota - the first institution this government has built that is meant to pay off in ten years rather than in the spring. The argument in Kazan is no longer about whether to build it. It is about what it should be for."
+
+ # The event the focus fires. Four options, one taken.
+ #
+ # The description key is .desc and NOT .d on purpose - the fourth option is
+ # .d, and with the usual .d description key the button and the event text
+ # would be fighting over one string.
+ wif_sme.6.t:0 "What Is Chelyabinsk For?"
+ wif_sme.6.desc:0 "The site is approved, the money is found, and the argument has moved on to the only question that was ever going to be difficult.\n\nFour proposals have reached the Commissariat, and each of them is really a claim about what the next war will be. The physicists want a reactor and fifteen years of quiet. The airmen want a wind tunnel and point out that every city lost in the first year was lost after the bombers had been over it. The marshals want a proving ground, and they want it because the fighting between here and Moscow will be done by men in tanks whatever anyone in a laboratory believes.\n\nThe fourth proposal comes from nobody in particular, which is the trouble with it. It says that choosing a field is choosing which war to lose."
+ wif_sme.6.a:0 "We need to look to the future of war to win and for the second Trial"
+ wif_sme.6.b:0 "The Future of Warfare is in the Skies"
+ wif_sme.6.c:0 "A Red Army, a Great Army"
+ wif_sme.6.d:0 "An Institute for All Research"
+
+ # The bonus the institute leaves on the ground. Named for the state rather
+ # than for the country, because that is how it behaves.
+ wif_chelyabinsk_institute:0 "The Chelyabinsk Institute"
+ wif_chelyabinsk_institute_desc:0 "The laboratories behind the Urals belong to whoever holds the city. They were built to outlast the government that paid for them, and so far they have."

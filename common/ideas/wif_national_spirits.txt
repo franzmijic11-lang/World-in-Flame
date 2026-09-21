@@ -794,6 +794,48 @@ ideas = {
 			}
 		}
 
+		# The end of the White Question. Granted by SME_a_united_people, and
+		# the only thing that removes wif_sme_the_whites_return for good.
+		#
+		# THE DRIFTS ARE THE WHOLE POINT OF THE SWAP. The base spirit pays
+		# every ideology BUT communism 0.1 a day, which is the emigration
+		# pulling a Soviet successor state apart. This pays all four,
+		# communism included, and pays none of them as much. The argument is
+		# still running; it is simply no longer one-sided.
+		#
+		# WEEKLY MANPOWER IS DOWN, 500 to 100, and that is intended. The
+		# emigration coming home was a one-off - the men are already here.
+		# What is left is a country that has stopped arguing long enough to
+		# work, so the industry goes the other way: construction 0.10 -> 0.20,
+		# factory output 0.05 -> 0.07, efficiency growth 0.05 -> 0.10.
+		wif_sme_one_people_gathered = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				weekly_manpower = 100
+
+				democratic_drift = 0.02
+				fascism_drift = 0.07
+				neutrality_drift = 0.05
+				communism_drift = 0.07
+
+				production_speed_buildings_factor = 0.20
+
+				industrial_capacity_factory = 0.07
+				production_factory_efficiency_gain_factor = 0.10
+			}
+		}
+
 		# The fascist press, bought by SME_integrate_their_news_network.
 		#
 		# PERMANENT and never swapped - the White Question decisions only ever

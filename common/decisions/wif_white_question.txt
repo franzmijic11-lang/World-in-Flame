@@ -74,10 +74,19 @@ wif_the_white_question = {
 
 		# The promise lapses. The flag both closes this decision permanently and
 		# opens the next one.
+		#
+		# GUARDED, because the focus SME_a_united_people can take the variant
+		# away while this timer is still running. Unguarded, the swap would put
+		# The Whites Return back on a country that has already settled the
+		# question, on top of One People Gathered. The flag still gets set
+		# either way - the promise did lapse, whoever is listening.
 		remove_effect = {
-			swap_ideas = {
-				remove_idea = wif_sme_the_whites_return_duma
-				add_idea = wif_sme_the_whites_return
+			if = {
+				limit = { has_idea = wif_sme_the_whites_return_duma }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_duma
+					add_idea = wif_sme_the_whites_return
+				}
 			}
 
 			set_country_flag = wif_duma_promised_expired
@@ -136,10 +145,16 @@ wif_the_white_question = {
 			set_country_flag = { flag = wif_white_decision_cooldown days = 110 value = 1 }
 		}
 
+		# Guarded for the same reason as the Duma promise above: the assemblies
+		# can be sitting when SME_a_united_people settles the question, and a
+		# hundred and eighty day timer must not undo that when it expires.
 		remove_effect = {
-			swap_ideas = {
-				remove_idea = wif_sme_the_whites_return_local_dumas
-				add_idea = wif_sme_the_whites_return
+			if = {
+				limit = { has_idea = wif_sme_the_whites_return_local_dumas }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_local_dumas
+					add_idea = wif_sme_the_whites_return
+				}
 			}
 		}
 
