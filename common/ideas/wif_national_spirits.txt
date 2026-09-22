@@ -800,8 +800,9 @@ ideas = {
 		# THE DRIFTS ARE THE WHOLE POINT OF THE SWAP. The base spirit pays
 		# every ideology BUT communism 0.1 a day, which is the emigration
 		# pulling a Soviet successor state apart. This pays all four,
-		# communism included, and pays none of them as much. The argument is
-		# still running; it is simply no longer one-sided.
+		# communism included, and the other three less than before. The
+		# argument is still running, but the Party now leads it: communism
+		# 0.14, raised from 0.07 on 2026-09-22, is the largest drift here.
 		#
 		# WEEKLY MANPOWER IS DOWN, 500 to 100, and that is intended. The
 		# emigration coming home was a one-off - the men are already here.
@@ -827,7 +828,7 @@ ideas = {
 				democratic_drift = 0.02
 				fascism_drift = 0.07
 				neutrality_drift = 0.05
-				communism_drift = 0.07
+				communism_drift = 0.14
 
 				production_speed_buildings_factor = 0.20
 
@@ -862,11 +863,10 @@ ideas = {
 		#
 		# PERMANENT and never swapped - the White Question decisions only ever
 		# replace wif_sme_the_whites_return, and this sits alongside whatever
-		# that is. The bargain is the point: the writers push the Party as hard
-		# as they push their own people, so the two drifts are identical and
-		# both large. Compare the base spirit's 0.1 - this is six times that,
-		# and it is what makes the fascist coup a real risk of taking the road
-		# rather than a theoretical one.
+		# that is. The writers push the Party a little harder than they push
+		# their own people: communism 0.10, fascism 0.07. Both were 0.6 until
+		# 2026-09-22, which made the fascist coup a real risk; at these values
+		# it is a slow pressure rather than a road.
 		wif_sme_fascist_writers = {
 			allowed = {
 				always = no
@@ -881,8 +881,8 @@ ideas = {
 			picture = generic_fascism_drift_bonus
 
 			modifier = {
-				communism_drift = 0.6
-				fascism_drift = 0.6
+				communism_drift = 0.10
+				fascism_drift = 0.07
 			}
 		}
 
