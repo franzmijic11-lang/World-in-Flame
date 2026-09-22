@@ -836,6 +836,28 @@ ideas = {
 			}
 		}
 
+		# From SME_our_will_towards_the_second_trial. Permanent: the army is
+		# being built for one war, and it keeps this until that war is over.
+		wif_sme_our_red_army = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			modifier = {
+				army_attack_factor = 0.10
+				army_org_factor = 0.10
+				army_morale_factor = 0.05		# shown in game as "Division Recovery Rate"
+			}
+		}
+
 		# The fascist press, bought by SME_integrate_their_news_network.
 		#
 		# PERMANENT and never swapped - the White Question decisions only ever

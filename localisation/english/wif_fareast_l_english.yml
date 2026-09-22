@@ -385,3 +385,10 @@
  # than for the country, because that is how it behaves.
  wif_chelyabinsk_institute:0 "The Chelyabinsk Institute"
  wif_chelyabinsk_institute_desc:0 "The laboratories behind the Urals belong to whoever holds the city. They were built to outlast the government that paid for them, and so far they have."
+
+# === Our Will Towards the Second Trial ============================
+ SME_our_will_towards_the_second_trial:0 "Our Will Towards the Second Trial"
+ SME_our_will_towards_the_second_trial_desc:0 "The first trial was the war, and we failed it. Moscow, Leningrad, Kiev - everything west of the line is administered from Berlin by men who have never had to wonder whether they will keep it.\n\nThe country is settled now, and the Commissariat knows whose it is. Everything that happens from here happens for a second trial, and this time the Red Army will be ready for it."
+
+ wif_sme_our_red_army:0 "Our Red Army"
+ wif_sme_our_red_army_desc:0 "An army that remembers losing, and has been rebuilt by men who have spent every day since deciding what it will do differently. It drills to attack, it holds together under fire, and it comes back from a bad day faster than the one the German broke."

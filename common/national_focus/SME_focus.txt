@@ -1200,4 +1200,38 @@ focus_tree = {
 			country_event = { id = wif_sme.6 }
 		}
 	}
+
+	# =====================================================================
+	# Our Will Towards the Second Trial
+	# =====================================================================
+	# The first trial was the war the Union lost. The second is the one that
+	# takes the west back from the German, and this is the focus where the
+	# two halves of the tree - the settlement and the Commissariat - are
+	# pointed at it together.
+	#
+	# Needs A United People AND either answer to who the NKVD reports to. The
+	# second prerequisite block lists both, which makes it an OR within the
+	# block; the two blocks together are an AND.
+	#
+	# Placed midway between the NKVD pair (x 9 and 11, row 8) and A United
+	# People (x 20, row 8), one row lower: absolute (15, 9).
+	focus = {
+		id = SME_our_will_towards_the_second_trial
+		icon = GFX_focus_generic_army_attack
+
+		prerequisite = { focus = SME_a_united_people }
+		prerequisite = { focus = SME_marshals_secret_police focus = SME_make_them_auditable }
+
+		relative_position_id = SME_a_united_people
+		x = -5
+		y = 1
+
+		cost = 7.1428		# 50 days (lands just under, so it completes on day 50)
+
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_ideas = wif_sme_our_red_army
+		}
+	}
 }
