@@ -5822,7 +5822,19 @@ GER_reichskommissariats = {
 				400 = {
 					is_controlled_by_ROOT_or_subject = yes
 				}
+				1085 = { # Gayny - WiF, carved out of Kirov
+					is_controlled_by_ROOT_or_subject = yes
+				}
 				398 = {
+					is_controlled_by_ROOT_or_subject = yes
+				}
+				1082 = { # Central Urals - WiF, carved out of Perm
+					is_controlled_by_ROOT_or_subject = yes
+				}
+				1083 = { # Kudymkar - WiF, carved out of Perm
+					is_controlled_by_ROOT_or_subject = yes
+				}
+				1084 = { # Solikamsk - WiF, carved out of Perm
 					is_controlled_by_ROOT_or_subject = yes
 				}
 				581 = {
@@ -5840,7 +5852,11 @@ GER_reichskommissariats = {
 				state = 262 # Pechora
 				state = 397 # Syktyvkar
 				state = 400 # Kirov
+				state = 1085 # Gayny
 				state = 398 # Perm
+				state = 1082 # Central Urals
+				state = 1083 # Kudymkar
+				state = 1084 # Solikamsk
 				state = 581 # Northern Urals
 				state = 573 # Zlatoust
 			}

@@ -9,7 +9,7 @@
 #
 # A CITY PROVINCE IS A PROVINCE WITH urban TERRAIN in map/definition.csv -
 # the ones that draw as built-up ground. There are 265 of them on the map.
-# State membership comes from history/states, with this mod's 19 overriding
+# State membership comes from history/states, with this mod's 26 overriding
 # files applied on top of vanilla's, so the province moves this mod makes are
 # reflected here.
 #

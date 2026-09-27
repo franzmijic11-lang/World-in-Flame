@@ -1,0 +1,34 @@
+# Welt in Flammen: Solikamsk, a new state carved out of Perm (398).
+#
+# Also indexed elsewhere - keep in step if this ever changes:
+#   map/buildings.txt            a full inland layout under state id 1084
+#   map/strategicregions         nothing: Perm lies wholly in region 40
+#   localisation                 STATE_1084, VICTORY_POINTS_12187
+#   events/wif_sov_events.txt    SME cores it on the collapse
+#   GER_is_RK_north_urals_state  and the North Urals RK decision
+#
+# pastoral: 1 slot in vanilla, 2 with 50 Building Slots in the playset.
+
+state = {
+	id = 1084
+	name = "STATE_1084"
+	manpower = 100000
+	state_category = pastoral
+
+	history = {
+		owner = SOV
+		buildings = {
+			infrastructure = 2
+		}
+		victory_points = {
+			12187 1
+		}
+		add_core_of = SOV
+	}
+
+	provinces = {
+		4314 4802 11195 12175 12187 12527 12587
+	}
+
+	local_supplies = 0.0
+}

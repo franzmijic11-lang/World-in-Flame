@@ -1,0 +1,40 @@
+# Welt in Flammen: Gayny, a new state carved out of Kirov (400).
+#
+# Also indexed elsewhere - keep in step if this ever changes:
+#   map/buildings.txt            a full inland layout under state id 1085
+#   map/strategicregions         nothing: Kirov lies wholly in region 40
+#   localisation                 STATE_1085, VICTORY_POINTS_11170
+#   events/wif_sov_events.txt    SME cores it on the collapse
+#   GER_is_RK_north_urals_state, the North Urals RK decision and
+#   formable_nation_decisions.txt, beside Kirov
+#
+# 5 slots: rural is 4 with 50 Building Slots in the playset (2 in vanilla),
+# plus one extra shared slot below - no category gives 5 on its own.
+
+state = {
+	id = 1085
+	name = "STATE_1085"
+	manpower = 100000
+	state_category = rural
+	resources = {
+		steel = 2
+	}
+
+	history = {
+		owner = SOV
+		buildings = {
+			infrastructure = 2
+		}
+		victory_points = {
+			11170 1
+		}
+		add_core_of = SOV
+		add_extra_state_shared_building_slots = 1
+	}
+
+	provinces = {
+		88 6162 6274 6288 10200 11124 11133 11170 11193 
+	}
+
+	local_supplies = 0.0
+}

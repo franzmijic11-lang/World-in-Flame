@@ -1,0 +1,39 @@
+# Welt in Flammen: Kudymkar, a new state carved out of Perm (398).
+#
+# Also indexed elsewhere - keep in step if this ever changes:
+#   map/buildings.txt            a full inland layout under state id 1083
+#   map/strategicregions         nothing: Perm lies wholly in region 40
+#   localisation                 STATE_1083, VICTORY_POINTS_11352
+#   events/wif_sov_events.txt    SME cores it on the collapse
+#   GER_is_RK_north_urals_state  and the North Urals RK decision
+#
+# rural: 2 slots in vanilla, 4 with 50 Building Slots in the playset.
+
+state = {
+	id = 1083
+	name = "STATE_1083"
+	manpower = 500000
+	state_category = rural
+	resources = {
+		steel = 3
+	}
+
+	history = {
+		owner = SOV
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 1
+			air_base = 1
+		}
+		victory_points = {
+			11352 1
+		}
+		add_core_of = SOV
+	}
+
+	provinces = {
+		123 189 390 1336 1365 3127 4326 6025 7346 9283 11111 11352
+	}
+
+	local_supplies = 0.0
+}

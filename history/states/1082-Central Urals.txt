@@ -1,0 +1,37 @@
+# Welt in Flammen: Central Urals, a new state carved out of Perm (398).
+#
+# Also indexed elsewhere - keep in step if this ever changes:
+#   map/buildings.txt            a full inland layout under state id 1082
+#   map/strategicregions         nothing: all four provinces were already in
+#                                region 40 with the rest of Perm
+#   localisation                 STATE_1082, VICTORY_POINTS_12659
+#   events/wif_sov_events.txt    SME cores it on the collapse
+#
+# pastoral = 1 slot in vanilla, 2 with 50 Building Slots in the playset.
+
+state = {
+	id = 1082
+	name = "STATE_1082"
+	manpower = 30000
+	state_category = pastoral
+	resources = {
+		aluminium = 4 # from Perm's starting 6
+	}
+
+	history = {
+		owner = SOV
+		buildings = {
+			infrastructure = 2
+		}
+		victory_points = {
+			12659 1
+		}
+		add_core_of = SOV
+	}
+
+	provinces = {
+		4874 7824 10216 12659
+	}
+
+	local_supplies = 0.0
+}

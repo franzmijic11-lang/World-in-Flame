@@ -1,0 +1,43 @@
+# Welt in Flammen override of vanilla history/states/398-Perm.txt.
+#
+# Central Urals (1082), Kudymkar (1083) and Solikamsk (1084) are carved out
+# of Perm. Central Urals: provinces 10216, 4874, 12659
+# and 7824 leave, with 4 of Perm's 6 aluminium and 30000 of its manpower.
+# Kudymkar (1083) takes 12 provinces and 500000 manpower, Solikamsk (1084)
+# takes 12527 and everything of Perm's north of it, 7 provinces and 100000.
+# Perm keeps 10 provinces and its own victory point, 7375.
+
+
+state = {
+	id = 398
+	name = "STATE_398"
+	manpower = 1505879
+	state_category = rural
+	resources = {
+		aluminium = 2 # was: 6 in vanilla, 4 went to Central Urals (1082)
+	}
+
+	history = {
+		owner = SOV
+		buildings = {
+			infrastructure = 3 #was: 6
+			arms_factory = 1
+
+		}
+		victory_points = {
+			7375 1 
+		}
+		add_core_of = SOV
+		1939.1.1 = {
+			buildings = {
+				arms_factory = 2
+			}
+		}
+	}
+
+	provinces = {
+		206 1380 1754 4372 7375 10286 10314 11228 12216 12626 
+	}
+
+	local_supplies = 0.0 
+}
