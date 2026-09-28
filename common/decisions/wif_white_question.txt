@@ -48,9 +48,14 @@ wif_the_white_question = {
 			NOT = { has_country_flag = wif_duma_promised_expired }
 		}
 
+		# Either base spirit - the AI holds wif_sme_the_whites_return_ai, and
+		# each swap below keeps it on its own line by testing which is held.
 		available = {
 			NOT = { has_country_flag = wif_white_decision_cooldown }
-			has_idea = wif_sme_the_whites_return
+			OR = {
+				has_idea = wif_sme_the_whites_return
+				has_idea = wif_sme_the_whites_return_ai
+			}
 		}
 
 		fire_only_once = yes
@@ -60,9 +65,18 @@ wif_the_white_question = {
 		days_remove = 100
 
 		complete_effect = {
-			swap_ideas = {
-				remove_idea = wif_sme_the_whites_return
-				add_idea = wif_sme_the_whites_return_duma
+			if = {
+				limit = { has_idea = wif_sme_the_whites_return_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_ai
+					add_idea = wif_sme_the_whites_return_duma_ai
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return
+					add_idea = wif_sme_the_whites_return_duma
+				}
 			}
 
 			add_to_variable = { wif_whites_dem_loyalty = 5 }
@@ -88,12 +102,27 @@ wif_the_white_question = {
 					add_idea = wif_sme_the_whites_return
 				}
 			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_duma_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_duma_ai
+					add_idea = wif_sme_the_whites_return_ai
+				}
+			}
 
 			set_country_flag = wif_duma_promised_expired
 		}
 
+		# Held back until Vladimir is invited. A Duma decision takes the shared
+		# cooldown, and the AI must not spend it ahead of the Romanov road,
+		# which is what its focus tree waits on.
 		ai_will_do = {
-			factor = 1
+			factor = 5
+
+			modifier = {
+				factor = 0
+				NOT = { has_country_flag = wif_vladimir_invited }
+			}
 		}
 	}
 
@@ -113,7 +142,10 @@ wif_the_white_question = {
 
 		available = {
 			NOT = { has_country_flag = wif_white_decision_cooldown }
-			has_idea = wif_sme_the_whites_return
+			OR = {
+				has_idea = wif_sme_the_whites_return
+				has_idea = wif_sme_the_whites_return_ai
+			}
 		}
 
 		fire_only_once = yes
@@ -123,9 +155,18 @@ wif_the_white_question = {
 		days_remove = 180
 
 		complete_effect = {
-			swap_ideas = {
-				remove_idea = wif_sme_the_whites_return
-				add_idea = wif_sme_the_whites_return_local_dumas
+			if = {
+				limit = { has_idea = wif_sme_the_whites_return_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_ai
+					add_idea = wif_sme_the_whites_return_local_dumas_ai
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return
+					add_idea = wif_sme_the_whites_return_local_dumas
+				}
 			}
 
 			add_to_variable = { wif_whites_dem_loyalty = 15 }
@@ -156,10 +197,25 @@ wif_the_white_question = {
 					add_idea = wif_sme_the_whites_return
 				}
 			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_local_dumas_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_local_dumas_ai
+					add_idea = wif_sme_the_whites_return_ai
+				}
+			}
 		}
 
+		# Held back until Vladimir is invited. A Duma decision takes the shared
+		# cooldown, and the AI must not spend it ahead of the Romanov road,
+		# which is what its focus tree waits on.
 		ai_will_do = {
-			factor = 1
+			factor = 5
+
+			modifier = {
+				factor = 0
+				NOT = { has_country_flag = wif_vladimir_invited }
+			}
 		}
 	}
 
@@ -210,8 +266,12 @@ wif_the_white_question = {
 			set_country_flag = wif_tsar_funeral_done
 		}
 
+		# The Romanov road is how the SME's focus tree moves on - the funeral
+		# unlocks one focus, Vladimir another - so the AI takes each step the
+		# moment it can. At factor 1 it never did: advisors and laws always
+		# outbid it, and the tree sat stalled behind a 20 PP decision.
 		ai_will_do = {
-			factor = 1
+			factor = 200
 		}
 	}
 
@@ -234,10 +294,14 @@ wif_the_white_question = {
 		available = {
 			NOT = { has_country_flag = wif_white_decision_cooldown }
 
-			# Nothing else may be in effect. has_idea on the BASE spirit is what
-			# proves no Duma variant is swapped in - the variants replace it.
+			# Nothing else may be in effect. has_idea on a BASE spirit (human or
+			# AI) is what proves no Duma variant is swapped in - the variants
+			# replace it.
 			NOT = { has_idea = wif_sme_tsar_funeral }
-			has_idea = wif_sme_the_whites_return
+			OR = {
+				has_idea = wif_sme_the_whites_return
+				has_idea = wif_sme_the_whites_return_ai
+			}
 		}
 
 		fire_only_once = yes
@@ -262,8 +326,12 @@ wif_the_white_question = {
 			set_country_flag = wif_tsarist_land_returned
 		}
 
+		# The Romanov road is how the SME's focus tree moves on - the funeral
+		# unlocks one focus, Vladimir another - so the AI takes each step the
+		# moment it can. At factor 1 it never did: advisors and laws always
+		# outbid it, and the tree sat stalled behind a 20 PP decision.
 		ai_will_do = {
-			factor = 1
+			factor = 200
 		}
 	}
 
@@ -302,8 +370,12 @@ wif_the_white_question = {
 			country_event = { id = wif_sme.5 }
 		}
 
+		# The Romanov road is how the SME's focus tree moves on - the funeral
+		# unlocks one focus, Vladimir another - so the AI takes each step the
+		# moment it can. At factor 1 it never did: advisors and laws always
+		# outbid it, and the tree sat stalled behind a 20 PP decision.
 		ai_will_do = {
-			factor = 1
+			factor = 200
 		}
 	}
 

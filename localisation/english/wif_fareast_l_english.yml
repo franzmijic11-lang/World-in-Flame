@@ -259,6 +259,14 @@
  wif_sme_the_whites_return_local_dumas:0 "The Whites Return: The Assemblies Sit"
  wif_sme_the_whites_return_local_dumas_desc:0 "District assemblies with enumerated powers and a sunset clause. The democrats are inside the structure now rather than outside it, which is either the safest place for them or the most dangerous, depending on which marshal you ask."
 
+ # AI copies of the three White Question spirits - same names, gentler drifts.
+ wif_sme_the_whites_return_ai:0 "The Whites Return (AI Version)"
+ wif_sme_the_whites_return_ai_desc:0 "The emigration is coming back - officers who left in 1920, engineers who spent fifteen years building somebody else's factories, and a political tradition that lost the civil war and never once conceded the point.\n\nThey bring hands, and skills, and opinions. Here the Party has made sure it is heard louder than any of them."
+ wif_sme_the_whites_return_duma_ai:0 "The Whites Return: A Duma Promised (AI Version)"
+ wif_sme_the_whites_return_duma_ai_desc:0 "A sentence spoken in a room in Kazan, repeated in every ministry within the week. The democrats have decided to believe it. The officers have decided to remember it."
+ wif_sme_the_whites_return_local_dumas_ai:0 "The Whites Return: The Assemblies Sit (AI Version)"
+ wif_sme_the_whites_return_local_dumas_ai_desc:0 "District assemblies with enumerated powers and a sunset clause. The democrats are inside the structure now rather than outside it, which is either the safest place for them or the most dangerous, depending on which marshal you ask."
+
  wif_white_decision_cooldown:0 "The Whites Are Watching"
 
  # === The fall of the Emergency Government =========================
@@ -357,8 +365,10 @@
  SME_a_united_people:0 "A United People"
  SME_a_united_people_desc:0 "Three settlements signed in three different rooms, and not one of them made out of affection. The fascists write our editorials. The democrats have no leadership left worth the name. A Romanov stands in Kuybyshev and calls the workers' state his own. Fifteen years of argument about what Russia is supposed to be, and it ends not because anybody won it but because of the map.\n\nThe German sits on everything west of the line and administers it by commissariat. That is the one fact in the country that every faction reads the same way, and it is the only thing any of them were ever going to agree on. So the argument is not settled. It is postponed, formally, with witnesses - and until the German is off Russian soil there is one people here, gathered, whatever they each privately intend to do the morning after."
 
+ wif_sme_one_people_gathered_ai:0 "One People Gathered (AI Version)"
+ wif_sme_one_people_gathered_ai_desc:0 "The emigration is home and has stopped being news. What is left is the work: shifts that start on time, foundations poured in the spring rather than argued over until autumn, and factories that get faster because nobody is calling a meeting about who owns them.\n\nThe democrats have stopped recruiting. Everyone else has not, and now the Party is recruiting too - which is new, and which is the difference between a country pulling itself apart and a country pulling."
  wif_sme_one_people_gathered:0 "One People Gathered"
- wif_sme_one_people_gathered_desc:0 "The emigration is home and has stopped being news. What is left is the work: shifts that start on time, foundations poured in the spring rather than argued over until autumn, and factories that get faster because nobody is calling a meeting about who owns them.\n\nEvery faction is still recruiting, and now the Party is recruiting too - which is new, and which is the difference between a country pulling itself apart and a country pulling."
+ wif_sme_one_people_gathered_desc:0 "The emigration is home and has stopped being news. What is left is the work: shifts that start on time, foundations poured in the spring rather than argued over until autumn, and factories that get faster because nobody is calling a meeting about who owns them.\n\nThe democrats have stopped recruiting. Everyone else has not, and now the Party is recruiting too - which is new, and which is the difference between a country pulling itself apart and a country pulling."
 
  # The effect tooltip on A United People. Flags and variables show nothing in a
  # focus tooltip on their own, and what this focus switches off is the part the

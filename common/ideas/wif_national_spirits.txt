@@ -794,15 +794,116 @@ ideas = {
 			}
 		}
 
+		# =====================================================================
+		# AI copies of the three White Question spirits
+		# =====================================================================
+		# SME_invite_the_whites_back grants wif_sme_the_whites_return_ai instead
+		# of the base spirit when is_ai = yes. From there the AI line stays on
+		# the AI line: the decisions in common/decisions/wif_white_question.txt
+		# swap base -> _duma_ai / _local_dumas_ai and back by testing WHICH
+		# spirit is held, not is_ai, so a country never crosses between lines.
+		#
+		# EVERYTHING BUT THE DRIFTS IS COPIED from the human versions. The
+		# drifts keep each human version's shape at roughly a quarter of the
+		# strength, and communism always gains at least as fast as democracy:
+		# the human spirits pull a country apart unless it is planned around,
+		# and the AI does not plan.
+		wif_sme_the_whites_return_ai = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				fascism_drift = 0.02
+				democratic_drift = 0.02
+				neutrality_drift = 0.02
+				communism_drift = 0.04
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		wif_sme_the_whites_return_duma_ai = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				democratic_drift = 0.04
+				fascism_drift = 0.01
+				neutrality_drift = 0.02
+				communism_drift = 0.04
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
+		wif_sme_the_whites_return_local_dumas_ai = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_reserve_divisions
+
+			modifier = {
+				weekly_manpower = 500
+
+				democratic_drift = 0.05
+				fascism_drift = 0.01
+				neutrality_drift = 0.01
+				communism_drift = 0.05
+
+				political_power_factor = -0.05
+
+				production_speed_buildings_factor = 0.10
+
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+
 		# The end of the White Question. Granted by SME_a_united_people, and
 		# the only thing that removes wif_sme_the_whites_return for good.
 		#
 		# THE DRIFTS ARE THE WHOLE POINT OF THE SWAP. The base spirit pays
 		# every ideology BUT communism 0.1 a day, which is the emigration
-		# pulling a Soviet successor state apart. This pays all four,
-		# communism included, and the other three less than before. The
-		# argument is still running, but the Party now leads it: communism
-		# 0.14, raised from 0.07 on 2026-09-22, is the largest drift here.
+		# pulling a Soviet successor state apart. This pays communism,
+		# fascism and neutrality, and nothing to democracy - the 0.02 it
+		# once paid was cut on 2026-09-28. The argument is still running,
+		# but the Party now leads it: communism 0.14, raised from 0.07 on
+		# 2026-09-22, is the largest drift here.
 		#
 		# WEEKLY MANPOWER IS DOWN, 500 to 100, and that is intended. The
 		# emigration coming home was a one-off - the men are already here.
@@ -825,10 +926,40 @@ ideas = {
 			modifier = {
 				weekly_manpower = 100
 
-				democratic_drift = 0.02
 				fascism_drift = 0.07
 				neutrality_drift = 0.05
 				communism_drift = 0.14
+
+				production_speed_buildings_factor = 0.20
+
+				industrial_capacity_factory = 0.07
+				production_factory_efficiency_gain_factor = 0.10
+			}
+		}
+
+		# The AI's copy of One People Gathered, granted by SME_a_united_people
+		# to a country on the AI line (holding any _ai White Question spirit,
+		# or is_ai when it holds none). Everything but the drifts is copied;
+		# the Party leads harder here than in the human version.
+		wif_sme_one_people_gathered_ai = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				weekly_manpower = 100
+
+				fascism_drift = 0.06
+				neutrality_drift = 0.04
+				communism_drift = 0.16
 
 				production_speed_buildings_factor = 0.20
 

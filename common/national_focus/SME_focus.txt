@@ -834,8 +834,16 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
+		# The AI gets its own copy with gentler drifts - see the AI copies in
+		# common/ideas/wif_national_spirits.txt.
 		completion_reward = {
-			add_ideas = wif_sme_the_whites_return
+			if = {
+				limit = { is_ai = yes }
+				add_ideas = wif_sme_the_whites_return_ai
+			}
+			else = {
+				add_ideas = wif_sme_the_whites_return
+			}
 		}
 	}
 
@@ -1063,10 +1071,10 @@ focus_tree = {
 	# spirit every road has carried since SME_invite_the_whites_back, and this
 	# is the only thing in the mod that takes it away permanently.
 	#
-	# ALL THREE VARIANTS ARE HANDLED. The decisions in
+	# ALL SIX VARIANTS ARE HANDLED. The decisions in
 	# common/decisions/wif_white_question.txt swap the base spirit for a TIMED
-	# variant - _duma or _local_dumas - so the country can be holding any of the
-	# three when this completes. The chain below removes whichever is actually
+	# variant - _duma or _local_dumas - and an AI country holds the _ai copy of
+	# each, so the country can be holding any of the six when this completes. The chain below removes whichever is actually
 	# held, and the final else covers the case where none is, so the focus can
 	# never complete and grant nothing.
 	#
@@ -1134,6 +1142,34 @@ focus_tree = {
 					remove_idea = wif_sme_the_whites_return_local_dumas
 					add_idea = wif_sme_one_people_gathered
 				}
+			}
+			# The AI line ends on the AI copy of One People Gathered.
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_ai
+					add_idea = wif_sme_one_people_gathered_ai
+				}
+			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_duma_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_duma_ai
+					add_idea = wif_sme_one_people_gathered_ai
+				}
+			}
+			else_if = {
+				limit = { has_idea = wif_sme_the_whites_return_local_dumas_ai }
+				swap_ideas = {
+					remove_idea = wif_sme_the_whites_return_local_dumas_ai
+					add_idea = wif_sme_one_people_gathered_ai
+				}
+			}
+			# Holding none of the six: nothing to tell the lines apart by, so
+			# ask who is playing.
+			else_if = {
+				limit = { is_ai = yes }
+				add_ideas = wif_sme_one_people_gathered_ai
 			}
 			else = {
 				add_ideas = wif_sme_one_people_gathered
