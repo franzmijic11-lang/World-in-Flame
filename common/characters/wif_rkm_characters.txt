@@ -12,7 +12,7 @@ characters = {
 
 		portraits = {
 			civilian = {
-				small = GFX_idea_generic_political_advisor_europe_3
+				small = GFX_idea_RKM_konstantin_rossovsky
 			}
 		}
 
@@ -36,6 +36,40 @@ characters = {
 
 			ai_will_do = {
 				base = 3
+			}
+		}
+	}
+
+	# RKM's fascist demagogue. RKM had none - the only character in the game
+	# with fascist_demagogue is Rodzayevsky, who with No Step Back never has
+	# an advisor role - so this is RKM's own, with its own trait: the same
+	# fascism drift as the vanilla trait, plus the stability it costs to have
+	# a man shouting from the balcony in an occupied city. The vanilla trait
+	# is shared by every country and is left untouched.
+	RKM_pavel_sukhodolsky = {
+		name = RKM_pavel_sukhodolsky
+
+		portraits = {
+			civilian = {
+				small = GFX_idea_generic_political_advisor_europe_1
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = RKM_pavel_sukhodolsky
+			cost = 150
+
+			allowed = {
+				original_tag = RKM
+			}
+
+			traits = {
+				wif_rkm_fascist_demagogue
+			}
+
+			ai_will_do = {
+				base = 1
 			}
 		}
 	}

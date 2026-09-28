@@ -9,13 +9,27 @@ leader_traits = {
 	# Konstantin Rossovsky. A Russian administrator who took the German side
 	# early and made himself useful enough that the Reichskommissariat kept
 	# him on when it had no reason to. Worth more to compliance than a
-	# battalion is to order.
+	# battalion is to order. He also pulls the country away from the Party
+	# and toward the Reich, 0.05 a day each way.
 	wif_collaborationist_administrator = {
 		random = no
 		sprite = 13
 
 		compliance_growth = 0.10
 		resistance_target = -0.10
+
+		fascism_drift = 0.05
+		communism_drift = -0.05
+	}
+
+	# Pavel Sukhodolsky, RKM's fascist demagogue. The vanilla
+	# fascist_demagogue's 0.10 drift, and -10% stability on top.
+	wif_rkm_fascist_demagogue = {
+		random = no
+		sprite = 13
+
+		fascism_drift = 0.10
+		stability_factor = -0.10
 	}
 	# Marshal Zhukov as head of the Emergency Government.
 	#

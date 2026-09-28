@@ -15,4 +15,8 @@ spriteTypes = {
 		name = "GFX_idea_wif_honourary_tsar_vladimir"
 		texturefile = "gfx/interface/ideas/idea_wif_honourary_tsar_vladimir.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_RKM_konstantin_rossovsky"
+		texturefile = "gfx/interface/ideas/idea_RKM_konstantin_rossovsky.dds"
+	}
 }

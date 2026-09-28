@@ -166,6 +166,9 @@ recruit_character = RKM_siegfried_kasche
 # advisor has never once appeared in game - the same bug as the SME's two.
 recruit_character = RKM_konstantin_rossovsky
 
+# RKM's own fascist demagogue, also in wif_rkm_characters.txt.
+recruit_character = RKM_pavel_sukhodolsky
+
 add_ideas = {
 	war_economy
 	limited_conscription

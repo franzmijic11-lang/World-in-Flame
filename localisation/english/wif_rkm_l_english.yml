@@ -360,6 +360,9 @@
  RKM_konstantin_rossovsky:0 "Konstantin Rossovsky"
  wif_collaborationist_administrator:0 "Collaborationist Administrator"
  wif_collaborationist_administrator_desc:0 "He was a district administrator before the war and he is a district administrator now, and he has never once asked which flag the district answers to. The Reich finds him distasteful and indispensable in roughly equal measure."
+ RKM_pavel_sukhodolsky:0 "Pavel Sukhodolsky"
+ wif_rkm_fascist_demagogue:0 "Fascist Demagogue"
+ wif_rkm_fascist_demagogue_desc:0 "He speaks from balconies the Germans lend him, to crowds the Germans count. Some of them come to cheer and some come to be seen cheering, and every speech sends a few more of the second kind home to think about it."
 
  # === The West Russian Republic / Duchy of Moscow ====================
  # One tag, two countries: HoI4 names a country from its ruling ideology,
