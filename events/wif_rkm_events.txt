@@ -87,6 +87,7 @@ country_event = {
 		add_manpower = 20000
 
 		# Spawn 2 green divisions on capital
+		wif_rkm_ensure_garrison_template = yes
 		load_oob = "RKM_german_equipment"
 	}
 }

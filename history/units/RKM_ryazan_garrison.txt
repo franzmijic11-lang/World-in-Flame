@@ -1,18 +1,3 @@
-division_template = {
-	name = "Moscowien Garrison Division"
-	is_locked = yes
-	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-		infantry = { x = 0 y = 3 }
-		infantry = { x = 0 y = 4 }
-	}
-	support = {
-		engineer = { x = 0 y = 0 }
-	}
-}
-
 units = {
 	division = {
 		name = "1. Moscowien Garrison Division"

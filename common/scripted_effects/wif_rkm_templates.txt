@@ -1,0 +1,25 @@
+# Division templates for the RKM unit files in history/units.
+#
+# A load_oob whose division refers to a template the country does not have
+# fails outright - "Malformed token ... No division template set" in the
+# error log - and spawns nothing. Several RKM files share a template, and it
+# used to live in only one of them, so taking the focuses in any other order
+# (or skipping the one that defined it) spawned nothing at all.
+#
+# Each template now lives in a template-only file, and every load_oob of a
+# file that uses it is preceded by one of these. has_template stops a second
+# copy being made when the country already has it.
+
+wif_rkm_ensure_ss_template = {
+	if = {
+		limit = { NOT = { has_template = "SS-Mechanisierte Division" } }
+		load_oob = "RKM_template_ss_mechanised"
+	}
+}
+
+wif_rkm_ensure_garrison_template = {
+	if = {
+		limit = { NOT = { has_template = "Moscowien Garrison Division" } }
+		load_oob = "RKM_template_moscowien_garrison"
+	}
+}
