@@ -63,6 +63,7 @@ characters = {
 			}
 
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_completed_focus = SWE_form_an_agrarian_cabinet
 					has_completed_focus = SWE_form_a_conservative_cabinet
@@ -110,6 +111,7 @@ characters = {
 			}
 
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				has_completed_focus = SWE_form_a_conservative_cabinet
 
 				# Belt and braces. The conservative cabinet cannot exist on a

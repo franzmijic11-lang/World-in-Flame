@@ -34,6 +34,29 @@ wif_swe_socialist_ministry_allowed = {
 	}
 }
 
+# Can a democratic Sweden hire political advisors yet?
+#
+# Not until the Democratic War Cabinet (SWE_coalition_war_cabinet). Until then
+# the three political advisor slots stay EMPTY - no hiring at all, not merely no
+# swapping. The ministry governs through its focuses, and the war cabinet is
+# the moment the cabinet room is opened up.
+#
+# DEMOCRATIC ONLY. Fascist and communist Sweden never reach the war cabinet, so
+# for them this passes and vanilla's rules apply. A democratic Sweden that
+# turns to another ideology unlocks at that point too.
+#
+# On EVERY political advisor in common/characters/SWE.txt and
+# common/characters/wif_swe_characters.txt, Myrdals included - they are
+# academics, not party men, but the lock is on the chair, not the party. Add it
+# to any new Swedish political advisor as well. Effects that grant an advisor
+# directly are not stopped by it; only hiring from the panel is.
+wif_swe_cabinet_unlocked = {
+	OR = {
+		NOT = { has_government = democratic }
+		has_completed_focus = SWE_coalition_war_cabinet
+	}
+}
+
 # Passes unless the Social Democrats won. Put on Hogern, Bondeforbundet and
 # Folkpartiet politicians.
 wif_swe_bourgeois_ministry_allowed = {

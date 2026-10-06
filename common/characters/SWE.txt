@@ -1,4 +1,4 @@
-# VANILLA common/characters/SWE.txt, OVERRIDDEN FOR ONE REASON ONLY.
+# VANILLA common/characters/SWE.txt, OVERRIDDEN FOR TWO REASONS.
 #
 # The 1936 election decides not just who governs but who is EMPLOYABLE. A
 # Social Democratic ministry does not hire Hogern and Bondeforbundet's front
@@ -13,7 +13,12 @@
 #   wif_swe_socialist_ministry_allowed   Wigforss, Sandler, Unden, Skold
 #   wif_swe_bourgeois_ministry_allowed   Bagge, Pehrsson-Bramstorp, Bergquist
 #
-# Both triggers live in common/scripted_triggers/wif_sweden_triggers.txt and
+# SECOND REASON: every political advisor (33 entries) also carries
+# wif_swe_cabinet_unlocked = yes, which keeps a democratic Sweden from hiring
+# any political advisor until the Democratic War Cabinet. Eight entries needed
+# an available block creating for it.
+#
+# All three triggers live in common/scripted_triggers/wif_sweden_triggers.txt and
 # BOTH PASS UNTIL THE ELECTION RESOLVES, so this file behaves exactly as
 # vanilla does for the whole of 1936.
 #
@@ -106,6 +111,9 @@ characters={
 					}
 
 					traits = { SWE_committee_against_the_finnish_white_terror }
+					available = {
+						wif_swe_cabinet_unlocked = yes
+					}
 				}
 				name=SWE_sven_linderot
 				portraits={
@@ -151,6 +159,7 @@ characters={
 				SWE_minister_of_agriculture 
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_bourgeois_ministry_allowed = yes
 				is_country_leader = no
 			}
@@ -190,6 +199,7 @@ characters={
  				}
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				NOT = {
 					has_country_leader = { character = SWE_sven_linderot }
  				}
@@ -210,6 +220,7 @@ characters={
 			slot = political_advisor
 			idea_token = SWE_raoul_wallenberg
 			available = {
+				wif_swe_cabinet_unlocked = yes
 			}
 			allowed = {
 				original_tag = SWE
@@ -250,6 +261,7 @@ characters={
 				is_country_leader = no
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_bourgeois_ministry_allowed = yes
 				is_country_leader = no
 			}
@@ -270,6 +282,7 @@ characters={
 					financial_expert
 				}
 				available = {
+					wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 					is_country_leader = no
 				}
@@ -293,6 +306,7 @@ characters={
 				slot = political_advisor
 				idea_token = SWE_ernst_wigforss
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 			}
 				allowed  = {
@@ -322,6 +336,7 @@ characters={
 				SWE_minister_of_transport
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				has_completed_focus = SWE_infrastructure
 			}
 			visible = {
@@ -1326,6 +1341,7 @@ characters={
 				slot = political_advisor
 				idea_token = SWE_thorwald_bergquist
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_bourgeois_ministry_allowed = yes
 			}
 				allowed  = {
@@ -1348,6 +1364,7 @@ characters={
 				slot = political_advisor
 				idea_token = SWE_thorwald_bergquist
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_bourgeois_ministry_allowed = yes
 			}
 				allowed  = {
@@ -1381,6 +1398,7 @@ characters={
 					original_tag  = SWE
 				}
 				available = {
+					wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 				}
 				visible = {
@@ -1408,6 +1426,7 @@ characters={
 				slot = political_advisor
 				idea_token = SWE_osten_unden
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 			}
 				allowed  = {
@@ -1436,6 +1455,7 @@ characters={
 				has_country_flag = SWE_spying_on_GER
 			}
 			available  = {
+				wif_swe_cabinet_unlocked = yes
 					original_tag  = SWE
 					has_country_flag = SWE_spying_on_GER
 					has_intelligence_agency  = yes 
@@ -1479,6 +1499,7 @@ characters={
 				is_country_leader = no
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				is_country_leader = no
 				NOT = {
 					has_completed_focus = SWE_liquidate_the_monarchy
@@ -1507,6 +1528,7 @@ characters={
 				original_tag  = SWE
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = democratic
 					has_government = communism
@@ -1547,6 +1569,7 @@ characters={
 			}
 
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = democratic 
 					has_government = communism
@@ -1580,6 +1603,7 @@ characters={
 		advisor={
 			#visible = { has_government = democratic }
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = democratic 
 					has_government = communism
@@ -1664,6 +1688,9 @@ characters={
 				ai_will_do = {
 					factor = 0.5
 				}
+				available = {
+					wif_swe_cabinet_unlocked = yes
+				}
 			}
 
 			name=SWE_christian_gunter
@@ -1688,6 +1715,9 @@ characters={
 				ai_will_do = {
 					factor = 0.5
 				}
+				available = {
+					wif_swe_cabinet_unlocked = yes
+				}
 			}
 			name=SWE_christian_gunter
 			portraits={
@@ -1708,6 +1738,7 @@ characters={
 			}
 
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 				NOT = { has_war_with = FIN }
 			}
@@ -1754,6 +1785,7 @@ characters={
 				original_tag  = SWE
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				has_completed_focus = SWE_education_reform
 				#OR = {
 				#	has_government = democratic
@@ -1802,6 +1834,7 @@ characters={
 				original_tag  = SWE
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				has_completed_focus = SWE_education_reform
 				#OR = {
 				#	has_government = democratic
@@ -1856,6 +1889,7 @@ characters={
 			}
 
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				wif_swe_socialist_ministry_allowed = yes
 				NOT = {
 					has_government = fascism
@@ -1879,7 +1913,7 @@ characters={
 			allowed  = {
 				original_tag  = SWE
 			}
-			available = { is_country_leader = no }
+			available = { wif_swe_cabinet_unlocked = yes is_country_leader = no }
 			visible = { has_government = fascism }
 			traits = { national_socialist_veterinarian }
 		}
@@ -1907,6 +1941,9 @@ characters={
  				}
 			}
 			traits = { anti_soviet_socialist }
+			available = {
+				wif_swe_cabinet_unlocked = yes
+			}
 		}
 		name=SWE_karl_kilbom
 		portraits={
@@ -1927,6 +1964,9 @@ characters={
 			}
 			visible = { has_government = fascism }
 			traits = { prince_of_terror }
+			available = {
+				wif_swe_cabinet_unlocked = yes
+			}
 		}
 		name=SWE_sven_hedengren
 		portraits={
@@ -1963,6 +2003,9 @@ characters={
 					}
 				}
 			}
+			available = {
+				wif_swe_cabinet_unlocked = yes
+			}
 		}
 		name=SWE_sven_hedin
 		portraits={
@@ -1984,6 +2027,9 @@ characters={
 			visible = { has_government = fascism }
 			traits = {  munckska_karens_member }
 
+			available = {
+				wif_swe_cabinet_unlocked = yes
+			}
 		}
 		name=SWE_konrad_hallgren
 		portraits={
@@ -2006,6 +2052,7 @@ characters={
 				}
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = communism
 					AND = {
@@ -2060,6 +2107,7 @@ characters={
 				}
 			}
 			available = { 
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = communism
 					AND = {
@@ -2106,6 +2154,7 @@ characters={
 				}
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				OR = {
 					has_government = communism
 					AND = {
@@ -2152,6 +2201,9 @@ characters={
 				}
 			}
 			traits = { humanist }
+			available = {
+				wif_swe_cabinet_unlocked = yes
+			}
 		}
 		name=SWE_carl_lindhagen
 		portraits={
@@ -2177,6 +2229,7 @@ characters={
 				}
 			}
 			available = {
+				wif_swe_cabinet_unlocked = yes
 				has_government = communism
 			}
 			traits = { staunch_stalinist }
