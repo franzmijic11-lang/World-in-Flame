@@ -432,7 +432,7 @@ focus_tree = {
 		icon = GFX_goal_generic_army_doctrines
 		x = 8
 		y = 8
-		cost = 7.14 # 50 days
+		cost = 7.143 # 50 days
 
 		prerequisite = {
 			focus = RKM_railroad_to_berlin
@@ -604,7 +604,7 @@ focus_tree = {
 		icon = GFX_focus_GER_german_army_invincible
 		x = 10
 		y = 12
-		cost = 5.71 # 40 days
+		cost = 5.715 # 40 days
 
 		prerequisite = {
 			focus = RKM_mansteins_eastern_concern
@@ -941,7 +941,7 @@ focus_tree = {
 		icon = GFX_focus_generic_supply_line
 		x = 8
 		y = 14
-		cost = 8.57 # 60 days
+		cost = 8.572 # 60 days
 
 		prerequisite = {
 			focus = RKM_germanisation
@@ -973,7 +973,7 @@ focus_tree = {
 		icon = GFX_focus_GER_german_army_invincible
 		x = 8
 		y = 15
-		cost = 5.71 # 40 days
+		cost = 5.715 # 40 days
 
 		prerequisite = {
 			focus = RKM_secure_the_logistic_lines

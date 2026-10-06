@@ -14,8 +14,10 @@
 #
 # COST IS IN WEEKS, not days. FOCUS_POINT_DAYS = 7 in vanilla defines and
 # Welt in Flammen does not override it, so cost = 9 is exactly 63 days. RKM's
-# tree uses the same convention and carries fractional costs (5.71, 8.57, 14.3)
-# where a round day count was wanted.
+# tree uses the same convention and carries fractional costs where a round day count was wanted.
+# ROUND THOSE UP, NEVER DOWN: the game shows cost x 7 rounded down, so 7.14
+# (49.98 days) displays as 49. Use three decimals that land just OVER the
+# target - 7.143 for 50, 5.715 for 40, 8.572 for 60.
 
 focus_tree = {
 	id = SME_focus_tree
@@ -82,7 +84,7 @@ focus_tree = {
 		x = 10
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		completion_reward = {
 			# The promise. Shown, never run.
@@ -157,7 +159,7 @@ focus_tree = {
 		x = 14
 		y = 2
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -214,7 +216,7 @@ focus_tree = {
 		x = 10
 		y = 3
 
-		cost = 12.2857		# 86 days (86 / 7 - lands just under, so it completes on day 86)
+		cost = 12.286		# 86 days
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
@@ -334,7 +336,7 @@ focus_tree = {
 		x = 1
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
@@ -388,7 +390,7 @@ focus_tree = {
 		x = -1
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
@@ -520,7 +522,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -546,7 +548,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -598,7 +600,7 @@ focus_tree = {
 		x = -1
 		y = 1
 
-		cost = 2.14			# 15 days
+		cost = 2.143			# 15 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -641,7 +643,7 @@ focus_tree = {
 		x = 1
 		y = 1
 
-		cost = 2.14			# 15 days
+		cost = 2.143			# 15 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -684,7 +686,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		# You cannot infiltrate anything without a service to do it with.
 		available = {
@@ -708,7 +710,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -730,7 +732,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -807,6 +809,148 @@ focus_tree = {
 	}
 
 	# =====================================================================
+	# The Marshal's road
+	# =====================================================================
+	# Follows Root Out German Collaborators straight down. Ten, ten, then
+	# nine points towards Zhukov, positive because he is the RIGHT side - see the note
+	# above Checks and Balances. The police spirit is permanent; the
+	# balance-of-power push stays on the focus, where it is a one-off.
+	focus = {
+		id = SME_a_marshals_cabinet
+		icon = GFX_goal_generic_political_pressure
+
+		prerequisite = { focus = SME_root_out_german_collaborators }
+
+		relative_position_id = SME_root_out_german_collaborators
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.10
+				tooltip_side = SME_leadership_zhukov_side
+			}
+			# Guarded: the cabinet improves the _addressed spirit, and must not
+			# hand it back if something has already removed it.
+			if = {
+				limit = { has_idea = wif_sme_fractured_government_addressed }
+				swap_ideas = {
+					remove_idea = wif_sme_fractured_government_addressed
+					add_idea = wif_sme_fractured_government_marshals_cabinet
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SME_integrate_the_military_and_police
+		icon = GFX_goal_generic_military_sphere
+
+		prerequisite = { focus = SME_a_marshals_cabinet }
+
+		relative_position_id = SME_a_marshals_cabinet
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.10
+				tooltip_side = SME_leadership_zhukov_side
+			}
+			add_ideas = wif_sme_military_police_integrated
+		}
+	}
+
+	# Upgrades Army and Police United in place rather than adding a second
+	# spirit: the _officers variant carries the same name and the same two
+	# modifiers plus +5% organisation.
+	focus = {
+		id = SME_put_officers_over_commissars
+		icon = GFX_goal_generic_army_doctrines
+
+		prerequisite = { focus = SME_integrate_the_military_and_police }
+
+		relative_position_id = SME_integrate_the_military_and_police
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.09
+				tooltip_side = SME_leadership_zhukov_side
+			}
+			swap_ideas = {
+				remove_idea = wif_sme_military_police_integrated
+				add_idea = wif_sme_military_police_integrated_officers
+			}
+		}
+	}
+
+	# Ten more points towards Zhukov, taking the road's total to 0.39.
+	focus = {
+		id = SME_the_marshals_people
+		icon = GFX_goal_generic_propaganda
+
+		prerequisite = { focus = SME_put_officers_over_commissars }
+
+		relative_position_id = SME_put_officers_over_commissars
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.10
+				tooltip_side = SME_leadership_zhukov_side
+			}
+		}
+	}
+
+	# Twenty points, double the rest of the road: this is where the Marshal's
+	# men stop advising the ministries and start running them.
+	focus = {
+		id = SME_officer_led_bureaucracy
+		icon = GFX_focus_generic_improve_the_administration
+
+		prerequisite = { focus = SME_the_marshals_people }
+
+		relative_position_id = SME_the_marshals_people
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = 0.20
+				tooltip_side = SME_leadership_zhukov_side
+			}
+		}
+	}
+
+	# =====================================================================
 	# Invite the Whites Back
 	# =====================================================================
 	# The third answer to the fractured leadership, and the only one that does
@@ -868,7 +1012,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -902,7 +1046,7 @@ focus_tree = {
 		x = -2
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -922,7 +1066,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -948,7 +1092,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
 
@@ -985,7 +1129,7 @@ focus_tree = {
 		x = 2
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		# You cannot make amends with people whose dead you have not buried.
 		available = {
@@ -1012,7 +1156,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 5.71			# 40 days
+		cost = 5.715			# 40 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -1036,7 +1180,7 @@ focus_tree = {
 		x = 0
 		y = 1
 
-		cost = 7.14			# 50 days
+		cost = 7.143			# 50 days
 
 		# Both: the flag proves the decision was taken, the idea proves he is
 		# still honourary and not already on the throne after a coup.
@@ -1117,7 +1261,7 @@ focus_tree = {
 		x = 0
 		y = 4
 
-		cost = 2.8571		# 20 days (lands just under, so it completes on day 20)
+		cost = 2.858		# 20 days
 
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
 
@@ -1223,7 +1367,7 @@ focus_tree = {
 		x = 2
 		y = 1
 
-		cost = 8.7142		# 61 days (lands just under, so it completes on day 61)
+		cost = 8.715		# 61 days
 
 		available = {
 			owns_state = 572
@@ -1262,7 +1406,7 @@ focus_tree = {
 		x = -5
 		y = 1
 
-		cost = 7.1428		# 50 days (lands just under, so it completes on day 50)
+		cost = 7.143		# 50 days
 
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_POLITICAL }
 

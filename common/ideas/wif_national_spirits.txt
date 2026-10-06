@@ -1040,6 +1040,52 @@ ideas = {
 			}
 		}
 
+		# From SME_integrate_the_military_and_police. PERMANENT. The army
+		# and the police share one command, so occupied ground is held by men
+		# who can arrest as well as shoot, and the recruiting offices have the
+		# police registers to draw on.
+		wif_sme_military_police_integrated = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+
+			modifier = {
+				resistance_growth = -0.10
+				conscription = 0.01
+			}
+		}
+
+		# The same spirit after SME_put_officers_over_commissars, swapped in
+		# over the one above. Shares its name; keep the first two modifiers in
+		# step with it.
+		wif_sme_military_police_integrated_officers = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_intel_bonus
+
+			modifier = {
+				resistance_growth = -0.10
+				conscription = 0.01
+				army_org_factor = 0.05
+			}
+		}
+
 		# Held by every Russian warlord state - see wif_is_russian_warlord in
 		# common/scripted_triggers/wif_scripted_triggers.txt for the list, and
 		# common/on_actions/wif_on_actions.txt for the weekly grant.
@@ -1165,7 +1211,8 @@ ideas = {
 		# does while it is working out who it reports to.
 		#
 		# SME_address_fracturing_leadership swaps this for the _addressed copy
-		# below. KEEP THE TWO BLOCKS SIDE BY SIDE: they differ in exactly three
+		# below, and SME_a_marshals_cabinet swaps that for the _marshals_cabinet
+		# copy. KEEP THE THREE BLOCKS SIDE BY SIDE: they differ in exactly three
 		# numbers and nothing else, and a modifier added to one and forgotten in
 		# the other silently disappears the moment the focus fires.
 		wif_sme_fractured_government = {
@@ -1219,6 +1266,36 @@ ideas = {
 				political_power_factor = -0.15
 				stability_factor = -0.17
 				war_support_factor = -0.30
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = -0.10
+			}
+		}
+
+		# The same spirit again after SME_a_marshals_cabinet, swapped in over
+		# the _addressed copy. Two numbers move from there:
+		#   political power    -15% -> -10%
+		#   war support        -30% -> -20%
+		# With a staff officer in every portfolio the government at least
+		# speaks with one voice, and the country hears it.
+		wif_sme_fractured_government_marshals_cabinet = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.17
+				war_support_factor = -0.20
 
 				army_attack_factor = -0.10
 				army_defence_factor = -0.05

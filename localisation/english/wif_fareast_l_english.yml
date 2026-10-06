@@ -103,6 +103,8 @@
  wif_sme_fractured_government_desc:0 "A marshal took an army group east and made a country out of it. Nobody in Moscow can say with any confidence which of the others would not do the same, and every command in the country knows that nobody can say it."
  wif_sme_fractured_government_addressed:0 "Fractured Government, Who is Loyal?"
  wif_sme_fractured_government_addressed_desc:0 "The reshuffles have done what reshuffles can. The chain of command holds again - not because the question was ever answered, but because asking it out loud now costs a man his command."
+ wif_sme_fractured_government_marshals_cabinet:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_marshals_cabinet_desc:0 "The Marshal's officers hold the portfolios now, and for the first time since Popov went east the government gives one answer instead of three. The divisions are still counting their loyalties, but the country has stopped waiting to hear who is in charge."
 
  # === The leadership balance of power ==============================
  # Created by SME_address_fracturing_leadership. The council runs
@@ -161,6 +163,22 @@
  SME_checks_and_balances_desc:0 "The council cannot govern an army it cannot audit. Every district command files its returns through the secretariat now, every requisition carries a countersignature, and every officer who signs one learns whose name sits above his own.\n\nNone of it is aimed at the Marshal. All of it is.\n\n§YShifts the balance of power eleven points towards the Council, enough to leave neutral ground.§!"
  SME_root_out_german_collaborators:0 "Root Out German Collaborators"
  SME_root_out_german_collaborators_desc:0 "There are men in this government who were taking German pay while the front was still moving, and everybody knows which men they are. What nobody has had is the authority to arrest them.\n\nThe Marshal has that authority, because he has the divisions. The council will approve it afterwards, and in approving it will concede who is actually in charge.\n\n§YShifts the balance of power eleven points towards Zhukov, enough to leave neutral ground.§!"
+
+ # === Focuses: the Marshal's road ==================================
+ SME_a_marshals_cabinet:0 "A Marshal's Cabinet"
+ SME_a_marshals_cabinet_desc:0 "The arrests left chairs empty, and the Marshal has men to fill them. Defence, transport, supply and the interior go to officers from his own staff - men who learned to govern by running a front, and who have never been told that a ministry is anything else.\n\nThe council keeps its seats. It no longer keeps the portfolios.\n\n§YShifts the balance of power ten points towards Zhukov, and eases Fractured Government: +5% political power gain and +10% war support.§!"
+ SME_integrate_the_military_and_police:0 "Integrate the Military and Police"
+ SME_integrate_the_military_and_police_desc:0 "A militia that answers to one ministry and an army that answers to another will each wait for the other to act. One command, one chain, one set of registers: the district commander is now the police chief as well, and the man who can call up a regiment can also sign the warrant.\n\n§YShifts the balance of power ten points towards Zhukov.§!"
+ wif_sme_military_police_integrated:0 "Army and Police United"
+ wif_sme_military_police_integrated_desc:0 "Soldiers keep order and policemen keep rolls, and they share both now. Unrest is met sooner, and the call-up reaches men the old registers had lost."
+ SME_put_officers_over_commissars:0 "Put Officers over Commissars"
+ SME_put_officers_over_commissars_desc:0 "Every regiment still carries a political officer whose signature an order needs before it is an order. At the front that cost the Union ground by the hour. From this week the commissar advises and the commander decides, and a commissar who forgets which of the two he is will find himself advising a penal battalion.\n\n§YShifts the balance of power nine points towards Zhukov.§!"
+ wif_sme_military_police_integrated_officers:0 "Army and Police United"
+ wif_sme_military_police_integrated_officers_desc:0 "Soldiers keep order and policemen keep rolls, and they share both now. Unrest is met sooner, the call-up reaches men the old registers had lost, and an order given at the front is obeyed without waiting for a second signature."
+ SME_the_marshals_people:0 "The Marshal's People"
+ SME_the_marshals_people_desc:0 "The council speaks for the Union. The Marshal has stopped needing it to. His face is on the posters in every railway station east of the Urals, his orders of the day are read aloud in the factories, and the men coming home from the front come home as his men.\n\nA people who believe the army saved them will not ask the army to step aside.\n\n§YShifts the balance of power ten points towards Zhukov.§!"
+ SME_officer_led_bureaucracy:0 "Officer-Led Bureaucracy"
+ SME_officer_led_bureaucracy_desc:0 "A ministry clerk files a report and waits for an answer. A staff officer issues an order and waits for a result. The Union has had enough of waiting.\n\nEvery commissariat now has a colonel at its head and a chain of command beneath him. The council may still debate a policy; it is the officers who decide whether and when it is carried out.\n\n§YShifts the balance of power twenty points towards Zhukov.§!"
 
  # === Focus: Invite the Whites Back ================================
  SME_invite_the_whites_back:0 "Invite the Whites Back"
