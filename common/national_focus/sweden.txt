@@ -10796,14 +10796,15 @@ focus_tree = {
 	#####  Foreign policy      #
 	############################
 
-	# Stands alone in the bottom-right corner, one column clear of
-	# SWE_reclaiming_the_rus (x 27, y 20), which is the rightmost and deepest
-	# focus in the tree. No prerequisite: it opens once the war reaches
+	# Stands alone in the bottom-right corner at x 38, five columns clear of
+	# the rightmost focus in the tree (SWE_betray_germany_plan, x 33), so the
+	# branch reads as its own tree. Children sit two columns apart so the lines
+	# between them stay readable. No prerequisite: it opens once the war reaches
 	# Sweden's neighbourhood, whichever branch the player is in.
 	focus = {
 		id = SWE_swedish_foreign_policy
 		icon = GFX_goal_generic_neutrality_focus
-		x = 29
+		x = 38
 		y = 20
 
 		cost = 1	# 1 x 7 = 7 days
@@ -10847,7 +10848,7 @@ focus_tree = {
 		icon = GFX_goal_generic_neutrality_focus
 		prerequisite = { focus = SWE_swedish_foreign_policy }
 		mutually_exclusive = { focus = SWE_take_sides }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = SWE_swedish_foreign_policy
 
@@ -10880,7 +10881,7 @@ focus_tree = {
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = SWE_swedish_foreign_policy }
 		mutually_exclusive = { focus = SWE_affirm_neutrality }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = SWE_swedish_foreign_policy
 
@@ -10916,7 +10917,7 @@ focus_tree = {
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = SWE_take_sides }
 		mutually_exclusive = { focus = SWE_join_the_axis }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = SWE_take_sides
 
@@ -10984,7 +10985,7 @@ focus_tree = {
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = { focus = SWE_take_sides }
 		mutually_exclusive = { focus = SWE_join_the_allies }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = SWE_take_sides
 
