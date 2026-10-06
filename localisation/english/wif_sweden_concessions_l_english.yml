@@ -58,3 +58,6 @@
 
  # === The war cabinet's own gate ======================================
  SWE_war_cabinet_four_promises_tt:0 "The government has §Ykept all four of its promises§!."
+ wif_swe_play_both_sides:0 "Playing Both Sides"
+ wif_swe_play_both_sides_desc:0 "Sweden sells to both camps and is paid by both. The ore boats leave for Lübeck and the ball bearings fly to Scotland, and the money keeps the factories at home running."
+ wif_swe_play_both_sides_trade:0 "Swedish trade offers"

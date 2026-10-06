@@ -10876,6 +10876,57 @@ focus_tree = {
 		}
 	}
 
+	# Neutrality as a business. Sweden sells to London and Berlin alike, and the
+	# spirit carries the whole reward:
+	#   civilian_factory_use = -1  - the trade income, modelled as one civilian
+	#                                factory freed. There is no modifier for
+	#                                "factories received from exports", so this
+	#                                is the closest honest equivalent.
+	#   trade_opinion_factor       - trade relations: everyone is keener to deal.
+	#   min_export                 - more resources on the market for the majors
+	#                                to actually buy.
+	# On top of that, every major gets a trade-only opinion modifier towards
+	# Sweden (common/opinion_modifiers/wif_sweden_opinion_modifiers.txt), which
+	# is what tips the AI's choice of seller towards Stockholm.
+	focus = {
+		id = SWE_play_both_sides
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = SWE_affirm_neutrality }
+		x = 0
+		y = 1
+		relative_position_id = SWE_affirm_neutrality
+
+		cost = 1	# 7 days
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_ideas = wif_swe_play_both_sides
+			every_other_country = {
+				limit = { is_major = yes }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = wif_swe_play_both_sides_trade
+				}
+			}
+		}
+	}
+
 	focus = {
 		id = SWE_take_sides
 		icon = GFX_goal_generic_major_alliance
@@ -10909,14 +10960,14 @@ focus_tree = {
 		}
 	}
 
-	# The three sides Sweden can take. Allies and Axis exclude each other;
-	# standing with Finland does not, since Finland's war with the Soviets can
-	# sit inside either camp.
+	# The three sides Sweden can take. All three exclude each other: Sweden
+	# picks one camp, and standing with Finland means leading a Nordic bloc of
+	# its own rather than joining someone else's.
 	focus = {
 		id = SWE_join_the_allies
 		icon = GFX_goal_generic_allies_build_infantry
 		prerequisite = { focus = SWE_take_sides }
-		mutually_exclusive = { focus = SWE_join_the_axis }
+		mutually_exclusive = { focus = SWE_join_the_axis focus = SWE_stand_with_finland }
 		x = -2
 		y = 1
 		relative_position_id = SWE_take_sides
@@ -10952,6 +11003,7 @@ focus_tree = {
 		id = SWE_stand_with_finland
 		icon = GFX_focus_SWE_swedish_finnish_defense_agreement
 		prerequisite = { focus = SWE_take_sides }
+		mutually_exclusive = { focus = SWE_join_the_allies focus = SWE_join_the_axis }
 		x = 0
 		y = 1
 		relative_position_id = SWE_take_sides
@@ -10973,10 +11025,42 @@ focus_tree = {
 		cancel_if_invalid = no
 		continue_if_invalid = yes
 		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			# Placeholder - the reward is still to be decided.
+			# Aland (state 145) is the price of Swedish blood. Taken only from
+			# Finland - if the Soviets hold it, Sweden gets the core and has to
+			# take the islands back itself.
+			if = {
+				limit = { 145 = { is_owned_by = FIN } }
+				transfer_state = 145
+			}
+			145 = { add_core_of = ROOT }
+
+			# The Abo Treaty: a Nordic bloc with Stockholm at its head. Sweden
+			# has to be free to lead it, so it walks out of any faction it is
+			# already in. Finland is only brought in if it is free to come -
+			# pulling it out of someone else's faction mid-war is not this
+			# focus's business.
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+			set_rule = { can_create_factions = yes }
+			create_faction_from_template = {
+				template = faction_template_NORDIC_alliance_democratic
+				name = SWE_abo_treaty_faction
+			}
+			if = {
+				limit = {
+					FIN = {
+						exists = yes
+						is_in_faction = no
+						is_subject = no
+					}
+				}
+				add_to_faction = FIN
+			}
 		}
 	}
 
@@ -10984,7 +11068,7 @@ focus_tree = {
 		id = SWE_join_the_axis
 		icon = GFX_goal_generic_axis_build_infantry
 		prerequisite = { focus = SWE_take_sides }
-		mutually_exclusive = { focus = SWE_join_the_allies }
+		mutually_exclusive = { focus = SWE_join_the_allies focus = SWE_stand_with_finland }
 		x = 2
 		y = 1
 		relative_position_id = SWE_take_sides

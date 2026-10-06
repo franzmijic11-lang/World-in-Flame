@@ -59,3 +59,6 @@
  SWE_take_sides:0 "Take Sides"
  SWE_take_sides_desc:0 "Neutrality kept Sweden safe while the war was far away. It is not far away any more. The cabinet concludes that a country which refuses to choose will simply have the choice made for it, and begins to look for friends while it still has something to offer them."
  SWE_swedish_foreign_policy_desc:0 "The war has reached the Baltic, and it no longer stops at someone else's border. Stockholm can keep insisting on neutrality, but it can no longer pretend that neutrality is a policy on its own.\n\nThe cabinet has to decide what Sweden stands for before somebody else decides it for Sweden."
+ SWE_play_both_sides:0 "Play Both Sides"
+ SWE_play_both_sides_desc:0 "Neutrality is not charity. Swedish ore, ball bearings and timber go to whoever pays for them, in London and in Berlin alike, and the ministers who once apologised for the trade now negotiate it. Every warring capital needs Sweden a little more than it would like to admit."
+ SWE_abo_treaty_faction:0 "Åbo Treaty"

@@ -359,5 +359,30 @@ ideas = {
 				consumer_goods_factor = 0.03
 			}
 		}
+
+		# ============================================================
+		# Play Both Sides (foreign policy branch, under Affirm Neutrality)
+		# ============================================================
+		# Sweden sells to everyone. See SWE_play_both_sides in
+		# common/national_focus/sweden.txt for why each number is here.
+		wif_swe_play_both_sides = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = free_trade
+
+			modifier = {
+				civilian_factory_use = -1
+				trade_opinion_factor = 0.5
+				min_export = 0.1
+			}
+		}
 	}
 }

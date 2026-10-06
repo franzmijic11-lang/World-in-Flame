@@ -1,0 +1,15 @@
+# Swedish opinion modifiers.
+#
+# Distinct filename so it merges with vanilla's opinion modifiers instead of
+# replacing a vanilla file.
+opinion_modifiers = {
+
+	# Given by every major to Sweden on completing SWE_play_both_sides.
+	# trade = yes makes it count towards trade relations only, which is what
+	# the AI looks at when it picks whom to buy resources from. It does not
+	# make anyone like Sweden diplomatically.
+	wif_swe_play_both_sides_trade = {
+		trade = yes
+		value = 25
+	}
+}
