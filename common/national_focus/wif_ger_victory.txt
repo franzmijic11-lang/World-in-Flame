@@ -1,0 +1,227 @@
+# Germany after Totaler Sieg.
+#
+# GER_totaler_sieg (common/national_focus/germany.txt) loads this tree, which
+# wipes the whole German tree off the screen. Nothing here is visible until
+# then, because the tree itself does not exist for Germany until then.
+#
+# Totaler Sieg cannot simply be carried over: a focus id can only live in one
+# tree. GER_totaler_sieg_achieved stands in for it - same name and icon, no
+# reward of its own - and is completed the moment the tree loads. It sits
+# where Remilitarize the Rhineland sits in the German tree.
+
+# Schemes of Himmler is worked on by Himmler himself, the way the vanilla inner
+# circle focuses are: see events/wif_ger_himmler_schemes.txt. In weeks; the
+# events there use the same length in days (140) and must be kept in step.
+@wif_himmler_schemes_time = 20
+
+focus_tree = {
+	id = wif_ger_victory_focus
+
+	country = {
+		factor = 0
+	}
+
+	default = no
+
+	initial_show_position = {
+		x = 78
+		y = 0
+	}
+
+	# The Inner Circle carries over. Inlay windows are declared per tree, so it
+	# has to be listed here too; same spot as in german_focus. Its contents
+	# live in the GER_ascended_advisor_* variables, which the swap leaves alone.
+	inlay_window = {
+		id = ger_inner_circle_inlay_window
+		position = { x = 4500 y = 1150 }
+	}
+
+	focus = {
+		id = GER_totaler_sieg_achieved
+		icon = GFX_goal_support_fascism
+
+		x = 78	# GER_remilitarize_the_rhineland's slot
+		y = 0
+		cost = 0
+
+		# Completed directly by GER_totaler_sieg; the bypass is a fallback in
+		# case that ever runs before the tree has finished loading.
+		bypass = {
+			has_country_flag = GER_totaler_sieg_achieved
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = GER_a_weakened_king_among_vultures
+		icon = GFX_focus_GER_loyalty_to_the_fuhrer
+		prerequisite = { focus = GER_totaler_sieg_achieved }
+
+		x = 61	# Fuhrerprinzip's column, three rows above it
+		y = 5
+		cost = 10
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			remove_country_leader_trait = GER_loyal_inner_circle
+			add_ideas = wif_ger_visibly_aging_fuhrer
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			# Hidden: removing ten traits he may not have would print ten lines.
+			custom_effect_tooltip = GER_a_weakened_king_among_vultures_traits_tt
+			hidden_effect = {
+				GER_adolf_hitler = {
+					remove_country_leader_trait = GER_der_fuhrer
+					remove_country_leader_trait = GER_der_fuhrer_wehrmacht
+					remove_country_leader_trait = GER_der_fuhrer_neurath
+					remove_country_leader_trait = GER_der_fuhrer_fuhrerprinzip
+					remove_country_leader_trait = GER_der_fuhrer_fuhrerprinzip_wehrmacht
+					remove_country_leader_trait = GER_der_fuhrer_fuhrerprinzip_neurath
+					remove_country_leader_trait = GER_loyal_inner_circle
+					remove_country_leader_trait = GER_loyalty_of_wehrmacht
+					remove_country_leader_trait = GER_supreme_commander_armed_forces
+					remove_country_leader_trait = GER_supreme_leader
+
+					add_country_leader_trait = wif_ger_tremors
+					add_country_leader_trait = wif_ger_frequent_outbursts
+					add_country_leader_trait = wif_ger_detached_from_reality
+
+					set_portraits = {
+						civilian = {
+							large = GFX_portrait_GER_adolf_hitler_aging
+							small = GFX_portrait_GER_adolf_hitler_aging_small
+						}
+					}
+				}
+			}
+
+			# Himmler, if he sits in the Inner Circle, starts on his schemes.
+			hidden_effect = {
+				country_event = { id = wif_ger_himmler_schemes.1 days = 7 }
+			}
+		}
+	}
+
+	# Never taken by the player: Himmler works on it himself, and
+	# wif_ger_himmler_schemes.2 completes it in his name.
+	focus = {
+		id = GER_schemes_of_himmler
+		icon = GFX_focus_GER_ascension_of_himmler
+		prerequisite = { focus = GER_a_weakened_king_among_vultures }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_a_weakened_king_among_vultures
+		cost = @wif_himmler_schemes_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_schemes_of_himmler_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_schemes_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_schemes_of_himmler_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_schemes_of_himmler_needs_himmler_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			add_ideas = wif_ger_himmlers_waffen_ss
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			# A level 7 fort in Luxembourg City. Cleared first so it lands on
+			# exactly 7 whatever stood there before.
+			8 = {
+				remove_building = {
+					type = bunker
+					level = 10
+					province = 6583
+				}
+				add_building_construction = {
+					type = bunker
+					level = 7
+					instant_build = yes
+					province = 6583
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			# Locked and without force_allow_recruiting: it cannot be edited
+			# or trained. The template symbol cannot be set from script.
+			if = {
+				limit = {
+					NOT = { has_template = "Waffen SS Infanterie Division" }
+				}
+				division_template = {
+					name = "Waffen SS Infanterie Division"
+					priority = 2
+					division_names_group = GER_SS_01
+					is_locked = yes
+					override_model = GER_militia
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 2 y = 0 }
+						militia = { x = 2 y = 1 }
+						militia = { x = 2 y = 2 }
+						artillery_brigade = { x = 3 y = 0 }
+					}
+					support = {
+						artillery = { x = 0 y = 0 }
+						anti_tank = { x = 0 y = 1 }
+						anti_air = { x = 0 y = 2 }
+						recon = { x = 0 y = 3 }
+					}
+				}
+			}
+
+			# create_unit needs state scope, never country scope.
+			custom_effect_tooltip = GER_schemes_of_himmler_units_tt
+			hidden_effect = {
+				8 = {
+					create_unit = {
+						division = "division_template = \"Waffen SS Infanterie Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+						owner = GER
+						count = 2
+					}
+				}
+			}
+		}
+	}
+}

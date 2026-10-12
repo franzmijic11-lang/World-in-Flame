@@ -6,6 +6,8 @@
  # the log. This is the one place the engine guarantees.
  GER_crossing_the_atlantic:0 "Force the Americans to see Reason"
  GER_crossing_the_atlantic_desc:0 "Britain has fallen and France with her. The Atlantic is a moat, not a road, and no army of ours will march on Washington. But the Americans are practical people, and a war fought for allies who no longer exist is a war fought for nothing. Let us put terms to them and see whether reason prevails."
+ # The Final Blow to Communism only targets Europe west of the AA line in WiF.
+ GER_war_against_communism_tt:0 "Gain §YAnnex§! war goal against any §YCommunist§! nation in §YEurope§!, west of the §YArchangelsk-Astrakhan line§!. Current targets:"
 
  # === The three monarchies ==========================================
  wif_regential_monarchism:0 "Regential Monarchism"
@@ -101,3 +103,11 @@
  japan_militarism_ideology_desc:0 "Militarism is an ideology in which the leader of the nation holds only nominal control, and acts more like a puppet to the nation's military than an independent politician, constantly forwarding their agenda with the end goal of rapid expansionist policy.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
  despotism_desc:0 "Despotism is a form of government in which a single person rules with absolute power.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
  oligarchism_desc:0 "Oligarchy is a form of government in which a group of people rule with absolute power.\n\n§YThis form of rule means:§!\n §GGenerate war goal tension limit: +50.0%§!\n §GJoin faction tension limit: +40.0%§!\n §GLend-lease tension limit: +60.0%§!\n §GSend volunteers tension limit: +40.0%§!\n §GGuarantee tension limit: +40.0%§!\n §RIdeology drift defense: -30.0%§!\n §RCivilian intelligence to others: +20.0%§!\n §RArmy intelligence to others: +10.0%§!\n §RNavy intelligence to others: +20.0%§!\n §RAir Force intelligence to others: +10.0%§!"
+
+ # Totaler Sieg names the Reich "Greater German Reich", not vanilla's "Greater Germanic Reich".
+ GER_greater_german_reich:0 "Greater German Reich"
+ GER_greater_german_reich_DEF:0 "the Greater German Reich"
+ GER_greater_german_reich_ADJ:0 "German"
+ GER_greater_german_reich_fascism:0 "Greater German Reich"
+ GER_greater_german_reich_fascism_DEF:0 "the Greater German Reich"
+ GER_greater_german_reich_fascism_ADJ:0 "German"

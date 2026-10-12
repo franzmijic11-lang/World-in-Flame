@@ -1,0 +1,59 @@
+add_namespace = wif_ger_himmler_schemes
+
+# Himmler works on Schemes of Himmler (common/national_focus/wif_ger_victory.txt)
+# on his own, the same way vanilla's inner circle advisors work their focuses
+# (GER_inner_circle_himmler.01/.02 in events/WUW_Germany.txt): the focus shines,
+# a timed flag drives the progress tooltip, and a second event completes it in
+# his name.
+#
+# 140 days = @wif_himmler_schemes_time (20 weeks) in wif_ger_victory.txt. The
+# flag runs one day longer, as vanilla's do, so it is still set when .2 fires.
+
+# Start work. Fired from A Weakened King among Vultures.
+country_event = {
+	id = wif_ger_himmler_schemes.1
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		# Himmler (4) holds an Inner Circle seat
+		OR = {
+			check_variable = { GER_ascended_advisor_1 = 4 }
+			check_variable = { GER_ascended_advisor_2 = 4 }
+			check_variable = { GER_ascended_advisor_3 = 4 }
+			check_variable = { GER_ascended_advisor_4 = 4 }
+		}
+		NOT = { has_completed_focus = GER_schemes_of_himmler }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_schemes_of_himmler
+		set_country_flag = { flag = GER_schemes_of_himmler_in_progress_flag days = 141 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.2 days = 140 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.2
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_schemes_of_himmler }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_schemes_of_himmler
+		complete_national_focus = {
+			focus = GER_schemes_of_himmler
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_schemes_of_himmler_in_progress_flag
+	}
+}

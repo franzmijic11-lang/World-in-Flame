@@ -111,3 +111,30 @@ wif_has_nkvd = {
 		has_idea = wif_nkvd_auditable
 	}
 }
+
+# STATE scope. "Europe" as WiF means it: everything west of the AA line,
+# which is where the Soviet collapse (wif_sov.1) draws the SME's starting
+# border.
+#
+# The game's own continent map almost agrees. Everything east of the line -
+# Kazan, Kuybyshev, Perm and the rest of the SME heartland - is already
+# continent asia, and every SOV state on continent europe is handed west in
+# the collapse. The six exceptions are states the collapse gives to the
+# Reichskommissariats that the map files under asia or middle_east, listed
+# here by hand. If the RK transfer lists in wif_sov.1 ever change, recheck
+# this list against them.
+wif_is_west_of_aa_line = {
+	OR = {
+		is_on_continent = europe
+
+		# Reichskommissariat Moskowien
+		state = 252		# Gorky
+		state = 250		# Ulyanovsky
+
+		# Reichskommissariat Kaukasien
+		state = 236		# Astrakhan
+		state = 229		# Azerbaijan
+		state = 230		# Armenia
+		state = 231		# Georgia
+	}
+}

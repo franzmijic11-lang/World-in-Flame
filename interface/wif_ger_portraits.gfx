@@ -1,0 +1,15 @@
+# Hitler after A Weakened King among Vultures.
+#
+# Same conventions as wif_sme_portraits.gfx: lowercase spriteType, .png at
+# 156x210 with a 67x67 _small beside it.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_GER_adolf_hitler_aging"
+		texturefile = "gfx/leaders/GER/Portrait_GER_Adolf_Hitler_Aging.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_GER_adolf_hitler_aging_small"
+		texturefile = "gfx/leaders/GER/Portrait_GER_Adolf_Hitler_Aging_small.png"
+	}
+}

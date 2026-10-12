@@ -1,0 +1,30 @@
+add_namespace = wif_totaler_sieg
+
+# Hitler's speech. Fired from GER_totaler_sieg and broadcast to the world.
+# Purely an announcement - every mechanical effect lives in the focus.
+news_event = {
+	id = wif_totaler_sieg.1
+	title = wif_totaler_sieg.1.t
+	desc = wif_totaler_sieg.1.desc
+	picture = GFX_news_event_hitler_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	# Germany
+	option = {
+		name = wif_totaler_sieg.1.a
+		trigger = {
+			tag = GER
+		}
+	}
+
+	# Everyone else
+	option = {
+		name = wif_totaler_sieg.1.b
+		trigger = {
+			NOT = { tag = GER }
+		}
+	}
+}

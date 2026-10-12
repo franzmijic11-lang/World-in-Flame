@@ -8729,7 +8729,7 @@ GER_reichskommissariats = {
 
 		visible = {
 			has_completed_focus = GER_uplift_the_rosenberg_office
-			has_completed_focus = GER_establish_protectorates_in_america
+			has_country_flag = GER_americans_refused_peace
 			RKV = {
 				exists = no
 			}
@@ -9047,7 +9047,7 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_establish_protectorates_in_america
+			has_country_flag = GER_americans_refused_peace
 			RAN = {
 				exists = no
 			}
@@ -9320,7 +9320,7 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_establish_protectorates_in_america
+			has_country_flag = GER_americans_refused_peace
 			RCO = {
 				exists = no
 			}
@@ -9645,7 +9645,7 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_establish_protectorates_in_america
+			has_country_flag = GER_americans_refused_peace
 			RUS = {
 				exists = no
 			}
@@ -10089,7 +10089,7 @@ GER_reichskommissariats = {
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = GER_establish_protectorates_in_america
+			has_country_flag = GER_americans_refused_peace
 			OR = {
 				RUS = {
 					exists = yes
@@ -10119,7 +10119,7 @@ GER_reichskommissariats = {
 		available = {
 			is_subject = no
 			OR = {
-				has_completed_focus = GER_establish_protectorates_in_america
+				has_country_flag = GER_americans_refused_peace
 				USA = {
 					exists = no
 				}
@@ -16259,7 +16259,14 @@ GER_monroe_doctrine_cat = {
 		icon = GFX_decision_generic_break_treaty
 
 		visible = {
-			has_completed_focus = GER_challenge_the_monroe_doctrine
+			# Retargeted from GER_challenge_the_monroe_doctrine, which WiF
+			# deleted. Both of these run the same array setup and set the same
+			# flag: the peacetime focus, or the Americans refusing the peace in
+			# events/wif_american_peace.txt.
+			OR = {
+				has_completed_focus = GER_disrupt_monroe
+				has_country_flag = GER_americans_refused_peace
+			}
 		}
 
 		available = {

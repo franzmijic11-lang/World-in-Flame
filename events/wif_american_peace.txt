@@ -95,7 +95,16 @@ country_event = {
 	}
 }
 
-# Germany is told the Americans refused
+# Germany is told the Americans refused.
+#
+# The refusal is what opens the American war. It delivers what the three
+# deleted focuses under Force the Americans to see Reason used to give:
+#   GER_shatter_usas_hegemony              - the timed spirit
+#   GER_challenge_the_monroe_doctrine      - the Monroe destabilisation
+#   GER_establish_protectorates_in_america - the South American claims and
+#                                            the American Reichskommissariats
+# The flag GER_americans_refused_peace is what common/decisions/GER.txt now
+# checks in place of the deleted focuses.
 country_event = {
 	id = wif_usa_peace.3
 	title = wif_usa_peace.3.t
@@ -106,5 +115,87 @@ country_event = {
 
 	option = {
 		name = wif_usa_peace.3.a
+
+		set_country_flag = GER_americans_refused_peace
+
+		# Shatter USA's Hegemony
+		add_timed_idea = {
+			idea = GER_shatter_USA_hegemony_ns
+			days = 365
+		}
+
+		# Challenge the Monroe Doctrine. Skipped if GER_disrupt_monroe already
+		# gave the same package in peacetime, or Germany would get a second
+		# Johannes Becker. GER_disrupt_monroe in turn is closed off once this
+		# flag is set.
+		if = {
+			limit = {
+				NOT = { has_completed_focus = GER_disrupt_monroe }
+			}
+			GER_setup_monroe_doctrine_countries_to_destabilize_array = yes
+			set_country_flag = GER_destabilize_monroe_flag
+			custom_effect_tooltip = GER_challenge_the_monroe_doctrine_tt
+
+			hidden_effect = {
+				if = {
+					limit = {
+						USA = {
+							OR = {
+								has_government = democratic
+								has_government = communism
+							}
+						}
+					}
+					USA = {
+						country_event = {
+							id = wuw_GER_monroe.1
+							hours = 12
+						}
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				GER_add_or_modify_military_intelligence_service = yes
+				add_to_variable = {
+					GER_military_intelligence_service_operative_slot = 1
+					tooltip = operative_slot_tt
+				}
+				GER_create_operative_johannes_becker = yes
+			}
+		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		# Establish Protectorates in America: claims on every South American
+		# state held by a power from outside the continent.
+		every_state = {
+			limit = {
+				is_on_continent = south_america
+				OWNER = {
+					capital_scope = {
+						NOT = {
+							is_on_continent = south_america
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						is_claimed_by = ROOT
+						is_core_of = ROOT
+						is_owned_by = ROOT
+					}
+				}
+			}
+			add_claim_by = ROOT
+		}
+
+		unlock_decision_tooltip = GER_reichskommissariat_klein_venedig
+		unlock_decision_tooltip = GER_reichskommissariat_anden
+		unlock_decision_tooltip = GER_reichskommissariat_kolumbus
+		unlock_decision_tooltip = GER_reichskommissariat_nordamerika
 	}
 }

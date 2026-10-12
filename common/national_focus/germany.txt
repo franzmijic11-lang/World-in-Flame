@@ -10585,32 +10585,7 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = sour_loser
 				add_idea = triumphant_will
-			}	
-
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-							type = landmark_berlin_reichstag
-							level = 1
-							province = 6521
-						}
-						add_building_construction = {
-							type = landmark_berlin_volkshalle
-							level = 1
-							instant_build = yes
-							province = 6521
-						}
-					}
-				}
 			}
-
-			custom_effect_tooltip = generic_skip_one_line_tt
-			
 		}
 	}
 
@@ -12892,215 +12867,109 @@ focus_tree = {
 			}
 		}
 	}
-	
+
+	# The capstone of the war, in the slot GER_establish_protectorates_in_america
+	# used to hold. The Final Blow to Communism, Autarky Achieved, Totaler Krieg
+	# and Uranverein are checked in available rather than as prerequisites, so
+	# they draw no line to it.
 	focus = {
-		id = GER_challenge_the_monroe_doctrine
-
-		icon = GFX_focus_por_recover_latin_america
-
+		id = GER_totaler_sieg
+		icon = GFX_goal_support_fascism # Same as GER_the_triumphant_will
+		prerequisite = { focus = GER_aging_fuhrer }
 		prerequisite = { focus = GER_crossing_the_atlantic }
 
-		x = -1
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = GER_crossing_the_atlantic
-
-		cost = 5
+		cost = 2.858 # 20 days. 2.857 rounds down to 19.
 
 		available = {
-			NOT = {
-				has_war_with = USA
-				is_in_faction_with = USA
-			}
-			is_subject = no
-			has_government = fascism
-			USA = {
-				NOT = {
-					has_government = fascism
-					has_government = neutrality 
-				}
-			}
+			has_war = no
+
+			has_completed_focus = GER_the_final_blow_to_communism
+			has_completed_focus = GER_autarky_achieved
+			has_completed_focus = GER_totaler_krieg
+			has_completed_focus = GER_uranverein
+
+			GEN = { exists = yes }
+			RKO = { exists = yes }
+			RKU = { exists = yes }
+			RKM = { exists = yes }
 
 			custom_trigger_tooltip = {
-				tooltip = GER_challenge_the_monroe_doctrine_tt_2
-				check_variable = { global.monroe_doctrine_countries_to_destabilize^num > 6}
-			}
-			
-		}
-
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = communism
+				tooltip = GER_totaler_sieg_austria_tt
+				all_state = {
+					limit = { is_core_of = AUS }
+					is_controlled_by = ROOT
 				}
 			}
+
+			# Sudetenland
+			controls_state = 69
+			controls_state = 74
+			controls_state = 972
+			controls_state = 86		# Posen
+			controls_state = 28		# Alsace-Lorraine
+			controls_state = 8		# Luxembourg
+			controls_state = 912	# Sonderjylland
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		select_effect = {
-			GER_setup_monroe_doctrine_countries_to_destabilize_array = yes
+		ai_will_do = {
+			factor = 10
 		}
 
 		completion_reward = {
+			# The cosmetic tag carries its own, darker map colour
+			# (common/countries/cosmetic.txt).
+			set_cosmetic_tag = GER_greater_german_reich
 
-			set_country_flag = GER_destabilize_monroe_flag
-
-			custom_effect_tooltip = GER_challenge_the_monroe_doctrine_tt
-
-			hidden_effect = {
-				IF = {
-					limit = {
-						USA = {
-							OR = {
-								has_government = democratic
-								has_government = communism
-							}
-						}
-					}
-					USA = {
-						country_event = {
-							id = wuw_GER_monroe.1
-							hours = 12
-						}
-					}
-				}
+			set_province_name = {
+				id = 6521
+				name = VICTORY_POINTS_6521_Germania
 			}
 
-			custom_effect_tooltip = generic_skip_one_line_tt
-
+			# The Reichstag becomes the Volkshalle, built straight to 2/2. This is
+			# the only way to get it: the vanilla swaps in the other focuses were
+			# removed. The map model follows the building type, so Berlin shows
+			# the vanilla Volkshalle model from here on.
 			if = {
 				limit = {
-					has_dlc = "La Resistance"
+					has_dlc = "Gotterdammerung"
 				}
-				if = { #This is so that it shows "Modify NS" by default, since most likely Anschluss will be completed and NS will be there. But if Anschluss is bypassed without getting the DM, the tooltip will be adjusted.
-					limit = {
-						NOT = { has_completed_focus = GER_anschluss }
-					}
-					custom_effect_tooltip = GER_modify_military_intelligence_service_modifier_tt
-				}
-				else = {
-					GER_add_or_modify_military_intelligence_service = yes
-				}
-				add_to_variable = { 
-					GER_military_intelligence_service_operative_slot = 1
-					tooltip = operative_slot_tt
-				}
-				GER_create_operative_johannes_becker = yes
-			}
-		}
-	}
-
-	focus = {
-		id = GER_shatter_usas_hegemony
-		icon = GFX_focus_GER_shatter_usas_hegemony
-		prerequisite = { focus = GER_crossing_the_atlantic }
-
-		x = 1
-		y = 1
-		relative_position_id = GER_crossing_the_atlantic
-		cost = 5
-		available = {
-			is_subject = no
-			OR = {
-				has_wargoal_against = USA
-				has_war_with = USA
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-		}
-
-		bypass = {
-			USA = {
-				exists = no
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-
-		completion_reward = {
-
-			add_timed_idea = {
-				idea = GER_shatter_USA_hegemony_ns
-				days = 365
-			}
-		}
-	}
-	
-	focus = {
-		id = GER_establish_protectorates_in_america
-		icon = GFX_focus_GER_establish_protectorates_in_america
-		prerequisite = { focus = GER_challenge_the_monroe_doctrine focus = GER_shatter_usas_hegemony }
-
-		x = 1
-		y = 1
-		relative_position_id = GER_challenge_the_monroe_doctrine
-		cost = 10
-		available = {
-			is_subject = no
-			has_government = fascism
-			has_completed_focus = GER_uplift_the_rosenberg_office
-			any_controlled_state = {
-				OR = {
-					is_on_continent = south_america
-					is_on_continent = north_america
-				}
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				OR = {
-					has_government = democratic
-					has_government = communism
-				}
-			}
-		}
-
-		completion_reward = {
-
-			every_state = {
-				limit = {
-					is_on_continent = south_america 
-					OWNER = {
-						capital_scope = {
-							NOT = {
-								is_on_continent = south_america 
-							}
+				custom_effect_tooltip = GER_totaler_sieg_volkshalle_tt
+				hidden_effect = {
+					64 = {
+						remove_building = {
+							type = landmark_berlin_reichstag
+							level = 1
+							province = 6521
 						}
-					}
-					NOT = {
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-							is_owned_by = ROOT
+						add_building_construction = {
+							type = landmark_berlin_volkshalle
+							level = 2
+							instant_build = yes
+							province = 6521
 						}
 					}
 				}
-				add_claim_by = ROOT
 			}
+
+			news_event = { id = wif_totaler_sieg.1 hours = 6 }
+
+			# Swap the whole German tree for the post-victory one
+			# (common/national_focus/wif_ger_victory.txt), where this focus
+			# reappears, completed, as GER_totaler_sieg_achieved.
 			custom_effect_tooltip = generic_skip_one_line_tt
-
-			unlock_decision_tooltip = GER_reichskommissariat_klein_venedig
-			unlock_decision_tooltip = GER_reichskommissariat_anden
-			unlock_decision_tooltip = GER_reichskommissariat_kolumbus
-			unlock_decision_tooltip = GER_reichskommissariat_nordamerika
-
+			custom_effect_tooltip = GER_totaler_sieg_new_tree_tt
+			hidden_effect = {
+				set_country_flag = GER_totaler_sieg_achieved
+				load_focus_tree = {
+					tree = wif_ger_victory_focus
+				}
+				complete_national_focus = GER_totaler_sieg_achieved
+			}
 		}
 	}
 
@@ -14934,7 +14803,7 @@ focus_tree = {
 		available = {
 			is_subject = no
 			any_country = {
-				capital_scope = { is_on_continent = europe }
+				capital_scope = { wif_is_west_of_aa_line = yes }
 				has_government = communism
 			}
 		}
@@ -14963,10 +14832,9 @@ focus_tree = {
 			}
 		}
 
+		# WiF: war goals are European only, so the Asian communist states
+		# (Mongolia, Tannu Tuva, Sinkiang) are no longer listed here.
 		will_lead_to_war_with = SOV
-		will_lead_to_war_with = MON
-		will_lead_to_war_with = TAN
-		will_lead_to_war_with = SIK
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
@@ -14974,7 +14842,11 @@ focus_tree = {
 			custom_effect_tooltip = GER_war_against_communism_tt
 			every_other_country = {
 				limit = {
-					#capital_scope = { is_on_continent = europe } #Intentionally made so that it grants wargoal against any commie in the world (not just Europe)
+					# WiF: communists west of the AA line only. Vanilla had a
+					# Europe check here commented out on purpose to reach every
+					# communist in the world. Judged by CAPITAL; see
+					# wif_is_west_of_aa_line for where the line runs.
+					capital_scope = { wif_is_west_of_aa_line = yes }
 					has_government = communism
 					NOT = { 
 						ROOT = {
@@ -21749,28 +21621,6 @@ focus_tree = {
 					}
 				}
 			}
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-						    type = landmark_berlin_reichstag
-						    level = 1
-						    province = 6521
-						}
-						add_building_construction = {
-						    type = landmark_berlin_volkshalle
-						    level = 1
-						    instant_build = yes
-						    province = 6521
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -26202,28 +26052,6 @@ focus_tree = {
 				show_effect_tooltip = no
 			}	
 
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-						    type = landmark_berlin_reichstag
-						    level = 1
-						    province = 6521
-						}
-						add_building_construction = {
-						    type = landmark_berlin_volkshalle
-						    level = 1
-						    instant_build = yes
-						    province = 6521
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -27722,28 +27550,6 @@ focus_tree = {
 
 			add_ideas = GER_holy_roman_empire_of_the_german_nation_idea
 
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = generic_skip_one_line_tt
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-						    type = landmark_berlin_reichstag
-						    level = 1
-						    province = 6521
-						}
-						add_building_construction = {
-						    type = landmark_berlin_volkshalle
-						    level = 1
-						    instant_build = yes
-						    province = 6521
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -37426,27 +37232,6 @@ focus_tree = {
 				add_idea = triumphant_will
 			}	
 
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-							type = landmark_berlin_reichstag
-							level = 1
-							province = 6521
-						}
-						add_building_construction = {
-							type = landmark_berlin_volkshalle
-							level = 1
-							instant_build = yes
-							province = 6521
-						}
-					}
-				}
-			}
 		}
 	}
 
@@ -38058,27 +37843,6 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			IF = {
-				limit = {
-					has_dlc = "Gotterdammerung"
-				}
-				custom_effect_tooltip = GER_build_volkshalle_landmark_tt
-				hidden_effect = {
-					64 = {
-						remove_building = {
-							type = landmark_berlin_reichstag
-							level = 1
-							province = 6521
-						}
-						add_building_construction = {
-							type = landmark_berlin_volkshalle
-							level = 1
-							instant_build = yes
-							province = 6521
-						}
-					}
-				}
-			}
 
 		}
 	}
@@ -38368,13 +38132,17 @@ focus_tree = {
 				has_war_with = USA
 				is_in_faction_with = USA
 			}
+			# The Americans refusing the peace already gave the Monroe
+			# package (events/wif_american_peace.txt); taking this as well
+			# would hand out a second Johannes Becker.
+			NOT = { has_country_flag = GER_americans_refused_peace }
 			is_subject = no
 			USA = {
 				NOT = {
 					OR = {
 						has_government = fascism
 						has_government = neutrality
-					} 
+					}
 				}
 			}
 
