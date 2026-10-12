@@ -1063,10 +1063,11 @@ ideas = {
 			}
 		}
 
-		# The same spirit after SME_put_officers_over_commissars, swapped in
-		# over the one above. Shares its name; keep the first two modifiers in
-		# step with it.
-		wif_sme_military_police_integrated_officers = {
+		# From SME_the_militia_answers_to_the_council. PERMANENT. The council's
+		# mirror of the spirit above, with the same two modifiers: here the
+		# militia is put under the commissariats rather than the army, but the
+		# registers and the patrols are the same men either way.
+		wif_sme_militia_answers_to_council = {
 			allowed = {
 				always = no
 			}
@@ -1077,12 +1078,53 @@ ideas = {
 
 			removal_cost = -1
 
-			picture = generic_intel_bonus
+			picture = generic_secret_police
 
 			modifier = {
 				resistance_growth = -0.10
 				conscription = 0.01
-				army_org_factor = 0.05
+			}
+		}
+
+		# Germany after A Weakened King among Vultures. Replaces the Loyal Inner
+		# Circle leader trait that Aging Fuhrer gave.
+		wif_ger_visibly_aging_fuhrer = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = GER_adolf_hitler
+
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.20
+				production_speed_buildings_factor = -0.05
+			}
+		}
+
+		# From Schemes of Himmler (common/national_focus/wif_ger_victory.txt).
+		wif_ger_himmlers_waffen_ss = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.20
+				modifier_army_sub_unit_militia_defence_factor = 0.20
 			}
 		}
 
@@ -1211,10 +1253,23 @@ ideas = {
 		# does while it is working out who it reports to.
 		#
 		# SME_address_fracturing_leadership swaps this for the _addressed copy
-		# below, and SME_a_marshals_cabinet swaps that for the _marshals_cabinet
-		# copy. KEEP THE THREE BLOCKS SIDE BY SIDE: they differ in exactly three
-		# numbers and nothing else, and a modifier added to one and forgotten in
-		# the other silently disappears the moment the focus fires.
+		# below, SME_a_marshals_cabinet swaps that for the _marshals_cabinet
+		# copy, SME_integrate_the_military_and_police swaps that for the
+		# _integrated copy, SME_put_officers_over_commissars swaps that for the
+		# _officers copy, SME_the_marshals_people swaps that for the
+		# _marshals_people copy, and SME_officer_led_bureaucracy swaps that for
+		# the _officer_bureaucracy copy.
+		#
+		# The council's road under SME_checks_and_balances mirrors this with its
+		# own five copies (_council_ministers, _militia_answers, _commissars,
+		# _councils_mandate, _government_by_council). Checks and Balances and
+		# Root Out are mutually exclusive, so the two chains never meet. Each
+		# council copy carries the SAME numbers as the Zhukov copy at the same
+		# step; only the description differs.
+		#
+		# KEEP ALL TWELVE BLOCKS SIDE BY SIDE: they differ only in a handful of
+		# numbers, and a modifier added to one and forgotten in the others
+		# silently disappears the moment a focus fires.
 		wif_sme_fractured_government = {
 			allowed = {
 				always = no
@@ -1300,6 +1355,252 @@ ideas = {
 				army_attack_factor = -0.10
 				army_defence_factor = -0.05
 				army_org_factor = -0.10
+			}
+		}
+
+		# The same spirit after SME_integrate_the_military_and_police, swapped
+		# in over the _marshals_cabinet copy. One number moves from there:
+		#   stability          -17% -> -10%
+		# The district commander is the police chief too, and a country where
+		# one man signs both the call-up and the warrant is a quieter one.
+		wif_sme_fractured_government_integrated = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.10
+				war_support_factor = -0.20
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = -0.10
+			}
+		}
+
+		# The same spirit after SME_put_officers_over_commissars, swapped in
+		# over the _integrated copy. Two numbers move from there:
+		#   stability          -10% ->  -5%
+		#   division org       -10% ->  +5%
+		# An order no longer waits for a commissar's signature, so the army
+		# stops losing cohesion to the question of who may give one. The +5%
+		# used to sit on an upgraded Army and Police United; it moved here.
+		wif_sme_fractured_government_officers = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.05
+				war_support_factor = -0.20
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# The same spirit after SME_the_marshals_people, swapped in over the
+		# _officers copy. Two numbers move from there:
+		#   stability          -5% ->   0   (line dropped, not set to 0)
+		#   war support       -20% -> -10%
+		# The posters say the army saved the Union, and enough people believe
+		# them that the question of loyalty stops being asked out loud.
+		wif_sme_fractured_government_marshals_people = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				war_support_factor = -0.10
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# The same spirit after SME_officer_led_bureaucracy, swapped in over the
+		# _marshals_people copy. One number moves from there:
+		#   political power   -10% ->   0   (line dropped, not set to 0)
+		# With a colonel at the head of every commissariat, a decision is
+		# carried out instead of argued over twice.
+		wif_sme_fractured_government_officer_bureaucracy = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				war_support_factor = -0.10
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# ---- The council's road: mirrors of the five copies above ----------
+		# Same numbers step for step as the Zhukov copy noted against each.
+
+		# After SME_a_council_of_ministers, over _addressed.
+		# Mirrors _marshals_cabinet.
+		wif_sme_fractured_government_council_ministers = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.17
+				war_support_factor = -0.20
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = -0.10
+			}
+		}
+
+		# After SME_the_militia_answers_to_the_council, over _council_ministers.
+		# Mirrors _integrated.
+		wif_sme_fractured_government_militia_answers = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.10
+				war_support_factor = -0.20
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = -0.10
+			}
+		}
+
+		# After SME_restore_the_commissars, over _militia_answers.
+		# Mirrors _officers.
+		wif_sme_fractured_government_commissars = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.05
+				war_support_factor = -0.20
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# After SME_the_councils_mandate, over _commissars.
+		# Mirrors _marshals_people.
+		wif_sme_fractured_government_councils_mandate = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				political_power_factor = -0.10
+				war_support_factor = -0.10
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# After SME_government_by_council, over _councils_mandate.
+		# Mirrors _officer_bureaucracy.
+		wif_sme_fractured_government_government_by_council = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+
+			modifier = {
+				war_support_factor = -0.10
+
+				army_attack_factor = -0.10
+				army_defence_factor = -0.05
+				army_org_factor = 0.05
 			}
 		}
 

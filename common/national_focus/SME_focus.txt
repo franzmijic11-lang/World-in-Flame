@@ -835,14 +835,15 @@ focus_tree = {
 				value = 0.10
 				tooltip_side = SME_leadership_zhukov_side
 			}
-			# Guarded: the cabinet improves the _addressed spirit, and must not
-			# hand it back if something has already removed it.
-			if = {
-				limit = { has_idea = wif_sme_fractured_government_addressed }
-				swap_ideas = {
-					remove_idea = wif_sme_fractured_government_addressed
-					add_idea = wif_sme_fractured_government_marshals_cabinet
-				}
+			# No has_idea guard, for the same reason as the swap in
+			# SME_address_fracturing_leadership: that focus is upstream of this
+			# one and is the only thing that grants _addressed, and nothing
+			# removes it but this swap. A guard also HIDES THE SWAP FROM THE
+			# TOOLTIP - the game evaluates an if's limit when drawing it, and
+			# before Address Fracturing Leadership completes the limit is false.
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_addressed
+				add_idea = wif_sme_fractured_government_marshals_cabinet
 			}
 		}
 	}
@@ -868,12 +869,18 @@ focus_tree = {
 				tooltip_side = SME_leadership_zhukov_side
 			}
 			add_ideas = wif_sme_military_police_integrated
+			# Unguarded, as in SME_a_marshals_cabinet directly above, which is
+			# the only source of _marshals_cabinet and a prerequisite of this.
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_marshals_cabinet
+				add_idea = wif_sme_fractured_government_integrated
+			}
 		}
 	}
 
-	# Upgrades Army and Police United in place rather than adding a second
-	# spirit: the _officers variant carries the same name and the same two
-	# modifiers plus +5% organisation.
+	# Eases Fractured Government a step further. It used to upgrade Army and
+	# Police United with +5% organisation instead; that bonus now lives on the
+	# _officers copy of Fractured Government.
 	focus = {
 		id = SME_put_officers_over_commissars
 		icon = GFX_goal_generic_army_doctrines
@@ -894,9 +901,11 @@ focus_tree = {
 				value = 0.09
 				tooltip_side = SME_leadership_zhukov_side
 			}
+			# Unguarded, as in SME_integrate_the_military_and_police directly
+			# above, which is the only source of _integrated and a prerequisite.
 			swap_ideas = {
-				remove_idea = wif_sme_military_police_integrated
-				add_idea = wif_sme_military_police_integrated_officers
+				remove_idea = wif_sme_fractured_government_integrated
+				add_idea = wif_sme_fractured_government_officers
 			}
 		}
 	}
@@ -922,6 +931,12 @@ focus_tree = {
 				value = 0.10
 				tooltip_side = SME_leadership_zhukov_side
 			}
+			# Unguarded, as in SME_put_officers_over_commissars directly above,
+			# which is the only source of _officers and a prerequisite.
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_officers
+				add_idea = wif_sme_fractured_government_marshals_people
+			}
 		}
 	}
 
@@ -946,6 +961,161 @@ focus_tree = {
 				id = SME_leadership_balance
 				value = 0.20
 				tooltip_side = SME_leadership_zhukov_side
+			}
+			# Unguarded, as in SME_the_marshals_people directly above, which is
+			# the only source of _marshals_people and a prerequisite.
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_marshals_people
+				add_idea = wif_sme_fractured_government_officer_bureaucracy
+			}
+		}
+	}
+
+	# =====================================================================
+	# The council's road
+	# =====================================================================
+	# The mirror of the Marshal's road, straight down from Checks and
+	# Balances. Same costs, the same balance-of-power steps with the sign
+	# flipped (-0.10, -0.10, -0.09, -0.10, -0.20: NEGATIVE is the council's
+	# side - see the note above Checks and Balances), and the same easing of
+	# Fractured Government at every step, through the council's own copies
+	# of the spirit. Checks and Balances and Root Out are mutually exclusive,
+	# so a country only ever walks one of the two roads.
+	focus = {
+		id = SME_a_council_of_ministers
+		icon = GFX_focus_generic_freedom_council
+
+		prerequisite = { focus = SME_checks_and_balances }
+
+		relative_position_id = SME_checks_and_balances
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.10
+				tooltip_side = SME_leadership_council_side
+			}
+			# Unguarded, as in SME_a_marshals_cabinet: Address Fracturing
+			# Leadership is upstream and the only source of _addressed.
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_addressed
+				add_idea = wif_sme_fractured_government_council_ministers
+			}
+		}
+	}
+
+	focus = {
+		id = SME_the_militia_answers_to_the_council
+		icon = GFX_goal_generic_national_unity
+
+		prerequisite = { focus = SME_a_council_of_ministers }
+
+		relative_position_id = SME_a_council_of_ministers
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.10
+				tooltip_side = SME_leadership_council_side
+			}
+			add_ideas = wif_sme_militia_answers_to_council
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_council_ministers
+				add_idea = wif_sme_fractured_government_militia_answers
+			}
+		}
+	}
+
+	focus = {
+		id = SME_restore_the_commissars
+		icon = GFX_focus_generic_soviet_politics
+
+		prerequisite = { focus = SME_the_militia_answers_to_the_council }
+
+		relative_position_id = SME_the_militia_answers_to_the_council
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.09
+				tooltip_side = SME_leadership_council_side
+			}
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_militia_answers
+				add_idea = wif_sme_fractured_government_commissars
+			}
+		}
+	}
+
+	focus = {
+		id = SME_the_councils_mandate
+		icon = GFX_goal_support_communism
+
+		prerequisite = { focus = SME_restore_the_commissars }
+
+		relative_position_id = SME_restore_the_commissars
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.10
+				tooltip_side = SME_leadership_council_side
+			}
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_commissars
+				add_idea = wif_sme_fractured_government_councils_mandate
+			}
+		}
+	}
+
+	# Twenty points, mirroring Officer-Led Bureaucracy.
+	focus = {
+		id = SME_government_by_council
+		icon = GFX_focus_generic_worker_administration
+
+		prerequisite = { focus = SME_the_councils_mandate }
+
+		relative_position_id = SME_the_councils_mandate
+		x = 0
+		y = 1
+
+		cost = 7.143			# 50 days
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER }
+
+		completion_reward = {
+			add_power_balance_value = {
+				id = SME_leadership_balance
+				value = -0.20
+				tooltip_side = SME_leadership_council_side
+			}
+			swap_ideas = {
+				remove_idea = wif_sme_fractured_government_councils_mandate
+				add_idea = wif_sme_fractured_government_government_by_council
 			}
 		}
 	}
@@ -1266,57 +1436,67 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			if = {
-				limit = { has_idea = wif_sme_the_whites_return }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return
-					add_idea = wif_sme_one_people_gathered
+			# The branching below is hidden and one fixed line shown instead. An
+			# if is evaluated when the tooltip is drawn, so the visible chain told
+			# the player only whichever branch matched at that moment - and before
+			# any White spirit was held, that was the bare else, which never said
+			# The Whites Return would go. The player line is shown; the AI copy is
+			# never looked at by a human.
+			custom_effect_tooltip = wif_sme_a_united_people_swap_tt
+			show_ideas_tooltip = wif_sme_one_people_gathered
+			hidden_effect = {
+				if = {
+					limit = { has_idea = wif_sme_the_whites_return }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return
+						add_idea = wif_sme_one_people_gathered
+					}
 				}
-			}
-			else_if = {
-				limit = { has_idea = wif_sme_the_whites_return_duma }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return_duma
-					add_idea = wif_sme_one_people_gathered
+				else_if = {
+					limit = { has_idea = wif_sme_the_whites_return_duma }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return_duma
+						add_idea = wif_sme_one_people_gathered
+					}
 				}
-			}
-			else_if = {
-				limit = { has_idea = wif_sme_the_whites_return_local_dumas }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return_local_dumas
-					add_idea = wif_sme_one_people_gathered
+				else_if = {
+					limit = { has_idea = wif_sme_the_whites_return_local_dumas }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return_local_dumas
+						add_idea = wif_sme_one_people_gathered
+					}
 				}
-			}
-			# The AI line ends on the AI copy of One People Gathered.
-			else_if = {
-				limit = { has_idea = wif_sme_the_whites_return_ai }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return_ai
-					add_idea = wif_sme_one_people_gathered_ai
+				# The AI line ends on the AI copy of One People Gathered.
+				else_if = {
+					limit = { has_idea = wif_sme_the_whites_return_ai }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return_ai
+						add_idea = wif_sme_one_people_gathered_ai
+					}
 				}
-			}
-			else_if = {
-				limit = { has_idea = wif_sme_the_whites_return_duma_ai }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return_duma_ai
-					add_idea = wif_sme_one_people_gathered_ai
+				else_if = {
+					limit = { has_idea = wif_sme_the_whites_return_duma_ai }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return_duma_ai
+						add_idea = wif_sme_one_people_gathered_ai
+					}
 				}
-			}
-			else_if = {
-				limit = { has_idea = wif_sme_the_whites_return_local_dumas_ai }
-				swap_ideas = {
-					remove_idea = wif_sme_the_whites_return_local_dumas_ai
-					add_idea = wif_sme_one_people_gathered_ai
+				else_if = {
+					limit = { has_idea = wif_sme_the_whites_return_local_dumas_ai }
+					swap_ideas = {
+						remove_idea = wif_sme_the_whites_return_local_dumas_ai
+						add_idea = wif_sme_one_people_gathered_ai
+					}
 				}
-			}
-			# Holding none of the six: nothing to tell the lines apart by, so
-			# ask who is playing.
-			else_if = {
-				limit = { is_ai = yes }
-				add_ideas = wif_sme_one_people_gathered_ai
-			}
-			else = {
-				add_ideas = wif_sme_one_people_gathered
+				# Holding none of the six: nothing to tell the lines apart by, so
+				# ask who is playing.
+				else_if = {
+					limit = { is_ai = yes }
+					add_ideas = wif_sme_one_people_gathered_ai
+				}
+				else = {
+					add_ideas = wif_sme_one_people_gathered
+				}
 			}
 
 			# The watch closes. One flag takes the weekly pass, the dynamic
@@ -1389,22 +1569,24 @@ focus_tree = {
 	# two halves of the tree - the settlement and the Commissariat - are
 	# pointed at it together.
 	#
-	# Needs A United People AND either answer to who the NKVD reports to. The
-	# second prerequisite block lists both, which makes it an OR within the
-	# block; the two blocks together are an AND.
+	# Needs A United People AND either answer to who the NKVD reports to AND
+	# the end of either leadership road (Government by Council or Officer-Led
+	# Bureaucracy). Focuses inside one prerequisite block are an OR; the
+	# three blocks together are an AND.
 	#
 	# Placed midway between the NKVD pair (x 9 and 11, row 8) and A United
-	# People (x 20, row 8), one row lower: absolute (15, 9).
+	# People (x 20, row 8), three rows lower: absolute (15, 11).
 	focus = {
 		id = SME_our_will_towards_the_second_trial
 		icon = GFX_focus_generic_army_attack
 
 		prerequisite = { focus = SME_a_united_people }
 		prerequisite = { focus = SME_marshals_secret_police focus = SME_make_them_auditable }
+		prerequisite = { focus = SME_government_by_council focus = SME_officer_led_bureaucracy }
 
 		relative_position_id = SME_a_united_people
 		x = -5
-		y = 1
+		y = 3
 
 		cost = 7.143		# 50 days
 
@@ -1412,6 +1594,28 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = wif_sme_our_red_army
+
+			# Ends Fractured Government. The prerequisites mean only the last
+			# copy of either road can be held here, but every copy is listed so
+			# that no route leaves one behind. Hidden, with one fixed line shown,
+			# for the same reason as A United People: an if's limit is evaluated
+			# when the tooltip is drawn, so a visible chain would show nothing
+			# before the spirit's final copy is held.
+			custom_effect_tooltip = wif_sme_fractured_government_ends_tt
+			hidden_effect = {
+				if = { limit = { has_idea = wif_sme_fractured_government } remove_ideas = wif_sme_fractured_government }
+				if = { limit = { has_idea = wif_sme_fractured_government_addressed } remove_ideas = wif_sme_fractured_government_addressed }
+				if = { limit = { has_idea = wif_sme_fractured_government_marshals_cabinet } remove_ideas = wif_sme_fractured_government_marshals_cabinet }
+				if = { limit = { has_idea = wif_sme_fractured_government_integrated } remove_ideas = wif_sme_fractured_government_integrated }
+				if = { limit = { has_idea = wif_sme_fractured_government_officers } remove_ideas = wif_sme_fractured_government_officers }
+				if = { limit = { has_idea = wif_sme_fractured_government_marshals_people } remove_ideas = wif_sme_fractured_government_marshals_people }
+				if = { limit = { has_idea = wif_sme_fractured_government_officer_bureaucracy } remove_ideas = wif_sme_fractured_government_officer_bureaucracy }
+				if = { limit = { has_idea = wif_sme_fractured_government_council_ministers } remove_ideas = wif_sme_fractured_government_council_ministers }
+				if = { limit = { has_idea = wif_sme_fractured_government_militia_answers } remove_ideas = wif_sme_fractured_government_militia_answers }
+				if = { limit = { has_idea = wif_sme_fractured_government_commissars } remove_ideas = wif_sme_fractured_government_commissars }
+				if = { limit = { has_idea = wif_sme_fractured_government_councils_mandate } remove_ideas = wif_sme_fractured_government_councils_mandate }
+				if = { limit = { has_idea = wif_sme_fractured_government_government_by_council } remove_ideas = wif_sme_fractured_government_government_by_council }
+			}
 		}
 	}
 }

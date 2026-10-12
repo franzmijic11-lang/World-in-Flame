@@ -105,6 +105,24 @@
  wif_sme_fractured_government_addressed_desc:0 "The reshuffles have done what reshuffles can. The chain of command holds again - not because the question was ever answered, but because asking it out loud now costs a man his command."
  wif_sme_fractured_government_marshals_cabinet:0 "Fractured Government, Who is Loyal?"
  wif_sme_fractured_government_marshals_cabinet_desc:0 "The Marshal's officers hold the portfolios now, and for the first time since Popov went east the government gives one answer instead of three. The divisions are still counting their loyalties, but the country has stopped waiting to hear who is in charge."
+ wif_sme_fractured_government_integrated:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_integrated_desc:0 "The district commander is the police chief now, and the man who calls up a regiment signs the warrants too. Nobody has answered the question of loyalty, but fewer people are asking it in the street."
+ wif_sme_fractured_government_officers:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_officers_desc:0 "The commissars advise now, and the commanders decide. Whatever a regiment privately thinks of Moscow, it no longer stands in the road waiting for a second signature before it moves."
+ wif_sme_fractured_government_marshals_people:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_marshals_people_desc:0 "The Marshal's face hangs in every railway station east of the Urals, and the men coming home from the front come home as his. The government is still split at the top, but the country has decided whom it trusts, and it is not the council."
+ wif_sme_fractured_government_officer_bureaucracy:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_officer_bureaucracy_desc:0 "Every commissariat has a colonel at its head now, and an order that leaves Moscow arrives as an order. The council still argues; the ministries have simply stopped waiting for it to finish."
+ wif_sme_fractured_government_council_ministers:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_council_ministers_desc:0 "Civilian commissars hold the portfolios again, and the government gives one answer instead of three. The divisions are still counting their loyalties, but the country has stopped waiting to hear who is in charge."
+ wif_sme_fractured_government_militia_answers:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_militia_answers_desc:0 "The militia answers to the commissariats, not to the district commands. Nobody has settled the question of loyalty, but fewer people are asking it in the street."
+ wif_sme_fractured_government_commissars:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_commissars_desc:0 "Every regiment has its commissar back. Whatever its officers privately think of the council, they know someone is writing it down."
+ wif_sme_fractured_government_councils_mandate:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_councils_mandate_desc:0 "The council's name is on every decree and every poster. The marshals still have their divisions, but the country has decided whom it answers to."
+ wif_sme_fractured_government_government_by_council:0 "Fractured Government, Who is Loyal?"
+ wif_sme_fractured_government_government_by_council_desc:0 "The ministries answer to the council and the officers to their commands. The army is still working out how far it trusts Moscow, but Moscow, at last, is one place."
 
  # === The leadership balance of power ==============================
  # Created by SME_address_fracturing_leadership. The council runs
@@ -162,23 +180,35 @@
  SME_checks_and_balances:0 "Checks and Balances"
  SME_checks_and_balances_desc:0 "The council cannot govern an army it cannot audit. Every district command files its returns through the secretariat now, every requisition carries a countersignature, and every officer who signs one learns whose name sits above his own.\n\nNone of it is aimed at the Marshal. All of it is.\n\n§YShifts the balance of power eleven points towards the Council, enough to leave neutral ground.§!"
  SME_root_out_german_collaborators:0 "Root Out German Collaborators"
- SME_root_out_german_collaborators_desc:0 "There are men in this government who were taking German pay while the front was still moving, and everybody knows which men they are. What nobody has had is the authority to arrest them.\n\nThe Marshal has that authority, because he has the divisions. The council will approve it afterwards, and in approving it will concede who is actually in charge.\n\n§YShifts the balance of power eleven points towards Zhukov, enough to leave neutral ground.§!"
+ SME_root_out_german_collaborators_desc:0 "Everybody knows which ministers took German pay. Only the Marshal has the divisions to arrest them, and the council that approves it afterwards concedes who is in charge.\n\n§YShifts the balance of power eleven points towards Zhukov, enough to leave neutral ground.§!"
 
  # === Focuses: the Marshal's road ==================================
  SME_a_marshals_cabinet:0 "A Marshal's Cabinet"
- SME_a_marshals_cabinet_desc:0 "The arrests left chairs empty, and the Marshal has men to fill them. Defence, transport, supply and the interior go to officers from his own staff - men who learned to govern by running a front, and who have never been told that a ministry is anything else.\n\nThe council keeps its seats. It no longer keeps the portfolios.\n\n§YShifts the balance of power ten points towards Zhukov, and eases Fractured Government: +5% political power gain and +10% war support.§!"
+ SME_a_marshals_cabinet_desc:0 "The arrests left chairs empty, and the Marshal's staff officers fill them. The government finally speaks with one voice, and the country hears it.\n\n§YShifts the balance of power ten points towards Zhukov, and eases Fractured Government: +5% political power gain and +10% war support.§!"
  SME_integrate_the_military_and_police:0 "Integrate the Military and Police"
- SME_integrate_the_military_and_police_desc:0 "A militia that answers to one ministry and an army that answers to another will each wait for the other to act. One command, one chain, one set of registers: the district commander is now the police chief as well, and the man who can call up a regiment can also sign the warrant.\n\n§YShifts the balance of power ten points towards Zhukov.§!"
+ SME_integrate_the_military_and_police_desc:0 "The district commander becomes the police chief too. Unrest is met sooner, and the call-up can draw on the police registers.\n\n§YShifts the balance of power ten points towards Zhukov, grants Army and Police United, and eases Fractured Government: +7% stability.§!"
  wif_sme_military_police_integrated:0 "Army and Police United"
  wif_sme_military_police_integrated_desc:0 "Soldiers keep order and policemen keep rolls, and they share both now. Unrest is met sooner, and the call-up reaches men the old registers had lost."
  SME_put_officers_over_commissars:0 "Put Officers over Commissars"
- SME_put_officers_over_commissars_desc:0 "Every regiment still carries a political officer whose signature an order needs before it is an order. At the front that cost the Union ground by the hour. From this week the commissar advises and the commander decides, and a commissar who forgets which of the two he is will find himself advising a penal battalion.\n\n§YShifts the balance of power nine points towards Zhukov.§!"
- wif_sme_military_police_integrated_officers:0 "Army and Police United"
- wif_sme_military_police_integrated_officers_desc:0 "Soldiers keep order and policemen keep rolls, and they share both now. Unrest is met sooner, the call-up reaches men the old registers had lost, and an order given at the front is obeyed without waiting for a second signature."
+ SME_put_officers_over_commissars_desc:0 "An order no longer waits for a commissar's countersignature. The commissar advises, the commander decides, and the regiments stop arguing over who may give an order.\n\n§YShifts the balance of power nine points towards Zhukov, and eases Fractured Government: +15% division organisation and +5% stability.§!"
  SME_the_marshals_people:0 "The Marshal's People"
- SME_the_marshals_people_desc:0 "The council speaks for the Union. The Marshal has stopped needing it to. His face is on the posters in every railway station east of the Urals, his orders of the day are read aloud in the factories, and the men coming home from the front come home as his men.\n\nA people who believe the army saved them will not ask the army to step aside.\n\n§YShifts the balance of power ten points towards Zhukov.§!"
+ SME_the_marshals_people_desc:0 "The Marshal's face goes up in every railway station east of the Urals. A people who believe the army saved them stop doubting it, and start backing its war.\n\n§YShifts the balance of power ten points towards Zhukov, and eases Fractured Government: +5% stability and +10% war support.§!"
  SME_officer_led_bureaucracy:0 "Officer-Led Bureaucracy"
- SME_officer_led_bureaucracy_desc:0 "A ministry clerk files a report and waits for an answer. A staff officer issues an order and waits for a result. The Union has had enough of waiting.\n\nEvery commissariat now has a colonel at its head and a chain of command beneath him. The council may still debate a policy; it is the officers who decide whether and when it is carried out.\n\n§YShifts the balance of power twenty points towards Zhukov.§!"
+ SME_officer_led_bureaucracy_desc:0 "Every commissariat gets a colonel at its head. The council may still debate a policy, but the officers carry it out without waiting for the debate to end.\n\n§YShifts the balance of power twenty points towards Zhukov, and eases Fractured Government: +10% political power gain.§!"
+
+ # === Focuses: the council's road ==================================
+ SME_a_council_of_ministers:0 "A Council of Ministers"
+ SME_a_council_of_ministers_desc:0 "The audits showed which commands were running their own ministries. The portfolios go back to civilian commissars who answer to the council, and the government finally speaks with one voice.\n\n§YShifts the balance of power ten points towards the Council, and eases Fractured Government: +5% political power gain and +10% war support.§!"
+ SME_the_militia_answers_to_the_council:0 "The Militia Answers to the Council"
+ SME_the_militia_answers_to_the_council_desc:0 "The militia is taken out of the district commands and put under the commissariats. Unrest is met by men the council can recall, and the call-up runs through civilian registers.\n\n§YShifts the balance of power ten points towards the Council, grants The Militia Answers to the Council, and eases Fractured Government: +7% stability.§!"
+ wif_sme_militia_answers_to_council:0 "The Militia Answers to the Council"
+ wif_sme_militia_answers_to_council_desc:0 "The patrols and the registers belong to the commissariats now, not to the army. Unrest is met sooner, and the call-up reaches men the old registers had lost."
+ SME_restore_the_commissars:0 "Restore the Commissars"
+ SME_restore_the_commissars_desc:0 "Every regiment gets its political officer back, and every order its second signature. A division that knows the council is watching stops wondering whom it serves.\n\n§YShifts the balance of power nine points towards the Council, and eases Fractured Government: +15% division organisation and +5% stability.§!"
+ SME_the_councils_mandate:0 "The Council's Mandate"
+ SME_the_councils_mandate_desc:0 "The council's decrees are read in every factory and posted in every station, signed by the council and not by a marshal. The country learns who governs it, and starts backing its war.\n\n§YShifts the balance of power ten points towards the Council, and eases Fractured Government: +5% stability and +10% war support.§!"
+ SME_government_by_council:0 "Government by Council"
+ SME_government_by_council_desc:0 "The general staff advises; the council decides. Officers return to their commands, and the ministries answer to the people who were appointed to run them.\n\n§YShifts the balance of power twenty points towards the Council, and eases Fractured Government: +10% political power gain.§!"
 
  # === Focus: Invite the Whites Back ================================
  SME_invite_the_whites_back:0 "Invite the Whites Back"
@@ -391,6 +421,8 @@
  # The effect tooltip on A United People. Flags and variables show nothing in a
  # focus tooltip on their own, and what this focus switches off is the part the
  # player most needs told.
+ wif_sme_fractured_government_ends_tt:0 "Removes the national spirit §YFractured Government, Who is Loyal?§!"
+ wif_sme_a_united_people_swap_tt:0"§YThe Whites Return§!, in whichever form it now takes, is replaced by §YOne People Gathered§!:"
  wif_white_question_settled_tt:0 "§YThe White Question is closed.§!\nThe three White factions are no longer tracked, and the decision panel closes.\nThe second civil war can no longer begin, and no change of government will be fought over."
 
  # === The Chelyabinsk Institute ====================================
