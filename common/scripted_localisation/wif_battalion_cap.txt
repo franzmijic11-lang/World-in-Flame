@@ -418,13 +418,49 @@ defined_text = {
 	}
 }
 
-# World tension, highest band only - never more than one of these.
+# The German Army, Invincible spirit.
+defined_text = {
+	name = GetWifCapInvincible
+
+	text = {
+		trigger = { check_variable = { wif_src_invincible > 0 } }
+		localization_key = wif_cap_line_invincible
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# World tension, highest band only - never more than one of these. Can be a
+# penalty below 11%, hence the second branch.
 defined_text = {
 	name = GetWifCapTension
 
 	text = {
 		trigger = { check_variable = { wif_src_tension > 0 } }
 		localization_key = wif_cap_line_tension
+	}
+
+	text = {
+		trigger = { check_variable = { wif_src_tension < 0 } }
+		localization_key = wif_cap_line_tension_neg
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
+# A war on our continent that we are not part of.
+defined_text = {
+	name = GetWifCapNearWar
+
+	text = {
+		trigger = { check_variable = { wif_src_near_war > 0 } }
+		localization_key = wif_cap_line_near_war
 	}
 
 	text = {

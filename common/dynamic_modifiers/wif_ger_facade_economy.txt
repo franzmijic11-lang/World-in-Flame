@@ -1,0 +1,44 @@
+# Facade Economy - what MEFO Bills becomes once Autarky Achieved is completed.
+#
+# A copy of vanilla's GER_mefo_bills_modifier (common/dynamic_modifiers/
+# wuw_dynamic_modifiers.txt), line for line, under its own name. It reads the
+# SAME GER_industrial_* variables, so every value Mefo Bills had built up -
+# and the production bonuses Autarky Achieved adds to them - carries straight
+# over. Only the name and the consumer goods behaviour differ.
+#
+# It has to be a separate modifier and not a rename: vanilla's on_monthly_GER
+# grows consumer goods for anything holding GER_mefo_bills_modifier, clamps it
+# at 100% and applies the over-100% penalties. Under a name vanilla does not
+# know, none of that touches it, and the growth is WiF's own instead - see
+# on_monthly_GER in common/on_actions/wif_on_actions.txt.
+wif_ger_facade_economy_modifier = {
+	enable = { always = yes }
+	icon = GFX_idea_ger_mefo_bills
+	custom_modifier_tooltip = wif_ger_facade_economy_cg_tt
+	consumer_goods_factor = GER_industrial_consumer_goods_factor
+	civilian_intel_to_others = GER_industrial_civilian_intel_to_others
+	army_intel_to_others = GER_industrial_army_intel_to_others
+	navy_intel_to_others = GER_industrial_navy_intel_to_others
+	airforce_intel_to_others = GER_industrial_airforce_intel_to_others
+	production_speed_arms_factory_factor = GER_industrial_production_speed_arms_factory_factor
+	production_speed_dockyard_factor = GER_industrial_production_speed_dockyard_factor
+	industrial_capacity_factory = GER_industrial_industrial_capacity_factory
+	industrial_capacity_dockyard = GER_industrial_industrial_capacity_dockyard
+	production_lack_of_resource_penalty_factor = GER_industrial_production_lack_of_resource_penalty_factor
+	conversion_cost_civ_to_mil_factor = GER_industrial_conversion_cost_civ_to_mil_factor
+	industry_air_damage_factor = GER_industrial_industry_air_damage_factor
+	research_speed_factor = GER_industrial_research_speed_factor
+	industrial_concern_cost_factor = GER_industrial_industrial_concern_cost_factor
+	tank_manufacturer_cost_factor = GER_industrial_capacity_tank_manufacturer_cost_factor 
+	naval_manufacturer_cost_factor = GER_industrial_capacity_naval_manufacturer_cost_factor
+	aircraft_manufacturer_cost_factor = GER_industrial_capacity_aircraft_manufacturer_cost_factor
+	materiel_manufacturer_cost_factor = GER_industrial_capacity_materiel_manufacturer_cost_factor
+	military_industrial_organization_funds_gain = GER_industrial_capacity_military_industrial_organization_funds_gain
+	military_industrial_organization_research_bonus = GER_industrial_capacity_military_industrial_organization_research_bonus
+	production_factory_max_efficiency_factor = GER_industrial_production_factory_max_efficiency_factor
+	production_factory_efficiency_gain_factor = GER_industrial_production_factory_efficiency_gain_factor
+	production_factory_start_efficiency_factor = GER_industrial_production_factory_start_efficiency_factor
+	line_change_production_efficiency_factor = GER_industrial_line_change_production_efficiency_factor
+	equipment_conversion_speed = GER_industrial_equipment_conversion_speed
+	consumer_goods_expected_value = GER_industrial_consumer_goods_expected_value
+}

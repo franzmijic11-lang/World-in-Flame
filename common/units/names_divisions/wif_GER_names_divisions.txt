@@ -1,0 +1,53 @@
+# The Waffen SS Infanterie Division (common/scripted_effects/wif_ger_himmler.txt)
+# is built from militia battalions. Vanilla's GER_SS_01 only accepts infantry,
+# motorized, medium_armor and mechanized, so it rejects that template and the
+# divisions fall back to generic names. This is the same list opened to militia,
+# numbered together with GER_SS_01 so the two never hand out the same number.
+WIF_GER_SS_MIL = {
+	name = "Waffen-SS Divisions"
+
+	for_countries = { GER }
+
+	can_use = {
+		always = yes
+	}
+
+	division_types = { "militia" "infantry" }
+
+	link_numbering_with = { GER_SS_01 }
+
+	fallback_name = "%d. SS-Division"
+
+	ordered = {
+		1 = { "%d. SS-Division 'Leibstandarte Adolf Hitler'" }
+		2 = { "%d. SS-Division 'Das Reich'" }
+		3 = { "%d. SS-Division 'Totenkopf'" }
+		4 = { "%d. SS-Division 'Polizei'" }
+		6 = { "%d. SS-Division 'Nord'" }
+		7 = { "%d. SS-Division 'Prinz Eugen'" }
+		8 = { "%d. SS-Division 'Florian Geyer'" }
+		9 = { "%d. SS-Division 'Hohenstaufen'" }
+		10 = { "%d. SS-Division 'Frundsberg'" }
+		11 = { "%d. SS-Division 'Nordland'" }
+		12 = { "%d. SS-Division 'Hitlerjugend'" }
+		13 = { "%d. SS-Division 'Handschar'" }
+		14 = { "%d. SS-Division (ukrain. Nr. 1)" }
+		16 = { "%d. SS-Division 'Reichsführer-SS'" }
+		17 = { "%d. SS-Division 'Götz von Berlichingen'" }
+		18 = { "%d. SS-Division 'Horst Wessel'" }
+		21 = { "%d. SS-Division 'Skanderbeg'" }
+		22 = { "%d. SS-Division 'Maria Theresia'" }
+		24 = { "%d. SS-Division 'Karstjäger'" }
+		25 = { "%d. SS-Division 'Hunyadi' (ungarische Nr. 1)" }
+		26 = { "%d. SS-Division (ungarische Nr. 2)" }
+		29 = { "%d. SS-Division RONA (russische Nr. 1)" }
+		30 = { "%d. SS-Division (russisch Nr. 2)" }
+		31 = { "%d. SS-Division" }
+		32 = { "%d. SS-Division '30. Januar'" }
+		34 = { "%d. SS-Division 'Landstorm Nederland'" }
+		35 = { "%d. SS- und Polizei-Division" }
+		36 = { "%d. SS-Division 'Dirlewanger'" }
+		37 = { "%d. SS-Division 'Lützow'" }
+		38 = { "%d. SS-Division 'Nibelungen'" }
+	}
+}

@@ -846,50 +846,42 @@ GER_reduce_mefo_bills_penalty = {
 }
 
 GER_autarky_achieved_effects = {
+	# Welt in Flammen: Mefo Bills is not paid off. It becomes the Facade
+	# Economy - same modifier values, consumer goods reset to 0 below, then
+	# growing by 0.005 a month with no cap and no penalties (on_monthly_GER in
+	# common/on_actions/wif_on_actions.txt). Economy of Conquest is Mefo Bills'
+	# wartime form, sharing its consumer goods variable, so it goes the same
+	# way. Vanilla's Wirtschaftswunder is now only reached from Recovering
+	# Economy, below.
 	if = {
 		limit = {
-			has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
-			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_modifier }
-		}
-		custom_effect_tooltip = GER_replace_mefo_bills_with_wirtschaftswunder_tt
-		add_to_variable = {
-			GER_mefo_bills_civilian_intel_to_others = 0.25
-			tooltip = civilian_intel_to_others_tt
-		}
-		add_to_variable = {
-			GER_mefo_bills_army_intel_to_others = 0.25
-			tooltip = army_intel_to_others_tt
-		}
-		add_to_variable = {
-			GER_mefo_bills_navy_intel_to_others = 0.25
-			tooltip = navy_intel_to_others_tt
-		}
-		add_to_variable = {
-			GER_mefo_bills_airforce_intel_to_others = 0.25
-			tooltip = airforce_intel_to_others_tt
-		}
-	}
-	else_if = {
-		limit = {
-			has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
-			add_dynamic_modifier = { modifier = GER_wirtschaftswunder_modifier }
-		}
-		if = {
-			limit = { 
-				check_variable = { var = GER_industrial_consumer_goods_factor value = 1 compare = greater_than_or_equals }
+			OR = {
+				has_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+				has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
 			}
-			clr_country_flag = GER_mefo_bills_penalty_flag #This flag is always set when reaching 100% CGFF
+		}
+		# Lift vanilla's over-100% penalties if they are in force, exactly as
+		# vanilla's own Economy of Conquest branch did. The Facade Economy has
+		# none, and starts from 0 anyway.
+		if = {
+			limit = { has_country_flag = GER_mefo_bills_penalty_flag }
+			clr_country_flag = GER_mefo_bills_penalty_flag
 			subtract_from_variable = { GER_industrial_consumer_goods_expected_value = GER_expected_consumer_goods_penalty }
 			add_to_variable = { GER_industrial_industrial_capacity_factory = GER_factory_output_penalty }
 			add_to_variable = { GER_industrial_industrial_capacity_dockyard = GER_dockyard_output_penalty }
 		}
-		custom_effect_tooltip = GER_replace_economy_of_conquest_with_wirtschaftswunder_tt
+		hidden_effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = GER_mefo_bills_modifier } }
+				remove_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier } }
+				remove_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+			}
+			add_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier }
+		}
+		custom_effect_tooltip = wif_ger_replace_mefo_with_facade_economy_tt
 	}
 	else_if = {
 		limit = {

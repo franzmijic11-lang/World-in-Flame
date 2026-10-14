@@ -1,0 +1,499 @@
+# Can this country hold this economy law? One trigger per vanilla law that has
+# requirements, each the law's own available block COPIED VERBATIM from
+# common/ideas/_economic.txt. HoI4 has no trigger that asks "is this idea
+# available", so the only way to test a law's requirements from script is to
+# repeat them.
+#
+# Re-copy these whenever _economic.txt is re-copied after a game update - see
+# the header of that file. A law whose requirements change upstream and not
+# here would be judged by the old rules: the player could pass a law and be
+# told a week later that they cannot hold it, or the reverse.
+#
+# Laws with no available block are always holdable and have no trigger here:
+# undisturbed_isolation, isolation, civilian_economy, and the script-only
+# laws (new_economic_policy, new_economic_policy_2, capital_investment_model,
+# JAP_war_communism_idea). civilian_economy is therefore the floor that the
+# downgrade in common/scripted_effects/wif_economy_law.txt always lands on
+# when nothing above it qualifies.
+#
+# WiF's own Russian warlord and Reichskommissariat economies are left out on
+# purpose. They are imposed and locked by script, and a country cannot change
+# away from them anyway.
+
+wif_can_hold_low_economic_mobilisation = {
+	has_war_support > 0.15
+
+	IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			NOT = { has_idea = HUN_treaty_of_triannon_aat }
+		}
+		ELSE = {
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Gotterdammerung"
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_aat_wuw
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_or_army_debuff
+					}
+				}
+
+			}
+		}
+		ELSE = {
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_wuw
+						has_idea = HUN_treaty_of_triannon_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_or_army_debuff
+					}
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = USA_limited_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.3
+		congress_high_support_trigger = yes
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+		NOT = {
+			OR = {
+				has_active_mission = TUR_etatism_crisis_2
+				has_active_mission = TUR_etatism_crisis_3
+				has_active_mission = TUR_etatism_crisis_4
+			}
+		}
+	}
+	if = {
+		limit = {
+			original_tag = CZE
+			has_dlc = "Peace For Our Time"
+		}
+		custom_trigger_tooltip = {
+			tooltip = CZE_bop_no_industrialists_tt
+			NOT = {
+				OR = {
+					has_idea = CZE_industrialists_veto
+					has_idea = CZE_industrialists_veto_2
+				}
+			}
+		}
+	}
+}
+
+wif_can_hold_partial_economic_mobilisation = {
+	has_war_support > 0.25
+
+	IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			OR = {
+				has_completed_focus = HUN_secret_rearmament
+				NOT = { has_idea = HUN_treaty_of_triannon_aat }
+			}
+		}
+		ELSE = {
+			OR = {
+				has_completed_focus = HUN_secret_rearmament
+				NOT = { has_idea = HUN_treaty_of_triannon }
+			}
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Gotterdammerung"
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			OR = {
+				has_completed_focus = wuw_HUN_secret_rearmament
+				NOT = { has_idea = HUN_treaty_of_triannon_aat_wuw }
+			}
+		}
+		ELSE = {
+			OR = {
+				has_completed_focus = wuw_HUN_secret_rearmament
+				NOT = { has_idea = HUN_treaty_of_triannon_wuw }
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = USA_limited_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.5
+		congress_high_support_trigger = yes
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+		NOT = {
+			OR = {
+				has_active_mission = TUR_etatism_crisis_1
+				has_active_mission = TUR_etatism_crisis_3
+				has_active_mission = TUR_etatism_crisis_4
+			}
+		}
+	}
+	if = {
+		limit = {
+			original_tag = CZE
+			has_dlc = "Peace For Our Time"
+		}
+		custom_trigger_tooltip = {
+			tooltip = CZE_bop_no_industrialists_tt
+			NOT = {
+				OR = {
+					has_idea = CZE_industrialists_veto
+					has_idea = CZE_industrialists_veto_2
+				}
+			}
+		}
+	}
+}
+
+wif_can_hold_war_economy = {
+	has_war_support > 0.5
+	OR = {
+		has_government = fascism
+		has_government = communism
+		if = {
+			limit = {
+				PHI_SEA = yes
+			}
+			if = {
+				limit = {
+					has_idea = PHI_ties_with_nationalist_spain
+				}
+				has_idea = PHI_ties_with_nationalist_spain
+			}
+			else_if = {
+				limit = {
+					has_idea = PHI_ties_with_nationalist_spain_2
+				}
+				has_idea = PHI_ties_with_nationalist_spain_2
+			}
+			else = {
+				hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+			}
+		}
+		else = {
+			hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+		}
+		custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
+		AND = {
+			has_war = yes
+			any_enemy_country = {
+				ic_ratio = {
+					tag = ROOT
+					ratio > 0.4
+				}
+			}
+		}
+	}
+
+	IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			NOT = { has_idea = HUN_treaty_of_triannon_aat }
+		}
+		ELSE = {
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Gotterdammerung"
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_aat_wuw
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_or_army_debuff
+					}
+				}
+
+			}
+		}
+		ELSE = {
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_wuw
+						has_idea = HUN_treaty_of_triannon_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_or_army_debuff
+					}
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = USA_limited_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.75
+		congress_high_support_trigger = yes
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+		NOT = {
+			OR = {
+				has_active_mission = TUR_etatism_crisis_1
+				has_active_mission = TUR_etatism_crisis_2
+				has_active_mission = TUR_etatism_crisis_4
+			}
+		}
+	}
+	if = {
+		limit = {
+			original_tag = CZE
+			has_dlc = "Peace For Our Time"
+		}
+		custom_trigger_tooltip = {
+			tooltip = CZE_bop_no_industrialists_tt
+			NOT = {
+				OR = {
+					has_idea = CZE_industrialists_veto
+					has_idea = CZE_industrialists_veto_2
+				}
+			}
+		}
+	}
+}
+
+wif_can_hold_tot_economic_mobilisation = {
+	has_war = yes
+	has_war_support > 0.8
+	any_enemy_country = {
+		ic_ratio = {
+			tag = ROOT
+			ratio > 0.5
+		}
+	}
+
+	IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Death or Dishonor"
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			NOT = { has_idea = HUN_treaty_of_triannon_aat }
+		}
+		ELSE = {
+			NOT = { has_idea = HUN_treaty_of_triannon }
+		}
+	}
+	ELSE_IF = {
+		limit = {
+			original_tag = HUN
+			has_dlc = "Gotterdammerung"
+		}
+		IF = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_aat_wuw
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_aat_wuw_no_air_or_army_debuff
+					}
+				}
+
+			}
+		}
+		ELSE = {
+			custom_trigger_tooltip = {
+				tooltip = wuw_HUN_not_has_trianon_for_laws_tt
+				NOT = {
+					OR = {
+						has_idea = HUN_treaty_of_triannon_wuw
+						has_idea = HUN_treaty_of_triannon_wuw_no_army_exp_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_debuff
+						has_idea = HUN_treaty_of_triannon_wuw_no_air_or_army_debuff
+					}
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = USA_limited_intervention
+			has_defensive_war = no
+		}
+		has_war_support > 0.9
+		congress_high_support_trigger = yes
+	}
+	if = {
+		limit = {
+			original_tag = TUR
+			has_dlc = "Battle for the Bosporus"
+		}
+		NOT = {
+			OR = {
+				has_active_mission = TUR_etatism_crisis_1
+				has_active_mission = TUR_etatism_crisis_2
+				has_active_mission = TUR_etatism_crisis_3
+			}
+		}
+	}
+	if = {
+		limit = {
+			original_tag = CZE
+			has_dlc = "Peace For Our Time"
+		}
+		custom_trigger_tooltip = {
+			tooltip = CZE_bop_no_industrialists_tt
+			NOT = {
+				OR = {
+					has_idea = CZE_industrialists_veto
+					has_idea = CZE_industrialists_veto_2
+				}
+			}
+		}
+	}
+}
+
+wif_can_hold_totaler_krieg_economy = {
+	has_completed_focus = GER_totaler_krieg
+	has_war_with_major = yes
+	has_war_support > 0.8
+	any_enemy_country = {
+		ic_ratio = {
+			tag = ROOT
+			ratio > 0.5
+		}
+	}
+}
+
+wif_can_hold_national_defense_state = {
+	OR = {
+		has_completed_focus = JAP_prepare_for_the_final_war
+		has_completed_focus = JAP_sea_national_defense_state
+	}
+	OR = {
+		has_war_with_major = yes
+		has_war_support > 0.75
+	}
+	any_enemy_country = {
+		ic_ratio = {
+			tag = ROOT
+			ratio > 0.5
+		}
+	}
+}
+
+# The country holds an economy law it no longer meets the requirements of.
+wif_has_unsupported_economy_law = {
+	OR = {
+		AND = {
+			has_idea = low_economic_mobilisation
+			NOT = { wif_can_hold_low_economic_mobilisation = yes }
+		}
+		AND = {
+			has_idea = partial_economic_mobilisation
+			NOT = { wif_can_hold_partial_economic_mobilisation = yes }
+		}
+		AND = {
+			has_idea = war_economy
+			NOT = { wif_can_hold_war_economy = yes }
+		}
+		AND = {
+			has_idea = tot_economic_mobilisation
+			NOT = { wif_can_hold_tot_economic_mobilisation = yes }
+		}
+		AND = {
+			has_idea = totaler_krieg_economy
+			NOT = { wif_can_hold_totaler_krieg_economy = yes }
+		}
+		AND = {
+			has_idea = national_defense_state
+			NOT = { wif_can_hold_national_defense_state = yes }
+		}
+	}
+}

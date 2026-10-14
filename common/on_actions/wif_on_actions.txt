@@ -560,6 +560,11 @@ on_actions = {
 				add_ideas = closed_economy
 			}
 
+			# Economy law held without meeting its requirements: ask once whether
+			# to lower it or keep it at a price, and lift the price once it is
+			# supported again. See common/scripted_effects/wif_economy_law.txt.
+			wif_check_economy_law = yes
+
 			# Refresh the cap weekly so the AI strategy reacts promptly when
 			# world tension or ideology shifts. Variable maths only, no loops.
 			wif_update_factory_cap = yes
@@ -724,6 +729,25 @@ on_actions = {
 				}
 				set_country_flag = wif_swe_semi_constitutional
 				wif_become_semi_constitutional_monarchy = yes
+			}
+		}
+	}
+
+	# The Facade Economy's consumer goods - see
+	# common/dynamic_modifiers/wif_ger_facade_economy.txt. A flat 0.005 a month
+	# (+0.5%, so +100% after 200 months, about 16.7 years), deliberately with
+	# NO cap and NO penalties: it is meant to keep climbing past 100% and past
+	# anything the Reich's civilian industry could actually supply, for a
+	# fuller civilian economy system to act on later. Its own rate, not
+	# vanilla's GER_monthly_consumer_goods_increase, so the vanilla reductions
+	# (Price Controls, Vichy, occupied states) do not apply to it.
+	on_monthly_GER = {
+		effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier }
+				}
+				add_to_variable = { GER_industrial_consumer_goods_factor = 0.005 }
 			}
 		}
 	}

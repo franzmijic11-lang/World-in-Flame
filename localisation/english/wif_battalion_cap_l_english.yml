@@ -7,7 +7,7 @@
  # Officer corps readout, drawn under the special forces block.
  wif_battalion_cap_count:0 "[?wif_bat_used|0]/[?wif_bat_limit|0]"
  wif_battalion_cap_label:0 "Line Battalions"
- wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G324§! battalions, for every country.[GetWifCapTerritory][GetWifCapRedArmy][GetWifCapOneState][GetWifCapWarlord][GetWifCapConscription][GetWifCapEconomy][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapWarBalance][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension][GetWifCapDouble]\n\n§HTotal: [GetWifCapTotal]\n\nTerritory and the single state penalty are counted in battalions and are added after the percentages, so they are never scaled by them. Everything else adds together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+ wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G324§! battalions, for every country.[GetWifCapTerritory][GetWifCapRedArmy][GetWifCapOneState][GetWifCapWarlord][GetWifCapConscription][GetWifCapEconomy][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapInvincible][GetWifCapWarBalance][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension][GetWifCapNearWar][GetWifCapDouble]\n\n§HTotal: [GetWifCapTotal]\n\nTerritory and the single state penalty are counted in battalions and are added after the percentages, so they are never scaled by them. Everything else adds together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
 
  # --- Cap breakdown -------------------------------------------------------
  # One line per bonus, emitted by the defined_texts in
@@ -23,7 +23,8 @@
  wif_cap_line_redarmy:0 "\n §G+[?wif_src_redarmy|0]§! battalions The Red Army §g(the standing army of the Union, whatever else is true this week)§!"
  wif_cap_line_onestate:0 "\n §R[?wif_src_onestate|1]§! battalions Single state §g(a country of one state is held to 27)§!"
  wif_cap_line_consc:0 "\n §G+[?wif_src_consc|%0]§! Conscription §g([GetWifCapLawName])§!"
- # The only two breakdown lines that can be a penalty. The %0 formatter
+ # Economy and world tension are the breakdown lines that can be a penalty
+ # (tension's negative key is further down). The %0 formatter
  # prints the minus sign itself, which is why the negative key has no "+".
  wif_cap_line_warlord:0 "\n §G+[?wif_src_warlord|%0]§! Russian warlord §g(no borders anyone recognises, and every man the Union trained)§!"
  wif_cap_line_econ:0 "\n §G+[?wif_src_econ|%0]§! Economy §g([GetWifCapEconomyName])§!"
@@ -32,6 +33,7 @@
  wif_cap_line_ws:0 "\n §G+[?wif_src_ws|%0]§! War support §g(at [?wif_val_ws|%0])§!"
  wif_cap_line_major:0 "\n §G+[?wif_src_major|0]§! battalions Major power §g(one of the seven the world actually answers to)§!"
  wif_cap_line_faction:0 "\n §G+[?wif_src_faction|%0]§! Faction leader"
+ wif_cap_line_invincible:0 "\n §G+[?wif_src_invincible|%0]§! $wif_ger_invincible_army_1$"
  wif_cap_line_war_weaker:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is weaker §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
  wif_cap_line_war_even:0 "\n §G+[?wif_src_war_bal|%0]§! At war, evenly matched §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
  wif_cap_line_war_stronger:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is stronger §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
@@ -39,6 +41,8 @@
  wif_cap_line_war_2x:0 "\n §G+[?wif_src_war_2x|%0]§! Outnumbered more than two to one"
  wif_cap_line_war_4x:0 "\n §G+[?wif_src_war_4x|%0]§! Outnumbered four to one or worse"
  wif_cap_line_tension:0 "\n §G+[?wif_src_tension|%0]§! World tension §g(at [?wif_val_tension|%0])§!"
+ wif_cap_line_tension_neg:0 "\n §R[?wif_src_tension|%0]§! World tension §g(at [?wif_val_tension|%0], the world is at peace)§!"
+ wif_cap_line_near_war:0 "\n §G+[?wif_src_near_war|%0]§! War on our continent §g(one we are not part of)§!"
 
  # Conscription law names, chosen by GetWifCapLawName. Written out rather than
  # referenced from vanilla's keys so a loc change upstream cannot blank them.

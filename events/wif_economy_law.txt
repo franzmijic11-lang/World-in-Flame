@@ -1,0 +1,38 @@
+add_namespace = wif_economy_law
+
+# The country holds an economy law it no longer meets the requirements of.
+# Fired once per lapse from wif_check_economy_law, in
+# common/scripted_effects/wif_economy_law.txt.
+country_event = {
+	id = wif_economy_law.1
+	title = wif_economy_law.1.t
+	desc = wif_economy_law.1.desc
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+
+	# Lower the law
+	option = {
+		name = wif_economy_law.1.a
+		ai_chance = {
+			base = 90
+			# At war the AI is more willing to keep the factories running.
+			modifier = {
+				factor = 0.3
+				has_war = yes
+			}
+		}
+		# Not hidden: the ladder's if-limits are evaluated on hover, so the
+		# tooltip names the one law the country will actually drop to.
+		wif_lower_economy_law = yes
+	}
+
+	# Keep it
+	option = {
+		name = wif_economy_law.1.b
+		ai_chance = {
+			base = 10
+		}
+		add_ideas = wif_unsustainable_economy
+	}
+}

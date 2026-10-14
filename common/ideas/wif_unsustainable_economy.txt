@@ -1,0 +1,28 @@
+# The price of keeping an economy law the country can no longer hold. Granted by
+# event wif_economy_law.1, removed by common/scripted_effects/wif_economy_law.txt
+# as soon as the law is supported again.
+ideas = {
+	country = {
+		wif_unsustainable_economy = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = FRA_factory_strikes
+
+			modifier = {
+				# -0.10 stability and -0.20 war support every week, i.e. -10%
+				# and -20% as the game displays them. Deliberately brutal: this
+				# is a few weeks' grace, not a way of life.
+				stability_weekly = -0.10
+				war_support_weekly = -0.20
+			}
+		}
+	}
+}

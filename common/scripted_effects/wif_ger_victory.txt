@@ -1,0 +1,40 @@
+# Shared by the Totaler Sieg tree, common/national_focus/wif_ger_victory.txt.
+
+# Finish the Purification of Our Lands: Katowice (762), Lodz (87), Plock (98)
+# and Bialystok (97) each lose half their population, then Ostmark (68) loses
+# a tenth of its own, split evenly across those four.
+#
+# Everything is worked in thousands (state_population_k) and every read happens
+# in the scope of the state it changes, so no temp variable has to cross a
+# scope. add_manpower in STATE scope changes that state's population.
+#
+# Variables overflow at about 2.1 million, so each halving is applied as two
+# quarters: a state of up to ~8.5 million is safe.
+#
+# Order matters: the four states are halved first, then each takes its share of
+# Ostmark's tenth while Ostmark is still untouched, and only then is Ostmark cut.
+wif_ger_purify_state_population = {
+	set_temp_variable = { wif_purge_quarter = state_population_k }
+	multiply_temp_variable = { wif_purge_quarter = -250 } # thousands -> people, x0.25
+	add_manpower = var:wif_purge_quarter
+	add_manpower = var:wif_purge_quarter
+
+	# A quarter of Ostmark's tenth: thousands x 1000 x 0.1 / 4
+	set_temp_variable = { wif_purge_settlers = 68.state_population_k }
+	multiply_temp_variable = { wif_purge_settlers = 25 }
+	add_manpower = var:wif_purge_settlers
+}
+
+wif_ger_finish_the_purification_population = {
+	762 = { wif_ger_purify_state_population = yes }
+	87 = { wif_ger_purify_state_population = yes }
+	98 = { wif_ger_purify_state_population = yes }
+	97 = { wif_ger_purify_state_population = yes }
+
+	# Last: the four states above read Ostmark's population before this cut.
+	68 = {
+		set_temp_variable = { wif_purge_ostmark = state_population_k }
+		multiply_temp_variable = { wif_purge_ostmark = -100 } # thousands -> people, x0.1
+		add_manpower = var:wif_purge_ostmark
+	}
+}

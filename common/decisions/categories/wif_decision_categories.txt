@@ -64,3 +64,16 @@ wif_the_white_question = {
 
 	priority = 70
 }
+
+# The way back down from an economy law the country can no longer hold, for
+# anyone who chose to keep it - see common/scripted_effects/wif_economy_law.txt.
+# Any country can need it, so no allowed block.
+wif_economy_law_category = {
+	icon = GFX_decision_category_generic_industry
+
+	visible = {
+		has_idea = wif_unsustainable_economy
+	}
+
+	priority = 90
+}

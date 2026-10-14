@@ -1,0 +1,107 @@
+# Unsupported economy laws.
+#
+# A country that holds an economy law it no longer meets the requirements of -
+# war support fallen too low, the war that justified Total Mobilisation over -
+# is asked once, by event wif_economy_law.1, to either step the law down or
+# keep it. Keeping it costs the Unsustainable Economy spirit, which stays until
+# the law is supported again: either the country steps down (the decision in
+# common/decisions/wif_economy_law.txt, or the ordinary law menu), or it wins
+# back the requirements on its own.
+#
+# Replaces vanilla's peacetime demobilisation decision and strikes mission,
+# which are switched off in common/scripted_triggers/laws_war_support.txt.
+#
+# "Can it hold the law" is answered by the triggers in
+# common/scripted_triggers/wif_economy_law_triggers.txt, copies of each law's
+# own available block.
+
+
+# Weekly, from on_weekly in common/on_actions/wif_on_actions.txt. Country scope.
+wif_check_economy_law = {
+	if = {
+		limit = {
+			wif_has_unsupported_economy_law = yes
+			NOT = { has_country_flag = wif_econ_law_asked }
+		}
+		# Set before the event fires, so a country is asked once per lapse and
+		# not every week while it makes up its mind.
+		set_country_flag = wif_econ_law_asked
+		country_event = { id = wif_economy_law.1 }
+	}
+	else_if = {
+		limit = {
+			NOT = { wif_has_unsupported_economy_law = yes }
+		}
+		# Supported again - however it got there. Clearing the flag re-arms the
+		# question for the next time the law lapses.
+		clr_country_flag = wif_econ_law_asked
+		if = {
+			limit = { has_idea = wif_unsustainable_economy }
+			remove_ideas = wif_unsustainable_economy
+		}
+	}
+}
+
+# Step the economy law down to the highest law below it that the country can
+# actually hold. Civilian Economy has no requirements, so the ladder always
+# lands somewhere. Each branch also requires the country to be ABOVE the law it
+# picks, so this only ever lowers.
+#
+# Totaler Krieg and National Defence State sit on the same rung as Total
+# Mobilisation: the next law down from any of the three is War Economy.
+wif_lower_economy_law = {
+	if = {
+		limit = {
+			OR = {
+				has_idea = tot_economic_mobilisation
+				has_idea = totaler_krieg_economy
+				has_idea = national_defense_state
+			}
+			wif_can_hold_war_economy = yes
+		}
+		add_ideas = war_economy
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = tot_economic_mobilisation
+				has_idea = totaler_krieg_economy
+				has_idea = national_defense_state
+				has_idea = war_economy
+			}
+			wif_can_hold_partial_economic_mobilisation = yes
+		}
+		add_ideas = partial_economic_mobilisation
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = tot_economic_mobilisation
+				has_idea = totaler_krieg_economy
+				has_idea = national_defense_state
+				has_idea = war_economy
+				has_idea = partial_economic_mobilisation
+			}
+			wif_can_hold_low_economic_mobilisation = yes
+		}
+		add_ideas = low_economic_mobilisation
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = tot_economic_mobilisation
+				has_idea = totaler_krieg_economy
+				has_idea = national_defense_state
+				has_idea = war_economy
+				has_idea = partial_economic_mobilisation
+				has_idea = low_economic_mobilisation
+			}
+		}
+		add_ideas = civilian_economy
+	}
+
+	if = {
+		limit = { has_idea = wif_unsustainable_economy }
+		remove_ideas = wif_unsustainable_economy
+	}
+}

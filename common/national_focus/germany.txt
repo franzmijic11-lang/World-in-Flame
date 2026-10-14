@@ -10399,6 +10399,9 @@ focus_tree = {
 			custom_effect_tooltip = generic_skip_one_line_tt
 
 			add_country_leader_trait = GER_loyalty_of_wehrmacht
+
+			# Welt in Flammen: the Invincible Army spirit, +5% battalion cap.
+			add_ideas = wif_ger_invincible_army_1
 		}
 	}
 
@@ -10460,6 +10463,19 @@ focus_tree = {
 			}
 			else = {
 				add_country_leader_trait = GER_supreme_commander_armed_forces
+			}
+
+			# Welt in Flammen: the Invincible Army spirit, +5% battalion cap.
+			if = {
+				limit = { has_idea = wif_ger_invincible_army_2 }
+				swap_ideas = {
+					remove_idea = wif_ger_invincible_army_2
+					add_idea = wif_ger_invincible_army_3
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_idea = wif_ger_invincible_army_3 } }
+				add_ideas = wif_ger_invincible_army_3
 			}
 		}
 	}
@@ -19121,6 +19137,19 @@ focus_tree = {
 					has_dlc = "La Resistance"
 				}
 				GER_create_operative_savitri_devi = yes
+			}
+
+			# Welt in Flammen: the Invincible Army spirit, +5% battalion cap.
+			if = {
+				limit = { has_idea = wif_ger_invincible_army_1 }
+				swap_ideas = {
+					remove_idea = wif_ger_invincible_army_1
+					add_idea = wif_ger_invincible_army_2
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_idea = wif_ger_invincible_army_2 } }
+				add_ideas = wif_ger_invincible_army_2
 			}
 		}
 	}

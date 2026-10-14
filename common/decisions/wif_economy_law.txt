@@ -1,0 +1,31 @@
+# The way back down for a country that chose to keep an unsupported economy law.
+# Visible only while it carries Unsustainable Economy - see
+# common/scripted_effects/wif_economy_law.txt.
+wif_economy_law_category = {
+	wif_lower_economy_law_decision = {
+		icon = generic_industry
+
+		visible = {
+			has_idea = wif_unsustainable_economy
+		}
+
+		available = {
+			has_idea = wif_unsustainable_economy
+		}
+
+		cost = 0
+
+		complete_effect = {
+			# Not hidden: the tooltip names the law it will drop to.
+			wif_lower_economy_law = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+# Shared by Himmler's focuses in common/national_focus/wif_ger_victory.txt.
+
+# Locked and without force_allow_recruiting: it cannot be edited or trained.
+# The template symbol cannot be set from script. Names come from WIF_GER_SS_MIL
+# (common/units/names_divisions/wif_GER_names_divisions.txt): vanilla's GER_SS_01
+# does not accept militia, which is what this template is built from.
+wif_ger_create_waffen_ss_template = {
+	if = {
+		limit = {
+			NOT = { has_template = "Waffen SS Infanterie Division" }
+		}
+		division_template = {
+			name = "Waffen SS Infanterie Division"
+			priority = 2
+			division_names_group = WIF_GER_SS_MIL
+			is_locked = yes
+			override_model = GER_militia
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				artillery = { x = 0 y = 0 }
+				anti_tank = { x = 0 y = 1 }
+				anti_air = { x = 0 y = 2 }
+				recon = { x = 0 y = 3 }
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+﻿l_english:
+ # Unsupported economy laws - common/scripted_effects/wif_economy_law.txt.
+ wif_economy_law.1.t:0 "The Economy Outruns the Nation"
+ wif_economy_law.1.desc:0 "Our economic law no longer has the backing it needs. The people will not carry the burden of this mobilisation much longer, and the ministries warn that the factories cannot be driven at this pace without consent.\n\nWe can step the economy down to a footing the nation can bear, or hold the course and accept the cost in unrest and weariness until we do."
+ wif_economy_law.1.a:0 "Step the economy down."
+ wif_economy_law.1.b:0 "Hold the course, whatever it costs."
+ wif_unsustainable_economy:0 "Unsustainable Economy"
+ wif_unsustainable_economy_desc:0 "We are holding an economic law the nation no longer supports. Every week it stays in force costs us stability and war support. It will lift once we lower the law, or once the nation is willing to support it again."
+ wif_economy_law_category:0 "Unsustainable Economy"
+ wif_economy_law_category_desc:0 "Our economic law is beyond what the nation will support."
+ wif_lower_economy_law_decision:0 "Lower the Economic Law"
+ wif_lower_economy_law_decision_desc:0 "Step the economy down to the highest law we can still hold, and end the Unsustainable Economy penalty."

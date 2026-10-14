@@ -43,7 +43,7 @@
 #   Conscription    disarmed 0, volunteer 10%, limited 15%, extensive 25%,
 #                   service by requirement 35%, all adults serve 45%,
 #                   scraping the barrel 50%.
-#   Economy law     THE ONLY NEGATIVE SOURCE. Undisturbed isolation -50%,
+#   Economy law     Undisturbed isolation -50%,
 #                   isolation -25%, civilian economy -15%, early mobilisation
 #                   0, partial mobilisation 10%, war economy 20%, total
 #                   mobilisation 15%, totaler krieg 25%, national defence
@@ -58,7 +58,12 @@
 #   Wartime         additive, up to +185%, ALL of it stripped the moment the
 #                   country is at peace again. The headline clause is a
 #                   three-way read on the balance of strength - see below.
-#   World tension   highest qualifying band only, never summed with itself.
+#   World tension   highest qualifying band only, never summed with itself:
+#                   0-10% -9%, 11-18% nothing, 19-30% 5%, 31-40% 10%,
+#                   41%+ 12%. The other negative source besides the economy
+#                   law. Plus 10% on top, separately, while a war is being
+#                   fought on the country's own continent that it is no part
+#                   of.
 #
 # No flat bonuses anywhere yet. If one is ever added it goes on after the
 # multiply, not into wif_bat_pct.
@@ -191,11 +196,13 @@ wif_recalculate_battalion_cap = {
 	set_variable = { wif_src_ws = 0 }
 	set_variable = { wif_src_major = 0 }
 	set_variable = { wif_src_faction = 0 }
+	set_variable = { wif_src_invincible = 0 }
 	set_variable = { wif_src_war_bal = 0 }
 	set_variable = { wif_src_war_def = 0 }
 	set_variable = { wif_src_war_2x = 0 }
 	set_variable = { wif_src_war_4x = 0 }
 	set_variable = { wif_src_tension = 0 }
+	set_variable = { wif_src_near_war = 0 }
 
 	# The inputs themselves, copied so the tooltip can state the reason a band
 	# was picked ("Stability 72%") next to what it paid out. Read here rather
@@ -452,6 +459,21 @@ wif_recalculate_battalion_cap = {
 		set_variable = { wif_src_faction = 0.50 }
 	}
 
+	# The German Army, Invincible spirit - Germany's three propaganda focuses,
+	# 5% each. See common/ideas/wif_national_spirits.txt.
+	if = {
+		limit = { has_idea = wif_ger_invincible_army_3 }
+		set_variable = { wif_src_invincible = 0.15 }
+	}
+	else_if = {
+		limit = { has_idea = wif_ger_invincible_army_2 }
+		set_variable = { wif_src_invincible = 0.10 }
+	}
+	else_if = {
+		limit = { has_idea = wif_ger_invincible_army_1 }
+		set_variable = { wif_src_invincible = 0.05 }
+	}
+
 	# --- Line battalions in service ---------------------------------------
 	# Computed here rather than down with the cap because the wartime clauses
 	# below weigh this country's strength against its enemies', and both sides
@@ -592,19 +614,56 @@ wif_recalculate_battalion_cap = {
 	}
 
 	# --- World tension ----------------------------------------------------
-	# Highest band only. Written as if/else_if precisely so 80%+ tension gives
-	# 60% and not 30+40+60.
+	# Highest band only. Written as if/else_if precisely so 41%+ tension gives
+	# 12% and not 5+10+12.
+	#
+	# The bands are whole percentages, so each threshold sits just under the
+	# band's first whole number: threat > 0.4099 is "41% and up". 11-18% pays
+	# nothing and so has no branch - wif_src_tension stays at the 0 it was
+	# zeroed to.
 	if = {
-		limit = { threat > 0.7999 }
-		set_variable = { wif_src_tension = 0.60 }
+		limit = { threat > 0.4099 }
+		set_variable = { wif_src_tension = 0.12 }
 	}
 	else_if = {
-		limit = { threat > 0.5999 }
-		set_variable = { wif_src_tension = 0.40 }
+		limit = { threat > 0.3099 }
+		set_variable = { wif_src_tension = 0.10 }
 	}
 	else_if = {
-		limit = { threat > 0.1999 }
-		set_variable = { wif_src_tension = 0.30 }
+		limit = { threat > 0.1899 }
+		set_variable = { wif_src_tension = 0.05 }
+	}
+	else_if = {
+		limit = { NOT = { threat > 0.1099 } }
+		set_variable = { wif_src_tension = -0.09 }
+	}
+
+	# A war on the country's own continent that it is not part of. "On the
+	# continent" means a belligerent whose capital is on the same continent as
+	# this country's capital - is_on_same_continent_as compares capitals when
+	# given a country. "Not part of it" means this country is at war neither
+	# with that belligerent nor with any of its enemies, so a country fighting
+	# on either side of that war gets nothing from it. A country at war
+	# somewhere else entirely still qualifies.
+	#
+	# PREV is this country throughout: any_country is the only scope change
+	# before the comparisons, and any_enemy_country's own PREV is the
+	# belligerent, so the inner check reaches back two steps with PREV.PREV.
+	if = {
+		limit = {
+			any_country = {
+				has_war = yes
+				NOT = { tag = PREV }
+				is_on_same_continent_as = PREV
+				NOT = { has_war_with = PREV }
+				NOT = {
+					any_enemy_country = {
+						has_war_with = PREV.PREV
+					}
+				}
+			}
+		}
+		set_variable = { wif_src_near_war = 0.10 }
 	}
 
 	# --- Total -------------------------------------------------------------
@@ -622,11 +681,13 @@ wif_recalculate_battalion_cap = {
 	add_to_variable = { wif_bat_pct = wif_src_stab }
 	add_to_variable = { wif_bat_pct = wif_src_ws }
 	add_to_variable = { wif_bat_pct = wif_src_faction }
+	add_to_variable = { wif_bat_pct = wif_src_invincible }
 	add_to_variable = { wif_bat_pct = wif_src_war_bal }
 	add_to_variable = { wif_bat_pct = wif_src_war_def }
 	add_to_variable = { wif_bat_pct = wif_src_war_2x }
 	add_to_variable = { wif_bat_pct = wif_src_war_4x }
 	add_to_variable = { wif_bat_pct = wif_src_tension }
+	add_to_variable = { wif_bat_pct = wif_src_near_war }
 
 	# --- Cap ---------------------------------------------------------------
 	# Deliberately NOT rounded here. round_variable sat between wif_bat_used

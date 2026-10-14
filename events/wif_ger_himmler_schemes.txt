@@ -55,5 +55,59 @@ country_event = {
 			originator_name = GER_heinrich_himmler
 		}
 		clr_country_flag = GER_schemes_of_himmler_in_progress_flag
+
+		# Straight on to the next scheme.
+		country_event = { id = wif_ger_himmler_schemes.3 }
+	}
+}
+
+# Make the Fuhrer Only Trust the SS: 120 days = @wif_himmler_trust_time
+# (17.143 weeks) in wif_ger_victory.txt. Fired from .2 once Schemes of Himmler
+# completes; he must still hold his Inner Circle seat.
+country_event = {
+	id = wif_ger_himmler_schemes.3
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		# Himmler (4) holds an Inner Circle seat
+		OR = {
+			check_variable = { GER_ascended_advisor_1 = 4 }
+			check_variable = { GER_ascended_advisor_2 = 4 }
+			check_variable = { GER_ascended_advisor_3 = 4 }
+			check_variable = { GER_ascended_advisor_4 = 4 }
+		}
+		NOT = { has_completed_focus = GER_make_the_fuhrer_only_trust_the_ss }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_make_the_fuhrer_only_trust_the_ss
+		set_country_flag = { flag = GER_make_the_fuhrer_only_trust_the_ss_in_progress_flag days = 121 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.4 days = 120 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.4
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_make_the_fuhrer_only_trust_the_ss }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_make_the_fuhrer_only_trust_the_ss
+		complete_national_focus = {
+			focus = GER_make_the_fuhrer_only_trust_the_ss
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_make_the_fuhrer_only_trust_the_ss_in_progress_flag
 	}
 }

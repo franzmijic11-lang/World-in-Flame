@@ -1128,6 +1128,29 @@ ideas = {
 			}
 		}
 
+		# Replaces wif_ger_himmlers_waffen_ss when Make the Fuhrer Only Trust the
+		# SS completes (common/national_focus/wif_ger_victory.txt). Same name.
+		wif_ger_himmlers_waffen_ss_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			modifier = {
+				army_attack_factor = -0.10
+				army_defence_factor = -0.10
+				modifier_army_sub_unit_militia_attack_factor = 0.40
+				modifier_army_sub_unit_militia_defence_factor = 0.40
+			}
+		}
+
 		# Held by every Russian warlord state - see wif_is_russian_warlord in
 		# common/scripted_triggers/wif_scripted_triggers.txt for the list, and
 		# common/on_actions/wif_on_actions.txt for the weekly grant.
@@ -1601,6 +1624,76 @@ ideas = {
 				army_attack_factor = -0.10
 				army_defence_factor = -0.05
 				army_org_factor = 0.05
+			}
+		}
+
+		# ============================================================
+		# The German Army, Invincible - one spirit, three levels.
+		# ============================================================
+		# Granted by Demonstration of Military Achievements, upgraded by
+		# Propaganda Master and again by German Army, Invincible
+		# (common/national_focus/germany.txt). +5% to the battalion cap's base
+		# per level, so +5%, +10%, +15%.
+		wif_ger_invincible_army_1 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				# The bonus itself is read by name in wif_recalculate_battalion_cap,
+				# common/scripted_effects/wif_battalion_cap.txt - an idea cannot
+				# carry it as a modifier. This line only shows it.
+				custom_modifier_tooltip = wif_ger_invincible_army_1_tt
+			}
+		}
+
+		wif_ger_invincible_army_2 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				# The bonus itself is read by name in wif_recalculate_battalion_cap,
+				# common/scripted_effects/wif_battalion_cap.txt - an idea cannot
+				# carry it as a modifier. This line only shows it.
+				custom_modifier_tooltip = wif_ger_invincible_army_2_tt
+			}
+		}
+
+		wif_ger_invincible_army_3 = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {
+				# The bonus itself is read by name in wif_recalculate_battalion_cap,
+				# common/scripted_effects/wif_battalion_cap.txt - an idea cannot
+				# carry it as a modifier. This line only shows it.
+				custom_modifier_tooltip = wif_ger_invincible_army_3_tt
 			}
 		}
 

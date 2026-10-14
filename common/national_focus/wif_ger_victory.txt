@@ -13,6 +13,12 @@
 # circle focuses are: see events/wif_ger_himmler_schemes.txt. In weeks; the
 # events there use the same length in days (140) and must be kept in step.
 @wif_himmler_schemes_time = 20
+# Make the Fuhrer Only Trust the SS, the same way: 120 days. 17.143 rather than
+# 17.14, because fractional focus costs round DOWN to whole days.
+@wif_himmler_trust_time = 17.143
+
+# Finish the Purification of Our Lands: 150 days.
+@wif_purification_time = 21.429
 
 focus_tree = {
 	id = wif_ger_victory_focus
@@ -178,38 +184,7 @@ focus_tree = {
 
 			custom_effect_tooltip = generic_skip_one_line_tt
 
-			# Locked and without force_allow_recruiting: it cannot be edited
-			# or trained. The template symbol cannot be set from script.
-			if = {
-				limit = {
-					NOT = { has_template = "Waffen SS Infanterie Division" }
-				}
-				division_template = {
-					name = "Waffen SS Infanterie Division"
-					priority = 2
-					division_names_group = GER_SS_01
-					is_locked = yes
-					override_model = GER_militia
-					regiments = {
-						militia = { x = 0 y = 0 }
-						militia = { x = 0 y = 1 }
-						militia = { x = 0 y = 2 }
-						militia = { x = 1 y = 0 }
-						militia = { x = 1 y = 1 }
-						militia = { x = 1 y = 2 }
-						militia = { x = 2 y = 0 }
-						militia = { x = 2 y = 1 }
-						militia = { x = 2 y = 2 }
-						artillery_brigade = { x = 3 y = 0 }
-					}
-					support = {
-						artillery = { x = 0 y = 0 }
-						anti_tank = { x = 0 y = 1 }
-						anti_air = { x = 0 y = 2 }
-						recon = { x = 0 y = 3 }
-					}
-				}
-			}
+			wif_ger_create_waffen_ss_template = yes
 
 			# create_unit needs state scope, never country scope.
 			custom_effect_tooltip = GER_schemes_of_himmler_units_tt
@@ -221,6 +196,221 @@ focus_tree = {
 						count = 2
 					}
 				}
+			}
+		}
+	}
+
+	# Never taken by the player either: Himmler starts on it the moment Schemes
+	# of Himmler completes, and wif_ger_himmler_schemes.4 completes it.
+	focus = {
+		id = GER_make_the_fuhrer_only_trust_the_ss
+		icon = GFX_focus_GER_subdue_the_wehrmacht
+		prerequisite = { focus = GER_schemes_of_himmler }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 0
+		y = 1
+		relative_position_id = GER_schemes_of_himmler
+		cost = @wif_himmler_trust_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_make_the_fuhrer_only_trust_the_ss_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_trust_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_make_the_fuhrer_only_trust_the_ss_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_make_the_fuhrer_only_trust_the_ss_needs_himmler_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = wif_ger_himmlers_waffen_ss
+				add_idea = wif_ger_himmlers_waffen_ss_2
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			wif_ger_create_waffen_ss_template = yes
+
+			# Berlin. create_unit needs state scope, never country scope.
+			custom_effect_tooltip = GER_make_the_fuhrer_only_trust_the_ss_units_tt
+			hidden_effect = {
+				64 = {
+					create_unit = {
+						division = "division_template = \"Waffen SS Infanterie Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+						owner = GER
+						count = 2
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_finish_the_purification_of_our_lands
+		icon = GFX_focus_LAT_ostland
+		prerequisite = { focus = GER_totaler_sieg_achieved }
+
+		x = 0
+		y = 1
+		relative_position_id = GER_totaler_sieg_achieved
+		cost = @wif_purification_time
+
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_MANPOWER }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			# A state that is already a core shows no line: the if hides it.
+			912 = { # Southern Jutland
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			86 = { # Poznan
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			85 = { # Danzig
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			807 = { # Gdynia
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			188 = { # Memel
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			69 = { # North Sudetenland
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			972 = { # South Sudetenland
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			74 = { # Sudeten Silesia
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			4 = { # Lower Austria
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			152 = { # Upper Austria
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			153 = { # Tyrol
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			848 = { # Vorarlberg
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			975 = { # Burgenland
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			976 = { # Steiermark-Karnten
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			28 = { # Alsace-Lorraine
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			8 = { # Luxembourg
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			762 = { # Katowice
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			87 = { # Lodz
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			98 = { # Plock
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+			97 = { # Bialystok
+				if = {
+					limit = { NOT = { is_core_of = GER } }
+					add_core_of = GER
+				}
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			custom_effect_tooltip = GER_finish_the_purification_of_our_lands_population_tt
+			hidden_effect = {
+				wif_ger_finish_the_purification_population = yes
 			}
 		}
 	}

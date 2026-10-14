@@ -4,9 +4,9 @@
 # common/ideas/sweden.txt wholesale and delete every Swedish idea in it -
 # SWE_gustaf_v_idea included, which is the one the war cabinet swaps FROM. A
 # distinct filename merges into the same groups instead, and because every key
-# below is new there is no duplicate for the engine to discard. (Contrast
-# common/ideas/wif_trade_laws.txt, which redefines eight vanilla keys and does
-# produce duplicates.)
+# below is new there is no duplicate for the engine to discard. (Contrast the
+# old common/ideas/wif_trade_laws.txt, which redefined eight vanilla keys and
+# listed every trade law twice; it is now common/ideas/_economic.txt.)
 ideas = {
 	country = {
 
