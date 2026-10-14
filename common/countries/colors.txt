@@ -1350,3 +1350,30 @@ WRD = {
 	color = rgb { 46 84 160 }
 	color_ui = rgb { 46 84 160 }
 }
+
+# Germany after Totaler Sieg (events/wif_ger_himmler_coup.txt). The SS state
+# is black; the Wehrmacht revolt light grey.
+OSB = {
+	color = rgb { 15 15 15 }
+	color_ui = rgb { 70 70 70 }
+}
+
+WMG = {
+	color = rgb { 190 190 190 }
+	color_ui = rgb { 190 190 190 }
+}
+
+# The African Reichskommissariats of the Anglo-American peace. All grey, like
+# every vanilla RK, but each its own shade so the borders read.
+RKF = {
+	color = rgb { 160 160 160 }
+	color_ui = rgb { 122 145 93 }
+}
+RKR = {
+	color = rgb { 95 95 95 }
+	color_ui = rgb { 122 145 93 }
+}
+RKZ = {
+	color = rgb { 130 130 130 }
+	color_ui = rgb { 122 145 93 }
+}

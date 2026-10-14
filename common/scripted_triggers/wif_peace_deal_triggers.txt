@@ -1,0 +1,125 @@
+# Triggers for the Anglo-American peace (common/scripted_effects/wif_peace_deal.txt).
+
+
+# Any German-style Reichskommissariat, by spirit, by subject level or by tag.
+# Used to hand out and lock wif_reichskommissariat_economy
+# (common/ideas/wif_economy_laws.txt). The two spirits alone missed every RK
+# that was never given one - the Generalgouvernement among them.
+# Country scope.
+wif_is_reichskommissariat = {
+	OR = {
+		has_idea = GER_german_controlled_reichskommissariat
+		has_idea = GER_local_controlled_reichskommissariat
+		has_autonomy_state = autonomy_reichskommissariat
+		AND = {
+			is_subject = yes
+			OR = {
+				original_tag = RKB
+				original_tag = RKN
+				original_tag = RKG
+				original_tag = RKU
+				original_tag = RKO
+				original_tag = RKK
+				original_tag = RKT
+				original_tag = RKM
+				original_tag = RKL
+				original_tag = GEN
+				original_tag = RKI
+				original_tag = RKC
+				original_tag = RKA
+				original_tag = RKV
+				original_tag = RKF
+				original_tag = RKR
+				original_tag = RKZ
+			}
+		}
+	}
+}
+
+
+# Was this country in the British- or American-led faction when the US took
+# the peace? Set by wif_peace_snapshot. Country scope.
+wif_peace_was_allied = {
+	has_country_flag = wif_peace_allied
+}
+
+
+# A state that belonged to the Allies when the peace was signed - the only
+# land the peace carves up. State scope.
+wif_peace_carvable = {
+	has_state_flag = wif_peace_allied_state
+}
+
+
+# Where British forces stay British: Europe, Africa, the Mediterranean (the
+# Levant and Sinai are counted as middle_east by the map) and the Atlantic
+# islands. The Caribbean is not the Atlantic here. State scope.
+wif_peace_home_theatre = {
+	OR = {
+		is_on_continent = europe
+		is_on_continent = africa
+		state = 446	# Suez
+		state = 453	# Sinai
+		state = 454	# Palestine
+		state = 455	# Jordan
+		state = 553	# Lebanon
+		state = 554	# Damascus
+		state = 677	# Aleppo
+		state = 680	# Deir-az-Zur
+		state = 799	# Hatay
+		state = 299	# Falkland Islands
+		state = 720	# South Georgia
+		state = 696	# Bermuda
+	}
+}
+
+
+# Italy fought the Allies at Germany's side. Read from the global flag the
+# snapshot sets, because by the time the land is divided the war is over.
+wif_peace_italy_in_war = {
+	has_global_flag = wif_peace_italy_in_war
+}
+
+
+# Spain gets Morocco, Tlemcen and Gibraltar unless it is red. Country scope:
+# the owner of Madrid.
+wif_peace_spain_can_take = {
+	exists = yes
+	NOT = { original_tag = GER }
+	NOT = { has_government = communism }
+	NOT = { has_country_leader_ideology = anarchism }
+}
+
+
+# Hungary, Bulgaria and the like only get their share if they are on
+# Germany's side. Country scope.
+wif_peace_is_axis_partner = {
+	exists = yes
+	OR = {
+		is_in_faction_with = GER
+		is_subject_of = GER
+	}
+}
+
+
+# Something left in the state for a Scottish strike to wreck. State scope.
+wif_sco_state_has_a_target = {
+	OR = {
+		check_variable = { building_level@infrastructure > 0 }
+		check_variable = { building_level@industrial_complex > 0 }
+		check_variable = { building_level@arms_factory > 0 }
+		check_variable = { building_level@synthetic_refinery > 0 }
+		check_variable = { building_level@fuel_silo > 0 }
+		check_variable = { building_level@dockyard > 0 }
+		check_variable = { building_level@air_base > 0 }
+	}
+}
+
+
+# The Scottish terror campaign: a state of Fascist Britain on the British
+# Isles. State scope.
+wif_sco_attack_target = {
+	is_owned_by = ENG
+	is_on_continent = europe
+	ENG = { is_subject_of = GER }
+}

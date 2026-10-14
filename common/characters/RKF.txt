@@ -1,0 +1,16 @@
+characters = {
+	RKF_otto_ohlendorf = {
+		name = RKF_otto_ohlendorf
+		portraits = {
+			civilian = {
+				large = GFX_portrait_RKF_otto_ohlendorf
+			}
+		}
+		country_leader = {
+			ideology = nazism
+			traits = { GER_reichskommissar_trait }
+			expire = "1987.1.1.1"
+			id = -1
+		}
+	}
+}

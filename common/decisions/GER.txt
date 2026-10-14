@@ -8211,6 +8211,10 @@ GER_reichskommissariats = {
 			RKA = {
 				exists = no
 			}
+			# The Anglo-American peace (common/scripted_effects/wif_peace_deal.txt)
+			# divides this land between RK Ostafrika, Rhodesia and
+			# Zentralafrika instead - Mittelafrika would swallow all three.
+			NOT = { has_global_flag = wif_anglo_american_peace }
 		}
 
 		priority = 70

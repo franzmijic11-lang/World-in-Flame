@@ -73,22 +73,18 @@ ideas = {
 			# Restrict by tag/spirit with visible instead, the way vanilla does
 			# for JAP's national_defense_state.
 
-			# Shows in the Economy Law list only for Reichskommissariats
+			# Shows in the Economy Law list only for Reichskommissariats -
+			# by spirit, subject level or tag (wif_is_reichskommissariat in
+			# common/scripted_triggers/wif_peace_deal_triggers.txt), so the
+			# Generalgouvernement and RKs that never got a spirit count too
 			visible = {
-				OR = {
-					has_idea = GER_german_controlled_reichskommissariat
-					has_idea = GER_local_controlled_reichskommissariat
-				}
+				wif_is_reichskommissariat = yes
 			}
 
 			# Any Reichskommissariat may run this economy - directly administered
 			# by a Reichskommissar or run through a local collaborator alike.
-			# These are the only two Reichskommissariat spirits in the game.
 			available = {
-				OR = {
-					has_idea = GER_german_controlled_reichskommissariat
-					has_idea = GER_local_controlled_reichskommissariat
-				}
+				wif_is_reichskommissariat = yes
 			}
 
 			# Imposed from Berlin: while the Reichskommissariat exists it cannot
@@ -96,12 +92,7 @@ ideas = {
 			# so a country that stops being a Reichskommissariat is not left
 			# permanently locked into an economy it can never change.
 			allowed_to_remove = {
-				NOT = {
-					OR = {
-						has_idea = GER_german_controlled_reichskommissariat
-						has_idea = GER_local_controlled_reichskommissariat
-					}
-				}
+				NOT = { wif_is_reichskommissariat = yes }
 			}
 
 			cost = 150

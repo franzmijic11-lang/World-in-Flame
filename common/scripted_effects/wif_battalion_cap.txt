@@ -197,6 +197,7 @@ wif_recalculate_battalion_cap = {
 	set_variable = { wif_src_major = 0 }
 	set_variable = { wif_src_faction = 0 }
 	set_variable = { wif_src_invincible = 0 }
+	set_variable = { wif_src_bloated = 0 }
 	set_variable = { wif_src_war_bal = 0 }
 	set_variable = { wif_src_war_def = 0 }
 	set_variable = { wif_src_war_2x = 0 }
@@ -474,6 +475,13 @@ wif_recalculate_battalion_cap = {
 		set_variable = { wif_src_invincible = 0.05 }
 	}
 
+	# A Bloated Army - the Totaler Sieg tree
+	# (common/national_focus/wif_ger_victory.txt). A penalty, -15%.
+	if = {
+		limit = { has_completed_focus = GER_a_bloated_army }
+		set_variable = { wif_src_bloated = -0.15 }
+	}
+
 	# --- Line battalions in service ---------------------------------------
 	# Computed here rather than down with the cap because the wartime clauses
 	# below weigh this country's strength against its enemies', and both sides
@@ -682,6 +690,7 @@ wif_recalculate_battalion_cap = {
 	add_to_variable = { wif_bat_pct = wif_src_ws }
 	add_to_variable = { wif_bat_pct = wif_src_faction }
 	add_to_variable = { wif_bat_pct = wif_src_invincible }
+	add_to_variable = { wif_bat_pct = wif_src_bloated }
 	add_to_variable = { wif_bat_pct = wif_src_war_bal }
 	add_to_variable = { wif_bat_pct = wif_src_war_def }
 	add_to_variable = { wif_bat_pct = wif_src_war_2x }

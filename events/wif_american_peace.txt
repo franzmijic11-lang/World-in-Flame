@@ -35,6 +35,10 @@ country_event = {
 			}
 		}
 
+		# Who was in the Allies, read first of all, while every faction is
+		# still intact (common/scripted_effects/wif_peace_deal.txt)
+		hidden_effect = { wif_peace_snapshot = yes }
+
 		# Other American majors settle on the same terms. Done BEFORE this
 		# country leaves, while faction membership is still intact to test
 		# against.
@@ -52,6 +56,12 @@ country_event = {
 		}
 
 		wif_settle_with_axis = yes
+
+		# The rest of the Allies make peace, and the west is divided
+		custom_effect_tooltip = wif_peace_deal_tt
+		hidden_effect = {
+			GER = { wif_peace_deal = yes }
+		}
 
 		GER = {
 			country_event = { id = wif_usa_peace.2 }

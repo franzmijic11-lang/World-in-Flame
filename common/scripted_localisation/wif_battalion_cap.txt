@@ -433,6 +433,21 @@ defined_text = {
 	}
 }
 
+# A Bloated Army. Always a penalty.
+defined_text = {
+	name = GetWifCapBloated
+
+	text = {
+		trigger = { check_variable = { wif_src_bloated < 0 } }
+		localization_key = wif_cap_line_bloated
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
 # World tension, highest band only - never more than one of these. Can be a
 # penalty below 11%, hence the second branch.
 defined_text = {

@@ -1,0 +1,49 @@
+add_namespace = wif_ger_weakened_king
+
+# A Weakened King among Vultures (common/national_focus/wif_ger_victory.txt)
+# works on itself, the way Schemes of Himmler does
+# (events/wif_ger_himmler_schemes.txt): the focus shines, a timed flag drives
+# the progress tooltip, and a second event completes it. No one works on it -
+# it is the Fuhrer growing old.
+#
+# 70 days = @wif_weakened_king_time (10 weeks) in wif_ger_victory.txt. The flag
+# runs one day longer, as vanilla's do, so it is still set when .2 fires.
+
+# Start. Fired by GER_totaler_sieg (common/national_focus/germany.txt).
+country_event = {
+	id = wif_ger_weakened_king.1
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_a_weakened_king_among_vultures }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_a_weakened_king_among_vultures
+		set_country_flag = { flag = GER_a_weakened_king_among_vultures_in_progress_flag days = 71 value = 1 }
+		country_event = { id = wif_ger_weakened_king.2 days = 70 }
+	}
+}
+
+# Complete the focus. Its reward starts Himmler on his schemes.
+country_event = {
+	id = wif_ger_weakened_king.2
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_a_weakened_king_among_vultures }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_a_weakened_king_among_vultures
+		# Plain form: no one works on it, so there is no originator to name.
+		complete_national_focus = GER_a_weakened_king_among_vultures
+		clr_country_flag = GER_a_weakened_king_among_vultures_in_progress_flag
+	}
+}

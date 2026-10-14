@@ -1,0 +1,36 @@
+add_namespace = wif_ger_speer
+
+# Tell the Fuhrer the Truth (common/national_focus/wif_ger_victory.txt) fires
+# one of these two, even odds.
+
+# Speer is dismissed.
+country_event = {
+	id = wif_ger_speer.1
+	title = wif_ger_speer.1.t
+	desc = wif_ger_speer.1.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_speer.1.a
+		custom_effect_tooltip = wif_ger_speer_dismissed_tt
+		hidden_effect = {
+			GER_remove_speer_effects = yes
+		}
+	}
+}
+
+# Speer keeps his seat.
+country_event = {
+	id = wif_ger_speer.2
+	title = wif_ger_speer.2.t
+	desc = wif_ger_speer.2.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_speer.2.a
+	}
+}

@@ -1,0 +1,137 @@
+# After the Anglo-American peace (common/scripted_effects/wif_peace_deal.txt):
+# the Scottish campaign against Fascist Britain, and the American arms that
+# keep it going.
+
+
+# Scotland strikes at a state of Fascist Britain. 2,000 rifles a strike, one
+# strike a month. Success is 90%, less 5% for every British division with
+# military police standing in the target state; a success wrecks 1 to 3
+# buildings there (wif_sco_terror_strike in
+# common/scripted_effects/wif_peace_deal_scotland.txt).
+wif_sco_resistance_category = {
+
+	wif_sco_terror_strike = {
+		icon = generic_civil_support
+
+		state_target = yes
+		targets = { 122 123 125 126 127 128 129 130 131 132 338 931 932 }
+
+		target_trigger = {
+			FROM = { wif_sco_attack_target = yes }
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		visible = {
+			has_country_flag = wif_scottish_resistance
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_sco_strike_cooldown }
+			NOT = { has_war_with = ENG }
+		}
+
+		custom_cost_trigger = {
+			has_equipment = { infantry_equipment > 1999 }
+		}
+		custom_cost_text = wif_sco_strike_cost
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+			}
+			set_country_flag = {
+				flag = wif_sco_strike_cooldown
+				days = 30
+			}
+			custom_effect_tooltip = wif_sco_terror_strike_tt
+			hidden_effect = {
+				FROM = { wif_sco_terror_strike = yes }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			# Keep some rifles for Scotland's own army
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 2500 }
+			}
+			# Hit the industry...
+			modifier = {
+				factor = 2
+				FROM = { check_variable = { building_level@arms_factory > 2 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { check_variable = { building_level@industrial_complex > 2 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { check_variable = { building_level@synthetic_refinery > 0 } }
+			}
+			# ...where the military police are not
+			modifier = {
+				factor = 0.25
+				FROM = {
+					any_state_division = {
+						OWNER = { tag = ENG }
+						division_has_battalion_in_template = military_police
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# The United States keeps the Scots armed while it is at peace with Germany.
+wif_usa_arms_for_scotland_category = {
+
+	wif_usa_smuggle_arms_to_scotland = {
+		icon = generic_prepare_civil_war
+
+		visible = {
+			country_exists = SCO
+			SCO = { has_country_flag = wif_scottish_resistance }
+		}
+
+		available = {
+			NOT = { has_war_with = GER }
+			NOT = { has_war_with = SCO }
+			has_equipment = { infantry_equipment > 1999 }
+		}
+
+		cost = 25
+		days_re_enable = 30
+
+		complete_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 2000
+				target = SCO
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = fascism
+					is_in_faction_with = GER
+				}
+			}
+			# Not while its own army is short of rifles
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 6000 }
+			}
+			modifier = {
+				factor = 0.2
+				has_political_power < 100
+			}
+		}
+	}
+}

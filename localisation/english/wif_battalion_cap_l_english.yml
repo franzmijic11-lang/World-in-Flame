@@ -7,7 +7,7 @@
  # Officer corps readout, drawn under the special forces block.
  wif_battalion_cap_count:0 "[?wif_bat_used|0]/[?wif_bat_limit|0]"
  wif_battalion_cap_label:0 "Line Battalions"
- wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G324§! battalions, for every country.[GetWifCapTerritory][GetWifCapRedArmy][GetWifCapOneState][GetWifCapWarlord][GetWifCapConscription][GetWifCapEconomy][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapInvincible][GetWifCapWarBalance][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension][GetWifCapNearWar][GetWifCapDouble]\n\n§HTotal: [GetWifCapTotal]\n\nTerritory and the single state penalty are counted in battalions and are added after the percentages, so they are never scaled by them. Everything else adds together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
+ wif_battalion_cap_desc:0 "Line battalions in service: §Y[?wif_bat_used|0]§!\nSustainable limit: §G[?wif_bat_limit|0]§!\n\n§HWhat the limit is built from§!\nBase: §G324§! battalions, for every country.[GetWifCapTerritory][GetWifCapRedArmy][GetWifCapOneState][GetWifCapWarlord][GetWifCapConscription][GetWifCapEconomy][GetWifCapStability][GetWifCapWarSupport][GetWifCapMajor][GetWifCapFaction][GetWifCapInvincible][GetWifCapBloated][GetWifCapWarBalance][GetWifCapWarDef][GetWifCapWar2x][GetWifCapWar4x][GetWifCapTension][GetWifCapNearWar][GetWifCapDouble]\n\n§HTotal: [GetWifCapTotal]\n\nTerritory and the single state penalty are counted in battalions and are added after the percentages, so they are never scaled by them. Everything else adds together against the base rather than compounding, and every one is re-checked each week - wartime bonuses vanish the week a war ends, which is what the one month demobilisation grace exists to absorb.\n\nSupport companies and regiments are not counted and are not limited.\n\nThis is a §Ysoft§! limit - going over is allowed, but it costs.[GetWifBattalionCapPenalties]"
 
  # --- Cap breakdown -------------------------------------------------------
  # One line per bonus, emitted by the defined_texts in
@@ -34,6 +34,7 @@
  wif_cap_line_major:0 "\n §G+[?wif_src_major|0]§! battalions Major power §g(one of the seven the world actually answers to)§!"
  wif_cap_line_faction:0 "\n §G+[?wif_src_faction|%0]§! Faction leader"
  wif_cap_line_invincible:0 "\n §G+[?wif_src_invincible|%0]§! $wif_ger_invincible_army_1$"
+ wif_cap_line_bloated:0 "\n §R[?wif_src_bloated|%0]§! $GER_a_bloated_army$"
  wif_cap_line_war_weaker:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is weaker §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
  wif_cap_line_war_even:0 "\n §G+[?wif_src_war_bal|%0]§! At war, evenly matched §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"
  wif_cap_line_war_stronger:0 "\n §G+[?wif_src_war_bal|%0]§! At war, enemy is stronger §g(their strength [?wif_val_enemy_ratio|%0] of yours)§!"

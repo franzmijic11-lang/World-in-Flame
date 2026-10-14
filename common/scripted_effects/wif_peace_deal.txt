@@ -1,0 +1,990 @@
+# The Anglo-American peace.
+#
+# When the United States accepts Germany's offer (wif_usa_peace.1.a in
+# events/wif_american_peace.txt, from "Force the Americans to see Reason"),
+# the war in the west ends with it:
+#   - every member of the British- or American-led faction white-peaces
+#     Germany and its allies, and the faction is dissolved
+#   - Vichy annexes France and becomes a German satellite
+#   - Britain becomes a Reichsprotektorat under Mosley, keeping only Great
+#     Britain minus Scotland and its West African and Sudanese holdings
+#   - the dominions follow Canada, which leads a new faction; the Raj and
+#     Malaya become Canadian colonies; South Africa goes its own way
+#   - British forces outside Europe, Africa, the Mediterranean and the
+#     Atlantic go over to Canada, and Canada carries on any war with Japan
+#   - the rest of the Allied map is divided as in
+#     common/scripted_effects/wif_peace_deal_map.txt
+#
+# Only land that belonged to the Allies when the US accepted is divided:
+# wif_peace_snapshot flags it before the US leaves the war.
+
+
+# USA scope, at the very start of wif_usa_peace.1.a - before the US and the
+# other American majors leave their faction, while membership can still be
+# read.
+wif_peace_snapshot = {
+	every_country = {
+		limit = {
+			OR = {
+				AND = {
+					ENG = { is_in_faction = yes }
+					OR = {
+						tag = ENG
+						is_in_faction_with = ENG
+					}
+				}
+				AND = {
+					USA = { is_faction_leader = yes }
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+					}
+				}
+			}
+		}
+		set_country_flag = wif_peace_allied
+		every_subject_country = {
+			set_country_flag = wif_peace_allied
+		}
+	}
+
+	# Italy fought the Allies on Germany's side
+	if = {
+		limit = {
+			ITA = {
+				exists = yes
+				OR = {
+					is_in_faction_with = GER
+					is_subject_of = GER
+				}
+				any_enemy_country = { has_country_flag = wif_peace_allied }
+			}
+		}
+		set_global_flag = wif_peace_italy_in_war
+	}
+
+	# Britain at war with Japan - Canada carries that war on
+	if = {
+		limit = {
+			ENG = { has_war_with = JAP }
+		}
+		set_global_flag = wif_peace_eng_fought_japan
+	}
+
+	# Japan at war in Asia, or with the Dutch - the East Indies go to Japan
+	if = {
+		limit = {
+			JAP = {
+				exists = yes
+				OR = {
+					has_war_with = HOL
+					has_war_with = INS
+					any_enemy_country = {
+						capital_scope = { is_on_continent = asia }
+					}
+				}
+			}
+		}
+		set_global_flag = wif_peace_japan_at_war_in_asia
+	}
+
+	# The land to be divided. Vichy's states count as French when France was
+	# in the Allies, so French North Africa can still be carved from Vichy.
+	every_state = {
+		limit = {
+			OR = {
+				OWNER = { has_country_flag = wif_peace_allied }
+				AND = {
+					FRA = { has_country_flag = wif_peace_allied }
+					OWNER = {
+						original_tag = FRA
+						NOT = { tag = FRA }
+						is_subject_of = GER
+					}
+				}
+			}
+		}
+		set_state_flag = wif_peace_allied_state
+	}
+}
+
+
+# GER scope. Called right after the US has settled.
+wif_peace_deal = {
+	set_global_flag = wif_anglo_american_peace
+
+	# Where the British fleet and air force are based, read before any land
+	# changes hands
+	if = {
+		limit = { ENG = { has_country_flag = wif_peace_allied } }
+		ENG = { wif_peace_measure_british_bases = yes }
+	}
+
+	# 1. White peace
+	every_country = {
+		limit = {
+			has_country_flag = wif_peace_allied
+			exists = yes
+		}
+		wif_peace_make_white_peace = yes
+	}
+
+	# 2. The Allies disband
+	every_country = {
+		limit = {
+			has_country_flag = wif_peace_allied
+			is_faction_leader = yes
+		}
+		dismantle_faction = yes
+	}
+
+	# 3. British divisions outside the home theatre are taken off the map
+	#    here and raised again for Canada once the land is divided
+	if = {
+		limit = { ENG = { has_country_flag = wif_peace_allied } }
+		wif_peace_strip_british_garrisons = yes
+	}
+
+	# 4. Vichy annexes France
+	wif_peace_find_vichy_and_spain = yes
+	if = {
+		limit = { FRA = { has_country_flag = wif_peace_allied } }
+		wif_peace_vichy_takes_france = yes
+	}
+
+	# 5. The subjects of Britain, France and the Netherlands are set loose
+	#    before their land is divided
+	wif_peace_free_the_subjects = yes
+
+	# 6. The map
+	wif_peace_divide_the_allies = yes
+
+	# 7. The new order
+	wif_peace_set_up_the_new_order = yes
+
+	# 8. Canada takes over the Empire outside Europe
+	if = {
+		limit = {
+			country_exists = CAN
+			ENG = { has_country_flag = wif_peace_allied }
+		}
+		wif_peace_raise_canadian_garrisons = yes
+		ENG = { wif_peace_hand_over_british_fleet = yes }
+	}
+	wif_peace_canada_fights_japan = yes
+
+	# 9. Armies standing where they no longer may
+	wif_peace_send_armies_home = yes
+
+	# The dominions' own land was never divided and still carries the flag
+	every_state = {
+		limit = { has_state_flag = wif_peace_allied_state }
+		clr_state_flag = wif_peace_allied_state
+	}
+
+	news_event = { id = wif_peace_deal.1 }
+}
+
+
+# Country scope: one Allied country. Britain and South Africa make peace with
+# everyone - Britain is out of the war for good, and South Africa leaves every
+# war it was in. Everyone else makes peace with Germany's side only, and the
+# war with Japan goes on.
+wif_peace_make_white_peace = {
+	if = {
+		limit = {
+			OR = {
+				original_tag = ENG
+				original_tag = SAF
+			}
+		}
+		every_enemy_country = {
+			white_peace = PREV
+		}
+	}
+	else = {
+		every_enemy_country = {
+			limit = {
+				OR = {
+					tag = GER
+					is_in_faction_with = GER
+					is_subject_of = GER
+				}
+				NOT = { tag = JAP }
+				NOT = { is_subject_of = JAP }
+			}
+			white_peace = PREV
+		}
+	}
+}
+
+
+# ENG scope. The share of Britain's naval and air bases outside the home
+# theatre (wif_peace_home_theatre). Without naval bases to go by, the air
+# share is used for the fleet too.
+wif_peace_measure_british_bases = {
+	set_variable = { wif_peace_nb_all = 0 }
+	set_variable = { wif_peace_nb_out = 0 }
+	set_variable = { wif_peace_ab_all = 0 }
+	set_variable = { wif_peace_ab_out = 0 }
+	every_owned_state = {
+		add_to_variable = { ENG.wif_peace_nb_all = building_level@naval_base }
+		add_to_variable = { ENG.wif_peace_ab_all = building_level@air_base }
+		if = {
+			limit = { NOT = { wif_peace_home_theatre = yes } }
+			add_to_variable = { ENG.wif_peace_nb_out = building_level@naval_base }
+			add_to_variable = { ENG.wif_peace_ab_out = building_level@air_base }
+		}
+	}
+	set_variable = { wif_peace_air_share = wif_peace_ab_out }
+	divide_variable = { var = wif_peace_air_share value = wif_peace_ab_all if_zero = 0 }
+	if = {
+		limit = { check_variable = { wif_peace_nb_all > 0 } }
+		set_variable = { wif_peace_navy_share = wif_peace_nb_out }
+		divide_variable = { var = wif_peace_navy_share value = wif_peace_nb_all if_zero = 0 }
+	}
+	else = {
+		set_variable = { wif_peace_navy_share = wif_peace_air_share }
+	}
+}
+
+
+# GER scope. Every British division standing outside the home theatre is
+# counted by kind and removed; wif_peace_raise_canadian_garrisons raises the
+# same number for Canada in the same state. The engine cannot hand a single
+# division to another country, so this is the only way to move exactly the
+# ones in the right place. Armour and motorised divisions come back as
+# motorised, everything else as infantry.
+wif_peace_strip_british_garrisons = {
+	every_state = {
+		limit = {
+			NOT = { wif_peace_home_theatre = yes }
+			any_state_division = {
+				OWNER = { tag = ENG }
+			}
+		}
+		set_state_flag = wif_peace_bri_garrison
+		set_variable = { wif_peace_bri_inf = 0 }
+		set_variable = { wif_peace_bri_mot = 0 }
+		every_state_division = {
+			limit = {
+				OWNER = { tag = ENG }
+			}
+			if = {
+				limit = {
+					OR = {
+						division_has_majority_template = motorized
+						division_has_majority_template = mechanized
+						division_has_majority_template = light_armor
+						division_has_majority_template = medium_armor
+						division_has_majority_template = heavy_armor
+						division_has_majority_template = modern_armor
+					}
+				}
+				PREV = { add_to_variable = { wif_peace_bri_mot = 1 } }
+			}
+			else = {
+				PREV = { add_to_variable = { wif_peace_bri_inf = 1 } }
+			}
+			destroy_unit = yes
+		}
+	}
+}
+
+wif_peace_raise_canadian_garrisons = {
+	CAN = {
+		if = {
+			limit = { NOT = { has_template = "Commonwealth Infantry Division" } }
+			division_template = {
+				name = "Commonwealth Infantry Division"
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_template = "Commonwealth Motorised Division" }
+				has_tech = motorised_infantry
+			}
+			division_template = {
+				name = "Commonwealth Motorised Division"
+				priority = 1
+				regiments = {
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	every_state = {
+		limit = { has_state_flag = wif_peace_bri_garrison }
+		# Canada has no motorised template without the technology
+		if = {
+			limit = { NOT = { CAN = { has_template = "Commonwealth Motorised Division" } } }
+			add_to_variable = { wif_peace_bri_inf = wif_peace_bri_mot }
+			set_variable = { wif_peace_bri_mot = 0 }
+		}
+		while_loop_effect = {
+			limit = { check_variable = { wif_peace_bri_inf > 0 } }
+			create_unit = {
+				division = "division_template = \"Commonwealth Infantry Division\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = CAN
+			}
+			subtract_from_variable = { wif_peace_bri_inf = 1 }
+		}
+		while_loop_effect = {
+			limit = { check_variable = { wif_peace_bri_mot > 0 } }
+			create_unit = {
+				division = "division_template = \"Commonwealth Motorised Division\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = CAN
+			}
+			subtract_from_variable = { wif_peace_bri_mot = 1 }
+		}
+		clr_state_flag = wif_peace_bri_garrison
+		clear_variable = wif_peace_bri_inf
+		clear_variable = wif_peace_bri_mot
+	}
+}
+
+
+# GER scope. Saves event_target:wif_peace_vichy and event_target:wif_peace_spain.
+wif_peace_find_vichy_and_spain = {
+	random_country = {
+		limit = {
+			original_tag = FRA
+			NOT = { tag = FRA }
+			is_vichy_france = yes
+		}
+		save_event_target_as = wif_peace_vichy
+	}
+	if = {
+		limit = { NOT = { has_event_target = wif_peace_vichy } }
+		random_country = {
+			limit = {
+				original_tag = FRA
+				NOT = { tag = FRA }
+				is_subject_of = GER
+			}
+			save_event_target_as = wif_peace_vichy
+		}
+	}
+	# No Vichy was ever set up: France itself takes its place
+	if = {
+		limit = {
+			NOT = { has_event_target = wif_peace_vichy }
+			FRA = {
+				exists = yes
+				has_country_flag = wif_peace_allied
+			}
+		}
+		FRA = {
+			save_event_target_as = wif_peace_vichy
+			set_country_flag = wif_peace_france_is_vichy
+		}
+	}
+
+	41 = {
+		OWNER = {
+			if = {
+				limit = { wif_peace_spain_can_take = yes }
+				save_event_target_as = wif_peace_spain
+			}
+		}
+	}
+}
+
+
+wif_peace_vichy_takes_france = {
+	if = {
+		limit = {
+			has_event_target = wif_peace_vichy
+			NOT = { FRA = { has_country_flag = wif_peace_france_is_vichy } }
+			country_exists = FRA
+		}
+		# Syria and Lebanon are set loose first, so they do not pass to Vichy
+		# with the rest of France
+		FRA = {
+			every_subject_country = {
+				FRA = { end_puppet = PREV }
+			}
+		}
+		event_target:wif_peace_vichy = {
+			annex_country = {
+				target = FRA
+				transfer_troops = no
+			}
+		}
+	}
+	# A France that became Vichy itself takes Vichy's politics
+	if = {
+		limit = { FRA = { has_country_flag = wif_peace_france_is_vichy } }
+		FRA = {
+			every_subject_country = {
+				FRA = { end_puppet = PREV }
+			}
+			if = {
+				limit = { is_government_in_exile = yes }
+				end_exile = yes
+			}
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			set_cosmetic_tag = FRA_VICHY
+		}
+	}
+}
+
+
+# GER scope. Britain's, France's, the Netherlands' and Vichy's subjects go
+# their own way before the land is divided.
+wif_peace_free_the_subjects = {
+	if = {
+		limit = { ENG = { has_country_flag = wif_peace_allied } }
+		ENG = {
+			every_subject_country = {
+				# The dominions follow Canada as allies; the Raj, Malaya and
+				# the rest of the Empire east of Suez as Canadian colonies.
+				if = {
+					limit = {
+						OR = {
+							original_tag = CAN
+							original_tag = AST
+							original_tag = NZL
+							AND = {
+								has_autonomy_state = autonomy_dominion
+								NOT = { original_tag = SAF }
+								NOT = { original_tag = IRE }
+							}
+						}
+					}
+					set_country_flag = wif_peace_commonwealth_ally
+				}
+				else_if = {
+					limit = {
+						NOT = { original_tag = SAF }
+						NOT = { original_tag = IRE }
+						NOT = { original_tag = EGY }
+						NOT = { original_tag = IRQ }
+						NOT = { original_tag = PAL }
+						NOT = { original_tag = JOR }
+						capital_scope = { NOT = { wif_peace_home_theatre = yes } }
+					}
+					set_country_flag = wif_peace_canadian_colony
+				}
+				# South Africa, Ireland and the Middle East go free. Palestine
+				# and Jordan only until the map hands their land to Italy, if
+				# Italy fought. A subject inside the home theatre that is none
+				# of these stays British.
+				if = {
+					limit = {
+						OR = {
+							has_country_flag = wif_peace_commonwealth_ally
+							has_country_flag = wif_peace_canadian_colony
+							original_tag = SAF
+							original_tag = IRE
+							original_tag = EGY
+							original_tag = IRQ
+							original_tag = PAL
+							original_tag = JOR
+						}
+					}
+					ENG = { end_puppet = PREV }
+				}
+			}
+		}
+	}
+	# Syria and Lebanon, if Vichy held them
+	if = {
+		limit = { has_event_target = wif_peace_vichy }
+		event_target:wif_peace_vichy = {
+			every_subject_country = {
+				limit = {
+					OR = {
+						original_tag = SYR
+						original_tag = LEB
+					}
+				}
+				event_target:wif_peace_vichy = { end_puppet = PREV }
+			}
+		}
+	}
+	# Indonesia
+	if = {
+		limit = {
+			HOL = { has_country_flag = wif_peace_allied }
+			INS = { is_subject_of = HOL }
+		}
+		HOL = { end_puppet = INS }
+	}
+}
+
+
+# GER scope. Governments and overlords, once the land has been divided.
+wif_peace_set_up_the_new_order = {
+	# Vichy: a German satellite
+	if = {
+		limit = {
+			has_event_target = wif_peace_vichy
+			FRA = { has_country_flag = wif_peace_allied }
+		}
+		event_target:wif_peace_vichy = {
+			if = {
+				limit = { is_government_in_exile = yes }
+				end_exile = yes
+			}
+			if = {
+				limit = { has_dlc = "Death or Dishonor" }
+				GER = {
+					set_autonomy = {
+						target = PREV
+						autonomy_state = autonomy_satellite
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { is_subject_of = GER } }
+				GER = { puppet = PREV }
+			}
+		}
+	}
+
+	# Britain: a Reichsprotektorat under Mosley, and England alone
+	if = {
+		limit = {
+			ENG = {
+				exists = yes
+				has_country_flag = wif_peace_allied
+			}
+		}
+		ENG = {
+			if = {
+				limit = { is_government_in_exile = yes }
+				end_exile = yes
+			}
+			set_country_flag = wif_peace_fascist_britain
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			set_popularities = {
+				fascism = 60
+				democratic = 30
+				communism = 5
+				neutrality = 5
+			}
+			if = {
+				limit = { NOT = { has_character = ENG_oswald_mosley } }
+				recruit_character = ENG_oswald_mosley
+			}
+			promote_character = ENG_oswald_mosley
+		}
+		every_state = {
+			limit = {
+				is_core_of = ENG
+				NOT = {
+					state = 123	# South-West England
+					state = 125	# East Anglia
+					state = 126	# Greater London Area
+					state = 127	# Sussex
+					state = 128	# West Midlands
+					state = 129	# East Midlands
+					state = 130	# Yorkshire
+					state = 131	# Northumberland
+					state = 132	# Lancashire
+					state = 338	# Gloucestershire
+					state = 931	# Cumbria
+					state = 932	# Isle of Man
+				}
+			}
+			remove_core_of = ENG
+		}
+		if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			set_autonomy = {
+				target = ENG
+				autonomy_state = autonomy_reichsprotectorate
+			}
+		}
+		else = {
+			puppet = ENG
+		}
+	}
+
+	# Scotland: free, democratic, and not at war
+	if = {
+		limit = { country_exists = SCO }
+		SCO = {
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { end_puppet = PREV }
+			}
+			if = {
+				limit = { NOT = { has_country_flag = wif_scottish_resistance } }
+				set_country_flag = wif_scottish_resistance
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+				# Enough for the first strike; the rest has to come from its
+				# own factories or from America
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+				}
+			}
+		}
+	}
+
+	# South Africa: the South African Republic, democratic, out of every war
+	# and out of every faction for good
+	if = {
+		limit = {
+			country_exists = SAF
+			ENG = { has_country_flag = wif_peace_allied }
+		}
+		SAF = {
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { end_puppet = PREV }
+			}
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+			every_enemy_country = {
+				white_peace = PREV
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+			set_cosmetic_tag = SAF_SAR
+			add_ideas = wif_saf_republic_neutrality
+		}
+	}
+
+	# Canada leads what is left of the Commonwealth
+	if = {
+		limit = {
+			country_exists = CAN
+			ENG = { has_country_flag = wif_peace_allied }
+		}
+		CAN = {
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { end_puppet = PREV }
+			}
+			if = {
+				limit = {
+					is_in_faction = yes
+					NOT = { is_faction_leader = yes }
+				}
+				leave_faction = yes
+			}
+			if = {
+				limit = { NOT = { is_faction_leader = yes } }
+				create_faction = wif_peace_free_commonwealth
+			}
+		}
+		every_country = {
+			limit = {
+				has_country_flag = wif_peace_commonwealth_ally
+				NOT = { original_tag = CAN }
+				exists = yes
+			}
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+			CAN = { add_to_faction = PREV }
+		}
+		every_country = {
+			limit = {
+				has_country_flag = wif_peace_canadian_colony
+				exists = yes
+				is_subject = no
+			}
+			if = {
+				limit = { has_dlc = "Together for Victory" }
+				CAN = {
+					set_autonomy = {
+						target = PREV
+						autonomy_state = autonomy_colony
+					}
+				}
+			}
+			else = {
+				CAN = { puppet = PREV }
+			}
+		}
+	}
+
+	# Egypt: Italy's puppet if Italy fought, free if not
+	if = {
+		limit = {
+			wif_peace_italy_in_war = yes
+			country_exists = EGY
+			country_exists = ITA
+			EGY = { is_subject = no }
+		}
+		ITA = {
+			set_autonomy = {
+				target = EGY
+				autonomy_state = autonomy_puppet
+			}
+		}
+	}
+
+	# Croatia: forced into being as Italy's puppet, or Germany's if Italy
+	# never fought
+	if = {
+		limit = {
+			country_exists = CRO
+			CRO = { is_subject = no }
+		}
+		if = {
+			limit = {
+				wif_peace_italy_in_war = yes
+				country_exists = ITA
+			}
+			ITA = {
+				set_autonomy = {
+					target = CRO
+					autonomy_state = autonomy_puppet
+				}
+			}
+		}
+		else = {
+			set_autonomy = {
+				target = CRO
+				autonomy_state = autonomy_puppet
+			}
+		}
+	}
+
+	# Serbia: a German Reichsprotektorat
+	if = {
+		limit = {
+			country_exists = SER
+			SER = { is_subject = no }
+		}
+		if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			set_autonomy = {
+				target = SER
+				autonomy_state = autonomy_reichsprotectorate
+			}
+		}
+		else = {
+			puppet = SER
+		}
+	}
+
+	# Greece: Italy's protectorate if Italy fought, Germany's if not
+	if = {
+		limit = {
+			GRE = {
+				exists = yes
+				has_country_flag = wif_peace_allied
+				is_subject = no
+			}
+		}
+		GRE = {
+			if = {
+				limit = { is_government_in_exile = yes }
+				end_exile = yes
+			}
+		}
+		if = {
+			limit = {
+				wif_peace_italy_in_war = yes
+				country_exists = ITA
+			}
+			ITA = {
+				set_autonomy = {
+					target = GRE
+					autonomy_state = autonomy_puppet
+				}
+			}
+		}
+		else_if = {
+			limit = { has_dlc = "Death or Dishonor" }
+			set_autonomy = {
+				target = GRE
+				autonomy_state = autonomy_reichsprotectorate
+			}
+		}
+		else = {
+			puppet = GRE
+		}
+	}
+
+	# The Netherlands: the government in exile keeps Suriname and Curacao,
+	# under American supervision
+	if = {
+		limit = {
+			HOL = {
+				exists = yes
+				has_country_flag = wif_peace_allied
+			}
+		}
+		HOL = {
+			if = {
+				limit = { is_government_in_exile = yes }
+				end_exile = yes
+			}
+			if = {
+				limit = { owns_state = 309 }
+				set_capital = {
+					state = 309
+					remember_old_capital = no
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = USA
+				HOL = { is_subject = no }
+			}
+			USA = {
+				if = {
+					limit = { has_dlc = "Man the Guns" }
+					set_autonomy = {
+						target = HOL
+						autonomy_state = autonomy_supervised_state
+					}
+				}
+				else = {
+					puppet = HOL
+				}
+			}
+		}
+	}
+
+	# The new Reichskommissariats in Africa
+	wif_peace_set_up_rkf = yes
+	wif_peace_set_up_rkr = yes
+	wif_peace_set_up_rkz = yes
+}
+
+
+# A light occupation template for the new Reichskommissariats. Country scope.
+wif_peace_rk_garrison_template = {
+	if = {
+		limit = { NOT = { has_template = "Sicherungs-Division" } }
+		division_template = {
+			name = "Sicherungs-Division"
+			priority = 0
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+			}
+			support = {
+				military_police = { x = 0 y = 0 }
+			}
+		}
+	}
+}
+
+
+# GER scope. If Britain was fighting Japan, the new Commonwealth fights on.
+# Members already at war stay at war (the white peace left Japan out); the
+# rest declare - but never on a Japan still allied to Germany, or Germany's
+# whole faction would be drawn back in.
+wif_peace_canada_fights_japan = {
+	if = {
+		limit = {
+			has_global_flag = wif_peace_eng_fought_japan
+			country_exists = JAP
+			country_exists = CAN
+			NOT = { JAP = { is_in_faction_with = GER } }
+		}
+		every_country = {
+			limit = {
+				exists = yes
+				OR = {
+					tag = CAN
+					AND = {
+						has_country_flag = wif_peace_commonwealth_ally
+						is_in_faction_with = CAN
+					}
+				}
+				NOT = { has_war_with = JAP }
+			}
+			declare_war_on = {
+				target = JAP
+				type = annex_everything
+			}
+		}
+	}
+}
+
+
+# GER scope. Allied armies left standing in Europe, Africa or the Middle East
+# where they no longer have any right to be are sent to their capitals -
+# the Americans first of all. British armies outside British territory too.
+wif_peace_send_armies_home = {
+	every_state = {
+		limit = {
+			OR = {
+				is_on_continent = europe
+				is_on_continent = africa
+				is_on_continent = middle_east
+			}
+		}
+		OWNER = { set_country_flag = wif_peace_tp_owner }
+		teleport_armies = {
+			limit = {
+				OR = {
+					tag = USA
+					has_idea = wif_negotiated_settlement
+					AND = {
+						has_country_flag = wif_peace_allied
+						NOT = { original_tag = ENG }
+					}
+				}
+				NOT = { has_country_flag = wif_peace_tp_owner }
+				NOT = {
+					any_country = {
+						has_country_flag = wif_peace_tp_owner
+						is_in_faction_with = PREV
+					}
+				}
+				NOT = { OVERLORD = { has_country_flag = wif_peace_tp_owner } }
+				NOT = {
+					any_subject_country = { has_country_flag = wif_peace_tp_owner }
+				}
+			}
+		}
+		teleport_armies = {
+			limit = {
+				original_tag = ENG
+				NOT = { has_country_flag = wif_peace_tp_owner }
+			}
+		}
+		OWNER = { clr_country_flag = wif_peace_tp_owner }
+	}
+}

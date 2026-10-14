@@ -12972,6 +12972,16 @@ focus_tree = {
 				}
 			}
 
+			# Welt in Flammen: the victorious Reich can neither demobilise nor
+			# afford total war. Partial Mobilisation, for good - the lock is
+			# allowed_to_remove on partial_economic_mobilisation in
+			# common/ideas/_economic.txt, and wif_check_economy_law
+			# (common/scripted_effects/wif_economy_law.txt) leaves it alone.
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_ideas = partial_economic_mobilisation
+			set_country_flag = wif_ger_partial_mobilisation_locked
+			custom_effect_tooltip = wif_ger_partial_mobilisation_locked_tt
+
 			news_event = { id = wif_totaler_sieg.1 hours = 6 }
 
 			# Swap the whole German tree for the post-victory one
@@ -12985,6 +12995,10 @@ focus_tree = {
 					tree = wif_ger_victory_focus
 				}
 				complete_national_focus = GER_totaler_sieg_achieved
+				# The Fuhrer's decline begins on its own (A Weakened King among
+				# Vultures, events/wif_ger_weakened_king.txt). A day later, so the
+				# new tree is certainly in place.
+				country_event = { id = wif_ger_weakened_king.1 days = 1 }
 			}
 		}
 	}

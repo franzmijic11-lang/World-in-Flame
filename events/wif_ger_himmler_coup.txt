@@ -1,0 +1,44 @@
+add_namespace = wif_ger_himmler_coup
+
+# Himmler demands the Fuhrer role from Hitler. Fired by Offer Retirement
+# (common/national_focus/wif_ger_victory.txt). The three outcomes are effects
+# in common/scripted_effects/wif_ger_himmler.txt.
+country_event = {
+	id = wif_ger_himmler_coup.1
+	title = wif_ger_himmler_coup.1.t
+	desc = wif_ger_himmler_coup.1.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+
+	# Hitler, It Is Time to Go. The tooltip is what Germany is promised; the
+	# truth is the Wehrmacht revolt, which the hidden effect runs.
+	option = {
+		name = wif_ger_himmler_coup.1.a
+		ai_chance = { factor = 25 }
+		custom_effect_tooltip = wif_ger_himmler_coup_time_to_go_tt
+		hidden_effect = {
+			wif_wmg_revolt = yes
+		}
+	}
+
+	# Nein, Verrater!
+	option = {
+		name = wif_ger_himmler_coup.1.b
+		ai_chance = { factor = 25 }
+		custom_effect_tooltip = wif_ger_himmler_coup_traitor_tt
+		hidden_effect = {
+			wif_osb_revolt = yes
+		}
+	}
+
+	# How About Burgundy?
+	option = {
+		name = wif_ger_himmler_coup.1.c
+		ai_chance = { factor = 50 }
+		custom_effect_tooltip = wif_ger_himmler_coup_burgundy_tt
+		hidden_effect = {
+			wif_osb_satellite = yes
+		}
+	}
+}

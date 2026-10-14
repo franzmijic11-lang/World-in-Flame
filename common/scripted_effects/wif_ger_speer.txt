@@ -1,0 +1,274 @@
+# Speer's economy branch of the Totaler Sieg tree
+# (common/national_focus/wif_ger_victory.txt). All in Germany's scope.
+#
+# THE FACADE'S GROWTH
+# The Facade Economy (common/dynamic_modifiers/wif_ger_facade_economy.txt)
+# raises GER_industrial_consumer_goods_factor every month by
+# wif_ger_facade_rate:
+#
+#   0.005 (+0.5% a month)
+#   + wif_ger_facade_rate_mod      permanent changes, added by the focuses
+#   + while-conditions             recalculated every month, below
+#   x 0.5 / x 2                    Tell the Fuhrer the Truth / Keep Up the Facade
+#   never below 0.001              it can be slowed, never stopped
+#
+# Rates are fractions, like the factor itself: 0.001 is +0.1% a month.
+
+
+# Lower the Facade's consumer goods by wif_ger_cg_cut (0.10 = 10 points). Never
+# below 0: a cut cannot take consumer goods under what the law itself asks for.
+wif_ger_facade_cut = {
+	subtract_from_variable = { GER_industrial_consumer_goods_factor = wif_ger_cg_cut }
+	if = {
+		limit = { check_variable = { GER_industrial_consumer_goods_factor < 0 } }
+		set_variable = { GER_industrial_consumer_goods_factor = 0 }
+	}
+}
+
+# Raise it by wif_ger_cg_cut. The same variable, so each focus sets one number.
+wif_ger_facade_raise = {
+	add_to_variable = { GER_industrial_consumer_goods_factor = wif_ger_cg_cut }
+}
+
+# Whatever economy spirit Germany carries becomes the Facade Economy. All four
+# vanilla ones read the same GER_industrial_* variables, so every value carries
+# over. Germany with none of them gets the Facade from nothing.
+wif_ger_ensure_facade_economy = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier } }
+		}
+		# Lift vanilla's over-100% penalties first, as Autarky Achieved does.
+		if = {
+			limit = { has_country_flag = GER_mefo_bills_penalty_flag }
+			clr_country_flag = GER_mefo_bills_penalty_flag
+			subtract_from_variable = { GER_industrial_consumer_goods_expected_value = GER_expected_consumer_goods_penalty }
+			add_to_variable = { GER_industrial_industrial_capacity_factory = GER_factory_output_penalty }
+			add_to_variable = { GER_industrial_industrial_capacity_dockyard = GER_dockyard_output_penalty }
+		}
+		if = {
+			limit = { has_dynamic_modifier = { modifier = GER_mefo_bills_modifier } }
+			remove_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+		}
+		if = {
+			limit = { has_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier } }
+			remove_dynamic_modifier = { modifier = GER_economy_of_conquest_modifier }
+		}
+		if = {
+			limit = { has_dynamic_modifier = { modifier = GER_recovering_economy_modifier } }
+			remove_dynamic_modifier = { modifier = GER_recovering_economy_modifier }
+		}
+		if = {
+			limit = { has_dynamic_modifier = { modifier = GER_wirtschaftswunder_modifier } }
+			remove_dynamic_modifier = { modifier = GER_wirtschaftswunder_modifier }
+		}
+		add_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier }
+	}
+	wif_ger_facade_recalc_rate = yes
+}
+
+wif_ger_facade_recalc_rate = {
+	set_variable = { wif_ger_facade_rate = 0.005 }
+	add_to_variable = { wif_ger_facade_rate = wif_ger_facade_rate_mod }
+
+	# Ukrainian Grain for German Tables, while RKU is a German subject.
+	if = {
+		limit = {
+			has_completed_focus = GER_ukrainian_grain_for_german_tables
+			country_exists = RKU
+			RKU = { is_subject_of = GER }
+		}
+		subtract_from_variable = { wif_ger_facade_rate = 0.001 }
+	}
+	# The Oil of the Caucasus, while RKK is.
+	if = {
+		limit = {
+			has_completed_focus = GER_the_oil_of_the_caucasus
+			country_exists = RKK
+			RKK = { is_subject_of = GER }
+		}
+		subtract_from_variable = { wif_ger_facade_rate = 0.0005 }
+	}
+	# The Eternal Garrison, while at least two eastern RKs are subjects.
+	if = {
+		limit = { has_completed_focus = GER_the_eternal_garrison }
+		set_temp_variable = { wif_rk_subjects = 0 }
+		every_country = {
+			limit = { wif_is_eastern_rk_of_germany = yes }
+			add_to_temp_variable = { wif_rk_subjects = 1 }
+		}
+		if = {
+			limit = { check_variable = { wif_rk_subjects > 1 } }
+			subtract_from_variable = { wif_ger_facade_rate = 0.001 }
+		}
+	}
+	# The SS Economic Empire: labour Speer can no longer use.
+	if = {
+		limit = { has_idea = wif_ger_ss_enterprises }
+		add_to_variable = { wif_ger_facade_rate = 0.0005 }
+	}
+	# A Bloated Army: +0.1% a month for every FULL 500 line battalions above
+	# 1,000. wif_bat_used is the battalion cap's own weekly count of line
+	# battalions (common/scripted_effects/wif_battalion_cap.txt).
+	if = {
+		limit = { has_completed_focus = GER_a_bloated_army }
+		set_temp_variable = { wif_army_steps = wif_bat_used }
+		subtract_from_temp_variable = { wif_army_steps = 1000 }
+		if = {
+			limit = { check_variable = { wif_army_steps > 0 } }
+			divide_temp_variable = { wif_army_steps = 500 }
+			# Round DOWN: only full steps of 500 count.
+			subtract_from_temp_variable = { wif_army_steps = 0.499 }
+			round_temp_variable = wif_army_steps
+			multiply_temp_variable = { wif_army_steps = 0.001 }
+			add_to_variable = { wif_ger_facade_rate = wif_army_steps }
+		}
+	}
+
+	if = {
+		limit = { has_country_flag = wif_ger_facade_rate_halved }
+		multiply_variable = { wif_ger_facade_rate = 0.5 }
+	}
+	if = {
+		limit = { has_country_flag = wif_ger_facade_rate_doubled }
+		multiply_variable = { wif_ger_facade_rate = 2 }
+	}
+
+	if = {
+		limit = { check_variable = { wif_ger_facade_rate < 0.001 } }
+		set_variable = { wif_ger_facade_rate = 0.001 }
+	}
+}
+
+# on_monthly_GER (common/on_actions/wif_on_actions.txt).
+wif_ger_facade_monthly = {
+	if = {
+		limit = {
+			has_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier }
+		}
+		wif_ger_facade_recalc_rate = yes
+		add_to_variable = { GER_industrial_consumer_goods_factor = wif_ger_facade_rate }
+	}
+}
+
+# Organisation Todt in the East: one eastern RK, in its scope.
+wif_rk_apply_todt_labour = {
+	every_owned_state = {
+		random_select_amount = 3
+		limit = {
+			free_building_slots = {
+				building = infrastructure
+				size > 0
+			}
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+	}
+	add_manpower = -50000
+	add_timed_idea = { idea = wif_rk_todt_labour days = 365 }
+}
+
+# Wehrbauern: 10 infantry divisions are disbanded. Infantry-majority only, so
+# the SS (militia) and the armour are never touched.
+wif_ger_disband_for_wehrbauern = {
+	every_country_division = {
+		random_select_amount = 10
+		limit = {
+			division_has_majority_template = infantry
+		}
+		destroy_unit = yes
+	}
+}
+
+# Arms for the Allies: 20% of the stockpile of each type, split equally
+# between every subject.
+wif_ger_arms_for_the_subjects = {
+	set_temp_variable = { wif_subjects = 0 }
+	every_subject_country = {
+		add_to_temp_variable = { wif_subjects = 1 }
+	}
+	if = {
+		limit = { check_variable = { wif_subjects > 0 } }
+
+		set_temp_variable = { wif_take = num_equipment@infantry_equipment }
+		multiply_temp_variable = { wif_take = 0.2 }
+		set_temp_variable = { wif_share = wif_take }
+		divide_temp_variable = { wif_share = wif_subjects }
+		round_temp_variable = wif_share
+		multiply_temp_variable = { wif_take = -1 }
+		add_equipment_to_stockpile = { type = infantry_equipment amount = var:wif_take }
+		every_subject_country = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = var:wif_share producer = GER }
+		}
+
+		set_temp_variable = { wif_take = num_equipment@artillery_equipment }
+		multiply_temp_variable = { wif_take = 0.2 }
+		set_temp_variable = { wif_share = wif_take }
+		divide_temp_variable = { wif_share = wif_subjects }
+		round_temp_variable = wif_share
+		multiply_temp_variable = { wif_take = -1 }
+		add_equipment_to_stockpile = { type = artillery_equipment amount = var:wif_take }
+		every_subject_country = {
+			add_equipment_to_stockpile = { type = artillery_equipment amount = var:wif_share producer = GER }
+		}
+
+		set_temp_variable = { wif_take = num_equipment@support_equipment }
+		multiply_temp_variable = { wif_take = 0.2 }
+		set_temp_variable = { wif_share = wif_take }
+		divide_temp_variable = { wif_share = wif_subjects }
+		round_temp_variable = wif_share
+		multiply_temp_variable = { wif_take = -1 }
+		add_equipment_to_stockpile = { type = support_equipment amount = var:wif_take }
+		every_subject_country = {
+			add_equipment_to_stockpile = { type = support_equipment amount = var:wif_share producer = GER }
+		}
+	}
+}
+
+# Convert the Arms Plants: up to 20 military factories in German core states
+# become civilian ones, one for one, so no slot is ever short.
+wif_ger_convert_arms_plants = {
+	set_temp_variable = { wif_convert_left = 20 }
+	every_owned_state = {
+		limit = {
+			is_core_of = GER
+			arms_factory > 0
+		}
+		while_loop_effect = {
+			limit = {
+				arms_factory > 0
+				check_variable = { wif_convert_left > 0 }
+			}
+			remove_building = { type = arms_factory level = 1 }
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			subtract_from_temp_variable = { wif_convert_left = 1 }
+		}
+	}
+}
+
+# The East Is Bled Dry: one eastern RK, in its scope.
+wif_rk_apply_bled_dry = {
+	if = {
+		limit = { has_idea = wif_rk_requisitioned }
+		remove_ideas = wif_rk_requisitioned
+	}
+	add_ideas = wif_rk_bled_dry
+}
+
+# The Reichsmark Bloc: one subject, in its scope.
+wif_subject_apply_reichsmark_bloc = {
+	if = {
+		limit = { wif_is_eastern_rk_of_germany = yes }
+		add_ideas = wif_rk_reichsmark_bloc
+	}
+	else = {
+		add_ideas = wif_subject_reichsmark_bloc
+	}
+}

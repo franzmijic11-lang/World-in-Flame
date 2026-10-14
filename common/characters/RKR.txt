@@ -1,0 +1,16 @@
+characters = {
+	RKR_wolf_heinrich_von_helldorff = {
+		name = RKR_wolf_heinrich_von_helldorff
+		portraits = {
+			civilian = {
+				large = GFX_portrait_RKR_wolf_heinrich_von_helldorff
+			}
+		}
+		country_leader = {
+			ideology = nazism
+			traits = { GER_reichskommissar_trait }
+			expire = "1987.1.1.1"
+			id = -1
+		}
+	}
+}

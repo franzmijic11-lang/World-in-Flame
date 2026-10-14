@@ -1,0 +1,30 @@
+ideas = {
+	country = {
+		# The South African Republic after the Anglo-American peace
+		# (common/scripted_effects/wif_peace_deal.txt): out of every war and
+		# out of every faction, for good.
+		wif_saf_republic_neutrality = {
+			picture = generic_neutrality_drift_bonus
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			rule = {
+				can_join_factions = no
+				can_create_factions = no
+			}
+
+			modifier = {
+				ai_call_ally_desire_factor = -10000
+				ai_join_ally_desire_factor = -10000
+			}
+		}
+	}
+}

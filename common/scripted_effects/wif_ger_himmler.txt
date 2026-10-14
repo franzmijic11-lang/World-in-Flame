@@ -36,3 +36,422 @@ wif_ger_create_waffen_ss_template = {
 		}
 	}
 }
+
+# The SS armour. Built the same way: locked, no force_allow_recruiting, so it
+# cannot be edited or trained. Country-generic, so the Ordensstaat Burgund
+# (OSB) can build it too. Names come from WIF_GER_SS_ARM.
+#
+# 8 medium tanks, 1 heavy tank, 4 mechanised infantry; maintenance company and
+# support artillery. Columns hold one kind of battalion each.
+wif_ger_create_waffen_ss_panzer_template = {
+	if = {
+		limit = {
+			NOT = { has_template = "Waffen SS Panzer Division" }
+		}
+		division_template = {
+			name = "Waffen SS Panzer Division"
+			priority = 2
+			division_names_group = WIF_GER_SS_ARM
+			is_locked = yes
+			regiments = {
+				medium_armor = { x = 0 y = 0 }
+				medium_armor = { x = 0 y = 1 }
+				medium_armor = { x = 0 y = 2 }
+				medium_armor = { x = 0 y = 3 }
+				medium_armor = { x = 1 y = 0 }
+				medium_armor = { x = 1 y = 1 }
+				medium_armor = { x = 1 y = 2 }
+				medium_armor = { x = 1 y = 3 }
+				heavy_armor = { x = 2 y = 0 }
+				mechanized = { x = 3 y = 0 }
+				mechanized = { x = 3 y = 1 }
+				mechanized = { x = 3 y = 2 }
+				mechanized = { x = 3 y = 3 }
+			}
+			support = {
+				maintenance_company = { x = 0 y = 0 }
+				artillery = { x = 0 y = 1 }
+			}
+		}
+	}
+}
+
+# SS Mighty Stands: 20 SS infantry divisions in Hannover, 4 SS panzer divisions
+# in the Rhineland at Essen (province 6469). Veteran and fully equipped.
+# create_unit needs state scope, never country scope.
+wif_ger_ss_mighty_stands_units = {
+	wif_ger_create_waffen_ss_template = yes
+	wif_ger_create_waffen_ss_panzer_template = yes
+	59 = {
+		create_unit = {
+			division = "division_template = \"Waffen SS Infanterie Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+			owner = GER
+			count = 20
+		}
+	}
+	51 = {
+		create_unit = {
+			division = "division_template = \"Waffen SS Panzer Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+			owner = GER
+			prioritize_location = 6469
+			count = 4
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Moving the SS
+# ---------------------------------------------------------------------------
+# No trigger can tell a division's template by name, so the SS cannot be
+# picked out and handed over. Instead, in German scope: count the divisions,
+# delete each SS template with its units, and count again. The difference is
+# how many each template had. The divisions are then raised afresh wherever
+# the SS now serves - veteran and fully equipped, as they were.
+#
+# Leaves the counts in temp variables wif_ss_inf and wif_ss_pz.
+wif_ger_remove_ss_divisions = {
+	set_temp_variable = { wif_ss_inf = 0 }
+	set_temp_variable = { wif_ss_pz = 0 }
+
+	if = {
+		limit = { has_template = "Waffen SS Infanterie Division" }
+		set_temp_variable = { wif_ss_before = num_divisions }
+		delete_unit_template_and_units = { division_template = "Waffen SS Infanterie Division" disband = no }
+		add_to_temp_variable = { wif_ss_inf = wif_ss_before }
+		subtract_from_temp_variable = { wif_ss_inf = num_divisions }
+	}
+	# Vanilla's own SS template, from the SS focuses of the old German tree.
+	if = {
+		limit = { has_template = "Waffen-SS Division" }
+		set_temp_variable = { wif_ss_before = num_divisions }
+		delete_unit_template_and_units = { division_template = "Waffen-SS Division" disband = no }
+		add_to_temp_variable = { wif_ss_inf = wif_ss_before }
+		subtract_from_temp_variable = { wif_ss_inf = num_divisions }
+	}
+	if = {
+		limit = { has_template = "Waffen SS Panzer Division" }
+		set_temp_variable = { wif_ss_before = num_divisions }
+		delete_unit_template_and_units = { division_template = "Waffen SS Panzer Division" disband = no }
+		add_to_temp_variable = { wif_ss_pz = wif_ss_before }
+		subtract_from_temp_variable = { wif_ss_pz = num_divisions }
+	}
+}
+
+# Raise wif_ss_inf and wif_ss_pz again for Germany: infantry in Hannover,
+# armour at Essen - the two places SS Mighty Stands raised them.
+wif_ger_restore_ss_divisions = {
+	wif_ger_create_waffen_ss_template = yes
+	wif_ger_create_waffen_ss_panzer_template = yes
+	while_loop_effect = {
+		limit = { check_variable = { wif_ss_inf > 0 } }
+		random_owned_state = {
+			prioritize = { 59 }
+			create_unit = {
+				division = "division_template = \"Waffen SS Infanterie Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+				owner = GER
+				count = 1
+			}
+		}
+		subtract_from_temp_variable = { wif_ss_inf = 1 }
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_ss_pz > 0 } }
+		random_owned_state = {
+			prioritize = { 51 }
+			create_unit = {
+				division = "division_template = \"Waffen SS Panzer Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+				owner = GER
+				prioritize_location = 6469
+				count = 1
+			}
+		}
+		subtract_from_temp_variable = { wif_ss_pz = 1 }
+	}
+}
+
+# The same for the Ordensstaat Burgund. Run in German scope, after the states
+# are OSB's; the units land in OSB's states, Alsace-Lorraine first.
+wif_osb_raise_ss_divisions = {
+	OSB = {
+		wif_ger_create_waffen_ss_template = yes
+		wif_ger_create_waffen_ss_panzer_template = yes
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_ss_inf > 0 } }
+		OSB = {
+			random_owned_state = {
+				prioritize = { 28 }
+				create_unit = {
+					division = "division_template = \"Waffen SS Infanterie Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+					owner = OSB
+					count = 1
+				}
+			}
+		}
+		subtract_from_temp_variable = { wif_ss_inf = 1 }
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_ss_pz > 0 } }
+		OSB = {
+			random_owned_state = {
+				prioritize = { 28 }
+				create_unit = {
+					division = "division_template = \"Waffen SS Panzer Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+					owner = OSB
+					count = 1
+				}
+			}
+		}
+		subtract_from_temp_variable = { wif_ss_pz = 1 }
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Himmler demands the Fuhrer role (events/wif_ger_himmler_coup.txt)
+# ---------------------------------------------------------------------------
+
+# The SS generals go wherever Himmler goes. German scope.
+wif_ger_ss_generals_to_osb = {
+	if = {
+		limit = { has_character = GER_felix_steiner }
+		GER_felix_steiner = { set_nationality = OSB }
+	}
+	if = {
+		limit = { has_character = GER_walter_kruger }
+		GER_walter_kruger = { set_nationality = OSB }
+	}
+	if = {
+		limit = { has_character = GER_sepp_dietrich }
+		GER_sepp_dietrich = { set_nationality = OSB }
+	}
+	if = {
+		limit = { has_character = GER_paul_hausser }
+		GER_paul_hausser = { set_nationality = OSB }
+	}
+}
+
+# Himmler leaves the Reich to lead the Ordensstaat. German scope.
+wif_ger_himmler_to_osb = {
+	GER_remove_himmler_effects = yes
+	GER_heinrich_himmler = { set_nationality = OSB }
+	OSB = {
+		add_country_leader_role = {
+			character = GER_heinrich_himmler
+			promote_leader = yes
+			country_leader = {
+				ideology = nazism
+				traits = { }
+			}
+		}
+	}
+	wif_ger_ss_generals_to_osb = yes
+}
+
+# The Ordensstaat Burgund comes into being. German scope, once its states are
+# transferred. Shared by the revolt and the satellite.
+wif_osb_setup = {
+	save_event_target_as = wif_tech_donor
+	OSB = {
+		if = {
+			limit = { owns_state = 28 }
+			set_capital = { state = 28 }
+		}
+		else = {
+			random_owned_state = {
+				PREV = { set_capital = { state = PREV } }
+			}
+		}
+
+		# History files do not apply to countries created mid-game.
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			democratic = 0
+			fascism = 95
+			communism = 0
+			neutrality = 5
+		}
+		set_research_slots = 4
+		set_stability = 0.75
+		set_war_support = 0.9
+
+		every_owned_state = { add_core_of = OSB }
+
+		wif_inherit_tech_from_donor = yes
+
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = OSB }
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 300 producer = OSB }
+		add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = OSB }
+	}
+	wif_ger_himmler_to_osb = yes
+	wif_osb_raise_ss_divisions = yes
+}
+
+# Nein, Verrater! - the SS rises: the Burgundy states and Luxembourg revolt
+# and make war on the Reich. German scope.
+wif_osb_revolt = {
+	wif_ger_remove_ss_divisions = yes
+	every_state = {
+		limit = {
+			OR = {
+				wif_is_burgundy_state = yes
+				AND = {
+					state = 8	# Luxembourg
+					is_owned_by = GER
+				}
+			}
+		}
+		transfer_state_to = OSB
+	}
+	if = {
+		limit = { country_exists = OSB }
+		wif_osb_setup = yes
+		OSB = {
+			declare_war_on = {
+				target = GER
+				type = annex_everything
+			}
+		}
+	}
+}
+
+# How About Burgundy? - the same states without Luxembourg split off in peace,
+# as a German satellite. German scope.
+wif_osb_satellite = {
+	wif_ger_remove_ss_divisions = yes
+	every_state = {
+		limit = { wif_is_burgundy_state = yes }
+		transfer_state_to = OSB
+	}
+	if = {
+		limit = { country_exists = OSB }
+		wif_osb_setup = yes
+		puppet = OSB
+	}
+}
+
+# Hitler, It Is Time to Go - Himmler takes the Reich; Prussia and the
+# Wehrmacht rise against him. German scope.
+wif_wmg_revolt = {
+	# The SS stays with Himmler. Take it out before the army is handed over,
+	# and raise it again after.
+	wif_ger_remove_ss_divisions = yes
+
+	every_state = {
+		limit = { wif_is_wehrmacht_revolt_state = yes }
+		transfer_state_to = WMG
+	}
+
+	if = {
+		limit = { country_exists = WMG }
+		save_event_target_as = wif_tech_donor
+		WMG = {
+			if = {
+				limit = { owns_state = 64 }
+				set_capital = { state = 64 }
+			}
+			else = {
+				random_owned_state = {
+					PREV = { set_capital = { state = PREV } }
+				}
+			}
+			set_politics = {
+				ruling_party = neutrality
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				democratic = 5
+				fascism = 25
+				communism = 0
+				neutrality = 70
+			}
+			set_research_slots = 4
+			set_stability = 0.6
+			set_war_support = 0.8
+			every_owned_state = { add_core_of = WMG }
+			wif_inherit_tech_from_donor = yes
+		}
+
+		# Every division left - the whole Wehrmacht - and half the stockpile.
+		# The SS generals stay; everyone else goes with their men.
+		transfer_units_fraction = {
+			target = WMG
+			size = 1
+			stockpile_ratio = 0.5
+			army_ratio = 1
+			navy_ratio = 0
+			air_ratio = 0
+			keep_unit_leaders_trigger = {
+				OR = {
+					wif_is_ss_general = yes
+					is_navy_leader = yes
+				}
+			}
+		}
+		# Any army leader the transfer left behind - one with no command.
+		every_unit_leader = {
+			limit = {
+				is_army_leader = yes
+				NOT = { wif_is_ss_general = yes }
+			}
+			set_nationality = WMG
+		}
+		WMG = {
+			if = {
+				limit = { has_character = GER_erich_von_manstein }
+				add_country_leader_role = {
+					character = GER_erich_von_manstein
+					promote_leader = yes
+					country_leader = {
+						ideology = despotism
+						traits = { }
+					}
+				}
+			}
+			declare_war_on = {
+				target = GER
+				type = annex_everything
+			}
+		}
+	}
+
+	wif_ger_restore_ss_divisions = yes
+
+	# Himmler takes the Reich.
+	GER_remove_himmler_effects = yes
+	add_country_leader_role = {
+		character = GER_heinrich_himmler
+		promote_leader = yes
+		country_leader = {
+			ideology = nazism
+			traits = { }
+		}
+	}
+	retire_character = GER_adolf_hitler
+	set_country_flag = wif_ger_himmler_is_fuhrer
+}
+
+# Offer Retirement starts only once A Dream of Neu Burgundy and the French
+# requisition are both done, Himmler still sits in the Inner Circle, and the
+# RKM civil war has begun. Called when either focus completes, and from
+# on_monthly_GER (common/on_actions/wif_on_actions.txt) for as long as the
+# civil war has not come. German scope.
+wif_ger_himmler_try_offer_retirement = {
+	if = {
+		limit = {
+			has_completed_focus = GER_a_dream_of_neu_burgundy
+			has_completed_focus = GER_requisition_territory_from_our_french_puppet
+			NOT = { has_completed_focus = GER_offer_retirement }
+			NOT = { has_country_flag = GER_offer_retirement_in_progress_flag }
+			wif_ger_himmler_in_inner_circle = yes
+			wif_rkm_civil_war_has_begun = yes
+		}
+		country_event = { id = wif_ger_himmler_schemes.13 }
+	}
+}

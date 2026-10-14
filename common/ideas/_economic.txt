@@ -426,6 +426,15 @@ ideas = {
 				fuel_gain_factor = -0.1
 			}
 
+			# Welt in Flammen: Germany after Totaler Sieg is held on this law
+			# (GER_totaler_sieg, common/national_focus/germany.txt).
+			allowed_to_remove = {
+				custom_trigger_tooltip = {
+					tooltip = wif_ger_partial_mobilisation_locked_trigger_tt
+					NOT = { has_country_flag = wif_ger_partial_mobilisation_locked }
+				}
+			}
+
 			cancel_if_invalid = no
 			on_add = {
 				if = {

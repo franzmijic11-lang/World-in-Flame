@@ -9,6 +9,9 @@ wif_nsr_revolt = {
 	# Marks the civil war as running. Cleared when Moskowien has put it down,
 	# which is what triggers Saint Petersburg folding back in.
 	set_country_flag = wif_moskowien_civil_war
+	# Never cleared: Germany's Offer Retirement can come during the civil war
+	# or any time after it (wif_rkm_civil_war_has_begun).
+	set_global_flag = wif_rkm_civil_war_began
 
 	# Everything below strips ~132 victory points of territory from Moskowien in
 	# one go, 35 of it to the loyalist emergency governments. Capitulation is

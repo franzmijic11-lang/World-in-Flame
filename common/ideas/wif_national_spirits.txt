@@ -1144,10 +1144,11 @@ ideas = {
 			picture = generic_infantry_bonus
 
 			modifier = {
+				# Militia nets +20%: the army-wide -10% applies to militia too.
 				army_attack_factor = -0.10
 				army_defence_factor = -0.10
-				modifier_army_sub_unit_militia_attack_factor = 0.40
-				modifier_army_sub_unit_militia_defence_factor = 0.40
+				modifier_army_sub_unit_militia_attack_factor = 0.30
+				modifier_army_sub_unit_militia_defence_factor = 0.30
 			}
 		}
 

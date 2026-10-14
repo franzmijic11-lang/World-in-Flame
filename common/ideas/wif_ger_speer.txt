@@ -1,0 +1,199 @@
+# Speer's economy branch of the Totaler Sieg tree
+# (common/national_focus/wif_ger_victory.txt), and Himmler's SS Economic Empire.
+#
+# Germany's permanent bonuses from the branch are NOT here: they all live in one
+# dynamic modifier, wif_ger_speer_economy_modifier
+# (common/dynamic_modifiers/wif_ger_speer_economy.txt), so the branch adds one
+# spirit, not ten. What is here is everything timed, and everything the
+# Reichskommissariate and the other subjects are made to carry.
+ideas = {
+	country = {
+		# ------------------------------------------------------------------
+		# Germany - timed
+		# ------------------------------------------------------------------
+
+		# Give the People the Resources of the East. 180 days.
+		wif_ger_victory_celebrations = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_morale_bonus
+			modifier = {
+				stability_factor = 0.10
+			}
+		}
+
+		# Organisation Todt in the East. 365 days.
+		wif_ger_todt_in_the_east = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				production_speed_buildings_factor = 0.10
+			}
+		}
+
+		# Convert the Arms Plants. 180 days.
+		wif_ger_wehrmacht_protests = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_disjointed_gov
+			modifier = {
+				stability_factor = -0.10
+			}
+		}
+
+		# Build Germania. 730 days, while it is built.
+		wif_ger_building_germania = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				production_speed_buildings_factor = -0.15
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# Germany - Himmler
+		# ------------------------------------------------------------------
+
+		# The SS Economic Empire. Permanent. Its +0.05% a month of Facade
+		# growth is in wif_ger_facade_recalc_rate.
+		wif_ger_ss_enterprises = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_infantry_bonus
+			modifier = {
+				industrial_capacity_factory = -0.05
+				modifier_army_sub_unit_militia_max_org_factor = 0.10
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# The eastern Reichskommissariate (RKO, RKU, RKM, RKK)
+		# ------------------------------------------------------------------
+
+		# Each quota decision. 365 days.
+		wif_rk_requisitioned = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				stability_factor = -0.15
+				industrial_capacity_factory = -0.20
+				local_resources_factor = -0.25
+				production_speed_buildings_factor = -0.25
+			}
+		}
+
+		# Ukrainian Grain for German Tables - RKU only. Permanent.
+		wif_rk_grain_requisitions = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_disjointed_gov
+			modifier = {
+				stability_factor = -0.10
+				war_support_factor = -0.10
+				conscription_factor = -0.30
+				monthly_population = -0.50
+			}
+		}
+
+		# The Oil of the Caucasus - RKK only. Permanent.
+		wif_rk_oil_under_reich_control = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				stability_factor = -0.10
+				industrial_capacity_factory = -0.15
+				fuel_gain_factor = -0.50
+			}
+		}
+
+		# Organisation Todt in the East. 365 days.
+		wif_rk_todt_labour = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_disjointed_gov
+			modifier = {
+				stability_factor = -0.10
+			}
+		}
+
+		# Wehrbauern: Soldier-Farmers of the East. 365 days.
+		wif_rk_soldier_villages = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_disjointed_gov
+			modifier = {
+				stability_factor = -0.10
+			}
+		}
+
+		# The Eternal Garrison. Permanent.
+		wif_rk_garrison_tribute = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_infantry_bonus
+			modifier = {
+				political_power_factor = -0.25
+				industrial_capacity_factory = -0.10
+				stability_factor = -0.05
+			}
+		}
+
+		# The East Is Bled Dry. Permanent. Replaces Requisitioned.
+		wif_rk_bled_dry = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_disjointed_gov
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.15
+				industrial_capacity_factory = -0.30
+				local_resources_factor = -0.30
+				political_power_factor = -0.25
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# Every German subject - The Reichsmark Bloc. Permanent.
+		# ------------------------------------------------------------------
+		wif_subject_reichsmark_bloc = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.10
+			}
+		}
+
+		# The same for the eastern Reichskommissariate, with their factories
+		# drained as well. Given instead of the one above, never as well.
+		wif_rk_reichsmark_bloc = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.10
+				industrial_capacity_factory = -0.10
+			}
+		}
+	}
+}

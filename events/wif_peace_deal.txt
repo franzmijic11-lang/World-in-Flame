@@ -1,0 +1,99 @@
+add_namespace = wif_peace_deal
+
+# The world hears of the Anglo-American peace. Fired by wif_peace_deal
+# (common/scripted_effects/wif_peace_deal.txt).
+news_event = {
+	id = wif_peace_deal.1
+	title = wif_peace_deal.1.t
+	desc = wif_peace_deal.1.desc
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = wif_peace_deal.1.a
+		trigger = { has_country_flag = wif_peace_allied }
+	}
+	option = {
+		name = wif_peace_deal.1.b
+		trigger = {
+			NOT = { has_country_flag = wif_peace_allied }
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+				is_subject_of = GER
+			}
+		}
+	}
+	option = {
+		name = wif_peace_deal.1.c
+		trigger = {
+			NOT = { has_country_flag = wif_peace_allied }
+			NOT = {
+				OR = {
+					tag = GER
+					is_in_faction_with = GER
+					is_subject_of = GER
+				}
+			}
+		}
+	}
+}
+
+
+# Scotland: the strike went through
+country_event = {
+	id = wif_peace_deal.2
+	title = wif_peace_deal.2.t
+	desc = wif_peace_deal.2.desc
+	picture = GFX_report_event_DEN_sabotage
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_peace_deal.2.a
+	}
+}
+
+# Scotland: the strike was caught
+country_event = {
+	id = wif_peace_deal.3
+	title = wif_peace_deal.3.t
+	desc = wif_peace_deal.3.desc
+	picture = GFX_report_event_french_resistance_02
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_peace_deal.3.a
+	}
+}
+
+# Britain: the Scots struck
+country_event = {
+	id = wif_peace_deal.4
+	title = wif_peace_deal.4.t
+	desc = wif_peace_deal.4.desc
+	picture = GFX_report_event_DEN_sabotage
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_peace_deal.4.a
+	}
+}
+
+# Britain: the Scots were caught
+country_event = {
+	id = wif_peace_deal.5
+	title = wif_peace_deal.5.t
+	desc = wif_peace_deal.5.desc
+	picture = GFX_report_event_JAP_communists_arrested
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_peace_deal.5.a
+	}
+}

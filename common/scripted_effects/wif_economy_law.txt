@@ -22,6 +22,9 @@ wif_check_economy_law = {
 		limit = {
 			wif_has_unsupported_economy_law = yes
 			NOT = { has_country_flag = wif_econ_law_asked }
+			# Totaler Sieg Germany is held on Partial Mobilisation whatever
+			# its war support - there is nothing to ask.
+			NOT = { has_country_flag = wif_ger_partial_mobilisation_locked }
 		}
 		# Set before the event fires, so a country is asked once per lapse and
 		# not every week while it makes up its mind.
@@ -30,7 +33,10 @@ wif_check_economy_law = {
 	}
 	else_if = {
 		limit = {
-			NOT = { wif_has_unsupported_economy_law = yes }
+			OR = {
+				NOT = { wif_has_unsupported_economy_law = yes }
+				has_country_flag = wif_ger_partial_mobilisation_locked
+			}
 		}
 		# Supported again - however it got there. Clearing the flag re-arms the
 		# question for the next time the law lapses.

@@ -1,0 +1,21 @@
+# Reichskommissars of the African Reichskommissariats created by the
+# Anglo-American peace (common/scripted_effects/wif_peace_deal.txt).
+# Same .png convention as wif_cra_portraits.gfx, 156x210.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_portrait_RKF_otto_ohlendorf"
+		texturefile = "gfx/leaders/RKF/Portrait_RKF_otto_ohlendorf.png"
+	}
+
+	spriteType = {
+		name = "GFX_portrait_RKR_wolf_heinrich_von_helldorff"
+		texturefile = "gfx/leaders/RKR/Portrait_RKR_wolf_heinrich_von_helldorff.png"
+	}
+
+	spriteType = {
+		name = "GFX_portrait_RKZ_gulbrand_lunde"
+		texturefile = "gfx/leaders/RKZ/Portrait_RKZ_gulbrand_lunde.png"
+	}
+
+}

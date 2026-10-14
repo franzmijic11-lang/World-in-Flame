@@ -1,0 +1,96 @@
+# The Totaler Sieg tree (common/national_focus/wif_ger_victory.txt).
+
+# Country scope: one of the four eastern Reichskommissariate, still a German
+# subject.
+wif_is_eastern_rk_of_germany = {
+	OR = {
+		tag = RKO
+		tag = RKU
+		tag = RKM
+		tag = RKK
+	}
+	is_subject_of = GER
+}
+
+# German scope. Inner Circle seat numbers: 2 is Speer, 4 is Himmler.
+wif_ger_speer_in_inner_circle = {
+	OR = {
+		check_variable = { GER_ascended_advisor_1 = 2 }
+		check_variable = { GER_ascended_advisor_2 = 2 }
+		check_variable = { GER_ascended_advisor_3 = 2 }
+		check_variable = { GER_ascended_advisor_4 = 2 }
+	}
+}
+
+wif_ger_himmler_in_inner_circle = {
+	OR = {
+		check_variable = { GER_ascended_advisor_1 = 4 }
+		check_variable = { GER_ascended_advisor_2 = 4 }
+		check_variable = { GER_ascended_advisor_3 = 4 }
+		check_variable = { GER_ascended_advisor_4 = 4 }
+	}
+}
+
+# Global: the RKM civil war has broken out, now or at any time before.
+# wif_rkm_civil_war_began is set by wif_nsr_revolt; the RKM flag covers a save
+# whose war started before that global flag existed.
+wif_rkm_civil_war_has_begun = {
+	OR = {
+		has_global_flag = wif_rkm_civil_war_began
+		AND = {
+			country_exists = RKM
+			RKM = { has_country_flag = wif_moskowien_civil_war }
+		}
+	}
+}
+
+# Character scope: the SS generals Germany's SS focuses bring in. They follow
+# Himmler whenever he leaves the Reich.
+wif_is_ss_general = {
+	OR = {
+		is_character = GER_felix_steiner
+		is_character = GER_walter_kruger
+		is_character = GER_sepp_dietrich
+		is_character = GER_paul_hausser
+	}
+}
+
+# State scope: the states that rise with the SS in Nein, Verrater!, or split
+# off as Burgundy - before Luxembourg, which only the revolt takes. The
+# requisitioned French states, Alsace-Lorraine, and the Reichskommissariat
+# Belgien-Nordfrankreich - or, if it was never formed, the states that would
+# have gone to it (vanilla's GER_is_RKB_state).
+wif_is_burgundy_state = {
+	OR = {
+		state = 17	# Franche-Comte
+		state = 18	# Champagne
+		state = 785	# Picardy
+		state = 28	# Alsace-Lorraine
+		GER_is_RKB_state = yes
+	}
+	OR = {
+		is_owned_by = GER
+		owner = { is_subject_of = GER }
+	}
+}
+
+# State scope: the Prussian cores that rise with the Wehrmacht in Hitler, It
+# Is Time to Go - Brandenburg and everything east of it.
+wif_is_wehrmacht_revolt_state = {
+	OR = {
+		state = 64	# Brandenburg
+		state = 62	# Vorpommern
+		state = 63	# Hinterpommern
+		state = 5	# Ermland-Masuren
+		state = 763	# Konigsberg
+		state = 66	# Lower Silesia
+		state = 67	# Upper Silesia
+		state = 762	# Katowice
+		state = 86	# Poznan
+		state = 85	# Danzig
+		state = 807	# Gdynia
+		state = 188	# Memel
+	}
+	is_owned_by = GER
+	is_core_of = GER
+}

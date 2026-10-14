@@ -31,3 +31,17 @@ CSR = "countries/Central Siberian Republic.txt"
 WSM = "countries/West Siberian Marxist Republic.txt"
 
 WRD = "countries/West Russian Republic.txt"
+
+# Germany after Totaler Sieg - Himmler's demand for the Fuhrer role
+# (events/wif_ger_himmler_coup.txt).
+OSB = "countries/Ordensstaat Burgund.txt"
+
+WMG = "countries/German Military Government.txt"
+
+# The African Reichskommissariats of the Anglo-American peace
+# (common/scripted_effects/wif_peace_deal.txt).
+RKF = "countries/Reichskommisariat Ostafrika.txt"
+
+RKR = "countries/Reichskommisariat Rhodesien.txt"
+
+RKZ = "countries/Reichskommisariat Zentralafrika.txt"

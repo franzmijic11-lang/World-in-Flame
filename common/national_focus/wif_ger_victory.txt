@@ -17,6 +17,19 @@
 # 17.14, because fractional focus costs round DOWN to whole days.
 @wif_himmler_trust_time = 17.143
 
+# A Weakened King among Vultures works on itself: it starts the day after
+# Totaler Sieg and completes 70 days later - see
+# events/wif_ger_weakened_king.txt, whose events use the same length in days.
+@wif_weakened_king_time = 10
+
+# The rest of Himmler's path works on itself too (events/wif_ger_himmler_schemes.txt,
+# .5 to .14, which use the same lengths in days).
+@wif_himmler_economic_empire_time = 20	# 140 days
+@wif_himmler_mighty_stands_time = 20	# 140 days
+@wif_himmler_requisition_time = 10	# 70 days
+@wif_himmler_dream_time = 17.143	# 120 days
+@wif_himmler_retirement_time = 17.143	# 120 days
+
 # Finish the Purification of Our Lands: 150 days.
 @wif_purification_time = 21.429
 
@@ -67,9 +80,34 @@ focus_tree = {
 		icon = GFX_focus_GER_loyalty_to_the_fuhrer
 		prerequisite = { focus = GER_totaler_sieg_achieved }
 
-		x = 61	# Fuhrerprinzip's column, three rows above it
-		y = 5
-		cost = 10
+		x = 69	# Himmler's column, the far left of the tree
+		y = 1
+		cost = @wif_weakened_king_time
+
+		# Never taken by the player: the Fuhrer's decline runs on its own, and
+		# wif_ger_weakened_king.2 completes it.
+		available = {
+			if = { # UNDER WAY (show progress)
+				limit = {
+					has_country_flag = GER_a_weakened_king_among_vultures_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_weakened_king_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_a_weakened_king_among_vultures_in_progress_tt
+						FLAG_DAYS = [?GER_a_weakened_king_among_vultures_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT STARTED (just explain)
+				custom_override_tooltip = {
+					tooltip = GER_a_weakened_king_among_vultures_itself_tt
+					always = no
+				}
+			}
+		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
@@ -272,7 +310,7 @@ focus_tree = {
 		icon = GFX_focus_LAT_ostland
 		prerequisite = { focus = GER_totaler_sieg_achieved }
 
-		x = 0
+		x = 8	# the far right, beyond Speer's branches
 		y = 1
 		relative_position_id = GER_totaler_sieg_achieved
 		cost = @wif_purification_time
@@ -411,6 +449,1188 @@ focus_tree = {
 			custom_effect_tooltip = GER_finish_the_purification_of_our_lands_population_tt
 			hidden_effect = {
 				wif_ger_finish_the_purification_population = yes
+			}
+		}
+	}
+
+	# =====================================================================
+	# Speer's economy - the Facade Economy and the slow collapse.
+	# Every focus needs Speer in the Inner Circle. The growth these focuses
+	# change is worked out in common/scripted_effects/wif_ger_speer.txt.
+	# =====================================================================
+
+	focus = {
+		id = GER_give_the_people_the_resources_of_the_east
+		icon = GFX_focus_GER_integration_of_puppet_economies
+		prerequisite = { focus = GER_totaler_sieg_achieved }
+
+		x = 78
+		y = 1
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_give_the_people_the_resources_of_the_east_tt
+			hidden_effect = {
+				wif_ger_ensure_facade_economy = yes
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			add_timed_idea = { idea = wif_ger_victory_celebrations days = 180 }
+		}
+	}
+
+	focus = {
+		id = GER_reich_ministry_for_the_total_economy
+		icon = GFX_focus_GER_ascension_of_speer
+		prerequisite = { focus = GER_give_the_people_the_resources_of_the_east }
+
+		x = 78
+		y = 2
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_reich_ministry_for_the_total_economy_tt
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = wif_ger_speer_economy_modifier }
+				add_to_variable = { wif_ger_sp_max_efficiency = 0.05 }
+				add_to_variable = { wif_ger_sp_political_power = -0.1 }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_quotas_for_the_reichskommissariate
+		icon = GFX_focus_GER_establish_volkskommissariats
+		prerequisite = { focus = GER_reich_ministry_for_the_total_economy }
+
+		x = 72
+		y = 3
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_quotas_for_the_reichskommissariate_tt
+		}
+	}
+
+	focus = {
+		id = GER_ukrainian_grain_for_german_tables
+		icon = GFX_goal_generic_trade
+		prerequisite = { focus = GER_quotas_for_the_reichskommissariate }
+
+		x = 71
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_ukrainian_grain_for_german_tables_tt
+			hidden_effect = {
+				wif_ger_facade_recalc_rate = yes
+			}
+			add_stability = 0.05
+			if = {
+				limit = {
+					country_exists = RKU
+					RKU = { is_subject_of = GER }
+				}
+				RKU = { add_ideas = wif_rk_grain_requisitions }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_oil_of_the_caucasus
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = GER_quotas_for_the_reichskommissariate }
+
+		x = 73
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_the_oil_of_the_caucasus_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_sp_max_fuel = 0.2 }
+				wif_ger_facade_recalc_rate = yes
+				every_state = {
+					limit = {
+						is_owned_by = RKK
+						has_resources_amount = {
+							resource = oil
+							amount > 0
+						}
+					}
+					RKK = {
+						give_resource_rights = {
+							receiver = GER
+							state = PREV
+							resources = { oil }
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = RKK
+					RKK = { is_subject_of = GER }
+				}
+				RKK = { add_ideas = wif_rk_oil_under_reich_control }
+			}
+		}
+	}
+
+	focus = {
+		id = GER_organisation_todt_in_the_east
+		icon = GFX_focus_GER_form_organization_todt
+		prerequisite = { focus = GER_ukrainian_grain_for_german_tables }
+		prerequisite = { focus = GER_the_oil_of_the_caucasus }
+
+		x = 72
+		y = 5
+		cost = 15	# 105 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_cg_minus_5_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.05 }
+				wif_ger_facade_cut = yes
+			}
+			add_timed_idea = { idea = wif_ger_todt_in_the_east days = 365 }
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = GER_organisation_todt_in_the_east_tt
+			hidden_effect = {
+				every_country = {
+					limit = { wif_is_eastern_rk_of_germany = yes }
+					wif_rk_apply_todt_labour = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_east_is_bled_dry
+		icon = GFX_focus_GER_brest_litovsk_borders
+		prerequisite = { focus = GER_organisation_todt_in_the_east }
+
+		x = 72
+		y = 6
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_cg_minus_20_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.2 }
+				wif_ger_facade_cut = yes
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = GER_the_east_is_bled_dry_tt
+			hidden_effect = {
+				every_country = {
+					limit = { wif_is_eastern_rk_of_germany = yes }
+					wif_rk_apply_bled_dry = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_a_bloated_army
+		icon = GFX_focus_GER_army
+		prerequisite = { focus = GER_reich_ministry_for_the_total_economy }
+
+		x = 76
+		y = 3
+		cost = 7.143	# 50 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_a_bloated_army_tt
+		}
+	}
+
+	focus = {
+		id = GER_labour_battalions
+		icon = GFX_focus_GER_optimize_reich_labour_service
+		prerequisite = { focus = GER_a_bloated_army }
+		mutually_exclusive = { focus = GER_wehrbauern }
+
+		x = 75
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_labour_battalions_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_sp_construction = 0.1 }
+				add_to_variable = { wif_ger_sp_army_org = -0.05 }
+				add_to_variable = { wif_ger_facade_rate_mod = -0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_wehrbauern
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = GER_a_bloated_army }
+		mutually_exclusive = { focus = GER_labour_battalions }
+
+		x = 77
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_wehrbauern_disband_tt
+			hidden_effect = {
+				wif_ger_disband_for_wehrbauern = yes
+			}
+			custom_effect_tooltip = wif_ger_cg_plus_5_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.05 }
+				wif_ger_facade_raise = yes
+			}
+			custom_effect_tooltip = wif_ger_rate_minus_0_15_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = -0.0015 }
+				wif_ger_facade_recalc_rate = yes
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = GER_wehrbauern_rk_tt
+			hidden_effect = {
+				every_country = {
+					limit = { wif_is_eastern_rk_of_germany = yes }
+					add_manpower = -50000
+					add_timed_idea = { idea = wif_rk_soldier_villages days = 365 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_arms_for_the_allies
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = GER_labour_battalions focus = GER_wehrbauern }
+
+		x = 76
+		y = 5
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+			num_subjects > 0
+		}
+
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_cg_minus_5_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.05 }
+				wif_ger_facade_cut = yes
+			}
+			custom_effect_tooltip = GER_arms_for_the_allies_tt
+			hidden_effect = {
+				wif_ger_arms_for_the_subjects = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_eternal_garrison
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = GER_arms_for_the_allies }
+
+		x = 76
+		y = 6
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_the_eternal_garrison_tt
+			hidden_effect = {
+				wif_ger_facade_recalc_rate = yes
+			}
+			every_country = {
+				limit = { wif_is_eastern_rk_of_germany = yes }
+				add_ideas = wif_rk_garrison_tribute
+			}
+		}
+	}
+
+	focus = {
+		id = GER_roll_over_the_debt
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = GER_reich_ministry_for_the_total_economy }
+
+		x = 80
+		y = 3
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_cg_minus_10_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.1 }
+				wif_ger_facade_cut = yes
+			}
+			custom_effect_tooltip = wif_ger_rate_plus_0_1_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = 0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_reichsmark_bloc
+		icon = GFX_focus_GER_integrated_economies
+		prerequisite = { focus = GER_roll_over_the_debt }
+
+		x = 79
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_rate_minus_0_1_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = -0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+			every_subject_country = {
+				wif_subject_apply_reichsmark_bloc = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_rationalisation_of_industry
+		icon = GFX_focus_generic_industry_2
+		prerequisite = { focus = GER_roll_over_the_debt }
+
+		x = 81
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_rationalisation_of_industry_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_sp_efficiency_gain = 0.1 }
+				add_to_variable = { wif_ger_sp_max_efficiency = 0.05 }
+			}
+			custom_effect_tooltip = wif_ger_rate_minus_0_05_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = -0.0005 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_convert_the_arms_plants
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = GER_the_reichsmark_bloc }
+		prerequisite = { focus = GER_rationalisation_of_industry }
+		mutually_exclusive = { focus = GER_keep_the_factories_turning }
+
+		x = 79
+		y = 5
+		cost = 15	# 105 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_convert_the_arms_plants_tt
+			hidden_effect = {
+				wif_ger_convert_arms_plants = yes
+			}
+			add_war_support = -0.05
+			add_timed_idea = { idea = wif_ger_wehrmacht_protests days = 180 }
+		}
+	}
+
+	focus = {
+		id = GER_keep_the_factories_turning
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = GER_the_reichsmark_bloc }
+		prerequisite = { focus = GER_rationalisation_of_industry }
+		mutually_exclusive = { focus = GER_convert_the_arms_plants }
+
+		x = 81
+		y = 5
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_keep_the_factories_turning_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_sp_factory_output = 0.1 }
+			}
+			custom_effect_tooltip = wif_ger_rate_plus_0_1_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = 0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_paper_over_the_cracks
+		icon = GFX_focus_GER_prioritize_the_four_year_plan
+		prerequisite = { focus = GER_convert_the_arms_plants focus = GER_keep_the_factories_turning }
+
+		x = 80
+		y = 6
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = wif_ger_cg_minus_15_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.15 }
+				wif_ger_facade_cut = yes
+			}
+			custom_effect_tooltip = wif_ger_rate_plus_0_1_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = 0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_victory_dividend
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = GER_reich_ministry_for_the_total_economy }
+
+		x = 84
+		y = 3
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_stability = 0.10
+			add_war_support = 0.05
+			custom_effect_tooltip = wif_ger_cg_plus_5_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.05 }
+				wif_ger_facade_raise = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_a_volkswagen_for_every_family
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = GER_the_victory_dividend }
+
+		x = 83
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = wif_ger_cg_plus_5_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.05 }
+				wif_ger_facade_raise = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_strength_through_joy
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = GER_the_victory_dividend }
+
+		x = 85
+		y = 4
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = wif_ger_cg_plus_3_tt
+			hidden_effect = {
+				set_variable = { wif_ger_cg_cut = 0.03 }
+				wif_ger_facade_raise = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_build_germania
+		icon = GFX_focus_GER_fuhrerprinzip_speer
+		prerequisite = { focus = GER_a_volkswagen_for_every_family }
+		prerequisite = { focus = GER_strength_through_joy }
+
+		x = 84
+		y = 5
+		cost = 20	# 140 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_timed_idea = { idea = wif_ger_building_germania days = 730 }
+			custom_effect_tooltip = wif_ger_rate_minus_0_1_tt
+			hidden_effect = {
+				add_to_variable = { wif_ger_facade_rate_mod = -0.001 }
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_the_prosperity_is_coming
+		icon = GFX_focus_GER_plenipotentiary_of_the_four_year_plan
+		prerequisite = { focus = GER_build_germania }
+
+		x = 84
+		y = 6
+		cost = 5	# 35 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+
+	focus = {
+		id = GER_speers_final_report
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = GER_the_east_is_bled_dry focus = GER_the_eternal_garrison focus = GER_paper_over_the_cracks focus = GER_the_prosperity_is_coming }
+
+		x = 78
+		y = 7
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_speers_final_report_tt
+		}
+	}
+
+	focus = {
+		id = GER_tell_the_fuhrer_the_truth
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = GER_speers_final_report }
+		mutually_exclusive = { focus = GER_keep_up_the_facade }
+
+		x = 76
+		y = 8
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = GER_tell_the_fuhrer_the_truth_tt
+			hidden_effect = {
+				set_variable = { GER_industrial_consumer_goods_factor = 0 }
+				set_country_flag = wif_ger_facade_rate_halved
+				wif_ger_facade_recalc_rate = yes
+			}
+			add_stability = -0.30
+			add_war_support = -0.20
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = GER_tell_the_fuhrer_the_truth_speer_tt
+			hidden_effect = {
+				random_list = {
+					50 = { country_event = { id = wif_ger_speer.1 days = 3 } }
+					50 = { country_event = { id = wif_ger_speer.2 days = 3 } }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_keep_up_the_facade
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = GER_speers_final_report }
+		mutually_exclusive = { focus = GER_tell_the_fuhrer_the_truth }
+
+		x = 80
+		y = 8
+		cost = 10	# 70 days
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ger_needs_speer_tt
+				wif_ger_speer_in_inner_circle = yes
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_stability = 0.10
+			custom_effect_tooltip = GER_keep_up_the_facade_tt
+			hidden_effect = {
+				set_country_flag = wif_ger_facade_rate_doubled
+				set_country_flag = wif_ger_kept_up_the_facade
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	# =====================================================================
+	# The rest of Himmler's path. Never taken by the player: Himmler works on
+	# each himself, one after the other (events/wif_ger_himmler_schemes.txt).
+	# =====================================================================
+
+	focus = {
+		id = GER_the_ss_economic_empire
+		icon = GFX_focus_GER_expand_ss_security_duties
+		prerequisite = { focus = GER_make_the_fuhrer_only_trust_the_ss }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 69
+		y = 4
+		cost = @wif_himmler_economic_empire_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_the_ss_economic_empire_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_economic_empire_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_the_ss_economic_empire_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = wif_ger_himmler_next_scheme_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE }
+
+		completion_reward = {
+			add_ideas = wif_ger_ss_enterprises
+			custom_effect_tooltip = GER_the_ss_economic_empire_tt
+			hidden_effect = {
+				wif_ger_facade_recalc_rate = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_ss_mighty_stands
+		icon = GFX_focus_GER_strengthen_the_waffen_ss
+		prerequisite = { focus = GER_the_ss_economic_empire }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 68
+		y = 5
+		cost = @wif_himmler_mighty_stands_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_ss_mighty_stands_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_mighty_stands_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_ss_mighty_stands_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = wif_ger_himmler_next_scheme_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE }
+
+		completion_reward = {
+			custom_effect_tooltip = GER_ss_mighty_stands_units_tt
+			hidden_effect = {
+				wif_ger_ss_mighty_stands_units = yes
+			}
+		}
+	}
+
+	focus = {
+		id = GER_requisition_territory_from_our_french_puppet
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = GER_the_ss_economic_empire }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 70
+		y = 5
+		cost = @wif_himmler_requisition_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_requisition_territory_from_our_french_puppet_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_requisition_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_requisition_territory_from_our_french_puppet_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = wif_ger_himmler_next_scheme_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE }
+
+		completion_reward = {
+			custom_effect_tooltip = GER_requisition_territory_from_our_french_puppet_tt
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							state = 17	# Franche-Comte
+							state = 18	# Champagne
+							state = 785	# Picardy
+						}
+						owner = {
+							original_tag = FRA
+							is_subject_of = GER
+						}
+					}
+					transfer_state_to = GER
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_a_dream_of_neu_burgundy
+		icon = GFX_focus_GER_hegemony_of_the_ss
+		prerequisite = { focus = GER_ss_mighty_stands }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 68
+		y = 6
+		cost = @wif_himmler_dream_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_a_dream_of_neu_burgundy_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_dream_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_a_dream_of_neu_burgundy_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = wif_ger_himmler_next_scheme_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE }
+
+		completion_reward = {
+			custom_effect_tooltip = GER_a_dream_of_neu_burgundy_tt
+			set_country_flag = wif_ger_dream_of_neu_burgundy
+		}
+	}
+
+	focus = {
+		id = GER_offer_retirement
+		icon = GFX_focus_GER_fuhrerprinzip_himmler
+		prerequisite = { focus = GER_a_dream_of_neu_burgundy }
+		prerequisite = { focus = GER_requisition_territory_from_our_french_puppet }
+
+		text_icon = GER_inner_circle_focus_style
+
+		x = 69
+		y = 7
+		cost = @wif_himmler_retirement_time
+
+		available = {
+			if = { # HIMMLER WORKING ON THE FOCUS (show progress)
+				limit = {
+					has_country_flag = GER_offer_retirement_in_progress_flag
+				}
+				set_temp_variable = { temp_focus_days = @wif_himmler_retirement_time }
+				multiply_temp_variable = { temp_focus_days = 7 } # Focus cost is in weeks
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_inner_circle_focus_in_progress_tt
+						CHARACTER = GER_heinrich_himmler
+						FLAG_DAYS = [?GER_offer_retirement_in_progress_flag:days]
+					}
+					always = no
+				}
+			}
+			else = { # NOT BEING WORKED ON (just explain)
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = GER_offer_retirement_needs_tt
+						CHARACTER = GER_heinrich_himmler
+					}
+					always = no
+				}
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INNER_CIRCLE }
+
+		completion_reward = {
+			custom_effect_tooltip = GER_offer_retirement_tt
+			hidden_effect = {
+				country_event = { id = wif_ger_himmler_coup.1 days = 1 }
 			}
 		}
 	}

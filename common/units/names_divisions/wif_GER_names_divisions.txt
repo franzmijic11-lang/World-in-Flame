@@ -6,7 +6,9 @@
 WIF_GER_SS_MIL = {
 	name = "Waffen-SS Divisions"
 
-	for_countries = { GER }
+	# OSB: the Ordensstaat Burgund raises the SS again when Himmler takes it out
+	# of the Reich (common/scripted_effects/wif_ger_himmler.txt).
+	for_countries = { GER OSB }
 
 	can_use = {
 		always = yes
@@ -50,4 +52,23 @@ WIF_GER_SS_MIL = {
 		37 = { "%d. SS-Division 'Lützow'" }
 		38 = { "%d. SS-Division 'Nibelungen'" }
 	}
+}
+
+# The Waffen SS Panzer Division (common/scripted_effects/wif_ger_himmler.txt).
+# Numbered together with the infantry and with vanilla's GER_SS_01, so no two
+# SS divisions ever share a number.
+WIF_GER_SS_ARM = {
+	name = "Waffen-SS Panzer Divisions"
+
+	for_countries = { GER OSB }
+
+	can_use = {
+		always = yes
+	}
+
+	division_types = { "medium_armor" "heavy_armor" }
+
+	link_numbering_with = { GER_SS_01 WIF_GER_SS_MIL }
+
+	fallback_name = "%d. SS-Panzer-Division"
 }

@@ -286,12 +286,11 @@ on_actions = {
 	# on_weekly is per-country (ROOT = the country), matching vanilla usage.
 	on_weekly = {
 		effect = {
+			# wif_is_reichskommissariat also catches RKs that never got either
+			# spirit - the Generalgouvernement was one.
 			if = {
 				limit = {
-					OR = {
-						has_idea = GER_german_controlled_reichskommissariat
-						has_idea = GER_local_controlled_reichskommissariat
-					}
+					wif_is_reichskommissariat = yes
 					NOT = { has_idea = wif_reichskommissariat_economy }
 				}
 				add_ideas = wif_reichskommissariat_economy
@@ -734,21 +733,22 @@ on_actions = {
 	}
 
 	# The Facade Economy's consumer goods - see
-	# common/dynamic_modifiers/wif_ger_facade_economy.txt. A flat 0.005 a month
-	# (+0.5%, so +100% after 200 months, about 16.7 years), deliberately with
-	# NO cap and NO penalties: it is meant to keep climbing past 100% and past
-	# anything the Reich's civilian industry could actually supply, for a
-	# fuller civilian economy system to act on later. Its own rate, not
-	# vanilla's GER_monthly_consumer_goods_increase, so the vanilla reductions
-	# (Price Controls, Vichy, occupied states) do not apply to it.
+	# common/dynamic_modifiers/wif_ger_facade_economy.txt. +0.5% a month to
+	# start with, deliberately with NO cap and NO penalties: it is meant to
+	# keep climbing past 100% and past anything the Reich's civilian industry
+	# could actually supply, for a fuller civilian economy system to act on
+	# later. Its own rate, not vanilla's GER_monthly_consumer_goods_increase,
+	# so the vanilla reductions (Price Controls, Vichy, occupied states) do not
+	# apply to it. Speer's branch of the Totaler Sieg tree changes the rate;
+	# the sum is worked out in wif_ger_facade_monthly
+	# (common/scripted_effects/wif_ger_speer.txt).
+	#
+	# Also: Offer Retirement waits on the RKM civil war, which can break out
+	# long after Himmler's other schemes are done, so it is checked monthly.
 	on_monthly_GER = {
 		effect = {
-			if = {
-				limit = {
-					has_dynamic_modifier = { modifier = wif_ger_facade_economy_modifier }
-				}
-				add_to_variable = { GER_industrial_consumer_goods_factor = 0.005 }
-			}
+			wif_ger_facade_monthly = yes
+			wif_ger_himmler_try_offer_retirement = yes
 		}
 	}
 }

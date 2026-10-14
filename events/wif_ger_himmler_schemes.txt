@@ -109,5 +109,244 @@ country_event = {
 			originator_name = GER_heinrich_himmler
 		}
 		clr_country_flag = GER_make_the_fuhrer_only_trust_the_ss_in_progress_flag
+
+		# Straight on to the next scheme.
+		country_event = { id = wif_ger_himmler_schemes.5 }
+	}
+}
+
+# The SS Economic Empire: 140 days = @wif_himmler_economic_empire_time. Fired from
+# .4. When it completes Himmler starts on SS Mighty Stands and the French
+# requisition at once - two schemes side by side.
+country_event = {
+	id = wif_ger_himmler_schemes.5
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_himmler_in_inner_circle = yes
+		NOT = { has_completed_focus = GER_the_ss_economic_empire }
+		NOT = { has_country_flag = GER_the_ss_economic_empire_in_progress_flag }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_the_ss_economic_empire
+		set_country_flag = { flag = GER_the_ss_economic_empire_in_progress_flag days = 141 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.6 days = 140 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.6
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_the_ss_economic_empire }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_the_ss_economic_empire
+		complete_national_focus = {
+			focus = GER_the_ss_economic_empire
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_the_ss_economic_empire_in_progress_flag
+
+		country_event = { id = wif_ger_himmler_schemes.7 }
+		country_event = { id = wif_ger_himmler_schemes.9 }
+	}
+}
+
+# SS Mighty Stands: 140 days = @wif_himmler_mighty_stands_time. Fired from .6.
+country_event = {
+	id = wif_ger_himmler_schemes.7
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_himmler_in_inner_circle = yes
+		NOT = { has_completed_focus = GER_ss_mighty_stands }
+		NOT = { has_country_flag = GER_ss_mighty_stands_in_progress_flag }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_ss_mighty_stands
+		set_country_flag = { flag = GER_ss_mighty_stands_in_progress_flag days = 141 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.8 days = 140 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.8
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_ss_mighty_stands }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_ss_mighty_stands
+		complete_national_focus = {
+			focus = GER_ss_mighty_stands
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_ss_mighty_stands_in_progress_flag
+
+		country_event = { id = wif_ger_himmler_schemes.11 }
+	}
+}
+
+# Requisition Territory from Our French Puppet: 70 days =
+# @wif_himmler_requisition_time. Fired from .6.
+country_event = {
+	id = wif_ger_himmler_schemes.9
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_himmler_in_inner_circle = yes
+		NOT = { has_completed_focus = GER_requisition_territory_from_our_french_puppet }
+		NOT = { has_country_flag = GER_requisition_territory_from_our_french_puppet_in_progress_flag }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_requisition_territory_from_our_french_puppet
+		set_country_flag = { flag = GER_requisition_territory_from_our_french_puppet_in_progress_flag days = 71 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.10 days = 70 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.10
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_requisition_territory_from_our_french_puppet }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_requisition_territory_from_our_french_puppet
+		complete_national_focus = {
+			focus = GER_requisition_territory_from_our_french_puppet
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_requisition_territory_from_our_french_puppet_in_progress_flag
+
+		wif_ger_himmler_try_offer_retirement = yes
+	}
+}
+
+# A Dream of Neu Burgundy: 120 days = @wif_himmler_dream_time. Fired from .8.
+country_event = {
+	id = wif_ger_himmler_schemes.11
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_himmler_in_inner_circle = yes
+		NOT = { has_completed_focus = GER_a_dream_of_neu_burgundy }
+		NOT = { has_country_flag = GER_a_dream_of_neu_burgundy_in_progress_flag }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_a_dream_of_neu_burgundy
+		set_country_flag = { flag = GER_a_dream_of_neu_burgundy_in_progress_flag days = 121 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.12 days = 120 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.12
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_a_dream_of_neu_burgundy }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_a_dream_of_neu_burgundy
+		complete_national_focus = {
+			focus = GER_a_dream_of_neu_burgundy
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_a_dream_of_neu_burgundy_in_progress_flag
+
+		wif_ger_himmler_try_offer_retirement = yes
+	}
+}
+
+# Offer Retirement: 120 days = @wif_himmler_retirement_time. Fired by
+# wif_ger_himmler_try_offer_retirement (common/scripted_effects/wif_ger_himmler.txt)
+# once A Dream of Neu Burgundy and the French requisition are both done and the
+# RKM civil war has begun - checked again every month until it has. Its
+# reward is the demand itself: events/wif_ger_himmler_coup.txt.
+country_event = {
+	id = wif_ger_himmler_schemes.13
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_himmler_in_inner_circle = yes
+		NOT = { has_completed_focus = GER_offer_retirement }
+		NOT = { has_country_flag = GER_offer_retirement_in_progress_flag }
+	}
+
+	immediate = {
+		activate_shine_on_focus = GER_offer_retirement
+		set_country_flag = { flag = GER_offer_retirement_in_progress_flag days = 121 value = 1 }
+		country_event = { id = wif_ger_himmler_schemes.14 days = 120 }
+	}
+}
+
+# Complete the focus.
+country_event = {
+	id = wif_ger_himmler_schemes.14
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_completed_focus = GER_offer_retirement }
+	}
+
+	immediate = {
+		deactivate_shine_on_focus = GER_offer_retirement
+		complete_national_focus = {
+			focus = GER_offer_retirement
+			use_side_message = yes
+			originator_name = GER_heinrich_himmler
+		}
+		clr_country_flag = GER_offer_retirement_in_progress_flag
 	}
 }
