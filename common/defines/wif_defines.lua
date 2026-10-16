@@ -28,3 +28,11 @@ NDefines.NCountry.MIN_STABILITY = -1.0
 -- unpowered industry should keep pace.
 NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 7
 NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 4
+
+-- Consumer goods are run by the mod (common/scripted_effects/
+-- wif_civilian_allocation.txt), not the engine. Vanilla never lets the engine
+-- take fewer than 10% of factories, which would make underpaying impossible,
+-- so that floor goes. The by-value floor of 1 stays on purpose: it keeps the
+-- construction tab's consumer goods row on screen, which is where the
+-- allocation window's arrow lives.
+NDefines.NProduction.MINIMUM_NUMBER_OF_FACTORIES_TAKEN_BY_CONSUMER_GOODS_PERCENT = 0

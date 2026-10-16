@@ -265,6 +265,10 @@ on_actions = {
 				# and the AI both have a cap to read on day one rather than a
 				# zero until the first weekly tick.
 				wif_recalculate_battalion_cap = yes
+
+				# Civilian factory allocation takes consumer goods over from
+				# the engine from day one rather than the first weekly tick.
+				wif_cg_refresh = yes
 			}
 		}
 	}
@@ -583,6 +587,11 @@ on_actions = {
 			# for the player, and for anyone under their cap or still inside the
 			# demobilisation grace month.
 			wif_disband_over_cap = yes
+
+			# Civilian factory allocation - the mod's consumer goods. Pays the
+			# AI's goods, pays out resources and trains, applies the debt
+			# penalties. See common/scripted_effects/wif_civilian_allocation.txt.
+			wif_cg_weekly = yes
 
 			# Moskowien has put the civil war down: every breakaway is gone.
 			# Announce it, and the news event itself carries out the

@@ -1,0 +1,5 @@
+﻿l_english:
+ CONSTRUCTION_FACTORIES_PROJECTS_LABEL:0 "Allocated Factories"
+ CONSTRUCTION_FACTORIES_PROJECTS:0 "Allocated factories: $VALUE|R$"
+ CONSTRUCTION_FACTORIES_PROJECTS_TITLE:0 "§HAllocated Factories§!"
+ CONSTRUCTION_FACTORIES_PROJECTS_DESC:0 "Civilian factories set aside in §YCivilian Factory Allocation§! - consumer goods past the first factory, resources and trains - plus national projects from spirits and decisions."
