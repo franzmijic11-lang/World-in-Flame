@@ -166,9 +166,9 @@
  wif_ger_himmler_coup.1.a:0 "Hitler, it is time to go."
  wif_ger_himmler_coup.1.b:0 "Nein, Verräter!"
  wif_ger_himmler_coup.1.c:0 "How about Burgundy?"
- wif_ger_himmler_coup_time_to_go_tt:0 "§YHeinrich Himmler§! becomes Führer of the Reich.\nEvery division that is not of the §YSS§! is disbanded."
- wif_ger_himmler_coup_traitor_tt:0 "§RCivil war.§! The SS rises in the West: the requisitioned French provinces, §YLuxembourg§!, §YAlsace-Lorraine§! and the lands of §YReichskommissariat Belgien-Nordfrankreich§! break away under §YHeinrich Himmler§!.\nThe §YSS§! divisions and the SS generals go with him."
- wif_ger_himmler_coup_burgundy_tt:0 "§YAlsace-Lorraine§!, the requisitioned French provinces and the lands of §YReichskommissariat Belgien-Nordfrankreich§! become the §YOrdensstaat Burgund§!, a German satellite under §YHeinrich Himmler§!.\nThe §YSS§! divisions and the SS generals go with him."
+ wif_ger_himmler_coup_time_to_go_tt:0 "§YHeinrich Himmler§! becomes Führer of the Reich.\nEvery division that is not of the §YSS§! is disbanded.\n§YJoseph Goebbels§! takes Himmler's seat in the §YInner Circle§!."
+ wif_ger_himmler_coup_traitor_tt:0 "§RCivil war.§! The SS rises in the West: the requisitioned French provinces, §YLuxembourg§!, §YAlsace-Lorraine§! and the lands of §YReichskommissariat Belgien-Nordfrankreich§! break away under §YHeinrich Himmler§!.\nThe §YSS§! divisions and the SS generals go with him.\n§YJoseph Goebbels§! takes Himmler's seat in the §YInner Circle§!."
+ wif_ger_himmler_coup_burgundy_tt:0 "§YAlsace-Lorraine§!, the requisitioned French provinces and the lands of §YReichskommissariat Belgien-Nordfrankreich§! become the §YOrdensstaat Burgund§!, a German satellite under §YHeinrich Himmler§!.\nThe §YSS§! divisions and the SS generals go with him.\n§YJoseph Goebbels§! takes Himmler's seat in the §YInner Circle§!."
 
  # --- Countries -----------------------------------------------------------
  OSB:0 "Ordensstaat Burgund"

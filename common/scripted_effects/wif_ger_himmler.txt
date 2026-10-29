@@ -230,6 +230,50 @@ wif_ger_ss_generals_to_osb = {
 	}
 }
 
+# Whichever way Himmler leaves the Inner Circle - to Burgund, or above it as
+# Fuhrer - Goebbels fills the vacuum in the seat he left. WiF folded Goebbels'
+# own ascension chain into Propaganda Master, so this is the only way he ever
+# gets a seat. Mirrors vanilla's GER_ascension_of_goebbels without starting
+# that chain, which no longer exists. German scope; call right after
+# GER_remove_himmler_effects, which has just emptied the seat.
+wif_ger_goebbels_takes_himmlers_seat = {
+	if = {
+		limit = {
+			NOR = {
+				check_variable = { GER_ascended_advisor_1 = 5 }
+				check_variable = { GER_ascended_advisor_2 = 5 }
+				check_variable = { GER_ascended_advisor_3 = 5 }
+				check_variable = { GER_ascended_advisor_4 = 5 }
+			}
+		}
+		if = {
+			limit = { check_variable = { GER_ascended_advisor_1 = 0 } }
+			set_variable = { GER_ascended_advisor_1 = 5 }
+		}
+		else_if = {
+			limit = { check_variable = { GER_ascended_advisor_2 = 0 } }
+			set_variable = { GER_ascended_advisor_2 = 5 }
+		}
+		else_if = {
+			limit = { check_variable = { GER_ascended_advisor_3 = 0 } }
+			set_variable = { GER_ascended_advisor_3 = 5 }
+		}
+		else_if = {
+			limit = { check_variable = { GER_ascended_advisor_4 = 0 } }
+			set_variable = { GER_ascended_advisor_4 = 5 }
+		}
+		# His minister spirit: the Propaganda Master one if that focus is done,
+		# as GER_add_goebbels_effects gives it, the plain one otherwise.
+		if = {
+			limit = { has_completed_focus = GER_propaganda_master }
+			GER_add_goebbels_effects = yes
+		}
+		else = {
+			add_ideas = GER_goebbels_reich_minister_of_propaganda
+		}
+	}
+}
+
 # Himmler leaves the Reich to lead the Ordensstaat. German scope.
 wif_ger_himmler_to_osb = {
 	GER_remove_himmler_effects = yes
@@ -245,6 +289,7 @@ wif_ger_himmler_to_osb = {
 		}
 	}
 	wif_ger_ss_generals_to_osb = yes
+	wif_ger_goebbels_takes_himmlers_seat = yes
 }
 
 # The Ordensstaat Burgund comes into being. German scope, once its states are
@@ -425,6 +470,7 @@ wif_wmg_revolt = {
 
 	# Himmler takes the Reich.
 	GER_remove_himmler_effects = yes
+	wif_ger_goebbels_takes_himmlers_seat = yes
 	add_country_leader_role = {
 		character = GER_heinrich_himmler
 		promote_leader = yes
