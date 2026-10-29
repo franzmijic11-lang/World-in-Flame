@@ -748,6 +748,10 @@ on_actions = {
 	on_monthly_GER = {
 		effect = {
 			wif_ger_facade_monthly = yes
+			# Germany's road to the civil war: distrust, the succession
+			# contest, the Fuhrer's moods, Burgund's tribute, and every focus
+			# that works on itself (common/scripted_effects/zz_wif_ger_road.txt).
+			wif_ger_road_monthly = yes
 			wif_ger_himmler_try_offer_retirement = yes
 		}
 	}

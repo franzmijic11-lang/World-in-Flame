@@ -1,0 +1,16 @@
+# The Protectorate watches the German civil war and, when only one side is
+# left, hands its Sudeten lands back - or is annexed whole, if it was only
+# formed for the war (common/scripted_effects/zz_wif_ger_collapse.txt). It is
+# BMP when formed, or Czechoslovakia when that survived as a German subject.
+on_actions = {
+	on_monthly_BMP = {
+		effect = {
+			wif_cw_protectorate_check_winner = yes
+		}
+	}
+	on_monthly_CZE = {
+		effect = {
+			wif_cw_protectorate_check_winner = yes
+		}
+	}
+}

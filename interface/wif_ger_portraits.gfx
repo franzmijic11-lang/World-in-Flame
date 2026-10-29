@@ -12,4 +12,25 @@ spriteTypes = {
 		name = "GFX_portrait_GER_adolf_hitler_aging_small"
 		texturefile = "gfx/leaders/GER/Portrait_GER_Adolf_Hitler_Aging_small.png"
 	}
+
+	# Fuhrer Found Dead: the Reichstag governs (common/characters/wif_ger_collapse_characters.txt).
+	spriteType = {
+		name = "GFX_portrait_wif_ger_reichstag"
+		texturefile = "gfx/leaders/GER/Portrait_wif_GER_Reichstag.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_wif_ger_reichstag_small"
+		texturefile = "gfx/leaders/GER/Portrait_wif_GER_Reichstag_small.png"
+	}
+
+	# Heydrich as leader of the SS remnant. Vanilla only ships him a small
+	# advisor portrait.
+	spriteType = {
+		name = "GFX_portrait_wif_reinhard_heydrich"
+		texturefile = "gfx/leaders/GER/Portrait_wif_Reinhard_Heydrich.png"
+	}
+	spriteType = {
+		name = "GFX_portrait_wif_reinhard_heydrich_small"
+		texturefile = "gfx/leaders/GER/Portrait_wif_Reinhard_Heydrich_small.png"
+	}
 }

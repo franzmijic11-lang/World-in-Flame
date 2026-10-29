@@ -1,0 +1,933 @@
+# The collapse of the Reich (events/wif_ger_collapse.txt). German scope unless
+# a comment says otherwise. The zz_ file name sorts after every scripted effect
+# it calls (wif_inherit_tech_from_donor, wif_ger_strip_spirits and the rest):
+# scripted effects are read in file order.
+#
+# Five events mark which faction each region declares for, by state flag and
+# by setting it demilitarised:
+#   wif_cw_ss        SS Gather in the Rhine         -> SSR, the SS Remnant
+#   wif_cw_bormann   Reichstag Elects Bormann       -> stays GER, Bormann's German Reich
+#   wif_cw_goring    Goring Rallies Support         -> GOR, Goring's Germany
+#   wif_cw_speer     Students and Factories Back Speer -> SPG, Speer's Germany
+#   wif_cw_wehrmacht Wehrmacht Generals Mobilise East  -> DWM, the Deutsche Wehrmacht
+# Two days after the last, wif_ger_collapse_of_the_reich splits the Reich along
+# those lines. A German state no event named stays with Bormann.
+#
+# Army, stockpile and air force are split with transfer_units_fraction. Each
+# call takes its fraction of what is LEFT, so the ratios below are the user's
+# shares of the whole worked out against the remainder:
+#                army   stockpile  air    (share of the whole)
+#   Speer        0.20   0.20       0.10   20% / 20% / 10%
+#   Goring       0.25   0.25       0.667  20% / 20% / 60%
+#   Wehrmacht    0.583  0.583      0.333  35% / 35% / 10%   (the rest)
+#   Bormann      keeps what is left       25% / 25% / 20%
+# The navy goes to the German Administrative Government in Oslo first, and the
+# SS Remnant gets a tenth of the infantry equipment before any of it.
+
+# ---------------------------------------------------------------------------
+# The five declarations
+# ---------------------------------------------------------------------------
+
+# State scope: mark the state for a faction and demilitarise it. Only German
+# states, and only once.
+wif_cw_declare_state_ss = {
+	if = {
+		limit = { is_owned_by = GER wif_cw_state_unclaimed = yes }
+		set_state_flag = wif_cw_ss
+		set_demilitarized_zone = yes
+	}
+}
+wif_cw_declare_state_bormann = {
+	if = {
+		limit = { is_owned_by = GER wif_cw_state_unclaimed = yes }
+		set_state_flag = wif_cw_bormann
+		set_demilitarized_zone = yes
+	}
+}
+wif_cw_declare_state_goring = {
+	if = {
+		limit = { is_owned_by = GER wif_cw_state_unclaimed = yes }
+		set_state_flag = wif_cw_goring
+		set_demilitarized_zone = yes
+	}
+}
+wif_cw_declare_state_speer = {
+	if = {
+		limit = { is_owned_by = GER wif_cw_state_unclaimed = yes }
+		set_state_flag = wif_cw_speer
+		set_demilitarized_zone = yes
+	}
+}
+wif_cw_declare_state_wehrmacht = {
+	if = {
+		limit = { is_owned_by = GER wif_cw_state_unclaimed = yes }
+		set_state_flag = wif_cw_wehrmacht
+		set_demilitarized_zone = yes
+	}
+}
+
+# SS Gather in the Rhine: Moselland and Baden, and - as on the map - the
+# Burgund lands of Alsace-Lorraine and Luxembourg if they are German again.
+wif_cw_declare_ss = {
+	42 = { wif_cw_declare_state_ss = yes }	# Moselland
+	978 = { wif_cw_declare_state_ss = yes }	# Baden
+	28 = { wif_cw_declare_state_ss = yes }	# Alsace-Lorraine
+	8 = { wif_cw_declare_state_ss = yes }	# Luxembourg
+}
+
+# Reichstag Elects Bormann: Brandenburg, Vorpommern, Sachsen, Ostmark,
+# Hinterpommern and Silesia - with Thuringia and Mecklenburg, which the map
+# shows as his.
+wif_cw_declare_bormann = {
+	64 = { wif_cw_declare_state_bormann = yes }	# Brandenburg
+	62 = { wif_cw_declare_state_bormann = yes }	# Vorpommern
+	65 = { wif_cw_declare_state_bormann = yes }	# Sachsen
+	68 = { wif_cw_declare_state_bormann = yes }	# Ostmark
+	63 = { wif_cw_declare_state_bormann = yes }	# Hinterpommern
+	66 = { wif_cw_declare_state_bormann = yes }	# Lower Silesia
+	67 = { wif_cw_declare_state_bormann = yes }	# Upper Silesia
+	60 = { wif_cw_declare_state_bormann = yes }	# Thuringen
+	61 = { wif_cw_declare_state_bormann = yes }	# Mecklenburg
+}
+
+# Goring Rallies Support: all German-held Austria and every Bavarian core, with
+# Wurttemberg as on the map, and South Sudetenland.
+wif_cw_declare_goring = {
+	every_state = {
+		limit = {
+			is_owned_by = GER
+			OR = {
+				is_core_of = AUS
+				is_core_of = BAY
+				state = 50	# Wurttemberg
+				state = 972	# South Sudetenland
+			}
+		}
+		wif_cw_declare_state_goring = yes
+	}
+}
+
+# Students and Factories Back Speer: Rhineland, Hessen, Hannover, Weser-Ems,
+# Holstein, Schleswig and Southern Jutland - with Westfalen and the Ruhr,
+# which the map shows as his.
+wif_cw_declare_speer = {
+	51 = { wif_cw_declare_state_speer = yes }	# Rhineland
+	55 = { wif_cw_declare_state_speer = yes }	# Hessen
+	59 = { wif_cw_declare_state_speer = yes }	# Hannover
+	56 = { wif_cw_declare_state_speer = yes }	# Weser-Ems
+	58 = { wif_cw_declare_state_speer = yes }	# Holstein
+	909 = { wif_cw_declare_state_speer = yes }	# Schleswig
+	912 = { wif_cw_declare_state_speer = yes }	# Southern Jutland
+	57 = { wif_cw_declare_state_speer = yes }	# Westfalen
+}
+
+# Wehrmacht Generals Mobilise East: East Prussia, every cored Polish state, and
+# every German core nobody has claimed yet - except the Sudeten lands the
+# Protectorate takes.
+wif_cw_declare_wehrmacht = {
+	5 = { wif_cw_declare_state_wehrmacht = yes }	# Ermland-Masuren
+	763 = { wif_cw_declare_state_wehrmacht = yes }	# Konigsberg
+	188 = { wif_cw_declare_state_wehrmacht = yes }	# Memel
+	every_state = {
+		limit = {
+			is_owned_by = GER
+			is_core_of = GER
+			NOT = { state = 69 }	# North Sudetenland
+			NOT = { state = 74 }	# Sudeten Silesia
+		}
+		wif_cw_declare_state_wehrmacht = yes
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Collapse of the Reich
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# The successors, one by one. All called from German scope.
+# ---------------------------------------------------------------------------
+
+
+# Country scope: a country rising from the Reich. Politics, tech and the rule
+# that it has no diplomatic standing. ideology_party is set by the caller.
+wif_cw_successor_common = {
+	set_research_slots = 4
+	wif_inherit_tech_from_donor = yes
+	set_rule = {
+		can_join_factions = no
+		can_create_factions = no
+		can_send_volunteers = no
+		can_puppet = no
+		can_guarantee_other_ideologies = no
+	}
+	set_country_flag = wif_ger_cw_belligerent
+}
+
+# Subject scope: become Oslo's, with the same kind of subjection it had.
+wif_cw_subject_to_oslo = {
+	if = { limit = { has_autonomy_state = autonomy_reichskommissariat } set_country_flag = wif_cw_was_reichskommissariat }
+	else_if = { limit = { has_autonomy_state = autonomy_reichsprotectorate } set_country_flag = wif_cw_was_reichsprotectorate }
+	else_if = { limit = { has_autonomy_state = autonomy_integrated_puppet } set_country_flag = wif_cw_was_integrated_puppet }
+	else_if = { limit = { has_autonomy_state = autonomy_satellite } set_country_flag = wif_cw_was_satellite }
+	else_if = { limit = { has_autonomy_state = autonomy_colony } set_country_flag = wif_cw_was_colony }
+	else_if = { limit = { has_autonomy_state = autonomy_dominion } set_country_flag = wif_cw_was_dominion }
+	else_if = { limit = { has_autonomy_state = autonomy_volkskommissariat } set_country_flag = wif_cw_was_volkskommissariat }
+	else_if = { limit = { has_autonomy_state = autonomy_supervised_state } set_country_flag = wif_cw_was_supervised_state }
+	GAG = { puppet = PREV }
+	if = {
+		limit = { has_country_flag = wif_cw_was_reichskommissariat }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_reichsprotectorate }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_reichsprotectorate end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_integrated_puppet }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_satellite }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_satellite end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_colony }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_colony end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_dominion }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_volkskommissariat }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_volkskommissariat end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_supervised_state }
+		GAG = { set_autonomy = { target = PREV autonomy_state = autonomy_supervised_state end_wars = no end_civil_wars = no } }
+	}
+}
+
+# Karl Donitz's German Administrative Government in Oslo: the navy, the marines
+# and paratroopers, the faction, every subject, and the Reich's diplomacy. It
+# stays out of the civil war.
+wif_cw_form_oslo_government = {
+	GAG = {
+		if = {
+			limit = { owns_state = 110 }
+			set_capital = { state = 110 }
+		}
+		else = {
+			random_owned_state = {
+				PREV = { set_capital = { state = PREV } }
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = { fascism = 80 neutrality = 20 democratic = 0 communism = 0 }
+		set_stability = 0.6
+		set_war_support = 0.5
+		set_research_slots = 4
+		wif_inherit_tech_from_donor = yes
+	}
+	if = {
+		limit = { has_character = GER_karl_donitz }
+		GER_karl_donitz = { set_nationality = GAG }
+	}
+	GAG = {
+		if = {
+			limit = { has_character = GER_karl_donitz }
+			add_country_leader_role = {
+				character = GER_karl_donitz
+				promote_leader = yes
+				country_leader = {
+					ideology = nazism
+					traits = { }
+				}
+			}
+		}
+	}
+
+	# The whole navy, with its admirals.
+	transfer_units_fraction = {
+		target = GAG
+		size = 0
+		navy_ratio = 1
+		army_ratio = 0
+		air_ratio = 0
+		stockpile_ratio = 0
+		keep_unit_leaders_trigger = { is_navy_leader = no }
+	}
+
+	# Marines and paratroopers: no effect hands over single divisions, so they
+	# are counted, removed, and raised again in Oslo (see
+	# reference: moving units between countries).
+	set_temp_variable = { wif_cw_before = num_divisions }
+	every_country_division = {
+		limit = { division_has_majority_template = marine }
+		destroy_unit = yes
+	}
+	set_temp_variable = { wif_cw_marines = wif_cw_before }
+	subtract_from_temp_variable = { wif_cw_marines = num_divisions }
+	set_temp_variable = { wif_cw_before = num_divisions }
+	every_country_division = {
+		limit = { division_has_majority_template = paratrooper }
+		destroy_unit = yes
+	}
+	set_temp_variable = { wif_cw_paras = wif_cw_before }
+	subtract_from_temp_variable = { wif_cw_paras = num_divisions }
+	GAG = {
+		division_template = {
+			name = "Marine-Division"
+			regiments = {
+				marine = { x = 0 y = 0 }
+				marine = { x = 0 y = 1 }
+				marine = { x = 0 y = 2 }
+				marine = { x = 1 y = 0 }
+				marine = { x = 1 y = 1 }
+				marine = { x = 1 y = 2 }
+			}
+		}
+		division_template = {
+			name = "Fallschirmjager-Division"
+			regiments = {
+				paratrooper = { x = 0 y = 0 }
+				paratrooper = { x = 0 y = 1 }
+				paratrooper = { x = 0 y = 2 }
+				paratrooper = { x = 1 y = 0 }
+				paratrooper = { x = 1 y = 1 }
+				paratrooper = { x = 1 y = 2 }
+			}
+		}
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_cw_marines > 0 } }
+		GAG = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Marine-Division\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = GAG
+					count = 1
+				}
+			}
+		}
+		subtract_from_temp_variable = { wif_cw_marines = 1 }
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_cw_paras > 0 } }
+		GAG = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Fallschirmjager-Division\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = GAG
+					count = 1
+				}
+			}
+		}
+		subtract_from_temp_variable = { wif_cw_paras = 1 }
+	}
+
+	# The faction: Oslo inherits the leadership, whatever the faction is now
+	# called.
+	if = {
+		limit = { is_faction_leader = yes }
+		add_to_faction = GAG
+		GAG = { set_faction_leader = yes }
+		leave_faction = yes
+	}
+	else_if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	# Every subject and Reichskommissariat, keeping its kind of subjection.
+	every_subject_country = {
+		limit = {
+			NOT = { tag = GAG }
+			NOT = { has_country_flag = wif_ger_protectorate }
+		}
+		wif_cw_subject_to_oslo = yes
+	}
+
+	# The Reich's agreements carry over to Oslo.
+	every_country = {
+		limit = {
+			NOT = { tag = GAG }
+			GER = { has_guaranteed = PREV }
+		}
+		GAG = { give_guarantee = PREV }
+	}
+	every_country = {
+		limit = {
+			NOT = { tag = GAG }
+			has_guaranteed = GER
+		}
+		give_guarantee = GAG
+	}
+	every_country = {
+		limit = {
+			NOT = { tag = GAG }
+			has_non_aggression_pact_with = GER
+		}
+		diplomatic_relation = { country = GAG relation = non_aggression_pact active = yes }
+	}
+	every_country = {
+		limit = {
+			NOT = { tag = GAG }
+			has_military_access_to = GER
+		}
+		GAG = { give_military_access = PREV }
+	}
+	every_country = {
+		limit = {
+			NOT = { tag = GAG }
+			GER = { has_military_access_to = PREV }
+		}
+		give_military_access = GAG
+	}
+}
+
+# The Reichsprotektorat Bohmen und Mahren. If Czechoslovakia survives as a
+# German subject it is the Protectorate: it is set free and takes the northern
+# and eastern Sudetenland, and hands them back to whoever wins the civil war.
+# Otherwise the Protectorate is formed from German Bohemia and Moravia with the
+# same Sudeten lands, and the winner annexes it whole. South Sudetenland goes
+# to Goring either way.
+wif_cw_form_protectorate = {
+	if = {
+		limit = {
+			country_exists = CZE
+			CZE = { is_subject_of = GER }
+		}
+		CZE = { save_event_target_as = wif_cw_protectorate }
+		set_autonomy = { target = CZE autonomy_state = autonomy_free }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				9 = { is_owned_by = GER }
+				75 = { is_owned_by = GER }
+			}
+		}
+		every_state = {
+			limit = {
+				OR = { state = 9 state = 75 }
+				is_owned_by = GER
+			}
+			transfer_state_to = BMP
+		}
+		BMP = {
+			save_event_target_as = wif_cw_protectorate
+			set_country_flag = wif_ger_protectorate_formed
+			if = {
+				limit = { owns_state = 9 }
+				set_capital = { state = 9 }
+			}
+			set_politics = {
+				ruling_party = neutrality
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = { neutrality = 70 fascism = 30 democratic = 0 communism = 0 }
+			set_stability = 0.5
+			set_war_support = 0.2
+			set_research_slots = 3
+			wif_inherit_tech_from_donor = yes
+		}
+	}
+	if = {
+		limit = { has_event_target = wif_cw_protectorate }
+		event_target:wif_cw_protectorate = {
+			set_country_flag = wif_ger_protectorate
+		}
+		every_state = {
+			limit = {
+				OR = { state = 69 state = 74 }
+				is_owned_by = GER
+			}
+			transfer_state_to = event_target:wif_cw_protectorate
+		}
+	}
+}
+
+# Reinhard Heydrich's SS Remnant, under the Burgund flag: a tenth of the
+# infantry equipment, ten veteran SS infantry divisions in Moselland that it
+# can train and edit, the Fuhrer's guard, and the SS generals.
+wif_cw_form_ss_remnant = {
+	SSR = {
+		if = {
+			limit = { owns_state = 42 }
+			set_capital = { state = 42 }
+		}
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = { fascism = 100 neutrality = 0 democratic = 0 communism = 0 }
+		set_stability = 0.6
+		set_war_support = 0.9
+		wif_cw_successor_common = yes
+		set_technology = { militia_tech = 1 popup = no }
+		add_ideas = wif_ssr_ss_army
+	}
+
+	# Heydrich leads it.
+	if = {
+		limit = { has_character = GER_reinhard_heydrich }
+		GER_reinhard_heydrich = { set_nationality = SSR }
+	}
+	else_if = {
+		limit = { NOT = { any_country = { has_character = GER_reinhard_heydrich } } }
+		SSR = { recruit_character = GER_reinhard_heydrich }
+	}
+	SSR = {
+		if = {
+			limit = { has_character = GER_reinhard_heydrich }
+			GER_reinhard_heydrich = {
+				set_portraits = {
+					civilian = {
+						large = GFX_portrait_wif_reinhard_heydrich
+						small = GFX_portrait_wif_reinhard_heydrich_small
+					}
+				}
+			}
+			add_country_leader_role = {
+				character = GER_reinhard_heydrich
+				promote_leader = yes
+				country_leader = {
+					ideology = nazism
+					traits = { }
+				}
+			}
+		}
+	}
+
+	# A tenth of the Reich's rifles.
+	set_temp_variable = { wif_cw_rifles = num_equipment@infantry_equipment }
+	multiply_temp_variable = { wif_cw_rifles = 0.1 }
+	round_temp_variable = wif_cw_rifles
+	set_temp_variable = { wif_cw_rifles_neg = wif_cw_rifles }
+	multiply_temp_variable = { wif_cw_rifles_neg = -1 }
+	add_equipment_to_stockpile = { type = infantry_equipment amount = var:wif_cw_rifles_neg }
+	SSR = { add_equipment_to_stockpile = { type = infantry_equipment amount = var:wif_cw_rifles producer = GER } }
+
+	# Its own SS template - not locked, so it can be trained and edited.
+	SSR = {
+		division_template = {
+			name = "SS-Infanterie-Division"
+			priority = 2
+			division_names_group = WIF_GER_SS_MIL
+			override_model = GER_militia
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+				artillery_brigade = { x = 3 y = 0 }
+			}
+			support = {
+				artillery = { x = 0 y = 0 }
+				anti_tank = { x = 0 y = 1 }
+				anti_air = { x = 0 y = 2 }
+				recon = { x = 0 y = 3 }
+			}
+		}
+		random_owned_state = {
+			prioritize = { 42 }
+			create_unit = {
+				division = "division_template = \"SS-Infanterie-Division\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+				owner = SSR
+				count = 10
+			}
+		}
+	}
+
+	# The Fuhrer's guard has no Fuhrer to guard: it joins the SS Remnant.
+	set_temp_variable = { wif_cw_guard = 0 }
+	if = {
+		limit = { has_template = "Leibstandarte Division" }
+		set_temp_variable = { wif_cw_before = num_divisions }
+		delete_unit_template_and_units = { division_template = "Leibstandarte Division" disband = no }
+		add_to_temp_variable = { wif_cw_guard = wif_cw_before }
+		subtract_from_temp_variable = { wif_cw_guard = num_divisions }
+	}
+	while_loop_effect = {
+		limit = { check_variable = { wif_cw_guard > 0 } }
+		SSR = {
+			random_owned_state = {
+				prioritize = { 42 }
+				create_unit = {
+					division = "division_template = \"SS-Infanterie-Division\" start_experience_factor = 1 start_equipment_factor = 1.0"
+					owner = SSR
+					count = 1
+				}
+			}
+		}
+		subtract_from_temp_variable = { wif_cw_guard = 1 }
+	}
+
+	# The SS generals still in Germany.
+	every_unit_leader = {
+		limit = { wif_is_ss_general = yes }
+		set_nationality = SSR
+	}
+}
+
+# Albert Speer's Germany: the industrial West, under the imperial tricolour.
+wif_cw_form_speers_germany = {
+	SPG = {
+		if = {
+			limit = { owns_state = 57 }
+			set_capital = { state = 57 }
+		}
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = { fascism = 60 neutrality = 30 democratic = 10 communism = 0 }
+		set_stability = 0.55
+		set_war_support = 0.5
+		wif_cw_successor_common = yes
+	}
+	if = {
+		limit = { wif_ger_speer_in_inner_circle = yes }
+		GER_remove_speer_effects = yes
+	}
+	if = {
+		limit = { has_character = GER_albert_speer }
+		GER_albert_speer = { set_nationality = SPG }
+	}
+	SPG = {
+		if = {
+			limit = { has_character = GER_albert_speer }
+			add_country_leader_role = {
+				character = GER_albert_speer
+				promote_leader = yes
+				country_leader = {
+					ideology = nazism
+					traits = { }
+				}
+			}
+		}
+	}
+}
+
+# Hermann Goring's Germany: the South and Austria, and most of the Luftwaffe.
+wif_cw_form_gorings_germany = {
+	GOR = {
+		if = {
+			limit = { owns_state = 52 }
+			set_capital = { state = 52 }
+		}
+		set_politics = {
+			ruling_party = fascism
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = { fascism = 75 neutrality = 25 democratic = 0 communism = 0 }
+		set_stability = 0.5
+		set_war_support = 0.6
+		wif_cw_successor_common = yes
+	}
+	if = {
+		limit = { has_character = GER_hermann_goring }
+		GER_hermann_goring = { set_nationality = GOR }
+	}
+	GOR = {
+		if = {
+			limit = { has_character = GER_hermann_goring }
+			add_country_leader_role = {
+				character = GER_hermann_goring
+				promote_leader = yes
+				country_leader = {
+					ideology = nazism
+					traits = { }
+				}
+			}
+		}
+	}
+}
+
+# The Deutsche Wehrmacht: the East, led by the general staff, with Rommel and
+# Manstein.
+wif_cw_form_deutsche_wehrmacht = {
+	DWM = {
+		if = {
+			limit = { owns_state = 763 }
+			set_capital = { state = 763 }
+		}
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = { neutrality = 80 fascism = 20 democratic = 0 communism = 0 }
+		set_stability = 0.6
+		set_war_support = 0.8
+		wif_cw_successor_common = yes
+		recruit_character = wif_dwm_general_staff
+		add_country_leader_role = {
+			character = wif_dwm_general_staff
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				traits = { }
+			}
+		}
+	}
+	if = {
+		limit = { has_character = GER_erwin_rommel }
+		GER_erwin_rommel = { set_nationality = DWM }
+	}
+	if = {
+		limit = { has_character = GER_erich_von_manstein }
+		GER_erich_von_manstein = { set_nationality = DWM }
+	}
+}
+
+# Every army general still German, bar the SS (gone already), goes at random
+# to Bormann, Speer, Goring or the Wehrmacht. Admirals go to Oslo.
+wif_cw_share_out_generals = {
+	every_unit_leader = {
+		limit = { is_army_leader = yes }
+		random_list = {
+			25 = { }
+			25 = {
+				modifier = { factor = 0 NOT = { country_exists = SPG } }
+				set_nationality = SPG
+			}
+			25 = {
+				modifier = { factor = 0 NOT = { country_exists = GOR } }
+				set_nationality = GOR
+			}
+			25 = {
+				modifier = { factor = 0 NOT = { country_exists = DWM } }
+				set_nationality = DWM
+			}
+		}
+	}
+	if = {
+		limit = { country_exists = GAG }
+		every_unit_leader = {
+			limit = { is_navy_leader = yes }
+			set_nationality = GAG
+		}
+	}
+}
+
+
+wif_ger_collapse_of_the_reich = {
+	set_global_flag = wif_ger_reich_collapsed
+	set_country_flag = wif_ger_reich_collapsed
+	save_event_target_as = wif_tech_donor
+
+	# ---- 1. The Protectorate of Bohemia and Moravia ------------------------
+	# Before Oslo, so a surviving Czechoslovakia is set free as the
+	# Protectorate instead of being handed to Oslo with the other subjects.
+	wif_cw_form_protectorate = yes
+
+	# ---- 2. Oslo: the German Administrative Government --------------------
+	# It forms first, so the navy, the faction and the subjects are handed
+	# over before anything is split. Oslofjord if it is German or held by a
+	# German subject; Holstein otherwise, which then drops out of Speer's share.
+	if = {
+		limit = {
+			110 = {
+				OR = {
+					is_owned_by = GER
+					owner = { is_subject_of = GER }
+				}
+			}
+		}
+		110 = { transfer_state_to = GAG }
+	}
+	else_if = {
+		limit = { 58 = { is_owned_by = GER } }
+		58 = {
+			clr_state_flag = wif_cw_speer
+			set_demilitarized_zone = no
+			transfer_state_to = GAG
+		}
+	}
+	if = {
+		limit = { country_exists = GAG }
+		wif_cw_form_oslo_government = yes
+	}
+
+	# ---- 3. The SS Remnant -------------------------------------------------
+	every_state = {
+		limit = { has_state_flag = wif_cw_ss is_owned_by = GER }
+		transfer_state_to = SSR
+	}
+	if = {
+		limit = { country_exists = SSR }
+		wif_cw_form_ss_remnant = yes
+	}
+
+	# ---- 4. Speer's Germany ------------------------------------------------
+	every_state = {
+		limit = { has_state_flag = wif_cw_speer is_owned_by = GER }
+		transfer_state_to = SPG
+	}
+	if = {
+		limit = { country_exists = SPG }
+		wif_cw_form_speers_germany = yes
+		transfer_units_fraction = {
+			target = SPG
+			size = 0
+			army_ratio = 0.20
+			stockpile_ratio = 0.20
+			air_ratio = 0.10
+			navy_ratio = 0
+			keep_unit_leaders_trigger = { always = yes }
+		}
+	}
+
+	# ---- 5. Goring's Germany -----------------------------------------------
+	every_state = {
+		limit = { has_state_flag = wif_cw_goring is_owned_by = GER }
+		transfer_state_to = GOR
+	}
+	if = {
+		limit = { country_exists = GOR }
+		wif_cw_form_gorings_germany = yes
+		transfer_units_fraction = {
+			target = GOR
+			size = 0
+			army_ratio = 0.25
+			stockpile_ratio = 0.25
+			air_ratio = 0.667
+			navy_ratio = 0
+			keep_unit_leaders_trigger = { always = yes }
+		}
+	}
+
+	# ---- 6. The Deutsche Wehrmacht -----------------------------------------
+	every_state = {
+		limit = { has_state_flag = wif_cw_wehrmacht is_owned_by = GER }
+		transfer_state_to = DWM
+	}
+	if = {
+		limit = { country_exists = DWM }
+		wif_cw_form_deutsche_wehrmacht = yes
+		transfer_units_fraction = {
+			target = DWM
+			size = 0
+			army_ratio = 0.583
+			stockpile_ratio = 0.583
+			air_ratio = 0.333
+			navy_ratio = 0
+			keep_unit_leaders_trigger = { always = yes }
+		}
+	}
+
+	# ---- 7. The generals ---------------------------------------------------
+	wif_cw_share_out_generals = yes
+
+	# ---- 8. Bormann's German Reich: what is left ---------------------------
+	wif_ger_strip_spirits = yes
+	if = {
+		limit = { has_cosmetic_tag = GER_greater_german_reich }
+		drop_cosmetic_tag = yes
+	}
+	set_politics = {
+		ruling_party = fascism
+		elections_allowed = no
+	}
+	set_rule = {
+		can_join_factions = no
+		can_create_factions = no
+		can_send_volunteers = no
+		can_puppet = no
+		can_guarantee_other_ideologies = no
+	}
+	set_country_flag = wif_ger_cw_belligerent
+
+	# Nobody fights over a demilitarised zone.
+	every_state = {
+		limit = {
+			OR = {
+				has_state_flag = wif_cw_ss
+				has_state_flag = wif_cw_bormann
+				has_state_flag = wif_cw_goring
+				has_state_flag = wif_cw_speer
+				has_state_flag = wif_cw_wehrmacht
+			}
+		}
+		set_demilitarized_zone = no
+	}
+}
+
+# Ten days after the collapse, every one of the five declares war on every
+# other. The Protectorate and Oslo stay out.
+wif_cw_declare_the_civil_war = {
+	set_global_flag = wif_ger_civil_war_begun
+	every_country = {
+		limit = { has_country_flag = wif_ger_cw_belligerent }
+		save_event_target_as = wif_cw_attacker
+		every_other_country = {
+			limit = {
+				has_country_flag = wif_ger_cw_belligerent
+				NOT = { has_war_with = event_target:wif_cw_attacker }
+			}
+			event_target:wif_cw_attacker = {
+				declare_war_on = { target = PREV type = annex_everything }
+			}
+		}
+	}
+}
+
+# Protectorate scope, monthly: once only one of the five is left, the Sudeten
+# lands go back to it - or, if the Protectorate was only formed for the war,
+# the winner annexes it whole.
+wif_cw_protectorate_check_winner = {
+	if = {
+		limit = {
+			has_country_flag = wif_ger_protectorate
+			has_global_flag = wif_ger_civil_war_begun
+			NOT = { has_global_flag = wif_ger_civil_war_won }
+		}
+		set_temp_variable = { wif_cw_left = 0 }
+		every_country = {
+			limit = { has_country_flag = wif_ger_cw_belligerent }
+			add_to_temp_variable = { wif_cw_left = 1 }
+		}
+		if = {
+			limit = { check_variable = { wif_cw_left < 2 } }
+			set_global_flag = wif_ger_civil_war_won
+			if = {
+				limit = { any_country = { has_country_flag = wif_ger_cw_belligerent } }
+				random_country = {
+					limit = { has_country_flag = wif_ger_cw_belligerent }
+					save_event_target_as = wif_cw_winner
+				}
+				if = {
+					limit = { has_country_flag = wif_ger_protectorate_formed }
+					event_target:wif_cw_winner = { annex_country = { target = PREV transfer_troops = yes } }
+				}
+				else = {
+					every_owned_state = {
+						limit = { OR = { state = 69 state = 74 } }
+						transfer_state_to = event_target:wif_cw_winner
+					}
+				}
+			}
+		}
+	}
+}

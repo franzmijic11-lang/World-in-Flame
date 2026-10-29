@@ -1,0 +1,7 @@
+# The successors of the Reich when it collapses (events/wif_ger_collapse.txt).
+SSR = "countries/SS Remnant.txt"
+SPG = "countries/Speers Germany.txt"
+GOR = "countries/Goerings Germany.txt"
+DWM = "countries/Deutsche Wehrmacht.txt"
+BMP = "countries/Reichsprotektorat Boehmen und Maehren.txt"
+GAG = "countries/German Administrative Government.txt"

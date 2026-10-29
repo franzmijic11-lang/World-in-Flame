@@ -1,0 +1,44 @@
+# Germany's road to the civil war (tools/gen_ger_road_to_civil_war.py).
+
+# State scope: the lands Finish the Purification of Our Lands cores - the
+# states its settlement, deportation and Blood Before Labour work on.
+wif_ger_is_annexed_state = {
+	OR = {
+		state = 912	# Southern Jutland
+		state = 86	# Poznan
+		state = 85	# Danzig
+		state = 807	# Gdynia
+		state = 188	# Memel
+		state = 69	# North Sudetenland
+		state = 972	# South Sudetenland
+		state = 74	# Sudeten Silesia
+		state = 4	# Lower Austria
+		state = 152	# Upper Austria
+		state = 153	# Tyrol
+		state = 848	# Vorarlberg
+		state = 975	# Burgenland
+		state = 976	# Steiermark-Karnten
+		state = 28	# Alsace-Lorraine
+		state = 8	# Luxembourg
+		state = 762	# Katowice
+		state = 87	# Lodz
+		state = 98	# Plock
+		state = 97	# Bialystok
+	}
+}
+
+# Country scope: Hitler still rules - not retired by Himmler, not dead.
+wif_ger_hitler_rules = {
+	NOT = { has_country_flag = wif_ger_himmler_is_fuhrer }
+	NOT = { has_country_flag = wif_ger_fuhrer_dead }
+}
+
+# State scope: no faction has claimed it yet in the collapse of the Reich
+# (common/scripted_effects/zz_wif_ger_collapse.txt).
+wif_cw_state_unclaimed = {
+	NOT = { has_state_flag = wif_cw_ss }
+	NOT = { has_state_flag = wif_cw_bormann }
+	NOT = { has_state_flag = wif_cw_goring }
+	NOT = { has_state_flag = wif_cw_speer }
+	NOT = { has_state_flag = wif_cw_wehrmacht }
+}

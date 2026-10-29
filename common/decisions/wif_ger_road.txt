@@ -1,0 +1,213 @@
+# Germany's road to the civil war (tools/gen_ger_road_to_civil_war.py).
+# Categories: common/decisions/categories/wif_ger_road_categories.txt.
+
+wif_ger_reich_divided_category = {
+
+	# Audience with the Fuhrer: push one faction of the succession contest.
+	# Opened by Government by Audience; the contest itself starts with The
+	# Succession Question, but support bought before it is kept.
+	wif_ger_audience_party = {
+		icon = generic_political_discourse
+		visible = {
+			has_completed_focus = GER_government_by_audience
+			wif_ger_hitler_rules = yes
+		}
+		cost = 50
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_sc_party_plus_5_tt
+			hidden_effect = { add_to_variable = { wif_ger_sc_party = 5 } }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	wif_ger_audience_propaganda = {
+		icon = generic_speech
+		visible = {
+			has_completed_focus = GER_government_by_audience
+			wif_ger_hitler_rules = yes
+		}
+		cost = 50
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_sc_propaganda_plus_5_tt
+			hidden_effect = { add_to_variable = { wif_ger_sc_propaganda = 5 } }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	wif_ger_audience_luftwaffe = {
+		icon = generic_air
+		visible = {
+			has_completed_focus = GER_government_by_audience
+			wif_ger_hitler_rules = yes
+		}
+		cost = 50
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_sc_luftwaffe_plus_5_tt
+			hidden_effect = { add_to_variable = { wif_ger_sc_luftwaffe = 5 } }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	wif_ger_audience_economy = {
+		icon = generic_industry
+		visible = {
+			has_completed_focus = GER_government_by_audience
+			wif_ger_hitler_rules = yes
+		}
+		available = {
+			wif_ger_speer_in_inner_circle = yes
+		}
+		cost = 50
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_sc_economy_plus_5_tt
+			hidden_effect = { add_to_variable = { wif_ger_sc_economy = 5 } }
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# The generals ask for the Fuhrer's ear, to talk him out of his guard.
+	wif_ger_audience_army = {
+		icon = generic_army_support
+		visible = {
+			has_completed_focus = GER_government_by_audience
+			has_country_flag = wif_ger_distrust_shown
+			wif_ger_hitler_rules = yes
+		}
+		available = {
+			NOT = { has_country_flag = wif_ger_army_waits }
+		}
+		cost = 50
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_distrust_minus_5_tt
+			hidden_effect = {
+				set_temp_variable = { wif_dist = -5 }
+				wif_ger_add_distrust = yes
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+wif_ger_purification_category = {
+
+	# Settlers from the Old Reich: once per annexed state, 5% of a
+	# neighbouring Old Reich state's population moves in. Worked in thousands
+	# in each state's own scope, like wif_ger_purify_state_population.
+	wif_ger_settle_annexed_state = {
+		icon = generic_civil_support
+
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+
+		target_trigger = {
+			FROM = {
+				wif_ger_is_annexed_state = yes
+				is_owned_by = ROOT
+				NOT = { has_state_flag = wif_ger_settled }
+				any_neighbor_state = {
+					is_owned_by = ROOT
+					is_core_of = ROOT
+					NOT = { wif_ger_is_annexed_state = yes }
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = GER_settlers_from_the_old_reich
+		}
+
+		cost = 25
+
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_settle_annexed_state_tt
+			custom_effect_tooltip = wif_ger_road_cg_plus_1_tt
+			hidden_effect = {
+				FROM = {
+					set_state_flag = wif_ger_settled
+					set_temp_variable = { wif_settlers = 0 }
+					random_neighbor_state = {
+						limit = {
+							is_owned_by = ROOT
+							is_core_of = ROOT
+							NOT = { wif_ger_is_annexed_state = yes }
+						}
+						set_temp_variable = { wif_settlers = state_population_k }
+						multiply_temp_variable = { wif_settlers = 50 } # thousands -> people, x0.05
+						set_temp_variable = { wif_settlers_neg = wif_settlers }
+						multiply_temp_variable = { wif_settlers_neg = -1 }
+						add_manpower = var:wif_settlers_neg
+					}
+					add_manpower = var:wif_settlers
+				}
+				set_variable = { wif_ger_cg_cut = 0.01 }
+				wif_ger_facade_raise = yes
+			}
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	# Deportations to the East: once per annexed state, a quarter of its
+	# population is sent into Reichskommissariat Ostland or Ukraine.
+	wif_ger_deport_annexed_state = {
+		icon = generic_police_action
+
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+
+		target_trigger = {
+			FROM = {
+				wif_ger_is_annexed_state = yes
+				is_owned_by = ROOT
+				NOT = { has_state_flag = wif_ger_deported }
+			}
+		}
+
+		visible = {
+			has_completed_focus = GER_deportations_to_the_east
+			NOT = { has_completed_focus = GER_labour_before_blood }
+		}
+
+		available = {
+			any_country = {
+				OR = { tag = RKO tag = RKU }
+				is_subject_of = ROOT
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			custom_effect_tooltip = wif_ger_deport_annexed_state_tt
+			custom_effect_tooltip = wif_ger_road_rate_plus_0_05_tt
+			hidden_effect = {
+				FROM = {
+					set_state_flag = wif_ger_deported
+					set_temp_variable = { wif_deported = state_population_k }
+					multiply_temp_variable = { wif_deported = 250 } # thousands -> people, x0.25
+					set_temp_variable = { wif_deported_neg = wif_deported }
+					multiply_temp_variable = { wif_deported_neg = -1 }
+					add_manpower = var:wif_deported_neg
+				}
+				random_country = {
+					limit = {
+						OR = { tag = RKO tag = RKU }
+						is_subject_of = ROOT
+					}
+					capital_scope = { add_manpower = var:wif_deported }
+					add_timed_idea = { idea = wif_rk_deportees days = 365 }
+				}
+				add_to_variable = { wif_ger_facade_rate_mod = 0.0005 }
+				wif_ger_facade_recalc_rate = yes
+			}
+			add_named_threat = { threat = 1 name = wif_ger_deport_annexed_state }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+}

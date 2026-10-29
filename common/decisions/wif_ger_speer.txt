@@ -21,9 +21,23 @@ wif_ger_economic_council_category = {
 			RKO = { is_subject_of = GER }
 		}
 
+		# 50, +25 once the SS has its Economic Empire, +25 once Bormann holds
+		# the keys to the Fuhrer's desk.
 		custom_cost_trigger = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				has_political_power > 99.99
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				has_political_power > 74.99
 			}
 			else = {
@@ -36,7 +50,19 @@ wif_ger_economic_council_category = {
 
 		complete_effect = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				add_political_power = -100
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				add_political_power = -75
 			}
 			else = {
@@ -72,9 +98,23 @@ wif_ger_economic_council_category = {
 			RKU = { is_subject_of = GER }
 		}
 
+		# 50, +25 once the SS has its Economic Empire, +25 once Bormann holds
+		# the keys to the Fuhrer's desk.
 		custom_cost_trigger = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				has_political_power > 99.99
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				has_political_power > 74.99
 			}
 			else = {
@@ -87,7 +127,19 @@ wif_ger_economic_council_category = {
 
 		complete_effect = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				add_political_power = -100
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				add_political_power = -75
 			}
 			else = {
@@ -123,9 +175,23 @@ wif_ger_economic_council_category = {
 			RKM = { is_subject_of = GER }
 		}
 
+		# 50, +25 once the SS has its Economic Empire, +25 once Bormann holds
+		# the keys to the Fuhrer's desk.
 		custom_cost_trigger = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				has_political_power > 99.99
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				has_political_power > 74.99
 			}
 			else = {
@@ -138,7 +204,19 @@ wif_ger_economic_council_category = {
 
 		complete_effect = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				add_political_power = -100
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				add_political_power = -75
 			}
 			else = {
@@ -174,9 +252,23 @@ wif_ger_economic_council_category = {
 			RKK = { is_subject_of = GER }
 		}
 
+		# 50, +25 once the SS has its Economic Empire, +25 once Bormann holds
+		# the keys to the Fuhrer's desk.
 		custom_cost_trigger = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				has_political_power > 99.99
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				has_political_power > 74.99
 			}
 			else = {
@@ -189,7 +281,19 @@ wif_ger_economic_council_category = {
 
 		complete_effect = {
 			if = {
-				limit = { has_idea = wif_ger_ss_enterprises }
+				limit = {
+					has_idea = wif_ger_ss_enterprises
+					has_country_flag = wif_ger_bormann_keys
+				}
+				add_political_power = -100
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_idea = wif_ger_ss_enterprises
+						has_country_flag = wif_ger_bormann_keys
+					}
+				}
 				add_political_power = -75
 			}
 			else = {

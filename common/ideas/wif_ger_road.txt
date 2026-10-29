@@ -1,0 +1,263 @@
+# Germany's road from Totaler Sieg to the civil war
+# (tools/gen_ger_road_to_civil_war.py), and the SS Army of the SS remnant
+# that rises when the Reich collapses (events/wif_ger_collapse.txt).
+ideas = {
+	country = {
+		# ------------------------------------------------------------------
+		# Hitler's decline
+		# ------------------------------------------------------------------
+
+		# Government by Audience. Gone when the Fuhrer dies.
+		wif_ger_government_by_audience = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_adolf_hitler
+			modifier = {
+				political_power_gain = -0.10
+			}
+		}
+
+		# Goring's Last Ambition.
+		wif_ger_gorings_ambition = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_airforce
+			modifier = {
+				experience_gain_air_factor = -0.10
+			}
+		}
+
+		# The Second Stroke. Gone when the Fuhrer dies.
+		wif_ger_second_stroke = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_hilter_m
+			modifier = {
+				political_power_gain = -0.15
+			}
+		}
+
+		# The Berghof Court. Gone when the Fuhrer dies.
+		wif_ger_berghof_court = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_hilter_f
+			modifier = {
+				political_power_gain = -0.10
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# The army and the loyal SS remnant
+		# ------------------------------------------------------------------
+
+		# A Guard of His Own.
+		wif_ger_the_fuhrers_guard = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_josef_dietrich
+			modifier = {
+				modifier_army_sub_unit_militia_max_org_factor = 0.10
+			}
+		}
+
+		# Keep the Guard Out of the Barracks: the guard takes it as an insult.
+		wif_ger_the_fuhrers_guard_2 = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_josef_dietrich
+			modifier = {
+				modifier_army_sub_unit_militia_max_org_factor = 0.10
+				modifier_army_sub_unit_militia_attack_factor = 0.05
+			}
+		}
+
+		# Two Armies in One Reich.
+		wif_ger_two_armies = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_german_military
+			modifier = {
+				army_org_factor = -0.05
+			}
+		}
+
+		# Purge the Signatories. 365 days.
+		wif_ger_purged_officer_corps = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_army
+			modifier = {
+				army_org_factor = -0.10
+				army_attack_factor = -0.05
+			}
+		}
+
+		# Crush the Black Order. 365 days.
+		wif_ger_crushing_the_black_order = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_army
+			modifier = {
+				army_attack_factor = 0.10
+				army_org_factor = 0.05
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# Speer
+		# ------------------------------------------------------------------
+
+		# Speer's Emergency Programme. 365 days.
+		wif_ger_emergency_signatures = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_mefo_bills
+			modifier = {
+				political_power_gain = -0.10
+			}
+		}
+
+		# Speer Stays at His Desk.
+		wif_ger_speer_blamed = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_mefo_bills
+			modifier = {
+				political_power_gain = -0.10
+			}
+		}
+
+		# The Economy in Free Fall.
+		wif_ger_economy_in_free_fall = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_economy_of_conquest
+			modifier = {
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# Finish the Purification
+		# ------------------------------------------------------------------
+
+		# The Deutsche Volksliste.
+		wif_ger_volksliste = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+			modifier = {
+				conscription_factor = 0.05
+			}
+		}
+
+		# Blood Before Labour. The SS grows; Speer pays.
+		wif_ger_blood_before_labour = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_paul_hausser
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.05
+				modifier_army_sub_unit_militia_defence_factor = 0.05
+				political_power_gain = -0.10
+			}
+		}
+
+		# Labour Before Blood. The SS is passed over.
+		wif_ger_labour_before_blood = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_paul_hausser
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = -0.05
+				modifier_army_sub_unit_militia_defence_factor = -0.05
+			}
+		}
+
+		# Labour Before Blood. 180 days.
+		wif_ger_party_calls_it_betrayal = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_morale_bonus
+			modifier = {
+				stability_factor = -0.10
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# Wonder weapons
+		# ------------------------------------------------------------------
+
+		wif_ger_wonder_weapons_office = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_wunderwaffen
+			modifier = {
+				special_project_speed_factor = 0.15
+			}
+		}
+
+		# The Reich Space Office replaces the office above.
+		wif_ger_reich_space_office = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_rocket_bonus
+			modifier = {
+				special_project_speed_factor = 0.25
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# The Reichskommissariate - Deportations to the East. 365 days.
+		# ------------------------------------------------------------------
+		wif_rk_deportees = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_morale_bonus
+			modifier = {
+				stability_factor = -0.10
+			}
+		}
+
+		# ------------------------------------------------------------------
+		# The SS remnant (SSR) after the collapse
+		# ------------------------------------------------------------------
+
+		# There is no militia breakthrough modifier; SS divisions are militia
+		# almost to a man, so the army-wide factor stands in for it.
+		wif_ssr_ss_army = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = GER_felix_steiner
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.30
+				modifier_army_sub_unit_militia_defence_factor = 0.30
+				army_attack_factor = -0.20
+				army_defence_factor = -0.20
+				breakthrough_factor = 0.10
+			}
+		}
+	}
+}

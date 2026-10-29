@@ -94,8 +94,6 @@
  GER_speers_final_report:0 "Speer's Final Report"
  GER_speers_final_report_desc:0 "Speer writes down what the numbers have said all along. The East has delayed the collapse, not prevented it. Someone has to decide whether the Führer reads it."
  GER_speers_final_report_tt:0 "Needs any one branch of Speer's tree finished.\nOpens the last decision of Speer's ministry."
- GER_keep_up_the_facade:0 "Keep Up the Facade"
- GER_keep_up_the_facade_desc:0 "The report goes into a drawer. The newsreels go on. The Reich will spend whatever it takes to look rich for as long as it can, and then it will spend what it does not have."
  GER_keep_up_the_facade_tt:0 "§YFacade Economy§! growth §Rdoubled§! for good.\n§RThe collapse is now only a matter of time.§!"
 
  # --- Himmler -------------------------------------------------------------
@@ -150,7 +148,7 @@
  # --- Decisions -----------------------------------------------------------
  wif_ger_economic_council_category:0 "Economic Council"
  wif_ger_economic_council_category_desc:0 "Speer's ministry sets the quotas the Reichskommissariate must deliver. Each requisition buys the Reich a little time, and costs the East a great deal more."
- wif_ger_quota_cost:0 "£pol_power §Y50§! (§Y75§! with the SS Economic Empire)"
+ wif_ger_quota_cost:0 "£pol_power §Y50§! (§Y+25§! with the SS Economic Empire, §Y+25§! once Bormann Holds the Keys)"
  wif_ger_requisition_rko:0 "Requisition from Ostland"
  wif_ger_requisition_rko_desc:0 "Take this year's quota from Reichskommissariat Ostland."
  wif_ger_requisition_rku:0 "Requisition from the Ukraine"

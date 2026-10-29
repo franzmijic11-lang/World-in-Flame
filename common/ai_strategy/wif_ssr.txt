@@ -1,0 +1,19 @@
+# The SS Remnant (events/wif_ger_collapse.txt) fights with militia: half again
+# the AI's usual wish for militia divisions and battalions.
+wif_ssr_militia_army = {
+	allowed = {
+		original_tag = SSR
+	}
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = militias
+		value = 50
+	}
+}

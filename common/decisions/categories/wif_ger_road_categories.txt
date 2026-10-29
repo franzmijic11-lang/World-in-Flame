@@ -1,0 +1,38 @@
+# Germany's road to the civil war. See common/decisions/wif_ger_road.txt.
+
+# The Reich Divided: the Army-SS distrust meter and the succession contest,
+# and the Audience with the Fuhrer decisions. Shown from Government by
+# Audience until the Reich collapses.
+wif_ger_reich_divided_category = {
+	icon = GFX_decision_category_generic_political_actions
+
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		has_completed_focus = GER_government_by_audience
+		NOT = { has_country_flag = wif_ger_reich_collapsed }
+	}
+
+	priority = 90
+}
+
+# Settlement and deportation in the annexed lands, opened by Settlers from the
+# Old Reich and Deportations to the East.
+wif_ger_purification_category = {
+	icon = GFX_decision_category_ger_reichskommissariats
+
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = GER_settlers_from_the_old_reich
+			has_completed_focus = GER_deportations_to_the_east
+		}
+	}
+
+	priority = 70
+}

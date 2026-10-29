@@ -1,0 +1,149 @@
+add_namespace = wif_ger_road
+
+# Germany's road to the civil war (tools/gen_ger_road_to_civil_war.py). The
+# events that complete the self-working focuses are in wif_ger_road_auto.txt;
+# these are the ones the player sees.
+
+# Dr Morell's Injections: the Fuhrer overrules a minister. One month in four,
+# from wif_ger_road_monthly.
+country_event = {
+	id = wif_ger_road.1
+	title = wif_ger_road.1.t
+	desc = wif_ger_road.1.d
+	picture = GFX_report_event_GER_hitler
+
+	is_triggered_only = yes
+
+	trigger = {
+		wif_ger_hitler_rules = yes
+	}
+
+	option = {
+		name = wif_ger_road.1.a
+		ai_chance = { factor = 50 }
+		add_political_power = -25
+	}
+
+	option = {
+		name = wif_ger_road.1.b
+		ai_chance = { factor = 50 }
+		add_stability = -0.02
+	}
+}
+
+# The Zossen Circle: the SD hears rumours.
+country_event = {
+	id = wif_ger_road.3
+	title = wif_ger_road.3.t
+	desc = wif_ger_road.3.d
+	picture = GFX_report_event_german_inspect_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_road.3.a
+	}
+}
+
+# Gestapo Files on the General Staff.
+country_event = {
+	id = wif_ger_road.4
+	title = wif_ger_road.4.t
+	desc = wif_ger_road.4.d
+	picture = GFX_report_event_bunker_01
+
+	is_triggered_only = yes
+
+	# Arrest three of the named generals.
+	option = {
+		name = wif_ger_road.4.a
+		ai_chance = { factor = 50 }
+		add_political_power = 50
+		custom_effect_tooltip = wif_ger_road.4.a_tt
+		hidden_effect = {
+			random_unit_leader = {
+				limit = {
+					is_army_leader = yes
+					NOT = { wif_is_ss_general = yes }
+				}
+				retire = yes
+			}
+			random_unit_leader = {
+				limit = {
+					is_army_leader = yes
+					NOT = { wif_is_ss_general = yes }
+				}
+				retire = yes
+			}
+			random_unit_leader = {
+				limit = {
+					is_army_leader = yes
+					NOT = { wif_is_ss_general = yes }
+				}
+				retire = yes
+			}
+		}
+		custom_effect_tooltip = wif_ger_distrust_plus_15_tt
+		hidden_effect = {
+			set_temp_variable = { wif_dist = 15 }
+			wif_ger_add_distrust = yes
+		}
+	}
+
+	# Keep the files closed - for now.
+	option = {
+		name = wif_ger_road.4.b
+		ai_chance = { factor = 50 }
+		custom_effect_tooltip = wif_ger_distrust_plus_5_tt
+		hidden_effect = {
+			set_temp_variable = { wif_dist = 5 }
+			wif_ger_add_distrust = yes
+		}
+	}
+}
+
+# The army moves: distrust has reached 100 before Germany on the Brink.
+# Fired by wif_ger_check_army_moves.
+country_event = {
+	id = wif_ger_road.5
+	title = wif_ger_road.5.t
+	desc = wif_ger_road.5.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_road.5.a
+		custom_effect_tooltip = wif_ger_road.5.a_tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = GER_germany_on_the_brink_in_progress_flag }
+				deactivate_shine_on_focus = GER_germany_on_the_brink
+				clr_country_flag = GER_germany_on_the_brink_in_progress_flag
+			}
+			complete_national_focus = GER_germany_on_the_brink
+			wif_ger_road_try_all = yes
+		}
+	}
+}
+
+# Fuhrer Found Dead - for the whole world. Fired by wif_ger_fuhrer_found_dead.
+news_event = {
+	id = wif_ger_road.6
+	title = wif_ger_road.6.t
+	desc = wif_ger_road.6.d
+	picture = GFX_news_event_generic_funeral
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wif_ger_road.6.a
+		trigger = { NOT = { tag = GER } }
+	}
+
+	option = {
+		name = wif_ger_road.6.b
+		trigger = { tag = GER }
+	}
+}

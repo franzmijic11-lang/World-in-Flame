@@ -29,6 +29,8 @@ country_event = {
 		custom_effect_tooltip = wif_ger_himmler_coup_traitor_tt
 		hidden_effect = {
 			wif_osb_revolt = yes
+			set_country_flag = wif_ger_osb_revolted
+			wif_ger_road_try_all = yes
 		}
 	}
 
@@ -39,6 +41,8 @@ country_event = {
 		custom_effect_tooltip = wif_ger_himmler_coup_burgundy_tt
 		hidden_effect = {
 			wif_osb_satellite = yes
+			set_country_flag = wif_ger_osb_satellite
+			wif_ger_road_try_all = yes
 		}
 	}
 }

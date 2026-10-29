@@ -1377,3 +1377,29 @@ RKZ = {
 	color = rgb { 130 130 130 }
 	color_ui = rgb { 122 145 93 }
 }
+
+# The successors of the Reich (events/wif_ger_collapse.txt).
+SSR = {
+	color = rgb { 20 20 20 }
+	color_ui = rgb { 60 60 60 }
+}
+SPG = {
+	color = rgb { 165 165 165 }
+	color_ui = rgb { 205 205 205 }
+}
+GOR = {
+	color = rgb { 112 112 112 }
+	color_ui = rgb { 152 152 152 }
+}
+DWM = {
+	color = rgb { 188 188 188 }
+	color_ui = rgb { 228 228 228 }
+}
+BMP = {
+	color = rgb { 222 196 136 }
+	color_ui = rgb { 255 236 176 }
+}
+GAG = {
+	color = rgb { 96 104 122 }
+	color_ui = rgb { 136 144 162 }
+}

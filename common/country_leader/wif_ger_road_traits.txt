@@ -1,0 +1,20 @@
+# Germany's road to the civil war (tools/gen_ger_road_to_civil_war.py).
+leader_traits = {
+
+	# The Fuhrer's Tremor. Hitler.
+	wif_ger_failing_health = {
+		random = no
+		sprite = 13
+
+		political_power_factor = -0.10
+	}
+
+	# Fuhrer Found Dead. The Reichstag governs until the Party agrees on a
+	# successor; nobody can agree on anything.
+	wif_ger_paralysed_government = {
+		random = no
+		sprite = 13
+
+		political_power_factor = -0.20
+	}
+}

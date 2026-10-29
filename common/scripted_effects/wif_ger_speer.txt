@@ -125,6 +125,16 @@ wif_ger_facade_recalc_rate = {
 		}
 	}
 
+	# Tribute from the Order State, while Burgund is a German subject.
+	if = {
+		limit = {
+			has_country_flag = wif_ger_osb_tribute
+			country_exists = OSB
+			OSB = { is_subject_of = GER }
+		}
+		subtract_from_variable = { wif_ger_facade_rate = 0.0005 }
+	}
+
 	if = {
 		limit = { has_country_flag = wif_ger_facade_rate_doubled }
 		multiply_variable = { wif_ger_facade_rate = 2 }

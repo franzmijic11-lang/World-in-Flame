@@ -1,0 +1,173 @@
+add_namespace = wif_ger_collapse
+
+# The collapse of the Reich. Grand Funeral, Schemes of Power
+# (common/national_focus/wif_ger_victory.txt) fires .1 the day after it
+# completes. Each declaration marks and demilitarises a faction's regions;
+# two days after the last, .6 splits the Reich, and ten days later .7 starts
+# the war. Effects: common/scripted_effects/zz_wif_ger_collapse.txt.
+
+# SS Gather in the Rhine.
+country_event = {
+	id = wif_ger_collapse.1
+	title = wif_ger_collapse.1.t
+	desc = wif_ger_collapse.1.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { wif_cw_declare_ss = yes }
+	}
+
+	option = {
+		name = wif_ger_collapse.1.a
+		custom_effect_tooltip = wif_ger_collapse.1.a_tt
+		hidden_effect = { country_event = { id = wif_ger_collapse.2 days = 3 } }
+	}
+}
+
+# Reichstag Elects Bormann.
+country_event = {
+	id = wif_ger_collapse.2
+	title = wif_ger_collapse.2.t
+	desc = wif_ger_collapse.2.d
+	picture = GFX_report_event_german_reichstag_gathering
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { wif_cw_declare_bormann = yes }
+	}
+
+	option = {
+		name = wif_ger_collapse.2.a
+		custom_effect_tooltip = wif_ger_collapse.2.a_tt
+		if = {
+			limit = { has_character = GER_martin_bormann }
+			add_country_leader_role = {
+				character = GER_martin_bormann
+				promote_leader = yes
+				country_leader = {
+					ideology = nazism
+					traits = { }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = wif_ger_collapse.3 days = 3 } }
+	}
+}
+
+# Goring Rallies Support.
+country_event = {
+	id = wif_ger_collapse.3
+	title = wif_ger_collapse.3.t
+	desc = wif_ger_collapse.3.d
+	picture = GFX_report_event_generic_military_parade
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { wif_cw_declare_goring = yes }
+	}
+
+	option = {
+		name = wif_ger_collapse.3.a
+		custom_effect_tooltip = wif_ger_collapse.3.a_tt
+		hidden_effect = { country_event = { id = wif_ger_collapse.4 days = 3 } }
+	}
+}
+
+# Students and Factories Back Speer.
+country_event = {
+	id = wif_ger_collapse.4
+	title = wif_ger_collapse.4.t
+	desc = wif_ger_collapse.4.d
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { wif_cw_declare_speer = yes }
+	}
+
+	option = {
+		name = wif_ger_collapse.4.a
+		custom_effect_tooltip = wif_ger_collapse.4.a_tt
+		hidden_effect = { country_event = { id = wif_ger_collapse.5 days = 3 } }
+	}
+}
+
+# Wehrmacht Generals Mobilise East.
+country_event = {
+	id = wif_ger_collapse.5
+	title = wif_ger_collapse.5.t
+	desc = wif_ger_collapse.5.d
+	picture = GFX_report_event_german_inspect_troops
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { wif_cw_declare_wehrmacht = yes }
+	}
+
+	option = {
+		name = wif_ger_collapse.5.a
+		custom_effect_tooltip = wif_ger_collapse.5.a_tt
+		hidden_effect = { country_event = { id = wif_ger_collapse.6 days = 2 } }
+	}
+}
+
+# Collapse of the Reich.
+country_event = {
+	id = wif_ger_collapse.6
+	title = wif_ger_collapse.6.t
+	desc = wif_ger_collapse.6.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_collapse.6.a
+		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		hidden_effect = {
+			wif_ger_collapse_of_the_reich = yes
+			every_country = {
+				limit = { NOT = { tag = GER } }
+				news_event = { id = wif_ger_collapse.8 }
+			}
+			country_event = { id = wif_ger_collapse.7 days = 10 }
+		}
+	}
+}
+
+# The German Civil War: ten days after the split, everyone declares on
+# everyone.
+country_event = {
+	id = wif_ger_collapse.7
+	title = wif_ger_collapse.7.t
+	desc = wif_ger_collapse.7.d
+	picture = GFX_report_event_ger_civil_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_collapse.7.a
+		custom_effect_tooltip = wif_ger_collapse.7.a_tt
+		hidden_effect = { wif_cw_declare_the_civil_war = yes }
+	}
+}
+
+# The world hears of it.
+news_event = {
+	id = wif_ger_collapse.8
+	title = wif_ger_collapse.8.t
+	desc = wif_ger_collapse.8.d
+	picture = GFX_news_event_ger_civil_war
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wif_ger_collapse.8.a
+	}
+}
