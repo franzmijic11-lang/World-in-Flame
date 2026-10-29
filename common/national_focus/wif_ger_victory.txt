@@ -1301,55 +1301,11 @@ focus_tree = {
 	}
 
 	focus = {
-		id = GER_tell_the_fuhrer_the_truth
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = GER_speers_final_report }
-		mutually_exclusive = { focus = GER_keep_up_the_facade }
-
-		x = 76
-		y = 8
-		cost = 10	# 70 days
-
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = wif_ger_needs_speer_tt
-				wif_ger_speer_in_inner_circle = yes
-			}
-		}
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-
-		ai_will_do = {
-			factor = 10
-		}
-
-		completion_reward = {
-			custom_effect_tooltip = GER_tell_the_fuhrer_the_truth_tt
-			hidden_effect = {
-				set_variable = { GER_industrial_consumer_goods_factor = 0 }
-				set_country_flag = wif_ger_facade_rate_halved
-				wif_ger_facade_recalc_rate = yes
-			}
-			add_stability = -0.30
-			add_war_support = -0.20
-			custom_effect_tooltip = generic_skip_one_line_tt
-			custom_effect_tooltip = GER_tell_the_fuhrer_the_truth_speer_tt
-			hidden_effect = {
-				random_list = {
-					50 = { country_event = { id = wif_ger_speer.1 days = 3 } }
-					50 = { country_event = { id = wif_ger_speer.2 days = 3 } }
-				}
-			}
-		}
-	}
-
-	focus = {
 		id = GER_keep_up_the_facade
 		icon = GFX_focus_generic_steel
 		prerequisite = { focus = GER_speers_final_report }
-		mutually_exclusive = { focus = GER_tell_the_fuhrer_the_truth }
 
-		x = 80
+		x = 78
 		y = 8
 		cost = 10	# 70 days
 

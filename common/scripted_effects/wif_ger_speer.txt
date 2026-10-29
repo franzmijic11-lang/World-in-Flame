@@ -9,7 +9,7 @@
 #   0.005 (+0.5% a month)
 #   + wif_ger_facade_rate_mod      permanent changes, added by the focuses
 #   + while-conditions             recalculated every month, below
-#   x 0.5 / x 2                    Tell the Fuhrer the Truth / Keep Up the Facade
+#   x 2                            Keep Up the Facade
 #   never below 0.001              it can be slowed, never stopped
 #
 # Rates are fractions, like the factor itself: 0.001 is +0.1% a month.
@@ -125,10 +125,6 @@ wif_ger_facade_recalc_rate = {
 		}
 	}
 
-	if = {
-		limit = { has_country_flag = wif_ger_facade_rate_halved }
-		multiply_variable = { wif_ger_facade_rate = 0.5 }
-	}
 	if = {
 		limit = { has_country_flag = wif_ger_facade_rate_doubled }
 		multiply_variable = { wif_ger_facade_rate = 2 }
