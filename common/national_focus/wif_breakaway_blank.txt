@@ -44,11 +44,15 @@ focus_tree = {
 				tag = LOK
 				tag = SRG
 				tag = NRG
-				tag = FES
 				tag = SBA
-				tag = CSR
-				tag = WSM
 				tag = CRA
+				tag = ICA
+				tag = CLI
+				tag = SMG
+				tag = ANS
+				tag = YKT
+				tag = SSB
+				tag = NWA
 			}
 		}
 	}

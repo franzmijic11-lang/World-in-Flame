@@ -134,6 +134,11 @@ country_event = {
 #   event wif_debug.13   the SME collapses (loses its war, or collapses outright
 #                       if there is no war)
 #   event wif_debug.14   the SME wins its war
+#   event wif_debug.15   Yagoda rises: the West Siberian Marxists break away
+#                       (fires the real wif_sme.4 on the SME, so an SME player
+#                       still chooses between Moscow and Yagoda)
+#   event wif_debug.16   repairs Zhukov's portraits in a running game (he showed
+#                       the unknown portrait as ZWF's leader)
 # ---------------------------------------------------------------------------
 
 country_event = {
@@ -182,5 +187,38 @@ country_event = {
 
 	immediate = {
 		wif_sme_debug_force_victory = yes
+	}
+}
+
+country_event = {
+	id = wif_debug.15
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				country_exists = SME
+				SME = { NOT = { has_country_flag = wif_yagoda_risen } }
+			}
+			SME = { country_event = { id = wif_sme.4 } }
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.16
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = { has_character = SOV_georgy_zhukov }
+			set_portraits = {
+				character = SOV_georgy_zhukov
+				civilian = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
+				army = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
+			}
+		}
 	}
 }

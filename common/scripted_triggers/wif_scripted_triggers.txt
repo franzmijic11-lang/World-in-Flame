@@ -81,6 +81,16 @@ wif_is_russian_warlord = {
 		tag = RNS
 		tag = RFS
 		tag = SPT
+
+		# >>> Siberian collapse (tools/gen_siberia_collapse.py)
+		tag = NWA
+		tag = SSB
+		tag = YKT
+		tag = ANS
+		tag = SMG
+		tag = CLI
+		tag = ICA
+		# <<< Siberian collapse
 	}
 }
 

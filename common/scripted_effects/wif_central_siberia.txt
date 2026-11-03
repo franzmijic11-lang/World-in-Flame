@@ -65,6 +65,7 @@ wif_popov_betrayal = {
 
 		CSR = {
 			set_capital = { state = 578 }			# Tomsk
+			wif_sib_setup_CSR = yes	# tree + starting spirits, tools/gen_siberia_trees.py
 
 			add_state_core = 578
 			add_state_core = 571

@@ -1451,3 +1451,31 @@ ZWF = {
 	color = rgb { 118 16 16 }
 	color_ui = rgb { 165 45 45 }
 }
+NWA = {
+	color = rgb { 54 242 116 }
+	color_ui = rgb { 82 255 153 }
+}
+SSB = {
+	color = rgb { 255 190 10 }
+	color_ui = rgb { 255 238 31 }
+}
+YKT = {
+	color = rgb { 69 232 148 }
+	color_ui = rgb { 99 255 190 }
+}
+ANS = {
+	color = rgb { 18 16 13 }
+	color_ui = rgb { 40 38 34 }
+}
+SMG = {
+	color = rgb { 54 236 157 }
+	color_ui = rgb { 82 255 200 }
+}
+CLI = {
+	color = rgb { 156 200 227 }
+	color_ui = rgb { 199 249 255 }
+}
+ICA = {
+	color = rgb { 255 200 0 }
+	color_ui = rgb { 255 249 20 }
+}

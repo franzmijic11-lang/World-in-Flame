@@ -653,9 +653,18 @@ wif_sme_zhukov_marches_north = {
 				promote_leader = yes
 				country_leader = {
 					ideology = stalinism
-					expire = "1975.1.1.1"
+					expire = "1975.1.1"
 					traits = { wif_marshal_of_the_union }
 				}
+			}
+			# Leader and general at once: without a civilian portrait the
+			# leader screen showed GFX_portrait_unknown. Set both explicitly,
+			# which also repairs a game started before the character file
+			# gained its civilian portrait.
+			set_portraits = {
+				character = SOV_georgy_zhukov
+				civilian = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
+				army = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
 			}
 		}
 		else = {

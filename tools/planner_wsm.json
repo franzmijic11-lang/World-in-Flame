@@ -1,0 +1,800 @@
+{
+ "name": "Yagoda - West Siberian Marxist Republic (WSM)",
+ "tag": "WSM",
+ "treeId": "wif_wsm_focus",
+ "target": 2375,
+ "focuses": [
+  {
+   "id": "wsm000",
+   "fid": "wif_wsm_commissar",
+   "name": "The Commissar of the Urals",
+   "desc": "Genrikh Yagoda ran the NKVD once, and Moscow took it from him. Now Moscow has fallen, and the Urals answer to him.\n\nStarting spirits (negative): The Organs Rule, Fear of the Commissar, Cut Off from the Union.\n\nEffect: +5% stability.",
+   "days": 35,
+   "x": 7,
+   "y": 0,
+   "branch": "political",
+   "pre": [],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm001",
+   "fid": "wif_wsm_proclaim",
+   "name": "Proclaim the Marxist Republic",
+   "desc": "A republic of workers and soldiers, run by the men who used to arrest them.\n\nEffect: +50 political power.",
+   "days": 49,
+   "x": 7,
+   "y": 1,
+   "branch": "political",
+   "pre": [
+    "wsm000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm002",
+   "fid": "wif_wsm_sverdlovsk_soviet",
+   "name": "Dissolve the Sverdlovsk Soviet",
+   "desc": "The city soviet thought it could choose its own chairman.\n\nEffect: -5% stability, +5% war support.",
+   "days": 49,
+   "x": 6,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "wsm001"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm003",
+   "fid": "wif_wsm_party_answers",
+   "name": "The Party Answers to the Organs",
+   "desc": "Every party committee gets an NKVD officer, and he signs the minutes.\n\nEffect: +0.05 daily political power.",
+   "days": 49,
+   "x": 8,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "wsm001"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm004",
+   "fid": "wif_wsm_through_party",
+   "name": "Rule Through the Party",
+   "desc": "Keep the forms of Soviet power, and fill them with his men.\n\nEffect: communist popularity +10%, +5% stability.",
+   "days": 49,
+   "x": 6,
+   "y": 3,
+   "branch": "political",
+   "pre": [
+    "wsm002",
+    "wsm003"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm005"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm005",
+   "fid": "wif_wsm_through_organs",
+   "name": "Rule Through the Organs",
+   "desc": "Do away with the pretence. The Commissariat is the government.\n\nEffect: The Organs Rule strengthened; +10% political power gain.",
+   "days": 49,
+   "x": 8,
+   "y": 3,
+   "branch": "political",
+   "pre": [
+    "wsm002",
+    "wsm003"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm004"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm006",
+   "fid": "wif_wsm_order_state",
+   "name": "The Order State",
+   "desc": "Everything permitted is written down. Everything not written down is forbidden.\n\nEffect: +10% stability, -5% war support.",
+   "days": 105,
+   "x": 7,
+   "y": 4,
+   "branch": "political",
+   "pre": [
+    "wsm004",
+    "wsm005"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm007",
+   "fid": "wif_wsm_registered",
+   "name": "Every Citizen Registered",
+   "desc": "A card for every person in the republic: name, work, address, reliability.\n\nEffect: +5% stability, +manpower.",
+   "days": 49,
+   "x": 6,
+   "y": 5,
+   "branch": "political",
+   "pre": [
+    "wsm006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm008",
+   "fid": "wif_wsm_passports",
+   "name": "Internal Passports",
+   "desc": "No travel between towns without a stamp from the organs.\n\nEffect: -5% stability, +resistance to enemy spies.",
+   "days": 49,
+   "x": 8,
+   "y": 5,
+   "branch": "political",
+   "pre": [
+    "wsm006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm009",
+   "fid": "wif_wsm_curfew",
+   "name": "The Long Curfew",
+   "desc": "Off the streets at nine. Lights out at ten.\n\nEffect: +5% stability, -5% factory output.",
+   "days": 49,
+   "x": 7,
+   "y": 6,
+   "branch": "political",
+   "pre": [
+    "wsm007",
+    "wsm008"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm010",
+   "fid": "wif_wsm_one_voice",
+   "name": "One Voice in Tyumen",
+   "desc": "One newspaper, one radio station, one chairman.\n\nEffect: +10% war support.",
+   "days": 49,
+   "x": 7,
+   "y": 7,
+   "branch": "political",
+   "pre": [
+    "wsm009"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm011",
+   "fid": "wif_wsm_portraits",
+   "name": "Portraits of Genrikh Yagoda",
+   "desc": "A small man in a commissar's tunic, on every wall in the Urals.\n\nEffect: +5% stability.",
+   "days": 49,
+   "x": 6,
+   "y": 8,
+   "branch": "political",
+   "pre": [
+    "wsm010"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm012",
+   "fid": "wif_wsm_no_successor",
+   "name": "No Successor Named",
+   "desc": "Anyone who might replace him is watched more closely than anyone else.\n\nEffect: +0.05 daily political power, -5% stability.",
+   "days": 49,
+   "x": 8,
+   "y": 8,
+   "branch": "political",
+   "pre": [
+    "wsm010"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm013",
+   "fid": "wif_wsm_grip_tightens",
+   "name": "The Grip Tightens",
+   "desc": "Every lever in the republic now runs through one office in Tyumen.\n\nEffect: +10% stability, The Organs Rule at its strongest.",
+   "days": 105,
+   "x": 7,
+   "y": 9,
+   "branch": "political",
+   "pre": [
+    "wsm011",
+    "wsm012"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm014",
+   "fid": "wif_wsm_absolute_order",
+   "name": "Absolute Order",
+   "desc": "Nothing moves in the Urals that the organs have not allowed. It is the most orderly state in Russia, and it cannot last.\n\nEffect: the end of the tree. The collapse mechanic (to be added) takes it from here.",
+   "days": 210,
+   "x": 7,
+   "y": 10,
+   "branch": "political",
+   "pre": [
+    "wsm013",
+    "wsm023",
+    "wsm032",
+    "wsm040"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm015",
+   "fid": "wif_wsm_rebuild_organs",
+   "name": "Rebuild the Organs",
+   "desc": "The NKVD officers who came over with him become the core of a new Commissariat.\n\nEffect: +50 political power.",
+   "days": 49,
+   "x": 3,
+   "y": 1,
+   "branch": "inner",
+   "pre": [
+    "wsm000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm016",
+   "fid": "wif_wsm_informers",
+   "name": "Informers in Every Block",
+   "desc": "Every apartment block has a man who writes reports.\n\nEffect: +5% stability, -5% war support.",
+   "days": 49,
+   "x": 2,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "wsm015"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm017",
+   "fid": "wif_wsm_special_depts",
+   "name": "The Special Departments",
+   "desc": "An NKVD officer in every regiment, answering only to Tyumen.\n\nEffect: -5% division organisation, no coup from the army.",
+   "days": 49,
+   "x": 4,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "wsm015"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm018",
+   "fid": "wif_wsm_camps",
+   "name": "Camps of the Urals",
+   "desc": "The old Gulag camps around Sverdlovsk fill up again.\n\nEffect: +manpower for labour, -5% stability.",
+   "days": 49,
+   "x": 2,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "wsm016"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm019",
+   "fid": "wif_wsm_files",
+   "name": "A File on Everyone",
+   "desc": "Cabinets of index cards in the basement of the Tyumen Commissariat.\n\nEffect: +intelligence.",
+   "days": 49,
+   "x": 4,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "wsm017"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm020",
+   "fid": "wif_wsm_open_terror",
+   "name": "Open Terror",
+   "desc": "Arrests at night, trials by morning, and everyone knows.\n\nEffect: Fear of the Commissar grows; +10% stability for a year, then -10%.",
+   "days": 49,
+   "x": 2,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "wsm018",
+    "wsm019"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm021"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm021",
+   "fid": "wif_wsm_quiet_watch",
+   "name": "Silent Surveillance",
+   "desc": "Nobody is arrested. Everybody is watched.\n\nEffect: Fear of the Commissar eases; -0.05 daily political power.",
+   "days": 49,
+   "x": 4,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "wsm018",
+    "wsm019"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm020"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm022",
+   "fid": "wif_wsm_watchers",
+   "name": "Who Watches the Watchers",
+   "desc": "A second commissariat to watch the first.\n\nEffect: +5% stability.",
+   "days": 105,
+   "x": 3,
+   "y": 5,
+   "branch": "inner",
+   "pre": [
+    "wsm020",
+    "wsm021"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm023",
+   "fid": "wif_wsm_yagodas_guard",
+   "name": "Yagoda's Own Guard",
+   "desc": "One regiment that answers to him personally, quartered next to his office.\n\nEffect: a guard division.",
+   "days": 49,
+   "x": 3,
+   "y": 6,
+   "branch": "inner",
+   "pre": [
+    "wsm022"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm024",
+   "fid": "wif_wsm_whispers",
+   "name": "Whispers in the Party",
+   "desc": "It happens anyway. Party men meet in kitchens and talk about who comes after Yagoda.\n\nEffect: -5% stability.",
+   "days": 140,
+   "x": 0,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "wsm015"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "wsm025",
+   "fid": "wif_wsm_officers_resent",
+   "name": "The Officers Resent the Organs",
+   "desc": "It happens anyway. Every colonel with a commissar at his elbow is a colonel waiting for his moment.\n\nEffect: -5% stability, -5% war support.",
+   "days": 210,
+   "x": 0,
+   "y": 6,
+   "branch": "inner",
+   "pre": [
+    "wsm024"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "wsm026",
+   "fid": "wif_wsm_cracks",
+   "name": "Cracks in the Order",
+   "desc": "It happens anyway. The more tightly he holds the Urals, the more of it slips through his fingers.\n\nEffect: -10% stability.",
+   "days": 280,
+   "x": 0,
+   "y": 9,
+   "branch": "inner",
+   "pre": [
+    "wsm025"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "wsm027",
+   "fid": "wif_wsm_seize_institute",
+   "name": "Seize the Chelyabinsk Institute",
+   "desc": "The Institute for All Research is the greatest prize in the Urals. NKVD troops take the building, the laboratories and every scientist in them.\n\nEffect: the Institute's research bonus is secured; +5% research speed.",
+   "days": 49,
+   "x": 11,
+   "y": 1,
+   "branch": "project",
+   "pre": [
+    "wsm000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm028",
+   "fid": "wif_wsm_under_guard",
+   "name": "Scientists Under Guard",
+   "desc": "They work, they eat and they sleep inside the wire.\n\nEffect: +5% research speed, -5% stability.",
+   "days": 49,
+   "x": 10,
+   "y": 2,
+   "branch": "project",
+   "pre": [
+    "wsm027"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm029",
+   "fid": "wif_wsm_sharashka",
+   "name": "The Urals Sharashka",
+   "desc": "A prison design bureau, as the NKVD ran in the 1930s: arrested engineers working for their freedom.\n\nEffect: tech bonus for one industry and one weapons technology.",
+   "days": 49,
+   "x": 12,
+   "y": 2,
+   "branch": "project",
+   "pre": [
+    "wsm027"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm030",
+   "fid": "wif_wsm_weapons_for_organs",
+   "name": "Weapons for the Organs",
+   "desc": "The Institute designs what the Commissariat needs: rifles, radios, armoured cars.\n\nEffect: tech bonuses for infantry weapons and support equipment.",
+   "days": 49,
+   "x": 10,
+   "y": 3,
+   "branch": "project",
+   "pre": [
+    "wsm028",
+    "wsm029"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm031"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm031",
+   "fid": "wif_wsm_machines",
+   "name": "Machines for the Factories",
+   "desc": "The Institute designs what Uralmash needs.\n\nEffect: tech bonuses for industry.",
+   "days": 49,
+   "x": 12,
+   "y": 3,
+   "branch": "project",
+   "pre": [
+    "wsm028",
+    "wsm029"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "wsm030"
+   ],
+   "auto": false
+  },
+  {
+   "id": "wsm032",
+   "fid": "wif_wsm_kyshtym",
+   "name": "The Kyshtym Project",
+   "desc": "A closed town by Lake Kyzyltash, south of Sverdlovsk, where the Institute's physicists work on something nobody may name.\n\nEffect: +nuclear research.",
+   "days": 140,
+   "x": 11,
+   "y": 4,
+   "branch": "project",
+   "pre": [
+    "wsm030",
+    "wsm031"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm033",
+   "fid": "wif_wsm_prisoners_invent",
+   "name": "Prisoners Who Invent",
+   "desc": "The sharashka's best engineers are promised their freedom. None of them get it.\n\nEffect: +5% research speed.",
+   "days": 49,
+   "x": 11,
+   "y": 5,
+   "branch": "project",
+   "pre": [
+    "wsm032"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm034",
+   "fid": "wif_wsm_uralmash",
+   "name": "Uralmash Under the Organs",
+   "desc": "The Ural heavy machinery works gets a new director from the Commissariat.\n\nEffect: +1 civilian factory.",
+   "days": 49,
+   "x": 15,
+   "y": 1,
+   "branch": "industry",
+   "pre": [
+    "wsm000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm035",
+   "fid": "wif_wsm_tankograd",
+   "name": "Tankograd",
+   "desc": "The Chelyabinsk tractor works built tanks for the whole war. It can build them for the republic.\n\nEffect: +1 military factory.",
+   "days": 49,
+   "x": 14,
+   "y": 2,
+   "branch": "industry",
+   "pre": [
+    "wsm034"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm036",
+   "fid": "wif_wsm_prison_labour",
+   "name": "Prisoners for the Mines",
+   "desc": "The camps supply the mines with labour that cannot leave.\n\nEffect: +steel, -5% stability.",
+   "days": 49,
+   "x": 16,
+   "y": 2,
+   "branch": "industry",
+   "pre": [
+    "wsm034"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm037",
+   "fid": "wif_wsm_tobolsk_grain",
+   "name": "Grain from Tobolsk",
+   "desc": "The only farmland the republic holds is along the Tobol and the Irtysh.\n\nEffect: food shortages ease.",
+   "days": 49,
+   "x": 15,
+   "y": 3,
+   "branch": "economy",
+   "pre": [
+    "wsm035",
+    "wsm036"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm038",
+   "fid": "wif_wsm_sverdlovsk_arms",
+   "name": "The Sverdlovsk Arms Works",
+   "desc": "Rifles and machine guns for the NKVD troops.\n\nEffect: +1 military factory.",
+   "days": 49,
+   "x": 14,
+   "y": 4,
+   "branch": "industry",
+   "pre": [
+    "wsm037"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm039",
+   "fid": "wif_wsm_loyal_rations",
+   "name": "Rations by Reliability",
+   "desc": "Bread by category: reliable, doubtful, enemy.\n\nEffect: +5% stability, Fear of the Commissar grows.",
+   "days": 49,
+   "x": 16,
+   "y": 4,
+   "branch": "economy",
+   "pre": [
+    "wsm037"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm040",
+   "fid": "wif_wsm_commissariat_plan",
+   "name": "The Commissariat's Plan",
+   "desc": "A five-year plan drawn up by policemen.\n\nEffect: +5% construction speed, +5% factory output.",
+   "days": 105,
+   "x": 15,
+   "y": 5,
+   "branch": "industry",
+   "pre": [
+    "wsm038",
+    "wsm039"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm041",
+   "fid": "wif_wsm_nkvd_troops",
+   "name": "NKVD Troops",
+   "desc": "The republic's army is the Commissariat's own internal troops.\n\nEffect: +army experience.",
+   "days": 49,
+   "x": 18,
+   "y": 1,
+   "branch": "military",
+   "pre": [
+    "wsm000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm042",
+   "fid": "wif_wsm_border_guards",
+   "name": "The Border Guard Divisions",
+   "desc": "NKVD border guards, the best-equipped soldiers in the Urals.\n\nEffect: +5% defence.",
+   "days": 49,
+   "x": 18,
+   "y": 2,
+   "branch": "military",
+   "pre": [
+    "wsm041"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm043",
+   "fid": "wif_wsm_ural_passes",
+   "name": "Hold the Ural Passes",
+   "desc": "West lies the Reichskommissariat, east lies Popov. The passes must hold.\n\nEffect: forts at the border.",
+   "days": 49,
+   "x": 18,
+   "y": 3,
+   "branch": "military",
+   "pre": [
+    "wsm042"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "wsm044",
+   "fid": "wif_wsm_tankograd_tanks",
+   "name": "Tanks for the Organs",
+   "desc": "Tankograd's tanks go to NKVD units, not the army.\n\nEffect: tanks added to the stockpile.",
+   "days": 49,
+   "x": 18,
+   "y": 4,
+   "branch": "military",
+   "pre": [
+    "wsm043"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  }
+ ],
+ "updatedAt": 1793730473348
+}

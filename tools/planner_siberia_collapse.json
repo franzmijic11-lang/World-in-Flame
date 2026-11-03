@@ -1,0 +1,574 @@
+{
+  "assign": {
+    "40": "fnapr7o",
+    "403": "wsm",
+    "560": "foj20vy",
+    "561": "foj20vy",
+    "562": "f9h25jf",
+    "563": "fes",
+    "564": "fes",
+    "565": "fjv8uzk",
+    "566": "fes",
+    "567": "fjayd40",
+    "568": "fjayd40",
+    "569": "fnapr7o",
+    "570": "fnapr7o",
+    "571": "fnapr7o",
+    "572": "fhse0cd",
+    "574": "fjv8uzk",
+    "575": "fjv8uzk",
+    "576": "csr",
+    "577": "csr",
+    "578": "csr",
+    "637": "f9h25jf",
+    "653": "fnkp0hb",
+    "654": "fnapr7o",
+    "657": "foj20vy",
+    "874": "f9h25jf"
+  },
+  "factions": [
+    {
+      "color": "#b1361b",
+      "id": "wsm",
+      "name": "Yagoda's Marxists (WSM)",
+      "profile": {
+        "elections": false,
+        "flag": "3393d5a93e4c058cf638d9aec6897332",
+        "ideology": "communism",
+        "leaders": {
+          "communism": {
+            "bio": "Former head of the NKVD. He rose in Tyumen while the SME was at war in the far north, and took the Urals, the Chelyabinsk Institute and the organs with him.",
+            "name": "Genrikh Yagoda",
+            "portrait": "bfb9ed177b38882aee67f6dbb7be4256",
+            "sub": "stalinism",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [
+          {
+            "desc": "There is no Union left to serve and no border anyone will recognise. There are the divisions that answered when we called, and the ground they are standing on.",
+            "effects": "+80% sustainable battalion limit. Exempt from the military factory cap.",
+            "kind": "mixed",
+            "name": "Russian Warlord"
+          },
+          {
+            "desc": "We exist because a larger state came apart, and every capital that matters knows it.",
+            "effects": "No faction may be joined or founded. No guarantees, no volunteers sent or received, no lend-lease.",
+            "kind": "bad",
+            "name": "No Diplomatic Standing"
+          },
+          {
+            "desc": "The People's Commissariat for Internal Affairs, reassembled. Yagoda ran it; the officers are his.",
+            "effects": "+0.15 communist drift, +1 intelligence agency defence. Taken from the SME in whatever form it held.",
+            "kind": "mixed",
+            "name": "The NKVD (if the SME had rebuilt it)"
+          },
+          {
+            "desc": "The Commissariat is the state. The party, the soviets and the army all answer to it.",
+            "effects": "+0.05 daily political power, -5% stability. Strengthened by Rule Through the Organs and The Grip Tightens.",
+            "kind": "bad",
+            "name": "The Organs Rule"
+          },
+          {
+            "desc": "Nobody in the Urals says what he thinks, and nobody fights harder than he must.",
+            "effects": "-5% war support, -5% recruitable population. Grows with Open Terror and Rations by Reliability; Silent Surveillance eases it.",
+            "kind": "bad",
+            "name": "Fear of the Commissar"
+          },
+          {
+            "desc": "The Urals were the arsenal of a country that no longer exists.",
+            "effects": "-10% research speed, -10% production efficiency growth. Permanent.",
+            "kind": "bad",
+            "name": "Cut Off from the Union"
+          }
+        ],
+        "sub": "stalinism",
+        "tag": "WSM"
+      }
+    },
+    {
+      "color": "#229b50",
+      "id": "csr",
+      "name": "Popov's Republic (CSR)",
+      "profile": {
+        "elections": true,
+        "flag": "0f84b3f7f48c14c69a771c83a2ec3355",
+        "ideology": "democratic",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "Marshal of the Soviet Union. The SME gave him the eastern army to hunt Stalin; he kept going past Irkutsk and declared a republic of his own in Tomsk. Head of state and field commander at once.",
+            "name": "Markian Popov",
+            "portrait": "97599140c2a6d058182c019157f78fd2",
+            "sub": "conservatism",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [
+          {
+            "desc": "There is no Union left to serve and no border anyone will recognise. There are the divisions that answered when we called, and the ground they are standing on.",
+            "effects": "+80% sustainable battalion limit. Exempt from the military factory cap.",
+            "kind": "mixed",
+            "name": "Russian Warlord"
+          },
+          {
+            "desc": "We exist because a larger state came apart, and every capital that matters knows it.",
+            "effects": "No faction may be joined or founded. No guarantees, no volunteers sent or received, no lend-lease.",
+            "kind": "bad",
+            "name": "No Diplomatic Standing"
+          },
+          {
+            "desc": "Black Banner bands hold the taiga villages and blow up the railway when it suits them. The republic has neither the men nor the authority to stop them.",
+            "effects": "-5% stability, -3% factory output. Only ever grows: three focuses in the tree make it worse, nothing makes it better.",
+            "kind": "bad",
+            "name": "Anarchist Rebels"
+          },
+          {
+            "desc": "With the commissars gone, the Church came back faster than anyone expected, and it tells the villages that a parliament is godless.",
+            "effects": "-0.05 daily political power, -0.02 democratic drift (daily). Only ever grows: two focuses in the tree make it worse, nothing makes it better.",
+            "kind": "bad",
+            "name": "Heavy Church Influence"
+          },
+          {
+            "desc": "Siberia never fed itself. The grain came from the west, and the west is gone.",
+            "effects": "-6% stability, +6% consumer goods. Eased by the food focuses and removed by the last of them.",
+            "kind": "bad",
+            "name": "Food Shortages (Rising)"
+          },
+          {
+            "desc": "The republic exists because an army followed Marshal Popov to Tomsk, and the army knows it.",
+            "effects": "-0.10 daily political power, -5% stability. Removed by A Coalition of the Centre, eased by The Marshal's Bloc.",
+            "kind": "bad",
+            "name": "A Republic of Soldiers (Strong)"
+          }
+        ],
+        "sub": "conservatism",
+        "tag": "CSR"
+      }
+    },
+    {
+      "color": "#ae0a0a",
+      "id": "fes",
+      "name": "Stalin's Far East (FES)",
+      "profile": {
+        "elections": false,
+        "flag": "5b384a3caa62a6f046514a53996a8234",
+        "ideology": "communism",
+        "leaders": {
+          "communism": {
+            "bio": "The Emergency Government hunted him across the Urals and failed. He rules from Irkutsk as the lawful government of the Union, merely relocated, with the divisions that followed him east.",
+            "name": "Iosif Stalin",
+            "portrait": "97b56ead40b1b94c51e867f6c662a1b9",
+            "sub": "stalinism",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [
+          {
+            "desc": "There is no Union left to serve and no border anyone will recognise. There are the divisions that answered when we called, and the ground they are standing on.",
+            "effects": "+80% sustainable battalion limit. Exempt from the military factory cap.",
+            "kind": "mixed",
+            "name": "Russian Warlord"
+          },
+          {
+            "desc": "We exist because a larger state came apart, and every capital that matters knows it.",
+            "effects": "No faction may be joined or founded. No guarantees, no volunteers sent or received, no lend-lease.",
+            "kind": "bad",
+            "name": "No Diplomatic Standing"
+          },
+          {
+            "desc": "Everyone in Irkutsk chose him over Moscow. He trusts none of them, and there is nobody left to shoot.",
+            "effects": "-3% stability, -3% research speed. Grows through the paranoia branch; only Rule by Telephone eases it a little.",
+            "kind": "bad",
+            "name": "The Vozhd's Paranoia"
+          },
+          {
+            "desc": "Siberia never fed itself. The grain came from the west, and the west is gone.",
+            "effects": "-6% stability, +6% consumer goods. Eased by the food focuses and removed by the last of them.",
+            "kind": "bad",
+            "name": "Food Shortages (Rising)"
+          },
+          {
+            "desc": "The divisions that followed him east were beaten all the way from the Volga.",
+            "effects": "-10% division recovery rate. Permanent.",
+            "kind": "bad",
+            "name": "An Army That Lost"
+          },
+          {
+            "desc": "Kolchak's men never all went to Harbin. Their sons kept the rifles, and with the Red Army broken they have come out of the forest.",
+            "effects": "-5% stability, -3% factory output. Only ever grows: three focuses in the tree make it worse, nothing makes it better.",
+            "kind": "bad",
+            "name": "Siberian White Army Remnant Resistance"
+          }
+        ],
+        "sub": "stalinism",
+        "tag": "FES"
+      }
+    },
+    {
+      "color": "#36f274",
+      "id": "f9h25jf",
+      "name": "New White arny",
+      "profile": {
+        "elections": false,
+        "flag": "8522e4cce013ea8dce17c09dfda592cb",
+        "ideology": "neutrality",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "Yaroslov Navalnji",
+            "portrait": "63622a20ddd95792c489b292d3aa2156",
+            "sub": "despotism",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "despotism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#ffbe0a",
+      "id": "foj20vy",
+      "name": "State of Siberia",
+      "profile": {
+        "elections": false,
+        "flag": "d06e92ab14457608dc13998bd735d977",
+        "ideology": "fascism",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "Alexander Vasolivi",
+            "portrait": "2399ef38f8e9e3bbcfe6ad0f60244dba",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "emperor_fascism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#45e894",
+      "id": "fjv8uzk",
+      "name": "Yakutsk",
+      "profile": {
+        "elections": true,
+        "flag": "12f29ddeb4a753713b46e89f4c8f3298",
+        "ideology": "democratic",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "A state formed by a union of Native siberians, there tp attempt to maintain their independance from Russian Revanchists",
+            "name": "Ayana Yusip",
+            "portrait": "b432b949b4d7058ab8f4a57470a5758f",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "conservatism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#12100d",
+      "id": "fjayd40",
+      "name": "Anarchist State of Siberia",
+      "profile": {
+        "elections": false,
+        "flag": "0c85233a852ba82654e563d2932a2256",
+        "ideology": "neutrality",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "Anarchist Council",
+            "portrait": "b5c6264533dee36ad4d3a27db4b76df9",
+            "sub": "anarchism",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "anarchism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#36ec9d",
+      "id": "fnapr7o",
+      "name": "Siberian Military Goverment",
+      "profile": {
+        "elections": false,
+        "flag": "687df8bf34c70dcae3e64fded76c9f4a",
+        "ideology": "neutrality",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "Vasily Shukshin",
+            "portrait": "219cc93a2fe8ac991561e427b4394aad",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "despotism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#9cc8e3",
+      "id": "fhse0cd",
+      "name": "Chelyabinsk Insitute",
+      "profile": {
+        "elections": false,
+        "flag": "81e0de2810f42d5ef0ba104f8e87eebc",
+        "ideology": "neutrality",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "",
+            "portrait": "daa72659f254c26937e8ebeca0939b6f",
+            "sub": "",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "centrism",
+        "tag": ""
+      }
+    },
+    {
+      "color": "#ffc800",
+      "id": "fnkp0hb",
+      "name": "Imperial Cult of Alexei",
+      "profile": {
+        "elections": false,
+        "flag": "87f61e0ce49b9e2ad08f9e896d929177",
+        "ideology": "neutrality",
+        "leaders": {
+          "communism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "democratic": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "fascism": {
+            "bio": "",
+            "name": "",
+            "portrait": "",
+            "sub": "",
+            "traits": []
+          },
+          "neutrality": {
+            "bio": "",
+            "name": "Funny Clock Man(sergey taboritsky)",
+            "portrait": "8d91357c8aa5c8ad0ad81a7f3bfdb2cc",
+            "sub": "wif_regential_monarchism",
+            "traits": []
+          }
+        },
+        "spirits": [],
+        "sub": "wif_regential_monarchism",
+        "tag": ""
+      }
+    }
+  ],
+  "notes": {},
+  "updatedAt": 1793736235869
+}

@@ -44,6 +44,7 @@ wif_yagoda_rising = {
 		limit = { country_exists = WSM }
 
 		WSM = {
+			wif_sib_setup_WSM = yes	# tree + starting spirits, tools/gen_siberia_trees.py
 			# Capital falls back through the list, because set_capital only
 			# takes a literal state id and Tyumen might not have transferred.
 			if = {

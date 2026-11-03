@@ -1,0 +1,600 @@
+{
+ "name": "Stalin - Far Eastern Union (FES)",
+ "tag": "FES",
+ "treeId": "wif_fes_focus",
+ "target": 1825,
+ "focuses": [
+  {
+   "id": "fes000",
+   "fid": "wif_fes_irkutsk",
+   "name": "Irkutsk, Not Moscow",
+   "desc": "The war was lost, Moscow was lost, and the Emergency Government hunted him across the Urals. He is still the Vozhd.\n\nStarting spirits (negative): The Vozhd's Paranoia, Food Shortages, An Army That Lost, Siberian White Army Remnant Resistance.\n\nEffect: +5% stability.",
+   "days": 35,
+   "x": 6,
+   "y": 0,
+   "branch": "political",
+   "pre": [],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes001",
+   "fid": "wif_fes_whites_taiga",
+   "name": "The Whites in the Taiga",
+   "desc": "It happens anyway. Kolchak's men never all went to Harbin. Their sons kept the rifles, and with the Red Army broken they have come out of the forest.\n\nEffect: Siberian White Army Remnant Resistance grows stronger.",
+   "days": 140,
+   "x": 17,
+   "y": 1,
+   "branch": "inner",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes002",
+   "fid": "wif_fes_amur_ambush",
+   "name": "Ambushes on the Amur Road",
+   "desc": "It happens anyway. Convoys vanish between Chita and Blagoveshchensk, and the villages say they saw nothing.\n\nEffect: Siberian White Army Remnant Resistance at its worst; -supply in the eastern states.",
+   "days": 210,
+   "x": 17,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "fes001"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes003",
+   "fid": "wif_fes_atamans_banner",
+   "name": "The Ataman's Banner Raised Again",
+   "desc": "It happens anyway. Semyonov's old banner flies over a Transbaikal stanitsa, and Cossacks ride under it.\n\nEffect: Siberian White Army Remnant Resistance grows; -5% stability.",
+   "days": 210,
+   "x": 17,
+   "y": 5,
+   "branch": "inner",
+   "pre": [
+    "fes002"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes004",
+   "fid": "wif_fes_vozhd",
+   "name": "The Vozhd Still Rules",
+   "desc": "Every order still goes out under his name, as it did from the Kremlin.\n\nEffect: +50 political power.",
+   "days": 70,
+   "x": 6,
+   "y": 1,
+   "branch": "political",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes005",
+   "fid": "wif_fes_portraits",
+   "name": "Portraits in Every Office",
+   "desc": "His face on every wall from Chita to Magadan.\n\nEffect: communist popularity +10%.",
+   "days": 70,
+   "x": 5,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "fes004"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes006",
+   "fid": "wif_fes_pravda_east",
+   "name": "Pravda of the East",
+   "desc": "The Irkutsk Pravda tells the people that the war was not lost - it was betrayed.\n\nEffect: +5% war support.",
+   "days": 70,
+   "x": 7,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "fes004"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes007",
+   "fid": "wif_fes_cult",
+   "name": "The Cult Reborn",
+   "desc": "Songs, statues, a new short course of party history.\n\nEffect: +10% stability.",
+   "days": 70,
+   "x": 6,
+   "y": 3,
+   "branch": "political",
+   "pre": [
+    "fes005",
+    "fes006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes008",
+   "fid": "wif_fes_betrayed",
+   "name": "Moscow Was Lost by Traitors",
+   "desc": "Not by him. Never by him.\n\nEffect: +10% war support, -5% stability.",
+   "days": 70,
+   "x": 6,
+   "y": 4,
+   "branch": "political",
+   "pre": [
+    "fes007"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes009",
+   "fid": "wif_fes_loyal_marshals",
+   "name": "The Marshals Who Came East",
+   "desc": "Every commander here was on the train east with him. They are all the high command he has left.\n\nEffect: +army experience, new generals.",
+   "days": 70,
+   "x": 6,
+   "y": 5,
+   "branch": "political",
+   "pre": [
+    "fes008"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes010",
+   "fid": "wif_fes_union_lives",
+   "name": "The Union Lives in Irkutsk",
+   "desc": "The lawful government of the USSR, in exile in its own country.\n\nEffect: claims on Popov's republic.",
+   "days": 140,
+   "x": 6,
+   "y": 6,
+   "branch": "political",
+   "pre": [
+    "fes009"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes011",
+   "fid": "wif_fes_the_few",
+   "name": "The Few Who Came East",
+   "desc": "Every man around him chose the Vozhd over Moscow and followed him across Siberia. That ought to be enough. It is not.\n\nEffect: The Vozhd's Paranoia grows; +50 political power.",
+   "days": 49,
+   "x": 2,
+   "y": 1,
+   "branch": "inner",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes012",
+   "fid": "wif_fes_sleeps_badly",
+   "name": "The Vozhd Sleeps Badly",
+   "desc": "He does this himself. Someone warned him in Moscow, so someone could betray him here.\n\nEffect: The Vozhd's Paranoia grows.",
+   "days": 70,
+   "x": 0,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "fes011"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes013",
+   "fid": "wif_fes_tasters",
+   "name": "Tasters at Every Meal",
+   "desc": "Nothing reaches his table that someone else has not eaten first.\n\nEffect: -5% stability.",
+   "days": 49,
+   "x": 2,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "fes011"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes014",
+   "fid": "wif_fes_by_telephone",
+   "name": "Rule by Telephone",
+   "desc": "He stops leaving the house. Orders come down the line at three in the morning.\n\nEffect: The Vozhd's Paranoia eases a little; -10% political power gain.",
+   "days": 70,
+   "x": 1,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "fes013"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "fes015"
+   ],
+   "auto": false
+  },
+  {
+   "id": "fes015",
+   "fid": "wif_fes_show_himself",
+   "name": "Show Himself to the Troops",
+   "desc": "A review on the parade ground, every rifle unloaded first.\n\nEffect: +10% war support; The Vozhd's Paranoia grows.",
+   "days": 49,
+   "x": 3,
+   "y": 3,
+   "branch": "inner",
+   "pre": [
+    "fes013"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "fes014"
+   ],
+   "auto": false
+  },
+  {
+   "id": "fes016",
+   "fid": "wif_fes_papers",
+   "name": "Nobody Enters Without Papers",
+   "desc": "Passes, countersigned passes, and guards who check each other's.\n\nEffect: -5% stability, +5% resistance to enemy spies.",
+   "days": 70,
+   "x": 2,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "fes014",
+    "fes015"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes017",
+   "fid": "wif_fes_doctors",
+   "name": "Doctors Under Suspicion",
+   "desc": "He does this himself. Even the men who take his pulse might be poisoners.\n\nEffect: The Vozhd's Paranoia grows; -5% research speed.",
+   "days": 140,
+   "x": 0,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "fes012"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes018",
+   "fid": "wif_fes_vozhd_alone",
+   "name": "The Vozhd Alone",
+   "desc": "Loyal men all around him, and he trusts none of them - but there is nobody to shoot, so the fear simply stays.\n\nEffect: The Vozhd's Paranoia becomes permanent at its height; +0.1 daily political power.",
+   "days": 140,
+   "x": 2,
+   "y": 5,
+   "branch": "inner",
+   "pre": [
+    "fes016"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes019",
+   "fid": "wif_fes_shadows",
+   "name": "Shadows in the Corridor",
+   "desc": "He does this himself. He hears footsteps where there are none.\n\nEffect: The Vozhd's Paranoia grows.",
+   "days": 210,
+   "x": 0,
+   "y": 6,
+   "branch": "inner",
+   "pre": [
+    "fes017"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes020",
+   "fid": "wif_fes_hungry_winter",
+   "name": "The Hungry Winter",
+   "desc": "He does this himself. The far east never fed itself; the grain came from the west, and the west is gone.\n\nEffect: Food Shortages worsen.",
+   "days": 70,
+   "x": 10,
+   "y": 1,
+   "branch": "economy",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "fes021",
+   "fid": "wif_fes_kolkhoz",
+   "name": "Kolkhoz Quotas",
+   "desc": "Every collective farm east of Baikal gets a number it has to meet.\n\nEffect: Food Shortages weakened.",
+   "days": 70,
+   "x": 10,
+   "y": 2,
+   "branch": "economy",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes022",
+   "fid": "wif_fes_raise_quotas",
+   "name": "Raise the Quotas",
+   "desc": "If the farms cannot meet the quota, the quota is not high enough.\n\nEffect: Food Shortages weakened; -5% stability.",
+   "days": 49,
+   "x": 9,
+   "y": 3,
+   "branch": "economy",
+   "pre": [
+    "fes021"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "fes023"
+   ],
+   "auto": false
+  },
+  {
+   "id": "fes023",
+   "fid": "wif_fes_private_plots",
+   "name": "Allow Private Plots",
+   "desc": "A heresy, but it feeds people.\n\nEffect: Food Shortages weakened; communist popularity -5%.",
+   "days": 70,
+   "x": 11,
+   "y": 3,
+   "branch": "economy",
+   "pre": [
+    "fes021"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "fes022"
+   ],
+   "auto": false
+  },
+  {
+   "id": "fes024",
+   "fid": "wif_fes_okhotsk_fish",
+   "name": "Fish from the Sea of Okhotsk",
+   "desc": "The fishing fleet at Magadan and Nikolayevsk feeds the cities.\n\nEffect: Food Shortages weakened.",
+   "days": 70,
+   "x": 10,
+   "y": 4,
+   "branch": "economy",
+   "pre": [
+    "fes022",
+    "fes023"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes025",
+   "fid": "wif_fes_buryat_grain",
+   "name": "Grain from Buryatia",
+   "desc": "The steppe south of Baikal is the only farmland worth the name.\n\nEffect: removes Food Shortages.",
+   "days": 105,
+   "x": 10,
+   "y": 5,
+   "branch": "economy",
+   "pre": [
+    "fes024"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes026",
+   "fid": "wif_fes_manchurian_rice",
+   "name": "Rice Through Manchuria",
+   "desc": "Bought from the Japanese, quietly.\n\nEffect: +opinion with Japan; +consumer goods relief.",
+   "days": 70,
+   "x": 11,
+   "y": 6,
+   "branch": "diplomacy",
+   "pre": [
+    "fes024"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes027",
+   "fid": "wif_fes_forty_percent",
+   "name": "Forty Percent of the Red Army",
+   "desc": "The divisions that followed him east are the largest army in Asia that is not Japanese.\n\nEffect: +army experience.",
+   "days": 49,
+   "x": 14,
+   "y": 1,
+   "branch": "military",
+   "pre": [
+    "fes000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes028",
+   "fid": "wif_fes_fronts",
+   "name": "Re-form the Fronts",
+   "desc": "Transbaikal Front, Far Eastern Front - the old names, the old staffs.\n\nEffect: +5% division organisation.",
+   "days": 70,
+   "x": 13,
+   "y": 2,
+   "branch": "military",
+   "pre": [
+    "fes027"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes029",
+   "fid": "wif_fes_trans_siberian",
+   "name": "Guard the Trans-Siberian",
+   "desc": "One railway holds the whole country together.\n\nEffect: +infrastructure along the line.",
+   "days": 70,
+   "x": 15,
+   "y": 2,
+   "branch": "military",
+   "pre": [
+    "fes027"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes030",
+   "fid": "wif_fes_amur_works",
+   "name": "The Amur Works",
+   "desc": "Komsomolsk and Khabarovsk build what Moscow used to send.\n\nEffect: +1 military factory.",
+   "days": 70,
+   "x": 14,
+   "y": 3,
+   "branch": "industry",
+   "pre": [
+    "fes028",
+    "fes029"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes031",
+   "fid": "wif_fes_ulan_ude_guns",
+   "name": "Guns from Ulan-Ude",
+   "desc": "The locomotive works can build artillery too.\n\nEffect: artillery added to the stockpile.",
+   "days": 70,
+   "x": 14,
+   "y": 4,
+   "branch": "military",
+   "pre": [
+    "fes030"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes032",
+   "fid": "wif_fes_plan_west",
+   "name": "Plan West",
+   "desc": "The staff draws the arrows towards Tomsk.\n\nEffect: +5% attack against the CSR.",
+   "days": 70,
+   "x": 14,
+   "y": 5,
+   "branch": "military",
+   "pre": [
+    "fes031"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "fes033",
+   "fid": "wif_fes_hang_popov",
+   "name": "Hang the Traitor Popov",
+   "desc": "Popov took the army he was given to hunt the Vozhd and made himself a president with it. He will answer for it.\n\nEffect: declares war on the Central Siberian Republic. About half a year in, the collapse mechanic (to be added) decides it.",
+   "days": 105,
+   "x": 8,
+   "y": 8,
+   "branch": "military",
+   "pre": [
+    "fes010",
+    "fes018",
+    "fes025",
+    "fes032"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  }
+ ],
+ "updatedAt": 1793730473347
+}

@@ -67,6 +67,7 @@ wif_stalin_flees_east = {
 
 		FES = {
 			set_capital = { state = 566 }			# Irkutsk
+			wif_sib_setup_FES = yes	# tree + starting spirits, tools/gen_siberia_trees.py
 
 			# Cores on everything it was given. Stalin's government does not
 			# regard any of this as occupied territory - it regards itself as

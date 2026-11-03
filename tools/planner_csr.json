@@ -1,0 +1,583 @@
+{
+ "name": "Popov - Central Siberian Republic (CSR)",
+ "tag": "CSR",
+ "treeId": "wif_csr_focus",
+ "target": 1825,
+ "focuses": [
+  {
+   "id": "csr000",
+   "fid": "wif_csr_tomsk_declaration",
+   "name": "The Tomsk Declaration",
+   "desc": "Siberia will be ruled neither from Moscow nor from Irkutsk. Marshal Popov has promised a republic, and now he has to build one out of an army, a railway and a few frozen cities.\n\nStarting spirits (negative): Anarchist Rebels, Heavy Church Influence, Food Shortages, A Republic of Soldiers.\n\nEffect: +5% stability.",
+   "days": 35,
+   "x": 6,
+   "y": 0,
+   "branch": "political",
+   "pre": [],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr001",
+   "fid": "wif_csr_provisional",
+   "name": "A Provisional Government",
+   "desc": "Ministers appointed by the Marshal, to govern until the people can choose their own.\n\nEffect: +50 political power.",
+   "days": 70,
+   "x": 6,
+   "y": 1,
+   "branch": "political",
+   "pre": [
+    "csr000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr002",
+   "fid": "wif_csr_assembly",
+   "name": "Call a Constituent Assembly",
+   "desc": "Every district, every town soviet, every regiment sends delegates to Tomsk to decide what Siberia is.\n\nEffect: +5% stability.",
+   "days": 70,
+   "x": 6,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "csr001"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr003",
+   "fid": "wif_csr_parties",
+   "name": "Legalise the Parties",
+   "desc": "Kadets, Socialist Revolutionaries, Mensheviks, regionalists - all of them banned for twenty years, all of them back.\n\nEffect: democratic popularity +10%.",
+   "days": 49,
+   "x": 5,
+   "y": 3,
+   "branch": "political",
+   "pre": [
+    "csr002"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr004",
+   "fid": "wif_csr_press",
+   "name": "A Free Press in Tomsk",
+   "desc": "Newspapers nobody censors, saying things the Marshal does not always like.\n\nEffect: +5% stability, -5% war support.",
+   "days": 49,
+   "x": 7,
+   "y": 3,
+   "branch": "political",
+   "pre": [
+    "csr002"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr005",
+   "fid": "wif_csr_campaign",
+   "name": "The Duma Campaign",
+   "desc": "Posters on every station wall from Omsk to Krasnoyarsk, and soldiers guarding the polling stations from the anarchists.\n\nEffect: +25 political power.",
+   "days": 70,
+   "x": 6,
+   "y": 4,
+   "branch": "political",
+   "pre": [
+    "csr003",
+    "csr004"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr006",
+   "fid": "wif_csr_election",
+   "name": "Elections to the Siberian Duma",
+   "desc": "The first free vote east of the Urals since 1917.\n\nEffect: holds the election; elections allowed from now on. +10% stability.",
+   "days": 105,
+   "x": 6,
+   "y": 5,
+   "branch": "political",
+   "pre": [
+    "csr005"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr007",
+   "fid": "wif_csr_coalition",
+   "name": "A Coalition of the Centre",
+   "desc": "The parties govern together, and the Marshal stays out of the chamber.\n\nEffect: +10% stability, -5% war support. Removes A Republic of Soldiers.",
+   "days": 70,
+   "x": 5,
+   "y": 6,
+   "branch": "political",
+   "pre": [
+    "csr006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "csr008"
+   ],
+   "auto": false
+  },
+  {
+   "id": "csr008",
+   "fid": "wif_csr_marshals_bloc",
+   "name": "The Marshal's Bloc",
+   "desc": "Popov's own list wins, and the army's men take the ministries.\n\nEffect: +10% war support. A Republic of Soldiers is weakened rather than removed.",
+   "days": 70,
+   "x": 7,
+   "y": 6,
+   "branch": "political",
+   "pre": [
+    "csr006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "csr007"
+   ],
+   "auto": false
+  },
+  {
+   "id": "csr009",
+   "fid": "wif_csr_duma_seated",
+   "name": "The Duma Is Seated",
+   "desc": "Four hundred deputies in the old merchants' club in Tomsk. It is cold, it is crowded, and it is a parliament.\n\nEffect: +0.1 daily political power.",
+   "days": 49,
+   "x": 6,
+   "y": 7,
+   "branch": "political",
+   "pre": [
+    "csr007",
+    "csr008"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr010",
+   "fid": "wif_csr_constitution",
+   "name": "The Tomsk Constitution",
+   "desc": "A republic on paper, signed by the Duma and by the Marshal.\n\nEffect: +10% stability.",
+   "days": 70,
+   "x": 6,
+   "y": 8,
+   "branch": "political",
+   "pre": [
+    "csr009"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr011",
+   "fid": "wif_csr_banners_spread",
+   "name": "The Black Banners Spread",
+   "desc": "He does nothing; it happens anyway. The anarchist bands take another district of the taiga, and the republic has neither the men nor the authority to take it back.\n\nEffect: Anarchist Rebels grow stronger.",
+   "days": 140,
+   "x": 1,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "csr000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "csr012",
+   "fid": "wif_csr_rail_sabotage",
+   "name": "Sabotage on the Ob Line",
+   "desc": "It happens anyway. Bridges burn, trains stop, and the Black Banners print their own newspaper.\n\nEffect: Anarchist Rebels at their worst; -supply in the anarchist districts.",
+   "days": 210,
+   "x": 1,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "csr011"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "csr013",
+   "fid": "wif_csr_sermons",
+   "name": "Sermons Against the Duma",
+   "desc": "It happens anyway. With the commissars gone, the Church came back faster than anyone expected, and from every pulpit it tells the villages a parliament is godless.\n\nEffect: Heavy Church Influence grows stronger.",
+   "days": 140,
+   "x": 3,
+   "y": 2,
+   "branch": "inner",
+   "pre": [
+    "csr000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "csr014",
+   "fid": "wif_csr_blessing",
+   "name": "The Church Blesses the Marshal",
+   "desc": "It happens anyway. The Metropolitan of Novosibirsk prays for Marshal Popov by name - and for the Duma not at all.\n\nEffect: Heavy Church Influence at its worst; democratic popularity -5%.",
+   "days": 210,
+   "x": 3,
+   "y": 4,
+   "branch": "inner",
+   "pre": [
+    "csr013"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "csr015",
+   "fid": "wif_csr_refugees",
+   "name": "Refugees from the West",
+   "desc": "Hundreds of thousands fled across the Urals ahead of the Germans and the SME. They need bread, roofs and papers.\n\nEffect: +20,000 manpower, -5% stability.",
+   "days": 84,
+   "x": 8,
+   "y": 2,
+   "branch": "political",
+   "pre": [
+    "csr001"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr016",
+   "fid": "wif_csr_zemstvo",
+   "name": "Zemstvo Councils",
+   "desc": "District councils, elected, to run the roads, schools and grain stores.\n\nEffect: +5% stability.",
+   "days": 70,
+   "x": 4,
+   "y": 4,
+   "branch": "political",
+   "pre": [
+    "csr002"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr017",
+   "fid": "wif_csr_land_question",
+   "name": "The Land Question",
+   "desc": "The kolkhozes are breaking up on their own. The Duma must decide who owns the land.\n\nEffect: +5% stability, democratic popularity +5%.",
+   "days": 70,
+   "x": 8,
+   "y": 6,
+   "branch": "political",
+   "pre": [
+    "csr006"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr018",
+   "fid": "wif_csr_siberian_ruble",
+   "name": "The Siberian Ruble",
+   "desc": "Soviet rubles are worthless east of the Urals. Tomsk prints its own.\n\nEffect: +5% consumer goods relief.",
+   "days": 70,
+   "x": 12,
+   "y": 4,
+   "branch": "economy",
+   "pre": [
+    "csr021"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr019",
+   "fid": "wif_csr_army_oath",
+   "name": "The Army Swears to the Duma",
+   "desc": "Every regiment takes the oath to the republic, not to the Marshal.\n\nEffect: +5% stability, +5% war support.",
+   "days": 70,
+   "x": 4,
+   "y": 7,
+   "branch": "military",
+   "pre": [
+    "csr009"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr020",
+   "fid": "wif_csr_grain_census",
+   "name": "A Grain Census",
+   "desc": "How much grain is in the elevators, and how many mouths there are to feed until the harvest.\n\nEffect: +25 political power.",
+   "days": 49,
+   "x": 10,
+   "y": 1,
+   "branch": "economy",
+   "pre": [
+    "csr000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": true
+  },
+  {
+   "id": "csr021",
+   "fid": "wif_csr_rationing",
+   "name": "Food Rationing",
+   "desc": "Ration cards for every city - bread first, then sugar, then everything.\n\nEffect: Food Shortages weakened; -5% stability.",
+   "days": 105,
+   "x": 10,
+   "y": 2,
+   "branch": "economy",
+   "pre": [
+    "csr020"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr022",
+   "fid": "wif_csr_requisition",
+   "name": "Requisition from the Altai",
+   "desc": "The army collects the grain from the farms, as the Bolsheviks did.\n\nEffect: Food Shortages weakened; -5% stability.",
+   "days": 49,
+   "x": 9,
+   "y": 3,
+   "branch": "economy",
+   "pre": [
+    "csr021"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "csr023"
+   ],
+   "auto": false
+  },
+  {
+   "id": "csr023",
+   "fid": "wif_csr_free_markets",
+   "name": "Free Grain Markets",
+   "desc": "Let the peasants sell their grain at whatever price it fetches.\n\nEffect: Food Shortages weakened; -10% consumer goods slowly.",
+   "days": 70,
+   "x": 11,
+   "y": 3,
+   "branch": "economy",
+   "pre": [
+    "csr021"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [
+    "csr022"
+   ],
+   "auto": false
+  },
+  {
+   "id": "csr024",
+   "fid": "wif_csr_kuzbass_fed",
+   "name": "Feed the Kuzbass Miners First",
+   "desc": "No coal without miners, no miners without bread.\n\nEffect: +5% factory output.",
+   "days": 70,
+   "x": 10,
+   "y": 4,
+   "branch": "economy",
+   "pre": [
+    "csr022",
+    "csr023"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr025",
+   "fid": "wif_csr_harvest",
+   "name": "The Harvest of the Ob",
+   "desc": "The first good harvest since the war.\n\nEffect: removes Food Shortages.",
+   "days": 105,
+   "x": 10,
+   "y": 5,
+   "branch": "economy",
+   "pre": [
+    "csr024"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr026",
+   "fid": "wif_csr_popovs_army",
+   "name": "The Army Popov Brought",
+   "desc": "A third of the SME's eastern army followed him to Tomsk. It is the only reason the republic exists.\n\nEffect: +army experience.",
+   "days": 49,
+   "x": 14,
+   "y": 1,
+   "branch": "military",
+   "pre": [
+    "csr000"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr027",
+   "fid": "wif_csr_kuzbass",
+   "name": "Kuzbass Coal and Steel",
+   "desc": "The Kuznetsk basin is the heart of whatever industry Siberia has.\n\nEffect: +1 civilian factory, +steel.",
+   "days": 70,
+   "x": 13,
+   "y": 2,
+   "branch": "industry",
+   "pre": [
+    "csr026"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr028",
+   "fid": "wif_csr_novosibirsk",
+   "name": "The Novosibirsk Works",
+   "desc": "The factories evacuated east in 1941 are still here.\n\nEffect: +1 military factory.",
+   "days": 70,
+   "x": 15,
+   "y": 2,
+   "branch": "industry",
+   "pre": [
+    "csr026"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr029",
+   "fid": "wif_csr_rifles",
+   "name": "Siberian Rifle Divisions",
+   "desc": "The divisions that saved Moscow in 1941 came from here. They can do it again.\n\nEffect: +5% division organisation.",
+   "days": 70,
+   "x": 14,
+   "y": 3,
+   "branch": "military",
+   "pre": [
+    "csr027",
+    "csr028"
+   ],
+   "after": [],
+   "any": true,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr030",
+   "fid": "wif_csr_yenisei",
+   "name": "Hold the Yenisei",
+   "desc": "The river is the border with Stalin. Fort the crossings.\n\nEffect: forts along the eastern border.",
+   "days": 70,
+   "x": 14,
+   "y": 4,
+   "branch": "military",
+   "pre": [
+    "csr029"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr031",
+   "fid": "wif_csr_plans_east",
+   "name": "Plans for the East",
+   "desc": "The staff draws the arrows towards Irkutsk.\n\nEffect: +5% attack against the FES.",
+   "days": 70,
+   "x": 14,
+   "y": 5,
+   "branch": "military",
+   "pre": [
+    "csr030"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  },
+  {
+   "id": "csr032",
+   "fid": "wif_csr_march_east",
+   "name": "March East",
+   "desc": "Stalin is still alive in Irkutsk, and as long as he is, Siberia is not free.\n\nEffect: declares war on the Far Eastern Union. About half a year in, the collapse mechanic (to be added) decides it.",
+   "days": 105,
+   "x": 8,
+   "y": 9,
+   "branch": "military",
+   "pre": [
+    "csr010",
+    "csr019",
+    "csr025",
+    "csr031"
+   ],
+   "after": [],
+   "any": false,
+   "mx": [],
+   "auto": false
+  }
+ ],
+ "updatedAt": 1793730473346
+}

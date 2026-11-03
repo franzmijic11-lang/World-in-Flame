@@ -197,7 +197,14 @@ characters = {
 	SOV_georgy_zhukov = {
 		name = SOV_georgy_zhukov
 
+		# A civilian portrait as well as the army one: WiF makes him a country
+		# leader (the SME, then ZWF in the Zhukov split), and a leader screen
+		# with no civilian portrait falls back to GFX_portrait_unknown.
 		portraits = {
+			civilian = {
+				large = GFX_portrait_SOV_georgy_zhukov
+				small = "GFX_idea_georgy_zhukov"
+			}
 			army = {
 				small = "GFX_idea_georgy_zhukov"
 				large = GFX_portrait_SOV_georgy_zhukov
