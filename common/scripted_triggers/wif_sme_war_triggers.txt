@@ -1,0 +1,53 @@
+# The SME's war with the Ostschild and its collapse
+# (common/scripted_effects/zz_wif_sme_c_war.txt).
+
+# Country scope: a member of the Ostschild.
+wif_sme_is_ostschild = {
+	OR = {
+		tag = RKK
+		tag = RKM
+		tag = RKU
+		tag = RKO
+	}
+}
+
+# Country scope: holds either Russian Warlord spirit - the ordinary one, or the
+# harsher one the SME and its breakaways get when the SME collapses. Everything
+# keyed on being a warlord (the economy law, Closed Economy, the battalion cap)
+# reads this rather than the idea, so both count.
+wif_has_warlord_spirit = {
+	OR = {
+		has_idea = wif_russian_warlord
+		has_idea = wif_russian_warlord_broken
+	}
+}
+
+# State scope: owned by one of the two governments the SME splits into.
+wif_sme_side_owns = {
+	OR = {
+		owner = { tag = SME }
+		owner = { tag = ZWF }
+	}
+}
+
+# Country scope: governed from beyond the Urals, out of the Luftwaffe's reach.
+# The continent map is no help here - Kirov and Perm are "Asia" as well - so
+# the trans-Ural capitals are listed.
+wif_sme_beyond_urals = {
+	capital_scope = {
+		OR = {
+			state = 653		# Sverdlovsk
+			state = 572		# Chelyabinsk
+			state = 582		# Magnitogorsk
+			state = 403		# Tyumen
+			state = 571		# Omsk
+			state = 570		# Novosibirsk
+			state = 580		# Tobolsk
+			state = 578		# Tomsk
+			state = 579		# Salekhard
+			state = 577		# Surgut
+			state = 568		# Krasnoyarsk
+			state = 566		# Irkutsk
+		}
+	}
+}

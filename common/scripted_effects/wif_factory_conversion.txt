@@ -1,0 +1,268 @@
+# AI conversion of military factories into civilian ones, for a country over
+# its military factory ceiling (common/scripted_effects/wif_factory_balance.txt).
+#
+# A country under 25% over (stage 1) never converts: the AI strategy in
+# common/ai_strategy/wif_factory_balance.txt already has it building civilian
+# industry, and stage 1 costs little. At 25% over or more (stage 2 and up) it
+# starts converting:
+#   - during the year's grace (wif_mil_grace), only if building its way out
+#     will not work - too few free building slots, or more than two years of
+#     construction at its current civilian strength;
+#   - once the grace has run out, regardless.
+# Once started it carries on until it is back at the ceiling, even through the
+# stage 1 band, and not one factory further.
+#
+# A conversion removes one military factory and queues one civilian factory in
+# the same state. Script cannot queue a real conversion, so this is a full
+# civilian factory build (12000 under the 50 Building Slots mod), not the
+# cheaper 9000 conversion the player's button pays.
+#
+# The number to convert counts what each conversion gives back: a military
+# factory fewer AND a civilian factory more, which raises the ceiling itself.
+# With q military factories allowed per civilian factory, n conversions fix an
+# overshoot when  mils - n <= (civs + n) * q,  i.e.  n = (mils - civs*q)/(1+q).
+# Civilian factories still in the queue from earlier conversions are counted
+# as if built, so a slow queue does not make the AI convert twice over.
+#
+# The pace is a twelfth of what was needed when converting began, at least one
+# a month, so a country takes about a year rather than gutting its industry in
+# one go.
+#
+# AI only. The player gets the grace year too, but converts by hand.
+
+
+# Civilian factories queued by earlier conversions and not built yet. Each
+# converted state remembers the civilian factory level it is waiting for
+# (wif_conv_expect); the gap to its actual level is what is still pending.
+wif_count_pending_conversions = {
+	set_variable = { wif_conv_pending = 0 }
+	every_owned_state = {
+		limit = { has_state_flag = wif_conv_state }
+		set_temp_variable = { wif_tmp_gap = wif_conv_expect }
+		subtract_from_temp_variable = { wif_tmp_gap = industrial_complex_level }
+		if = {
+			limit = { check_variable = { wif_tmp_gap > 0 } }
+			add_to_variable = { PREV.wif_conv_pending = wif_tmp_gap }
+		}
+		else = {
+			clr_state_flag = wif_conv_state
+		}
+	}
+}
+
+# wif_conv_needed: conversions still needed to reach the ceiling.
+# wif_conv_build: civilian factories needed to fix it by building alone.
+wif_plan_conversions = {
+	wif_count_pending_conversions = yes
+
+	# q = military factories allowed per civilian factory.
+	set_temp_variable = { wif_tmp_q = wif_ratio_mil }
+	divide_temp_variable = { wif_tmp_q = wif_ratio_civ }
+
+	set_temp_variable = { wif_tmp_civ = num_of_civilian_factories }
+	add_to_temp_variable = { wif_tmp_civ = wif_conv_pending }
+
+	# n = (mils - civs*q) / (1+q)
+	set_variable = { wif_conv_needed = wif_tmp_civ }
+	multiply_variable = { wif_conv_needed = wif_tmp_q }
+	multiply_variable = { wif_conv_needed = -1 }
+	add_to_variable = { wif_conv_needed = num_of_military_factories }
+	set_temp_variable = { wif_tmp_q1 = wif_tmp_q }
+	add_to_temp_variable = { wif_tmp_q1 = 1 }
+	divide_variable = { wif_conv_needed = wif_tmp_q1 }
+
+	# A grandfathered ceiling sits above civs*q, and converting down to it
+	# needs one conversion per factory over and no more.
+	set_temp_variable = { wif_tmp_gf_over = num_of_military_factories }
+	subtract_from_temp_variable = { wif_tmp_gf_over = wif_mil_grandfather }
+	clamp_variable = { var = wif_conv_needed min = 0 max = wif_tmp_gf_over }
+
+	# Building alone: mils / q civilian factories are needed in total.
+	set_variable = { wif_conv_build = num_of_military_factories }
+	divide_variable = { wif_conv_build = wif_tmp_q }
+	subtract_from_variable = { wif_conv_build = wif_tmp_civ }
+	clamp_variable = { var = wif_conv_build min = 0 }
+}
+
+# Country scope trigger-like effect: sets wif_conv_cannot_build to 1 when
+# building its way out will not work, 0 when it will.
+#
+# Too slow: wif_conv_build civilian factories at 12000 each, against what the
+# free civilian factories build in two years (5 a day each, 730 days). Speed
+# bonuses, infrastructure and the 15-factory cap per project are ignored - it
+# is an estimate, and only decides whether to start.
+#
+# Too few slots: free civilian factory slots are summed over owned, controlled
+# states. free_building_slots can only be compared against a number, so each
+# state counts as the highest step it clears - a slight undercount, which errs
+# towards converting.
+wif_check_can_build_out = {
+	set_variable = { wif_conv_cannot_build = 0 }
+
+	# 12000 / (5 * 730) = 3.288 days' worth per factory.
+	set_temp_variable = { wif_tmp_cost = wif_conv_build }
+	multiply_temp_variable = { wif_tmp_cost = 3.288 }
+	set_temp_variable = { wif_tmp_avail = num_of_civilian_factories_available_for_projects }
+	if = {
+		limit = { check_variable = { wif_tmp_cost > wif_tmp_avail } }
+		set_variable = { wif_conv_cannot_build = 1 }
+	}
+
+	if = {
+		limit = { check_variable = { wif_conv_cannot_build = 0 } }
+		set_variable = { wif_conv_slots = 0 }
+		every_owned_state = {
+			limit = { is_controlled_by = ROOT }
+			if = {
+				limit = { free_building_slots = { building = industrial_complex size > 24 } }
+				add_to_variable = { PREV.wif_conv_slots = 25 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 19 } }
+				add_to_variable = { PREV.wif_conv_slots = 20 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 14 } }
+				add_to_variable = { PREV.wif_conv_slots = 15 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 9 } }
+				add_to_variable = { PREV.wif_conv_slots = 10 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 7 } }
+				add_to_variable = { PREV.wif_conv_slots = 8 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 5 } }
+				add_to_variable = { PREV.wif_conv_slots = 6 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 3 } }
+				add_to_variable = { PREV.wif_conv_slots = 4 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 2 } }
+				add_to_variable = { PREV.wif_conv_slots = 3 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 1 } }
+				add_to_variable = { PREV.wif_conv_slots = 2 }
+			}
+			else_if = {
+				limit = { free_building_slots = { building = industrial_complex size > 0 } }
+				add_to_variable = { PREV.wif_conv_slots = 1 }
+			}
+		}
+		if = {
+			limit = { check_variable = { wif_conv_build > wif_conv_slots } }
+			set_variable = { wif_conv_cannot_build = 1 }
+		}
+	}
+}
+
+# Convert up to this month's step, never past wif_conv_needed. A fractional
+# remainder still converts one whole factory, so the last conversion closes
+# the gap rather than leaving a fraction of a factory over.
+#
+# The loop is bounded by its own counter, never by a factory count. Building
+# counts do not refresh inside a single effect - an earlier enforcement loop
+# keyed on num_of_military_factories never saw its condition go false and
+# deleted every arms factory in the country (see the note in on_weekly,
+# common/on_actions/wif_on_actions.txt). For the same reason each state's
+# removals this month are tallied in wif_conv_taken rather than trusted to
+# arms_factory_level, so an emptied state is never picked again.
+wif_convert_factories = {
+	set_temp_variable = { wif_tmp_left = wif_conv_step }
+	clamp_temp_variable = { var = wif_tmp_left max = wif_conv_needed }
+
+	every_owned_state = {
+		set_variable = { wif_conv_taken = 0 }
+	}
+
+	while_loop_effect = {
+		limit = {
+			check_variable = { wif_tmp_left > 0 }
+			any_owned_state = {
+				is_controlled_by = ROOT
+				check_variable = { wif_conv_taken < arms_factory_level }
+			}
+		}
+		random_owned_controlled_state = {
+			limit = { check_variable = { wif_conv_taken < arms_factory_level } }
+			if = {
+				limit = { NOT = { has_state_flag = wif_conv_state } }
+				set_state_flag = wif_conv_state
+				set_variable = { wif_conv_expect = industrial_complex_level }
+			}
+			add_to_variable = { wif_conv_expect = 1 }
+			add_to_variable = { wif_conv_taken = 1 }
+			remove_building = { type = arms_factory level = 1 }
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = no
+			}
+		}
+		subtract_from_temp_variable = { wif_tmp_left = 1 }
+	}
+
+	every_owned_state = {
+		clear_variable = wif_conv_taken
+	}
+}
+
+# Monthly, from on_monthly in common/on_actions/wif_on_actions.txt. Country
+# scope. wif_mil_over_latch is only ever set while the ceiling applies and the
+# country is over it, so it gates out war, the Soviet successors and everyone
+# under their ceiling in one test.
+wif_factory_conversion_monthly = {
+	if = {
+		limit = {
+			is_ai = yes
+			has_country_flag = wif_mil_over_latch
+		}
+		wif_plan_conversions = yes
+
+		if = {
+			limit = { check_variable = { wif_conv_needed > 0 } }
+
+			# Start: stage 2 or worse, and either out of grace or unable to
+			# build its way out.
+			if = {
+				limit = {
+					NOT = { has_country_flag = wif_converting }
+					check_variable = { num_of_military_factories > wif_cap_over25 }
+				}
+				if = {
+					limit = { has_country_flag = wif_mil_grace }
+					wif_check_can_build_out = yes
+				}
+				if = {
+					limit = {
+						OR = {
+							NOT = { has_country_flag = wif_mil_grace }
+							check_variable = { wif_conv_cannot_build = 1 }
+						}
+					}
+					set_country_flag = wif_converting
+					set_variable = { wif_conv_step = wif_conv_needed }
+					divide_variable = { wif_conv_step = 12 }
+					clamp_variable = { var = wif_conv_step min = 1 }
+				}
+			}
+
+			if = {
+				limit = { has_country_flag = wif_converting }
+				wif_convert_factories = yes
+			}
+		}
+		else = {
+			clr_country_flag = wif_converting
+		}
+	}
+	else_if = {
+		limit = { has_country_flag = wif_converting }
+		clr_country_flag = wif_converting
+	}
+}

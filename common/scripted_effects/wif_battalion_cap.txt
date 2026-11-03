@@ -198,6 +198,7 @@ wif_recalculate_battalion_cap = {
 	set_variable = { wif_src_faction = 0 }
 	set_variable = { wif_src_invincible = 0 }
 	set_variable = { wif_src_bloated = 0 }
+	set_variable = { wif_src_pws_army = 0 }
 	set_variable = { wif_src_war_bal = 0 }
 	set_variable = { wif_src_war_def = 0 }
 	set_variable = { wif_src_war_2x = 0 }
@@ -322,7 +323,7 @@ wif_recalculate_battalion_cap = {
 	# grant is in common/on_actions/wif_on_actions.txt, gated on the trigger
 	# wif_is_russian_warlord.
 	if = {
-		limit = { has_idea = wif_russian_warlord }
+		limit = { wif_has_warlord_spirit = yes }
 		set_variable = { wif_src_warlord = 0.80 }
 	}
 
@@ -480,6 +481,13 @@ wif_recalculate_battalion_cap = {
 	if = {
 		limit = { has_completed_focus = GER_a_bloated_army }
 		set_variable = { wif_src_bloated = -0.15 }
+	}
+
+	# A Standing Army - the generic post-SME warlord tree
+	# (tools/gen_post_sme_tree.py). +10%.
+	if = {
+		limit = { has_country_flag = wif_pws_standing_army }
+		set_variable = { wif_src_pws_army = 0.10 }
 	}
 
 	# --- Line battalions in service ---------------------------------------
@@ -691,6 +699,7 @@ wif_recalculate_battalion_cap = {
 	add_to_variable = { wif_bat_pct = wif_src_faction }
 	add_to_variable = { wif_bat_pct = wif_src_invincible }
 	add_to_variable = { wif_bat_pct = wif_src_bloated }
+	add_to_variable = { wif_bat_pct = wif_src_pws_army }
 	add_to_variable = { wif_bat_pct = wif_src_war_bal }
 	add_to_variable = { wif_bat_pct = wif_src_war_def }
 	add_to_variable = { wif_bat_pct = wif_src_war_2x }
@@ -941,6 +950,13 @@ wif_disband_over_cap = {
 		set_variable = { wif_disband_allowance = wif_battalions_over }
 		divide_variable = { wif_disband_allowance = wif_disband_avg }
 		multiply_variable = { wif_disband_allowance = 0.75 }
+
+		# At least one division whenever the country is over at all. Without
+		# this, an overshoot smaller than about 1.3 average divisions gave an
+		# allowance under 1, nothing was ever disbanded, and the country sat a
+		# few battalions over its cap forever (ENG and CHI in a 1950 save). One
+		# division may take it slightly under the cap, which is the goal anyway.
+		clamp_variable = { var = wif_disband_allowance min = 1 }
 
 		# THE ONE THING THIS MUST NEVER DO IS EMPTY AN ARMY.
 		#

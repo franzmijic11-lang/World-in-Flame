@@ -1,0 +1,23 @@
+# The SME's war with the Ostschild: no decisions, only the war-score slider
+# (common/scripted_guis/wif_sme_war_scripted_gui.txt). Shown to both sides, and
+# to a reunited Reich once it has joined in.
+wif_sme_war_category = {
+	icon = GFX_decision_category_generic_crisis
+	priority = 200
+
+	visible_when_empty = yes
+
+	visible = {
+		has_global_flag = wif_sme_war_active
+		OR = {
+			tag = SME
+			wif_sme_is_ostschild = yes
+			AND = {
+				tag = GER
+				has_global_flag = wif_sme_ger_joined
+			}
+		}
+	}
+
+	scripted_gui = wif_sme_war_ui
+}

@@ -164,6 +164,46 @@ wif_update_factory_cap = {
 		}
 	}
 
+	# How many military factories the country is over its ceiling, 0 if it is
+	# not. Read by the AI's conversion in
+	# common/scripted_effects/wif_factory_conversion.txt.
+	set_variable = { wif_mil_over = wif_mil_headroom }
+	multiply_variable = { wif_mil_over = -1 }
+	clamp_variable = { var = wif_mil_over min = 0 }
+
+	# A year's grace from the first week a country goes over its ceiling, for
+	# whatever reason - world tension falling, civilian factories lost, a new
+	# government on a stricter ratio. Through the grace it only carries the
+	# grace spirit, which stops new military factories but costs nothing else,
+	# and the AI uses the year to convert (wif_factory_conversion.txt). Going
+	# back under clears the latch, so the next overshoot gets a fresh year.
+	#
+	# No clock runs while the ceiling itself is suspended (war grace, Soviet
+	# successors); the year starts when it starts applying.
+	if = {
+		limit = {
+			NOT = { wif_is_soviet_successor = yes }
+			NOT = { has_country_flag = wif_cap_war_grace }
+		}
+		if = {
+			limit = {
+				check_variable = { wif_mil_headroom < 0 }
+				NOT = { has_country_flag = wif_mil_over_latch }
+			}
+			set_country_flag = wif_mil_over_latch
+			set_country_flag = { flag = wif_mil_grace days = 365 value = 1 }
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { wif_mil_headroom < 0 } } }
+			clr_country_flag = wif_mil_over_latch
+			clr_country_flag = wif_mil_grace
+		}
+	}
+	else = {
+		clr_country_flag = wif_mil_over_latch
+		clr_country_flag = wif_mil_grace
+	}
+
 	# Soviet successor states are exempt from the ceiling outright - see
 	# wif_is_soviet_successor in common/scripted_triggers/wif_scripted_triggers.txt.
 	#
@@ -186,6 +226,14 @@ wif_update_factory_cap = {
 	else_if = {
 		limit = { has_country_flag = wif_cap_war_grace }
 		wif_clear_ceiling_spirit = yes
+	}
+	else_if = {
+		limit = { has_country_flag = wif_mil_grace }
+		if = {
+			limit = { NOT = { has_idea = wif_military_factory_ceiling_grace } }
+			wif_clear_ceiling_spirit = yes
+			add_ideas = wif_military_factory_ceiling_grace
+		}
 	}
 	else_if = {
 		limit = {
@@ -233,5 +281,9 @@ wif_clear_ceiling_spirit = {
 	if = {
 		limit = { has_idea = wif_military_factory_ceiling_severe }
 		remove_ideas = wif_military_factory_ceiling_severe
+	}
+	if = {
+		limit = { has_idea = wif_military_factory_ceiling_grace }
+		remove_ideas = wif_military_factory_ceiling_grace
 	}
 }

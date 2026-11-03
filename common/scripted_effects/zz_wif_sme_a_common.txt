@@ -1,0 +1,112 @@
+# Helpers for the SME collapse, called by the breakaways
+# (zz_wif_sme_b_breakaways_auto.txt) and the collapse driver
+# (zz_wif_sme_c_war.txt). The a / b / c names are load order: scripted effects
+# are read by file name, and these have to exist before anything calls them.
+
+# Country scope: what losing the war does to every government that comes out
+# of the SME - the SME itself, Zhukov's or the council's half, and each
+# breakaway. Every national spirit goes except the warlord one, which is
+# swapped for the harsher version; the warlord economy and Closed Economy are
+# forced; and anything governed from west of the Urals is bombed.
+wif_sme_ruin_country = {
+	wif_sme_strip_spirits = yes
+
+	if = {
+		limit = { has_idea = wif_russian_warlord }
+		remove_ideas = wif_russian_warlord
+	}
+	if = {
+		limit = { NOT = { has_idea = wif_russian_warlord_broken } }
+		add_ideas = wif_russian_warlord_broken
+	}
+	if = {
+		limit = { NOT = { has_idea = wif_russian_warlord_economy } }
+		add_ideas = wif_russian_warlord_economy
+	}
+	if = {
+		limit = { NOT = { has_idea = closed_economy } }
+		add_ideas = closed_economy
+	}
+	if = {
+		limit = {
+			NOT = { wif_sme_beyond_urals = yes }
+			NOT = { has_idea = wif_sme_terror_bombing }
+		}
+		add_ideas = wif_sme_terror_bombing
+	}
+	set_country_flag = wif_sme_ruined
+	wif_recalculate_battalion_cap = yes
+}
+
+# Global scope, with the Russian Empire formed. Kirov takes back its old name,
+# and the SME gives up its claim to Moskowien: nobody inherits it.
+#
+# Two effects for the name, as in wif_sme_coup_authoritarian: set_state_name
+# renames the state, set_province_name the victory point (province 6124).
+wif_sme_kirov_becomes_vyatka = {
+	400 = { set_state_name = "Vyatka" }
+	set_province_name = {
+		id = 6124
+		name = "Vyatka"
+	}
+	every_state = {
+		limit = {
+			is_core_of = SME
+			OR = {
+				is_core_of = RKM
+				is_owned_by = RKM
+			}
+		}
+		remove_core_of = SME
+	}
+}
+
+# Global scope, with the Order formed. The Order does not take a tenth of the
+# army like the others: two divisions, infantry where there is infantry, go
+# over to it. A division cannot be handed to another country, so two of the
+# government's infantry divisions are removed and the Order raises two of its
+# own in Gayny.
+wif_sme_druzhina_of_saint_george = {
+	OSG = {
+		division_template = {
+			name = "Druzhina of Saint George"
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+			}
+		}
+	}
+	# create_unit needs a state scope and the owner written as a tag.
+	1085 = {
+		if = {
+			limit = { is_owned_by = OSG }
+			create_unit = {
+				division = "name = \"Druzhina of Saint George\" division_template = \"Druzhina of Saint George\" start_experience_factor = 0.3 start_equipment_factor = 1.0"
+				owner = OSG
+				count = 2
+			}
+		}
+	}
+	event_target:wif_sme_south = {
+		if = {
+			limit = {
+				any_country_division = { division_has_majority_template = infantry }
+			}
+			every_country_division = {
+				random_select_amount = 2
+				limit = { division_has_majority_template = infantry }
+				destroy_unit = yes
+			}
+		}
+		else = {
+			every_country_division = {
+				random_select_amount = 2
+				destroy_unit = yes
+			}
+		}
+	}
+}

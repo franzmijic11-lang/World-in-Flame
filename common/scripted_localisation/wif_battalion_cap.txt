@@ -433,6 +433,21 @@ defined_text = {
 	}
 }
 
+# A Standing Army, the post-SME warlord tree. Always a bonus.
+defined_text = {
+	name = GetWifCapStandingArmy
+
+	text = {
+		trigger = { check_variable = { wif_src_pws_army > 0 } }
+		localization_key = wif_cap_line_pws_army
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = wif_cap_line_none
+	}
+}
+
 # A Bloated Army. Always a penalty.
 defined_text = {
 	name = GetWifCapBloated

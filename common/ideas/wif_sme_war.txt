@@ -1,0 +1,53 @@
+# Spirits of the SME collapse (common/scripted_effects/zz_wif_sme_a_common.txt,
+# wif_sme_ruin_country).
+ideas = {
+	country = {
+
+		# Russian Warlord, after the SME's defeat. Same name and picture as
+		# wif_russian_warlord, which it replaces on the SME, both halves of the
+		# Zhukov split and every breakaway. Everything that keys on being a
+		# warlord - the warlord economy, Closed Economy, the battalion cap -
+		# reads the trigger wif_has_warlord_spirit, so it counts as the same
+		# thing. The Siberian warlords keep the ordinary one for now.
+		wif_russian_warlord_broken = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = SOV_factionalism_modifier
+
+			modifier = {
+				production_speed_buildings_factor = -0.30
+				research_speed_factor = -0.15
+				stability_factor = -0.25
+			}
+		}
+
+		# For the governments west of the Urals, in the Luftwaffe's reach
+		# (trigger wif_sme_beyond_urals).
+		wif_sme_terror_bombing = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = combined_bomber_offensive
+
+			modifier = {
+				stability_factor = -0.10
+				production_speed_buildings_factor = -0.05
+			}
+		}
+	}
+}

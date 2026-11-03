@@ -235,22 +235,22 @@ wif_ger_fuhrer_found_dead = {
 		limit = { has_idea = wif_ger_government_by_audience }
 		remove_ideas = wif_ger_government_by_audience
 	}
-	recruit_character = wif_ger_reichstag
-	add_country_leader_role = {
-		character = wif_ger_reichstag
-		promote_leader = yes
-		country_leader = {
-			ideology = nazism
-			traits = { wif_ger_paralysed_government }
-		}
+	# create_country_leader, not recruit_character: recruiting only works in
+	# history files at game start, so the Reichstag never existed and the game
+	# filled the empty seat with a generic leader.
+	create_country_leader = {
+		name = wif_ger_reichstag
+		picture = GFX_portrait_wif_ger_reichstag
+		ideology = nazism
+		traits = { wif_ger_paralysed_government }
 	}
 	if = {
 		limit = { has_character = GER_adolf_hitler }
 		retire_character = GER_adolf_hitler
 	}
-	every_country = {
-		news_event = { id = wif_ger_road.6 }
-	}
+	# Once, not to every country: a major news event is shown to the whole
+	# world already, so sending it to each country showed it once per country.
+	news_event = { id = wif_ger_road.6 }
 }
 
 # ---------------------------------------------------------------------------

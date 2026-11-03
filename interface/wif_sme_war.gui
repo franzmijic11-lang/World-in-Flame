@@ -1,0 +1,61 @@
+# The SME war-score slider (common/scripted_guis/wif_sme_war_scripted_gui.txt).
+guiTypes = {
+	containerWindowType = {
+		name = "wif_sme_war_ui_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 96 }
+
+		instantTextBoxType = {
+			name = "wif_sme_war_title"
+			position = { x = -250 y = 4 }
+			orientation = center_up
+			font = "hoi_18mbs"
+			text = "WIF_SME_WAR_TITLE"
+			maxWidth = 500
+			maxHeight = 22
+			format = centre
+			pdx_tooltip = "WIF_SME_WAR_RULES"
+		}
+
+		iconType = {
+			name = "wif_sme_war_bar"
+			spriteType = "GFX_wif_sme_war_bar_21"
+			position = { x = -170 y = 30 }
+			orientation = center_up
+			pdx_tooltip = "WIF_SME_WAR_RULES"
+		}
+
+		instantTextBoxType = {
+			name = "wif_sme_war_left"
+			position = { x = -250 y = 56 }
+			orientation = center_up
+			font = "hoi_16mbs"
+			text = "WIF_SME_WAR_LEFT"
+			maxWidth = 170
+			maxHeight = 34
+			format = left
+		}
+
+		instantTextBoxType = {
+			name = "wif_sme_war_score"
+			position = { x = -60 y = 56 }
+			orientation = center_up
+			font = "hoi_16mbs"
+			text = "WIF_SME_WAR_SCORE"
+			maxWidth = 120
+			maxHeight = 34
+			format = centre
+		}
+
+		instantTextBoxType = {
+			name = "wif_sme_war_right"
+			position = { x = 80 y = 56 }
+			orientation = center_up
+			font = "hoi_16mbs"
+			text = "WIF_SME_WAR_RIGHT"
+			maxWidth = 170
+			maxHeight = 34
+			format = right
+		}
+	}
+}

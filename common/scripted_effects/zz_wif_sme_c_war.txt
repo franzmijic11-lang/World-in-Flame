@@ -1,0 +1,787 @@
+# The SME's war with the Ostschild, and the collapse that follows a defeat.
+#
+# THE WAR. Contact Lost with Germania (wif_cw_contact_lost_with_germania) frees
+# the four Reichskommissariats into the Ostschild and has the SME declare war on
+# Moskowien. It only sets the global flag wif_sme_war_pending; the SME's daily
+# pass starts the war proper (wif_sme_war_start), so nothing here has to load
+# before the German files.
+#
+# THE SCORE is global.wif_sme_score, -100 to +170, starting at +5, shown as a
+# slider in the decision menu (common/scripted_guis/wif_sme_war_scripted_gui.txt).
+# Daily, from on_daily_SME:
+#   - the SME taking a scoring city: its points (table in
+#     tools/gen_sme_collapse.py); the Ostschild taking one back: double. A city
+#     can be taken again and pays again.
+#   - a pre-war SME state falling: -40; Gorky -15 more. Taken back: the same back.
+#     These are never doubled.
+#   - an Ostschild member capitulating (or vanishing): +20, once each.
+#   - 40 days without the SME gaining anything: -10, and the count restarts.
+#   - once the Reich has reunited: -5 a month (on_monthly_SME), and GER joins the
+#     war on the Ostschild's side.
+# The SME wins at +170 or once Kaukasien and Moskowien have both capitulated;
+# it loses at -100.
+#
+# THE OSTSCHILD'S LEADER passes on when it is about to capitulate (over 90%) to
+# the member furthest from capitulating, until one is left.
+#
+# THE COLLAPSE (wif_sme_collapse_begin) runs over two weeks, one step at a time
+# (event wif_sme_war.4): the Russian Empire, Vologda, Gorky, the Zhukov split,
+# the Order of Saint George, Komi, the Aryan Brotherhood, the Russian National
+# State, the Russian Fascist State, the Syndicalist State. Nobody fights anybody.
+# After the split, event_target:wif_sme_south is the government the rest break
+# away from, which may be either tag.
+
+# ---------------------------------------------------------------------------
+# Start
+# ---------------------------------------------------------------------------
+
+# SME scope.
+wif_sme_war_start = {
+	clr_global_flag = wif_sme_war_pending
+	set_global_flag = wif_sme_war_started
+	set_global_flag = wif_sme_war_active
+	set_variable = { global.wif_sme_score = 5 }
+	set_variable = { global.wif_sme_idle = 0 }
+	wif_sme_seed_cities = yes
+	every_owned_state = { set_state_flag = wif_sme_prewar }
+
+	# Every Ostschild member is in the war, not just Moskowien.
+	if = {
+		limit = { any_country = { wif_sme_is_ostschild = yes has_war_with = SME } }
+		random_country = {
+			limit = { wif_sme_is_ostschild = yes has_war_with = SME }
+			save_event_target_as = wif_sme_war_anchor
+		}
+		every_country = {
+			limit = {
+				wif_sme_is_ostschild = yes
+				NOT = { has_war_with = SME }
+			}
+			add_to_war = {
+				targeted_alliance = event_target:wif_sme_war_anchor
+				enemy = SME
+				hostility_reason = asked_to_join
+			}
+		}
+	}
+
+	# A member that was never there counts as gone, without paying out.
+	if = { limit = { NOT = { country_exists = RKK } } set_global_flag = wif_sme_capped_RKK }
+	if = { limit = { NOT = { country_exists = RKM } } set_global_flag = wif_sme_capped_RKM }
+	if = { limit = { NOT = { country_exists = RKU } } set_global_flag = wif_sme_capped_RKU }
+	if = { limit = { NOT = { country_exists = RKO } } set_global_flag = wif_sme_capped_RKO }
+
+	country_event = { id = wif_sme_war.1 }
+	every_country = {
+		limit = { wif_sme_is_ostschild = yes }
+		country_event = { id = wif_sme_war.1 }
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Daily
+# ---------------------------------------------------------------------------
+
+# Country scope: one Ostschild member's capitulation, counted once.
+wif_sme_count_capitulations = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = wif_sme_capped_RKK }
+			OR = {
+				NOT = { country_exists = RKK }
+				RKK = { has_capitulated = yes }
+			}
+		}
+		set_global_flag = wif_sme_capped_RKK
+		add_to_variable = { global.wif_sme_score = 20 }
+		set_variable = { global.wif_sme_gain = 1 }
+	}
+	if = {
+		limit = {
+			NOT = { has_global_flag = wif_sme_capped_RKM }
+			OR = {
+				NOT = { country_exists = RKM }
+				RKM = { has_capitulated = yes }
+			}
+		}
+		set_global_flag = wif_sme_capped_RKM
+		add_to_variable = { global.wif_sme_score = 20 }
+		set_variable = { global.wif_sme_gain = 1 }
+	}
+	if = {
+		limit = {
+			NOT = { has_global_flag = wif_sme_capped_RKU }
+			OR = {
+				NOT = { country_exists = RKU }
+				RKU = { has_capitulated = yes }
+			}
+		}
+		set_global_flag = wif_sme_capped_RKU
+		add_to_variable = { global.wif_sme_score = 20 }
+		set_variable = { global.wif_sme_gain = 1 }
+	}
+	if = {
+		limit = {
+			NOT = { has_global_flag = wif_sme_capped_RKO }
+			OR = {
+				NOT = { country_exists = RKO }
+				RKO = { has_capitulated = yes }
+			}
+		}
+		set_global_flag = wif_sme_capped_RKO
+		add_to_variable = { global.wif_sme_score = 20 }
+		set_variable = { global.wif_sme_gain = 1 }
+	}
+}
+
+# The Ostschild's leader, over 90% to capitulation, hands the faction to the
+# member furthest from it. Only while the Ostschild is its own faction - once
+# the Reich has reunited, Berlin leads.
+wif_sme_ostschild_succession = {
+	if = {
+		limit = { NOT = { has_global_flag = wif_ger_reunified } }
+		every_country = {
+			limit = {
+				wif_sme_is_ostschild = yes
+				is_faction_leader = yes
+				surrender_progress > 0.9
+			}
+			set_country_flag = wif_sme_old_leader
+			save_event_target_as = wif_sme_old_leader
+			if = {
+				limit = {
+					any_country = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.5
+					}
+				}
+				random_country = {
+					limit = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.5
+					}
+					set_faction_leader = yes
+					country_event = { id = wif_sme_war.5 }
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.75
+					}
+				}
+				random_country = {
+					limit = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.75
+					}
+					set_faction_leader = yes
+					country_event = { id = wif_sme_war.5 }
+				}
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.9
+					}
+				}
+				random_country = {
+					limit = {
+						wif_sme_is_ostschild = yes
+						NOT = { has_country_flag = wif_sme_old_leader }
+						is_in_faction_with = event_target:wif_sme_old_leader
+						surrender_progress < 0.9
+					}
+					set_faction_leader = yes
+					country_event = { id = wif_sme_war.5 }
+				}
+			}
+			clr_country_flag = wif_sme_old_leader
+		}
+	}
+}
+
+# SME scope, from on_daily_SME while the war is on.
+wif_sme_war_daily = {
+	set_variable = { global.wif_sme_gain = 0 }
+
+	# Cities.
+	every_state = {
+		limit = {
+			has_variable = wif_sme_pts
+			NOT = { has_state_flag = wif_sme_prewar }
+		}
+		if = {
+			limit = {
+				NOT = { has_state_flag = wif_sme_city_held }
+				controller = { tag = SME }
+			}
+			set_state_flag = wif_sme_city_held
+			add_to_variable = { global.wif_sme_score = wif_sme_pts }
+			set_variable = { global.wif_sme_gain = 1 }
+		}
+		else_if = {
+			limit = {
+				has_state_flag = wif_sme_city_held
+				controller = { has_war_with = SME }
+			}
+			clr_state_flag = wif_sme_city_held
+			set_temp_variable = { wif_sme_loss = wif_sme_pts }
+			multiply_temp_variable = { wif_sme_loss = 2 }
+			subtract_from_variable = { global.wif_sme_score = wif_sme_loss }
+		}
+	}
+
+	# The SME's own land.
+	every_state = {
+		limit = { has_state_flag = wif_sme_prewar }
+		if = {
+			limit = {
+				NOT = { has_state_flag = wif_sme_prewar_lost }
+				controller = { has_war_with = SME }
+			}
+			set_state_flag = wif_sme_prewar_lost
+			subtract_from_variable = { global.wif_sme_score = 40 }
+			if = {
+				limit = { state = 252 }		# Gorky
+				subtract_from_variable = { global.wif_sme_score = 15 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_state_flag = wif_sme_prewar_lost
+				controller = { tag = SME }
+			}
+			clr_state_flag = wif_sme_prewar_lost
+			add_to_variable = { global.wif_sme_score = 40 }
+			if = {
+				limit = { state = 252 }
+				add_to_variable = { global.wif_sme_score = 15 }
+			}
+			set_variable = { global.wif_sme_gain = 1 }
+		}
+	}
+
+	wif_sme_count_capitulations = yes
+
+	# The Reich, reunited, comes in on the Ostschild's side. Its members are
+	# already in its faction (wif_cw_reunify) and become its subjects again
+	# once the war ends (wif_cw_repuppet_after_war).
+	if = {
+		limit = {
+			has_global_flag = wif_ger_reunified
+			country_exists = GER
+			NOT = { has_global_flag = wif_sme_ger_joined }
+		}
+		set_global_flag = wif_sme_ger_joined
+		if = {
+			limit = { NOT = { GER = { has_war_with = SME } } }
+			GER = { declare_war_on = { target = SME type = annex_everything } }
+		}
+	}
+
+	# Forty days without a gain.
+	if = {
+		limit = { check_variable = { global.wif_sme_gain = 1 } }
+		set_variable = { global.wif_sme_idle = 0 }
+	}
+	else = {
+		add_to_variable = { global.wif_sme_idle = 1 }
+		if = {
+			limit = { check_variable = { global.wif_sme_idle > 39 } }
+			subtract_from_variable = { global.wif_sme_score = 10 }
+			set_variable = { global.wif_sme_idle = 0 }
+		}
+	}
+
+	wif_sme_ostschild_succession = yes
+	wif_sme_war_check_end = yes
+}
+
+# SME scope, from on_monthly_SME.
+wif_sme_war_monthly = {
+	if = {
+		limit = { has_global_flag = wif_ger_reunified }
+		subtract_from_variable = { global.wif_sme_score = 5 }
+		wif_sme_war_check_end = yes
+	}
+}
+
+wif_sme_war_check_end = {
+	clamp_variable = {
+		var = global.wif_sme_score
+		min = -100
+		max = 170
+	}
+	if = {
+		limit = {
+			OR = {
+				check_variable = { global.wif_sme_score > 169 }
+				AND = {
+					has_global_flag = wif_sme_capped_RKK
+					has_global_flag = wif_sme_capped_RKM
+				}
+			}
+		}
+		wif_sme_war_won = yes
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_score < -99 } }
+		wif_sme_war_lost = yes
+	}
+}
+
+# ---------------------------------------------------------------------------
+# The end of the war
+# ---------------------------------------------------------------------------
+
+# The Reichskommissariats collapse. Moskowien and Kaukasien are annexed; peace
+# with everyone else. What becomes of Ukraine and Ostland is a later mechanic.
+wif_sme_war_won = {
+	clr_global_flag = wif_sme_war_active
+	set_global_flag = wif_sme_war_won
+	SME = {
+		set_country_flag = wif_sme_war_won
+		if = {
+			limit = { country_exists = RKM }
+			annex_country = { target = RKM transfer_troops = yes }
+		}
+		if = {
+			limit = { country_exists = RKK }
+			annex_country = { target = RKK transfer_troops = yes }
+		}
+		every_country = {
+			limit = { has_war_with = SME }
+			SME = { white_peace = PREV }
+		}
+		news_event = { id = wif_sme_war.2 }
+	}
+}
+
+# The SME collapses. The Ostschild keeps every SME state it holds, peace with
+# everyone, and the breakup begins.
+wif_sme_war_lost = {
+	clr_global_flag = wif_sme_war_active
+	set_global_flag = wif_sme_war_lost
+	SME = {
+		set_country_flag = wif_sme_war_lost
+		every_owned_state = {
+			limit = { controller = { has_war_with = SME } }
+			CONTROLLER = { transfer_state = PREV }
+		}
+		every_country = {
+			limit = { has_war_with = SME }
+			white_peace = SME
+		}
+		news_event = { id = wif_sme_war.3 }
+	}
+	wif_sme_collapse_begin = yes
+}
+
+# ---------------------------------------------------------------------------
+# The collapse
+# ---------------------------------------------------------------------------
+
+wif_sme_collapse_begin = {
+	set_global_flag = wif_sme_collapsing
+	set_variable = { global.wif_sme_collapse_step = 0 }
+	SME = {
+		save_global_event_target_as = wif_sme_south
+		wif_sme_ruin_country = yes
+		load_focus_tree = { tree = wif_sme_unravelling_tree keep_completed = no }
+		country_event = { id = wif_sme_war.4 }
+	}
+}
+
+# Global scope, from the hidden event wif_sme_war.4. One step, then the next
+# is scheduled: day 0, 1, 3, 5, 6, 8, 9, 11, 12, 14.
+wif_sme_collapse_step = {
+	add_to_variable = { global.wif_sme_collapse_step = 1 }
+	set_temp_variable = { wif_sme_next = 0 }
+	if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 1 } }
+		wif_sme_form_RUE = yes
+		set_temp_variable = { wif_sme_next = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 2 } }
+		wif_sme_form_VGD = yes
+		set_temp_variable = { wif_sme_next = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 3 } }
+		wif_sme_form_GRK = yes
+		set_temp_variable = { wif_sme_next = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 4 } }
+		wif_sme_zhukov_split = yes
+		set_temp_variable = { wif_sme_next = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 5 } }
+		wif_sme_form_OSG = yes
+		set_temp_variable = { wif_sme_next = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 6 } }
+		wif_sme_form_KMR = yes
+		set_temp_variable = { wif_sme_next = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 7 } }
+		wif_sme_form_ARB = yes
+		set_temp_variable = { wif_sme_next = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 8 } }
+		wif_sme_form_RNS = yes
+		set_temp_variable = { wif_sme_next = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 9 } }
+		wif_sme_form_RFS = yes
+		set_temp_variable = { wif_sme_next = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.wif_sme_collapse_step = 10 } }
+		wif_sme_form_SPT = yes
+		set_global_flag = wif_sme_collapse_done
+		clr_global_flag = wif_sme_collapsing
+		if = {
+			limit = { country_exists = SME }
+			SME = { news_event = { id = wif_sme_war.6 } }
+		}
+		else_if = {
+			limit = { country_exists = ZWF }
+			ZWF = { news_event = { id = wif_sme_war.6 } }
+		}
+	}
+
+	# The next step, on whichever government still exists. A literal day count
+	# per branch, since country_event takes no variable.
+	if = {
+		limit = { check_variable = { wif_sme_next > 0 } }
+		if = {
+			limit = { country_exists = SME }
+			SME = { save_event_target_as = wif_sme_clock }
+		}
+		else_if = {
+			limit = { country_exists = ZWF }
+			ZWF = { save_event_target_as = wif_sme_clock }
+		}
+		# Branch here, in the scope that set the temp variable, not inside the
+		# clock's scope.
+		if = {
+			limit = {
+				has_event_target = wif_sme_clock
+				check_variable = { wif_sme_next = 1 }
+			}
+			event_target:wif_sme_clock = { country_event = { id = wif_sme_war.4 days = 1 } }
+		}
+		else_if = {
+			limit = { has_event_target = wif_sme_clock }
+			event_target:wif_sme_clock = { country_event = { id = wif_sme_war.4 days = 2 } }
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------
+# The Zhukov split
+# ---------------------------------------------------------------------------
+
+# Zhukov takes half the army, most of the generals and the high command north
+# to Archangelsk, Nenets and Kargopol - whichever of them the SME holds.
+#
+# The SME's balance of power decides who keeps the tag:
+#   council's side (below -0.1): the council keeps the SME; Zhukov becomes ZWF,
+#     the West Russian Army Front;
+#   Zhukov's side (above +0.1): Zhukov's northern government keeps the SME and
+#     takes the name West Russian Army Front (cosmetic SME_WRAF); the council's
+#     southern government is ZWF, under the SME's name and flag (cosmetic
+#     ZWF_EMERGENCY), and keeps everything else;
+#   in between, or no balance at all: a coin toss.
+# Either way the navy goes north and the southern government is led by the
+# Supreme Soviet. If the SME holds none of the three states there is no north
+# to go to, and the split does not happen.
+wif_sme_zhukov_split = {
+	if = {
+		limit = {
+			country_exists = SME
+			any_state = {
+				OR = { state = 214 state = 825 state = 879 }
+				is_owned_by = SME
+			}
+		}
+		SME = {
+			if = {
+				limit = {
+					has_power_balance = { id = SME_leadership_balance }
+					power_balance_value = { id = SME_leadership_balance value > 0.1 }
+				}
+				set_global_flag = wif_sme_zhukov_keeps_tag
+			}
+			else_if = {
+				limit = {
+					has_power_balance = { id = SME_leadership_balance }
+					power_balance_value = { id = SME_leadership_balance value < -0.1 }
+				}
+			}
+			else = {
+				random_list = {
+					50 = { set_global_flag = wif_sme_zhukov_keeps_tag }
+					50 = { }
+				}
+			}
+			capital_scope = { set_state_flag = wif_sme_old_capital }
+		}
+
+		if = {
+			limit = { NOT = { has_global_flag = wif_sme_zhukov_keeps_tag } }
+			wif_sme_zhukov_marches_north = yes
+		}
+		else = {
+			wif_sme_council_goes_south = yes
+		}
+
+		ZWF = {
+			inherit_technology = SME
+			set_research_slots = 3
+			set_stability = 0.3
+			set_war_support = 0.3
+			wif_sme_ruin_country = yes
+			load_focus_tree = { tree = wif_sme_unravelling_tree keep_completed = no }
+		}
+		SME = {
+			if = {
+				limit = { is_ai = no }
+				country_event = { id = wif_sme_war.20 }
+			}
+		}
+	}
+}
+
+# The council keeps the SME; Zhukov is the West Russian Army Front.
+wif_sme_zhukov_marches_north = {
+	every_state = {
+		limit = {
+			OR = { state = 214 state = 825 state = 879 }
+			is_owned_by = SME
+		}
+		transfer_state_to = ZWF
+		add_core_of = ZWF
+		remove_core_of = SME
+	}
+	ZWF = {
+		if = {
+			limit = { owns_state = 214 }
+			set_capital = { state = 214 }
+		}
+		else_if = {
+			limit = { owns_state = 825 }
+			set_capital = { state = 825 }
+		}
+		set_politics = { ruling_party = communism elections_allowed = no }
+		set_popularities = { communism = 80 neutrality = 15 fascism = 3 democratic = 2 }
+	}
+	SME = {
+		transfer_units_fraction = {
+			target = ZWF
+			size = 0
+			army_ratio = 0.5
+			navy_ratio = 1
+			air_ratio = 0.5
+			stockpile_ratio = 0.5
+			# Generals move only by the rolls below, Zhukov only by name.
+			keep_unit_leaders_trigger = { always = yes }
+		}
+		every_navy_leader = {
+			set_nationality = { target_country = ZWF }
+		}
+		every_army_leader = {
+			limit = { is_country_leader = no }
+			random_list = {
+				75 = { set_nationality = { target_country = ZWF } }
+				25 = { }
+			}
+		}
+		every_character = {
+			limit = {
+				is_country_leader = no
+				OR = {
+					has_advisor_role = army_chief
+					has_advisor_role = navy_chief
+					has_advisor_role = air_chief
+					has_advisor_role = high_command
+				}
+			}
+			random_list = {
+				75 = { set_nationality = ZWF }
+				25 = { }
+			}
+		}
+		if = {
+			limit = { has_character = SOV_georgy_zhukov }
+			SOV_georgy_zhukov = { set_nationality = ZWF }
+		}
+		create_country_leader = {
+			name = "Supreme Soviet"
+			picture = "GFX_portrait_SOV_supreme_soviet"
+			expire = "1975.1.1"
+			ideology = stalinism
+			traits = { }
+		}
+		save_global_event_target_as = wif_sme_south
+	}
+	ZWF = {
+		if = {
+			limit = { has_character = SOV_georgy_zhukov }
+			add_country_leader_role = {
+				character = SOV_georgy_zhukov
+				promote_leader = yes
+				country_leader = {
+					ideology = stalinism
+					expire = "1975.1.1.1"
+					traits = { wif_marshal_of_the_union }
+				}
+			}
+		}
+		else = {
+			create_country_leader = {
+				name = "Military Council of the Front"
+				picture = "GFX_portrait_europe_generic_land_13"
+				expire = "1975.1.1"
+				ideology = stalinism
+				traits = { }
+			}
+		}
+		save_global_event_target_as = wif_sme_north
+	}
+}
+
+# Zhukov keeps the SME, renamed the West Russian Army Front; the council's
+# southern government is ZWF under the SME's name, and keeps everything that is
+# not the north.
+wif_sme_council_goes_south = {
+	every_state = {
+		limit = {
+			is_owned_by = SME
+			NOT = { OR = { state = 214 state = 825 state = 879 } }
+		}
+		if = {
+			limit = { is_core_of = SME }
+			add_core_of = ZWF
+			remove_core_of = SME
+		}
+		transfer_state_to = ZWF
+	}
+	SME = {
+		set_cosmetic_tag = SME_WRAF
+		if = {
+			limit = { owns_state = 214 }
+			set_capital = { state = 214 }
+		}
+		else_if = {
+			limit = { owns_state = 825 }
+			set_capital = { state = 825 }
+		}
+		transfer_units_fraction = {
+			target = ZWF
+			size = 0
+			army_ratio = 0.5
+			navy_ratio = 0
+			air_ratio = 0.5
+			stockpile_ratio = 0.5
+			# Generals move only by the rolls below, Zhukov only by name.
+			keep_unit_leaders_trigger = { always = yes }
+		}
+		every_army_leader = {
+			limit = { is_country_leader = no }
+			random_list = {
+				25 = { set_nationality = { target_country = ZWF } }
+				75 = { }
+			}
+		}
+		every_character = {
+			limit = {
+				is_country_leader = no
+				OR = {
+					has_advisor_role = army_chief
+					has_advisor_role = navy_chief
+					has_advisor_role = air_chief
+					has_advisor_role = high_command
+				}
+			}
+			random_list = {
+				25 = { set_nationality = ZWF }
+				75 = { }
+			}
+		}
+		save_global_event_target_as = wif_sme_north
+	}
+	ZWF = {
+		set_cosmetic_tag = ZWF_EMERGENCY
+		every_owned_state = {
+			limit = { has_state_flag = wif_sme_old_capital }
+			ZWF = { set_capital = { state = PREV } }
+		}
+		set_politics = { ruling_party = communism elections_allowed = no }
+		set_popularities = { communism = 80 neutrality = 15 fascism = 3 democratic = 2 }
+		create_country_leader = {
+			name = "Supreme Soviet"
+			picture = "GFX_portrait_SOV_supreme_soviet"
+			expire = "1975.1.1"
+			ideology = stalinism
+			traits = { }
+		}
+		save_global_event_target_as = wif_sme_south
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Console shortcuts (events/wif_sme_war.txt, namespace wif_debug)
+# ---------------------------------------------------------------------------
+
+# Force the defeat: the score drops to -100 and the war ends as if it had been
+# lost. Without a war running, the collapse still happens.
+wif_sme_debug_force_collapse = {
+	if = {
+		limit = { has_global_flag = wif_sme_war_active }
+		set_variable = { global.wif_sme_score = -100 }
+		SME = { wif_sme_war_check_end = yes }
+	}
+	else_if = {
+		limit = {
+			country_exists = SME
+			NOT = { has_global_flag = wif_sme_collapsing }
+			NOT = { has_global_flag = wif_sme_collapse_done }
+		}
+		set_global_flag = wif_sme_war_lost
+		SME = {
+			set_country_flag = wif_sme_war_lost
+			news_event = { id = wif_sme_war.3 }
+		}
+		wif_sme_collapse_begin = yes
+	}
+}
+
+# Force the victory.
+wif_sme_debug_force_victory = {
+	if = {
+		limit = { has_global_flag = wif_sme_war_active }
+		set_variable = { global.wif_sme_score = 170 }
+		SME = { wif_sme_war_check_end = yes }
+	}
+}

@@ -1,16 +1,25 @@
-# The Protectorate watches the German civil war and, when only one side is
-# left, hands its Sudeten lands back - or is annexed whole, if it was only
-# formed for the war (common/scripted_effects/zz_wif_ger_collapse.txt). It is
-# BMP when formed, or Czechoslovakia when that survived as a German subject.
+# The German civil war and its aftermath. Effects in
+# common/scripted_effects/zz_wif_ger_reunify.txt and zz_wif_ger_abroad.txt.
 on_actions = {
-	on_monthly_BMP = {
+	on_weekly = {
 		effect = {
-			wif_cw_protectorate_check_winner = yes
+			# The last side standing wins the civil war.
+			if = {
+				limit = { has_country_flag = wif_ger_cw_belligerent }
+				wif_cw_check_for_winner = yes
+			}
+			# A former subject that was at war when the Reich reunited comes
+			# back once its war is over.
+			if = {
+				limit = { has_country_flag = wif_cw_repuppet_after_war }
+				wif_cw_repuppet_after_war = yes
+			}
 		}
 	}
-	on_monthly_CZE = {
+	# Free France wins once Vichy is gone.
+	on_weekly_FFR = {
 		effect = {
-			wif_cw_protectorate_check_winner = yes
+			wif_ffr_check_victory = yes
 		}
 	}
 }

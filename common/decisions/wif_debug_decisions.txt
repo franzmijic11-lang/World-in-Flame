@@ -1,0 +1,53 @@
+# Debug decisions. They sit in vanilla's debug_decisions category, which is
+# only visible to a human player in a game launched with -debug.
+
+debug_decisions = {
+	# Start or stop Economic Recovery on any country - see
+	# common/scripted_effects/wif_economy_law.txt. Starting it on a country
+	# with no recorded targets recovers it to 50% stability and 40% war
+	# support. Stopping it also forgets the recorded targets.
+	wif_debug_start_economic_recovery = {
+		priority = 999
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = { has_dynamic_modifier = { modifier = wif_economic_recovery } }
+			}
+		}
+
+		cost = 0
+
+		complete_effect = {
+			FROM = { wif_start_economic_recovery = yes }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	wif_debug_end_economic_recovery = {
+		priority = 999
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_dynamic_modifier = { modifier = wif_economic_recovery }
+			}
+		}
+
+		cost = 0
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = wif_economic_recovery }
+				clr_country_flag = wif_rec_targets_recorded
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

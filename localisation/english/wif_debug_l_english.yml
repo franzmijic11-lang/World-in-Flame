@@ -1,0 +1,6 @@
+﻿l_english:
+ # Debug decisions - common/decisions/wif_debug_decisions.txt.
+ wif_debug_start_economic_recovery:0 "Debug: Start Economic Recovery for [From.GetName]"
+ wif_debug_start_economic_recovery_desc:0 "Puts [From.GetName] on Economic Recovery. Without recorded targets it recovers to 50% stability and 40% war support."
+ wif_debug_end_economic_recovery:0 "Debug: End Economic Recovery for [From.GetName]"
+ wif_debug_end_economic_recovery_desc:0 "Takes Economic Recovery off [From.GetName] and forgets its recovery targets."

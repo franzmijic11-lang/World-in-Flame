@@ -497,3 +497,34 @@ wif_has_unsupported_economy_law = {
 		}
 	}
 }
+
+# A significant threat hangs over this country: some other country is
+# justifying a wargoal against it, its ally or a neighbour, or already holds
+# one. Allies are faction members, subjects and the overlord. An AI holding an
+# unsupported economy law with no such threat steps the law down on its own -
+# see wif_check_economy_law in common/scripted_effects/wif_economy_law.txt.
+#
+# An ongoing war does NOT count by itself. Only wargoals do.
+#
+# The outer loop picks the country under threat and the inner one looks for
+# whoever threatens it, so PREV inside the inner loop is the threatened
+# country. The cheap relationship tests come first so the inner loop only runs
+# for the handful of countries that qualify. ROOT's own wargoals never count.
+wif_faces_significant_threat = {
+	any_country = {
+		OR = {
+			tag = ROOT
+			is_in_faction_with = ROOT
+			is_subject_of = ROOT
+			ROOT = { is_subject_of = PREV }
+			is_neighbor_of = ROOT
+		}
+		any_country = {
+			NOT = { tag = ROOT }
+			OR = {
+				is_justifying_wargoal_against = PREV
+				has_wargoal_against = PREV
+			}
+		}
+	}
+}

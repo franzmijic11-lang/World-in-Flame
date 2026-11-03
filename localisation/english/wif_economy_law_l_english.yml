@@ -10,3 +10,5 @@
  wif_economy_law_category_desc:0 "Our economic law is beyond what the nation will support."
  wif_lower_economy_law_decision:0 "Lower the Economic Law"
  wif_lower_economy_law_decision_desc:0 "Step the economy down to the highest law we can still hold, and end the Unsustainable Economy penalty."
+ wif_economic_recovery:0 "Economic Recovery"
+ wif_economic_recovery_desc:0 "The economy has been stepped back to a footing the nation will bear, and public order and morale are slowly returning to where they stood before the crisis. Each week restores up to 5% stability and war support, until both are back where they were."

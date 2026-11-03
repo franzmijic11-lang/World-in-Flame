@@ -163,20 +163,20 @@ BURGUND = 'OR = {\n\thas_country_flag = wif_ger_osb_revolted\n\thas_country_flag
 # Hitler's decline and the power struggle (planner x 3-5)
 # ===========================================================================
 
-F('GER_the_fuhrers_tremor', 72, 7, 210, "The Führer's Tremor",
+F('GER_the_fuhrers_tremor', 73, 7, 210, "The Führer's Tremor",
   "Hitler's left hand will not keep still. The doctors have a word for it, and nobody is allowed to say it. The newsreel cameramen are told to film him from the right.",
   pre=['GER_a_weakened_king_among_vultures'], who=None, icon='GFX_focus_GER_loyalty_to_the_fuhrer',
   start=HITLER_RULES,
   reward='GER_adolf_hitler = { add_country_leader_trait = wif_ger_failing_health }\n' + stab(-0.03))
 
-F('GER_dr_morells_injections', 71, 8, 140, "Dr Morell's Injections",
+F('GER_dr_morells_injections', 72, 8, 140, "Dr Morell's Injections",
   "Every morning Dr Morell gives the Führer an injection, and every afternoon the Führer gives an order nobody expected. Ministers learn to read his moods before they read his mail.",
   pre=['GER_the_fuhrers_tremor'], who=None, icon='GFX_goal_generic_political_pressure',
   start=HITLER_RULES,
   reward=text('GER_dr_morells_injections_tt', "From now on the §YFührer's moods§! can overrule his ministers: every month there is a chance of an event that costs §Rpolitical power§! or §Rstability§!.")
   + 'hidden_effect = { set_country_flag = wif_ger_morell }\n' + stab(-0.05))
 
-F('GER_newsreel_the_fuhrer_at_the_obersalzberg', 73, 8, 35, 'Newsreel: The Führer at the Obersalzberg',
+F('GER_newsreel_the_fuhrer_at_the_obersalzberg', 74, 8, 35, 'Newsreel: The Führer at the Obersalzberg',
   'A carefully staged film: a healthy Führer walks the mountain paths with his dog. Three takes were needed. The cinemas show the fourth.',
   pre=['GER_the_fuhrers_tremor'], who='Goebbels', icon='GFX_focus_GER_fund_the_film_department',
   reward=stab(0.05))
@@ -188,14 +188,14 @@ F('GER_government_by_audience', 72, 9, 70, 'Government by Audience',
   reward='add_ideas = wif_ger_government_by_audience\n' + stab(-0.05) + skip()
   + text('GER_government_by_audience_tt', 'Unlocks the §YAudience with the Führer§! decisions in §YThe Reich Divided§!.'))
 
-F('GER_bormann_holds_the_keys', 71, 10, 140, 'Bormann Holds the Keys',
+F('GER_bormann_holds_the_keys', 72, 10, 140, 'Bormann Holds the Keys',
   "The Party Chancellery decides what reaches the Führer's desk, and Speer's requisition orders sit at the bottom of the pile.",
   pre=['GER_government_by_audience'], who='Bormann', icon='GFX_focus_GER_fuhrerprinzip_bormann',
   start=HITLER_RULES,
   reward=text('GER_bormann_holds_the_keys_tt', "Speer's §Yrequisition decisions§! cost §R25§! more political power.")
   + 'hidden_effect = { set_country_flag = wif_ger_bormann_keys }\n' + sc('party', 10))
 
-F('GER_goebbels_speaks_for_the_fuhrer', 73, 10, 140, 'Goebbels Speaks for the Führer',
+F('GER_goebbels_speaks_for_the_fuhrer', 74, 10, 140, 'Goebbels Speaks for the Führer',
   "With Himmler gone, Goebbels holds his chair. He reads the Führer's speeches on the radio. Before long he writes them too.",
   pre=['GER_government_by_audience'], after=['GER_offer_retirement'], who='Goebbels',
   icon='GFX_focus_GER_fuhrerprinzip_goebbels',
@@ -203,7 +203,7 @@ F('GER_goebbels_speaks_for_the_fuhrer', 73, 10, 140, 'Goebbels Speaks for the F�
   start_tt='and only while §YJoseph Goebbels§! sits in the §YInner Circle§!',
   reward=stab(0.05) + sc('propaganda', 10))
 
-F('GER_the_succession_question', 72, 11, 140, 'The Succession Question',
+F('GER_the_succession_question', 73, 11, 140, 'The Succession Question',
   'After Himmler\'s betrayal Hitler will name no heir at all. Every minister counts his friends and writes down his enemies.',
   pre=['GER_bormann_holds_the_keys', 'GER_goebbels_speaks_for_the_fuhrer'], after=['GER_offer_retirement'],
   who=None, icon='GFX_focus_GER_a_strong_successor', start=HITLER_RULES,
@@ -211,18 +211,18 @@ F('GER_the_succession_question', 72, 11, 140, 'The Succession Question',
   + text('GER_the_succession_question_tt', 'The §Ysuccession contest§! begins. The Party, Propaganda, Luftwaffe and Economy factions gain support every month, and the §YAudience with the Führer§! decisions push it. The standings are shown in §YThe Reich Divided§!.')
   + 'hidden_effect = { set_country_flag = wif_ger_succession_contest }\n')
 
-F('GER_gorings_last_ambition', 71, 12, 175, "Göring's Last Ambition",
+F('GER_gorings_last_ambition', 72, 12, 175, "Göring's Last Ambition",
   'In 1941 the Reichsmarschall was named the Führer\'s successor. He has not forgotten it, even if the Führer has. The army has not forgotten the Luftwaffe\'s failures either.',
   pre=['GER_the_succession_question'], who='Goring', icon='GFX_focus_GER_fuhrerprinzip_goring',
   start=HITLER_RULES,
   reward=sc('luftwaffe', 15) + 'add_ideas = wif_ger_gorings_ambition\n' + dist(5))
 
-F('GER_newsreel_the_fuhrers_sixtieth_birthday', 73, 12, 35, "Newsreel: The Führer's Sixtieth Birthday",
+F('GER_newsreel_the_fuhrers_sixtieth_birthday', 74, 12, 35, "Newsreel: The Führer's Sixtieth Birthday",
   "The largest parade the Reich has ever held marches down the new East-West Axis. The Führer takes the salute for eleven minutes before he is helped inside.",
   pre=['GER_the_succession_question'], who='Goebbels', icon='GFX_focus_GER_glorify_party_rallies',
   reward=stab(0.05) + ws(0.05))
 
-F('GER_the_second_stroke', 72, 13, 280, 'The Second Stroke',
+F('GER_the_second_stroke', 73, 13, 280, 'The Second Stroke',
   'Hitler collapses at the Berghof. For three weeks Bormann tells the ministers the Führer is resting. The fourth week, he lets them see him.',
   pre=['GER_gorings_last_ambition', 'GER_newsreel_the_fuhrers_sixtieth_birthday'], who=None,
   icon='GFX_focus_GER_the_supreme_leader', start=HITLER_RULES,
@@ -234,7 +234,7 @@ F('GER_the_berghof_court', 72, 14, 175, 'The Berghof Court',
   start=HITLER_RULES,
   reward='add_ideas = wif_ger_berghof_court\n' + sc('party', 5) + sc('propaganda', 5) + sc('luftwaffe', 5) + sc('economy', 5))
 
-F('GER_the_regency_council', 73, 14, 70, 'The Regency Council',
+F('GER_the_regency_council', 74, 14, 70, 'The Regency Council',
   "Hitler's ministers govern in his name, Bormann at the door. None of them trusts the others, but for once they agree on a budget.",
   pre=['GER_the_second_stroke'], icon='GFX_focus_GER_total_control_over_domestic_affairs',
   available=HITLER_RULES,
@@ -249,7 +249,7 @@ F('GER_newsreel_the_fuhrers_last_balcony', 72, 15, 35, "Newsreel: The Führer's 
 # The army and the loyal SS remnant (planner x 6-9)
 # ===========================================================================
 
-F('GER_the_generals_count_their_divisions', 75, 8, 35, 'The Generals Count Their Divisions',
+F('GER_the_generals_count_their_divisions', 77, 8, 35, 'The Generals Count Their Divisions',
   'Every officer watched the SS turn on the Reich, by war or by treaty. Now every officer looks at the SS men who stayed behind, and wonders which way they will turn next.',
   after=['GER_offer_retirement'], who=None, icon='GFX_focus_GER_reorganize_the_wehrmacht',
   start=HITLER_RULES + '\n' + BURGUND,
@@ -257,7 +257,7 @@ F('GER_the_generals_count_their_divisions', 75, 8, 35, 'The Generals Count Their
   reward=text('GER_the_generals_count_their_divisions_tt', 'The §YArmy-SS distrust§! meter appears in §YThe Reich Divided§!. It has counted quietly since §YTotaler Sieg§!. At §R100§! the army moves, whatever the date.')
   + dist(20) + stab(-0.03) + 'hidden_effect = { set_country_flag = wif_ger_distrust_shown }\n')
 
-F('GER_a_guard_of_his_own', 75, 9, 70, 'A Guard of His Own',
+F('GER_a_guard_of_his_own', 77, 9, 70, 'A Guard of His Own',
   "The Führer trusts nobody now except the SS men who did not follow Himmler: what is left of the Leibstandarte and the Totenkopf. They become his guard, and they answer to no general.",
   pre=['GER_the_generals_count_their_divisions'], who=None, icon='GFX_focus_GER_strengthen_the_waffen_ss',
   start=HITLER_RULES,
@@ -265,77 +265,77 @@ F('GER_a_guard_of_his_own', 75, 9, 70, 'A Guard of His Own',
   + text('GER_a_guard_of_his_own_units_tt', '§Y6§! veteran, fully equipped §YLeibstandarte Divisions§! are raised in §YBrandenburg§!. They cannot be edited or trained.')
   + 'hidden_effect = { wif_ger_raise_the_fuhrers_guard = yes }\n' + dist(15))
 
-F('GER_loyalty_oaths_for_the_officer_corps', 74, 10, 70, 'Loyalty Oaths for the Officer Corps',
+F('GER_loyalty_oaths_for_the_officer_corps', 76, 10, 70, 'Loyalty Oaths for the Officer Corps',
   'Every officer swears his oath again, personally to the Führer, with the guard standing at the back of the hall.',
   pre=['GER_a_guard_of_his_own'], icon='GFX_focus_GER_appease_the_wehrmacht', filters='FOCUS_FILTER_ARMY_XP',
   available=HITLER_RULES, reward=dist(-10) + stab(-0.05))
 
-F('GER_leibstandarte_checkpoints', 75, 10, 70, 'Leibstandarte Checkpoints',
+F('GER_leibstandarte_checkpoints', 78, 10, 70, 'Leibstandarte Checkpoints',
   'The guard rings the Chancellery and the government quarter with checkpoints. Staff officers are searched at the door of their own Bendlerblock.',
   pre=['GER_a_guard_of_his_own'], who=None, icon='GFX_focus_GER_expand_ss_security_duties',
   start=HITLER_RULES, reward=stab(-0.02) + dist(5))
 
-F('GER_two_armies_in_one_reich', 75, 11, 105, 'Two Armies in One Reich',
+F('GER_two_armies_in_one_reich', 78, 11, 105, 'Two Armies in One Reich',
   'The guard gets the newest tanks and the first fuel. The army gets the explanation.',
   pre=['GER_leibstandarte_checkpoints'], who=None, icon='GFX_focus_GER_hegemony_of_the_ss',
   start=HITLER_RULES, reward='add_ideas = wif_ger_two_armies\n' + stab(-0.05) + dist(10))
 
-F('GER_ss_liaison_officers_in_every_corps', 76, 12, 70, 'SS Liaison Officers in Every Corps',
+F('GER_ss_liaison_officers_in_every_corps', 78, 12, 70, 'SS Liaison Officers in Every Corps',
   'A guard officer sits in every corps headquarters and reads every order before it goes out.',
   pre=['GER_two_armies_in_one_reich'], mx=['GER_keep_the_guard_out_of_the_barracks'],
   icon='GFX_focus_GER_expand_gestapo', available=HITLER_RULES,
   reward=dist(10) + text('GER_ss_liaison_officers_in_every_corps_tt', 'The army can no longer plan in secret: even at §R100§! distrust it cannot move before §YGermany on the Brink§!.')
   + 'hidden_effect = { set_country_flag = wif_ger_liaison_officers }\n')
 
-F('GER_keep_the_guard_out_of_the_barracks', 77, 12, 70, 'Keep the Guard Out of the Barracks',
+F('GER_keep_the_guard_out_of_the_barracks', 80, 12, 70, 'Keep the Guard Out of the Barracks',
   'The army is promised that no SS man will set foot in its barracks. The guard calls it treason.',
   pre=['GER_two_armies_in_one_reich'], mx=['GER_ss_liaison_officers_in_every_corps'],
   icon='GFX_focus_GER_appease_the_wehrmacht', filters='FOCUS_FILTER_ARMY_XP', available=HITLER_RULES,
   reward=dist(-5) + stab(-0.05) + 'swap_ideas = { remove_idea = wif_ger_the_fuhrers_guard add_idea = wif_ger_the_fuhrers_guard_2 }\n')
 
-F('GER_the_abwehr_and_the_sd', 75, 12, 105, 'The Abwehr and the SD',
+F('GER_the_abwehr_and_the_sd', 76, 12, 105, 'The Abwehr and the SD',
   'What is left of the Abwehr spies on the guard. What stayed of the SD spies on the Abwehr. The files each keeps on the other grow thicker every month.',
   pre=['GER_two_armies_in_one_reich'], who=None, icon='GFX_focus_GER_absorb_the_abwehr',
   start=HITLER_RULES, reward=dist(10))
 
-F('GER_the_zossen_circle', 75, 13, 105, 'The Zossen Circle',
+F('GER_the_zossen_circle', 77, 13, 105, 'The Zossen Circle',
   'Generals of the army high command meet at Zossen. They write nothing down. The SD writes down that they met.',
   pre=['GER_the_abwehr_and_the_sd'], who=None, icon='GFX_focus_GER_new_reforms_in_the_wehrmacht',
   start=HITLER_RULES, reward=dist(10) + 'hidden_effect = { country_event = { id = wif_ger_road.3 days = 3 } }\n')
 
-F('GER_gestapo_files_on_the_general_staff', 76, 14, 70, 'Gestapo Files on the General Staff',
+F('GER_gestapo_files_on_the_general_staff', 78, 14, 70, 'Gestapo Files on the General Staff',
   'With Himmler gone the Gestapo answers to the Chancellery, and the Führer wants a file on every general.',
   pre=['GER_the_zossen_circle'], icon='GFX_focus_GER_expand_gestapo', available=HITLER_RULES,
   reward=text('GER_gestapo_files_on_the_general_staff_tt', 'An event decides what to do with the files: arrest three generals (§Rdistrust +15§!, §G+50§! political power) or keep them closed (§Rdistrust +5§!).')
   + 'hidden_effect = { country_event = { id = wif_ger_road.4 days = 1 } }\n')
 
-F('GER_shots_at_the_chancellery_gate', 75, 14, 70, 'Shots at the Chancellery Gate',
+F('GER_shots_at_the_chancellery_gate', 76, 14, 70, 'Shots at the Chancellery Gate',
   'A Wehrmacht courier refuses to be searched, and an SS sentry fires. Both sides bury their dead with full honours, and each blames the other.',
   pre=['GER_the_zossen_circle'], who=None, icon='GFX_goal_generic_political_pressure',
   start=HITLER_RULES, reward=stab(-0.05) + dist(10))
 
-F('GER_newsreel_wehrmacht_and_ss_shoulder_to_shoulder', 75, 15, 35, 'Newsreel: Wehrmacht and SS, Shoulder to Shoulder',
+F('GER_newsreel_wehrmacht_and_ss_shoulder_to_shoulder', 77, 15, 35, 'Newsreel: Wehrmacht and SS, Shoulder to Shoulder',
   'On the anniversary of Totaler Sieg the guard and the army march in step past the Chancellery. Nobody in either uniform believes it.',
   pre=['GER_shots_at_the_chancellery_gate'], who='Goebbels', icon='GFX_focus_GER_glorify_party_rallies',
   reward=stab(0.05) + dist(-5))
 
-F('GER_the_officers_memorandum', 75, 16, 105, "The Officers' Memorandum",
+F('GER_the_officers_memorandum', 77, 16, 105, "The Officers' Memorandum",
   'Twenty-two generals sign a letter asking the Führer to disband his guard. He tears it up in front of them.',
   pre=['GER_newsreel_wehrmacht_and_ss_shoulder_to_shoulder'], who=None, icon='GFX_focus_GER_subdue_the_wehrmacht',
   start=HITLER_RULES, reward=stab(-0.05) + dist(15))
 
-F('GER_purge_the_signatories', 74, 17, 70, 'Purge the Signatories',
+F('GER_purge_the_signatories', 76, 17, 70, 'Purge the Signatories',
   'The twenty-two are dismissed. Four of them are shot.',
   pre=['GER_the_officers_memorandum'], mx=['GER_pardon_the_signatories'], icon='GFX_focus_GER_strafbataillon',
   available=HITLER_RULES,
   reward='add_timed_idea = { idea = wif_ger_purged_officer_corps days = 365 }\n' + pp(50) + dist(20))
 
-F('GER_pardon_the_signatories', 76, 17, 70, 'Pardon the Signatories',
+F('GER_pardon_the_signatories', 78, 17, 70, 'Pardon the Signatories',
   'The Führer pretends the letter was never written. The guard calls it weakness.',
   pre=['GER_the_officers_memorandum'], mx=['GER_purge_the_signatories'], icon='GFX_focus_GER_appease_the_wehrmacht',
   filters='FOCUS_FILTER_ARMY_XP', available=HITLER_RULES, reward=dist(-10) + stab(-0.05))
 
-F('GER_the_army_waits', 75, 18, 105, 'The Army Waits',
+F('GER_the_army_waits', 77, 18, 105, 'The Army Waits',
   'The officers stop arguing. They wait, and they count.',
   pre=['GER_the_officers_memorandum'], who=None, icon='GFX_focus_GER_army',
   start=HITLER_RULES,
@@ -402,14 +402,14 @@ F('GER_the_western_question_settled', 69, 12, 70, 'The Western Question Settled'
 # these himself, except the choice at the end.
 # ===========================================================================
 
-F('GER_keep_up_the_facade', 78, 8, 70, 'Keep Up the Facade',
+F('GER_keep_up_the_facade', 82, 8, 70, 'Keep Up the Facade',
   'The report goes into a drawer. The newsreels go on. The Reich will spend whatever it takes to look rich for as long as it can, and then it will spend what it does not have.',
   pre=['GER_speers_final_report'], who='Speer', icon='GFX_focus_generic_steel', filters='FOCUS_FILTER_INDUSTRY',
   start=SPEER_IN, start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§!',
   reward=stab(0.10) + 'custom_effect_tooltip = GER_keep_up_the_facade_tt\n'
   'hidden_effect = {\n\tset_country_flag = wif_ger_facade_rate_doubled\n\tset_country_flag = wif_ger_kept_up_the_facade\n\twif_ger_facade_recalc_rate = yes\n}\n')
 
-F('GER_speers_emergency_programme', 78, 9, 70, "Speer's Emergency Programme",
+F('GER_speers_emergency_programme', 82, 9, 70, "Speer's Emergency Programme",
   'One more plan, the last Speer will be allowed to draw up. Every signature it needs is delayed at the Party Chancellery.',
   pre=['GER_keep_up_the_facade'], who='Speer', icon='GFX_focus_GER_plenipotentiary_of_armaments',
   filters='FOCUS_FILTER_INDUSTRY', start=SPEER_IN, start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§!',
@@ -417,13 +417,13 @@ F('GER_speers_emergency_programme', 78, 9, 70, "Speer's Emergency Programme",
   + 'hidden_effect = { add_to_variable = { wif_ger_sp_efficiency_gain = 0.05 } }\n'
   + 'add_timed_idea = { idea = wif_ger_emergency_signatures days = 365 }\n')
 
-F('GER_rationing_in_peacetime', 78, 10, 70, 'Rationing in Peacetime',
+F('GER_rationing_in_peacetime', 81, 10, 70, 'Rationing in Peacetime',
   'Ration cards return in the year of victory. The posters call it discipline.',
   pre=['GER_speers_emergency_programme'], who='Speer', icon='GFX_goal_generic_consumer_goods',
   filters='FOCUS_FILTER_INDUSTRY', start=SPEER_IN, start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§!',
   reward=cg(-10) + stab(-0.10))
 
-F('GER_swiss_gold', 80, 10, 70, 'Swiss Gold',
+F('GER_swiss_gold', 83, 10, 70, 'Swiss Gold',
   'A loan against the Reichsbank\'s gold, from bankers who do not ask where the gold came from.',
   pre=['GER_speers_emergency_programme'], who='Speer', icon='GFX_focus_GER_the_swiss_gold',
   filters='FOCUS_FILTER_INDUSTRY',
@@ -431,37 +431,37 @@ F('GER_swiss_gold', 80, 10, 70, 'Swiss Gold',
   start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§! and §YSwitzerland§! or §YSweden§! exists and is at peace with Germany',
   reward=cg(-15) + rate(0.05))
 
-F('GER_demobilise_the_reserves', 79, 11, 105, 'Demobilise the Reserves',
+F('GER_demobilise_the_reserves', 82, 11, 105, 'Demobilise the Reserves',
   "Speer's oldest request: send the reservists back to the factories. The generals watch their army shrink while the Führer's guard grows.",
   pre=['GER_rationing_in_peacetime', 'GER_swiss_gold'], any_=True, who='Speer', icon='GFX_focus_GER_optimize_reich_labour_service',
   filters='FOCUS_FILTER_INDUSTRY', start=SPEER_IN, start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§!',
   reward=text('GER_demobilise_the_reserves_tt', 'Up to §Y20§! infantry divisions are disbanded. Their men go home and their rifles go back into the stockpile.')
   + 'hidden_effect = { wif_ger_demobilise_reserves = yes }\n' + rate(-0.15) + dist(10))
 
-F('GER_newsreel_the_reich_builds', 79, 12, 35, 'Newsreel: The Reich Builds',
+F('GER_newsreel_the_reich_builds', 82, 12, 35, 'Newsreel: The Reich Builds',
   'Autobahns, dams, and the first towers of Germania. Every one of them was paid for twice.',
   pre=['GER_demobilise_the_reserves'], who='Goebbels', icon='GFX_focus_GER_kdf_wagen',
   reward=stab(0.03) + ws(0.03))
 
-F('GER_the_numbers_no_longer_add_up', 79, 13, 140, 'The Numbers No Longer Add Up',
+F('GER_the_numbers_no_longer_add_up', 82, 13, 140, 'The Numbers No Longer Add Up',
   "Speer's last audit shows the Facade passing what the civilian industry can carry. Bormann's Chancellery blames Speer for it.",
   pre=['GER_newsreel_the_reich_builds'], who='Speer', icon='GFX_focus_generic_industry_3',
   filters='FOCUS_FILTER_INDUSTRY', start=SPEER_IN, start_tt='and only while §YAlbert Speer§! sits in the §YInner Circle§!',
   reward=rate(0.2) + stab(-0.10))
 
-F('GER_speer_resigns', 78, 14, 10, 'Speer Resigns',
+F('GER_speer_resigns', 81, 14, 10, 'Speer Resigns',
   'Speer puts his resignation on the Führer\'s desk, and for once Bormann makes sure it reaches him.',
   pre=['GER_the_numbers_no_longer_add_up'], mx=['GER_speer_stays_at_his_desk'], icon='GFX_focus_GER_fuhrerprinzip_speer',
   filters='FOCUS_FILTER_INDUSTRY',
   reward=text('GER_speer_resigns_tt', '§YAlbert Speer§! leaves the §YInner Circle§!, and his ministry\'s spirit goes with him. His seat stays empty. If the §Ysuccession contest§! has begun, his faction collapses and its support splits between the others.')
   + 'hidden_effect = { wif_ger_speer_resigns = yes }\n' + rate(0.1) + stab(-0.05))
 
-F('GER_speer_stays_at_his_desk', 80, 14, 10, 'Speer Stays at His Desk',
+F('GER_speer_stays_at_his_desk', 83, 14, 10, 'Speer Stays at His Desk',
   'Speer stays, and from now on he is blamed for everything that goes wrong.',
   pre=['GER_the_numbers_no_longer_add_up'], mx=['GER_speer_resigns'], icon='GFX_focus_GER_ascension_of_speer',
   filters='FOCUS_FILTER_INDUSTRY', reward='add_ideas = wif_ger_speer_blamed\n' + dist(5))
 
-F('GER_the_economy_in_free_fall', 79, 15, 70, 'The Economy in Free Fall',
+F('GER_the_economy_in_free_fall', 82, 15, 70, 'The Economy in Free Fall',
   'Consumer goods take every civilian factory the Reich has, and then they start on the arms plants.',
   pre=['GER_speer_resigns', 'GER_speer_stays_at_his_desk'], any_=True, who=None, icon='GFX_goal_generic_consumer_goods',
   filters='FOCUS_FILTER_INDUSTRY', reward='add_ideas = wif_ger_economy_in_free_fall\n' + stab(-0.10))
@@ -470,7 +470,7 @@ F('GER_the_economy_in_free_fall', 79, 15, 70, 'The Economy in Free Fall',
 # The brink, the death of the Fuhrer and the funeral (planner x 7)
 # ===========================================================================
 
-F('GER_germany_on_the_brink', 75, 19, 70, 'Germany on the Brink',
+F('GER_germany_on_the_brink', 77, 19, 70, 'Germany on the Brink',
   'The army and the Führer\'s guard face each other across Berlin. The ministers at the Führer\'s bedside have no answer, and they no longer pretend to.',
   pre=['GER_newsreel_the_fuhrers_last_balcony', 'GER_the_army_waits', 'GER_the_economy_in_free_fall'], who=None,
   icon='GFX_focus_GER_the_eastern_border',
@@ -478,14 +478,14 @@ F('GER_germany_on_the_brink', 75, 19, 70, 'Germany on the Brink',
   start_tt='and no sooner than five years after §YTotaler Sieg§! - or at once if the army moves first, when §YArmy-SS distrust§! reaches §R100§!',
   reward=text('GER_germany_on_the_brink_tt', 'The Reich will not survive the Führer.'))
 
-F('GER_fuhrer_found_dead', 75, 20, 10, 'Führer Found Dead',
+F('GER_fuhrer_found_dead', 77, 20, 10, 'Führer Found Dead',
   'The guard finds him in the morning. The doctors argue about the cause for an hour, and then the Party tells them what it was.',
   pre=['GER_germany_on_the_brink'], who=None, icon='GFX_focus_GER_loyalty_to_the_fuhrer',
   start='NOT = { has_country_flag = wif_ger_himmler_is_fuhrer }',
   reward=text('GER_fuhrer_found_dead_tt', '§YAdolf Hitler§! is dead. Until the Party agrees on a successor, the §YReichstag§! governs, with the trait §YParalysed Government§! (Political power gain: §R-20%§!).')
   + 'hidden_effect = { wif_ger_fuhrer_found_dead = yes }\n')
 
-F('GER_grand_funeral_schemes_of_power', 75, 21, 20, 'Grand Funeral, Schemes of Power',
+F('GER_grand_funeral_schemes_of_power', 77, 21, 20, 'Grand Funeral, Schemes of Power',
   'All of Germany mourns along the East-West Axis. Behind the black crêpe every faction counts its divisions.',
   pre=['GER_fuhrer_found_dead'], icon='GFX_focus_GER_a_strong_successor',
   reward=text('GER_grand_funeral_schemes_of_power_tt', 'The day after the funeral, the Reich begins to come apart.')

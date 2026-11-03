@@ -1,0 +1,623 @@
+# The world turns on a Reich at war with itself. Called the day the German
+# civil war starts (wif_cw_declare_the_civil_war); the rest follows by event
+# (events/wif_ger_abroad.txt):
+#
+#   day 0   Burgundy goes its own way. Italy leaves the Reich and founds the
+#           Pact of Rome with Spain, Turkey, Portugal, the Reich's Middle
+#           Eastern subjects and the free Balkan states - or, with no Italy,
+#           the Balkans form the Balkan Pact and the rest simply go free.
+#   day 3   France falls apart: Free France (FFR) rises in Brittany, Normandy
+#           and the Loire with half the Vichy army. America may sponsor a coup
+#           in Britain.
+#   day 6   Collapse of Africa: Congo, Kenya, Uganda and Zambia revolt.
+#   day 7   Contact Lost with Germania: the eastern Reichskommissariats go
+#           free and form the Ostschild, and the SME attacks Moskowien.
+#
+# Named zz_wif_ger_abroad so it sorts before zz_wif_ger_collapse.txt, which
+# calls it - scripted effects are read in file order.
+
+
+# ---------------------------------------------------------------------------
+# Leaving the Reich
+# ---------------------------------------------------------------------------
+
+# Country scope: remember what kind of subject this is, for the day a reunited
+# Reich takes it back (wif_cw_subject_to_ger). Nothing is overwritten - the
+# first kind recorded is the one the Reich had.
+wif_cw_record_autonomy = {
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_country_flag = wif_cw_was_reichskommissariat
+					has_country_flag = wif_cw_was_reichsprotectorate
+					has_country_flag = wif_cw_was_integrated_puppet
+					has_country_flag = wif_cw_was_satellite
+					has_country_flag = wif_cw_was_colony
+					has_country_flag = wif_cw_was_dominion
+					has_country_flag = wif_cw_was_volkskommissariat
+					has_country_flag = wif_cw_was_supervised_state
+				}
+			}
+		}
+		if = { limit = { has_autonomy_state = autonomy_reichskommissariat } set_country_flag = wif_cw_was_reichskommissariat }
+		else_if = { limit = { has_autonomy_state = autonomy_reichsprotectorate } set_country_flag = wif_cw_was_reichsprotectorate }
+		else_if = { limit = { has_autonomy_state = autonomy_integrated_puppet } set_country_flag = wif_cw_was_integrated_puppet }
+		else_if = { limit = { has_autonomy_state = autonomy_satellite } set_country_flag = wif_cw_was_satellite }
+		else_if = { limit = { has_autonomy_state = autonomy_colony } set_country_flag = wif_cw_was_colony }
+		else_if = { limit = { has_autonomy_state = autonomy_dominion } set_country_flag = wif_cw_was_dominion }
+		else_if = { limit = { has_autonomy_state = autonomy_volkskommissariat } set_country_flag = wif_cw_was_volkskommissariat }
+		else_if = { limit = { has_autonomy_state = autonomy_supervised_state } set_country_flag = wif_cw_was_supervised_state }
+		else = { set_country_flag = wif_cw_was_satellite }
+	}
+}
+
+# Country scope: stop being a German subject and leave any faction a Germany
+# is in. A former subject is marked so a reunited Reich can take it back.
+wif_cw_break_from_reich = {
+	if = {
+		limit = {
+			is_subject = yes
+			OVERLORD = { wif_cw_is_german_power = yes }
+		}
+		wif_cw_record_autonomy = yes
+		set_country_flag = wif_cw_former_reich_subject
+		OVERLORD = { end_puppet = PREV }
+	}
+	if = {
+		limit = {
+			is_in_faction = yes
+			any_country = {
+				wif_cw_is_german_power = yes
+				is_in_faction_with = PREV
+			}
+		}
+		leave_faction = yes
+	}
+}
+
+# Country scope: a Middle Eastern subject of a Germany.
+wif_cw_is_reich_middle_east = {
+	if = {
+		limit = {
+			is_subject = yes
+			OVERLORD = { wif_cw_is_german_power = yes }
+			capital_scope = { is_on_continent = middle_east }
+		}
+		set_country_flag = wif_cw_reich_middle_east
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# Day 0
+# ---------------------------------------------------------------------------
+
+# Burgundy: out of the alliance, and no longer Oslo's. It never comes back to
+# a reunited Reich.
+wif_cw_burgundy_secedes = {
+	if = {
+		limit = { country_exists = OSB }
+		OSB = {
+			set_country_flag = wif_cw_never_returns
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { end_puppet = PREV }
+			}
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+		}
+	}
+}
+
+# Country scope: join the Pact of Rome, led by Italy.
+wif_cw_join_pact_of_rome = {
+	if = {
+		limit = { wif_cw_pact_candidate = yes }
+		wif_cw_break_from_reich = yes
+		set_country_flag = wif_cw_never_returns
+		set_country_flag = wif_cw_pact_member
+		if = {
+			limit = { NOT = { is_in_faction_with = ITA } }
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+			ITA = { add_to_faction = PREV }
+		}
+	}
+}
+
+# Country scope: one of the Balkans, with no Italy to lead them. Joins the
+# Balkan Pact under event_target:wif_balkan_pact_leader.
+wif_cw_join_balkan_pact = {
+	if = {
+		limit = {
+			wif_cw_pact_candidate = yes
+			NOT = { has_country_flag = wif_cw_balkan_pact_member }
+		}
+		wif_cw_break_from_reich = yes
+		set_country_flag = wif_cw_balkan_pact_member
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		event_target:wif_balkan_pact_leader = { add_to_faction = PREV }
+	}
+}
+
+wif_cw_italy_and_the_south = {
+	# The Reich's Middle Eastern subjects, found before anyone moves.
+	every_country = {
+		limit = { NOT = { wif_cw_is_german_power = yes } }
+		wif_cw_is_reich_middle_east = yes
+	}
+
+	if = {
+		limit = {
+			country_exists = ITA
+			ITA = {
+				OR = {
+					wif_cw_pact_candidate = yes
+					is_faction_leader = yes
+				}
+			}
+		}
+		# Italy leaves the Reich and founds the Pact of Rome - or, if it
+		# already leads a faction of its own, that faction is the Pact.
+		ITA = {
+			wif_cw_break_from_reich = yes
+			set_country_flag = wif_cw_never_returns
+			set_country_flag = wif_cw_pact_member
+			if = {
+				limit = { is_faction_leader = no }
+				if = {
+					limit = { is_in_faction = yes }
+					leave_faction = yes
+				}
+				create_faction = wif_pact_of_rome
+			}
+		}
+		SPR = { wif_cw_join_pact_of_rome = yes }
+		TUR = { wif_cw_join_pact_of_rome = yes }
+		POR = { wif_cw_join_pact_of_rome = yes }
+		every_country = {
+			limit = { has_country_flag = wif_cw_reich_middle_east }
+			wif_cw_join_pact_of_rome = yes
+		}
+		BUL = { wif_cw_join_pact_of_rome = yes }
+		ALB = { wif_cw_join_pact_of_rome = yes }
+		MNT = { wif_cw_join_pact_of_rome = yes }
+		CRO = { wif_cw_join_pact_of_rome = yes }
+		SER = { wif_cw_join_pact_of_rome = yes }
+	}
+	else = {
+		# No Italy: Spain, Turkey, Portugal and the Middle East just go free.
+		every_country = {
+			limit = {
+				OR = {
+					tag = SPR
+					tag = TUR
+					tag = POR
+					has_country_flag = wif_cw_reich_middle_east
+				}
+				wif_cw_pact_candidate = yes
+			}
+			wif_cw_break_from_reich = yes
+		}
+
+		# The Balkans form the Balkan Pact, led by whichever of them has the
+		# most factories.
+		set_temp_variable = { wif_cw_best = -1 }
+		every_country = {
+			limit = {
+				OR = { tag = BUL tag = ALB tag = MNT tag = CRO tag = SER }
+				wif_cw_pact_candidate = yes
+			}
+			set_temp_variable = { wif_cw_size = num_of_factories }
+			if = {
+				limit = { check_variable = { wif_cw_size > wif_cw_best } }
+				set_temp_variable = { wif_cw_best = wif_cw_size }
+				save_event_target_as = wif_balkan_pact_leader
+			}
+		}
+		if = {
+			limit = { has_event_target = wif_balkan_pact_leader }
+			event_target:wif_balkan_pact_leader = {
+				wif_cw_break_from_reich = yes
+				set_country_flag = wif_cw_balkan_pact_member
+				if = {
+					limit = { is_in_faction = yes }
+					leave_faction = yes
+				}
+				create_faction = wif_balkan_pact
+			}
+			BUL = { wif_cw_join_balkan_pact = yes }
+			ALB = { wif_cw_join_balkan_pact = yes }
+			MNT = { wif_cw_join_balkan_pact = yes }
+			CRO = { wif_cw_join_balkan_pact = yes }
+			SER = { wif_cw_join_balkan_pact = yes }
+		}
+	}
+}
+
+# The host of the timed events: Oslo if it stands, else any side of the war.
+wif_cw_world_reacts = {
+	wif_cw_burgundy_secedes = yes
+	wif_cw_italy_and_the_south = yes
+
+	# Only a Vichy France falls apart - one that is the Reich's, by subjection,
+	# alliance or name.
+	if = {
+		limit = {
+			country_exists = FRA
+			FRA = {
+				OR = {
+					has_cosmetic_tag = FRA_VICHY
+					AND = {
+						is_subject = yes
+						OVERLORD = { wif_cw_is_german_power = yes }
+					}
+					any_country = {
+						wif_cw_is_german_power = yes
+						is_in_faction_with = PREV
+					}
+				}
+			}
+		}
+		FRA = { country_event = { id = wif_ger_abroad.1 days = 3 } }
+	}
+	if = {
+		limit = {
+			country_exists = USA
+			country_exists = ENG
+			ENG = {
+				is_subject = yes
+				OVERLORD = { wif_cw_is_german_power = yes }
+			}
+		}
+		USA = { country_event = { id = wif_ger_abroad.2 days = 3 } }
+	}
+	if = {
+		limit = { country_exists = GAG }
+		GAG = { country_event = { id = wif_ger_abroad.4 days = 6 } }
+	}
+	else = {
+		random_country = {
+			limit = { has_country_flag = wif_ger_cw_belligerent }
+			country_event = { id = wif_ger_abroad.4 days = 6 }
+		}
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# Day 3: France falls apart
+# ---------------------------------------------------------------------------
+
+# FRA scope. Brittany, Normandy and the Loire rise as Free France with half of
+# Vichy's army, navy, air force and stockpile, and the two go to war. Free
+# France has no diplomatic standing until Vichy is gone
+# (wif_ffr_check_victory, weekly).
+wif_cw_france_falls_apart = {
+	every_owned_state = {
+		limit = { OR = { state = 14 state = 15 state = 30 } }
+		transfer_state_to = FFR
+	}
+	if = {
+		limit = { country_exists = FFR }
+		save_event_target_as = wif_tech_donor
+		FFR = {
+			if = { limit = { owns_state = 14 } set_capital = { state = 14 } }
+			else = {
+				random_owned_state = {
+					PREV = { set_capital = { state = PREV } }
+				}
+			}
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = { democratic = 70 neutrality = 15 communism = 10 fascism = 5 }
+			set_stability = 0.6
+			set_war_support = 0.8
+			set_research_slots = 4
+			wif_inherit_tech_from_donor = yes
+			wif_inherit_special_projects_from_donor = yes
+			add_ideas = wif_cw_no_diplomatic_standing
+			set_country_flag = wif_ffr_fighting
+			create_country_leader = {
+				name = "Charles de Gaulle"
+				picture = GFX_portrait_FRA_charles_de_gaulle
+				ideology = conservatism
+			}
+		}
+		transfer_units_fraction = {
+			target = FFR
+			size = 0
+			army_ratio = 0.5
+			stockpile_ratio = 0.5
+			air_ratio = 0.5
+			navy_ratio = 0.5
+			keep_unit_leaders_trigger = { always = no }
+		}
+		FFR = { declare_war_on = { target = FRA type = annex_everything } }
+		news_event = { id = wif_ger_abroad.3 }
+	}
+}
+
+# FFR scope, weekly. Free France wins once Vichy is gone: it gains its
+# diplomatic standing and, as a democracy, joins America's faction, or
+# Canada's, or founds its own.
+wif_ffr_check_victory = {
+	if = {
+		limit = {
+			has_country_flag = wif_ffr_fighting
+			NOT = { country_exists = FRA }
+		}
+		clr_country_flag = wif_ffr_fighting
+		remove_ideas = wif_cw_no_diplomatic_standing
+		if = {
+			limit = { has_government = democratic }
+			if = {
+				limit = { any_country = { is_faction_leader = yes OR = { tag = USA is_in_faction_with = USA } } }
+				random_country = {
+					limit = { is_faction_leader = yes OR = { tag = USA is_in_faction_with = USA } }
+					add_to_faction = PREV
+				}
+			}
+			else_if = {
+				limit = { any_country = { is_faction_leader = yes OR = { tag = CAN is_in_faction_with = CAN } } }
+				random_country = {
+					limit = { is_faction_leader = yes OR = { tag = CAN is_in_faction_with = CAN } }
+					add_to_faction = PREV
+				}
+			}
+			else = {
+				create_faction = wif_free_french_alliance
+			}
+		}
+		else = {
+			create_faction = wif_free_french_alliance
+		}
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# Day 3: America and Britain
+# ---------------------------------------------------------------------------
+
+# The coup America sponsors. Britain goes free and democratic without a shot,
+# joins America's faction, and takes back every British core a Germany holds.
+wif_cw_british_coup = {
+	ENG = {
+		clr_country_flag = wif_peace_fascist_britain
+		set_country_flag = wif_cw_never_returns
+		if = {
+			limit = { is_subject = yes }
+			OVERLORD = { end_puppet = PREV }
+		}
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		set_politics = {
+			ruling_party = democratic
+			last_election = "1936.1.1"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		set_popularities = { democratic = 70 fascism = 10 neutrality = 10 communism = 10 }
+		add_stability = 0.1
+	}
+	every_state = {
+		limit = {
+			is_core_of = ENG
+			owner = { wif_cw_is_german_power = yes }
+		}
+		transfer_state_to = ENG
+	}
+	if = {
+		limit = { USA = { is_in_faction = yes } }
+		random_country = {
+			limit = { is_faction_leader = yes OR = { tag = USA is_in_faction_with = USA } }
+			add_to_faction = ENG
+		}
+	}
+	else = {
+		USA = {
+			create_faction = wif_atlantic_alliance
+			add_to_faction = ENG
+		}
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# Day 6: Collapse of Africa
+# ---------------------------------------------------------------------------
+
+# Country scope, a new African state just handed land: politics, its division
+# template, and war on the Reichskommissariat it rose against
+# (event_target:wif_africa_rk). The ten divisions are raised by the caller -
+# create_unit needs a state scope and the owner written as a tag.
+wif_cw_african_revolt_army = {
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1936.1.1"
+		election_frequency = 48
+		elections_allowed = no
+	}
+	set_popularities = { neutrality = 60 democratic = 25 communism = 15 fascism = 0 }
+	set_stability = 0.5
+	set_war_support = 0.9
+	set_country_flag = wif_cw_african_revolt
+	division_template = {
+		name = "Liberation Column"
+		regiments = {
+			irregular_infantry = { x = 0 y = 0 }
+			irregular_infantry = { x = 0 y = 1 }
+			irregular_infantry = { x = 1 y = 0 }
+			irregular_infantry = { x = 1 y = 1 }
+		}
+	}
+	if = {
+		limit = { NOT = { has_war_with = event_target:wif_africa_rk } }
+		declare_war_on = { target = event_target:wif_africa_rk type = annex_everything }
+	}
+}
+
+wif_cw_collapse_of_africa = {
+	# Congo: everywhere Zentralafrika holds but Leopoldville.
+	if = {
+		limit = { country_exists = RKZ }
+		RKZ = { save_event_target_as = wif_africa_rk }
+		every_state = {
+			limit = {
+				is_owned_by = RKZ
+				is_core_of = COG
+				NOT = { state = 295 }	# Leopoldville
+			}
+			transfer_state_to = COG
+		}
+		if = {
+			limit = { country_exists = COG }
+			COG = { wif_cw_african_revolt_army = yes }
+			COG = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liberation Column\" start_experience_factor = 0 start_equipment_factor = 1.0"
+						owner = COG
+						count = 10
+					}
+				}
+			}
+		}
+	}
+
+	# Kenya and Uganda, from Ostafrika.
+	if = {
+		limit = { country_exists = RKF }
+		RKF = { save_event_target_as = wif_africa_rk }
+		every_state = {
+			limit = { is_owned_by = RKF is_core_of = KEN }
+			transfer_state_to = KEN
+		}
+		every_state = {
+			limit = { is_owned_by = RKF is_core_of = UGA }
+			transfer_state_to = UGA
+		}
+		if = {
+			limit = { country_exists = KEN }
+			KEN = { wif_cw_african_revolt_army = yes }
+			KEN = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liberation Column\" start_experience_factor = 0 start_equipment_factor = 1.0"
+						owner = KEN
+						count = 10
+					}
+				}
+			}
+		}
+		if = {
+			limit = { country_exists = UGA }
+			UGA = { wif_cw_african_revolt_army = yes }
+			UGA = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liberation Column\" start_experience_factor = 0 start_equipment_factor = 1.0"
+						owner = UGA
+						count = 10
+					}
+				}
+			}
+		}
+	}
+
+	# Zambia, from Rhodesien.
+	if = {
+		limit = { country_exists = RKR }
+		RKR = { save_event_target_as = wif_africa_rk }
+		every_state = {
+			limit = { is_owned_by = RKR is_core_of = ZAM }
+			transfer_state_to = ZAM
+		}
+		if = {
+			limit = { country_exists = ZAM }
+			ZAM = { wif_cw_african_revolt_army = yes }
+			ZAM = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liberation Column\" start_experience_factor = 0 start_equipment_factor = 1.0"
+						owner = ZAM
+						count = 10
+					}
+				}
+			}
+		}
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# Day 7: Contact Lost with Germania
+# ---------------------------------------------------------------------------
+
+# Kaukasien, Moskowien, Ukraine and Ostland go free and form the Ostschild -
+# under Ostland, or Moskowien if there is no Ostland. Then the SME attacks
+# Moskowien. A reunited Reich takes all four back (wif_cw_reunify).
+wif_cw_contact_lost_with_germania = {
+	every_country = {
+		limit = {
+			OR = { tag = RKK tag = RKM tag = RKU tag = RKO }
+		}
+		wif_cw_break_from_reich = yes
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+	}
+	if = {
+		limit = { country_exists = RKO }
+		RKO = { save_event_target_as = wif_ostschild_leader }
+	}
+	else_if = {
+		limit = { country_exists = RKM }
+		RKM = { save_event_target_as = wif_ostschild_leader }
+	}
+	if = {
+		limit = { has_event_target = wif_ostschild_leader }
+		event_target:wif_ostschild_leader = { create_faction = wif_ostschild }
+		every_country = {
+			limit = {
+				OR = { tag = RKK tag = RKM tag = RKU tag = RKO }
+				NOT = { tag = event_target:wif_ostschild_leader }
+				is_subject = no
+			}
+			event_target:wif_ostschild_leader = { add_to_faction = PREV }
+		}
+	}
+	if = {
+		limit = {
+			country_exists = SME
+			country_exists = RKM
+			NOT = { SME = { has_war_with = RKM } }
+		}
+		SME = { declare_war_on = { target = RKM type = annex_everything } }
+	}
+	# The war score and everything after it start on the SME's next daily
+	# pass (common/scripted_effects/zz_wif_sme_c_war.txt).
+	if = {
+		limit = {
+			country_exists = SME
+			NOT = { has_global_flag = wif_sme_war_started }
+		}
+		set_global_flag = wif_sme_war_pending
+	}
+}

@@ -14,11 +14,153 @@
 # "Can it hold the law" is answered by the triggers in
 # common/scripted_triggers/wif_economy_law_triggers.txt, copies of each law's
 # own available block.
+#
+# An AI is never asked unless it faces a significant threat
+# (wif_faces_significant_threat): with no one justifying a wargoal on it, its
+# allies or its neighbours, it steps the law down on its own. That includes an
+# AI that kept the law while threatened, in the first week the threat passes.
+#
+# When the spirit comes off, Economic Recovery (common/dynamic_modifiers/
+# wif_economic_recovery.txt) gives stability and war support back week by week
+# until stability is back where it was before the spirit. War support stops
+# 10 points short of where it was: the last stretch is left for the country to
+# win back by other means. HoI4 has no natural recovery of its own
+# (WEEKLY_STABILITY_GAIN = 0), so without it a country the spirit drove to
+# -100% stayed there for good.
+
+
+# The Keep It option of wif_economy_law.1. Records the stability and war support
+# the spirit is about to eat, as the level Economic Recovery later climbs back
+# to. A country lapsing again mid-recovery keeps its earlier, higher targets
+# rather than being measured against what the first lapse left it with.
+wif_add_unsustainable_economy = {
+	add_ideas = wif_unsustainable_economy
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_dynamic_modifier = { modifier = wif_economic_recovery } }
+			}
+			set_variable = { wif_rec_stab_target = has_stability }
+			# 10 points short of what it had - see the header.
+			set_variable = { wif_rec_ws_target = has_war_support }
+			subtract_from_variable = { wif_rec_ws_target = 0.1 }
+			clamp_variable = { var = wif_rec_ws_target min = 0 }
+			set_country_flag = wif_rec_targets_recorded
+		}
+		if = {
+			limit = { has_dynamic_modifier = { modifier = wif_economic_recovery } }
+			remove_dynamic_modifier = { modifier = wif_economic_recovery }
+		}
+	}
+}
+
+# Every way the spirit comes off goes through here, so every one of them starts
+# the recovery.
+wif_remove_unsustainable_economy = {
+	if = {
+		limit = { has_idea = wif_unsustainable_economy }
+		remove_ideas = wif_unsustainable_economy
+		wif_start_economic_recovery = yes
+	}
+}
+
+wif_start_economic_recovery = {
+	hidden_effect = {
+		# No recorded targets - the spirit was granted before they were kept,
+		# or this is the one-time migration below. Recover to the vanilla
+		# default of 50% instead, war support 10 points short of it.
+		if = {
+			limit = { NOT = { has_country_flag = wif_rec_targets_recorded } }
+			set_variable = { wif_rec_stab_target = 0.5 }
+			set_variable = { wif_rec_ws_target = 0.4 }
+			set_country_flag = wif_rec_targets_recorded
+		}
+	}
+	add_dynamic_modifier = { modifier = wif_economic_recovery }
+	# Work out this week's rates now rather than leave them at zero for a week.
+	wif_update_economic_recovery = yes
+}
+
+# Weekly. Each rate is the gap still left to its target, capped at +5% a week,
+# so the last week lands exactly on the target instead of overshooting it.
+# Recovery ends when both gaps are closed. A target below where the country
+# already stands is simply a closed gap.
+wif_update_economic_recovery = {
+	if = {
+		limit = { has_dynamic_modifier = { modifier = wif_economic_recovery } }
+		hidden_effect = {
+			set_temp_variable = { wif_rec_now = has_stability }
+			set_variable = { wif_rec_stab = wif_rec_stab_target }
+			subtract_from_variable = { wif_rec_stab = wif_rec_now }
+			clamp_variable = { var = wif_rec_stab min = 0 max = 0.05 }
+
+			set_temp_variable = { wif_rec_now = has_war_support }
+			set_variable = { wif_rec_ws = wif_rec_ws_target }
+			subtract_from_variable = { wif_rec_ws = wif_rec_now }
+			clamp_variable = { var = wif_rec_ws min = 0 max = 0.05 }
+
+			if = {
+				limit = {
+					check_variable = { wif_rec_stab < 0.001 }
+					check_variable = { wif_rec_ws < 0.001 }
+				}
+				remove_dynamic_modifier = { modifier = wif_economic_recovery }
+				clr_country_flag = wif_rec_targets_recorded
+			}
+		}
+	}
+}
+
+# One-time fix-up for campaigns saved before Economic Recovery existed. The
+# countries listed are the ones the spirit is known to have driven to the
+# floor in the 1941-1949 test campaign, all of which had already lost the
+# spirit and so would never pass through wif_remove_unsustainable_economy.
+# They recover to 50% stability and 40% war support.
+#
+# wif_econ_recovery_migrated is set the first time any country reaches this,
+# so it runs at most once per country. Safe to delete once no pre-change save
+# is in use.
+wif_economic_recovery_migrate = {
+	if = {
+		limit = { NOT = { has_country_flag = wif_econ_recovery_migrated } }
+		set_country_flag = wif_econ_recovery_migrated
+		if = {
+			limit = {
+				OR = {
+					original_tag = USA
+					original_tag = BRA
+					original_tag = IRE
+					original_tag = ETH
+					original_tag = JAP
+				}
+				NOT = { has_idea = wif_unsustainable_economy }
+				NOT = { has_dynamic_modifier = { modifier = wif_economic_recovery } }
+				has_stability < 0.5
+			}
+			wif_start_economic_recovery = yes
+		}
+	}
+}
 
 
 # Weekly, from on_weekly in common/on_actions/wif_on_actions.txt. Country scope.
 wif_check_economy_law = {
+	wif_economic_recovery_migrate = yes
+
 	if = {
+		limit = {
+			# Ordered cheapest first: the threat check loops over every
+			# country twice, so it only runs for an AI already on an
+			# unsupported law.
+			is_ai = yes
+			wif_has_unsupported_economy_law = yes
+			NOT = { has_country_flag = wif_ger_partial_mobilisation_locked }
+			NOT = { wif_faces_significant_threat = yes }
+		}
+		wif_lower_economy_law = yes
+		clr_country_flag = wif_econ_law_asked
+	}
+	else_if = {
 		limit = {
 			wif_has_unsupported_economy_law = yes
 			NOT = { has_country_flag = wif_econ_law_asked }
@@ -41,11 +183,10 @@ wif_check_economy_law = {
 		# Supported again - however it got there. Clearing the flag re-arms the
 		# question for the next time the law lapses.
 		clr_country_flag = wif_econ_law_asked
-		if = {
-			limit = { has_idea = wif_unsustainable_economy }
-			remove_ideas = wif_unsustainable_economy
-		}
+		wif_remove_unsustainable_economy = yes
 	}
+
+	wif_update_economic_recovery = yes
 }
 
 # Step the economy law down to the highest law below it that the country can
@@ -106,8 +247,5 @@ wif_lower_economy_law = {
 		add_ideas = civilian_economy
 	}
 
-	if = {
-		limit = { has_idea = wif_unsustainable_economy }
-		remove_ideas = wif_unsustainable_economy
-	}
+	wif_remove_unsustainable_economy = yes
 }

@@ -1,0 +1,13 @@
+# Recovery after the Unsustainable Economy spirit comes off. Applied and
+# removed by common/scripted_effects/wif_economy_law.txt, which recalculates
+# both rates every week: each is the gap still left to the level the country
+# held before the spirit, capped at +5% a week.
+
+wif_economic_recovery = {
+	enable = { always = yes }
+
+	icon = "GFX_idea_generic_economic_recovery"
+
+	stability_weekly = wif_rec_stab
+	war_support_weekly = wif_rec_ws
+}

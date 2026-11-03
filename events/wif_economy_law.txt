@@ -33,6 +33,6 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		add_ideas = wif_unsustainable_economy
+		wif_add_unsustainable_economy = yes
 	}
 }

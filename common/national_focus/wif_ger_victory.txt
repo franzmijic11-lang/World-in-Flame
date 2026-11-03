@@ -1281,7 +1281,7 @@ focus_tree = {
 		icon = GFX_focus_generic_industry_3
 		prerequisite = { focus = GER_the_east_is_bled_dry focus = GER_the_eternal_garrison focus = GER_paper_over_the_cracks focus = GER_the_prosperity_is_coming }
 
-		x = 78
+		x = 81
 		y = 7
 		cost = 10	# 70 days
 
@@ -1569,7 +1569,7 @@ focus_tree = {
 		icon = GFX_focus_GER_loyalty_to_the_fuhrer
 		prerequisite = { focus = GER_a_weakened_king_among_vultures }
 
-		x = 72
+		x = 73
 		y = 7
 		cost = 30	# 210 days
 
@@ -1610,7 +1610,7 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = GER_the_fuhrers_tremor }
 
-		x = 71
+		x = 72
 		y = 8
 		cost = 20	# 140 days
 
@@ -1654,7 +1654,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 73
+		x = 74
 		y = 8
 		cost = 5	# 35 days
 
@@ -1745,7 +1745,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 71
+		x = 72
 		y = 10
 		cost = 20	# 140 days
 
@@ -1792,7 +1792,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 73
+		x = 74
 		y = 10
 		cost = 20	# 140 days
 
@@ -1837,7 +1837,7 @@ focus_tree = {
 		prerequisite = { focus = GER_bormann_holds_the_keys }
 		prerequisite = { focus = GER_goebbels_speaks_for_the_fuhrer }
 
-		x = 72
+		x = 73
 		y = 11
 		cost = 20	# 140 days
 
@@ -1882,7 +1882,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 71
+		x = 72
 		y = 12
 		cost = 25	# 175 days
 
@@ -1933,7 +1933,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 73
+		x = 74
 		y = 12
 		cost = 5	# 35 days
 
@@ -1977,7 +1977,7 @@ focus_tree = {
 		prerequisite = { focus = GER_gorings_last_ambition }
 		prerequisite = { focus = GER_newsreel_the_fuhrers_sixtieth_birthday }
 
-		x = 72
+		x = 73
 		y = 13
 		cost = 40	# 280 days
 
@@ -2070,7 +2070,7 @@ focus_tree = {
 		icon = GFX_focus_GER_total_control_over_domestic_affairs
 		prerequisite = { focus = GER_the_second_stroke }
 
-		x = 73
+		x = 74
 		y = 14
 		cost = 10	# 70 days
 
@@ -2141,7 +2141,7 @@ focus_tree = {
 		id = GER_the_generals_count_their_divisions
 		icon = GFX_focus_GER_reorganize_the_wehrmacht
 
-		x = 75
+		x = 77
 		y = 8
 		cost = 5	# 35 days
 
@@ -2188,7 +2188,7 @@ focus_tree = {
 		icon = GFX_focus_GER_strengthen_the_waffen_ss
 		prerequisite = { focus = GER_the_generals_count_their_divisions }
 
-		x = 75
+		x = 77
 		y = 9
 		cost = 10	# 70 days
 
@@ -2236,7 +2236,7 @@ focus_tree = {
 		icon = GFX_focus_GER_appease_the_wehrmacht
 		prerequisite = { focus = GER_a_guard_of_his_own }
 
-		x = 74
+		x = 76
 		y = 10
 		cost = 10	# 70 days
 
@@ -2267,7 +2267,7 @@ focus_tree = {
 		icon = GFX_focus_GER_expand_ss_security_duties
 		prerequisite = { focus = GER_a_guard_of_his_own }
 
-		x = 75
+		x = 78
 		y = 10
 		cost = 10	# 70 days
 
@@ -2312,7 +2312,7 @@ focus_tree = {
 		icon = GFX_focus_GER_hegemony_of_the_ss
 		prerequisite = { focus = GER_leibstandarte_checkpoints }
 
-		x = 75
+		x = 78
 		y = 11
 		cost = 15	# 105 days
 
@@ -2359,7 +2359,7 @@ focus_tree = {
 		prerequisite = { focus = GER_two_armies_in_one_reich }
 		mutually_exclusive = { focus = GER_keep_the_guard_out_of_the_barracks }
 
-		x = 76
+		x = 78
 		y = 12
 		cost = 10	# 70 days
 
@@ -2392,7 +2392,7 @@ focus_tree = {
 		prerequisite = { focus = GER_two_armies_in_one_reich }
 		mutually_exclusive = { focus = GER_ss_liaison_officers_in_every_corps }
 
-		x = 77
+		x = 80
 		y = 12
 		cost = 10	# 70 days
 
@@ -2424,7 +2424,7 @@ focus_tree = {
 		icon = GFX_focus_GER_absorb_the_abwehr
 		prerequisite = { focus = GER_two_armies_in_one_reich }
 
-		x = 75
+		x = 76
 		y = 12
 		cost = 15	# 105 days
 
@@ -2468,7 +2468,7 @@ focus_tree = {
 		icon = GFX_focus_GER_new_reforms_in_the_wehrmacht
 		prerequisite = { focus = GER_the_abwehr_and_the_sd }
 
-		x = 75
+		x = 77
 		y = 13
 		cost = 15	# 105 days
 
@@ -2513,7 +2513,7 @@ focus_tree = {
 		icon = GFX_focus_GER_expand_gestapo
 		prerequisite = { focus = GER_the_zossen_circle }
 
-		x = 76
+		x = 78
 		y = 14
 		cost = 10	# 70 days
 
@@ -2540,7 +2540,7 @@ focus_tree = {
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = GER_the_zossen_circle }
 
-		x = 75
+		x = 76
 		y = 14
 		cost = 10	# 70 days
 
@@ -2587,7 +2587,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 75
+		x = 77
 		y = 15
 		cost = 5	# 35 days
 
@@ -2634,7 +2634,7 @@ focus_tree = {
 		icon = GFX_focus_GER_subdue_the_wehrmacht
 		prerequisite = { focus = GER_newsreel_wehrmacht_and_ss_shoulder_to_shoulder }
 
-		x = 75
+		x = 77
 		y = 16
 		cost = 15	# 105 days
 
@@ -2680,7 +2680,7 @@ focus_tree = {
 		prerequisite = { focus = GER_the_officers_memorandum }
 		mutually_exclusive = { focus = GER_pardon_the_signatories }
 
-		x = 74
+		x = 76
 		y = 17
 		cost = 10	# 70 days
 
@@ -2713,7 +2713,7 @@ focus_tree = {
 		prerequisite = { focus = GER_the_officers_memorandum }
 		mutually_exclusive = { focus = GER_purge_the_signatories }
 
-		x = 76
+		x = 78
 		y = 17
 		cost = 10	# 70 days
 
@@ -2744,7 +2744,7 @@ focus_tree = {
 		icon = GFX_focus_GER_army
 		prerequisite = { focus = GER_the_officers_memorandum }
 
-		x = 75
+		x = 77
 		y = 18
 		cost = 15	# 105 days
 
@@ -3090,7 +3090,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 78
+		x = 82
 		y = 8
 		cost = 10	# 70 days
 
@@ -3140,7 +3140,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 78
+		x = 82
 		y = 9
 		cost = 10	# 70 days
 
@@ -3191,7 +3191,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 78
+		x = 81
 		y = 10
 		cost = 10	# 70 days
 
@@ -3240,7 +3240,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 80
+		x = 83
 		y = 10
 		cost = 10	# 70 days
 
@@ -3293,7 +3293,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 79
+		x = 82
 		y = 11
 		cost = 15	# 105 days
 
@@ -3348,7 +3348,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 79
+		x = 82
 		y = 12
 		cost = 5	# 35 days
 
@@ -3393,7 +3393,7 @@ focus_tree = {
 
 		text_icon = GER_inner_circle_focus_style
 
-		x = 79
+		x = 82
 		y = 13
 		cost = 20	# 140 days
 
@@ -3441,7 +3441,7 @@ focus_tree = {
 		prerequisite = { focus = GER_the_numbers_no_longer_add_up }
 		mutually_exclusive = { focus = GER_speer_stays_at_his_desk }
 
-		x = 78
+		x = 81
 		y = 14
 		cost = 1.429	# 10 days
 
@@ -3470,7 +3470,7 @@ focus_tree = {
 		prerequisite = { focus = GER_the_numbers_no_longer_add_up }
 		mutually_exclusive = { focus = GER_speer_resigns }
 
-		x = 80
+		x = 83
 		y = 14
 		cost = 1.429	# 10 days
 
@@ -3496,7 +3496,7 @@ focus_tree = {
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = GER_speer_resigns focus = GER_speer_stays_at_his_desk }
 
-		x = 79
+		x = 82
 		y = 15
 		cost = 10	# 70 days
 
@@ -3539,7 +3539,7 @@ focus_tree = {
 		prerequisite = { focus = GER_the_army_waits }
 		prerequisite = { focus = GER_the_economy_in_free_fall }
 
-		x = 75
+		x = 77
 		y = 19
 		cost = 10	# 70 days
 
@@ -3579,7 +3579,7 @@ focus_tree = {
 		icon = GFX_focus_GER_loyalty_to_the_fuhrer
 		prerequisite = { focus = GER_germany_on_the_brink }
 
-		x = 75
+		x = 77
 		y = 20
 		cost = 1.429	# 10 days
 
@@ -3620,7 +3620,7 @@ focus_tree = {
 		icon = GFX_focus_GER_a_strong_successor
 		prerequisite = { focus = GER_fuhrer_found_dead }
 
-		x = 75
+		x = 77
 		y = 21
 		cost = 2.858	# 20 days
 

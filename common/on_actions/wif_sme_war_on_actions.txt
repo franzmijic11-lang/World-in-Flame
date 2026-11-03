@@ -1,0 +1,33 @@
+# The SME's war with the Ostschild (common/scripted_effects/zz_wif_sme_c_war.txt).
+on_actions = {
+	on_daily_SME = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = wif_sme_war_pending
+					NOT = { has_global_flag = wif_sme_war_started }
+				}
+				wif_sme_war_start = yes
+			}
+			if = {
+				limit = { has_global_flag = wif_sme_war_active }
+				wif_sme_war_daily = yes
+			}
+		}
+	}
+	# The 1944-1952 tree's watcher focuses (common/scripted_effects/wif_sme_tree_watchers.txt,
+	# tools/gen_sme_tree.py).
+	on_weekly_SME = {
+		effect = {
+			wif_sme_tree_watchers = yes
+		}
+	}
+	on_monthly_SME = {
+		effect = {
+			if = {
+				limit = { has_global_flag = wif_sme_war_active }
+				wif_sme_war_monthly = yes
+			}
+		}
+	}
+}

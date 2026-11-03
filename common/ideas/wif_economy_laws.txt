@@ -30,17 +30,17 @@ ideas = {
 		wif_russian_warlord_economy = {
 			# Only a warlord ever sees it in the law list.
 			visible = {
-				has_idea = wif_russian_warlord
+				wif_has_warlord_spirit = yes
 			}
 
 			available = {
-				has_idea = wif_russian_warlord
+				wif_has_warlord_spirit = yes
 			}
 
 			# Locked while the country is a warlord. There is no legislating
 			# your way out of holding a country by the army.
 			allowed_to_remove = {
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 			}
 
 			cost = 150

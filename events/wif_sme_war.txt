@@ -1,0 +1,186 @@
+add_namespace = wif_sme_war
+add_namespace = wif_debug
+
+# The SME's war with the Ostschild and its collapse. Effects:
+# common/scripted_effects/zz_wif_sme_c_war.txt. The breakaway prompts are
+# generated (events/wif_sme_switch_auto.txt).
+
+# The war begins - to the SME and every Ostschild member.
+country_event = {
+	id = wif_sme_war.1
+	title = wif_sme_war.1.t
+	desc = wif_sme_war.1.d
+	picture = GFX_report_event_soviet_tanks_snow
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_war.1.a
+		trigger = { tag = SME }
+		custom_effect_tooltip = wif_sme_war.1.a_tt
+	}
+	option = {
+		name = wif_sme_war.1.b
+		trigger = { NOT = { tag = SME } }
+		custom_effect_tooltip = wif_sme_war.1.a_tt
+	}
+}
+
+# The SME wins.
+news_event = {
+	id = wif_sme_war.2
+	title = wif_sme_war.2.t
+	desc = wif_sme_war.2.d
+	picture = GFX_news_event_generic_rally
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_war.2.a
+	}
+}
+
+# The SME loses.
+news_event = {
+	id = wif_sme_war.3
+	title = wif_sme_war.3.t
+	desc = wif_sme_war.3.d
+	picture = GFX_news_event_soviet_soldiers_ruins
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_war.3.a
+	}
+}
+
+# One step of the collapse.
+country_event = {
+	id = wif_sme_war.4
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_sme_collapse_step = yes
+	}
+}
+
+# The Ostschild changes hands.
+country_event = {
+	id = wif_sme_war.5
+	title = wif_sme_war.5.t
+	desc = wif_sme_war.5.d
+	picture = GFX_report_event_soviet_invasion_map
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_war.5.a
+	}
+}
+
+# The breakup is over.
+news_event = {
+	id = wif_sme_war.6
+	title = wif_sme_war.6.t
+	desc = wif_sme_war.6.d
+	picture = GFX_news_event_soviet_soldiers_ruins
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_war.6.a
+	}
+}
+
+# The Zhukov split - to the SME player, who may go with the other half.
+country_event = {
+	id = wif_sme_war.20
+	title = wif_sme_war.20.t
+	desc = {
+		text = wif_sme_war.20.d_zhukov
+		trigger = { has_global_flag = wif_sme_zhukov_keeps_tag }
+	}
+	desc = {
+		text = wif_sme_war.20.d_council
+		trigger = { NOT = { has_global_flag = wif_sme_zhukov_keeps_tag } }
+	}
+	picture = GFX_report_event_soviet_purge_trial
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_sme_switch.stay
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = wif_sme_war.20.b
+		trigger = { country_exists = ZWF }
+		ai_chance = { factor = 0 }
+		ZWF = { change_tag_from = ROOT }
+	}
+}
+
+# ---------------------------------------------------------------------------
+# Console shortcuts. Type in the console, as any country.
+# (wif_debug.1-4 belong to the Soviet surrender tests in wif_debug_events.txt.)
+#   event wif_debug.11   the German civil war: Fuhrer Found Dead, then the
+#                       collapse chain (SS Gather in the Rhine onward)
+#   event wif_debug.12   Contact Lost with Germania: the Ostschild forms and
+#                       the SME's war begins
+#   event wif_debug.13   the SME collapses (loses its war, or collapses outright
+#                       if there is no war)
+#   event wif_debug.14   the SME wins its war
+# ---------------------------------------------------------------------------
+
+country_event = {
+	id = wif_debug.11
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { country_exists = GER }
+			GER = {
+				if = {
+					limit = { NOT = { has_country_flag = wif_ger_fuhrer_dead } }
+					wif_ger_fuhrer_found_dead = yes
+				}
+				country_event = { id = wif_ger_collapse.1 days = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.12
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_cw_contact_lost_with_germania = yes
+	}
+}
+
+country_event = {
+	id = wif_debug.13
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_sme_debug_force_collapse = yes
+	}
+}
+
+country_event = {
+	id = wif_debug.14
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_sme_debug_force_victory = yes
+	}
+}

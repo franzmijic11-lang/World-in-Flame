@@ -1403,3 +1403,51 @@ GAG = {
 	color = rgb { 96 104 122 }
 	color_ui = rgb { 136 144 162 }
 }
+BOR = {
+	color = rgb { 82 82 82 }
+	color_ui = rgb { 122 122 122 }
+}
+FFR = {
+	color = rgb { 74 138 240 }
+	color_ui = rgb { 100 165 255 }
+}
+RUE = {
+	color = rgb { 238 222 150 }
+	color_ui = rgb { 250 238 175 }
+}
+VGD = {
+	color = rgb { 206 72 62 }
+	color_ui = rgb { 232 105 95 }
+}
+GRK = {
+	color = rgb { 150 28 58 }
+	color_ui = rgb { 190 60 90 }
+}
+OSG = {
+	color = rgb { 228 178 22 }
+	color_ui = rgb { 245 205 70 }
+}
+KMR = {
+	color = rgb { 58 150 108 }
+	color_ui = rgb { 95 185 140 }
+}
+ARB = {
+	color = rgb { 62 62 66 }
+	color_ui = rgb { 110 110 116 }
+}
+RNS = {
+	color = rgb { 48 82 170 }
+	color_ui = rgb { 85 120 210 }
+}
+RFS = {
+	color = rgb { 128 104 26 }
+	color_ui = rgb { 170 145 60 }
+}
+SPT = {
+	color = rgb { 222 82 34 }
+	color_ui = rgb { 245 120 70 }
+}
+ZWF = {
+	color = rgb { 118 16 16 }
+	color_ui = rgb { 165 45 45 }
+}

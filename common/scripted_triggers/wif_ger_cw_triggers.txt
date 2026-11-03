@@ -1,0 +1,39 @@
+# The German civil war and its aftermath
+# (common/scripted_effects/zz_wif_ger_abroad.txt, zz_wif_ger_reunify.txt).
+
+# Country scope: one of the Germanies - the Reich, Oslo, or a side of the war.
+wif_cw_is_german_power = {
+	OR = {
+		tag = GER
+		tag = GAG
+		tag = BOR
+		tag = SSR
+		tag = SPG
+		tag = GOR
+		tag = DWM
+	}
+}
+
+# Country scope: nobody but a Germany has a hold on this country - it is not
+# another power's subject, and not in a faction no Germany is in. Who may
+# follow Italy, or the Balkans, out of the Reich's orbit.
+wif_cw_only_german_influence = {
+	OR = {
+		is_subject = no
+		OVERLORD = { wif_cw_is_german_power = yes }
+	}
+	OR = {
+		is_in_faction = no
+		any_country = {
+			wif_cw_is_german_power = yes
+			is_in_faction_with = PREV
+		}
+	}
+}
+
+# Country scope: may join the Pact of Rome, or the Balkan Pact.
+wif_cw_pact_candidate = {
+	exists = yes
+	NOT = { wif_cw_is_german_power = yes }
+	wif_cw_only_german_influence = yes
+}

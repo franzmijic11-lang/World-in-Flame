@@ -1,0 +1,119 @@
+add_namespace = wif_ger_abroad
+
+# The world turns on a Reich at war with itself. Scheduled by
+# wif_cw_world_reacts the day the German civil war starts; effects in
+# common/scripted_effects/zz_wif_ger_abroad.txt.
+
+# France Falls Apart. To Vichy France, three days in.
+country_event = {
+	id = wif_ger_abroad.1
+	title = wif_ger_abroad.1.t
+	desc = wif_ger_abroad.1.d
+	picture = GFX_report_event_french_liberation
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_abroad.1.a
+		custom_effect_tooltip = wif_ger_abroad.1.a_tt
+		hidden_effect = { wif_cw_france_falls_apart = yes }
+	}
+}
+
+# America is offered a coup in Britain. Three days in.
+country_event = {
+	id = wif_ger_abroad.2
+	title = wif_ger_abroad.2.t
+	desc = wif_ger_abroad.2.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	trigger = {
+		country_exists = ENG
+		ENG = {
+			is_subject = yes
+			OVERLORD = { wif_cw_is_german_power = yes }
+		}
+	}
+
+	option = {
+		name = wif_ger_abroad.2.a
+		ai_chance = { base = 90 }
+		custom_effect_tooltip = wif_ger_abroad.2.a_tt
+		hidden_effect = {
+			wif_cw_british_coup = yes
+			news_event = { id = wif_ger_abroad.6 }
+		}
+	}
+	option = {
+		name = wif_ger_abroad.2.b
+		ai_chance = { base = 10 }
+	}
+}
+
+# The world hears of Free France.
+news_event = {
+	id = wif_ger_abroad.3
+	title = wif_ger_abroad.3.t
+	desc = wif_ger_abroad.3.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wif_ger_abroad.3.a
+	}
+}
+
+# Collapse of Africa. To the German Administrative Government, six days in;
+# Contact Lost with Germania follows the next day.
+country_event = {
+	id = wif_ger_abroad.4
+	title = wif_ger_abroad.4.t
+	desc = wif_ger_abroad.4.d
+	picture = GFX_report_event_african_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_abroad.4.a
+		custom_effect_tooltip = wif_ger_abroad.4.a_tt
+		hidden_effect = {
+			wif_cw_collapse_of_africa = yes
+			country_event = { id = wif_ger_abroad.5 days = 1 }
+		}
+	}
+}
+
+# Contact Lost with Germania.
+country_event = {
+	id = wif_ger_abroad.5
+	title = wif_ger_abroad.5.t
+	desc = wif_ger_abroad.5.d
+	picture = GFX_report_event_german_polish_border
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_abroad.5.a
+		custom_effect_tooltip = wif_ger_abroad.5.a_tt
+		hidden_effect = { wif_cw_contact_lost_with_germania = yes }
+	}
+}
+
+# The world hears of the British coup.
+news_event = {
+	id = wif_ger_abroad.6
+	title = wif_ger_abroad.6.t
+	desc = wif_ger_abroad.6.d
+	picture = GFX_news_event_generic_rally
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wif_ger_abroad.6.a
+	}
+}

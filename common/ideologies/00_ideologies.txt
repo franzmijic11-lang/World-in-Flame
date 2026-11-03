@@ -265,6 +265,12 @@ ideologies = {
 				# attached by wif_apply_subideology_modifiers.
 			}
 
+			# Theocracy. Rule by the Church - the Orthodox Order of Saint George, one
+			# of the SME breakaways (tools/gen_sme_collapse.py). No statistics of its own.
+			wif_theocracy = {
+				can_be_randomly_selected = no
+			}
+
 			japan_militarism_ideology = {
 				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
 			}

@@ -53,6 +53,30 @@ ideas = {
 			}
 		}
 
+		# The year's grace after a country first goes over its ceiling - see
+		# common/scripted_effects/wif_factory_balance.txt. Stops new military
+		# factories exactly as tier 1 does, and nothing else, whatever tier the
+		# overshoot would otherwise earn. The AI spends the year converting
+		# (common/scripted_effects/wif_factory_conversion.txt).
+		wif_military_factory_ceiling_grace = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_goods_red_bonus
+
+			modifier = {
+				production_speed_arms_factory_factor = -10.0
+				conversion_cost_civ_to_mil_factor = 1.0
+			}
+		}
+
 		# Tier 2 - 25% or more above the ceiling. Adds cheap military-to-civilian
 		# conversion so the country can unwind its overbuild.
 		wif_military_factory_ceiling_far = {

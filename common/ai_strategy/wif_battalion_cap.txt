@@ -88,6 +88,17 @@ wif_bat_over_cap = {
 		type = spare_unit_factor
 		value = -50
 	}
+
+	# The real lever on army size. role_ratio only reshapes WHICH divisions
+	# the AI wants; this cuts HOW MANY it wants, as a percentage (vanilla uses
+	# it for USA_90_division_gamble at -30 and CHI's stop-disbanding at +1000).
+	# Without it the AI re-recruited whatever the weekly disband refunded and
+	# hovered over the cap indefinitely (USA ~100 over in a 1950 save).
+	# Stacks with the bands below.
+	ai_strategy = {
+		type = ai_wanted_divisions_factor
+		value = -40
+	}
 }
 
 # Badly over - more than 20% past the limit. At this point the country is
@@ -125,6 +136,12 @@ wif_bat_far_over_cap = {
 	ai_strategy = {
 		type = spare_unit_factor
 		value = -100
+	}
+
+	# On top of the -40 in wif_bat_over_cap: 20% past the cap wants 80% fewer.
+	ai_strategy = {
+		type = ai_wanted_divisions_factor
+		value = -40
 	}
 }
 
@@ -173,6 +190,12 @@ wif_bat_reserve_peacetime = {
 		id = mountaineers
 		value = 20
 	}
+
+	# Stop recruiting into the held-back last 5% rather than drifting over.
+	ai_strategy = {
+		type = ai_wanted_divisions_factor
+		value = -20
+	}
 }
 
 # Getting close - the last 15% down to the reserve. A gentle taper rather than
@@ -211,5 +234,11 @@ wif_bat_near_cap = {
 		type = role_ratio
 		id = mountaineers
 		value = 10
+	}
+
+	# Ease off before the limit, not at it.
+	ai_strategy = {
+		type = ai_wanted_divisions_factor
+		value = -10
 	}
 }

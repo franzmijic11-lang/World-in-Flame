@@ -69,6 +69,18 @@ wif_is_russian_warlord = {
 		tag = CSR
 		tag = WSM
 		tag = SBA
+
+		# The SME collapse (tools/gen_sme_collapse.py).
+		tag = ZWF
+		tag = RUE
+		tag = VGD
+		tag = GRK
+		tag = OSG
+		tag = KMR
+		tag = ARB
+		tag = RNS
+		tag = RFS
+		tag = SPT
 	}
 }
 
@@ -91,6 +103,12 @@ wif_is_soviet_successor = {
 		tag = CSR		# Central Siberian Republic, Popov's
 		tag = WSM		# West Siberian Marxist Republic, Yagoda's
 		tag = SBA		# Siberian Anarchy, the far north
+
+		# Every warlord, whatever list it came from - including the ten states
+		# of the SME collapse, which were missing here and so sat under the
+		# military factory cap. This trigger is what exempts a country from
+		# that cap (wif_factory_balance), so warlords must never fall outside it.
+		wif_is_russian_warlord = yes
 	}
 }
 

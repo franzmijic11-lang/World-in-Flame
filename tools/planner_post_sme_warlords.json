@@ -1,0 +1,920 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The SME is gone. No orders, no supply trains, no Moscow. Whatever this place becomes, it becomes on its own.\n\nEffect: +5% stability.",
+   "fid": "wif_pws_root",
+   "id": "pws0000",
+   "mx": [],
+   "name": "Nobody Is Coming",
+   "pre": [],
+   "x": 11,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Before anything can be planned, someone has to know how many soldiers, how many workers and how many hungry there are.\n\nEffect: +25 political power. Unlocks every branch.",
+   "fid": "wif_pws_count",
+   "id": "pws0001",
+   "mx": [],
+   "name": "Count the Rifles, Count the Mouths",
+   "pre": [
+    "pws0000"
+   ],
+   "x": 11,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The officers already hold the guns. Let them hold the offices too.\n\nEffect: +5% war support, -5% stability.",
+   "fid": "wif_pws_garrison_rule",
+   "id": "pws0002",
+   "mx": [
+    "pws0003"
+   ],
+   "name": "Rule of the Garrison",
+   "pre": [
+    "pws0001"
+   ],
+   "x": 10,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A council of workers' and soldiers' deputies, as in 1917 - on paper, at least.\n\nEffect: +5% stability, -5% war support.",
+   "fid": "wif_pws_provisional_soviet",
+   "id": "pws0003",
+   "mx": [
+    "pws0002"
+   ],
+   "name": "A Provisional Soviet",
+   "pre": [
+    "pws0001"
+   ],
+   "x": 12,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A flag, a stamp and a name on the documents. It is not much, but it is ours.\n\nEffect: +50 political power.",
+   "fid": "wif_pws_seal",
+   "id": "pws0004",
+   "mx": [],
+   "name": "Seal of the New State",
+   "pre": [
+    "pws0002",
+    "pws0003"
+   ],
+   "x": 11,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Every colonel who marched here thinks he should be the one in charge.\n\nEffect: +5% stability.",
+   "fid": "wif_pws_feuds",
+   "id": "pws0005",
+   "mx": [],
+   "name": "Settle the Feuds of the Officers",
+   "pre": [
+    "pws0004"
+   ],
+   "x": 11,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "One man decides, and the arguments end.\n\nEffect: -10% political advisor cost, +5% war support.",
+   "fid": "wif_pws_strongman",
+   "id": "pws0006",
+   "mx": [
+    "pws0007"
+   ],
+   "name": "The Strongman's Peace",
+   "pre": [
+    "pws0005"
+   ],
+   "x": 10,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Let the towns choose their own soviets - under supervision.\n\nEffect: +5% stability, +0.05 daily political power.",
+   "fid": "wif_pws_elections",
+   "id": "pws0007",
+   "mx": [
+    "pws0006"
+   ],
+   "name": "Elections in the Towns",
+   "pre": [
+    "pws0005"
+   ],
+   "x": 12,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Written in a week, amended every month, but written.\n\nEffect: +5% stability.",
+   "fid": "wif_pws_constitution",
+   "id": "pws0008",
+   "mx": [],
+   "name": "A Constitution of Sorts",
+   "pre": [
+    "pws0006",
+    "pws0007"
+   ],
+   "x": 11,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "An embassy, even one, would mean somebody out there admits we exist.\n\nEffect: +opinion with neighbours.",
+   "fid": "wif_pws_recognition",
+   "id": "pws0009",
+   "mx": [],
+   "name": "Recognition from Abroad",
+   "pre": [
+    "pws0008"
+   ],
+   "x": 11,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The old Union is dead and the Reich is not our friend. We are something else now.\n\nEffect: +5% war support, +5% stability.",
+   "fid": "wif_pws_neither",
+   "id": "pws0010",
+   "mx": [],
+   "name": "Neither Moscow nor Berlin",
+   "pre": [
+    "pws0009"
+   ],
+   "x": 11,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 140,
+   "desc": "Ten years on, the warlord's camp has become a country. A small, poor one - but a country.\n\nEffect: swaps the broken warlord spirit for a milder one. The state stays weak.",
+   "fid": "wif_pws_state",
+   "id": "pws0011",
+   "mx": [],
+   "name": "A State, Not a Warband",
+   "pre": [
+    "pws0010"
+   ],
+   "x": 11,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Riders and radio messages to the other fragments of the Union.\n\nEffect: +opinion with the other warlords.",
+   "fid": "wif_pws_envoys",
+   "id": "pws0012",
+   "mx": [],
+   "name": "Envoys to the Neighbours",
+   "pre": [
+    "pws0004"
+   ],
+   "x": 13,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Better a pact with another warlord than to die alone.\n\nEffect: non-aggression with a neighbouring warlord.",
+   "fid": "wif_pws_brothers",
+   "id": "pws0013",
+   "mx": [
+    "pws0014"
+   ],
+   "name": "Brothers in the Wreckage",
+   "pre": [
+    "pws0012"
+   ],
+   "x": 12,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Every other warlord would take our land the moment we looked away.\n\nEffect: +5% war support, claims on a neighbouring border state.",
+   "fid": "wif_pws_trust_no_one",
+   "id": "pws0014",
+   "mx": [
+    "pws0013"
+   ],
+   "name": "Trust No One",
+   "pre": [
+    "pws0012"
+   ],
+   "x": 14,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Grain for fuel, timber for rifles, with whoever is buying.\n\nEffect: -50% trade cost for a year.",
+   "fid": "wif_pws_trade",
+   "id": "pws0015",
+   "mx": [],
+   "name": "Trade Across the Lines",
+   "pre": [
+    "pws0013",
+    "pws0014"
+   ],
+   "x": 13,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "An unfed army becomes a band of looters within a month.\n\nEffect: +5% stability, -5% army upkeep.",
+   "fid": "wif_pws_fed",
+   "id": "pws0016",
+   "mx": [],
+   "name": "Keep the Divisions Fed",
+   "pre": [
+    "pws0001"
+   ],
+   "x": 7,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "A handful of staff officers teaching what they still remember.\n\nEffect: +25 army experience.",
+   "fid": "wif_pws_cadre",
+   "id": "pws0017",
+   "mx": [],
+   "name": "Officer Cadre School",
+   "pre": [
+    "pws0016"
+   ],
+   "x": 6,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Every village keeps a dozen rifles and knows how to use them.\n\nEffect: +15,000 manpower.",
+   "fid": "wif_pws_militia",
+   "id": "pws0018",
+   "mx": [],
+   "name": "Militia of the Villages",
+   "pre": [
+    "pws0016"
+   ],
+   "x": 8,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The Red Army's field regulations, reprinted on whatever paper there is.\n\nEffect: +5% division training speed.",
+   "fid": "wif_pws_drill",
+   "id": "pws0019",
+   "mx": [],
+   "name": "Drill Manuals from the Old Army",
+   "pre": [
+    "pws0017"
+   ],
+   "x": 6,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Whoever holds the junctions holds the country.\n\nEffect: forts at the capital's junctions.",
+   "fid": "wif_pws_junctions",
+   "id": "pws0020",
+   "mx": [],
+   "name": "Garrison the Rail Junctions",
+   "pre": [
+    "pws0018"
+   ],
+   "x": 8,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "A small army that can fight, rather than a large one that cannot.\n\nEffect: +5% division organisation, -5% recruitable population.",
+   "fid": "wif_pws_few_trained",
+   "id": "pws0021",
+   "mx": [
+    "pws0022"
+   ],
+   "name": "Few but Trained",
+   "pre": [
+    "pws0019",
+    "pws0020"
+   ],
+   "x": 6,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "No professional army, only the whole people armed.\n\nEffect: +1% recruitable population, -5% division organisation.",
+   "fid": "wif_pws_every_man",
+   "id": "pws0022",
+   "mx": [
+    "pws0021"
+   ],
+   "name": "Every Man a Rifle",
+   "pre": [
+    "pws0019",
+    "pws0020"
+   ],
+   "x": 8,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Old 76mm guns found in a depot nobody looted.\n\nEffect: artillery added to the stockpile.",
+   "fid": "wif_pws_artillery",
+   "id": "pws0023",
+   "mx": [],
+   "name": "Field Guns from the Depots",
+   "pre": [
+    "pws0021",
+    "pws0022"
+   ],
+   "x": 7,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "What a small army can actually build and keep firing.\n\nEffect: +10% support weapons production efficiency.",
+   "fid": "wif_pws_mortars",
+   "id": "pws0024",
+   "mx": [],
+   "name": "Mortars and Machine Guns",
+   "pre": [
+    "pws0023"
+   ],
+   "x": 5,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Most of the trucks are gone, but horses can still pull a gun.\n\nEffect: transport equipment added to the stockpile.",
+   "fid": "wif_pws_lorries",
+   "id": "pws0025",
+   "mx": [],
+   "name": "Horses and Lorries",
+   "pre": [
+    "pws0023"
+   ],
+   "x": 7,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Marked borders, guarded crossings, and fewer raids.\n\nEffect: +5% defence on core territory.",
+   "fid": "wif_pws_border",
+   "id": "pws0026",
+   "mx": [],
+   "name": "Border Posts",
+   "pre": [
+    "pws0023"
+   ],
+   "x": 9,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 140,
+   "desc": "No longer a warlord's following, but an army that answers to the state.\n\nEffect: +10% battalion cap (still far below a real power).",
+   "fid": "wif_pws_standing",
+   "id": "pws0027",
+   "mx": [],
+   "name": "A Standing Army",
+   "pre": [
+    "pws0024",
+    "pws0025",
+    "pws0026"
+   ],
+   "x": 7,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Lathes, presses, boilers: what survived the evacuation and the war.\n\nEffect: +5% production efficiency cap.",
+   "fid": "wif_pws_inventory",
+   "id": "pws0028",
+   "mx": [],
+   "name": "Inventory the Workshops",
+   "pre": [
+    "pws0001"
+   ],
+   "x": 16,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Nothing works without electricity, and the station has been running at a quarter.\n\nEffect: +5% factory output.",
+   "fid": "wif_pws_power",
+   "id": "pws0029",
+   "mx": [],
+   "name": "Repair the Power Station",
+   "pre": [
+    "pws0028"
+   ],
+   "x": 15,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The shafts were flooded on purpose in the retreat.\n\nEffect: +resources in one state.",
+   "fid": "wif_pws_mines",
+   "id": "pws0030",
+   "mx": [],
+   "name": "Reopen the Mines",
+   "pre": [
+    "pws0028"
+   ],
+   "x": 17,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Small, but making what people need.\n\nEffect: +1 civilian factory.",
+   "fid": "wif_pws_workshops",
+   "id": "pws0031",
+   "mx": [],
+   "name": "Local Workshops",
+   "pre": [
+    "pws0029"
+   ],
+   "x": 15,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The only things we have more of than we need.\n\nEffect: +10% resources for trade.",
+   "fid": "wif_pws_timber",
+   "id": "pws0032",
+   "mx": [],
+   "name": "Timber and Coal for Sale",
+   "pre": [
+    "pws0030"
+   ],
+   "x": 17,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The main line is patched; the branch lines feed the villages.\n\nEffect: +1 infrastructure in two states.",
+   "fid": "wif_pws_branch_lines",
+   "id": "pws0033",
+   "mx": [],
+   "name": "Mend the Branch Lines",
+   "pre": [
+    "pws0031",
+    "pws0032"
+   ],
+   "x": 16,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Rebuild the locomotives instead of waiting for new ones.\n\nEffect: +10% supply throughput.",
+   "fid": "wif_pws_rail_workshops",
+   "id": "pws0034",
+   "mx": [],
+   "name": "Rail Workshops",
+   "pre": [
+    "pws0032"
+   ],
+   "x": 18,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Rifles of our own, not ones taken from the dead.\n\nEffect: +1 military factory.",
+   "fid": "wif_pws_small_arms",
+   "id": "pws0035",
+   "mx": [],
+   "name": "A Small Arms Plant",
+   "pre": [
+    "pws0033"
+   ],
+   "x": 15,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The same machines, worked twice as long.\n\nEffect: +1 civilian factory, -2% stability.",
+   "fid": "wif_pws_second_shift",
+   "id": "pws0036",
+   "mx": [],
+   "name": "A Second Shift",
+   "pre": [
+    "pws0033"
+   ],
+   "x": 17,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Modest targets, actually met.\n\nEffect: +5% construction speed.",
+   "fid": "wif_pws_plan",
+   "id": "pws0037",
+   "mx": [],
+   "name": "A Plan for Five Years",
+   "pre": [
+    "pws0035",
+    "pws0036"
+   ],
+   "x": 16,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "A factory that can make tractors can make other things too.\n\nEffect: +1 civilian factory.",
+   "fid": "wif_pws_tractors",
+   "id": "pws0038",
+   "mx": [],
+   "name": "The Tractor Works",
+   "pre": [
+    "pws0037"
+   ],
+   "x": 15,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Wrecked tanks and burned rail yards are the only steel mine we have.\n\nEffect: +4 steel.",
+   "fid": "wif_pws_scrap",
+   "id": "pws0039",
+   "mx": [],
+   "name": "Steel from Scrap",
+   "pre": [
+    "pws0037"
+   ],
+   "x": 17,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 140,
+   "desc": "It still cannot match a real power, but it no longer lives off what the Union left behind.\n\nEffect: removes the warlord economy spirit.",
+   "fid": "wif_pws_own_economy",
+   "id": "pws0040",
+   "mx": [],
+   "name": "An Economy of Its Own",
+   "pre": [
+    "pws0038",
+    "pws0039"
+   ],
+   "x": 16,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "The headquarters town becomes the seat of government - a garrison town, a rail junction, a few streets of wooden houses.\n\nEffect: +1 building slot in the capital.",
+   "fid": "wif_pws_choose_capital",
+   "id": "pws0041",
+   "mx": [],
+   "name": "Choose a Capital",
+   "pre": [
+    "pws0001"
+   ],
+   "x": 21,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Engineers walk every street and draw what a city here could look like.\n\nEffect: +25 political power.",
+   "fid": "wif_pws_survey",
+   "id": "pws0042",
+   "mx": [],
+   "name": "Survey the Town",
+   "pre": [
+    "pws0041"
+   ],
+   "x": 21,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "The barracks emptied when the army moved to the front lines. Families can live there now.\n\nEffect: capital population +10,000.",
+   "fid": "wif_pws_housing",
+   "id": "pws0043",
+   "mx": [],
+   "name": "Barracks into Housing",
+   "pre": [
+    "pws0042"
+   ],
+   "x": 20,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Before anything new is built, what the war left must be carted away.\n\nEffect: +1 building slot in the capital.",
+   "fid": "wif_pws_rubble",
+   "id": "pws0044",
+   "mx": [],
+   "name": "Clear the Rubble",
+   "pre": [
+    "pws0042"
+   ],
+   "x": 22,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "A town becomes a city when its people stop getting sick from the water.\n\nEffect: capital population +10,000, +2% stability.",
+   "fid": "wif_pws_water",
+   "id": "pws0045",
+   "mx": [],
+   "name": "Water and Sewers",
+   "pre": [
+    "pws0043",
+    "pws0044"
+   ],
+   "x": 21,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Electric light in every house, not just the headquarters.\n\nEffect: +1 building slot in the capital.",
+   "fid": "wif_pws_electric",
+   "id": "pws0046",
+   "mx": [],
+   "name": "Power to Every Street",
+   "pre": [
+    "pws0045"
+   ],
+   "x": 20,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "The field hospital moves into a real building.\n\nEffect: capital population +10,000.",
+   "fid": "wif_pws_hospital",
+   "id": "pws0047",
+   "mx": [],
+   "name": "A Hospital Worthy of the Name",
+   "pre": [
+    "pws0045"
+   ],
+   "x": 22,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Engineers for the factories have to come from somewhere.\n\nEffect: +3% research speed.",
+   "fid": "wif_pws_schools",
+   "id": "pws0048",
+   "mx": [],
+   "name": "Schools and a Technical Institute",
+   "pre": [
+    "pws0046"
+   ],
+   "x": 20,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "A market square and a tram line to the factories.\n\nEffect: +1 infrastructure in the capital.",
+   "fid": "wif_pws_trams",
+   "id": "pws0049",
+   "mx": [],
+   "name": "Markets and Tramlines",
+   "pre": [
+    "pws0047"
+   ],
+   "x": 22,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 105,
+   "desc": "Housing, work and bread draw people in from the countryside.\n\nEffect: capital population +25,000, +1 building slot.",
+   "fid": "wif_pws_villages",
+   "id": "pws0050",
+   "mx": [],
+   "name": "Bring the Villages to Town",
+   "pre": [
+    "pws0048",
+    "pws0049"
+   ],
+   "x": 21,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 140,
+   "desc": "Where there was a garrison town ten years ago, there is now a city.\n\nEffect: capital victory point value raised, +1 civilian factory, +1 building slot. If the capital's victory point province is not already urban, it becomes a city province: HoI4 cannot change terrain during the game, so it gets a permanent province modifier that fights like urban terrain (-30% attack against it, slower movement, better defence), and the state is upgraded one category. Already urban in the base map: Gorky (GRK), Perm (ARB), Samara (RFS). Converted: Kirov (RUE), Vologda (VGD), Gayny (OSG), Syktyvkar (KMR), Solikamsk (RNS). Orenburg (SPT) has no victory point at all, so it first gets one on the town's province. Works for any capital, including one a warlord has moved.",
+   "fid": "wif_pws_city",
+   "id": "pws0051",
+   "mx": [],
+   "name": "The Capital Rises",
+   "pre": [
+    "pws0050"
+   ],
+   "x": 21,
+   "y": 9
+  }
+ ],
+ "name": "Post-SME Warlords (generic)",
+ "tag": "PWS",
+ "target": 3650,
+ "treeId": "wif_post_sme_warlord_tree",
+ "updatedAt": 1793636537328
+}

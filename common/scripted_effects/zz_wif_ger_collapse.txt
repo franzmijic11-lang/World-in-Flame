@@ -6,12 +6,14 @@
 # Five events mark which faction each region declares for, by state flag and
 # by setting it demilitarised:
 #   wif_cw_ss        SS Gather in the Rhine         -> SSR, the SS Remnant
-#   wif_cw_bormann   Reichstag Elects Bormann       -> stays GER, Bormann's German Reich
+#   wif_cw_bormann   Reichstag Elects Bormann       -> BOR, Bormann's German Reich
 #   wif_cw_goring    Goring Rallies Support         -> GOR, Goring's Germany
 #   wif_cw_speer     Students and Factories Back Speer -> SPG, Speer's Germany
 #   wif_cw_wehrmacht Wehrmacht Generals Mobilise East  -> DWM, the Deutsche Wehrmacht
 # Two days after the last, wif_ger_collapse_of_the_reich splits the Reich along
-# those lines. A German state no event named stays with Bormann.
+# those lines. A German core no event named goes to Bormann; anything else
+# GER holds goes to Oslo, and GER itself leaves the map until the war is won
+# (common/scripted_effects/zz_wif_ger_reunify.txt).
 #
 # Army, stockpile and air force are split with transfer_units_fraction. Each
 # call takes its fraction of what is LEFT, so the ratios below are the user's
@@ -148,17 +150,18 @@ wif_cw_declare_wehrmacht = {
 # ---------------------------------------------------------------------------
 
 
-# Country scope: a country rising from the Reich. Politics, tech and the rule
-# that it has no diplomatic standing. ideology_party is set by the caller.
+# Country scope: one of the five sides of the civil war. Tech and special
+# projects, a core on every German core state - each claims the whole Reich -
+# and no diplomatic standing, as a visible spirit that carries the rules.
+# Politics are set by the caller.
 wif_cw_successor_common = {
 	set_research_slots = 4
 	wif_inherit_tech_from_donor = yes
-	set_rule = {
-		can_join_factions = no
-		can_create_factions = no
-		can_send_volunteers = no
-		can_puppet = no
-		can_guarantee_other_ideologies = no
+	wif_inherit_special_projects_from_donor = yes
+	add_ideas = wif_cw_no_diplomatic_standing
+	every_state = {
+		limit = { is_core_of = GER }
+		add_core_of = PREV
 	}
 	set_country_flag = wif_ger_cw_belligerent
 }
@@ -233,6 +236,7 @@ wif_cw_form_oslo_government = {
 		set_war_support = 0.5
 		set_research_slots = 4
 		wif_inherit_tech_from_donor = yes
+		wif_inherit_special_projects_from_donor = yes
 	}
 	if = {
 		limit = { has_character = GER_karl_donitz }
@@ -438,6 +442,7 @@ wif_cw_form_protectorate = {
 			set_war_support = 0.2
 			set_research_slots = 3
 			wif_inherit_tech_from_donor = yes
+			wif_inherit_special_projects_from_donor = yes
 		}
 	}
 	if = {
@@ -681,14 +686,11 @@ wif_cw_form_deutsche_wehrmacht = {
 		set_stability = 0.6
 		set_war_support = 0.8
 		wif_cw_successor_common = yes
-		recruit_character = wif_dwm_general_staff
-		add_country_leader_role = {
-			character = wif_dwm_general_staff
-			promote_leader = yes
-			country_leader = {
-				ideology = despotism
-				traits = { }
-			}
+		# create_country_leader: recruit_character only works in history files.
+		create_country_leader = {
+			name = wif_dwm_general_staff
+			picture = GFX_portrait_GER_alfred_jodl
+			ideology = despotism
 		}
 	}
 	if = {
@@ -727,6 +729,124 @@ wif_cw_share_out_generals = {
 		every_unit_leader = {
 			limit = { is_navy_leader = yes }
 			set_nationality = GAG
+		}
+	}
+}
+
+# The player picks a side in Collapse of the Reich (wif_ger_collapse.6), which
+# leaves a flag on GER. Called while GER still holds land, so the player is
+# moved before GER leaves the map.
+wif_cw_switch_player = {
+	if = {
+		limit = { is_ai = no }
+		if = {
+			limit = { has_country_flag = wif_cw_play_ssr country_exists = SSR }
+			SSR = { change_tag_from = ROOT }
+		}
+		else_if = {
+			limit = { has_country_flag = wif_cw_play_spg country_exists = SPG }
+			SPG = { change_tag_from = ROOT }
+		}
+		else_if = {
+			limit = { has_country_flag = wif_cw_play_gor country_exists = GOR }
+			GOR = { change_tag_from = ROOT }
+		}
+		else_if = {
+			limit = { has_country_flag = wif_cw_play_dwm country_exists = DWM }
+			DWM = { change_tag_from = ROOT }
+		}
+		else_if = {
+			limit = { country_exists = BOR }
+			BOR = { change_tag_from = ROOT }
+		}
+	}
+}
+
+# Martin Bormann's German Reich (BOR): every German core GER still holds,
+# whatever army, stockpile and air force are left, the generals who stayed,
+# and Bormann himself. Whatever GER holds that is not a German core - the
+# colonies and conquests no side claimed - goes to Oslo.
+#
+# The order matters. GER leaves the map the moment it owns nothing, so the
+# units, the generals and the player all move while it still has land: one
+# core state first, to bring BOR into being, then everything else, then the
+# rest of the land.
+wif_cw_form_bormanns_germany = {
+	random_owned_state = {
+		limit = { is_core_of = GER }
+		transfer_state_to = BOR
+	}
+	if = {
+		limit = { country_exists = BOR }
+		BOR = {
+			if = {
+				limit = { owns_state = 64 }
+				set_capital = { state = 64 }
+			}
+			else = {
+				random_owned_state = {
+					PREV = { set_capital = { state = PREV } }
+				}
+			}
+			set_politics = {
+				ruling_party = fascism
+				last_election = "1936.1.1"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = { fascism = 85 neutrality = 15 democratic = 0 communism = 0 }
+			set_stability = 0.5
+			set_war_support = 0.6
+			wif_cw_successor_common = yes
+		}
+
+		transfer_units_fraction = {
+			target = BOR
+			size = 0
+			army_ratio = 1
+			stockpile_ratio = 1
+			air_ratio = 1
+			navy_ratio = 1
+			keep_unit_leaders_trigger = { always = yes }
+		}
+		every_unit_leader = {
+			limit = { is_army_leader = yes }
+			set_nationality = BOR
+		}
+		if = {
+			limit = { has_character = GER_martin_bormann }
+			GER_martin_bormann = { set_nationality = BOR }
+		}
+		BOR = {
+			if = {
+				limit = { has_character = GER_martin_bormann }
+				add_country_leader_role = {
+					character = GER_martin_bormann
+					promote_leader = yes
+					country_leader = {
+						ideology = nazism
+						traits = { }
+					}
+				}
+			}
+		}
+
+		wif_cw_switch_player = yes
+
+		every_owned_state = {
+			limit = { is_core_of = GER }
+			transfer_state_to = BOR
+		}
+	}
+	every_owned_state = {
+		limit = { NOT = { is_core_of = GER } }
+		if = {
+			limit = { country_exists = GAG }
+			transfer_state_to = GAG
+		}
+		else_if = {
+			limit = { country_exists = BOR }
+			transfer_state_to = BOR
 		}
 	}
 }
@@ -841,23 +961,15 @@ wif_ger_collapse_of_the_reich = {
 	wif_cw_share_out_generals = yes
 
 	# ---- 8. Bormann's German Reich: what is left ---------------------------
+	# GER itself leaves the map: Bormann rules from a tag of his own (BOR), and
+	# GER only returns when the war is won (wif_cw_reunify). Its spirits are
+	# stripped first so the Reich that comes back starts clean.
 	wif_ger_strip_spirits = yes
 	if = {
 		limit = { has_cosmetic_tag = GER_greater_german_reich }
 		drop_cosmetic_tag = yes
 	}
-	set_politics = {
-		ruling_party = fascism
-		elections_allowed = no
-	}
-	set_rule = {
-		can_join_factions = no
-		can_create_factions = no
-		can_send_volunteers = no
-		can_puppet = no
-		can_guarantee_other_ideologies = no
-	}
-	set_country_flag = wif_ger_cw_belligerent
+	wif_cw_form_bormanns_germany = yes
 
 	# Nobody fights over a demilitarised zone.
 	every_state = {
@@ -891,43 +1003,38 @@ wif_cw_declare_the_civil_war = {
 			}
 		}
 	}
+
+	# The world turns on a Reich at war with itself
+	# (common/scripted_effects/zz_wif_ger_cw_abroad.txt).
+	wif_cw_world_reacts = yes
 }
 
-# Protectorate scope, monthly: once only one of the five is left, the Sudeten
-# lands go back to it - or, if the Protectorate was only formed for the war,
-# the winner annexes it whole.
-wif_cw_protectorate_check_winner = {
+# Collapse of the Reich, whichever side the player picked. GER scope. The news
+# goes out first, while GER still exists to send it; GER leaves the map during
+# the split, so the war event goes to a side that is still there - the
+# player's, if they play one.
+wif_cw_collapse_and_war = {
+	news_event = { id = wif_ger_collapse.8 }
+	wif_ger_collapse_of_the_reich = yes
 	if = {
 		limit = {
-			has_country_flag = wif_ger_protectorate
-			has_global_flag = wif_ger_civil_war_begun
-			NOT = { has_global_flag = wif_ger_civil_war_won }
-		}
-		set_temp_variable = { wif_cw_left = 0 }
-		every_country = {
-			limit = { has_country_flag = wif_ger_cw_belligerent }
-			add_to_temp_variable = { wif_cw_left = 1 }
-		}
-		if = {
-			limit = { check_variable = { wif_cw_left < 2 } }
-			set_global_flag = wif_ger_civil_war_won
-			if = {
-				limit = { any_country = { has_country_flag = wif_ger_cw_belligerent } }
-				random_country = {
-					limit = { has_country_flag = wif_ger_cw_belligerent }
-					save_event_target_as = wif_cw_winner
-				}
-				if = {
-					limit = { has_country_flag = wif_ger_protectorate_formed }
-					event_target:wif_cw_winner = { annex_country = { target = PREV transfer_troops = yes } }
-				}
-				else = {
-					every_owned_state = {
-						limit = { OR = { state = 69 state = 74 } }
-						transfer_state_to = event_target:wif_cw_winner
-					}
-				}
+			any_country = {
+				has_country_flag = wif_ger_cw_belligerent
+				is_ai = no
 			}
+		}
+		random_country = {
+			limit = {
+				has_country_flag = wif_ger_cw_belligerent
+				is_ai = no
+			}
+			country_event = { id = wif_ger_collapse.7 days = 10 }
+		}
+	}
+	else = {
+		random_country = {
+			limit = { has_country_flag = wif_ger_cw_belligerent }
+			country_event = { id = wif_ger_collapse.7 days = 10 }
 		}
 	}
 }

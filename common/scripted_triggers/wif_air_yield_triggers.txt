@@ -1,0 +1,11 @@
+# Country scope: this country is ROOT itself, or allied closely enough with
+# ROOT to share its airfields - same faction, or overlord or subject either
+# way. ROOT is the player in common/scripted_effects/wif_air_yield.txt.
+wif_air_friend_of_root = {
+	OR = {
+		tag = ROOT
+		is_in_faction_with = ROOT
+		is_subject_of = ROOT
+		ROOT = { is_subject_of = PREV }
+	}
+}

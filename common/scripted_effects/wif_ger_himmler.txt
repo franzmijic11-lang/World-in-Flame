@@ -236,16 +236,32 @@ wif_ger_ss_generals_to_osb = {
 # gets a seat. Mirrors vanilla's GER_ascension_of_goebbels without starting
 # that chain, which no longer exists. German scope; call right after
 # GER_remove_himmler_effects, which has just emptied the seat.
+#
+# NOT = { OR = { } }, never NOR: HoI4 has no NOR operator, and NOR is Norway's
+# tag. Written as NOR this limit scoped into Norway, asked whether NORWAY'S
+# seats all held Goebbels, was always false, and Goebbels never got a seat.
+#
+# Sets wif_ger_goebbels_seated whenever it seats him, which
+# wif_ger_goebbels_seat_repair below reads so it never seats him twice.
 wif_ger_goebbels_takes_himmlers_seat = {
 	if = {
 		limit = {
-			NOR = {
-				check_variable = { GER_ascended_advisor_1 = 5 }
-				check_variable = { GER_ascended_advisor_2 = 5 }
-				check_variable = { GER_ascended_advisor_3 = 5 }
-				check_variable = { GER_ascended_advisor_4 = 5 }
+			NOT = {
+				OR = {
+					check_variable = { GER_ascended_advisor_1 = 5 }
+					check_variable = { GER_ascended_advisor_2 = 5 }
+					check_variable = { GER_ascended_advisor_3 = 5 }
+					check_variable = { GER_ascended_advisor_4 = 5 }
+				}
+			}
+			OR = {
+				check_variable = { GER_ascended_advisor_1 = 0 }
+				check_variable = { GER_ascended_advisor_2 = 0 }
+				check_variable = { GER_ascended_advisor_3 = 0 }
+				check_variable = { GER_ascended_advisor_4 = 0 }
 			}
 		}
+		set_country_flag = wif_ger_goebbels_seated
 		if = {
 			limit = { check_variable = { GER_ascended_advisor_1 = 0 } }
 			set_variable = { GER_ascended_advisor_1 = 5 }
@@ -271,6 +287,28 @@ wif_ger_goebbels_takes_himmlers_seat = {
 		else = {
 			add_ideas = GER_goebbels_reich_minister_of_propaganda
 		}
+	}
+}
+
+# One-time repair, monthly from on_monthly_GER, for campaigns where Himmler
+# left while the NOR bug above still stopped Goebbels taking his seat. Runs
+# only if Himmler has gone (to Burgund either way, or above the Inner Circle
+# as Fuhrer), the Reich still stands, Goebbels is still German, and he has
+# never been seated by this mechanic - so a Goebbels later replaced by the
+# player is not forced back in. Safe to delete once no pre-fix save is in use.
+wif_ger_goebbels_seat_repair = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = wif_ger_goebbels_seated }
+			OR = {
+				has_country_flag = wif_ger_osb_revolted
+				has_country_flag = wif_ger_osb_satellite
+				has_country_flag = wif_ger_himmler_is_fuhrer
+			}
+			NOT = { has_country_flag = wif_ger_reich_collapsed }
+			has_character = GER_joseph_goebbels
+		}
+		wif_ger_goebbels_takes_himmlers_seat = yes
 	}
 }
 

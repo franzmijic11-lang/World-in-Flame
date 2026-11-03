@@ -15,6 +15,8 @@
  wif_russian_warlord_desc:0 "There is no Union left to serve and no border anyone will recognise. There are the divisions that answered when we called, and the ground they are standing on.\n\nEvery man the Union trained is still under arms somewhere, and there is no government left in Moscow with the authority to send him home.\n\n§YRaises the sustainable battalion limit by 80%.§! The limit itself is on the officer corps screen."
  wif_military_factory_ceiling:0 "Military Factory Ceiling Reached"
  wif_military_factory_ceiling_desc:0 "Our military industry has reached the limit our civilian economy can sustain at the current level of international tension. No further military factories can be completed until we expand our civilian industry or tension rises."
+ wif_military_factory_ceiling_grace:0 "Military Industry Over Its Ceiling"
+ wif_military_factory_ceiling_grace_desc:0 "Our military industry now stands beyond what the civilian economy can sustain at the current level of international tension. For a year we are spared the worst of it: no further military factories can be completed, but nothing else is lost. If the imbalance has not been unwound by then - by building civilian industry, converting armament plants, or tension rising again - the full penalties take hold."
  wif_military_factory_ceiling_far:0 "Military Factory Ceiling Exceeded"
  wif_military_factory_ceiling_far_desc:0 "Our military industry stands well beyond what the civilian economy can sustain. No further military factories can be completed, and the state is offering favourable terms to industrialists willing to convert armament plants back to civilian production."
  wif_military_factory_ceiling_severe:0 "Military Industry Overextended"

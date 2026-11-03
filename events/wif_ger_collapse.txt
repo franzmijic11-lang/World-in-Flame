@@ -126,16 +126,58 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# One option per side: the player goes to the side they pick
+	# (wif_cw_switch_player). An option only shows if that side will have land.
+	# The AI takes the first; for the AI the choice changes nothing.
 	option = {
-		name = wif_ger_collapse.6.a
+		name = wif_ger_collapse.6.bor
+		ai_chance = { base = 1 }
 		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		custom_effect_tooltip = wif_ger_collapse.6.bor_tt
+		hidden_effect = { wif_cw_collapse_and_war = yes }
+	}
+	option = {
+		name = wif_ger_collapse.6.ssr
+		trigger = { any_owned_state = { has_state_flag = wif_cw_ss } }
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		custom_effect_tooltip = wif_ger_collapse.6.ssr_tt
 		hidden_effect = {
-			wif_ger_collapse_of_the_reich = yes
-			every_country = {
-				limit = { NOT = { tag = GER } }
-				news_event = { id = wif_ger_collapse.8 }
-			}
-			country_event = { id = wif_ger_collapse.7 days = 10 }
+			set_country_flag = wif_cw_play_ssr
+			wif_cw_collapse_and_war = yes
+		}
+	}
+	option = {
+		name = wif_ger_collapse.6.spg
+		trigger = { any_owned_state = { has_state_flag = wif_cw_speer } }
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		custom_effect_tooltip = wif_ger_collapse.6.spg_tt
+		hidden_effect = {
+			set_country_flag = wif_cw_play_spg
+			wif_cw_collapse_and_war = yes
+		}
+	}
+	option = {
+		name = wif_ger_collapse.6.gor
+		trigger = { any_owned_state = { has_state_flag = wif_cw_goring } }
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		custom_effect_tooltip = wif_ger_collapse.6.gor_tt
+		hidden_effect = {
+			set_country_flag = wif_cw_play_gor
+			wif_cw_collapse_and_war = yes
+		}
+	}
+	option = {
+		name = wif_ger_collapse.6.dwm
+		trigger = { any_owned_state = { has_state_flag = wif_cw_wehrmacht } }
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = wif_ger_collapse.6.a_tt
+		custom_effect_tooltip = wif_ger_collapse.6.dwm_tt
+		hidden_effect = {
+			set_country_flag = wif_cw_play_dwm
+			wif_cw_collapse_and_war = yes
 		}
 	}
 }
@@ -169,5 +211,52 @@ news_event = {
 
 	option = {
 		name = wif_ger_collapse.8.a
+	}
+}
+
+# The civil war is won. To the last side standing (wif_cw_check_for_winner);
+# either way the Reich is reborn (common/scripted_effects/zz_wif_ger_reunify.txt).
+country_event = {
+	id = wif_ger_collapse.9
+	title = wif_ger_collapse.9.t
+	desc = wif_ger_collapse.9.d
+	picture = GFX_report_event_germany_victory
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_ger_collapse.9.a
+		ai_chance = { base = 60 }
+		custom_effect_tooltip = wif_ger_collapse.9.a_tt
+		custom_effect_tooltip = wif_ger_collapse.9.reunify_tt
+		hidden_effect = {
+			wif_cw_spare_the_generals = yes
+			wif_cw_reunify = yes
+		}
+	}
+	option = {
+		name = wif_ger_collapse.9.b
+		ai_chance = { base = 40 }
+		custom_effect_tooltip = wif_ger_collapse.9.b_tt
+		custom_effect_tooltip = wif_ger_collapse.9.reunify_tt
+		hidden_effect = {
+			wif_cw_kill_the_traitors = yes
+			wif_cw_reunify = yes
+		}
+	}
+}
+
+# The world hears the Reich is whole again.
+news_event = {
+	id = wif_ger_collapse.10
+	title = wif_ger_collapse.10.t
+	desc = wif_ger_collapse.10.d
+	picture = GFX_news_event_german_rally
+
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = wif_ger_collapse.10.a
 	}
 }

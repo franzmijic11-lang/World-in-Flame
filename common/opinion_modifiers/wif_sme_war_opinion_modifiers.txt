@@ -1,0 +1,15 @@
+# The SME collapse. Distinct filename so it merges with vanilla's.
+opinion_modifiers = {
+
+	# The Russian National State's view of the Aryan Brotherhood next door
+	# (tools/gen_sme_collapse.py, wif_sme_form_RNS).
+	wif_sme_fierce_dislike = {
+		value = -100
+	}
+
+	# The two halves of the Zhukov split making peace with each other
+	# (common/national_focus/wif_sme_unravelling.txt).
+	wif_sme_old_comrades = {
+		value = 50
+	}
+}

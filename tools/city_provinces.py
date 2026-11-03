@@ -4,6 +4,9 @@ V = r"D:\Steam\steamapps\common\Hearts of Iron IV"
 M = r"C:\Users\franz\OneDrive\Skrivbord\Dokument\Paradox Interactive\Hearts of Iron IV\mod\Welt_in_Flammen"
 OUT = os.path.join(M, "common", "scripted_effects", "wif_city_provinces.txt")
 
+# VANILLA definition.csv on purpose, never the mod copy: WiF marks the SME
+# collapse capitals urban from 1936 (tools/gen_capital_cities.py), but they
+# only count as cities once wif_raise_capital_city raises them.
 urban = set()
 for line in open(os.path.join(V, "map", "definition.csv"), encoding="latin-1"):
     f = line.strip().split(";")

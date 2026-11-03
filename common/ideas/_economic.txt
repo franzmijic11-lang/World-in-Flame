@@ -10,7 +10,7 @@
 # THE ONLY CHANGES from vanilla are in the trade_laws group, and each is marked
 # "Welt in Flammen":
 #   - the seven trade laws other than closed_economy each have one line in
-#     available: NOT = { has_idea = wif_russian_warlord }
+#     available: NOT = { wif_has_warlord_spirit = yes }
 #   - closed_economy gains allowed_to_remove, so a warlord cannot drop it.
 # The economy laws above are vanilla, untouched. WiF's own economy laws live in
 # common/ideas/wif_economy_laws.txt, which merges into the same group.
@@ -1174,7 +1174,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 			}
 
 
@@ -1250,7 +1250,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 				if = {
 					limit = {
@@ -1355,7 +1355,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 
 				if = {
@@ -1461,7 +1461,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 				OR = {
 					AND = {
@@ -1622,7 +1622,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 			}
 
@@ -1671,7 +1671,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 			}
 
@@ -1723,7 +1723,7 @@ ideas = {
 			# government conditions, and leaving it untouched means the ordinary
 			# route to Closed Economy is unchanged for everybody else.
 			allowed_to_remove = {
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 			}
 
 
@@ -1875,7 +1875,7 @@ ideas = {
 				# out of Closed Economy. Holding a country by the army is not a
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
-				NOT = { has_idea = wif_russian_warlord }
+				NOT = { wif_has_warlord_spirit = yes }
 
 				always = no
 			}

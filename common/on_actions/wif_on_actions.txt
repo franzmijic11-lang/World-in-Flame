@@ -178,6 +178,12 @@ on_actions = {
 					wif_seed_city_provinces = yes
 				}
 
+				# The SME collapse capitals that "The Capital Rises" turns into cities
+				# are urban in map/definition.csv from the start; this hides it until
+				# then (tools/gen_capital_cities.py). Its own global flag keeps it to
+				# one pass.
+				wif_disguise_future_cities = yes
+
 				set_variable = { wif_mil_grandfather = num_of_military_factories }
 				set_country_flag = wif_factory_cap_init
 				wif_update_factory_cap = yes
@@ -221,7 +227,7 @@ on_actions = {
 				if = {
 					limit = {
 						wif_is_russian_warlord = yes
-						NOT = { has_idea = wif_russian_warlord }
+						NOT = { wif_has_warlord_spirit = yes }
 					}
 					add_ideas = wif_russian_warlord
 				}
@@ -255,7 +261,7 @@ on_actions = {
 				# nothing.
 				if = {
 					limit = {
-						has_idea = wif_russian_warlord
+						wif_has_warlord_spirit = yes
 						NOT = { has_idea = closed_economy }
 					}
 					add_ideas = closed_economy
@@ -269,9 +275,11 @@ on_actions = {
 		}
 	}
 
-	# No enforcement pass. Existing military factories are never removed or
-	# converted - the cap is enforced purely by blocking further construction
-	# through the wif_military_factory_ceiling spirit.
+	# No enforcement pass here. The cap is enforced by blocking further
+	# construction through the wif_military_factory_ceiling spirits; the only
+	# thing that converts existing factories is the AI's monthly conversion in
+	# common/scripted_effects/wif_factory_conversion.txt, bounded by its own
+	# counter and by the overshoot.
 	#
 	# The removed version looped while num_of_military_factories > wif_mil_cap,
 	# but that country property does not refresh inside a single effect, so the
@@ -286,6 +294,14 @@ on_actions = {
 	# on_weekly is per-country (ROOT = the country), matching vanilla usage.
 	on_weekly = {
 		effect = {
+			# Allied AIs pull their planes out of strategic regions whose
+			# airfields a player and their allies have filled - see
+			# common/scripted_effects/wif_air_yield.txt. Runs once per player.
+			if = {
+				limit = { is_ai = no }
+				wif_air_yield_update = yes
+			}
+
 			# wif_is_reichskommissariat also catches RKs that never got either
 			# spirit - the Generalgouvernement was one.
 			if = {
@@ -514,7 +530,7 @@ on_actions = {
 			if = {
 				limit = {
 					wif_is_russian_warlord = yes
-					NOT = { has_idea = wif_russian_warlord }
+					NOT = { wif_has_warlord_spirit = yes }
 				}
 				add_ideas = wif_russian_warlord
 			}
@@ -553,7 +569,7 @@ on_actions = {
 			# nothing.
 			if = {
 				limit = {
-					has_idea = wif_russian_warlord
+					wif_has_warlord_spirit = yes
 					NOT = { has_idea = closed_economy }
 				}
 				add_ideas = closed_economy
@@ -732,6 +748,14 @@ on_actions = {
 		}
 	}
 
+	# AI over its military factory ceiling converts military factories into
+	# civilian ones - see common/scripted_effects/wif_factory_conversion.txt.
+	on_monthly = {
+		effect = {
+			wif_factory_conversion_monthly = yes
+		}
+	}
+
 	# The Facade Economy's consumer goods - see
 	# common/dynamic_modifiers/wif_ger_facade_economy.txt. +0.5% a month to
 	# start with, deliberately with NO cap and NO penalties: it is meant to
@@ -753,6 +777,9 @@ on_actions = {
 			# that works on itself (common/scripted_effects/zz_wif_ger_road.txt).
 			wif_ger_road_monthly = yes
 			wif_ger_himmler_try_offer_retirement = yes
+			# Repairs saves where Himmler left before the NOR bug in
+			# wif_ger_goebbels_takes_himmlers_seat was fixed - see that effect.
+			wif_ger_goebbels_seat_repair = yes
 		}
 	}
 }

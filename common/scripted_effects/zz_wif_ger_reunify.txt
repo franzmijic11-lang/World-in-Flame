@@ -1,0 +1,323 @@
+# The end of the German civil war: the last side standing wins, decides the
+# fate of the defeated generals (wif_ger_collapse.9), and the Reich is reborn
+# as GER, the Greater German Reich, in Berlin. GER takes the winner's
+# ideology and leader, annexes the winner with everything it has - land,
+# army, air force, navy, stockpile, generals and advisors - integrates the
+# German Administrative Government in Oslo, leads the faction again, and takes
+# back its subjects. The winning player moves to GER.
+#
+# Not taken back: Burgundy, anyone who joined the Pact of Rome, and Britain if
+# America freed it (all flagged wif_cw_never_returns). A former subject at war
+# rejoins the faction at once and becomes a subject when its war is over
+# (wif_cw_repuppet_after_war, weekly).
+
+
+# ---------------------------------------------------------------------------
+# Who won
+# ---------------------------------------------------------------------------
+
+# Belligerent scope, weekly (common/on_actions/wif_ger_collapse_on_actions.txt).
+# Once this is the only side left, it has won.
+wif_cw_check_for_winner = {
+	if = {
+		limit = {
+			has_country_flag = wif_ger_cw_belligerent
+			has_global_flag = wif_ger_civil_war_begun
+			NOT = { has_global_flag = wif_ger_civil_war_won }
+			NOT = {
+				any_other_country = { has_country_flag = wif_ger_cw_belligerent }
+			}
+		}
+		set_global_flag = wif_ger_civil_war_won
+		country_event = { id = wif_ger_collapse.9 }
+	}
+}
+
+# Winner scope (ROOT). The generals of every defeated side come over to the
+# winner. The defeated no longer exist, so every_country cannot reach them;
+# their generals are still on their books, and are reached tag by tag.
+# UNTESTED: if the engine drops a dead country's generals, this moves nobody.
+wif_cw_spare_the_generals = {
+	if = { limit = { NOT = { tag = SSR } } SSR = { every_unit_leader = { limit = { is_army_leader = yes } set_nationality = ROOT } } }
+	if = { limit = { NOT = { tag = SPG } } SPG = { every_unit_leader = { limit = { is_army_leader = yes } set_nationality = ROOT } } }
+	if = { limit = { NOT = { tag = GOR } } GOR = { every_unit_leader = { limit = { is_army_leader = yes } set_nationality = ROOT } } }
+	if = { limit = { NOT = { tag = DWM } } DWM = { every_unit_leader = { limit = { is_army_leader = yes } set_nationality = ROOT } } }
+	if = { limit = { NOT = { tag = BOR } } BOR = { every_unit_leader = { limit = { is_army_leader = yes } set_nationality = ROOT } } }
+}
+
+# Winner scope (ROOT). The defeated sides' generals are executed - retired for
+# good, so no revived Germany can ever field them.
+wif_cw_kill_the_traitors = {
+	if = { limit = { NOT = { tag = SSR } } SSR = { every_unit_leader = { limit = { is_army_leader = yes } retire = yes } } }
+	if = { limit = { NOT = { tag = SPG } } SPG = { every_unit_leader = { limit = { is_army_leader = yes } retire = yes } } }
+	if = { limit = { NOT = { tag = GOR } } GOR = { every_unit_leader = { limit = { is_army_leader = yes } retire = yes } } }
+	if = { limit = { NOT = { tag = DWM } } DWM = { every_unit_leader = { limit = { is_army_leader = yes } retire = yes } } }
+	if = { limit = { NOT = { tag = BOR } } BOR = { every_unit_leader = { limit = { is_army_leader = yes } retire = yes } } }
+}
+
+
+# ---------------------------------------------------------------------------
+# Subjects
+# ---------------------------------------------------------------------------
+
+# Subject scope: become GER's, with the kind of subjection it had under the
+# Reich (wif_cw_record_autonomy, wif_cw_subject_to_oslo).
+wif_cw_subject_to_ger = {
+	clr_country_flag = wif_cw_repuppet_after_war
+	clr_country_flag = wif_cw_former_reich_subject
+	if = {
+		limit = { NOT = { is_subject_of = GER } }
+		GER = { puppet = PREV }
+	}
+	if = {
+		limit = { has_country_flag = wif_cw_was_reichskommissariat }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_reichskommissariat end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_reichsprotectorate }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_reichsprotectorate end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_integrated_puppet }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_colony }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_colony end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_dominion }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_volkskommissariat }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_volkskommissariat end_wars = no end_civil_wars = no } }
+	}
+	else_if = {
+		limit = { has_country_flag = wif_cw_was_supervised_state }
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_supervised_state end_wars = no end_civil_wars = no } }
+	}
+	else = {
+		GER = { set_autonomy = { target = PREV autonomy_state = autonomy_satellite end_wars = no end_civil_wars = no } }
+	}
+	if = {
+		limit = { NOT = { is_in_faction_with = GER } }
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		GER = { add_to_faction = PREV }
+	}
+}
+
+# Country scope, weekly: a former subject that was at war when the Reich
+# reunited becomes GER's again once that war is over.
+wif_cw_repuppet_after_war = {
+	if = {
+		limit = {
+			has_country_flag = wif_cw_repuppet_after_war
+			has_war = no
+			country_exists = GER
+			is_subject = no
+		}
+		wif_cw_subject_to_ger = yes
+	}
+}
+
+
+# ---------------------------------------------------------------------------
+# The Reich reborn
+# ---------------------------------------------------------------------------
+
+# Winner scope: GER takes the winner's ideology and leader.
+wif_cw_ger_takes_winners_politics = {
+	if = {
+		limit = { has_government = fascism }
+		GER = {
+			set_politics = { ruling_party = fascism elections_allowed = no }
+			set_popularities = { fascism = 80 neutrality = 15 democratic = 5 communism = 0 }
+		}
+	}
+	else_if = {
+		limit = { has_government = neutrality }
+		GER = {
+			set_politics = { ruling_party = neutrality elections_allowed = no }
+			set_popularities = { neutrality = 70 fascism = 25 democratic = 5 communism = 0 }
+		}
+	}
+	else_if = {
+		limit = { has_government = democratic }
+		GER = {
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+			set_popularities = { democratic = 70 neutrality = 15 fascism = 10 communism = 5 }
+		}
+	}
+	else = {
+		GER = {
+			set_politics = { ruling_party = communism elections_allowed = no }
+			set_popularities = { communism = 70 neutrality = 15 democratic = 10 fascism = 5 }
+		}
+	}
+
+	# The leader each side was formed with. A character is moved to GER and
+	# made its leader; the General Staff is created afresh, as it was for the
+	# Wehrmacht.
+	if = {
+		limit = { tag = SSR has_character = GER_reinhard_heydrich }
+		GER_reinhard_heydrich = { set_nationality = GER }
+		GER = { add_country_leader_role = { character = GER_reinhard_heydrich promote_leader = yes country_leader = { ideology = nazism traits = { } } } }
+	}
+	else_if = {
+		limit = { tag = SPG has_character = GER_albert_speer }
+		GER_albert_speer = { set_nationality = GER }
+		GER = { add_country_leader_role = { character = GER_albert_speer promote_leader = yes country_leader = { ideology = nazism traits = { } } } }
+	}
+	else_if = {
+		limit = { tag = GOR has_character = GER_hermann_goring }
+		GER_hermann_goring = { set_nationality = GER }
+		GER = { add_country_leader_role = { character = GER_hermann_goring promote_leader = yes country_leader = { ideology = nazism traits = { } } } }
+	}
+	else_if = {
+		limit = { tag = BOR has_character = GER_martin_bormann }
+		GER_martin_bormann = { set_nationality = GER }
+		GER = { add_country_leader_role = { character = GER_martin_bormann promote_leader = yes country_leader = { ideology = nazism traits = { } } } }
+	}
+	else_if = {
+		limit = { tag = DWM }
+		GER = {
+			create_country_leader = {
+				name = wif_dwm_general_staff
+				picture = GFX_portrait_GER_alfred_jodl
+				ideology = despotism
+			}
+		}
+	}
+}
+
+# Winner scope, from both options of wif_ger_collapse.9.
+wif_cw_reunify = {
+	save_event_target_as = wif_cw_winner
+	set_global_flag = wif_ger_reunified
+
+	# The Protectorate: the Sudeten lands go back to the winner, or - if it was
+	# only formed for the war - the winner annexes it whole. GER inherits
+	# either below.
+	every_country = {
+		limit = { has_country_flag = wif_ger_protectorate }
+		if = {
+			limit = { has_country_flag = wif_ger_protectorate_formed }
+			event_target:wif_cw_winner = { annex_country = { target = PREV transfer_troops = yes } }
+		}
+		else = {
+			every_owned_state = {
+				limit = { OR = { state = 69 state = 74 } }
+				transfer_state_to = event_target:wif_cw_winner
+			}
+		}
+	}
+
+	# GER comes back in Berlin - or the winner's capital if it lacks Berlin.
+	if = {
+		limit = { owns_state = 64 }
+		64 = { transfer_state_to = GER }
+	}
+	else = {
+		capital_scope = { transfer_state_to = GER }
+	}
+
+	GER = {
+		set_capital = { state = 64 }
+		set_cosmetic_tag = GER_greater_german_reich
+		set_rule = {
+			can_join_factions = yes
+			can_create_factions = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_guarantee_other_ideologies = yes
+		}
+		if = {
+			limit = { has_idea = wif_cw_no_diplomatic_standing }
+			remove_ideas = wif_cw_no_diplomatic_standing
+		}
+		clr_country_flag = wif_ger_cw_belligerent
+		set_stability = 0.6
+		set_war_support = 0.6
+	}
+	wif_cw_ger_takes_winners_politics = yes
+
+	# The player follows the Reich.
+	if = {
+		limit = { is_ai = no }
+		GER = { change_tag_from = PREV }
+	}
+
+	# Everything the winner has, then the winner itself.
+	transfer_units_fraction = {
+		target = GER
+		size = 0
+		army_ratio = 1
+		navy_ratio = 1
+		air_ratio = 1
+		stockpile_ratio = 1
+		keep_unit_leaders_trigger = { always = yes }
+	}
+	every_character = {
+		set_nationality = GER
+	}
+	GER = { annex_country = { target = event_target:wif_cw_winner transfer_troops = yes } }
+
+	# Oslo: its faction, its subjects, its fleet, its admirals - then Oslo.
+	if = {
+		limit = { country_exists = GAG }
+		GAG = {
+			if = {
+				limit = { is_faction_leader = yes }
+				add_to_faction = GER
+				GER = { set_faction_leader = yes }
+			}
+			every_subject_country = {
+				wif_cw_subject_to_ger = yes
+			}
+			transfer_units_fraction = {
+				target = GER
+				size = 0
+				army_ratio = 1
+				navy_ratio = 1
+				air_ratio = 1
+				stockpile_ratio = 1
+				keep_unit_leaders_trigger = { always = yes }
+			}
+			every_character = {
+				set_nationality = GER
+			}
+		}
+		GER = { annex_country = { target = GAG transfer_troops = yes } }
+	}
+
+	# The subjects that went their own way come back - at once if at peace,
+	# into the faction now and under the Reich when their war ends if not.
+	every_country = {
+		limit = {
+			has_country_flag = wif_cw_former_reich_subject
+			NOT = { has_country_flag = wif_cw_never_returns }
+			is_subject = no
+		}
+		if = {
+			limit = { has_war = no }
+			wif_cw_subject_to_ger = yes
+		}
+		else = {
+			set_country_flag = wif_cw_repuppet_after_war
+			if = {
+				limit = { NOT = { is_in_faction_with = GER } }
+				if = {
+					limit = { is_in_faction = yes }
+					leave_faction = yes
+				}
+				GER = { add_to_faction = PREV }
+			}
+		}
+	}
+
+	GER = { news_event = { id = wif_ger_collapse.10 } }
+}

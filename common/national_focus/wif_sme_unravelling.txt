@@ -1,0 +1,229 @@
+# The Unravelling: the tree for what is left of the SME after it loses its war
+# with the Ostschild - the SME itself and the other half of the Zhukov split
+# (ZWF). Loaded by load_focus_tree in wif_sme_collapse_begin and
+# wif_sme_zhukov_split (common/scripted_effects/zz_wif_sme_c_war.txt); ZWF
+# would also pick it on its own.
+#
+# The breakaways happen by script over two weeks whatever is chosen here; this
+# is the government counting what it has left and trying to keep it.
+# Cost is in weeks (7.143 = 50 days, rounded up - see SME_focus.txt).
+
+focus_tree = {
+	id = wif_sme_unravelling_tree
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ZWF
+		}
+	}
+
+	default = no
+
+	# >>> GENERATED post-SME tree
+	# The generic warlord tree beside the loss tree (tools/gen_post_sme_tree.py).
+	shared_focus = wif_pws_root
+	# <<< GENERATED post-SME tree
+
+	focus = {
+		id = wif_smeu_the_war_is_lost
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		x = 3
+		y = 0
+		cost = 1
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = wif_smeu_count_what_is_left
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = wif_smeu_the_war_is_lost }
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 20000
+		}
+	}
+
+	focus = {
+		id = wif_smeu_hold_what_we_have
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = wif_smeu_the_war_is_lost }
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = { all_provinces = yes limit_to_victory_point = yes }
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = wif_smeu_salvage_the_factories
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = wif_smeu_the_war_is_lost }
+		x = 5
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = wif_smeu_blame_the_other_government
+		icon = GFX_goal_generic_propaganda
+		prerequisite = {
+			focus = wif_smeu_count_what_is_left
+			focus = wif_smeu_hold_what_we_have
+			focus = wif_smeu_salvage_the_factories
+		}
+		mutually_exclusive = { focus = wif_smeu_reach_across_the_lines }
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_war_support = 0.10
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = wif_smeu_reach_across_the_lines
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = {
+			focus = wif_smeu_count_what_is_left
+			focus = wif_smeu_hold_what_we_have
+			focus = wif_smeu_salvage_the_factories
+		}
+		mutually_exclusive = { focus = wif_smeu_blame_the_other_government }
+		x = 4
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_stability = 0.05
+			if = {
+				limit = { tag = SME country_exists = ZWF }
+				add_opinion_modifier = { target = ZWF modifier = wif_sme_old_comrades }
+				ZWF = { add_opinion_modifier = { target = SME modifier = wif_sme_old_comrades } }
+			}
+			else_if = {
+				limit = { tag = ZWF country_exists = SME }
+				add_opinion_modifier = { target = SME modifier = wif_sme_old_comrades }
+				SME = { add_opinion_modifier = { target = ZWF modifier = wif_sme_old_comrades } }
+			}
+		}
+	}
+
+	focus = {
+		id = wif_smeu_ration_cards
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = {
+			focus = wif_smeu_blame_the_other_government
+			focus = wif_smeu_reach_across_the_lines
+		}
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = wif_smeu_rifles_for_the_rear
+		icon = GFX_goal_generic_small_arms
+		prerequisite = {
+			focus = wif_smeu_blame_the_other_government
+			focus = wif_smeu_reach_across_the_lines
+		}
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = ROOT
+			}
+		}
+	}
+
+	focus = {
+		id = wif_smeu_mend_the_railways
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = {
+			focus = wif_smeu_blame_the_other_government
+			focus = wif_smeu_reach_across_the_lines
+		}
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	# There is deliberately no focus that ends wif_sme_terror_bombing: the
+	# bombers keep coming for anyone governed from west of the Urals.
+	focus = {
+		id = wif_smeu_we_endure
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = wif_smeu_rifles_for_the_rear }
+		prerequisite = {
+			focus = wif_smeu_ration_cards
+			focus = wif_smeu_mend_the_railways
+		}
+		x = 3
+		y = 4
+		cost = 7.143
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.10
+			add_war_support = 0.05
+			add_political_power = 100
+		}
+	}
+}
