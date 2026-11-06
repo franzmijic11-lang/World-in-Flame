@@ -673,7 +673,7 @@ focus_tree = {
 					hours = 1
 				}
 				add_opinion_modifier = {
-					target = SWE
+					target = ROOT
 					modifier = SWE_GER_seized_landsverk
 				}
 			}
@@ -737,7 +737,7 @@ focus_tree = {
 					instant_build = yes
 				}
 				add_opinion_modifier = {
-					target = SWE
+					target = ROOT
 					modifier = SWE_GER_allowing_landverk_to_operate
 				}
 			}
@@ -1881,7 +1881,7 @@ focus_tree = {
 				}
 				add_dynamic_modifier = {
 					modifier = SWE_sami_trackers
-					scope = SWE
+					scope = ROOT
 				}
 			}
 
@@ -2549,7 +2549,7 @@ focus_tree = {
 					has_war_with = ROOT
 				}
 				has_opinion = {
-					target = SWE
+					target = ROOT
 					value > 10
 				}
 			}
@@ -2895,7 +2895,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_heavy_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Vasa II"
 						}
 						requested_factories = 5
@@ -2924,7 +2924,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_heavy_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röd Orkan"
 						}
 						requested_factories = 5
@@ -2956,7 +2956,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = battle_cruiser_2
-							creator = SWE
+							creator = ROOT
 							version_name = "Vasa II"
 						}
 						requested_factories = 5
@@ -2985,7 +2985,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = battle_cruiser_2
-							creator = SWE
+							creator = ROOT
 							version_name = "Röd Orkan"
 						}
 						requested_factories = 5
@@ -3202,7 +3202,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3212,7 +3212,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3222,7 +3222,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3251,7 +3251,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3261,7 +3261,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3271,7 +3271,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = ship_hull_light_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3292,7 +3292,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3302,7 +3302,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3312,7 +3312,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "HMS Tillit"
 						}
 						requested_factories = 5
@@ -3329,7 +3329,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3339,7 +3339,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3349,7 +3349,7 @@ focus_tree = {
 					add_equipment_production = {
 						equipment = {
 							type = destroyer_3
-							creator = SWE
+							creator = ROOT
 							version_name = "Röda Flottan"
 						}
 						requested_factories = 5
@@ -3410,7 +3410,7 @@ focus_tree = {
 			}
 			has_tech = antiair1
 			
-			capital_scope = { is_controlled_by = SWE }
+			capital_scope = { is_controlled_by = ROOT }
 		}
 
 		bypass = {
@@ -3512,7 +3512,7 @@ focus_tree = {
 			capital_scope = {
 				create_unit = {
 			    	division = "name = \"Mobila Luftvärnsstyrkan\" division_template = \"Mobila Luftvärnsstyrkan\" start_equipment_factor = 1 start_experience_factor = 0.7 "
-		 	   		owner = SWE
+		 	   		owner = ROOT
 				}
 			}
 
@@ -4216,7 +4216,7 @@ focus_tree = {
 		bypass = {
 			145 = {
 				controller = {
-					original_tag = SWE
+					tag = ROOT
 				}
 			}
 		}
@@ -4827,7 +4827,7 @@ focus_tree = {
 					144 = {
 						controller = {
 							NOT = {
-								original_tag = SWE
+								tag = ROOT
 							}
 						}
 					}
@@ -4871,7 +4871,7 @@ focus_tree = {
 					 	controller = {
 					 		NOT = { 
 					 			controls_state = 144
-					 			original_tag = SWE
+					 			tag = ROOT
 					 		}
 					 	}
 					 }
@@ -4918,7 +4918,7 @@ focus_tree = {
 					 				controls_state = 144
 					 				controls_state = 924
 					 			}
-					 			original_tag = SWE
+					 			tag = ROOT
 					 		}
 					 	}
 					 }
@@ -5145,7 +5145,7 @@ focus_tree = {
 			}
             NOR = {
                 add_opinion_modifier = {
-                    target = SWE
+                    target = ROOT
                     modifier = DEN_deepening_partnership
                 }
             }
@@ -5158,7 +5158,7 @@ focus_tree = {
             }
             DEN = {
                 add_opinion_modifier = {
-                    target = SWE
+                    target = ROOT
                     modifier = DEN_deepening_partnership
                 }
             }
@@ -5171,7 +5171,7 @@ focus_tree = {
             }
             FIN = {
                 add_opinion_modifier = {
-                    target = SWE
+                    target = ROOT
                     modifier = DEN_deepening_partnership
                 }
             }
@@ -5183,7 +5183,7 @@ focus_tree = {
             }
             ICE = {
                 add_opinion_modifier = {
-                    target = SWE
+                    target = ROOT
                     modifier = DEN_deepening_partnership
                 }
             }
@@ -5220,6 +5220,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_MANPOWER }
 
 		completion_reward = {
+			# Welt in Flammen: AAT_Sweden_nordic_defense_council.1 runs in the invited
+			# country and used to name SWE as the inviter. With two Swedens after the
+			# civil war it now names whichever one completed this focus.
+			save_global_event_target_as = wif_swe_ndc_leader
 			set_rule = { can_create_factions = yes }
 			set_cosmetic_tag = SWE_nordic_defense_council
 			retire_country_leader = yes
@@ -5439,7 +5443,7 @@ focus_tree = {
 				add_equipment_production = {
 					equipment = {
 						type = ship_hull_super_heavy_1
-						creator = SWE
+						creator = ROOT
 						version_name = "Nordljus"
 					}
 					requested_factories = 5
@@ -5452,7 +5456,7 @@ focus_tree = {
 				add_equipment_production = {
 					equipment = {
 						type = SH_battleship_1
-						creator = "SWE"
+						creator = ROOT
 						version_name = "Nordljus" 
 					}
 					requested_factories = 1
@@ -5529,7 +5533,7 @@ focus_tree = {
 					limit = { 
 						has_capitulated = no 
 						is_subject_of = ROOT
-						NOT = { original_tag = SWE }
+						NOT = { tag = ROOT }
 					}
 					transfer_units_fraction = {
 						target = ROOT         # the recipient
@@ -5783,7 +5787,7 @@ focus_tree = {
 					limit = {
 
 						controller = {
-							original_tag = SWE
+							tag = ROOT
 							has_full_control_of_state = PREV
 						}
 					}
@@ -5851,6 +5855,10 @@ focus_tree = {
 		search_filters = {  }
 
 		completion_reward = {
+			# Welt in Flammen: AAT_Sweden_nordic_defense_council.1 runs in the invited
+			# country and used to name SWE as the inviter. With two Swedens after the
+			# civil war it now names whichever one completed this focus.
+			save_global_event_target_as = wif_swe_ndc_leader
 			
 			IF = {
 				limit = {
@@ -5871,19 +5879,19 @@ focus_tree = {
 					NORDIC_is_nordic = yes 
 					is_subject = no
 					IF= {
-						limit = { SWE = { NORDIC_is_democratic = yes }}
+						limit = { ROOT = { NORDIC_is_democratic = yes }}
 						NORDIC_is_democratic = yes
 					}
 					ELSE_IF= {
-						limit = { SWE = { NORDIC_is_monarchist = yes }}
+						limit = { ROOT = { NORDIC_is_monarchist = yes }}
 						NORDIC_is_monarchist = yes
 					}
 					ELSE_IF= {
-						limit = { SWE = { NORDIC_is_fascist = yes }}
+						limit = { ROOT = { NORDIC_is_fascist = yes }}
 						NORDIC_is_fascist = yes
 					}
 					ELSE_IF= {
-						limit = { SWE = { NORDIC_is_communist = yes }}
+						limit = { ROOT = { NORDIC_is_communist = yes }}
 						NORDIC_is_communist = yes
 					}
 				}
@@ -5965,7 +5973,7 @@ focus_tree = {
 					}
 					if = {
 						limit = {
-							NOT = { original_tag = SWE }
+							NOT = { tag = ROOT }
 						}
 						add_ideas = SWE_nordic_protection_complex_idea
 					}
@@ -6274,7 +6282,7 @@ focus_tree = {
 			capital_scope = {
 				create_unit = {
 			    	division = "name = \"Mobile Headquarter\" division_template = \"Mobile Headquarter\" start_equipment_factor = 1 start_experience_factor = 1 "
-		 	   		owner = SWE
+		 	   		owner = ROOT
 				}
 			}
 			add_ideas = { SWE_per_albin_bus_idea }
@@ -7025,7 +7033,7 @@ focus_tree = {
 							add_equipment_to_stockpile = { 
 								type = infantry_equipment_0
 								amount = 100 
-								producer = SWE
+								producer = ROOT
 							}
 							add_manpower = 400
 						}
@@ -7159,7 +7167,7 @@ focus_tree = {
 
 				DEN = {
 					OVERLORD = { 
-						SWE = {  
+						ROOT = {  
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -7180,7 +7188,7 @@ focus_tree = {
 					}
 					DEN = {
 						faction_leader = {
-							SWE = {
+							ROOT = {
 								declare_war_on = {
 									target = PREV
 									type = liberate_wargoal
@@ -7210,7 +7218,7 @@ focus_tree = {
 
 				DEN = {
 					every_enemy_country = {
-						SWE = {
+						ROOT = {
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -7227,7 +7235,7 @@ focus_tree = {
 					}
 
 					controller = { 
-						SWE = {  
+						ROOT = {  
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -7298,7 +7306,7 @@ focus_tree = {
 
 				NOR = {
 					OVERLORD = { 
-						SWE = {  
+						ROOT = {  
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -7319,7 +7327,7 @@ focus_tree = {
 					}
 					NOR = {
 						faction_leader = {
-							SWE = {
+							ROOT = {
 								declare_war_on = {
 									target = PREV
 									type = liberate_wargoal
@@ -7349,7 +7357,7 @@ focus_tree = {
 
 				NOR = {
 					every_enemy_country = {
-						SWE = {
+						ROOT = {
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -7366,7 +7374,7 @@ focus_tree = {
 					}
 
 					controller = { 
-						SWE = {  
+						ROOT = {  
 							declare_war_on = {
 								target = PREV
 								type = liberate_wargoal
@@ -8384,19 +8392,19 @@ focus_tree = {
 							limit = {
 								NOT = {
 									is_in_array = {
-										array = SWE.SWE_FIN_core_controllers
+										array = ROOT.SWE_FIN_core_controllers
 										value = THIS
 									}
 								}
 							}
 
-							add_to_array = { array = SWE.SWE_FIN_core_controllers }
+							add_to_array = { array = ROOT.SWE_FIN_core_controllers }
 							controller = { news_event = { id = AAT_Sweden_nationalists.30 hours = 2 } }
 						}
 					}
 				}
 
-				clear_array = SWE.SWE_FIN_core_controllers
+				clear_array = ROOT.SWE_FIN_core_controllers
 			}
 		}
 	}
@@ -8468,7 +8476,7 @@ focus_tree = {
 			every_country = {
 				limit = {
 					OR = {
-						has_war_with = SWE
+						has_war_with = ROOT
 						has_war_with = GER
 					}
 				}
@@ -8580,10 +8588,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 213 }
+					ROOT = { transfer_state = 213 }
 				}
 				else = {
-					213 = { add_claim_by = SWE }
+					213 = { add_claim_by = ROOT }
 				}
 
 				if = {
@@ -8592,10 +8600,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 214 }
+					ROOT = { transfer_state = 214 }
 				}
 				else = {
-					214 = { add_claim_by = SWE }
+					214 = { add_claim_by = ROOT }
 				}
 
 				if = {
@@ -8604,10 +8612,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 215 }
+					ROOT = { transfer_state = 215 }
 				}
 				else = {
-					215 = { add_claim_by = SWE }
+					215 = { add_claim_by = ROOT }
 				}
 
 				if = {
@@ -8616,10 +8624,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 216 }
+					ROOT = { transfer_state = 216 }
 				}
 				else = {
-					216 = { add_claim_by = SWE }
+					216 = { add_claim_by = ROOT }
 				}
 
 
@@ -8629,10 +8637,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 879 }
+					ROOT = { transfer_state = 879 }
 				}
 				else = {
-					879 = { add_claim_by = SWE }
+					879 = { add_claim_by = ROOT }
 				}
 
 				if = {
@@ -8641,10 +8649,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 825 }
+					ROOT = { transfer_state = 825 }
 				}
 				else = {
-					825 = { add_claim_by = SWE }
+					825 = { add_claim_by = ROOT }
 				}
 
 
@@ -8654,10 +8662,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 397 }
+					ROOT = { transfer_state = 397 }
 				}
 				else = {
-					397 = { add_claim_by = SWE }
+					397 = { add_claim_by = ROOT }
 				}
 
 				if = {
@@ -8666,10 +8674,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 880 }
+					ROOT = { transfer_state = 880 }
 				}
 				else = {
-					880 = { add_claim_by = SWE }
+					880 = { add_claim_by = ROOT }
 				}
 
 
@@ -8679,10 +8687,10 @@ focus_tree = {
 							is_controlled_by = GER
 						}
 					}
-					SWE = { transfer_state = 581 }
+					ROOT = { transfer_state = 581 }
 				}
 				else = {
-					581 = { add_claim_by = SWE }
+					581 = { add_claim_by = ROOT }
 				}
 			}
 		}
@@ -8833,7 +8841,7 @@ focus_tree = {
 			capital_scope = {
 				create_unit = {
 			    	division = "name = \"Swedish Armored Liberation Division\" division_template = \"Swedish Armored Liberation Division\" start_equipment_factor = 1 start_experience_factor = 0.05"
-		 	   		owner = SWE
+		 	   		owner = ROOT
 				}
 			}
 
@@ -9166,9 +9174,9 @@ focus_tree = {
 
 		bypass = {
 			AND = {
-				144 = { is_fully_controlled_by = SWE }
-				925 = { is_fully_controlled_by =  SWE }
-				924 = { is_fully_controlled_by =  SWE }
+				144 = { is_fully_controlled_by = ROOT }
+				925 = { is_fully_controlled_by =  ROOT }
+				924 = { is_fully_controlled_by =  ROOT }
 			}
 		}
 	                
@@ -9431,7 +9439,7 @@ focus_tree = {
 		cost = 5
 		available = {
 			910 = {
-				is_owned_and_controlled_by = SWE
+				is_owned_and_controlled_by = ROOT
 			}
 
 			OR = {
@@ -9451,13 +9459,13 @@ focus_tree = {
 			OR = {
 				is_subject = yes
 				AND = {
-					337 = { is_controlled_by = SWE  }
-					101  = { is_controlled_by = SWE }
+					337 = { is_controlled_by = ROOT  }
+					101  = { is_controlled_by = ROOT }
 				}
 
 				AND = {
-					337 = { controller = { is_in_faction_with = SWE  }}
-					101 = { controller = { is_in_faction_with = SWE  }}
+					337 = { controller = { is_in_faction_with = ROOT  }}
+					101 = { controller = { is_in_faction_with = ROOT  }}
 				}
 			}		
 		}
@@ -9496,7 +9504,7 @@ focus_tree = {
 		cost = 5
 		available = {
 			145 = {
-				is_owned_and_controlled_by = SWE
+				is_owned_and_controlled_by = ROOT
 			}
 		}
 
@@ -9672,7 +9680,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
-			SWE = {
+			ROOT = {
 				country_event = { id = AAT_Sweden.46 hours = 2 }
 			}
 			custom_effect_tooltip = if_they_accept_tt

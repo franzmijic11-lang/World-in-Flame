@@ -7731,14 +7731,14 @@ country_event = {
 	option = {
 		name = AAT_Sweden_nordic_defense_council.1.b
 		trigger = {
-			SWE = {
+			event_target:wif_swe_ndc_leader = {
 				has_completed_focus = SWE_decentralized_nordic_army_command
 			}
 		}
 		ai_chance = {
 			base = 2
 			modifier = {
-				SWE = {
+				event_target:wif_swe_ndc_leader = {
 					is_ai = no
 				}
 				factor = 1.5
@@ -7756,11 +7756,11 @@ country_event = {
 
 			modifier = {
 				OR = {
-					has_government = SWE
+					has_government = event_target:wif_swe_ndc_leader
 					AND = {
 						original_tag = FIN
 						has_government = neutrality 
-						SWE = { has_government = democratic }
+						event_target:wif_swe_ndc_leader = { has_government = democratic }
 					}
 				}
 				factor = 2
@@ -7796,18 +7796,18 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					SWE = { 
+					event_target:wif_swe_ndc_leader = { 
 						is_in_faction = yes 
 						is_faction_leader = no
 					}
 				}
-				SWE = { leave_faction = yes }
+				event_target:wif_swe_ndc_leader = { leave_faction = yes }
 			}
 
 			set_country_flag = rejected_nordic_defense_council
 		}
 
-		SWE = {
+		event_target:wif_swe_ndc_leader = {
 			add_to_faction = PREV 
 
 			add_to_array = {
@@ -7823,7 +7823,7 @@ country_event = {
 	#yes, as a puppet
 	option = {
 		trigger = {
-			SWE = {
+			event_target:wif_swe_ndc_leader = {
 				has_completed_focus = SWE_central_nordic_army_command
 			}
 		}
@@ -7831,7 +7831,7 @@ country_event = {
 		ai_chance = {
 			base = 1
 			modifier = {
-				SWE = {
+				event_target:wif_swe_ndc_leader = {
 					is_ai = yes
 				}
 				factor = 1.2
@@ -7843,13 +7843,13 @@ country_event = {
 			}
 
 			modifier = {
-				is_guaranteed_by = SWE
+				is_guaranteed_by = event_target:wif_swe_ndc_leader
 				factor = 1.5
 			}
 
 			modifier = {
 				OR = {
-					has_government = SWE
+					has_government = event_target:wif_swe_ndc_leader
 					AND = {
 						original_tag = FIN
 						has_government = neutrality 
@@ -7896,7 +7896,7 @@ country_event = {
 			}
 		}
 
-		SWE = { 
+		event_target:wif_swe_ndc_leader = { 
 			add_to_array = {
 				array = SWE_nordic_defense_council_members
 				value = PREV #optional, if not defined adds scope
@@ -7932,29 +7932,29 @@ country_event = {
 				limit = {
 					original_tag = FIN
 				}
-				FIN_erik_heinrichs = { set_nationality = SWE }
-				FIN_vilho_petter_nenonen = { set_nationality = SWE }
-				FIN_woldemar_hagglund = { set_nationality = SWE }
-				FIN_aarne_juutilainen = { set_nationality = SWE }
-				FIN_karl_oesch = { set_nationality = SWE } 
-				FIN_wiljo_einar_tuompo = { set_nationality = SWE }
+				FIN_erik_heinrichs = { set_nationality = event_target:wif_swe_ndc_leader }
+				FIN_vilho_petter_nenonen = { set_nationality = event_target:wif_swe_ndc_leader }
+				FIN_woldemar_hagglund = { set_nationality = event_target:wif_swe_ndc_leader }
+				FIN_aarne_juutilainen = { set_nationality = event_target:wif_swe_ndc_leader }
+				FIN_karl_oesch = { set_nationality = event_target:wif_swe_ndc_leader } 
+				FIN_wiljo_einar_tuompo = { set_nationality = event_target:wif_swe_ndc_leader }
 			}
 			else_if = {
 				limit = {
 					original_tag = DEN
 				}
 
-				DEN_charles_henry_rye = { set_nationality = SWE  }
-				DEN_erik_with = { set_nationality = SWE  }
-				DEN_paul_ramm = { set_nationality = SWE  }
-				DEN_frederik_christian_essemann = { set_nationality = SWE  }
+				DEN_charles_henry_rye = { set_nationality = event_target:wif_swe_ndc_leader  }
+				DEN_erik_with = { set_nationality = event_target:wif_swe_ndc_leader  }
+				DEN_paul_ramm = { set_nationality = event_target:wif_swe_ndc_leader  }
+				DEN_frederik_christian_essemann = { set_nationality = event_target:wif_swe_ndc_leader  }
 			}
 			else_if = {
 				limit = {
 					original_tag = NOR
 				}
-				NOR_jacob_hivden_haug = { set_nationality = SWE }
-				NOR_jacob_ager_laurantzon = { set_nationality = SWE }
+				NOR_jacob_hivden_haug = { set_nationality = event_target:wif_swe_ndc_leader }
+				NOR_jacob_ager_laurantzon = { set_nationality = event_target:wif_swe_ndc_leader }
 
 			}
 		}
@@ -7964,7 +7964,7 @@ country_event = {
 				has_country_flag = SWE_ice_was_a_subject_of_den
 			}
 			#scope to SWE to not break loc
-			SWE = {
+			event_target:wif_swe_ndc_leader = {
 				ICE = {
 					country_event = { id = AAT_Sweden_nordic_defense_council.1 hours = 3 }
 				}
