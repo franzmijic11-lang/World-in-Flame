@@ -457,10 +457,10 @@ characters={
 				original_tag = SWE
 			}
 			visible = {
-				has_completed_focus = SWE_refuge_for_revolutionaries
+				always = no # its focus, Refuge for Revolutionaries, is cut in Welt in Flammen
 			}
 			available = {
-				has_completed_focus = SWE_refuge_for_revolutionaries
+				always = no
 			}
 			traits = { SWE_exiled_revolutionaries }
 		}
@@ -1501,9 +1501,6 @@ characters={
 			available = { 
 				wif_swe_cabinet_unlocked = yes
 				is_country_leader = no
-				NOT = {
-					has_completed_focus = SWE_liquidate_the_monarchy
-				}
 			}
 			allowed  = {
 				original_tag  = SWE
