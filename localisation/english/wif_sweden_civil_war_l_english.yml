@@ -90,6 +90,7 @@
  wif_swe_cw_garrison_not_sworn_tt:0 "The garrison is not yet sworn to the Crown (below §Y4§!)"
  wif_swe_cw_garrison_not_red_tt:0 "The garrison is not yet wholly red (above §Y1§!)"
  wif_swe_cw_one_garrison_at_a_time_tt:0 "Not already working on another garrison"
+ wif_swe_cw_not_fighting_tt:0 "Not fighting the Swedish Civil War - while it lasts, only the civil war focuses can be taken"
  wif_swe_cw_garrison_step_crown_tt:0 "Garrison control rises one step toward the §YCrown§!: the Crown gains §G1§! division, the revolution loses §R1§!."
  wif_swe_cw_garrison_step_red_tt:0 "Garrison control falls one step toward the §Rrevolution§!: the revolution gains §G1§! Red Guard division, the Crown loses §R1§!."
 

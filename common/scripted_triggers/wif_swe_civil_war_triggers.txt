@@ -1,0 +1,30 @@
+# The Swedish Civil War - focus tree gates.
+# See common/scripted_effects/wif_swe_civil_war_effects.txt
+
+# COUNTRY scope. While the Swedish civil war is being fought, neither Sweden
+# does anything but try to win it: every focus in common/national_focus/sweden.txt
+# carries this in its available block, except the civil war branch itself
+# (Align more Closely with Landsorganisationen, Strike the Capitalist Beast
+# Down and the two side choices). Once the war is over the tree opens again.
+#
+# A NEW CIVIL WAR FOCUS under För Kung och Fosterland / För arbetarnas
+# revolution must NOT carry this trigger, or it can never be taken.
+#
+# wif_swe_cw_at_war is set on both sides at the outbreak; has_civil_war ends it.
+wif_swe_cw_not_fighting = {
+	custom_trigger_tooltip = {
+		tooltip = wif_swe_cw_not_fighting_tt
+		NOT = {
+			AND = {
+				has_country_flag = wif_swe_cw_at_war
+				has_civil_war = yes
+			}
+		}
+	}
+}
+
+# COUNTRY scope. Sweden has gone down the communist road. The branches that
+# road excludes are hidden from then on (allow_branch in sweden.txt).
+wif_swe_on_the_communist_road = {
+	has_completed_focus = SWE_align_more_closely_with_the_landsorganisationen
+}

@@ -247,6 +247,9 @@ wif_swe_cw_revolter_keeps_the_tree = {
 wif_swe_cw_outbreak = {
 	set_global_flag = wif_swe_civil_war
 	clr_country_flag = wif_swe_cw_preparations_active
+	# Only the civil war branch of the tree is open while the war lasts
+	# (wif_swe_cw_not_fighting); the revolter gets the same flag below
+	set_country_flag = wif_swe_cw_at_war
 
 	# --- Who stands where ---
 	every_owned_state = {
@@ -345,6 +348,8 @@ wif_swe_cw_outbreak_crown_player = {
 		}
 		event_target:wif_swe_cw_revolter = {
 			wif_swe_cw_revolter_keeps_the_tree = yes
+			# Only the civil war branch of the tree is open while the war lasts
+			set_country_flag = wif_swe_cw_at_war
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = no
@@ -417,6 +422,8 @@ wif_swe_cw_outbreak_red_player = {
 		}
 		event_target:wif_swe_cw_revolter = {
 			wif_swe_cw_revolter_keeps_the_tree = yes
+			# Only the civil war branch of the tree is open while the war lasts
+			set_country_flag = wif_swe_cw_at_war
 			set_politics = {
 				ruling_party = neutrality
 				elections_allowed = no
