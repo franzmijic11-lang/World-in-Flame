@@ -139,6 +139,8 @@ country_event = {
 #                       still chooses between Moscow and Yagoda)
 #   event wif_debug.16   repairs Zhukov's portraits in a running game (he showed
 #                       the unknown portrait as ZWF's leader)
+#   event wif_debug.17   Japan's Pacific settlement ("America out of Asia")
+#                       right now, without the focus or its conditions
 # ---------------------------------------------------------------------------
 
 country_event = {
@@ -219,6 +221,19 @@ country_event = {
 				civilian = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
 				army = { large = GFX_portrait_SOV_georgy_zhukov small = GFX_idea_georgy_zhukov }
 			}
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.17
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { country_exists = JAP }
+			JAP = { country_event = { id = wif_jap_aooa.9 } }
 		}
 	}
 }

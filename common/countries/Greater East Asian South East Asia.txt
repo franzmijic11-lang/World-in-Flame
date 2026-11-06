@@ -1,0 +1,4 @@
+graphical_culture = asian_gfx
+graphical_culture_2d = asian_2d
+
+# Colours live in common/countries/colors.txt (tools/gen_jap_america_out_of_asia.py).

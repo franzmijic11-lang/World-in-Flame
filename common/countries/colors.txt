@@ -1479,3 +1479,11 @@ ICA = {
 	color = rgb { 255 200 0 }
 	color_ui = rgb { 255 249 20 }
 }
+GEA = {
+	color = rgb { 176 48 56 }
+	color_ui = rgb { 222 75 84 }
+}
+IFS = {
+	color = rgb { 226 140 52 }
+	color_ui = rgb { 255 181 79 }
+}
