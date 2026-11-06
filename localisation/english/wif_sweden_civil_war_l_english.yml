@@ -4,17 +4,25 @@
 
  # === The choice (AAT_Sweden_communism.1) ===========================
  AAT_Sweden_communism.1.wif_desc:0 "The red flag flies over Rosenbad, and the Riksdag sits on sufferance. Across the country the officers' messes have gone quiet in the way a room goes quiet when the wrong man walks in. Lindholm's men drill in the forests of Södermanland, the farmers' leagues talk of marching on Stockholm as their fathers did in 1914, and in Stockholm Palace an old King receives more generals than his calendar can explain.\n\nThe workers' guards in Norrköping and Gävle are arming too. Sooner or later someone will give an order and someone else will refuse it. When that day comes, which Sweden will you stand with?"
- AAT_Sweden_communism.1.wif_crown:0 "För Kung och Fosterland!"
- AAT_Sweden_communism.1.wif_red:0 "För arbetarnas revolution!"
+ AAT_Sweden_communism.1.wif_a:0 "Then Sweden must choose."
+ AAT_Sweden_communism.1.wif_a_tt:0 "Two new focuses open below §YStrike the Capitalist Beast Down§!: §YFör Kung och Fosterland§! and §YFör arbetarnas revolution§!. The one you take decides which side you play in the coming civil war."
+
+ # === The side-choice focuses ===
+ SWE_for_kung_och_fosterland:0 "För Kung och Fosterland"
+ SWE_for_kung_och_fosterland_desc:0 "The government has the Riksdag. The King has the army, or most of it, and the farmers, and a thousand years of Sweden behind him. We stand with the Crown."
+ SWE_for_kung_och_fosterland_tt:0 "§YWe play the counter-revolution.§! The build-up for the Swedish civil war begins: win the garrisons for the Crown before the rising. When it comes, we become the Kingdom of Sweden under Gustaf V and the communist government holds the states it won.\nOpens §YThe Nordic Defense Council§!."
+ SWE_for_arbetarnas_revolution:0 "För arbetarnas revolution"
+ SWE_for_arbetarnas_revolution_desc:0 "The reaction is gathering in the officers' messes and the manor houses. Let it come. The workers took Sweden at the ballot box, and they will hold it with rifles if they have to."
+ SWE_for_arbetarnas_revolution_tt:0 "§YWe play the revolution.§! The build-up for the Swedish civil war begins: hold the garrisons for the workers before the Crown rises. When it does, the royalists take the states they won.\nOpens §YThe Nordic Defense Council§!."
 
  # === Category ======================================================
  wif_swe_cw_category:0 "The Coming Storm"
  wif_swe_cw_category_desc:0 "Sweden is splitting in two, garrison by garrison. Every regiment won now is a regiment that fires on the other side when the shooting starts.\n\nWhen the countdown runs out, every state at §Y3§! or §Y4§! garrison control rises for the Crown, and every state at §Y1§! or §Y2§! holds for the revolution. Officers the revolution has reached go over to it; the rest stand with the King."
  wif_swe_cw_map_area:0 "The Coming Storm"
  wif_swe_cw_crown_counter_value:0 "[?SWE.wif_swe_cw_crown_divisions|0H]"
- wif_swe_cw_crown_counter_desc:0 "The §YCrown§! would raise [?SWE.wif_swe_cw_crown_divisions|0H] garrison §Hdivisions§! if the war began today."
+ wif_swe_cw_crown_counter_desc:0 "The §YCrown§! would raise [?SWE.wif_swe_cw_crown_divisions|0H] §Hmilitia divisions§! if the war began today."
  wif_swe_cw_red_counter_value:0 "[?SWE.wif_swe_cw_red_divisions|0H]"
- wif_swe_cw_red_counter_desc:0 "The §Rrevolution§! would raise [?SWE.wif_swe_cw_red_divisions|0H] Red Guard §Hdivisions§! if the war began today."
+ wif_swe_cw_red_counter_desc:0 "The §Rrevolution§! would raise [?SWE.wif_swe_cw_red_divisions|0H] Red Guard §Hmilitia divisions§! if the war began today."
 
  # === The plot ======================================================
  wif_swe_cw_crown_plot_mission:0 "The Rising for the Crown"

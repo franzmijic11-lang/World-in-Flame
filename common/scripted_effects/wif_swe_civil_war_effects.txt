@@ -23,7 +23,7 @@
 #
 # Country variables (on SWE):
 #   wif_swe_cw_crown_divisions - divisions the Crown raises at the outbreak
-#   wif_swe_cw_red_divisions   - Red Guard divisions the revolution raises
+#   wif_swe_cw_red_divisions   - Red Guard militia divisions the revolution raises
 #   wif_swe_cw_red_ratio       - share of the existing army that goes red (outbreak only)
 #   wif_swe_cw_crown_ratio     - the rest, which goes to the Crown (outbreak only)
 # State variables:
@@ -197,18 +197,20 @@ wif_swe_cw_give_the_king_the_crown = {
 	}
 }
 
-# COUNTRY scope (SWE). The Crown's garrison template, added to whichever country is the Crown
+# Both sides raise 2x2 militia: the garrisons they won are militia, not regulars.
+# Vanilla spawns militia templates the same way without the unit being researched
+# (AUS Heimwehr in common/decisions/AUS.txt).
+
+# COUNTRY scope. The Crown's militia template, added to whichever country is the Crown
 wif_swe_cw_crown_template = {
 	division_template = {
-		name = "Kunglig Garnisonsdivision"
+		name = "Skyddskåren"
 		is_locked = yes
 		regiments = {
-			infantry = { x = 0 y = 0 }
-			infantry = { x = 0 y = 1 }
-			infantry = { x = 0 y = 2 }
-			infantry = { x = 1 y = 0 }
-			infantry = { x = 1 y = 1 }
-			infantry = { x = 1 y = 2 }
+			militia = { x = 0 y = 0 }
+			militia = { x = 0 y = 1 }
+			militia = { x = 1 y = 0 }
+			militia = { x = 1 y = 1 }
 		}
 	}
 }
@@ -219,11 +221,24 @@ wif_swe_cw_red_template = {
 		name = "Röda Gardet"
 		is_locked = yes
 		regiments = {
-			infantry = { x = 0 y = 0 }
-			infantry = { x = 0 y = 1 }
-			infantry = { x = 0 y = 2 }
-			infantry = { x = 1 y = 0 }
-			infantry = { x = 1 y = 1 }
+			militia = { x = 0 y = 0 }
+			militia = { x = 0 y = 1 }
+			militia = { x = 1 y = 0 }
+			militia = { x = 1 y = 1 }
+		}
+	}
+}
+
+# COUNTRY scope. The revolter (a dynamic country) gets Sweden's focus tree with
+# everything already completed, so both Swedens keep the whole tree - industry,
+# the Nordic Defense Council and the rest. Civil war revolters normally inherit
+# it; this makes sure.
+wif_swe_cw_revolter_keeps_the_tree = {
+	if = {
+		limit = { NOT = { has_focus_tree = sweden_focus } }
+		load_focus_tree = {
+			tree = sweden_focus
+			keep_completed = yes
 		}
 	}
 }
@@ -329,6 +344,7 @@ wif_swe_cw_outbreak_crown_player = {
 			}
 		}
 		event_target:wif_swe_cw_revolter = {
+			wif_swe_cw_revolter_keeps_the_tree = yes
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = no
@@ -353,7 +369,7 @@ wif_swe_cw_outbreak_crown_player = {
 		limit = { check_variable = { wif_swe_cw_crown_divisions > 0 } }
 		capital_scope = {
 			create_unit = {
-				division = "name = \"Kunglig Garnisonsdivision\" division_template = \"Kunglig Garnisonsdivision\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
+				division = "name = \"Skyddskåren\" division_template = \"Skyddskåren\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
 				owner = SWE
 				count = var:SWE.wif_swe_cw_crown_divisions
 			}
@@ -400,6 +416,7 @@ wif_swe_cw_outbreak_red_player = {
 			save_event_target_as = wif_swe_cw_revolter
 		}
 		event_target:wif_swe_cw_revolter = {
+			wif_swe_cw_revolter_keeps_the_tree = yes
 			set_politics = {
 				ruling_party = neutrality
 				elections_allowed = no
@@ -413,7 +430,7 @@ wif_swe_cw_outbreak_red_player = {
 				limit = { check_variable = { SWE.wif_swe_cw_crown_divisions > 0 } }
 				capital_scope = {
 					create_unit = {
-						division = "name = \"Kunglig Garnisonsdivision\" division_template = \"Kunglig Garnisonsdivision\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
+						division = "name = \"Skyddskåren\" division_template = \"Skyddskåren\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
 						owner = PREV
 						count = var:SWE.wif_swe_cw_crown_divisions
 					}

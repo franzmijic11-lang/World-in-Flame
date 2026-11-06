@@ -8089,17 +8089,13 @@ country_event = {
 	# Welt in Flammen: instead of vanilla's counter-revolution spirit chain
 	# (SWE_fascist_counter_revolution_0/1/2, which never get added now, so
 	# AAT_Sweden_communism.2-4 and their on_action never fire), the player picks
-	# a side and the Spanish-style build-up begins.
+	# a side through the two focuses below Strike the Capitalist Beast Down
+	# (SWE_for_kung_och_fosterland / SWE_for_arbetarnas_revolution), which
+	# start the Spanish-style build-up.
 	# See common/scripted_effects/wif_swe_civil_war_effects.txt
-	option = { # För Kung och Fosterland - play the counter-revolution
-		name = AAT_Sweden_communism.1.wif_crown
-		ai_chance = { base = 20 }
-		wif_swe_cw_choose_crown = yes
-	}
-	option = { # För arbetarnas revolution - play the communist government
-		name = AAT_Sweden_communism.1.wif_red
-		ai_chance = { base = 80 }
-		wif_swe_cw_choose_red = yes
+	option = {
+		name = AAT_Sweden_communism.1.wif_a
+		custom_effect_tooltip = AAT_Sweden_communism.1.wif_a_tt
 	}
 }
 

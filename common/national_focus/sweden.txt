@@ -6,7 +6,8 @@ focus_tree = {
 		
 		modifier = {
 			add = 10
-			tag = SWE
+			# Welt in Flammen: original_tag, so the civil war revolter gets the tree too
+			original_tag = SWE
 			has_dlc = "Arms Against Tyranny"
 		}
 	}
@@ -4567,8 +4568,72 @@ focus_tree = {
 	# Revolutionaries, Police Reforms, Liquidate the Monarchy, the Politburo,
 	# the Five-Year Plan, the People's Commissar for Defense and everything
 	# under them are gone. Align more Closely with Landsorganisationen and
-	# Strike the Capitalist Beast Down stay, so a Red Sweden still happens -
-	# it just has no focuses past the takeover.
+	# Strike the Capitalist Beast Down stay. Below Strike there are now only the
+	# two side choices of the Swedish civil war build-up.
+
+	# Welt in Flammen: the side choice of the civil war build-up
+	# (common/scripted_effects/wif_swe_civil_war_effects.txt). Each starts the
+	# build-up from its side. Either one also opens the Nordic Defense Council,
+	# so both Swedens keep that branch.
+	focus = {
+		id = SWE_for_kung_och_fosterland
+		icon = GFX_focus_SWE_king_in_council
+		x = -1
+		y = 1
+		relative_position_id = SWE_strike_the_capitalist_beast_down
+		cost = 5
+		prerequisite = { focus = SWE_strike_the_capitalist_beast_down }
+		mutually_exclusive = { focus = SWE_for_arbetarnas_revolution }
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+			NOT = { has_global_flag = wif_swe_civil_war }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 200
+			custom_effect_tooltip = SWE_for_kung_och_fosterland_tt
+			hidden_effect = { wif_swe_cw_choose_crown = yes }
+		}
+	}
+
+	focus = {
+		id = SWE_for_arbetarnas_revolution
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = 1
+		y = 1
+		relative_position_id = SWE_strike_the_capitalist_beast_down
+		cost = 5
+		prerequisite = { focus = SWE_strike_the_capitalist_beast_down }
+		mutually_exclusive = { focus = SWE_for_kung_och_fosterland }
+
+		ai_will_do = {
+			factor = 8
+		}
+
+		available = {
+			NOT = { has_global_flag = wif_swe_civil_war }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 200
+			custom_effect_tooltip = SWE_for_arbetarnas_revolution_tt
+			hidden_effect = { wif_swe_cw_choose_red = yes }
+		}
+	}
 
 	focus = {
 		id = SWE_train_the_sheltered
@@ -4979,7 +5044,10 @@ focus_tree = {
 		y = 2
 		#mutually_exclusive = {focus = SWE_finlands_cause_is_ours}
 		cost = 10
-		prerequisite = { focus = SWE_the_old_enemy_stirs }
+		# Welt in Flammen: either civil war side choice opens it too, so a Sweden
+		# that went down the communist road (which excludes The Old Enemy Stirs)
+		# still has the Nordic Defense Council, on both sides of the war.
+		prerequisite = { focus = SWE_the_old_enemy_stirs focus = SWE_for_kung_och_fosterland focus = SWE_for_arbetarnas_revolution }
 		relative_position_id = SWE_the_old_enemy_stirs
 		mutually_exclusive = { focus = SWE_prevent_a_red_dictatorship }
 
