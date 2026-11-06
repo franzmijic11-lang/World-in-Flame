@@ -1,0 +1,145 @@
+###########################################################
+# The Swedish Civil War - events
+# The side choice itself is AAT_Sweden_communism.1 in events/AAT_Sweden.txt.
+# Logic: common/scripted_effects/wif_swe_civil_war_effects.txt
+###########################################################
+
+add_namespace = wif_swe_cw
+
+# Hidden. The other side's next move: activates one opposition mission.
+# Re-queued by each mission when it times out (wif_swe_cw_queue_opposition).
+country_event = {
+	id = wif_swe_cw.2
+	hidden = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = wif_swe_cw_preparations_active
+		NOT = { has_global_flag = wif_swe_civil_war }
+	}
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = wif_swe_cw_crown_side }
+			# The revolution works against a Crown player
+			random_list = {
+				25 = { activate_mission = wif_swe_cw_opp_workers_guards_mission }
+				25 = {
+					modifier = {
+						factor = 0
+						NOT = {
+							any_owned_state = {
+								has_variable = wif_swe_cw_garrison_control
+								check_variable = { wif_swe_cw_garrison_control > 1 }
+							}
+						}
+					}
+					activate_mission = wif_swe_cw_opp_security_sweep_mission
+				}
+				25 = {
+					modifier = {
+						factor = 0
+						NOT = { any_army_leader = { NOT = { has_character_flag = wif_swe_cw_red_officer } } }
+					}
+					activate_mission = wif_swe_cw_opp_commissars_mission
+				}
+				25 = { activate_mission = wif_swe_cw_opp_general_strike_mission }
+			}
+		}
+		else = {
+			# The Crown works against a red player
+			random_list = {
+				25 = {
+					modifier = {
+						factor = 0
+						NOT = {
+							any_owned_state = {
+								has_variable = wif_swe_cw_garrison_control
+								check_variable = { wif_swe_cw_garrison_control < 4 }
+							}
+						}
+					}
+					activate_mission = wif_swe_cw_opp_officers_conspiracy_mission
+				}
+				25 = { activate_mission = wif_swe_cw_opp_defence_corps_mission }
+				25 = {
+					modifier = {
+						factor = 0
+						NOT = { any_army_leader = { has_character_flag = wif_swe_cw_red_officer } }
+					}
+					activate_mission = wif_swe_cw_opp_courtyard_speech_mission
+				}
+				25 = { activate_mission = wif_swe_cw_opp_farmers_march_mission }
+			}
+		}
+	}
+}
+
+# The outbreak. Both plot missions end here.
+country_event = {
+	id = wif_swe_cw.3
+	title = wif_swe_cw.3.t
+	desc = {
+		text = wif_swe_cw.3.desc_crown
+		trigger = { has_country_flag = wif_swe_cw_crown_side }
+	}
+	desc = {
+		text = wif_swe_cw.3.desc_red
+		trigger = {
+			has_country_flag = wif_swe_cw_red_side
+			NOT = { has_country_flag = wif_swe_cw_rising_crushed }
+		}
+	}
+	desc = {
+		text = wif_swe_cw.3.desc_crushed
+		trigger = { has_country_flag = wif_swe_cw_rising_crushed }
+	}
+	picture = GFX_report_event_spain_civil_war_soldiers
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			wif_swe_cw_outbreak = yes
+		}
+	}
+
+	option = {
+		name = wif_swe_cw.3.a
+		trigger = { has_country_flag = wif_swe_cw_crown_side }
+		custom_effect_tooltip = wif_swe_cw.3.a_tt
+		every_other_country = {
+			limit = { NOT = { original_tag = SWE } }
+			news_event = { id = wif_swe_cw.4 hours = 6 }
+		}
+	}
+	option = {
+		name = wif_swe_cw.3.b
+		trigger = {
+			has_country_flag = wif_swe_cw_red_side
+			NOT = { has_country_flag = wif_swe_cw_rising_crushed }
+		}
+		custom_effect_tooltip = wif_swe_cw.3.b_tt
+		every_other_country = {
+			limit = { NOT = { original_tag = SWE } }
+			news_event = { id = wif_swe_cw.4 hours = 6 }
+		}
+	}
+	option = {
+		name = wif_swe_cw.3.c
+		trigger = { has_country_flag = wif_swe_cw_rising_crushed }
+	}
+}
+
+# News: Sweden at war with itself
+news_event = {
+	id = wif_swe_cw.4
+	title = wif_swe_cw.4.t
+	desc = wif_swe_cw.4.desc
+	picture = GFX_news_event_generic_rally2
+	is_triggered_only = yes
+
+	option = {
+		name = wif_swe_cw.4.a
+	}
+}

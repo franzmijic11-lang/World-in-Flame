@@ -1,0 +1,2429 @@
+###########################################################
+# The Swedish Civil War - build-up decisions and missions
+# Logic: common/scripted_effects/wif_swe_civil_war_effects.txt
+# Modelled on SPR_the_inevitable_civil_war in vanilla common/decisions/SPR.txt
+#
+# The garrison decisions at the bottom are one per state, like vanilla's, so
+# each can carry its own control icon on the map. They are identical apart
+# from the state id - change one, change all thirteen.
+###########################################################
+
+wif_swe_cw_category = {
+
+	###########################################################
+	# The plot - one countdown per side, like vanilla's two military plots.
+	# Only the one for the player's side is activated.
+	###########################################################
+
+	wif_swe_cw_crown_plot_mission = {
+		priority = 10
+		icon = generic_ignite_civil_war
+
+		allowed = { original_tag = SWE }
+		available = { hidden_trigger = { always = no } }
+		activation = { always = no }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		days_mission_timeout = 250
+		fire_only_once = yes
+		is_good = yes
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+			country_event = wif_swe_cw.3
+		}
+	}
+
+	wif_swe_cw_red_plot_mission = {
+		priority = 10
+		icon = generic_ignite_civil_war
+
+		allowed = { original_tag = SWE }
+		available = { hidden_trigger = { always = no } }
+		activation = { always = no }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		days_mission_timeout = 250
+		fire_only_once = yes
+		is_good = no
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+			country_event = wif_swe_cw.3
+		}
+	}
+
+	###########################################################
+	# Political actions - För Kung och Fosterland
+	# One action at a time (wif_swe_cw_action_in_progress), as in vanilla.
+	# Every Crown action brings the rising closer.
+	###########################################################
+
+	# Bondetåget again: 1914's thirty thousand farmers marching to the Palace
+	wif_swe_cw_second_farmers_march = {
+		icon = eng_propaganda_campaigns
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_popularity = { ideology = neutrality popularity = 0.05 }
+			custom_effect_tooltip = wif_swe_cw_plus_one_crown_tt
+			hidden_effect = { add_to_variable = { wif_swe_cw_crown_divisions = 1 } }
+			wif_swe_cw_crown_hastens_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# The Courtyard Speech: the King speaks to his officers in the palace yard
+	wif_swe_cw_courtyard_speech = {
+		icon = generic_army_support
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_any_red_officer_tt
+				any_army_leader = { has_character_flag = wif_swe_cw_red_officer }
+			}
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = wif_swe_cw_officer_back_to_crown_tt
+			hidden_effect = {
+				random_army_leader = {
+					limit = { has_character_flag = wif_swe_cw_red_officer }
+					clr_character_flag = wif_swe_cw_red_officer
+				}
+			}
+			wif_swe_cw_crown_hastens_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Arm the volunteer defence corps in the countryside
+	wif_swe_cw_arm_the_defence_corps = {
+		icon = generic_prepare_civil_war
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 40
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_stability = -0.03
+			custom_effect_tooltip = wif_swe_cw_plus_two_crown_tt
+			hidden_effect = { add_to_variable = { wif_swe_cw_crown_divisions = 2 } }
+			wif_swe_cw_crown_hastens_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Strikebreakers and dragoons, as at Ådalen in 1931
+	wif_swe_cw_break_the_strikes = {
+		icon = oppression
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_red_has_two_tt
+				check_variable = { wif_swe_cw_red_divisions > 1 }
+			}
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_stability = -0.05
+			add_war_support = 0.05
+			custom_effect_tooltip = wif_swe_cw_minus_two_red_tt
+			hidden_effect = {
+				subtract_from_variable = { wif_swe_cw_red_divisions = 2 }
+				clamp_variable = { var = wif_swe_cw_red_divisions min = 0 }
+			}
+			wif_swe_cw_crown_hastens_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Wreck the presses of the Party papers
+	wif_swe_cw_wreck_the_party_press = {
+		icon = spr_political_assassination
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_crown_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_stability = -0.03
+			add_popularity = { ideology = communism popularity = -0.05 }
+			wif_swe_cw_crown_hastens_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	###########################################################
+	# Political actions - För arbetarnas revolution
+	# Every red action buys time.
+	###########################################################
+
+	# Arm the workers' guards in the factory towns
+	wif_swe_cw_arm_the_workers_guards = {
+		icon = generic_prepare_civil_war
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 40
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_stability = -0.03
+			custom_effect_tooltip = wif_swe_cw_plus_two_red_tt
+			hidden_effect = { add_to_variable = { wif_swe_cw_red_divisions = 2 } }
+			wif_swe_cw_red_delays_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Soldiers' councils in the regiments, as in 1917
+	wif_swe_cw_soldiers_councils = {
+		icon = eng_trade_unions_support
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = wif_swe_cw_plus_one_red_minus_one_crown_tt
+			hidden_effect = {
+				add_to_variable = { wif_swe_cw_red_divisions = 1 }
+				subtract_from_variable = { wif_swe_cw_crown_divisions = 1 }
+				clamp_variable = { var = wif_swe_cw_crown_divisions min = 0 }
+			}
+			wif_swe_cw_red_delays_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Political commissars to the officer corps
+	wif_swe_cw_commissars_to_the_officers = {
+		icon = generic_army_support
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_any_royal_officer_tt
+				any_army_leader = { NOT = { has_character_flag = wif_swe_cw_red_officer } }
+			}
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = wif_swe_cw_officer_to_red_tt
+			hidden_effect = {
+				random_army_leader = {
+					limit = { NOT = { has_character_flag = wif_swe_cw_red_officer } }
+					set_character_flag = wif_swe_cw_red_officer
+				}
+			}
+			wif_swe_cw_red_delays_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 300 }
+	}
+
+	# Round up Lindholm's men and the royalist clubs
+	wif_swe_cw_arrest_the_ringleaders = {
+		icon = generic_arrest
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 30
+		days_remove = 37
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_popularity = { ideology = fascism popularity = -0.05 }
+			add_popularity = { ideology = neutrality popularity = -0.03 }
+			custom_effect_tooltip = wif_swe_cw_minus_one_crown_tt
+			hidden_effect = {
+				subtract_from_variable = { wif_swe_cw_crown_divisions = 1 }
+				clamp_variable = { var = wif_swe_cw_crown_divisions min = 0 }
+			}
+			wif_swe_cw_red_delays_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 200 }
+	}
+
+	# Put a guard on the Palace. Once only - the King is not arrested twice.
+	wif_swe_cw_guard_the_palace = {
+		icon = generic_police_action
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_red_side
+			has_country_flag = wif_swe_cw_preparations_active
+		}
+
+		available = {
+			NOT = { has_country_flag = wif_swe_cw_action_in_progress }
+		}
+
+		cost = 50
+		days_remove = 37
+		fire_only_once = yes
+
+		complete_effect = {
+			set_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		remove_effect = {
+			add_stability = -0.05
+			add_popularity = { ideology = neutrality popularity = -0.05 }
+			custom_effect_tooltip = wif_swe_cw_minus_two_crown_tt
+			hidden_effect = {
+				subtract_from_variable = { wif_swe_cw_crown_divisions = 2 }
+				clamp_variable = { var = wif_swe_cw_crown_divisions min = 0 }
+			}
+			wif_swe_cw_red_delays_the_plot = yes
+			clr_country_flag = wif_swe_cw_action_in_progress
+		}
+
+		ai_will_do = { base = 150 }
+	}
+
+	###########################################################
+	# The other side's moves - activated one at a time by the hidden event
+	# wif_swe_cw.2, like vanilla's opposition missions. Each one queues the next.
+	###########################################################
+
+	### The revolution, against a Crown player ###
+
+	wif_swe_cw_opp_workers_guards_mission = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 30
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_plus_two_red_tt
+			hidden_effect = {
+				add_to_variable = { wif_swe_cw_red_divisions = 2 }
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_security_sweep_mission = {
+		icon = generic_arrest
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 30
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_garrison_lost_to_red_tt
+			hidden_effect = {
+				random_owned_state = {
+					limit = {
+						has_variable = wif_swe_cw_garrison_control
+						check_variable = { wif_swe_cw_garrison_control > 1 }
+					}
+					wif_swe_cw_garrison_to_red = yes
+				}
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_commissars_mission = {
+		icon = generic_army_support
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 35
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_officer_to_red_tt
+			hidden_effect = {
+				random_army_leader = {
+					limit = { NOT = { has_character_flag = wif_swe_cw_red_officer } }
+					set_character_flag = wif_swe_cw_red_officer
+				}
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_general_strike_mission = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 35
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			add_stability = -0.03
+			custom_effect_tooltip = wif_swe_cw_plus_one_red_minus_one_crown_tt
+			hidden_effect = {
+				add_to_variable = { wif_swe_cw_red_divisions = 1 }
+				subtract_from_variable = { wif_swe_cw_crown_divisions = 1 }
+				clamp_variable = { var = wif_swe_cw_crown_divisions min = 0 }
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	### The Crown, against a red player ###
+
+	wif_swe_cw_opp_officers_conspiracy_mission = {
+		icon = generic_army_support
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 30
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_garrison_lost_to_crown_tt
+			hidden_effect = {
+				random_owned_state = {
+					limit = {
+						has_variable = wif_swe_cw_garrison_control
+						check_variable = { wif_swe_cw_garrison_control < 4 }
+					}
+					wif_swe_cw_garrison_to_crown = yes
+				}
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_defence_corps_mission = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 30
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_plus_two_crown_tt
+			hidden_effect = {
+				add_to_variable = { wif_swe_cw_crown_divisions = 2 }
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_courtyard_speech_mission = {
+		icon = eng_propaganda_campaigns
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 35
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			custom_effect_tooltip = wif_swe_cw_officer_back_to_crown_tt
+			hidden_effect = {
+				random_army_leader = {
+					limit = { has_character_flag = wif_swe_cw_red_officer }
+					clr_character_flag = wif_swe_cw_red_officer
+				}
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	wif_swe_cw_opp_farmers_march_mission = {
+		icon = eng_propaganda_campaigns
+		allowed = { original_tag = SWE }
+		activation = { always = no }
+		available = { hidden_trigger = { always = no } }
+		visible = { has_country_flag = wif_swe_cw_preparations_active }
+		days_mission_timeout = 35
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		timeout_effect = {
+			add_popularity = { ideology = neutrality popularity = 0.05 }
+			custom_effect_tooltip = wif_swe_cw_plus_one_crown_tt
+			hidden_effect = {
+				add_to_variable = { wif_swe_cw_crown_divisions = 1 }
+				wif_swe_cw_queue_opposition = yes
+			}
+		}
+	}
+
+	###########################################################
+	# Garrisons - one decision per Swedish state (generated, see header)
+	###########################################################
+
+	wif_swe_cw_garrison_141 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 141
+			141 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 141
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					141 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					141 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 141 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 141.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			141 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				141 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_38 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 38
+			38 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 38
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					38 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					38 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 38 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 38.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			38 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				38 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_124 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 124
+			124 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 124
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					124 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					124 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 124 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 124.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			124 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				124 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_138 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 138
+			138 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 138
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					138 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					138 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 138 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 138.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			138 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				138 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_139 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 139
+			139 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 139
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					139 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					139 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 139 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 139.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			139 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				139 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_140 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 140
+			140 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 140
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					140 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					140 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 140 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 140.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			140 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				140 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_666 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 666
+			666 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 666
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					666 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					666 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 666 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 666.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			666 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				666 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_913 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 913
+			913 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 913
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					913 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					913 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 913 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 913.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			913 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				913 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_915 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 915
+			915 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 915
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					915 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					915 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 915 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 915.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			915 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				915 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_916 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 916
+			916 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 916
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					916 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					916 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 916 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 916.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			916 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				916 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_917 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 917
+			917 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 917
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					917 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					917 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 917 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 917.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			917 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				917 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_918 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 918
+			918 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 918
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					918 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					918 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 918 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 918.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			918 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				918 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+
+	wif_swe_cw_garrison_919 = {
+		icon = {
+			key = spa_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spa_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_crown_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_none
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 1 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_weak
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_strong
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+		icon = {
+			key = spr_garrison_control_total
+			trigger = {
+				has_country_flag = wif_swe_cw_red_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 4 } }
+			}
+		}
+
+		allowed = { original_tag = SWE }
+
+		visible = {
+			has_country_flag = wif_swe_cw_preparations_active
+			owns_state = 919
+			919 = { has_variable = wif_swe_cw_garrison_control }
+		}
+
+		available = {
+			has_full_control_of_state = 919
+			if = {
+				limit = { has_country_flag = wif_swe_cw_crown_side }
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_sworn_tt
+					919 = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = wif_swe_cw_garrison_not_red_tt
+					919 = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = wif_swe_cw_one_garrison_at_a_time_tt
+				NOT = { has_country_flag = wif_swe_cw_working_on_garrison }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = { state = 919 }
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = 919.wif_swe_cw_garrison_cost?10
+		days_remove = 14
+		fire_only_once = no
+		cancel_if_not_visible = yes
+
+		complete_effect = {
+			# Timed as a safety net: if the decision is ever dropped without
+			# remove_effect, the lock lifts by itself
+			set_country_flag = { flag = wif_swe_cw_working_on_garrison days = 17 value = 1 }
+		}
+
+		remove_effect = {
+			919 = {
+				if = {
+					limit = { SWE = { has_country_flag = wif_swe_cw_crown_side } }
+					custom_effect_tooltip = wif_swe_cw_garrison_step_crown_tt
+					hidden_effect = { wif_swe_cw_garrison_to_crown = yes }
+				}
+				else = {
+					custom_effect_tooltip = wif_swe_cw_garrison_step_red_tt
+					hidden_effect = { wif_swe_cw_garrison_to_red = yes }
+				}
+			}
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		cancel_effect = {
+			clr_country_flag = wif_swe_cw_working_on_garrison
+		}
+
+		ai_will_do = {
+			base = 100
+			# Tip states over the line at the outbreak (2 <-> 3)
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_crown_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 2 } }
+			}
+			modifier = {
+				factor = 5
+				has_country_flag = wif_swe_cw_red_side
+				919 = { check_variable = { wif_swe_cw_garrison_control = 3 } }
+			}
+		}
+	}
+}

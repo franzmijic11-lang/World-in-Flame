@@ -1479,6 +1479,8 @@ characters={
 		portraits={
 			civilian={
 				small="GFX_idea_SWE_king_gustaf"
+				# Welt in Flammen: large is needed when he leads a royal Sweden in the civil war
+				large = "GFX_portrait_SWE_king_gustaf_v"
 			}
 
 			army = {

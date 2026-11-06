@@ -1,0 +1,443 @@
+###########################################################
+# The Swedish Civil War - the build-up
+#
+# Modelled on La Résistance's Spanish Civil War build-up (common/decisions/SPR.txt,
+# events/LAR_Spain.txt): a plot countdown, garrison control fought over state by
+# state, two division counters, one political action at a time, and the other
+# side working against you through missions.
+#
+# It opens from AAT_Sweden_communism.1 ("Murmurs of a counter-revolution"),
+# which Strike the Capitalist Beast Down fires. That event no longer adds
+# vanilla's counter-revolution spirit chain; it asks the player which side
+# they are on instead:
+#
+#   För Kung och Fosterland  -> flag wif_swe_cw_crown_side. SWE plays the
+#                               counter-revolution. At the outbreak SWE becomes
+#                               the Kingdom under Gustaf V and the communist
+#                               government is the side that rises.
+#   För arbetarnas revolution -> flag wif_swe_cw_red_side. SWE stays the
+#                               communist government and the Crown rises.
+#
+# Either way the player keeps the SWE tag, as in vanilla Spain, and the other
+# side is the revolter that start_civil_war creates.
+#
+# Country variables (on SWE):
+#   wif_swe_cw_crown_divisions - divisions the Crown raises at the outbreak
+#   wif_swe_cw_red_divisions   - Red Guard divisions the revolution raises
+#   wif_swe_cw_red_ratio       - share of the existing army that goes red (outbreak only)
+#   wif_swe_cw_crown_ratio     - the rest, which goes to the Crown (outbreak only)
+# State variables:
+#   wif_swe_cw_garrison_control - 1 red, 2 leaning red, 3 leaning Crown, 4 sworn to the Crown
+#                                 (the same 1-4 scale as vanilla's SPA_garrison_control)
+#   wif_swe_cw_garrison_cost    - PP for the next step, for whichever side the player is on
+# Character flag:
+#   wif_swe_cw_red_officer - this general stands with the revolution. Unflagged
+#                            officers go with the Crown: the Swedish officer
+#                            corps is royalist unless someone gets to it first.
+#
+# At the outbreak a state at 3 or 4 goes to the Crown, a state at 1 or 2 to the
+# revolution.
+###########################################################
+
+# STATE scope. Sets the starting garrison and works out the first cost.
+# Called once per Swedish state from wif_swe_cw_begin.
+wif_swe_cw_init_garrison = {
+	if = {
+		limit = { NOT = { has_variable = wif_swe_cw_garrison_control } }
+		# Default: leaning red. The states below are the exceptions.
+		set_variable = { wif_swe_cw_garrison_control = 2 }
+
+		# The Crown's country: the regiments of Skåne and Småland, the Gotland
+		# garrison, Östersund's barracks, the free-church farms of Västerbotten
+		# and Dalarna, where Gustav Vasa raised the peasants.
+		if = {
+			limit = {
+				OR = {
+					state = 138 # Skåne
+					state = 139 # Småland
+					state = 124 # Gotland
+					state = 917 # Jämtland
+					state = 918 # Västerbotten
+					state = 916 # Dalarna
+				}
+			}
+			set_variable = { wif_swe_cw_garrison_control = 3 }
+		}
+		# The Kiruna miners voted red before anyone else in Sweden did
+		else_if = {
+			limit = { state = 666 } # Norrbotten
+			set_variable = { wif_swe_cw_garrison_control = 1 }
+		}
+	}
+	wif_swe_cw_garrison_cost_calculation = yes
+}
+
+# STATE scope. Cost of the next step for the player's side, 10/20/30 PP like
+# vanilla, +10 for the capital.
+#   Crown: 1->2 costs 10, 2->3 20, 3->4 30
+#   Red:   4->3 costs 10, 3->2 20, 2->1 30
+wif_swe_cw_garrison_cost_calculation = {
+	if = {
+		limit = { SWE = { has_country_flag = wif_swe_cw_red_side } }
+		set_variable = { wif_swe_cw_garrison_cost = 5 }
+		subtract_from_variable = { wif_swe_cw_garrison_cost = wif_swe_cw_garrison_control }
+	}
+	else = {
+		set_variable = { wif_swe_cw_garrison_cost = wif_swe_cw_garrison_control }
+	}
+	multiply_variable = { wif_swe_cw_garrison_cost = 10 }
+	if = {
+		limit = { is_capital = yes }
+		add_to_variable = { wif_swe_cw_garrison_cost = 10 }
+	}
+}
+
+# STATE scope. One step toward the Crown: +1 royal division, -1 Red Guard division
+wif_swe_cw_garrison_to_crown = {
+	if = {
+		limit = { check_variable = { wif_swe_cw_garrison_control < 4 } }
+		add_to_variable = { wif_swe_cw_garrison_control = 1 }
+		SWE = {
+			add_to_variable = { wif_swe_cw_crown_divisions = 1 }
+			subtract_from_variable = { wif_swe_cw_red_divisions = 1 }
+			clamp_variable = { var = wif_swe_cw_red_divisions min = 0 }
+		}
+	}
+	wif_swe_cw_garrison_cost_calculation = yes
+}
+
+# STATE scope. One step toward the revolution: +1 Red Guard division, -1 royal division
+wif_swe_cw_garrison_to_red = {
+	if = {
+		limit = { check_variable = { wif_swe_cw_garrison_control > 1 } }
+		subtract_from_variable = { wif_swe_cw_garrison_control = 1 }
+		SWE = {
+			add_to_variable = { wif_swe_cw_red_divisions = 1 }
+			subtract_from_variable = { wif_swe_cw_crown_divisions = 1 }
+			clamp_variable = { var = wif_swe_cw_crown_divisions min = 0 }
+		}
+	}
+	wif_swe_cw_garrison_cost_calculation = yes
+}
+
+# COUNTRY scope (SWE). Common start for both sides. Called by the two choices below.
+wif_swe_cw_begin = {
+	set_country_flag = wif_swe_cw_preparations_active
+	set_variable = { wif_swe_cw_crown_divisions = 8 }
+	set_variable = { wif_swe_cw_red_divisions = 8 }
+	every_owned_state = {
+		limit = { is_core_of = ROOT }
+		wif_swe_cw_init_garrison = yes
+	}
+	# The other side starts working against the player a few weeks in
+	country_event = { id = wif_swe_cw.2 days = 20 random_days = 10 }
+}
+
+# COUNTRY scope (SWE). Option "För Kung och Fosterland" of AAT_Sweden_communism.1
+wif_swe_cw_choose_crown = {
+	set_country_flag = wif_swe_cw_crown_side
+	wif_swe_cw_begin = yes
+	activate_mission = wif_swe_cw_crown_plot_mission
+}
+
+# COUNTRY scope (SWE). Option "För arbetarnas revolution" of AAT_Sweden_communism.1
+wif_swe_cw_choose_red = {
+	set_country_flag = wif_swe_cw_red_side
+	wif_swe_cw_begin = yes
+	activate_mission = wif_swe_cw_red_plot_mission
+}
+
+# COUNTRY scope (SWE). Shortens (crown actions) or lengthens (red actions) the
+# player's countdown, like vanilla's -36/+37. Only the mission for the
+# player's side is running, so only that one is touched.
+wif_swe_cw_shift_plot = {
+	if = {
+		limit = { has_country_flag = wif_swe_cw_crown_side }
+		add_days_mission_timeout = { mission = wif_swe_cw_crown_plot_mission days = $DAYS$ }
+	}
+	else = {
+		add_days_mission_timeout = { mission = wif_swe_cw_red_plot_mission days = $DAYS$ }
+	}
+}
+wif_swe_cw_crown_hastens_the_plot = {
+	wif_swe_cw_shift_plot = { DAYS = -36 }
+}
+wif_swe_cw_red_delays_the_plot = {
+	wif_swe_cw_shift_plot = { DAYS = 37 }
+}
+
+# COUNTRY scope (SWE). Queue the other side's next move a few weeks after the last one
+wif_swe_cw_queue_opposition = {
+	if = {
+		limit = { has_country_flag = wif_swe_cw_preparations_active }
+		country_event = { id = wif_swe_cw.2 days = 10 random_days = 20 }
+	}
+}
+
+# COUNTRY scope (SWE). Gustaf V as head of state of a royal Sweden.
+# The character exists as an advisor; this gives him the leader role.
+wif_swe_cw_give_the_king_the_crown = {
+	if = {
+		limit = { NOT = { has_character = SWE_king_gustaf_v } }
+		recruit_character = SWE_king_gustaf_v
+	}
+	# Flagged rather than tested on the character, so the role is only ever added once
+	if = {
+		limit = { NOT = { has_global_flag = wif_swe_cw_king_has_leader_role } }
+		set_global_flag = wif_swe_cw_king_has_leader_role
+		SWE_king_gustaf_v = {
+			add_country_leader_role = {
+				country_leader = {
+					ideology = despotism
+					expire = "1965.1.1"
+				}
+				promote_leader = no
+			}
+		}
+	}
+}
+
+# COUNTRY scope (SWE). The Crown's garrison template, added to whichever country is the Crown
+wif_swe_cw_crown_template = {
+	division_template = {
+		name = "Kunglig Garnisonsdivision"
+		is_locked = yes
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+		}
+	}
+}
+
+# COUNTRY scope. The revolution's militia template
+wif_swe_cw_red_template = {
+	division_template = {
+		name = "Röda Gardet"
+		is_locked = yes
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+		}
+	}
+}
+
+# COUNTRY scope (SWE). The outbreak. Called from wif_swe_cw.3 (both plot missions end there).
+wif_swe_cw_outbreak = {
+	set_global_flag = wif_swe_civil_war
+	clr_country_flag = wif_swe_cw_preparations_active
+
+	# --- Who stands where ---
+	every_owned_state = {
+		limit = {
+			has_variable = wif_swe_cw_garrison_control
+			check_variable = { wif_swe_cw_garrison_control > 2 }
+		}
+		set_state_flag = wif_swe_cw_sided_with_crown
+	}
+
+	# --- Share of the standing army that goes red ---
+	set_temp_variable = { swe_cw_total = wif_swe_cw_crown_divisions }
+	add_to_temp_variable = { swe_cw_total = wif_swe_cw_red_divisions }
+	set_variable = { wif_swe_cw_red_ratio = 0.5 }
+	if = {
+		limit = { check_variable = { swe_cw_total > 0 } }
+		set_variable = { wif_swe_cw_red_ratio = wif_swe_cw_red_divisions }
+		divide_variable = { wif_swe_cw_red_ratio = swe_cw_total }
+	}
+	clamp_variable = { var = wif_swe_cw_red_ratio min = 0.1 max = 0.9 }
+	set_variable = { wif_swe_cw_crown_ratio = 1 }
+	subtract_from_variable = { wif_swe_cw_crown_ratio = wif_swe_cw_red_ratio }
+
+	if = {
+		limit = { has_country_flag = wif_swe_cw_crown_side }
+		wif_swe_cw_outbreak_crown_player = yes
+	}
+	else = {
+		wif_swe_cw_outbreak_red_player = yes
+	}
+}
+
+# COUNTRY scope (SWE). The player is the Crown: SWE becomes the Kingdom, the
+# communist government rises in the red states.
+wif_swe_cw_outbreak_crown_player = {
+	# The Crown needs somewhere to stand. If every garrison went red, the
+	# regiments of Skåne hold for the King anyway.
+	if = {
+		limit = { NOT = { any_owned_state = { has_state_flag = wif_swe_cw_sided_with_crown } } }
+		if = {
+			limit = { owns_state = 138 }
+			138 = { set_state_flag = wif_swe_cw_sided_with_crown }
+		}
+		else = {
+			random_owned_state = { set_state_flag = wif_swe_cw_sided_with_crown }
+		}
+	}
+	# Capital: Stockholm if it rose for the King, otherwise the strongest royal state
+	if = {
+		limit = { NOT = { capital_scope = { has_state_flag = wif_swe_cw_sided_with_crown } } }
+		random_owned_state = {
+			limit = { has_state_flag = wif_swe_cw_sided_with_crown }
+			prioritize = { 138 139 917 }
+			ROOT = { set_capital = { state = PREV } }
+		}
+	}
+
+	# --- The Crown takes the government ---
+	wif_swe_cw_give_the_king_the_crown = yes
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	promote_character = SWE_king_gustaf_v
+	add_stability = 0.1
+
+	# --- The revolution rises where the Crown did not win ---
+	if = {
+		limit = { any_owned_state = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } } }
+		if = {
+			# Stockholm red: it is their capital
+			limit = { owns_state = 141 141 = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } } }
+			start_civil_war = {
+				ideology = communism
+				capital = 141
+				army_ratio = wif_swe_cw_red_ratio
+				navy_ratio = 0.3
+				air_ratio = wif_swe_cw_red_ratio
+				states = all
+				states_filter = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } }
+				keep_unit_leaders_trigger = { NOT = { has_character_flag = wif_swe_cw_red_officer } }
+				save_event_target_as = wif_swe_cw_revolter
+			}
+		}
+		else = {
+			start_civil_war = {
+				ideology = communism
+				army_ratio = wif_swe_cw_red_ratio
+				navy_ratio = 0.3
+				air_ratio = wif_swe_cw_red_ratio
+				states = all
+				states_filter = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } }
+				keep_unit_leaders_trigger = { NOT = { has_character_flag = wif_swe_cw_red_officer } }
+				save_event_target_as = wif_swe_cw_revolter
+			}
+		}
+		event_target:wif_swe_cw_revolter = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			wif_swe_cw_red_template = yes
+			if = {
+				limit = { check_variable = { SWE.wif_swe_cw_red_divisions > 0 } }
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Röda Gardet\" division_template = \"Röda Gardet\" start_experience_factor = 0.05 start_equipment_factor = 0.6"
+						owner = PREV
+						count = var:SWE.wif_swe_cw_red_divisions
+					}
+				}
+			}
+		}
+	}
+
+	# --- The Crown's own garrison divisions ---
+	wif_swe_cw_crown_template = yes
+	if = {
+		limit = { check_variable = { wif_swe_cw_crown_divisions > 0 } }
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Kunglig Garnisonsdivision\" division_template = \"Kunglig Garnisonsdivision\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
+				owner = SWE
+				count = var:SWE.wif_swe_cw_crown_divisions
+			}
+		}
+	}
+}
+
+# COUNTRY scope (SWE). The player is the revolution: SWE stays communist, the
+# Crown rises in the royal states under Gustaf V.
+wif_swe_cw_outbreak_red_player = {
+	# The revolution needs somewhere to stand. Stockholm holds if nothing else does.
+	if = {
+		limit = { NOT = { any_owned_state = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } } } }
+		if = {
+			limit = { owns_state = 141 }
+			141 = { clr_state_flag = wif_swe_cw_sided_with_crown }
+		}
+		else = {
+			capital_scope = { clr_state_flag = wif_swe_cw_sided_with_crown }
+		}
+	}
+	# Capital: Stockholm if it held for the revolution, otherwise any red state
+	if = {
+		limit = { capital_scope = { has_state_flag = wif_swe_cw_sided_with_crown } }
+		random_owned_state = {
+			limit = { NOT = { has_state_flag = wif_swe_cw_sided_with_crown } }
+			prioritize = { 141 140 913 }
+			ROOT = { set_capital = { state = PREV } }
+		}
+	}
+
+	if = {
+		limit = { any_owned_state = { has_state_flag = wif_swe_cw_sided_with_crown } }
+		# The King goes with the rising: as the neutral party's leader he leaves with it
+		wif_swe_cw_give_the_king_the_crown = yes
+		start_civil_war = {
+			ideology = neutrality
+			army_ratio = wif_swe_cw_crown_ratio
+			navy_ratio = 0.7
+			air_ratio = wif_swe_cw_crown_ratio
+			states = all
+			states_filter = { has_state_flag = wif_swe_cw_sided_with_crown }
+			keep_unit_leaders_trigger = { has_character_flag = wif_swe_cw_red_officer }
+			save_event_target_as = wif_swe_cw_revolter
+		}
+		event_target:wif_swe_cw_revolter = {
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			if = {
+				limit = { has_character = SWE_king_gustaf_v }
+				promote_character = SWE_king_gustaf_v
+			}
+			wif_swe_cw_crown_template = yes
+			if = {
+				limit = { check_variable = { SWE.wif_swe_cw_crown_divisions > 0 } }
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Kunglig Garnisonsdivision\" division_template = \"Kunglig Garnisonsdivision\" start_experience_factor = 0.15 start_equipment_factor = 0.8"
+						owner = PREV
+						count = var:SWE.wif_swe_cw_crown_divisions
+					}
+				}
+			}
+		}
+	}
+	else = {
+		# Every garrison held: the rising is strangled before it starts
+		set_country_flag = wif_swe_cw_rising_crushed
+		add_stability = 0.1
+		add_popularity = { ideology = neutrality popularity = -0.1 }
+	}
+
+	# --- The Red Guards ---
+	wif_swe_cw_red_template = yes
+	if = {
+		limit = { check_variable = { wif_swe_cw_red_divisions > 0 } }
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Röda Gardet\" division_template = \"Röda Gardet\" start_experience_factor = 0.05 start_equipment_factor = 0.6"
+				owner = SWE
+				count = var:SWE.wif_swe_cw_red_divisions
+			}
+		}
+	}
+}

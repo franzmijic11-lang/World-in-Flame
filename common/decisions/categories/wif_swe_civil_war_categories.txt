@@ -1,0 +1,39 @@
+# The Swedish Civil War build-up. See common/scripted_effects/wif_swe_civil_war_effects.txt
+# Reuses La Résistance's Spanish Civil War category art.
+
+wif_swe_cw_category = {
+	priority = 10
+	icon = spr_the_inevitable_civil_war
+	picture = GFX_decision_cat_picture_spr_the_inevitable_civil_war
+
+	allowed = {
+		original_tag = SWE
+	}
+
+	# The two division counters, as in vanilla Spain
+	custom_icon = {
+		tag = SWE
+		value = wif_swe_cw_crown_counter_value
+		desc = wif_swe_cw_crown_counter_desc
+		visible = { always = yes }
+	}
+	custom_icon = {
+		tag = SWE
+		value = wif_swe_cw_red_counter_value
+		desc = wif_swe_cw_red_counter_desc
+		visible = { always = yes }
+	}
+
+	visible_when_empty = yes
+
+	on_map_area = {
+		state = 141
+		name = wif_swe_cw_map_area
+		zoom = 300
+	}
+
+	visible = {
+		has_country_flag = wif_swe_cw_preparations_active
+		NOT = { has_global_flag = wif_swe_civil_war }
+	}
+}

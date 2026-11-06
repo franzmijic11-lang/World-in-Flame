@@ -8083,12 +8083,23 @@ country_event = {
 country_event = {
 	id = AAT_Sweden_communism.1
 	title = AAT_Sweden_communism.1.t
-	desc = AAT_Sweden_communism.1.desc
+	desc = AAT_Sweden_communism.1.wif_desc
 	is_triggered_only = yes
 	picture = GFX_report_event_communist_leader
-	option = {
-		name = AAT_Sweden_nordic_defense_council.1.a
-		add_ideas = SWE_fascist_counter_revolution_0
+	# Welt in Flammen: instead of vanilla's counter-revolution spirit chain
+	# (SWE_fascist_counter_revolution_0/1/2, which never get added now, so
+	# AAT_Sweden_communism.2-4 and their on_action never fire), the player picks
+	# a side and the Spanish-style build-up begins.
+	# See common/scripted_effects/wif_swe_civil_war_effects.txt
+	option = { # För Kung och Fosterland - play the counter-revolution
+		name = AAT_Sweden_communism.1.wif_crown
+		ai_chance = { base = 20 }
+		wif_swe_cw_choose_crown = yes
+	}
+	option = { # För arbetarnas revolution - play the communist government
+		name = AAT_Sweden_communism.1.wif_red
+		ai_chance = { base = 80 }
+		wif_swe_cw_choose_red = yes
 	}
 }
 
@@ -8261,6 +8272,12 @@ country_event = { # Kilbom ousts Flyg
 	title = AAT_Sweden_communism.7.t
 	desc = AAT_Sweden_communism.7.desc
 	is_triggered_only = yes
+	# Welt in Flammen: Strike the Capitalist Beast Down queues this 120-300 days
+	# out, and a Crown player may be the Kingdom by then. Without this its
+	# options would retire the King and crown a communist.
+	trigger = {
+		has_government = communism
+	}
 	picture = GFX_report_event_german_politician_speech
 	option = { #Pick Kilbom
 		name = AAT_Sweden_communism.7.a
