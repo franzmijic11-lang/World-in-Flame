@@ -163,12 +163,13 @@ ideas = {
 			#
 			# WHAT THIS STILL CANNOT DO. Every wall here governs an action
 			# THIS country takes. Nothing stops a foreign power guaranteeing
-			# us or opening a lend-lease to us: those are their actions, and
-			# HoI4 exposes nothing on the receiving side - no rule, no
-			# modifier, no remove_guarantee and no cancel_lend_lease.
-			# Volunteers are the one exception, and they are handled the
-			# hard way by a weekly recall in
-			# common/on_actions/wif_on_actions.txt.
+			# us, sending us volunteers or opening a lend-lease to us: those
+			# are their actions, and HoI4 exposes nothing on the receiving
+			# side - no rule and no modifier. Volunteers and guarantees are
+			# undone after the fact by a weekly pass in
+			# common/on_actions/wif_on_actions.txt (recall_volunteers_from,
+			# and diplomatic_relation guarantee active = no run by the
+			# guarantor). Incoming lend-lease has no such effect at all.
 			modifier = {
 				# Guaranteeing anybody else.
 				guarantee_tension = 10

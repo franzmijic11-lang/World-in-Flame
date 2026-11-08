@@ -336,8 +336,17 @@ on_actions = {
 			# country being iterated. Swap those two and it silently
 			# recalls nothing.
 			#
-			# Guarantees and incoming lend-lease have no equivalent and are
-			# simply not blockable - see the spirit for that note.
+			# Guarantees can't be refused either, but they CAN be cancelled
+			# from the guarantor's side: diplomatic_relation with
+			# relation = guarantee and active = no, run by the guarantor,
+			# as vanilla does in common/decisions/FIN.txt and
+			# common/national_focus/belgium.txt. Same scope shape as the
+			# recall: the iterated country is the guarantor, PREV is us.
+			# There is no on_action for a guarantee being given, so one can
+			# stand for up to a week before this catches it.
+			#
+			# Incoming lend-lease still has no equivalent and is simply not
+			# blockable - see the spirit for that note.
 			if = {
 				limit = { has_idea = wif_splinter_no_factions }
 				every_other_country = {
@@ -350,6 +359,14 @@ on_actions = {
 						}
 					}
 					recall_volunteers_from = PREV
+				}
+				every_other_country = {
+					limit = { has_guaranteed = PREV }
+					diplomatic_relation = {
+						country = PREV
+						relation = guarantee
+						active = no
+					}
 				}
 			}
 
