@@ -1,0 +1,1933 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Burgundy belongs to the SS now: Franche-Comté, Champagne, Picardy, Alsace-Lorraine and the Belgian north, ruled from Strasbourg by Heinrich Himmler as Grand Master of an Order. It is a German satellite in name. In practice it answers to nobody.\n\nEffect: +10% stability, +100 political power.",
+   "fid": "wif_osb_the_ordensstaat",
+   "id": "osb000",
+   "mx": [],
+   "name": "Der Ordensstaat",
+   "pre": [],
+   "x": 22,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "No one enters the Ordensstaat without a pass from the SS.\n\nEffect: +5% stability; -10% trade opinion.",
+   "fid": "wif_osb_close_the_borders",
+   "id": "osb001",
+   "mx": [],
+   "name": "Close the Borders",
+   "pre": [
+    "osb000"
+   ],
+   "x": 3,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A permit to live in a town, another to work in it, a third to visit the next one.\n\nEffect: spirit 'The Pass System' (+5% stability).",
+   "fid": "wif_osb_internal_passports",
+   "id": "osb002",
+   "mx": [],
+   "name": "Internal Passports",
+   "pre": [
+    "osb001"
+   ],
+   "x": 2,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Swiss papers, French radio, German newsreels: all forbidden.\n\nEffect: +10% war support.",
+   "fid": "wif_osb_ban_the_foreign_press",
+   "id": "osb003",
+   "mx": [],
+   "name": "Ban the Foreign Press",
+   "pre": [
+    "osb001"
+   ],
+   "x": 4,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Every street has a man who reports on it.\n\nEffect: +5% stability; spirit 'The Informant Network' (+10% detection of enemy operatives).",
+   "fid": "wif_osb_the_informant_network",
+   "id": "osb004",
+   "mx": [],
+   "name": "The Informant Network",
+   "pre": [
+    "osb002"
+   ],
+   "x": 2,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Transmitters on every hill drown the BBC and Radio Paris in noise.\n\nEffect: +5% war support.",
+   "fid": "wif_osb_jam_the_airwaves",
+   "id": "osb005",
+   "mx": [],
+   "name": "Jam the Airwaves",
+   "pre": [
+    "osb003"
+   ],
+   "x": 4,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Every block has a warden, every warden a list.\n\nEffect: +5% stability; the Pass System strengthened.",
+   "fid": "wif_osb_the_block_wardens",
+   "id": "osb006",
+   "mx": [],
+   "name": "The Block Wardens",
+   "pre": [
+    "osb004"
+   ],
+   "x": 2,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "One radio station, one newspaper, one voice.\n\nEffect: +5% stability, +5% war support.",
+   "fid": "wif_osb_the_order_speaks",
+   "id": "osb007",
+   "mx": [],
+   "name": "The Order Speaks",
+   "pre": [
+    "osb005"
+   ],
+   "x": 4,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Leaving the Ordensstaat is desertion, and desertion is death.\n\nEffect: +10% stability; -5% population growth.",
+   "fid": "wif_osb_the_exit_ban",
+   "id": "osb008",
+   "mx": [],
+   "name": "The Exit Ban",
+   "pre": [
+    "osb006",
+    "osb007"
+   ],
+   "x": 3,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The border guards have their orders, and their orders have no exceptions.\n\nEffect: +5% stability; -10 opinion from every neighbour.",
+   "fid": "wif_osb_shoot_on_the_border",
+   "id": "osb009",
+   "mx": [],
+   "name": "Orders to Fire",
+   "pre": [
+    "osb008"
+   ],
+   "x": 1,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "What the Order lacks, it does without.\n\nEffect: +20% resource output; -20% trade opinion.",
+   "fid": "wif_osb_autarky_of_the_order",
+   "id": "osb010",
+   "mx": [],
+   "name": "Autarky of the Order",
+   "pre": [
+    "osb008"
+   ],
+   "x": 3,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Swiss, Belgians, Americans who stayed after the war: thirty days to leave.\n\nEffect: +5% stability.",
+   "fid": "wif_osb_expel_the_foreigners",
+   "id": "osb011",
+   "mx": [],
+   "name": "Expel the Foreigners",
+   "pre": [
+    "osb008"
+   ],
+   "x": 5,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Imports end. Not a ton of grain or a single newspaper crosses the frontier into the Order.\n\nEffect: -50% trade opinion; +10% stability.",
+   "fid": "wif_osb_nothing_in",
+   "id": "osb012",
+   "mx": [],
+   "name": "Nothing In",
+   "pre": [
+    "osb009",
+    "osb010",
+    "osb011"
+   ],
+   "x": 3,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Exports end too. The Order's steel and coal are for the Order.\n\nEffect: we can no longer trade with anyone (trade opinion -100%); +10% resource output.",
+   "fid": "wif_osb_nothing_out",
+   "id": "osb013",
+   "mx": [],
+   "name": "Nothing Out",
+   "pre": [
+    "osb012"
+   ],
+   "x": 3,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Bread, potatoes and margarine, by card, for ever.\n\nEffect: -10% consumer goods; -5% stability.",
+   "fid": "wif_osb_the_eternal_rationing",
+   "id": "osb014",
+   "mx": [],
+   "name": "The Eternal Rationing",
+   "pre": [
+    "osb013"
+   ],
+   "x": 2,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Strasbourg, Metz and Reims are closed to anyone without SS business there.\n\nEffect: +10% stability; +10% army defence.",
+   "fid": "wif_osb_the_closed_cities",
+   "id": "osb015",
+   "mx": [],
+   "name": "The Closed Cities",
+   "pre": [
+    "osb013"
+   ],
+   "x": 4,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The last international train leaves Strasbourg for Basel, empty. The rails are lifted behind it.\n\nEffect: +5% stability.",
+   "fid": "wif_osb_the_last_train",
+   "id": "osb016",
+   "mx": [],
+   "name": "The Last Train",
+   "pre": [
+    "osb014",
+    "osb015"
+   ],
+   "x": 3,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "What happens inside the Ordensstaat is known only to those inside it. From outside it is a dark patch on the map between France and Germany.\n\nEffect: spirit 'The Hermit Kingdom' (+20% stability, +15% war support, +50% encryption).",
+   "fid": "wif_osb_the_hermit_kingdom",
+   "id": "osb017",
+   "mx": [],
+   "name": "The Hermit Kingdom",
+   "pre": [
+    "osb016"
+   ],
+   "x": 3,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Himmler is past seventy. His knights have begun to count.\n\nEffect: -5% stability.",
+   "fid": "wif_osb_the_grand_master_ages",
+   "id": "osb018",
+   "mx": [],
+   "name": "The Grand Master Ages",
+   "pre": [
+    "osb017"
+   ],
+   "x": 3,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Himmler names one knight as his heir, and the others swear to him.\n\nEffect: a new leader from the knights of the Order; +10% stability.",
+   "fid": "wif_osb_the_chosen_knight",
+   "id": "osb019",
+   "mx": [
+    "osb020"
+   ],
+   "name": "The Chosen Knight",
+   "pre": [
+    "osb018"
+   ],
+   "x": 2,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The twelve will rule together after him, as the Order's founders intended.\n\nEffect: +15% political power gain; +5% stability.",
+   "fid": "wif_osb_the_council_of_knights",
+   "id": "osb020",
+   "mx": [
+    "osb019"
+   ],
+   "name": "The Council of Knights",
+   "pre": [
+    "osb018"
+   ],
+   "x": 4,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "The Grand Master is laid in the crypt above Strasbourg, under the Black Sun.\n\nEffect: +10% war support.",
+   "fid": "wif_osb_the_burial_in_the_crypt",
+   "id": "osb021",
+   "mx": [],
+   "name": "The Burial in the Crypt",
+   "pre": [
+    "osb019",
+    "osb020"
+   ],
+   "x": 3,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Order outlives its founder.\n\nEffect: +15% stability, +15% war support.",
+   "fid": "wif_osb_the_order_endures",
+   "id": "osb022",
+   "mx": [],
+   "name": "The Order Endures",
+   "pre": [
+    "osb021"
+   ],
+   "x": 3,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The Order trusts nobody: not France, not Switzerland, not the Reich that made it.\n\nEffect: +1 fort in every border state.",
+   "fid": "wif_osb_festung_burgund",
+   "id": "osb023",
+   "mx": [],
+   "name": "Festung Burgund",
+   "pre": [
+    "osb000"
+   ],
+   "x": 10,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Facing France: concrete from the Somme to the Saône.\n\nEffect: +1 fort along the French border.",
+   "fid": "wif_osb_the_western_line",
+   "id": "osb024",
+   "mx": [],
+   "name": "The Western Line",
+   "pre": [
+    "osb023"
+   ],
+   "x": 9,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Facing the Reich. Nobody says why out loud.\n\nEffect: +1 fort along the German border.",
+   "fid": "wif_osb_the_rhine_line",
+   "id": "osb025",
+   "mx": [],
+   "name": "The Rhine Line",
+   "pre": [
+    "osb023"
+   ],
+   "x": 11,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The second line west, where the French stopped the Germans in 1914.\n\nEffect: +1 fort along the French border.",
+   "fid": "wif_osb_concrete_on_the_marne",
+   "id": "osb026",
+   "mx": [],
+   "name": "Concrete on the Marne",
+   "pre": [
+    "osb024"
+   ],
+   "x": 9,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Effect: +1 fort along the German border; +5% army defence for 2 years.",
+   "fid": "wif_osb_the_rhine_bunkers",
+   "id": "osb027",
+   "mx": [],
+   "name": "The Rhine Bunkers",
+   "pre": [
+    "osb025"
+   ],
+   "x": 11,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The Swiss have their redoubt. The Order has its own.\n\nEffect: +2 forts along the Swiss border.",
+   "fid": "wif_osb_the_jura_line",
+   "id": "osb028",
+   "mx": [],
+   "name": "The Jura Line",
+   "pre": [
+    "osb026"
+   ],
+   "x": 9,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The forest that let the Wehrmacht through in 1940 will let nobody through again.\n\nEffect: +2 forts along the Belgian and Luxembourg borders.",
+   "fid": "wif_osb_the_ardennes_line",
+   "id": "osb029",
+   "mx": [],
+   "name": "The Ardennes Line",
+   "pre": [
+    "osb027"
+   ],
+   "x": 11,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Dug by the labour camps, ten metres wide.\n\nEffect: +10% army defence.",
+   "fid": "wif_osb_anti_tank_ditches",
+   "id": "osb030",
+   "mx": [],
+   "name": "Anti-Tank Ditches",
+   "pre": [
+    "osb028",
+    "osb029"
+   ],
+   "x": 10,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "A belt of bunkers twenty kilometres behind the frontier.\n\nEffect: +1 fort in every state we own.",
+   "fid": "wif_osb_the_first_belt",
+   "id": "osb031",
+   "mx": [],
+   "name": "The First Belt",
+   "pre": [
+    "osb030"
+   ],
+   "x": 9,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Concrete towers bristling with guns over Strasbourg, Metz and Reims.\n\nEffect: +2 anti-air in every state we own.",
+   "fid": "wif_osb_flak_towers",
+   "id": "osb032",
+   "mx": [],
+   "name": "The Flak Towers",
+   "pre": [
+    "osb030"
+   ],
+   "x": 11,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "And another behind the first.\n\nEffect: +1 fort in every state we own.",
+   "fid": "wif_osb_the_second_belt",
+   "id": "osb033",
+   "mx": [],
+   "name": "The Second Belt",
+   "pre": [
+    "osb031"
+   ],
+   "x": 9,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Every aircraft over Europe is watched from the hills of the Order.\n\nEffect: +1 radar station in every border state.",
+   "fid": "wif_osb_the_radar_chain",
+   "id": "osb034",
+   "mx": [],
+   "name": "The Radar Chain",
+   "pre": [
+    "osb032"
+   ],
+   "x": 11,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Burgundy is a fortress. Anyone who wants it will have to pay in a generation of dead.\n\nEffect: spirit 'The Iron Ring' (+20% army defence).",
+   "fid": "wif_osb_the_iron_ring",
+   "id": "osb035",
+   "mx": [],
+   "name": "The Iron Ring",
+   "pre": [
+    "osb033",
+    "osb034"
+   ],
+   "x": 10,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Command bunkers, tunnels and factories under the hills, beyond the reach of any bomb.\n\nEffect: spirit 'The Underground Order' (+10% army defence, +5% army organisation).",
+   "fid": "wif_osb_the_underground_order",
+   "id": "osb036",
+   "mx": [],
+   "name": "The Underground Order",
+   "pre": [
+    "osb035"
+   ],
+   "x": 10,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The Order does not exist to feed its subjects.\n\nEffect: +1 military factory.",
+   "fid": "wif_osb_guns_before_butter",
+   "id": "osb037",
+   "mx": [],
+   "name": "Guns Before Butter",
+   "pre": [
+    "osb000"
+   ],
+   "x": 16,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Every factory in Burgundy is property of the Order.\n\nEffect: +1 military factory.",
+   "fid": "wif_osb_seize_the_factories",
+   "id": "osb038",
+   "mx": [],
+   "name": "Seize the Factories",
+   "pre": [
+    "osb037"
+   ],
+   "x": 15,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Pohl's office runs the factories, the mines and the camps as one enterprise.\n\nEffect: +10% construction speed.",
+   "fid": "wif_osb_the_economic_office",
+   "id": "osb039",
+   "mx": [],
+   "name": "The SS Economic Office",
+   "pre": [
+    "osb037"
+   ],
+   "x": 17,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The car works make half-tracks now.\n\nEffect: +2 military factories.",
+   "fid": "wif_osb_peugeot_at_sochaux",
+   "id": "osb040",
+   "mx": [],
+   "name": "Peugeot at Sochaux",
+   "pre": [
+    "osb038"
+   ],
+   "x": 14,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Effect: +4 steel; +1 military factory.",
+   "fid": "wif_osb_the_lorraine_steelworks",
+   "id": "osb041",
+   "mx": [],
+   "name": "The Lorraine Steelworks",
+   "pre": [
+    "osb038"
+   ],
+   "x": 16,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The SS firms that work prisoners for profit.\n\nEffect: +10% production efficiency growth.",
+   "fid": "wif_osb_the_camp_enterprises",
+   "id": "osb042",
+   "mx": [],
+   "name": "The Camp Enterprises",
+   "pre": [
+    "osb039"
+   ],
+   "x": 18,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Other states must balance guns against goods because their people would revolt. Ours will not.\n\nEffect: we are permanently EXEMPT from the military-to-civilian factory ceiling.",
+   "fid": "wif_osb_beyond_the_ceiling",
+   "id": "osb043",
+   "mx": [],
+   "name": "Beyond the Ceiling",
+   "pre": [
+    "osb040",
+    "osb041",
+    "osb042"
+   ],
+   "x": 16,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Effect: +3 military factories.",
+   "fid": "wif_osb_the_dijon_works",
+   "id": "osb044",
+   "mx": [],
+   "name": "The Strasbourg Arms Works",
+   "pre": [
+    "osb043"
+   ],
+   "x": 15,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Shells instead of champagne.\n\nEffect: +3 military factories.",
+   "fid": "wif_osb_the_champagne_arsenal",
+   "id": "osb045",
+   "mx": [],
+   "name": "The Champagne Arsenal",
+   "pre": [
+    "osb043"
+   ],
+   "x": 17,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Shortages are not a problem to be solved but a discipline to be kept.\n\nEffect: -10% consumer goods; -5% stability.",
+   "fid": "wif_osb_the_want_is_a_discipline",
+   "id": "osb046",
+   "mx": [],
+   "name": "The Want Is a Discipline",
+   "pre": [
+    "osb044",
+    "osb045"
+   ],
+   "x": 16,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "A people that wants nothing can be given nothing.\n\nEffect: a further -10% consumer goods; +5% factory output.",
+   "fid": "wif_osb_no_want_permitted",
+   "id": "osb047",
+   "mx": [],
+   "name": "No Want Permitted",
+   "pre": [
+    "osb046"
+   ],
+   "x": 16,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Effect: +10% army organisation.",
+   "fid": "wif_osb_waffen_ss_divisions",
+   "id": "osb048",
+   "mx": [],
+   "name": "Waffen-SS Divisions",
+   "pre": [
+    "osb047"
+   ],
+   "x": 15,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Panthers built in Burgundy, for Burgundy.\n\nEffect: +2 military factories; research bonus for armour (100%).",
+   "fid": "wif_osb_tank_works",
+   "id": "osb049",
+   "mx": [],
+   "name": "Tank Works of the Order",
+   "pre": [
+    "osb047"
+   ],
+   "x": 17,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Every citizen of the Order serves.\n\nEffect: +10% recruitable population.",
+   "fid": "wif_osb_every_man_a_soldier",
+   "id": "osb050",
+   "mx": [],
+   "name": "Every Man a Soldier",
+   "pre": [
+    "osb048"
+   ],
+   "x": 15,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Effect: +2 military factories; research bonus for armour (50%, 2 uses).",
+   "fid": "wif_osb_the_panther_lines",
+   "id": "osb051",
+   "mx": [],
+   "name": "The Panther Lines",
+   "pre": [
+    "osb049"
+   ],
+   "x": 17,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The smallest state in Europe with one of its largest arsenals.\n\nEffect: spirit 'Arsenal of the Order' (+15% factory output, +10% production efficiency cap).",
+   "fid": "wif_osb_arsenal_of_the_order",
+   "id": "osb052",
+   "mx": [],
+   "name": "The Arsenal of the Order",
+   "pre": [
+    "osb050",
+    "osb051"
+   ],
+   "x": 16,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Every inhabitant of the Ordensstaat is measured, photographed and classified.\n\nEffect: +5% stability; -10% democratic popularity.",
+   "fid": "wif_osb_the_racial_register",
+   "id": "osb053",
+   "mx": [],
+   "name": "The Racial Register",
+   "pre": [
+    "osb000"
+   ],
+   "x": 22,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The SS race office decides who is Germanic enough to be a citizen.\n\nEffect: +5% war support.",
+   "fid": "wif_osb_the_race_office",
+   "id": "osb054",
+   "mx": [],
+   "name": "The Race Office",
+   "pre": [
+    "osb053"
+   ],
+   "x": 21,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Those the Order does not want and cannot use are driven over the border.\n\nEffect: -10000 manpower; +5% stability.",
+   "fid": "wif_osb_the_expulsions",
+   "id": "osb055",
+   "mx": [],
+   "name": "The Expulsions",
+   "pre": [
+    "osb053"
+   ],
+   "x": 23,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Those who pass are citizens. Those who fail lose every right a citizen has.\n\nEffect: +10% war support; -5% stability.",
+   "fid": "wif_osb_germanic_or_not",
+   "id": "osb056",
+   "mx": [],
+   "name": "Germanic or Not",
+   "pre": [
+    "osb054"
+   ],
+   "x": 21,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Sealed trains, unloaded at the French border.\n\nEffect: Vichy -10 opinion of us; +5% stability.",
+   "fid": "wif_osb_trains_to_vichy",
+   "id": "osb057",
+   "mx": [],
+   "name": "Trains to Vichy",
+   "pre": [
+    "osb055"
+   ],
+   "x": 23,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The non-citizens are put to work behind wire, in the quarries, mines and factories of the Order.\n\nEffect: +10% construction speed; -5% stability.",
+   "fid": "wif_osb_the_labour_camps",
+   "id": "osb058",
+   "mx": [],
+   "name": "The Labour Camps",
+   "pre": [
+    "osb056"
+   ],
+   "x": 21,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The arms works run on unpaid labour from the camps.\n\nEffect: +10% factory output.",
+   "fid": "wif_osb_slaves_for_the_forges",
+   "id": "osb059",
+   "mx": [],
+   "name": "Slaves for the Forges",
+   "pre": [
+    "osb057"
+   ],
+   "x": 23,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The SS has a name for working a prisoner until he dies of it. The camps of the Order use it as policy.\n\nEffect: +10% factory output; -10% stability.",
+   "fid": "wif_osb_destruction_through_labour",
+   "id": "osb060",
+   "mx": [],
+   "name": "Destruction Through Labour",
+   "pre": [
+    "osb058",
+    "osb059"
+   ],
+   "x": 22,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "More wire, more barracks, more names on more lists.\n\nEffect: +10% construction speed; -1% monthly population.",
+   "fid": "wif_osb_the_camps_expand",
+   "id": "osb061",
+   "mx": [],
+   "name": "The Camps Expand",
+   "pre": [
+    "osb060"
+   ],
+   "x": 22,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The citizens are to have children - many, and with the right partners.\n\nEffect: +10% monthly population growth.",
+   "fid": "wif_osb_the_breeding_laws",
+   "id": "osb062",
+   "mx": [],
+   "name": "The Lebensborn Laws",
+   "pre": [
+    "osb061"
+   ],
+   "x": 21,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "SS veterans and their families are given the farms of the expelled.\n\nEffect: +15000 manpower.",
+   "fid": "wif_osb_settlers_of_the_order",
+   "id": "osb063",
+   "mx": [],
+   "name": "Settlers of the Order",
+   "pre": [
+    "osb061"
+   ],
+   "x": 23,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Effect: +5% stability; +5% monthly population growth.",
+   "fid": "wif_osb_the_lebensborn_homes",
+   "id": "osb064",
+   "mx": [],
+   "name": "The Lebensborn Homes",
+   "pre": [
+    "osb062"
+   ],
+   "x": 21,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Effect: +15000 manpower; +5% stability.",
+   "fid": "wif_osb_the_veterans_farms",
+   "id": "osb065",
+   "mx": [],
+   "name": "The Veterans' Farms",
+   "pre": [
+    "osb063"
+   ],
+   "x": 23,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The census of the Ordensstaat lists citizens and no one else.\n\nEffect: spirit 'A Germanic Burgundy' (+15% stability, +15% war support).",
+   "fid": "wif_osb_a_germanic_burgundy",
+   "id": "osb066",
+   "mx": [],
+   "name": "A Germanic Burgundy",
+   "pre": [
+    "osb064",
+    "osb065"
+   ],
+   "x": 22,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "There is nobody left to classify.\n\nEffect: the Racial Register spirit becomes permanent (+5% stability).",
+   "fid": "wif_osb_the_last_census",
+   "id": "osb067",
+   "mx": [],
+   "name": "The Last Census",
+   "pre": [
+    "osb066"
+   ],
+   "x": 22,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "The SS ran the V-weapon programme in the war. The men who built the rockets answer to Himmler, not to Speer.\n\nEffect: research bonus for rocketry and nuclear technology.",
+   "fid": "wif_osb_the_wunderwaffe_inheritance",
+   "id": "osb068",
+   "mx": [],
+   "name": "The Wunderwaffe Inheritance",
+   "pre": [
+    "osb000"
+   ],
+   "x": 29,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A dozen rocket engineers, 'invited' to Burgundy with their families.\n\nEffect: research bonus for rocketry (200%).",
+   "fid": "wif_osb_peenemunde_men",
+   "id": "osb069",
+   "mx": [],
+   "name": "The Peenemünde Men",
+   "pre": [
+    "osb068"
+   ],
+   "x": 28,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "The physicists the Reich forgot, given everything they ask for.\n\nEffect: research bonus for nuclear technology (200%).",
+   "fid": "wif_osb_the_uranium_club",
+   "id": "osb070",
+   "mx": [],
+   "name": "The Uranium Club",
+   "pre": [
+    "osb068"
+   ],
+   "x": 30,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A valley in the Vosges, evacuated and fenced, where rockets fall.\n\nEffect: +1 research slot.",
+   "fid": "wif_osb_the_test_range",
+   "id": "osb071",
+   "mx": [],
+   "name": "The Test Range",
+   "pre": [
+    "osb069"
+   ],
+   "x": 28,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: research bonus for nuclear technology.",
+   "fid": "wif_osb_heavy_water",
+   "id": "osb072",
+   "mx": [],
+   "name": "Heavy Water",
+   "pre": [
+    "osb070"
+   ],
+   "x": 30,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Launch sites tunnelled into the mountains.\n\nEffect: +1 rocket site in Alsace-Lorraine and Franche-Comté.",
+   "fid": "wif_osb_rocket_sites_in_the_vosges",
+   "id": "osb073",
+   "mx": [],
+   "name": "Rocket Sites in the Vosges",
+   "pre": [
+    "osb071"
+   ],
+   "x": 28,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: +1 nuclear reactor in Champagne.",
+   "fid": "wif_osb_the_reactor_pile",
+   "id": "osb074",
+   "mx": [],
+   "name": "The Reactor Pile",
+   "pre": [
+    "osb072"
+   ],
+   "x": 30,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "From the V-2 to rockets with ten times its range.\n\nEffect: completes the Flying Bomb and Ballistic Missile special projects.",
+   "fid": "wif_osb_long_range_rockets",
+   "id": "osb075",
+   "mx": [],
+   "name": "Long-Range Rockets",
+   "pre": [
+    "osb073"
+   ],
+   "x": 28,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: completes the Nuclear Reactor special project.",
+   "fid": "wif_osb_the_reactor_goes_critical",
+   "id": "osb076",
+   "mx": [],
+   "name": "The Reactor Goes Critical",
+   "pre": [
+    "osb074"
+   ],
+   "x": 30,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A rocket from the Vosges can reach London now. The Reichsprotektor there has been informed.\n\nEffect: completes the Medium-Range Ballistic Missile special project; +1 rocket site in Picardy and Champagne.",
+   "fid": "wif_osb_range_to_london",
+   "id": "osb077",
+   "mx": [],
+   "name": "Range to London",
+   "pre": [
+    "osb075"
+   ],
+   "x": 28,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: completes the Nuclear Bomb special project; +3 nuclear bombs.",
+   "fid": "wif_osb_the_bomb_of_the_order",
+   "id": "osb078",
+   "mx": [],
+   "name": "The Bomb of the Order",
+   "pre": [
+    "osb076"
+   ],
+   "x": 30,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A bomb small enough to sit on a rocket.\n\nEffect: completes the Nuclear Warheads special project.",
+   "fid": "wif_osb_the_warheads",
+   "id": "osb079",
+   "mx": [],
+   "name": "The Warheads",
+   "pre": [
+    "osb077",
+    "osb078"
+   ],
+   "x": 29,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Concrete shafts in the forests, each with a rocket standing in it.\n\nEffect: +1 rocket site in every border state; +3 nuclear missiles.",
+   "fid": "wif_osb_the_silos",
+   "id": "osb080",
+   "mx": [],
+   "name": "The Silos",
+   "pre": [
+    "osb079"
+   ],
+   "x": 28,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: completes the Thermonuclear Bomb special project; +3 nuclear bombs.",
+   "fid": "wif_osb_thermonuclear_fire",
+   "id": "osb081",
+   "mx": [],
+   "name": "Thermonuclear Fire",
+   "pre": [
+    "osb079"
+   ],
+   "x": 30,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A second field of silos, in the forest where the last war was fought.\n\nEffect: +1 rocket site in Champagne; +3 nuclear missiles.",
+   "fid": "wif_osb_the_argonne_field",
+   "id": "osb082",
+   "mx": [],
+   "name": "The Argonne Field",
+   "pre": [
+    "osb080"
+   ],
+   "x": 28,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: +3 nuclear bombs; spirit 'The Hydrogen Programme' (+10% nuclear production).",
+   "fid": "wif_osb_the_hydrogen_test",
+   "id": "osb083",
+   "mx": [],
+   "name": "The Hydrogen Test",
+   "pre": [
+    "osb081"
+   ],
+   "x": 30,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Effect: completes the Long-Range Ballistic Missile special project.",
+   "fid": "wif_osb_the_intercontinental_rocket",
+   "id": "osb084",
+   "mx": [],
+   "name": "The Intercontinental Rocket",
+   "pre": [
+    "osb082",
+    "osb083"
+   ],
+   "x": 29,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A rocket that can reach New York.\n\nEffect: +5 nuclear missiles.",
+   "fid": "wif_osb_range_to_new_york",
+   "id": "osb085",
+   "mx": [],
+   "name": "Range to New York",
+   "pre": [
+    "osb084"
+   ],
+   "x": 29,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "A nuclear strike is no longer a decision for the Grand Master. It is a procedure.\n\nEffect: our nuclear strikes cost much less command power (20 -> 5; missile strikes 5 -> 1).",
+   "fid": "wif_osb_cheap_fire",
+   "id": "osb086",
+   "mx": [],
+   "name": "Cheap Fire",
+   "pre": [
+    "osb085"
+   ],
+   "x": 28,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Whoever strikes second does not strike at all.\n\nEffect: we (the AI included) are far more willing to launch nuclear strikes on our enemies.",
+   "fid": "wif_osb_first_strike_doctrine",
+   "id": "osb087",
+   "mx": [],
+   "name": "The First Strike Doctrine",
+   "pre": [
+    "osb085"
+   ],
+   "x": 30,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Enough fire to burn Europe twice over, and a Grand Master who believes it was foretold.\n\nEffect: +10 nuclear bombs, +10 nuclear missiles; +35% nuclear production.",
+   "fid": "wif_osb_the_black_sun_arsenal",
+   "id": "osb088",
+   "mx": [],
+   "name": "The Black Sun Arsenal",
+   "pre": [
+    "osb086",
+    "osb087"
+   ],
+   "x": 29,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Himmler never wanted to be a minister. He wanted to be the head of an order of knights. Now he is.\n\nEffect: +10% stability; +50 political power.",
+   "fid": "wif_osb_the_grand_master",
+   "id": "osb089",
+   "mx": [],
+   "name": "The Grand Master",
+   "pre": [
+    "osb000"
+   ],
+   "x": 36,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The SS ancestral research office moves to Burgundy, with its archaeologists, runologists and astrologers.\n\nEffect: +1 research slot; -5% research speed.",
+   "fid": "wif_osb_the_ahnenerbe",
+   "id": "osb090",
+   "mx": [],
+   "name": "The Ahnenerbe",
+   "pre": [
+    "osb089"
+   ],
+   "x": 35,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Himmler builds a castle above Strasbourg greater than the Wewelsburg he left in the Reich.\n\nEffect: +10% war support.",
+   "fid": "wif_osb_a_new_wewelsburg",
+   "id": "osb091",
+   "mx": [],
+   "name": "A New Wewelsburg",
+   "pre": [
+    "osb089"
+   ],
+   "x": 37,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Runes on the uniforms, on the banknotes, on the gravestones.\n\nEffect: +5% fascism popularity.",
+   "fid": "wif_osb_the_rune_scholars",
+   "id": "osb092",
+   "mx": [],
+   "name": "The Rune Scholars",
+   "pre": [
+    "osb090"
+   ],
+   "x": 35,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Beneath the hall, a crypt with twelve seats around an empty well.\n\nEffect: +5% war support.",
+   "fid": "wif_osb_the_crypt_of_twelve",
+   "id": "osb093",
+   "mx": [],
+   "name": "The Crypt of the Twelve",
+   "pre": [
+    "osb091"
+   ],
+   "x": 37,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The old Thule Society's lore becomes the doctrine of the Order.\n\nEffect: +5% stability.",
+   "fid": "wif_osb_the_thule_inheritance",
+   "id": "osb094",
+   "mx": [],
+   "name": "The Thule Inheritance",
+   "pre": [
+    "osb092"
+   ],
+   "x": 35,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Twelve SS generals sworn as knights at a round table.\n\nEffect: +10% army organisation.",
+   "fid": "wif_osb_knights_of_the_order",
+   "id": "osb095",
+   "mx": [],
+   "name": "Knights of the Order",
+   "pre": [
+    "osb093"
+   ],
+   "x": 37,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The twelve-rayed sun is set in the marble of the Grand Master's hall.\n\nEffect: +10% war support; +10% stability.",
+   "fid": "wif_osb_the_black_sun",
+   "id": "osb096",
+   "mx": [],
+   "name": "The Black Sun",
+   "pre": [
+    "osb094",
+    "osb095"
+   ],
+   "x": 36,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "An expedition sails north to find the lost homeland of the Aryans in the ice.\n\nEffect: +10% war support; -50 political power.",
+   "fid": "wif_osb_hyperborea",
+   "id": "osb097",
+   "mx": [],
+   "name": "The Hyperborea Expedition",
+   "pre": [
+    "osb096"
+   ],
+   "x": 35,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Somewhere beneath Tibet, the Grand Master believes, lies the underground kingdom of Agartha and the source of all power.\n\nEffect: +10% war support; -50 political power.",
+   "fid": "wif_osb_agartha",
+   "id": "osb098",
+   "mx": [],
+   "name": "The Road to Agartha",
+   "pre": [
+    "osb096"
+   ],
+   "x": 37,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The Hyperborea expedition winters in Greenland. It finds ice.\n\nEffect: research bonus for naval equipment (100%); -5% stability.",
+   "fid": "wif_osb_into_the_ice",
+   "id": "osb099",
+   "mx": [],
+   "name": "Into the Ice",
+   "pre": [
+    "osb097"
+   ],
+   "x": 35,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The Agartha expedition crosses Turkey and Persia looking for the entrance.\n\nEffect: +5% war support; -5% stability.",
+   "fid": "wif_osb_through_persia",
+   "id": "osb100",
+   "mx": [],
+   "name": "Through Persia",
+   "pre": [
+    "osb098"
+   ],
+   "x": 37,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "The expeditions return - those that return - with stories the Grand Master chooses to believe.\n\nEffect: +10% stability, +10% war support.",
+   "fid": "wif_osb_the_hollow_earth",
+   "id": "osb101",
+   "mx": [],
+   "name": "The Hollow Earth",
+   "pre": [
+    "osb099",
+    "osb100"
+   ],
+   "x": 36,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Fire on every hilltop of the Order on the longest night.\n\nEffect: +10% war support.",
+   "fid": "wif_osb_the_solstice_rites",
+   "id": "osb102",
+   "mx": [],
+   "name": "The Solstice Rites",
+   "pre": [
+    "osb101"
+   ],
+   "x": 36,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 70,
+   "desc": "Himmler no longer speaks of politics, only of destiny, rebirth and the coming age. The Order obeys a prophet now.\n\nEffect: spirit 'The Prophet of the Order' (+20% war support, +10% stability, -20% political power gain).",
+   "fid": "wif_osb_himmler_ascends",
+   "id": "osb103",
+   "mx": [],
+   "name": "The Grand Master Ascends",
+   "pre": [
+    "osb102"
+   ],
+   "x": 36,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Berlin is at war with itself. The Order owes it nothing.\n\nAvailable once the German civil war has begun.\nEffect: +10% stability; +100 political power.",
+   "fid": "wif_osb_the_reich_burns",
+   "id": "osb104",
+   "mx": [],
+   "name": "The Reich Burns",
+   "pre": [],
+   "x": 42,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "The Order was never anyone's ally. Now it is nobody's satellite.\n\nEffect: we stop being a German subject and leave the Axis.",
+   "fid": "wif_osb_leave_the_axis",
+   "id": "osb105",
+   "mx": [],
+   "name": "Leave the Axis",
+   "pre": [
+    "osb104"
+   ],
+   "x": 42,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "The Order will never join another alliance.\n\nEffect: spirit 'No Allies, No Masters': we can never join or create a faction.",
+   "fid": "wif_osb_no_allies_no_masters",
+   "id": "osb106",
+   "mx": [],
+   "name": "No Allies, No Masters",
+   "pre": [
+    "osb105"
+   ],
+   "x": 41,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Non-aggression with every neighbour. Not friendship - silence.\n\nEffect: non-aggression pacts with every neighbouring country.",
+   "fid": "wif_osb_pacts_of_silence",
+   "id": "osb107",
+   "mx": [],
+   "name": "Pacts of Silence",
+   "pre": [
+    "osb105"
+   ],
+   "x": 43,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Every nation outside the Order is decadent, mongrel or weak.\n\nEffect: we permanently dislike every other country (-50 opinion of all, kept on new countries too).",
+   "fid": "wif_osb_hatred_of_all_nations",
+   "id": "osb108",
+   "mx": [],
+   "name": "Hatred of All Nations",
+   "pre": [
+    "osb106",
+    "osb107"
+   ],
+   "x": 42,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Effect: +10% army attack and defence; +10% war support.",
+   "fid": "wif_osb_guns_outward",
+   "id": "osb109",
+   "mx": [],
+   "name": "Turn the Guns Outward",
+   "pre": [
+    "osb108"
+   ],
+   "x": 41,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "The pacts are signed. Nobody in Strasbourg expects them to be kept.\n\nEffect: +10% army defence.",
+   "fid": "wif_osb_trust_no_treaty",
+   "id": "osb110",
+   "mx": [],
+   "name": "Trust No Treaty",
+   "pre": [
+    "osb108"
+   ],
+   "x": 43,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "No masters, no allies, no friends. Exactly as the Grand Master wanted.\n\nEffect: +15% stability, +15% war support.",
+   "fid": "wif_osb_the_order_alone",
+   "id": "osb111",
+   "mx": [],
+   "name": "The Order Alone",
+   "pre": [
+    "osb109",
+    "osb110"
+   ],
+   "x": 42,
+   "y": 6
+  }
+ ],
+ "name": "Ordensstaat Burgund (satellite, draft)",
+ "tag": "OSB",
+ "target": 7700,
+ "treeId": "wif_osb_focus",
+ "updatedAt": 1794231880525
+}

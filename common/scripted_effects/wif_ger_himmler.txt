@@ -414,6 +414,8 @@ wif_osb_satellite = {
 		limit = { country_exists = OSB }
 		wif_osb_setup = yes
 		puppet = OSB
+		# the satellite's own tree (tools/gen_osb_tree.py)
+		OSB = { load_focus_tree = { tree = wif_osb_focus keep_completed = no } }
 	}
 }
 

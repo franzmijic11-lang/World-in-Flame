@@ -19,7 +19,7 @@ wif_capped_build_civilian = {
 		# behaviour built around one - not the push into civilian industry when
 		# capped, and not the push into military industry when there is spare
 		# allowance either. They simply build what the vanilla AI wants.
-		NOT = { wif_is_soviet_successor = yes }
+		NOT = { wif_ceiling_exempt = yes }
 	}
 
 	enable = {
@@ -47,7 +47,7 @@ wif_spare_cap_large = {
 		# behaviour built around one - not the push into civilian industry when
 		# capped, and not the push into military industry when there is spare
 		# allowance either. They simply build what the vanilla AI wants.
-		NOT = { wif_is_soviet_successor = yes }
+		NOT = { wif_ceiling_exempt = yes }
 	}
 
 	enable = {
@@ -69,7 +69,7 @@ wif_spare_cap_moderate = {
 		# behaviour built around one - not the push into civilian industry when
 		# capped, and not the push into military industry when there is spare
 		# allowance either. They simply build what the vanilla AI wants.
-		NOT = { wif_is_soviet_successor = yes }
+		NOT = { wif_ceiling_exempt = yes }
 	}
 
 	enable = {
@@ -94,7 +94,7 @@ wif_near_cap_build_civilian = {
 		# behaviour built around one - not the push into civilian industry when
 		# capped, and not the push into military industry when there is spare
 		# allowance either. They simply build what the vanilla AI wants.
-		NOT = { wif_is_soviet_successor = yes }
+		NOT = { wif_ceiling_exempt = yes }
 	}
 
 	enable = {

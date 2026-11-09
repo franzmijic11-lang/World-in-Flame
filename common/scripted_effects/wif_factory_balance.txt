@@ -182,7 +182,7 @@ wif_update_factory_cap = {
 	# successors); the year starts when it starts applying.
 	if = {
 		limit = {
-			NOT = { wif_is_soviet_successor = yes }
+			NOT = { wif_ceiling_exempt = yes }
 			NOT = { has_country_flag = wif_cap_war_grace }
 		}
 		if = {
@@ -216,7 +216,7 @@ wif_update_factory_cap = {
 	# the same trigger and will not read them, but the counter and any tooltip
 	# still do, and a stale wif_mil_headroom of 0 would read as "at the cap".
 	if = {
-		limit = { wif_is_soviet_successor = yes }
+		limit = { wif_ceiling_exempt = yes }
 		wif_clear_ceiling_spirit = yes
 		set_variable = { wif_mil_cap = 9999 }
 		set_variable = { wif_mil_headroom = 9999 }
