@@ -363,7 +363,9 @@ def gen_tree(tag, m, by_id):
          f'# (tools/{TREES[tag][0]}) - do not edit by hand.', '',
          'focus_tree = {', f'\tid = {tid}', '',
          '\tcountry = {', '\t\tfactor = 0', '\t\tmodifier = {', '\t\t\tadd = 100', f'\t\t\ttag = {tag}', '\t\t}', '\t}', '',
-         '\tdefault = no', '']
+         '\tdefault = no',
+         # below the lowest focus: the 770x380 continuous window covers the top-left otherwise
+         f'\tcontinuous_focus_position = {{ x = 50 y = {(max(f["y"] for f in m["focuses"]) + 2) * 130} }}', '']
     for f in sorted(m['focuses'], key=lambda f: (f['y'], f['x'])):
         k = f['key']
         o.append('\tfocus = {')

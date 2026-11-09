@@ -13,6 +13,7 @@ focus_tree = {
 	}
 
 	default = no
+	continuous_focus_position = { x = 50 y = 1430 }
 
 	focus = {
 		id = wif_csr_tomsk_declaration
@@ -305,20 +306,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = wif_csr_zemstvo
-		icon = GFX_goal_generic_political_pressure
-		prerequisite = { focus = wif_csr_assembly }
-		x = 4
-		y = 4
-		cost = 10
-		ai_will_do = { factor = 10 }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		completion_reward = {
-			add_stability = 0.05
-		}
-	}
-
-	focus = {
 		id = wif_csr_campaign
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = wif_csr_parties }
@@ -380,6 +367,20 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+	}
+
+	focus = {
+		id = wif_csr_zemstvo
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = wif_csr_assembly }
+		x = 4
+		y = 5
+		cost = 10
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = 0.05
 		}
 	}
 
@@ -464,7 +465,7 @@ focus_tree = {
 		id = wif_csr_land_question
 		icon = GFX_goal_generic_political_pressure
 		prerequisite = { focus = wif_csr_election }
-		x = 8
+		x = 9
 		y = 6
 		cost = 10
 		ai_will_do = { factor = 10 }
@@ -472,21 +473,6 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 			add_popularity = { ideology = democratic popularity = 0.05 }
-		}
-	}
-
-	focus = {
-		id = wif_csr_army_oath
-		icon = GFX_goal_generic_army_doctrines
-		prerequisite = { focus = wif_csr_duma_seated }
-		x = 4
-		y = 7
-		cost = 10
-		ai_will_do = { factor = 10 }
-		search_filters = { FOCUS_FILTER_ARMY_XP }
-		completion_reward = {
-			add_stability = 0.05
-			add_war_support = 0.05
 		}
 	}
 
@@ -501,6 +487,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = wif_csr_duma
+		}
+	}
+
+	focus = {
+		id = wif_csr_army_oath
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = wif_csr_duma_seated }
+		x = 4
+		y = 8
+		cost = 10
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
 		}
 	}
 

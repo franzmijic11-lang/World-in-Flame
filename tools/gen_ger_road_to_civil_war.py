@@ -499,7 +499,7 @@ ANNEXED = 'the annexed states'
 
 F('GER_the_deutsche_volksliste', 86, 2, 70, 'The Deutsche Volksliste',
   'Everyone in the annexed lands is sorted into categories by the state. Those listed as German are drafted. The rest are listed for something else.',
-  pre=['GER_finish_the_purification_of_our_lands'], icon='GFX_focus_GER_establish_volkskommissariats',
+  pre=['GER_finish_the_purification_of_our_lands'], icon='GFX_focus_GER_expand_ss_security_duties',
   filters='FOCUS_FILTER_MANPOWER', reward='add_ideas = wif_ger_volksliste\n' + stab(-0.05))
 
 F('GER_settlers_from_the_old_reich', 88, 2, 70, 'Settlers from the Old Reich',
@@ -510,7 +510,7 @@ F('GER_settlers_from_the_old_reich', 88, 2, 70, 'Settlers from the Old Reich',
 
 F('GER_deportations_to_the_east', 86, 3, 105, 'Deportations to the East',
   'The lists from the Volksliste become timetables.',
-  pre=['GER_the_deutsche_volksliste'], icon='GFX_focus_GER_integrate_volkskommissariats', filters='FOCUS_FILTER_MANPOWER',
+  pre=['GER_the_deutsche_volksliste'], icon='GFX_focus_GER_restore_eastern_imperial_possessions', filters='FOCUS_FILTER_MANPOWER',
   available='NOT = { has_completed_focus = GER_labour_before_blood }',
   reward=text('GER_deportations_to_the_east_tt', 'Unlocks a §Ydeportation decision§! for each annexed state, once each, for §Y25§! political power: the state loses §R25%§! of its population, sent into §YReichskommissariat Ostland§! or §YUkraine§!, which loses §R10%§! stability for a year. Each one: §YFacade Economy§! growth §R+0.05%§! a month for good, world tension §R+1%§!.'))
 

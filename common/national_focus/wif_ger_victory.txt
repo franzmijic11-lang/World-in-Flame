@@ -41,6 +41,8 @@ focus_tree = {
 	}
 
 	default = no
+	# below the lowest focus: the 770x380 continuous window covers the top-left otherwise
+	continuous_focus_position = { x = 50 y = 2990 }
 
 	initial_show_position = {
 		x = 78
@@ -528,7 +530,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_quotas_for_the_reichskommissariate
-		icon = GFX_focus_GER_establish_volkskommissariats
+		icon = GFX_focus_GER_create_asian_reichskommissariat
 		prerequisite = { focus = GER_reich_ministry_for_the_total_economy }
 
 		x = 72
@@ -3639,7 +3641,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_the_deutsche_volksliste
-		icon = GFX_focus_GER_establish_volkskommissariats
+		icon = GFX_focus_GER_expand_ss_security_duties
 		prerequisite = { focus = GER_finish_the_purification_of_our_lands }
 
 		x = 86
@@ -3682,7 +3684,7 @@ focus_tree = {
 
 	focus = {
 		id = GER_deportations_to_the_east
-		icon = GFX_focus_GER_integrate_volkskommissariats
+		icon = GFX_focus_GER_restore_eastern_imperial_possessions
 		prerequisite = { focus = GER_the_deutsche_volksliste }
 
 		x = 86

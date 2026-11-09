@@ -13,6 +13,7 @@ focus_tree = {
 	}
 
 	default = no
+	continuous_focus_position = { x = 50 y = 1560 }
 
 	focus = {
 		id = wif_wsm_commissar
@@ -717,7 +718,7 @@ focus_tree = {
 		prerequisite = { focus = wif_wsm_yagodas_guard }
 		prerequisite = { focus = wif_wsm_kyshtym }
 		prerequisite = { focus = wif_wsm_commissariat_plan }
-		x = 7
+		x = 9
 		y = 10
 		cost = 30
 		ai_will_do = { factor = 10 }

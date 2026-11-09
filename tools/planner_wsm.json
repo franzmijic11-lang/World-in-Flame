@@ -255,7 +255,7 @@
    "name": "Absolute Order",
    "desc": "Nothing moves in the Urals that the organs have not allowed. It is the most orderly state in Russia, and it cannot last.\n\nEffect: the end of the tree. The collapse mechanic (to be added) takes it from here.",
    "days": 210,
-   "x": 7,
+   "x": 9,
    "y": 10,
    "branch": "political",
    "pre": [

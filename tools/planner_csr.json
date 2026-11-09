@@ -287,7 +287,7 @@
    "desc": "District councils, elected, to run the roads, schools and grain stores.\n\nEffect: +5% stability.",
    "days": 70,
    "x": 4,
-   "y": 4,
+   "y": 5,
    "branch": "political",
    "pre": [
     "csr002"
@@ -303,7 +303,7 @@
    "name": "The Land Question",
    "desc": "The kolkhozes are breaking up on their own. The Duma must decide who owns the land.\n\nEffect: +5% stability, democratic popularity +5%.",
    "days": 70,
-   "x": 8,
+   "x": 9,
    "y": 6,
    "branch": "political",
    "pre": [
@@ -338,7 +338,7 @@
    "desc": "Every regiment takes the oath to the republic, not to the Marshal.\n\nEffect: +5% stability, +5% war support.",
    "days": 70,
    "x": 4,
-   "y": 7,
+   "y": 8,
    "branch": "military",
    "pre": [
     "csr009"

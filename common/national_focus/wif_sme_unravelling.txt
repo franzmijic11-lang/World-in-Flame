@@ -24,6 +24,7 @@ focus_tree = {
 	# >>> GENERATED post-SME tree
 	# The generic warlord tree beside the loss tree (tools/gen_post_sme_tree.py).
 	shared_focus = wif_pws_root
+	continuous_focus_position = { x = 50 y = 1430 }
 	# <<< GENERATED post-SME tree
 
 	focus = {

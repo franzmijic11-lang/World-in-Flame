@@ -82,7 +82,7 @@ shared_focus = {
 	id = wif_pws_inventory
 	icon = GFX_goal_generic_production
 	prerequisite = { focus = wif_pws_count }
-	x = 18
+	x = 20
 	y = 2
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -96,7 +96,7 @@ shared_focus = {
 	id = wif_pws_choose_capital
 	icon = GFX_goal_generic_fortify_city
 	prerequisite = { focus = wif_pws_count }
-	x = 23
+	x = 25
 	y = 2
 	cost = 5
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -154,7 +154,7 @@ shared_focus = {
 	id = wif_pws_power
 	icon = GFX_goal_generic_construct_infrastructure
 	prerequisite = { focus = wif_pws_inventory }
-	x = 17
+	x = 19
 	y = 3
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -170,7 +170,7 @@ shared_focus = {
 	id = wif_pws_mines
 	icon = GFX_goal_generic_oil_refinery
 	prerequisite = { focus = wif_pws_inventory }
-	x = 19
+	x = 21
 	y = 3
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -186,7 +186,7 @@ shared_focus = {
 	id = wif_pws_survey
 	icon = GFX_goal_generic_construction
 	prerequisite = { focus = wif_pws_choose_capital }
-	x = 23
+	x = 25
 	y = 3
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -267,7 +267,7 @@ shared_focus = {
 	id = wif_pws_workshops
 	icon = GFX_goal_generic_construct_civ_factory
 	prerequisite = { focus = wif_pws_power }
-	x = 17
+	x = 19
 	y = 4
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -284,7 +284,7 @@ shared_focus = {
 	id = wif_pws_timber
 	icon = GFX_goal_generic_positive_trade_relations
 	prerequisite = { focus = wif_pws_mines }
-	x = 19
+	x = 21
 	y = 4
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -298,7 +298,7 @@ shared_focus = {
 	id = wif_pws_housing
 	icon = GFX_goal_generic_construct_civilian
 	prerequisite = { focus = wif_pws_survey }
-	x = 22
+	x = 24
 	y = 4
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -314,7 +314,7 @@ shared_focus = {
 	id = wif_pws_rubble
 	icon = GFX_goal_generic_construction2
 	prerequisite = { focus = wif_pws_survey }
-	x = 24
+	x = 26
 	y = 4
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -393,7 +393,7 @@ shared_focus = {
 	icon = GFX_goal_generic_construct_infrastructure
 	prerequisite = { focus = wif_pws_workshops }
 	prerequisite = { focus = wif_pws_timber }
-	x = 18
+	x = 20
 	y = 5
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -415,7 +415,7 @@ shared_focus = {
 	id = wif_pws_rail_workshops
 	icon = GFX_goal_generic_construction2
 	prerequisite = { focus = wif_pws_timber }
-	x = 20
+	x = 22
 	y = 5
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -430,7 +430,7 @@ shared_focus = {
 	icon = GFX_goal_generic_construction
 	prerequisite = { focus = wif_pws_housing }
 	prerequisite = { focus = wif_pws_rubble }
-	x = 23
+	x = 25
 	y = 5
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -476,7 +476,7 @@ shared_focus = {
 	icon = GFX_goal_generic_alliance
 	prerequisite = { focus = wif_pws_envoys }
 	mutually_exclusive = { focus = wif_pws_trust_no_one }
-	x = 14
+	x = 15
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_POLITICAL }
@@ -494,7 +494,7 @@ shared_focus = {
 	icon = GFX_goal_generic_more_territorial_claims
 	prerequisite = { focus = wif_pws_envoys }
 	mutually_exclusive = { focus = wif_pws_brothers }
-	x = 16
+	x = 17
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_POLITICAL }
@@ -515,7 +515,7 @@ shared_focus = {
 	id = wif_pws_small_arms
 	icon = GFX_goal_generic_small_arms
 	prerequisite = { focus = wif_pws_branch_lines }
-	x = 17
+	x = 19
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -532,7 +532,7 @@ shared_focus = {
 	id = wif_pws_second_shift
 	icon = GFX_goal_generic_construct_civilian
 	prerequisite = { focus = wif_pws_branch_lines }
-	x = 19
+	x = 21
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -550,7 +550,7 @@ shared_focus = {
 	id = wif_pws_electric
 	icon = GFX_goal_generic_secret_weapon
 	prerequisite = { focus = wif_pws_water }
-	x = 22
+	x = 24
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -566,7 +566,7 @@ shared_focus = {
 	id = wif_pws_hospital
 	icon = GFX_goal_generic_consumer_goods
 	prerequisite = { focus = wif_pws_water }
-	x = 24
+	x = 26
 	y = 6
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -656,7 +656,7 @@ shared_focus = {
 	icon = GFX_goal_generic_production2
 	prerequisite = { focus = wif_pws_small_arms }
 	prerequisite = { focus = wif_pws_second_shift }
-	x = 18
+	x = 20
 	y = 7
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -670,7 +670,7 @@ shared_focus = {
 	id = wif_pws_schools
 	icon = GFX_goal_generic_scientific_exchange
 	prerequisite = { focus = wif_pws_electric }
-	x = 22
+	x = 24
 	y = 7
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -684,7 +684,7 @@ shared_focus = {
 	id = wif_pws_trams
 	icon = GFX_goal_generic_construct_infrastructure
 	prerequisite = { focus = wif_pws_hospital }
-	x = 24
+	x = 26
 	y = 7
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -732,7 +732,7 @@ shared_focus = {
 	id = wif_pws_tractors
 	icon = GFX_goal_generic_construct_civ_factory
 	prerequisite = { focus = wif_pws_plan }
-	x = 17
+	x = 19
 	y = 8
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -749,7 +749,7 @@ shared_focus = {
 	id = wif_pws_scrap
 	icon = GFX_goal_generic_construct_military
 	prerequisite = { focus = wif_pws_plan }
-	x = 19
+	x = 21
 	y = 8
 	cost = 10
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -766,7 +766,7 @@ shared_focus = {
 	icon = GFX_goal_generic_soviet_construction
 	prerequisite = { focus = wif_pws_schools }
 	prerequisite = { focus = wif_pws_trams }
-	x = 23
+	x = 25
 	y = 8
 	cost = 15
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -798,7 +798,7 @@ shared_focus = {
 	icon = GFX_goal_generic_soviet_construction
 	prerequisite = { focus = wif_pws_tractors }
 	prerequisite = { focus = wif_pws_scrap }
-	x = 18
+	x = 20
 	y = 9
 	cost = 20
 	search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -815,7 +815,7 @@ shared_focus = {
 	id = wif_pws_city
 	icon = GFX_goal_generic_national_unity
 	prerequisite = { focus = wif_pws_villages }
-	x = 23
+	x = 25
 	y = 9
 	cost = 20
 	search_filters = { FOCUS_FILTER_INDUSTRY }

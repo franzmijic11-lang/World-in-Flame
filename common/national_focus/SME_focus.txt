@@ -32,6 +32,8 @@ focus_tree = {
 	}
 
 	default = no
+	# below the lowest focus: the 770x380 continuous window covers the top-left otherwise
+	continuous_focus_position = { x = 50 y = 2210 }
 
 	# =====================================================================
 	# Hunt for Stalin and his loyalists

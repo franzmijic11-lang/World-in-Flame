@@ -26,6 +26,7 @@ focus_tree = {
 	}
 
 	default = no
+	continuous_focus_position = { x = 50 y = 1430 }
 
 	shared_focus = wif_pws_root
 }

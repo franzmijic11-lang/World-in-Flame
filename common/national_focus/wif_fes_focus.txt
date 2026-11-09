@@ -13,6 +13,7 @@ focus_tree = {
 	}
 
 	default = no
+	continuous_focus_position = { x = 50 y = 1300 }
 
 	focus = {
 		id = wif_fes_irkutsk
@@ -60,7 +61,7 @@ focus_tree = {
 		id = wif_fes_hungry_winter
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = wif_fes_irkutsk }
-		x = 10
+		x = 12
 		y = 1
 		cost = 1
 		available = { has_country_flag = wif_sib_auto_wif_fes_hungry_winter }
