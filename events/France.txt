@@ -1,6 +1,8 @@
 ﻿# Welt in Flammen: a full copy of vanilla events/France.txt. An event cannot be
 # changed from another file - a second france.14 would be a duplicate id - so the
-# whole file is overridden. THE ONLY CHANGE is the AI weight on france.14.b
+# whole file is overridden. Changes: Vichy France is a German SATELLITE in all three
+# france.14 'Agree' options (wif_vichy_become_satellite, common/scripted_effects/
+# wif_vichy_effects.txt; vanilla only guaranteed it on the La Resistance path), and the AI weight on france.14.b
 # ("No, Germany will conquer all!"), now 0, so the German AI always sets up
 # Vichy France. On a game update, re-copy from vanilla and re-apply that line.
 
@@ -778,6 +780,7 @@ country_event = {
 			
 			set_country_flag = vichy_france
 			save_event_target_as = vichy_france
+			wif_vichy_become_satellite = yes	# Welt in Flammen
 
 			FRA = { #Move Petain to Vichy
 				set_nationality = {
@@ -1154,6 +1157,7 @@ country_event = {
 			}
 			save_event_target_as = vichy_france
 			set_country_flag = vichy_france
+			wif_vichy_become_satellite = yes	# Welt in Flammen
 		}
 		country_event = { hours = 6 id = news.34 }
 		hidden_effect =  {
@@ -1367,9 +1371,7 @@ country_event = {
 			limit = {
 				has_focus_tree = vichy_french_focus
 			}
-			GER = {
-				give_guarantee = PREV
-			}
+			wif_vichy_become_satellite = yes	# Welt in Flammen: a satellite, not a guarantee
 			every_unit_leader = {
 				limit = {
 					has_id = 101 #de Gaulle

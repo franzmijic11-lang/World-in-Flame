@@ -1,0 +1,1107 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "France has lost the war. The Third Republic voted itself out of existence in a casino theatre in Vichy, and handed everything to an eighty-four-year-old Marshal who won the last war at Verdun.\n\nVichy starts as a German satellite.\nEffect: +10% stability, +50 political power.",
+   "fid": "wif_vic_le_marechal",
+   "id": "vic000",
+   "mx": [],
+   "name": "Le Maréchal",
+   "pre": [],
+   "x": 13,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Act No. 1: Philippe Pétain is Chief of the French State. The Republic is not abolished. It is simply never mentioned again.\n\nEffect: +50 political power, +5% stability; elections abolished.",
+   "fid": "wif_vic_constitutional_acts",
+   "id": "vic001",
+   "mx": [],
+   "name": "The Constitutional Acts",
+   "pre": [
+    "vic000"
+   ],
+   "x": 3,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Liberty, Equality, Fraternity are chiselled off the town halls. Work, Family, Fatherland go up in their place.\n\nEffect: spirit 'The National Revolution' (+10% stability, -5% consumer goods, +0.03 fascism drift).",
+   "fid": "wif_vic_travail_famille_patrie",
+   "id": "vic002",
+   "mx": [],
+   "name": "Travail, Famille, Patrie",
+   "pre": [
+    "vic001"
+   ],
+   "x": 3,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Every veteran of 1914 a member, every village a branch, every branch loyal to the Marshal.\n\nEffect: +15% war support, +5000 manpower.",
+   "fid": "wif_vic_legion_des_combattants",
+   "id": "vic003",
+   "mx": [],
+   "name": "The Legion of Veterans",
+   "pre": [
+    "vic002"
+   ],
+   "x": 1,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Blum, Daladier and Gamelin in the dock for losing the war. The trial is meant to prove the Republic's guilt; it may prove something else.\n\nEffect: +10% stability, -10% democratic popularity.",
+   "fid": "wif_vic_riom_trial",
+   "id": "vic004",
+   "mx": [],
+   "name": "The Riom Trial",
+   "pre": [
+    "vic002"
+   ],
+   "x": 5,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The Marshal reigns. Someone else has to govern.\n\nEffect: +50 political power.",
+   "fid": "wif_vic_who_governs_vichy",
+   "id": "vic005",
+   "mx": [],
+   "name": "Who Governs at Vichy?",
+   "pre": [
+    "vic003",
+    "vic004"
+   ],
+   "x": 3,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Pierre Laval believes Germany has won and that France's only future is in Hitler's Europe. He intends to be first in line.\n\nEffect: spirit 'Laval's Government' (+10% political power); +25 German opinion of us; -5% autonomy.",
+   "fid": "wif_vic_laval_returns",
+   "id": "vic006",
+   "mx": [
+    "vic007"
+   ],
+   "name": "Laval Returns",
+   "pre": [
+    "vic005"
+   ],
+   "x": 1,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Admiral Darlan holds the one card France has left: the fleet. He means to bargain with it, with Berlin and with everyone else.\n\nEffect: spirit 'Darlan's Government' (+20% naval experience gain, +5% naval organisation); +5% autonomy.",
+   "fid": "wif_vic_darlans_government",
+   "id": "vic007",
+   "mx": [
+    "vic006"
+   ],
+   "name": "Darlan's Government",
+   "pre": [
+    "vic005"
+   ],
+   "x": 5,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Darnand's political police, in black berets, for hunting the Resistance where the Germans cannot be bothered to.\n\nEffect: spirit 'The Milice' (+5% stability, +5% war support, -5% political power).",
+   "fid": "wif_vic_the_milice",
+   "id": "vic008",
+   "mx": [],
+   "name": "The Milice",
+   "pre": [
+    "vic006"
+   ],
+   "x": 1,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The fleet at Toulon is the strongest thing France owns. It will sail for nobody - and everybody knows it could.\n\nEffect: +1 dockyard in Toulon; spirit 'The Fleet at Toulon' (+10% naval organisation, +5% naval speed).",
+   "fid": "wif_vic_fleet_in_being",
+   "id": "vic009",
+   "mx": [],
+   "name": "The Fleet in Being",
+   "pre": [
+    "vic007"
+   ],
+   "x": 5,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A state without a republic, a government without a parliament, an army without a war. It works, after a fashion.\n\nEffect: +15% stability, +100 political power.",
+   "fid": "wif_vic_the_french_state",
+   "id": "vic010",
+   "mx": [],
+   "name": "The French State",
+   "pre": [
+    "vic008",
+    "vic009"
+   ],
+   "x": 3,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Metropolitan France is half occupied. The Empire is not. Dakar, Algiers, Beirut, Hanoi: as long as they fly the tricolour, France is still a great power.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: spirit 'The Imperial Garrisons' (+5% army defence).",
+   "fid": "wif_vic_the_empire_holds",
+   "id": "vic011",
+   "mx": [],
+   "name": "The Empire Holds",
+   "pre": [
+    "vic000"
+   ],
+   "x": 10,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The British and de Gaulle came to Dakar in September 1940 and were driven off. They will come again.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +1 naval base and +2 coastal forts in Senegal; +1000 infantry equipment.",
+   "fid": "wif_vic_dakar_must_not_fall",
+   "id": "vic012",
+   "mx": [],
+   "name": "Dakar Must Not Fall",
+   "pre": [
+    "vic011"
+   ],
+   "x": 7,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "General Weygand, Delegate-General in North Africa, quietly rebuilds the Army of Africa behind the armistice commission's back.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +10% army organisation for 2 years; +1500 infantry equipment, +200 artillery.",
+   "fid": "wif_vic_weygand_in_algiers",
+   "id": "vic013",
+   "mx": [],
+   "name": "Weygand in Algiers",
+   "pre": [
+    "vic011"
+   ],
+   "x": 9,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "General Dentz holds Syria and Lebanon with 35,000 men, and the British in Palestine and Iraq have noticed.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +1 fort along the borders of Syria and Lebanon (ours or our subjects'); +500 infantry equipment.",
+   "fid": "wif_vic_the_levant_army",
+   "id": "vic014",
+   "mx": [],
+   "name": "The Army of the Levant",
+   "pre": [
+    "vic011"
+   ],
+   "x": 11,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Admiral Decoux governs Indochina with 30,000 men, no reinforcements and the Japanese army on the border.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: Japan +25 opinion of us; +300 infantry equipment.",
+   "fid": "wif_vic_decoux_in_indochina",
+   "id": "vic015",
+   "mx": [],
+   "name": "Decoux in Indochina",
+   "pre": [
+    "vic011"
+   ],
+   "x": 13,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Senegalese tirailleurs, the backbone of the colonial army, re-equipped from Dakar's arsenal.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +15000 manpower; +500 infantry equipment.",
+   "fid": "wif_vic_west_african_army",
+   "id": "vic016",
+   "mx": [],
+   "name": "The West African Army",
+   "pre": [
+    "vic012"
+   ],
+   "x": 7,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Officially 120,000 men. Unofficially rather more, hidden as labour companies and police.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +1 military factory in Algiers; +2000 infantry equipment, +300 artillery.",
+   "fid": "wif_vic_army_of_africa",
+   "id": "vic017",
+   "mx": [],
+   "name": "The Army of Africa",
+   "pre": [
+    "vic013"
+   ],
+   "x": 9,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Beirut will not be handed to the British without a fight.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +25 army experience, +25 air experience.",
+   "fid": "wif_vic_dentz_holds",
+   "id": "vic018",
+   "mx": [],
+   "name": "Dentz Holds the Levant",
+   "pre": [
+    "vic014"
+   ],
+   "x": 11,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Japanese troops may use Tonkin's airfields and railways. In return, the French flag stays up in Hanoi.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: Japan gets military access; Japan +25 opinion of us.",
+   "fid": "wif_vic_bend_to_tokyo",
+   "id": "vic019",
+   "mx": [],
+   "name": "Bend to Tokyo",
+   "pre": [
+    "vic015"
+   ],
+   "x": 13,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Diego-Suarez is the best harbour on the Indian Ocean, and the British want it.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +1 naval base and +2 coastal forts in Madagascar; +5000 manpower.",
+   "fid": "wif_vic_madagascar_garrison",
+   "id": "vic020",
+   "mx": [],
+   "name": "The Madagascar Garrison",
+   "pre": [
+    "vic016"
+   ],
+   "x": 7,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Chad, Cameroon and Equatorial Africa went over to de Gaulle in 1940. They can be brought back.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +5% war support; claims on the Equatorial African colonies held by someone else.",
+   "fid": "wif_vic_hunt_the_gaullists",
+   "id": "vic021",
+   "mx": [],
+   "name": "Hunt the Gaullists",
+   "pre": [
+    "vic017"
+   ],
+   "x": 9,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Admiral Robert's carrier at Martinique, Godfroy's cruisers at Alexandria, the gold in Fort-de-France: scattered, but still French.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +1 naval base in the French Caribbean; +25 navy experience.",
+   "fid": "wif_vic_overseas_squadrons",
+   "id": "vic022",
+   "mx": [],
+   "name": "The Overseas Squadrons",
+   "pre": [
+    "vic018"
+   ],
+   "x": 11,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Three years of war, and the Empire has not fallen. Whatever the peace brings, France comes to the table with a world behind it.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: if we still hold Senegal, Algiers, Madagascar and Tonkin: spirit 'The Imperial Shield' (+10% stability, +5% recruitable population) and cores on Algeria. Otherwise +75 political power.",
+   "fid": "wif_vic_the_empire_endures",
+   "id": "vic023",
+   "mx": [],
+   "name": "The Empire Endures",
+   "pre": [
+    "vic020",
+    "vic021",
+    "vic022"
+   ],
+   "x": 10,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The Marshal shakes Hitler's hand at a railway station in the Loir-et-Cher. 'I enter today upon the path of collaboration.'\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +25 German opinion of us; +50 political power.",
+   "fid": "wif_vic_montoire",
+   "id": "vic024",
+   "mx": [],
+   "name": "Montoire",
+   "pre": [
+    "vic000"
+   ],
+   "x": 17,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Four hundred million francs a day, for the privilege of being occupied. Perhaps it can be three hundred.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: the Occupation Costs spirit is reduced one step.",
+   "fid": "wif_vic_occupation_costs",
+   "id": "vic025",
+   "mx": [],
+   "name": "Negotiate the Occupation Costs",
+   "pre": [
+    "vic024"
+   ],
+   "x": 15,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Bizerte, Dakar and the Syrian airfields for German use, in exchange for concessions that never quite arrive.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: Germany gets military access; +25 German opinion of us; -5% autonomy towards Germany.",
+   "fid": "wif_vic_paris_protocols",
+   "id": "vic026",
+   "mx": [],
+   "name": "The Paris Protocols",
+   "pre": [
+    "vic024"
+   ],
+   "x": 17,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Three workers to Germany for every prisoner of war who comes home.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +20000 manpower (returning prisoners); -5% stability.",
+   "fid": "wif_vic_the_releve",
+   "id": "vic027",
+   "mx": [],
+   "name": "La Relève",
+   "pre": [
+    "vic024"
+   ],
+   "x": 19,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "French factories work for German orders. Better German orders than no orders at all.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +2 civilian factories; +10% production efficiency growth for 2 years.",
+   "fid": "wif_vic_german_contracts",
+   "id": "vic028",
+   "mx": [],
+   "name": "German Contracts",
+   "pre": [
+    "vic025"
+   ],
+   "x": 15,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Doriot and Déat send French volunteers in German uniform to fight Bolshevism in Russia.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +25 German opinion of us; -5% stability; +25 army experience.",
+   "fid": "wif_vic_the_lvf",
+   "id": "vic029",
+   "mx": [],
+   "name": "The Legion of French Volunteers",
+   "pre": [
+    "vic026"
+   ],
+   "x": 17,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Volunteering was not enough. Young men are now conscripted for German factories, and many take to the hills instead.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: Germany gets +2 offsite military factories; -10% stability.",
+   "fid": "wif_vic_the_sto",
+   "id": "vic030",
+   "mx": [],
+   "name": "Compulsory Labour Service",
+   "pre": [
+    "vic027"
+   ],
+   "x": 19,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Renault builds trucks for the Wehrmacht, Gnome-Rhône builds aero engines. The war economy runs through France.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +3 civilian factories, +1 military factory; Germany +10 opinion.",
+   "fid": "wif_vic_workshop_of_the_reich",
+   "id": "vic031",
+   "mx": [],
+   "name": "Workshop of the Reich",
+   "pre": [
+    "vic028",
+    "vic029",
+    "vic030"
+   ],
+   "x": 17,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "When the peace comes, France must sit with the victors, not on the menu.\n\nAvailable only while the war in the west goes on (before the Anglo-American peace).\nEffect: +10% war support; La Paix Allemande later gives an extra +5% stability and +50 political power.",
+   "fid": "wif_vic_a_place_at_the_table",
+   "id": "vic032",
+   "mx": [],
+   "name": "A Place at the Victors' Table",
+   "pre": [
+    "vic031"
+   ],
+   "x": 17,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Americans have made peace, Britain has a Reichsprotektor, and the war in the west is over. The German peace has come to France.\n\nAvailable once the war in the west is won (the Anglo-American peace, or Germany's Totaler Sieg).\nEffect: the Occupation Costs spirit is removed; +10% stability.",
+   "fid": "wif_vic_la_paix_allemande",
+   "id": "vic033",
+   "mx": [],
+   "name": "La Paix Allemande",
+   "pre": [],
+   "x": 13,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The occupied zone is handed back: Paris, the north and the Atlantic coast, everything but Alsace-Lorraine. The government leaves the spa town for the capital.\n\nEffect: Germany returns every French core state it owns except Alsace-Lorraine (and what the SS has taken); capital moves to Paris.",
+   "fid": "wif_vic_return_to_paris",
+   "id": "vic034",
+   "mx": [],
+   "name": "The Return to Paris",
+   "pre": [
+    "vic033"
+   ],
+   "x": 11,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A million and a half men, five years in German camps, coming home on the same trains that took them.\n\nEffect: +150000 manpower; +10% stability.",
+   "fid": "wif_vic_prisoners_come_home",
+   "id": "vic035",
+   "mx": [],
+   "name": "The Prisoners Come Home",
+   "pre": [
+    "vic033"
+   ],
+   "x": 15,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Lille, Rouen, Calais: bombed by both sides and stripped by one.\n\nEffect: +2 civilian factories and +1 infrastructure in every northern state.",
+   "fid": "wif_vic_rebuild_the_north",
+   "id": "vic036",
+   "mx": [],
+   "name": "Rebuild the North",
+   "pre": [
+    "vic034"
+   ],
+   "x": 9,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Marshal's constitution, drafted in 1944 and never promulgated, is promulgated.\n\nEffect: +10% stability, +100 political power.",
+   "fid": "wif_vic_a_new_constitution",
+   "id": "vic037",
+   "mx": [],
+   "name": "A New Constitution",
+   "pre": [
+    "vic034"
+   ],
+   "x": 11,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "France is a province of the German economic sphere: coal from the Ruhr, iron from Lorraine, wheat from the Beauce, all priced in Reichsmarks.\n\nEffect: spirit 'The German Sphere' (+10% factory output, -10% trade opinion outside the Reich).",
+   "fid": "wif_vic_the_grossraum",
+   "id": "vic038",
+   "mx": [],
+   "name": "The Grossraumwirtschaft",
+   "pre": [
+    "vic035"
+   ],
+   "x": 15,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "What the Reich does not want, the Empire can buy: Algerian wine, Moroccan phosphate, Indochinese rubber.\n\nEffect: +2 civilian factories in Algiers; spirit 'Imperial Preference' (+10% resource output).",
+   "fid": "wif_vic_empire_trade",
+   "id": "vic039",
+   "mx": [],
+   "name": "Imperial Preference",
+   "pre": [
+    "vic038"
+   ],
+   "x": 17,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "French engineering, German capital, European markets. The Marshal's ministers call it partnership.\n\nEffect: +3 military factories, +10% production efficiency cap.",
+   "fid": "wif_vic_workshop_of_new_europe",
+   "id": "vic040",
+   "mx": [],
+   "name": "Workshop of the New Europe",
+   "pre": [
+    "vic038",
+    "vic036"
+   ],
+   "x": 15,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Pétain is ninety. His mind wanders in the afternoons, and every faction at Vichy has noticed.\n\nEffect: -5% stability; the succession opens.",
+   "fid": "wif_vic_the_marshal_grows_old",
+   "id": "vic041",
+   "mx": [],
+   "name": "The Marshal Grows Old",
+   "pre": [
+    "vic037"
+   ],
+   "x": 11,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The collaborator's collaborator, Chief of State at last.\n\nEffect: Laval leads France; +25 German opinion; +15% political power gain.",
+   "fid": "wif_vic_successor_laval",
+   "id": "vic042",
+   "mx": [
+    "vic043",
+    "vic044"
+   ],
+   "name": "Laval Succeeds",
+   "pre": [
+    "vic041"
+   ],
+   "x": 9,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Jacques Doriot, the communist who became a fascist, comes back from the Russian front to take power.\n\nEffect: Doriot leads France (fascist); +20% fascism popularity; +15% war support.",
+   "fid": "wif_vic_successor_doriot",
+   "id": "vic043",
+   "mx": [
+    "vic042",
+    "vic044"
+   ],
+   "name": "Doriot Succeeds",
+   "pre": [
+    "vic041"
+   ],
+   "x": 11,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The admiral who kept the fleet now keeps the State.\n\nEffect: Darlan leads France (non-aligned); +10% stability; +25% naval experience gain.",
+   "fid": "wif_vic_successor_darlan",
+   "id": "vic044",
+   "mx": [
+    "vic042",
+    "vic043"
+   ],
+   "name": "Darlan Succeeds",
+   "pre": [
+    "vic041"
+   ],
+   "x": 13,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "The Marshal is dead. Long live the French State.\n\nEffect: +15% stability, +150 political power.",
+   "fid": "wif_vic_the_new_chief_of_state",
+   "id": "vic045",
+   "mx": [],
+   "name": "The New Chief of State",
+   "pre": [
+    "vic042",
+    "vic043",
+    "vic044"
+   ],
+   "x": 11,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "A letter from Himmler's office: Franche-Comté, Champagne and Picardy - the east of France - are German from today. Nobody in Berlin asked Vichy.\n\nAvailable once Germany has completed 'Requisition Territory from Our French Puppet'.\nEffect: -10% stability; +10% war support.",
+   "fid": "wif_vic_the_requisition",
+   "id": "vic046",
+   "mx": [],
+   "name": "The Requisition",
+   "pre": [],
+   "x": 21,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "The ambassador delivers a note. It is filed.\n\nEffect: +10% stability; -15 German opinion of us; +5% autonomy.",
+   "fid": "wif_vic_protest_in_berlin",
+   "id": "vic047",
+   "mx": [
+    "vic048"
+   ],
+   "name": "Protest in Berlin",
+   "pre": [
+    "vic046"
+   ],
+   "x": 19,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "France has lost provinces before, and got them back.\n\nEffect: +25 German opinion of us; -5% stability; +50 political power.",
+   "fid": "wif_vic_accept_the_new_border",
+   "id": "vic048",
+   "mx": [
+    "vic047"
+   ],
+   "name": "Accept the New Border",
+   "pre": [
+    "vic046"
+   ],
+   "x": 23,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The SS empties the requisitioned lands of anyone who will not be Germanised. They arrive at the new border with one suitcase each.\n\nEffect: +20000 manpower; -5% stability; +1 building slot in Paris (refugee housing).",
+   "fid": "wif_vic_expelled_from_the_east",
+   "id": "vic049",
+   "mx": [],
+   "name": "Expelled from the East",
+   "pre": [
+    "vic047",
+    "vic048"
+   ],
+   "x": 21,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Himmler has his Ordensstaat: Burgundy, a state run by the SS, on French soil and on France's frontier.\n\nAvailable only if the Ordensstaat Burgund exists.\nEffect: +15% war support; +2 fort levels in every state bordering Burgundy.",
+   "fid": "wif_vic_black_order_on_our_border",
+   "id": "vic050",
+   "mx": [],
+   "name": "A Black Order on Our Border",
+   "pre": [
+    "vic049"
+   ],
+   "x": 21,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Barbed wire and machine guns along a border that did not exist five years ago.\n\nEffect: +1 fort along every state bordering Burgundy; spirit 'The Burgundian Frontier' (+5% army defence).",
+   "fid": "wif_vic_close_the_frontier",
+   "id": "vic051",
+   "mx": [],
+   "name": "Close the Burgundian Frontier",
+   "pre": [
+    "vic050"
+   ],
+   "x": 19,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Not everyone the SS rules wants to be ruled by the SS. Those who can, cross over to us.\n\nEffect: +15000 manpower; +research bonus (engineers and scientists fleeing Burgundy).",
+   "fid": "wif_vic_burgundian_refugees",
+   "id": "vic052",
+   "mx": [],
+   "name": "The Burgundian Refugees",
+   "pre": [
+    "vic050"
+   ],
+   "x": 23,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "Franche-Comté, Champagne, Picardy, Alsace-Lorraine. One day.\n\nEffect: claims on every French state held by Burgundy; +10% war support.",
+   "fid": "wif_vic_claims_on_burgundy",
+   "id": "vic053",
+   "mx": [],
+   "name": "French Soil Is French",
+   "pre": [
+    "vic051",
+    "vic052"
+   ],
+   "x": 21,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Berlin is at war with itself. For the first time since 1940, nobody in Germany has time for France.\n\nAvailable once the German civil war has begun.\nEffect: +10% stability, +50 political power.",
+   "fid": "wif_vic_the_reich_burns",
+   "id": "vic054",
+   "mx": [],
+   "name": "The Reich Burns",
+   "pre": [],
+   "x": 27,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The armistice commission has gone home. The garrisons have marched east to fight each other. France governs itself again.\n\nEffect: we are no longer a German subject, but we stay in the Axis: we keep our faction membership.",
+   "fid": "wif_vic_sovereignty_restored",
+   "id": "vic055",
+   "mx": [],
+   "name": "Sovereignty Restored",
+   "pre": [
+    "vic054"
+   ],
+   "x": 27,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Leaving the alliance would be easy. Surviving without it would not. Without the Reich's remaining allies behind us, de Gaulle comes back - and he will not come alone.\n\nEffect: +25 opinion with every faction member; +10% war support. If the faction has broken up in the civil war, we join the faction of the strongest remaining German ally.",
+   "fid": "wif_vic_stay_in_the_axis",
+   "id": "vic056",
+   "mx": [],
+   "name": "The Axis Is Our Shield",
+   "pre": [
+    "vic055"
+   ],
+   "x": 25,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Brittany, Normandy and the Loire rise for Free France the moment the Germans leave. It was always going to happen.\n\nEffect: +20% war support; +3000 infantry equipment; +10% army attack for a year.",
+   "fid": "wif_vic_the_gaullist_rising",
+   "id": "vic057",
+   "mx": [],
+   "name": "The Gaullist Rising",
+   "pre": [
+    "vic055"
+   ],
+   "x": 29,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 105,
+   "desc": "No armistice limits, no German inspectors. The armée de l'armistice becomes the French Army again.\n\nEffect: spirit 'The Army Reborn' (+10% army organisation); +2 military factories; +2000 infantry equipment, +400 artillery.",
+   "fid": "wif_vic_the_army_reborn",
+   "id": "vic058",
+   "mx": [],
+   "name": "The Army Reborn",
+   "pre": [
+    "vic056",
+    "vic057"
+   ],
+   "x": 27,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The Gaullists hold the west. The French State holds everything else.\n\nEffect: war goal on Free France if it exists and we are not already at war; +10% army attack for a year.",
+   "fid": "wif_vic_crush_free_france",
+   "id": "vic059",
+   "mx": [],
+   "name": "Crush Free France",
+   "pre": [
+    "vic058"
+   ],
+   "x": 29,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 105,
+   "desc": "The SS state is fighting for its life against the Wehrmacht. Its western flank is open.\n\nAvailable only if the Ordensstaat Burgund exists and has NO nuclear weapons - nobody, the AI included, attacks an SS state that can burn Paris.\nEffect: war goal on Burgundy; claims on its French states.",
+   "fid": "wif_vic_reclaim_burgundy",
+   "id": "vic060",
+   "mx": [
+    "vic061"
+   ],
+   "name": "Reclaim Burgundy",
+   "pre": [
+    "vic058"
+   ],
+   "x": 25,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "The SS can keep its black castle in the east. France has bled enough, and the men in Dijon have nothing left to lose.\n\nAvailable only if the Ordensstaat Burgund exists.\nEffect: Burgundy and France will not go to war with each other (non-aggression); +10% stability; the claims on Burgundy are kept for another day.",
+   "fid": "wif_vic_leave_burgundy_be",
+   "id": "vic061",
+   "mx": [
+    "vic060"
+   ],
+   "name": "Leave Burgundy Be",
+   "pre": [
+    "vic058"
+   ],
+   "x": 27,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "France alone - Maurras' old slogan, now a fact. Ten years after the defeat, the French State stands on its own feet.\n\nEffect: +15% stability, +15% war support, +1 research slot.",
+   "fid": "wif_vic_la_france_seule",
+   "id": "vic062",
+   "mx": [],
+   "name": "La France Seule",
+   "pre": [
+    "vic059",
+    "vic060",
+    "vic061"
+   ],
+   "x": 27,
+   "y": 13
+  }
+ ],
+ "name": "Vichy France (WiF rework, draft)",
+ "tag": "VIC",
+ "target": 3650,
+ "treeId": "vichy_french_focus",
+ "updatedAt": 1794229051535
+}
