@@ -28,6 +28,12 @@ Also writes / patches:
     and its AI strategies.
   - wif_osb_satellite (wif_ger_himmler.txt) loads the tree.
   - on_monthly_OSB keeps Hatred of All Nations on every country, new ones too.
+  - the Landwehr (2026-11-09): militia from day one (wif_osb_militia_setup,
+    called by hand from wif_osb_setup) with an editable template; three focuses
+    under Every Man a Soldier grant hidden techs wif_osb_militia_1-3 (militia
+    equal to infantry after two, better after three); Himmler's trait
+    wif_osb_lord_of_the_landwehr (set by hand in wif_ger_himmler_to_osb) and an
+    AI strategy + AI template that make the AI favour militia.
 """
 import json, math, os, re
 
@@ -113,6 +119,10 @@ def forts(n, neighbour=None):
              f'\tadd_building_construction = {{ type = bunker level = {n} instant_build = yes province = {{ all_provinces = yes limit_to_border = yes }} }}', '}')
 
 
+def militia_tech(n):
+    return f'set_technology = {{ wif_osb_militia_{n} = 1 popup = no }}'
+
+
 def every_owned(body, lim=''):
     return j('every_owned_state = {', f'\tlimit = {{ {lim} }}' if lim else '', indent(body, 1), '}')
 
@@ -181,6 +191,12 @@ R = {
     'every_man_a_soldier': idea('wif_osb_every_man'),
     'the_panther_lines': j(mils(2, PICARDY), bonus('wif_osb_research', ['armor', 'cat_heavy_armor'], 0.5, 2)),
     'arsenal_of_the_order': idea('wif_osb_arsenal'),
+    # The Landwehr (below Every Man a Soldier): hidden techs on the militia
+    # battalion. Militia starts at 50 organisation against infantry's 60; the
+    # first two close the gap, the third puts it ahead.
+    'the_landwehr_of_the_order': militia_tech(1),
+    'junkerschule_cadres': militia_tech(2),
+    'fanatics_of_the_order': militia_tech(3),
     # The Racial Order
     'the_racial_register': j(stab(0.05), pop('democratic', -0.10)),
     'the_race_office': ws(0.05),
@@ -320,6 +336,8 @@ ICON = {
     'no_allies_no_masters': 'GFX_focus_JAP_isolate_oceania', 'pacts_of_silence': 'GFX_focus_IRQ_discuss_a_new_treaty',
     'hatred_of_all_nations': 'GFX_focus_generic_provoke_border_clashes', 'guns_outward': 'GFX_goal_fortify_the_westwall',
     'trust_no_treaty': 'GFX_focus_IRQ_discuss_a_new_treaty', 'the_order_alone': 'GFX_focus_GER_hegemony_of_the_ss',
+    'the_landwehr_of_the_order': 'GFX_focus_ETH_expand_the_levy', 'junkerschule_cadres': 'GFX_focus_AUS_properly_trained_militias',
+    'fanatics_of_the_order': 'GFX_focus_ITA_albanian_fascist_militia',
 }
 FILTER = {'political': 'FOCUS_FILTER_POLITICAL', 'military': 'FOCUS_FILTER_ARMY_XP', 'industry': 'FOCUS_FILTER_INDUSTRY',
           'economy': 'FOCUS_FILTER_INDUSTRY', 'diplomacy': 'FOCUS_FILTER_POLITICAL', 'project': 'FOCUS_FILTER_RESEARCH',
@@ -514,6 +532,36 @@ wif_osb_new_leader_council = {
 	}
 }
 ''')
+    write('common/scripted_effects/wif_osb_militia_effects.txt', HEADER + f'''# OSB scope, from wif_osb_setup (satellite and revolt alike). The Order can
+# raise militia from day one: the battalion, and a template it may edit and
+# train - the Waffen-SS templates are locked. Names from WIF_GER_SS_MIL, which
+# accepts militia (wif_GER_names_divisions.txt).
+wif_osb_militia_setup = {{
+	set_technology = {{ militia_tech = 1 popup = no }}
+	if = {{
+		limit = {{ NOT = {{ has_template = "{LANDWEHR}" }} }}
+		division_template = {{
+			name = "{LANDWEHR}"
+			division_names_group = WIF_GER_SS_MIL
+			override_model = GER_militia
+			regiments = {{
+				militia = {{ x = 0 y = 0 }}
+				militia = {{ x = 0 y = 1 }}
+				militia = {{ x = 0 y = 2 }}
+				militia = {{ x = 1 y = 0 }}
+				militia = {{ x = 1 y = 1 }}
+				militia = {{ x = 1 y = 2 }}
+				militia = {{ x = 2 y = 0 }}
+				militia = {{ x = 2 y = 1 }}
+				militia = {{ x = 2 y = 2 }}
+			}}
+			support = {{
+				engineer = {{ x = 0 y = 0 }}
+			}}
+		}}
+	}}
+}}
+''')
     write('common/on_actions/wif_osb_on_actions.txt', HEADER + '''on_actions = {
 	on_monthly_OSB = {
 		effect = {
@@ -536,6 +584,102 @@ wif_ceiling_exempt = {
 	}
 }
 ''')
+
+
+# ------------------------------------------------------------------ the Landwehr
+# Militia vs infantry (vanilla and UTTNH 3.0 alike): 50 vs 60 organisation, 80
+# vs 90 days' training, everything else equal. Doctrines and techs mostly buff
+# category_all_infantry, which militia shares. Each tier is a hidden tech (no
+# folder, allow = no), the only way to put stats on one battalion type.
+MILITIA_TECHS = [   # (name, desc, militia stat block)
+    ('The Landwehr of the Order', 'Village companies under SS sergeants.', {'max_organisation': 5}),
+    ('Junkerschule Cadres', 'The Landwehr drilled to the standard of the line.', {'max_organisation': 5}),
+    ('Fanatics of the Order', 'The Landwehr does not surrender.',
+     {'max_organisation': 3, 'soft_attack': 0.05, 'defense': 0.05}),
+]
+HIMMLER_TRAIT = 'wif_osb_lord_of_the_landwehr'
+LANDWEHR = 'Landwehr des Ordens'
+
+
+def gen_militia():
+    o = [HEADER.rstrip('\n'), '# Hidden: no folder, never researchable. Granted by the Landwehr focuses.', 'technologies = {']
+    for i, (_, _, stats) in enumerate(MILITIA_TECHS, 1):
+        o += [f'\twif_osb_militia_{i} = {{', '\t\tallow = { always = no }', '\t\tresearch_cost = 1', '\t\tstart_year = 1936',
+              '\t\tmilitia = {'] + [f'\t\t\t{k} = {v}' for k, v in stats.items()] + ['\t\t}', '\t}']
+    write('common/technologies/wif_osb_militia.txt', '\n'.join(o + ['}', '']))
+
+    write('common/country_leader/wif_osb_traits.txt', HEADER + f'''leader_traits = {{
+	# Himmler as Grand Master of the Ordensstaat (wif_ger_himmler_to_osb).
+	# Also switches on wif_osb_prefers_militia, the AI's militia preference.
+	{HIMMLER_TRAIT} = {{
+		random = no
+		sprite = 13
+
+		conscription = 0.02
+		training_time_army_factor = -0.10
+	}}
+}}
+''')
+
+    write('common/ai_strategy/wif_osb_militia.txt', HEADER + f'''# The Ordensstaat AI builds mostly Landwehr (militia) divisions while Himmler,
+# Lord of the Landwehr, rules - and keeps doing so once Fanatics of the Order
+# has made militia better than infantry.
+wif_osb_prefers_militia = {{
+	allowed = {{ original_tag = OSB }}
+	enable = {{
+		OR = {{
+			has_country_leader_with_trait = {HIMMLER_TRAIT}
+			has_completed_focus = wif_osb_fanatics_of_the_order
+		}}
+	}}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {{
+		type = role_ratio
+		id = militias
+		value = 60
+	}}
+	ai_strategy = {{
+		type = role_ratio
+		id = infantry
+		value = 10
+	}}
+}}
+''')
+
+    write('common/ai_templates/wif_osb_militia.txt', HEADER + '''# Gives the Ordensstaat AI a militia role to design and upgrade towards
+# (vanilla only has one for PRC, SWI, ITA and INS).
+militia_OSB = {
+	available_for = { OSB }
+	role = militias
+
+	upgrade_prio = {
+		factor = 3
+	}
+
+	landwehr_OSB = {
+		upgrade_prio = {
+			factor = 2
+		}
+		target_template = {
+			support = {
+				engineer = 1
+				artillery = 1
+				recon = 1
+			}
+			regiments = {
+				militia = 9
+			}
+		}
+	}
+}
+''')
+    loc = []
+    for i, (name, desc, _) in enumerate(MILITIA_TECHS, 1):
+        loc += [f' wif_osb_militia_{i}:0 "{esc(name)}"', f' wif_osb_militia_{i}_desc:0 "{esc(desc)}"']
+    loc += [f' {HIMMLER_TRAIT}:0 "Lord of the Landwehr"',
+            f' {HIMMLER_TRAIT}_desc:0 "Himmler trusts a fanatic with a rifle over a conscript with a doctrine."']
+    return loc
 
 
 def patch_ceiling():
@@ -647,7 +791,8 @@ def main():
     patch_ceiling()
     splice_satellite()
     raid_loc = gen_raids()
-    gen_loc(m, raid_loc)
+    militia_loc = gen_militia()
+    gen_loc(m, raid_loc + militia_loc)
 
 
 if __name__ == '__main__':

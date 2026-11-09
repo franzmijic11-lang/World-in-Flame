@@ -322,7 +322,8 @@ wif_ger_himmler_to_osb = {
 			promote_leader = yes
 			country_leader = {
 				ideology = nazism
-				traits = { }
+				# common/country_leader/wif_osb_traits.txt; also makes the AI favour militia
+				traits = { wif_osb_lord_of_the_landwehr }
 			}
 		}
 	}
@@ -365,6 +366,8 @@ wif_osb_setup = {
 		every_owned_state = { add_core_of = OSB }
 
 		wif_inherit_tech_from_donor = yes
+		# militia and an editable Landwehr template (tools/gen_osb_tree.py)
+		wif_osb_militia_setup = yes
 
 		add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = OSB }
 		add_equipment_to_stockpile = { type = artillery_equipment amount = 300 producer = OSB }

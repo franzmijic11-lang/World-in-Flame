@@ -1923,6 +1923,57 @@
    ],
    "x": 42,
    "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Every village of the Order raises its own company: farmers and clerks with a rifle, an armband and an SS sergeant. Himmler trusts a fanatic more than a conscript.\n\nEffect: militia battalions +5 organisation.",
+   "fid": "wif_osb_the_landwehr_of_the_order",
+   "id": "osb112",
+   "mx": [],
+   "name": "The Landwehr of the Order",
+   "pre": [
+    "osb050"
+   ],
+   "x": 14,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "Officers from the SS Junkerschulen take over the Landwehr companies and drill them to the standard of the line.\n\nEffect: militia battalions +5 organisation (now equal to regular infantry).",
+   "fid": "wif_osb_junkerschule_cadres",
+   "id": "osb113",
+   "mx": [],
+   "name": "Junkerschule Cadres",
+   "pre": [
+    "osb112"
+   ],
+   "x": 14,
+   "y": 11
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "The Landwehr man fights for his own village, his own farm and his own Grand Master. He does not surrender, because he knows what the Order does to those who do.\n\nEffect: militia battalions +3 organisation, +5% soft attack, +5% defence (now better than regular infantry).",
+   "fid": "wif_osb_fanatics_of_the_order",
+   "id": "osb114",
+   "mx": [],
+   "name": "Fanatics of the Order",
+   "pre": [
+    "osb113"
+   ],
+   "x": 14,
+   "y": 12
   }
  ],
  "name": "Ordensstaat Burgund (satellite, draft)",
