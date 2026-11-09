@@ -1,0 +1,1157 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "China is beaten, America has been driven from Asia and the colonial empires are gone. The world now calls us by our own name. What remains is to rule what we have won.\n\nEffect: +10% stability, +100 political power.",
+   "fid": "wif_hin_imperial_century",
+   "id": "hin000",
+   "mx": [],
+   "name": "The Imperial Century",
+   "pre": [],
+   "x": 13,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Lantern parades on the Ginza, the Emperor on the white horse at the Nijubashi, and a nation told that the long war was worth every son it cost.\n\nEffect: +10% war support, +5% stability.",
+   "fid": "wif_hin_victory_celebrations",
+   "id": "hin001",
+   "mx": [],
+   "name": "Victory Celebrations in Tokyo",
+   "pre": [
+    "hin000"
+   ],
+   "x": 3,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Wang Jingwei's successors, Basubisi from Singapore, Akamori from Calcutta and the Hawaiian regents are summoned to Tokyo, to sit in a hall built for the purpose and agree with everything.\n\nEffect: +50 political power; every subject +25 opinion of us.",
+   "fid": "wif_hin_greater_east_asia_assembly",
+   "id": "hin002",
+   "mx": [],
+   "name": "The Greater East Asia Assembly",
+   "pre": [
+    "hin001"
+   ],
+   "x": 3,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Nanjing's Reorganised Government was allowed its own flag and its own ministers while the war lasted. The war is over.\n\nEffect: RNG autonomy -25%; Japanese advisers placed in RNG's cabinet (RNG -10% stability, +10% political power gain for us).",
+   "fid": "wif_hin_tighten_imperial_association",
+   "id": "hin003",
+   "mx": [],
+   "name": "Tighten the Imperial Association",
+   "pre": [
+    "hin002"
+   ],
+   "x": 2,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Each protectorate gets a Japanese 'adviser' for every minister it has. The advisers sign the orders.\n\nEffect: GEA, IFS and HAW autonomy -25%.",
+   "fid": "wif_hin_advisers_every_ministry",
+   "id": "hin004",
+   "mx": [],
+   "name": "Japanese Advisers in Every Ministry",
+   "pre": [
+    "hin002"
+   ],
+   "x": 4,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Emperor speaks, and Asia is told it is one family with one father.\n\nEffect: +15% stability, spirit 'Hakkō Ichiu' (+10% political power, -10% subject autonomy gain).",
+   "fid": "wif_hin_rescript_asian_unity",
+   "id": "hin005",
+   "mx": [],
+   "name": "Imperial Rescript on Asian Unity",
+   "pre": [
+    "hin003",
+    "hin004"
+   ],
+   "x": 3,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Millions of men have been abroad for a decade. Send them home to the farms and the factories.\n\nEffect: +20% factory output from returning labour (timed, 2 years), -10% division recruitment; garrison duty falls to the subjects.",
+   "fid": "wif_hin_bring_the_armies_home",
+   "id": "hin006",
+   "mx": [
+    "hin007"
+   ],
+   "name": "Bring the Armies Home",
+   "pre": [
+    "hin005"
+   ],
+   "x": 2,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "An empire that is not garrisoned is only a map. The Kwantung Army and the Southern Army stay where they are.\n\nEffect: +15% suppression, +10% army organisation, -5% stability.",
+   "fid": "wif_hin_the_army_stays",
+   "id": "hin007",
+   "mx": [
+    "hin006"
+   ],
+   "name": "The Army Stays",
+   "pre": [
+    "hin005"
+   ],
+   "x": 4,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Foreign ministries receive a note: the Empire's name is Nihon, and correspondence using any other will be returned unopened.\n\nEffect: +100 political power, +10 opinion from our subjects, -10 opinion from every other major.",
+   "fid": "wif_hin_nihon_not_japan",
+   "id": "hin008",
+   "mx": [],
+   "name": "Nihon, Not Japan",
+   "pre": [
+    "hin006",
+    "hin007"
+   ],
+   "x": 3,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The military police answer to Tokyo alone, in Nanjing as in Batavia.\n\nEffect: -20% resistance growth and -10% resistance target in occupied states; every subject -5% stability.",
+   "fid": "wif_hin_kenpeitai_over_asia",
+   "id": "hin009",
+   "mx": [],
+   "name": "The Kenpeitai Over Asia",
+   "pre": [
+    "hin008"
+   ],
+   "x": 2,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "What was done in Korea and Taiwan is done everywhere: Japanese names, Japanese schools, a shrine in every town.\n\nEffect: +15% compliance growth; every subject -10% stability; cores on every Korean state and Taiwan we own.",
+   "fid": "wif_hin_kominka_movement",
+   "id": "hin010",
+   "mx": [],
+   "name": "Kōminka Across the Sphere",
+   "pre": [
+    "hin008"
+   ],
+   "x": 4,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "Twenty years of Shōwa. The Empire that began the era as one nation among many ends it as the master of half the world's people.\n\nEffect: +15% stability, +15% war support, +200 political power.",
+   "fid": "wif_hin_emperors_second_decade",
+   "id": "hin011",
+   "mx": [],
+   "name": "The Emperor's Second Decade",
+   "pre": [
+    "hin009",
+    "hin010"
+   ],
+   "x": 3,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Ten thousand kilometres of ocean, a thousand islands, and on most of them a flag that was raised less than a decade ago.\n\nEffect: +1 naval base level in every Pacific island state we own.",
+   "fid": "wif_hin_island_empire",
+   "id": "hin012",
+   "mx": [],
+   "name": "The Island Empire",
+   "pre": [
+    "hin000"
+   ],
+   "x": 8,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The League mandate that gave us the Carolines, the Marshalls and Palau ended with the League. They are Japanese soil now.\n\nEffect: core on the Caroline Islands, the Marshall Islands and Palau.",
+   "fid": "wif_hin_south_seas_sovereign",
+   "id": "hin013",
+   "mx": [],
+   "name": "The South Seas Made Sovereign",
+   "pre": [
+    "hin012"
+   ],
+   "x": 7,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Commonwealth was an American invention. There is no need for a Philippine government when there is a Governor-General.\n\nEffect: core on every owned Philippine state.",
+   "fid": "wif_hin_philippines_direct_rule",
+   "id": "hin014",
+   "mx": [],
+   "name": "Direct Rule in Manila",
+   "pre": [
+    "hin012"
+   ],
+   "x": 9,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Guam is renamed for the Great Shrine. Wake becomes Ōtori-shima. The American names are struck from the charts.\n\nEffect: core on Guam and Wake Island if owned.",
+   "fid": "wif_hin_omiya_jima",
+   "id": "hin015",
+   "mx": [],
+   "name": "Ōmiya-jima",
+   "pre": [
+    "hin013"
+   ],
+   "x": 7,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Midway, Johnston, the Line and Phoenix Islands, Samoa: specks on the map that guard the approaches to Hawaii.\n\nEffect: core on every owned former American island east of Wake; +1 air base in Midway.",
+   "fid": "wif_hin_the_eastern_atolls",
+   "id": "hin016",
+   "mx": [],
+   "name": "The Eastern Atolls",
+   "pre": [
+    "hin014"
+   ],
+   "x": 9,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Okinawan fishermen, Hokkaido farmers and the unemployed of Osaka are offered land on islands whose owners are not consulted.\n\nEffect: +1 infrastructure and +1 building slot in every cored Pacific island state.",
+   "fid": "wif_hin_settlers_for_the_south_seas",
+   "id": "hin017",
+   "mx": [],
+   "name": "Settlers for the South Seas",
+   "pre": [
+    "hin015",
+    "hin016"
+   ],
+   "x": 8,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Fiji, New Caledonia, Tahiti, the Gilberts: what the French and British left behind.\n\nEffect: core on Fiji, New Caledonia, Vanuatu, Tahiti, the Gilbert and Ellice Islands if owned.",
+   "fid": "wif_hin_the_southern_islands",
+   "id": "hin018",
+   "mx": [],
+   "name": "The Southern Islands",
+   "pre": [
+    "hin017"
+   ],
+   "x": 7,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Every atoll a fortress, every lagoon an anchorage. If the Americans ever come back, they will come back through a wall.\n\nEffect: +2 coastal forts and +1 naval base in Truk, Saipan, Guam and Midway; +10% navy max range.",
+   "fid": "wif_hin_pacific_bastions",
+   "id": "hin019",
+   "mx": [],
+   "name": "Bastions of the Pacific",
+   "pre": [
+    "hin017"
+   ],
+   "x": 9,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "From the Kurils to Fiji, from Manila to Midway, there is no harbour that does not fly the Rising Sun.\n\nEffect: spirit 'Lords of the Pacific' (+10% naval supply, +10% convoy efficiency, -20% naval invasion penalty); +3000 navy experience.",
+   "fid": "wif_hin_japanese_lake",
+   "id": "hin020",
+   "mx": [],
+   "name": "The Pacific Is a Japanese Lake",
+   "pre": [
+    "hin018",
+    "hin019"
+   ],
+   "x": 8,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "For a century the coast of China belonged to whoever had a gunboat. We had the last gunboat. The concessions, the settlements and the leased territories are abolished, and the cities with them are ours.\n\nEffect: +50 political power; unlocks the coastal city focuses.",
+   "fid": "wif_hin_treaty_ports_reclaimed",
+   "id": "hin021",
+   "mx": [],
+   "name": "The Treaty Ports Reclaimed",
+   "pre": [
+    "hin000"
+   ],
+   "x": 13,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The International Settlement is gone, the French Concession is gone, and the Bund flies one flag.\n\nRequires owning Shanghai.\nEffect: core on Shanghai; +1 civilian factory there.",
+   "fid": "wif_hin_shanghai",
+   "id": "hin022",
+   "mx": [],
+   "name": "Shanghai, Pearl of the Orient",
+   "pre": [
+    "hin021"
+   ],
+   "x": 11,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "We took it from the Germans in 1914 and were made to give it back in 1922. Nobody will make us give it back again.\n\nRequires owning Qingdao.\nEffect: core on Qingdao; +1 naval base there.",
+   "fid": "wif_hin_tsingtao",
+   "id": "hin023",
+   "mx": [],
+   "name": "Tsingtao Returns",
+   "pre": [
+    "hin021"
+   ],
+   "x": 13,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The British built a harbour, a bank and a racecourse here. We keep the harbour.\n\nRequires owning Hong Kong.\nEffect: core on Hong Kong; +1 dockyard there.",
+   "fid": "wif_hin_hong_kong",
+   "id": "hin024",
+   "mx": [],
+   "name": "Hong Kong, Crown of the South",
+   "pre": [
+    "hin021"
+   ],
+   "x": 15,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "When Germany fell on Portugal, Macau fell to us without a shot. The casinos stayed open.\n\nRequires owning Macau. Leads to nothing and blocks nothing: Macau is never guaranteed to be ours.\nEffect: core on Macau; +50 political power.",
+   "fid": "wif_hin_macau",
+   "id": "hin025",
+   "mx": [],
+   "name": "Macau",
+   "pre": [
+    "hin021"
+   ],
+   "x": 17,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "A leased territory since 1905. The lease is over: Dairen is simply Japan.\n\nEffect: core on Dalian.",
+   "fid": "wif_hin_dairen",
+   "id": "hin026",
+   "mx": [],
+   "name": "Dairen, Gate of Manchuria",
+   "pre": [
+    "hin022"
+   ],
+   "x": 11,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Nine foreign concessions in one city. There is one now.\n\nRequires owning Hebei.\nEffect: core on Hebei (Tientsin); +1 civilian factory there.",
+   "fid": "wif_hin_tientsin",
+   "id": "hin027",
+   "mx": [],
+   "name": "The Tientsin Concessions Abolished",
+   "pre": [
+    "hin023"
+   ],
+   "x": 13,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The great southern port, the door to the Pearl River and to everything Hong Kong once traded.\n\nRequires owning Guangzhou.\nEffect: core on Guangzhou.",
+   "fid": "wif_hin_canton",
+   "id": "hin028",
+   "mx": [],
+   "name": "Canton Under the Rising Sun",
+   "pre": [
+    "hin024"
+   ],
+   "x": 15,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The French leased territory, if it has come to us.\n\nRequires owning Guangzhouwan. Leads to nothing and blocks nothing.\nEffect: core on Guangzhouwan.",
+   "fid": "wif_hin_guangzhouwan",
+   "id": "hin029",
+   "mx": [],
+   "name": "Kōshūwan",
+   "pre": [
+    "hin021"
+   ],
+   "x": 18,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The treaty cities are run like Osaka or Yokohama: a mayor appointed by the Home Ministry and a police chief who answers to him.\n\nEffect: +10% compliance growth and -20% resistance growth in every coastal city that is our core.",
+   "fid": "wif_hin_city_governors",
+   "id": "hin030",
+   "mx": [],
+   "name": "City Governors from Tokyo",
+   "pre": [
+    "hin026",
+    "hin027",
+    "hin028"
+   ],
+   "x": 13,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Shanghai, Tsingtao and Hong Kong become the clearing houses of the Sphere. Everything the south produces passes through them, and pays us on the way.\n\nEffect: spirit 'Free Ports of the Empire' (+10% trade opinion, -10% consumer goods, +10% civilian factory construction speed); +1 civilian factory in Shanghai, Qingdao and Hong Kong.",
+   "fid": "wif_hin_free_ports",
+   "id": "hin031",
+   "mx": [],
+   "name": "The Free Ports of the Empire",
+   "pre": [
+    "hin030"
+   ],
+   "x": 13,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The war was fought for oil, rubber and ore. Now we collect.\n\nEffect: +50 political power; every subject -5% autonomy.",
+   "fid": "wif_hin_sphere_must_pay",
+   "id": "hin032",
+   "mx": [],
+   "name": "The Sphere Must Pay",
+   "pre": [
+    "hin000"
+   ],
+   "x": 23,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Palembang, Balikpapan, Tarakan. Every barrel goes north.\n\nEffect: we take the resource rights to all oil in South East Asia's (GEA) states.",
+   "fid": "wif_hin_oil_of_the_indies",
+   "id": "hin033",
+   "mx": [],
+   "name": "Oil of the Indies",
+   "pre": [
+    "hin032"
+   ],
+   "x": 21,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Tonkin's rice feeds Japan's factories. That Tonkin itself goes hungry is not our affair.\n\nEffect: -5% consumer goods for us; GEA -10% stability (famine spirit).",
+   "fid": "wif_hin_rice_of_indochina",
+   "id": "hin034",
+   "mx": [],
+   "name": "The Rice of Indochina",
+   "pre": [
+    "hin032"
+   ],
+   "x": 23,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Shanxi's coal and Hubei's iron are worked by Japanese companies and Chinese hands.\n\nEffect: we take the resource rights to all steel in the Reorganised Government's (RNG) states.",
+   "fid": "wif_hin_chinese_coal_and_iron",
+   "id": "hin035",
+   "mx": [],
+   "name": "Chinese Coal and Iron",
+   "pre": [
+    "hin032"
+   ],
+   "x": 25,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The plantations the British built are run by the men who used to work them, at gunpoint.\n\nEffect: we take the resource rights to all rubber in GEA's states.",
+   "fid": "wif_hin_rubber_of_malaya",
+   "id": "hin036",
+   "mx": [],
+   "name": "Rubber of Malaya",
+   "pre": [
+    "hin033"
+   ],
+   "x": 21,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Labourers are conscripted across the Sphere by the hundred thousand, for the railways, the mines and the airfields. Many of them never go home.\n\nEffect: +15% construction speed; GEA, IFS and RNG -10% stability and -5% manpower.",
+   "fid": "wif_hin_romusha",
+   "id": "hin037",
+   "mx": [],
+   "name": "The Rōmusha Labour Draft",
+   "pre": [
+    "hin034"
+   ],
+   "x": 23,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "China mines more tungsten than the rest of the world together, and now all of it is ours.\n\nEffect: we take the resource rights to all tungsten and chromium in RNG's states.",
+   "fid": "wif_hin_wolfram_of_jiangxi",
+   "id": "hin038",
+   "mx": [],
+   "name": "The Wolfram of Jiangxi",
+   "pre": [
+    "hin035"
+   ],
+   "x": 25,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Mitsui, Mitsubishi and Sumitomo are given the factories of the Sphere to run as their own.\n\nEffect: +3 offsite military factories for us, paid for by our subjects.",
+   "fid": "wif_hin_zaibatsu_concessions",
+   "id": "hin039",
+   "mx": [],
+   "name": "Zaibatsu Concessions",
+   "pre": [
+    "hin036",
+    "hin037"
+   ],
+   "x": 22,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "The Indian Free State is free to sell to one buyer, at one price.\n\nEffect: we take the resource rights to all aluminium and steel in the Indian Free State (IFS); +2 offsite civilian factories.",
+   "fid": "wif_hin_bengal_and_burma",
+   "id": "hin040",
+   "mx": [],
+   "name": "Bengal Jute and Burmese Teak",
+   "pre": [
+    "hin037",
+    "hin038"
+   ],
+   "x": 24,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "Every subject pays a contribution to the cost of the war that freed it.\n\nEffect: +50 political power; +2 offsite civilian factories; every subject gets 'Tribute to Tokyo' (+10% consumer goods).",
+   "fid": "wif_hin_tribute_to_the_treasury",
+   "id": "hin041",
+   "mx": [],
+   "name": "Tribute to the Imperial Treasury",
+   "pre": [
+    "hin039",
+    "hin040"
+   ],
+   "x": 23,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Machine tools from Shanghai, turbines from Batavia, presses from Calcutta: crated, loaded and unpacked in Nagoya.\n\nEffect: +4 military factories in the home islands; RNG and GEA each lose 2 factories.",
+   "fid": "wif_hin_dismantle_and_ship_home",
+   "id": "hin042",
+   "mx": [
+    "hin043"
+   ],
+   "name": "Dismantle and Ship Home",
+   "pre": [
+    "hin041"
+   ],
+   "x": 22,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Labour is cheap in the Sphere and expensive at home. Build the factories where the workers are, and own them.\n\nEffect: +6 offsite military factories for us, built in our subjects' states.",
+   "fid": "wif_hin_build_where_the_labour_is",
+   "id": "hin043",
+   "mx": [
+    "hin042"
+   ],
+   "name": "Build Where the Labour Is",
+   "pre": [
+    "hin041"
+   ],
+   "x": 24,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Half of Asia works so that Japan can arm. That was always the meaning of co-prosperity.\n\nEffect: spirit 'Arsenal of the Sphere' (+10% factory output, +10% production efficiency cap); +1 research slot.",
+   "fid": "wif_hin_arsenal_of_the_sphere",
+   "id": "hin044",
+   "mx": [],
+   "name": "The Arsenal of the Sphere",
+   "pre": [
+    "hin042",
+    "hin043"
+   ],
+   "x": 23,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "That is its name on paper. Its staff call it Unit 731. At Pingfang, outside Harbin, Lieutenant General Ishii Shirō's doctors infected prisoners with plague, anthrax and cholera to see how they died.\n\nEffect: spirit 'Unit 731' (-5% stability); research bonus for field hospitals and land doctrine (50%).",
+   "fid": "wif_hin_epidemic_prevention_dept",
+   "id": "hin045",
+   "mx": [],
+   "name": "The Epidemic Prevention and Water Purification Department",
+   "pre": [
+    "hin000"
+   ],
+   "x": 29,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "New barracks, new incinerators, a private airfield and a railway spur. The prisoners are delivered by the Kenpeitai and never leave.\n\nEffect: research bonus for field hospitals and support companies (75%).",
+   "fid": "wif_hin_pingfang_expanded",
+   "id": "hin046",
+   "mx": [],
+   "name": "Pingfang Expanded",
+   "pre": [
+    "hin045"
+   ],
+   "x": 29,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A branch in the old capital, in a hospital the Nationalists left behind. The Ei Unit studies poisons and venoms on its prisoners.\n\nEffect: research bonus for field hospitals (100%); RNG -5% stability.",
+   "fid": "wif_hin_unit_1644",
+   "id": "hin047",
+   "mx": [],
+   "name": "Unit 1644 in Nanjing",
+   "pre": [
+    "hin046"
+   ],
+   "x": 28,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Southern branch. Its speciality is starvation and contaminated water, and the refugee camps of the Pearl River supply its subjects.\n\nEffect: research bonus for field hospitals and infantry equipment (50%).",
+   "fid": "wif_hin_unit_8604",
+   "id": "hin048",
+   "mx": [],
+   "name": "Unit 8604 in Canton",
+   "pre": [
+    "hin046"
+   ],
+   "x": 30,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "The staff call the prisoners maruta: logs. Chinese, Russians, Koreans, Mongolians. Men, women and children. Thousands of them pass through the gates and none come out; frostbite, pressure and vivisection experiments are written up as science.\n\nEffect: two research bonuses (50%) for industry, electronics, infantry equipment or support companies.",
+   "fid": "wif_hin_maruta",
+   "id": "hin049",
+   "mx": [],
+   "name": "The Maruta",
+   "pre": [
+    "hin047"
+   ],
+   "x": 28,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A branch in the south, breeding plague fleas by the kilogram at the old Raffles medical college.\n\nRequires Singapore owned by us or GEA.\nEffect: research bonus for field hospitals and support companies (75%); GEA -5% stability.",
+   "fid": "wif_hin_unit_9420",
+   "id": "hin050",
+   "mx": [],
+   "name": "Unit 9420 in Singapore",
+   "pre": [
+    "hin048"
+   ],
+   "x": 30,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Plague fleas dropped on Ningbo and Changde in 1940 and 1941 killed thousands. The method works. It can be done again, wherever the resistance is strongest.\n\nEffect: +10% war support; decision 'Field Trial' unlocked, targeting a state we control with resistance above 25: resistance -50, compliance -20, every other major -25 opinion of us.",
+   "fid": "wif_hin_field_trials",
+   "id": "hin051",
+   "mx": [],
+   "name": "Field Trials",
+   "pre": [
+    "hin049",
+    "hin050"
+   ],
+   "x": 29,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "The Americans would pay for this data. Better that nobody ever knows it exists. Pingfang is dynamited, the last prisoners are killed, and the files go to a vault in Tokyo.\n\nEffect: Unit 731's secret spirit removed; +10% stability; keeps the research already gained.",
+   "fid": "wif_hin_bury_the_records",
+   "id": "hin052",
+   "mx": [
+    "hin053"
+   ],
+   "name": "Bury the Records",
+   "pre": [
+    "hin051"
+   ],
+   "x": 28,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "General Ishii is given a free hand and a budget the Diet never sees. A branch in every occupied capital.\n\nEffect: research bonus for field hospitals and support companies (100%, 2 uses); -10% stability; every subject -10% stability.",
+   "fid": "wif_hin_ishii_unbound",
+   "id": "hin053",
+   "mx": [
+    "hin052"
+   ],
+   "name": "Ishii's Network Unbound",
+   "pre": [
+    "hin051"
+   ],
+   "x": 30,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "project",
+   "days": 105,
+   "desc": "Whatever is decided about the unit, what it learned is now part of the Empire's medicine and its arsenal.\n\nEffect: +1 research slot; spirit 'Secret Medicine' (+10% research speed, -5% stability). Unless the records were buried, every other major -15 opinion of us (the Pingfang revelations).",
+   "fid": "wif_hin_pingfang_legacy",
+   "id": "hin054",
+   "mx": [],
+   "name": "The Pingfang Legacy",
+   "pre": [
+    "hin052",
+    "hin053"
+   ],
+   "x": 29,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "The figures from our attaches in Washington, Berlin and Moscow arrived on the same morning, and nobody at the Imperial Headquarters believed them until the third reading. Another great power holds more than fifty atomic bombs. We hold none. The hegemon of Asia is defenceless against a single aircraft.\n\nAvailable only once another major power has more than 50 nuclear bombs: an event, 'We Are Falling Behind', fires the first time that is true and unlocks the branch.\nEffect: -5% stability, +10% war support; research bonus for nuclear technology (100%).",
+   "fid": "wif_hin_atomic_gap",
+   "id": "hin055",
+   "mx": [],
+   "name": "The Atomic Gap",
+   "pre": [
+    "hin000"
+   ],
+   "x": 33,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "The Army's atomic project, shelved when the war was won. Dr Nishina's cyclotron at RIKEN is dusted off and his team called back from the universities.\n\nEffect: research bonus for nuclear technology (100%, 2 uses).",
+   "fid": "wif_hin_revive_ni_go",
+   "id": "hin056",
+   "mx": [],
+   "name": "Revive the Ni-Go Project",
+   "pre": [
+    "hin055"
+   ],
+   "x": 32,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "The Navy had its own bomb programme under Professor Arakatsu in Kyoto, and never told the Army how far it got.\n\nEffect: research bonus for nuclear technology (100%); +5% research speed for a year.",
+   "fid": "wif_hin_revive_f_go",
+   "id": "hin057",
+   "mx": [],
+   "name": "Revive the F-Go Project",
+   "pre": [
+    "hin055"
+   ],
+   "x": 34,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "For once the Army and the Navy are ordered to share: one laboratory, one budget, one bomb. The Emperor's own instruction ends the argument.\n\nEffect: completes the Nuclear Reactor special project; +50 political power.",
+   "fid": "wif_hin_one_programme",
+   "id": "hin058",
+   "mx": [],
+   "name": "One Programme, Not Two",
+   "pre": [
+    "hin056",
+    "hin057"
+   ],
+   "x": 33,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The ore was always there, in the hills behind Hungnam. Korean miners dig it out under the eyes of the Kenpeitai.\n\nEffect: spirit 'Korean Uranium' (+10% special project speed); -5 compliance in every Korean state we own.",
+   "fid": "wif_hin_korean_uranium",
+   "id": "hin059",
+   "mx": [],
+   "name": "Korean Uranium",
+   "pre": [
+    "hin058"
+   ],
+   "x": 32,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "Arakatsu's centrifuge design, built at last by Tokyo Shibaura and running day and night.\n\nEffect: research bonus for nuclear technology (200%, 1 use).",
+   "fid": "wif_hin_kyoto_centrifuges",
+   "id": "hin060",
+   "mx": [],
+   "name": "The Kyoto Centrifuges",
+   "pre": [
+    "hin058"
+   ],
+   "x": 34,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Japan's atomic city rises at Konan in Korea, where the Noguchi chemical works already stand and the power of the Yalu dams is close at hand.\n\nEffect: +1 nuclear reactor and +2 military factories in Hamgyong.",
+   "fid": "wif_hin_konan_complex",
+   "id": "hin061",
+   "mx": [],
+   "name": "The Konan Complex",
+   "pre": [
+    "hin059",
+    "hin060"
+   ],
+   "x": 33,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "On an atoll in the Marshalls, the first Japanese atomic bomb is detonated. The cable to Tokyo reads only: 'The sun has risen twice.'\n\nEffect: completes the Nuclear Bomb special project; +5 nuclear bombs; news event to the whole world.",
+   "fid": "wif_hin_fire_of_the_rising_sun",
+   "id": "hin062",
+   "mx": [],
+   "name": "Fire of the Rising Sun",
+   "pre": [
+    "hin061"
+   ],
+   "x": 33,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "One bomb is a demonstration. Fifty are a policy.\n\nEffect: +15 nuclear bombs; spirit 'Atomic Production' (faster nuclear bomb production).",
+   "fid": "wif_hin_bombs_on_the_line",
+   "id": "hin063",
+   "mx": [],
+   "name": "Bombs on the Assembly Line",
+   "pre": [
+    "hin062"
+   ],
+   "x": 32,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Nanjing, Singapore, Calcutta and Honolulu are told they sleep under Japan's bomb now.\n\nEffect: every subject +25 opinion of us and -10% autonomy; +10 opinion of us from every major.",
+   "fid": "wif_hin_umbrella_of_the_sphere",
+   "id": "hin064",
+   "mx": [],
+   "name": "The Umbrella of the Sphere",
+   "pre": [
+    "hin062"
+   ],
+   "x": 34,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "We have caught up. Nobody can strike the Empire without seeing their own cities burn.\n\nEffect: +25 nuclear bombs; +10% stability; completes the Thermonuclear Bomb special project.",
+   "fid": "wif_hin_atomic_parity",
+   "id": "hin065",
+   "mx": [],
+   "name": "Atomic Parity",
+   "pre": [
+    "hin063",
+    "hin064"
+   ],
+   "x": 33,
+   "y": 8
+  }
+ ],
+ "name": "Hinode no Teikoku - post-victory Japan",
+ "tag": "JAP",
+ "target": 3285,
+ "treeId": "wif_jap_hinode_focus",
+ "updatedAt": 1794224003990
+}

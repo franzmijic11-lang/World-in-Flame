@@ -143,6 +143,10 @@ country_event = {
 #                       right now, without the focus or its conditions
 #   event wif_debug.18   Japan's dictated peace in China right now, without
 #                       China's surrender
+#   event wif_debug.19   Japan becomes Hinode no Teikoku now (New Asian
+#                       Hegemon's effect, without the focus or its conditions)
+#   event wif_debug.20   Japan takes Hong Kong and Guangzhouwan now (what both
+#                       peace deals do), for a game that made peace before it
 # ---------------------------------------------------------------------------
 
 country_event = {
@@ -249,6 +253,32 @@ country_event = {
 		if = {
 			limit = { country_exists = JAP }
 			JAP = { wif_jap_china_peace = yes }
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.19
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { country_exists = JAP }
+			JAP = { wif_jap_new_asian_hegemon = yes }
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.20
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { country_exists = JAP }
+			JAP = { country_event = { id = wif_jap_china_peace.9 } }
 		}
 	}
 }

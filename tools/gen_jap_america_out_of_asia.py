@@ -318,6 +318,9 @@ wif_jap_aooa_peace = {{
 		}}
 		transfer_state_to = GEA
 	}}
+	# Hong Kong and Guangzhouwan go to Japan whoever owns them
+	# (tools/gen_jap_china_peace.py; does nothing if Japan already has them)
+	wif_jap_take_treaty_ports = yes
 	if = {{
 		limit = {{ has_event_target = wif_aooa_christmas_owner }}
 		event_target:wif_aooa_christmas_owner = {{ country_event = {{ id = wif_jap_aooa.2 days = 1 }} }}
@@ -385,9 +388,8 @@ wif_jap_aooa_peace = {{
 		clr_country_flag = wif_aooa_enemy_anzac
 	}}
 
-	every_country = {{
-		news_event = {{ id = wif_jap_aooa.1 days = 1 }}
-	}}
+	# Sent once: major = yes already shows it to every country.
+	news_event = {{ id = wif_jap_aooa.1 days = 1 }}
 }}
 
 ''' + '\n'.join(setup_country(n) for n in NEW)
@@ -652,7 +654,7 @@ def gen_loc():
         'wif_jap_aooa_tt_burma': 'If their owners are at war with us: we or our puppets control all of §YBurma§! and §YBihar§!',
         'wif_jap_aooa_tt_malaya': 'If their owners are at war with us: we or our puppets control all of §YMalaya§!, §YSingapore§!, §YBrunei§! and British Borneo',
         'wif_jap_aooa_tt_indonesia': 'If their owners are at war with us: we or our puppets control all of the §YEast Indies§!',
-        'wif_jap_aooa_peace_tt': 'Every war between our side and our enemies ends in a §Ydictated peace§!. Land we occupy that is not named below is §Rhanded back§!.\\nOnly from countries at war with us:\\n - §YJapan§! annexes the Philippines and every American Pacific island west of the Pitcairn Islands, and our other enemies\' Pacific islands (not Australia\'s or New Zealand\'s).\\n - §YHawaii§! becomes an Imperial Protectorate.\\n - French Indochina, the East Indies, Malaya, Singapore, Brunei, Timor, the Bismarck Archipelago, Australian Papua and the Solomon Islands become the §YGreater East Asian Prosperous Nation of South East Asia§!, an Imperial Protectorate.\\n - Burma, East and West Bengal, Bihar, Assam, Manipur, Sikkim and Arunachal Pradesh become the §YIndian Free State§!, an Imperial Protectorate.\\n§YChristmas Island§! goes to South East Asia in any case.\\nThe §YUnited States§! must accept the loss of its Pacific empire.',
+        'wif_jap_aooa_peace_tt': 'Every war between our side and our enemies ends in a §Ydictated peace§!. Land we occupy that is not named below is §Rhanded back§!.\\nOnly from countries at war with us:\\n - §YJapan§! annexes the Philippines and every American Pacific island west of the Pitcairn Islands, and our other enemies\' Pacific islands (not Australia\'s or New Zealand\'s).\\n - §YHawaii§! becomes an Imperial Protectorate.\\n - French Indochina, the East Indies, Malaya, Singapore, Brunei, Timor, the Bismarck Archipelago, Australian Papua and the Solomon Islands become the §YGreater East Asian Prosperous Nation of South East Asia§!, an Imperial Protectorate.\\n - Burma, East and West Bengal, Bihar, Assam, Manipur, Sikkim and Arunachal Pradesh become the §YIndian Free State§!, an Imperial Protectorate.\\n§YChristmas Island§! goes to South East Asia in any case, and §YHong Kong§! and §YGuangzhouwan§! become Japanese whoever owns them.\\nThe §YUnited States§! must accept the loss of its Pacific empire.',
         'wif_jap_loss_in_the_east': 'Loss in the East',
         'wif_jap_loss_in_the_east_desc': 'The Pacific fleet is gone, the Philippines are gone, and the flag has come down over islands Americans had learned to think of as their own. The army that has to rebuild from this does not trust its plans, its officers or the sea.',
         'wif_jap_aooa_christmas_seized': 'Seized Christmas Island',

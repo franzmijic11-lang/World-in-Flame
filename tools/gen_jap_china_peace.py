@@ -66,6 +66,8 @@ WARLORDS = {
     'SIK': [617, 287, 618, 619, 759, 760, 1042],
 }
 ANNEXED_TAGS = ['SND', 'HBC']
+# The European colonies in China: always Japan's after either peace deal.
+TREATY_PORTS = {326: 'Hong Kong', 728: 'Guangzhouwan'}
 
 assert not set(TO_JAP) & set(TO_RNG)
 
@@ -219,6 +221,8 @@ wif_jap_china_peace = {{
 		clr_state_flag = wif_jcp_to_JAP
 		transfer_state_to = JAP
 	}}
+	#    Hong Kong and Guangzhouwan, whoever owns them and whatever they did
+	wif_jap_take_treaty_ports = yes
 '''
     for tag in ANNEXED_TAGS:
         t += f'''	if = {{
@@ -304,10 +308,40 @@ wif_jap_china_peace = {{
 		clr_country_flag = wif_jcp_chinese
 	}
 
-	every_country = {
-		news_event = { id = wif_jap_china_peace.1 days = 1 }
-	}
+	# Sent once: major = yes already shows it to every country. Sending it to
+	# every_country made each player see it once per country in the game.
+	news_event = { id = wif_jap_china_peace.1 days = 1 }
 }
+'''
+    t += f'''
+# JAP scope. The European colonies in China - {names(TREATY_PORTS)} - go to
+# Japan whoever owns them and whether or not they were at war with Japan.
+# Called by both Japanese peace deals (this one and America out of Asia);
+# does nothing for a port Japan or a subject of Japan already owns. Owners
+# at peace with Japan choose a response (wif_jap_china_peace.2). Macau is
+# not here: Japan only gets it if Germany goes to war with Portugal
+# (tools/gen_jap_hinode.py).
+wif_jap_take_treaty_ports = {{
+	every_state = {{
+		limit = {{
+			{ors(TREATY_PORTS)}
+			NOT = {{ is_owned_by = JAP }}
+			OWNER = {{ NOT = {{ is_subject_of = JAP }} }}
+		}}
+		OWNER = {{
+			if = {{
+				limit = {{ NOT = {{ has_war_with = JAP }} }}
+				set_country_flag = wif_jtp_lost_port
+			}}
+		}}
+		transfer_state_to = JAP
+	}}
+	every_country = {{
+		limit = {{ has_country_flag = wif_jtp_lost_port }}
+		clr_country_flag = wif_jtp_lost_port
+		country_event = {{ id = wif_jap_china_peace.2 days = 1 }}
+	}}
+}}
 '''
     write('common/scripted_effects/wif_jap_china_peace_effects.txt', t)
 
@@ -355,16 +389,91 @@ news_event = {
 		}
 	}
 }
+
+# A European power at peace with Japan has lost Hong Kong or Guangzhouwan
+# to it (wif_jap_take_treaty_ports).
+country_event = {
+	id = wif_jap_china_peace.2
+	title = wif_jap_china_peace.2.t
+	desc = wif_jap_china_peace.2.d
+	picture = GFX_report_event_japanese_officers
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_jap_china_peace.2.a
+		ai_chance = { base = 50 }
+	}
+	option = {
+		name = wif_jap_china_peace.2.b
+		ai_chance = { base = 35 }
+		add_opinion_modifier = { target = JAP modifier = wif_jap_treaty_port_seized }
+		JAP = { add_opinion_modifier = { target = ROOT modifier = wif_jap_treaty_port_seized } }
+	}
+	option = {
+		name = wif_jap_china_peace.2.c
+		ai_chance = { base = 15 }
+		send_embargo = JAP
+	}
+}
+
+# Console test (event wif_debug.20): Japan takes Hong Kong and Guangzhouwan now.
+country_event = {
+	id = wif_jap_china_peace.9
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		JAP = { wif_jap_take_treaty_ports = yes }
+	}
+}
 ''')
+    write('common/opinion_modifiers/wif_jap_china_peace_opinion_modifiers.txt', HEADER + '''opinion_modifiers = {
+	# Japan took Hong Kong or Guangzhouwan in its peace and the owner protested.
+	wif_jap_treaty_port_seized = {
+		value = -30
+	}
+}
+''')
+    splice_debug()
     L = {
         'wif_jap_china_peace.1.t': 'Japan Dictates Peace in China',
         'wif_jap_china_peace.1.d': 'With the surrender of its government, China\'s war with Japan is over, and there was no conference to end it. Tokyo has annexed the Chinese coast from Hebei to Hainan, Nanjing among it, along with all of Guangdong and Guangxi. The heartland of the interior, from Henan and Shanxi to Sichuan and Yunnan, passes to Wang Jingwei\'s Reorganized National Government as an Imperial Associate of Japan. Whatever Chinese governments are left have laid down their arms against all comers, and the United Front is no more.',
         'wif_jap_china_peace.1.a': 'The China Incident is closed.',
         'wif_jap_china_peace.1.b': 'We will not forget this humiliation.',
         'wif_jap_china_peace.1.c': 'Asia has a new master.',
+        'wif_jap_treaty_port_seized': 'Seized a Treaty Port',
+        'wif_jap_china_peace.2.t': 'Japan Takes Our Chinese Colony',
+        'wif_jap_china_peace.2.d': 'Japan\'s peace has redrawn the coast of China, and our colony there is part of it. Japanese troops crossed the border without a shot fired, and the governor was given an hour to haul down the flag. Tokyo calls the old treaties an insult to Asia that it has now put right. We were not at war with Japan, and nobody asked us.',
+        'wif_jap_china_peace.2.a': 'We cannot hold it from here.',
+        'wif_jap_china_peace.2.b': 'Lodge a formal protest.',
+        'wif_jap_china_peace.2.c': 'Embargo Japan.',
     }
     write('localisation/english/wif_jap_china_peace_l_english.yml',
           'l_english:\n' + ''.join(f' {k}:0 "{v}"\n' for k, v in L.items()), bom=True, crlf=False)
+
+
+def splice_debug():
+    """Console handle wif_debug.20 in events/wif_sme_war.txt (where .11-.19 live)."""
+    path = os.path.join(MOD, 'events', 'wif_sme_war.txt')
+    raw = open(path, 'rb').read()
+    bom = raw.startswith(b'\xef\xbb\xbf')
+    text = raw.decode('utf-8-sig')
+    nl = '\r\n' if '\r\n' in text else '\n'
+    if 'wif_debug.20' in text:
+        return
+    note = ('#                       Hegemon\'s effect, without the focus or its conditions)' + nl)
+    assert note in text, 'wif_debug.19 note missing - run tools/gen_jap_hinode.py first'
+    text = text.replace(note, note + '#   event wif_debug.20   Japan takes Hong Kong and Guangzhouwan now (what both' + nl +
+                        '#                       peace deals do), for a game that made peace before it' + nl)
+    block = (nl + 'country_event = {' + nl + '\tid = wif_debug.20' + nl + '\thidden = yes' + nl +
+             '\tis_triggered_only = yes' + nl + nl + '\timmediate = {' + nl + '\t\tif = {' + nl +
+             '\t\t\tlimit = { country_exists = JAP }' + nl +
+             '\t\t\tJAP = { country_event = { id = wif_jap_china_peace.9 } }' + nl +
+             '\t\t}' + nl + '\t}' + nl + '}' + nl)
+    text = text.rstrip('\r\n') + nl + block
+    open(path, 'wb').write((b'\xef\xbb\xbf' if bom else b'') + text.encode('utf-8'))
+    print('spliced wif_debug.20 into events/wif_sme_war.txt')
 
 
 def main():

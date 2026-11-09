@@ -28,3 +28,41 @@ news_event = {
 		}
 	}
 }
+
+# A European power at peace with Japan has lost Hong Kong or Guangzhouwan
+# to it (wif_jap_take_treaty_ports).
+country_event = {
+	id = wif_jap_china_peace.2
+	title = wif_jap_china_peace.2.t
+	desc = wif_jap_china_peace.2.d
+	picture = GFX_report_event_japanese_officers
+
+	is_triggered_only = yes
+
+	option = {
+		name = wif_jap_china_peace.2.a
+		ai_chance = { base = 50 }
+	}
+	option = {
+		name = wif_jap_china_peace.2.b
+		ai_chance = { base = 35 }
+		add_opinion_modifier = { target = JAP modifier = wif_jap_treaty_port_seized }
+		JAP = { add_opinion_modifier = { target = ROOT modifier = wif_jap_treaty_port_seized } }
+	}
+	option = {
+		name = wif_jap_china_peace.2.c
+		ai_chance = { base = 15 }
+		send_embargo = JAP
+	}
+}
+
+# Console test (event wif_debug.20): Japan takes Hong Kong and Guangzhouwan now.
+country_event = {
+	id = wif_jap_china_peace.9
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		JAP = { wif_jap_take_treaty_ports = yes }
+	}
+}

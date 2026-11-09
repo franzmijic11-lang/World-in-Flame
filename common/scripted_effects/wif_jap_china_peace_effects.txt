@@ -102,6 +102,8 @@ wif_jap_china_peace = {
 		clr_state_flag = wif_jcp_to_JAP
 		transfer_state_to = JAP
 	}
+	#    Hong Kong and Guangzhouwan, whoever owns them and whatever they did
+	wif_jap_take_treaty_ports = yes
 	if = {
 		limit = { country_exists = SND }
 		JAP = { annex_country = { target = SND transfer_troops = no } }
@@ -274,7 +276,36 @@ wif_jap_china_peace = {
 		clr_country_flag = wif_jcp_chinese
 	}
 
+	# Sent once: major = yes already shows it to every country. Sending it to
+	# every_country made each player see it once per country in the game.
+	news_event = { id = wif_jap_china_peace.1 days = 1 }
+}
+
+# JAP scope. The European colonies in China - Hong Kong, Guangzhouwan - go to
+# Japan whoever owns them and whether or not they were at war with Japan.
+# Called by both Japanese peace deals (this one and America out of Asia);
+# does nothing for a port Japan or a subject of Japan already owns. Owners
+# at peace with Japan choose a response (wif_jap_china_peace.2). Macau is
+# not here: Japan only gets it if Germany goes to war with Portugal
+# (tools/gen_jap_hinode.py).
+wif_jap_take_treaty_ports = {
+	every_state = {
+		limit = {
+			OR = { state = 326 state = 728 }
+			NOT = { is_owned_by = JAP }
+			OWNER = { NOT = { is_subject_of = JAP } }
+		}
+		OWNER = {
+			if = {
+				limit = { NOT = { has_war_with = JAP } }
+				set_country_flag = wif_jtp_lost_port
+			}
+		}
+		transfer_state_to = JAP
+	}
 	every_country = {
-		news_event = { id = wif_jap_china_peace.1 days = 1 }
+		limit = { has_country_flag = wif_jtp_lost_port }
+		clr_country_flag = wif_jtp_lost_port
+		country_event = { id = wif_jap_china_peace.2 days = 1 }
 	}
 }

@@ -1923,3 +1923,9 @@ AST_monarchy = {
 	color = rgb { 218 165 32 }
 	color_ui = rgb { 218 165 32 }
 }
+
+# WiF: Japan after New Asian Hegemon (tools/gen_jap_hinode.py), #ae2d20.
+JAP_hinode = {
+	color = rgb { 174 45 32 }
+	color_ui = rgb { 214 72 58 }
+}
