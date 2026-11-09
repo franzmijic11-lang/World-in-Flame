@@ -1,0 +1,738 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The war is over and Britain lost it. Mosley governs from Downing Street, a Reichsprotektor watches him from the German embassy, and what is left of the country has to be held together.\n\nStarting spirits (negative): A Defeated Nation, The Scottish Insurgency.\nEffect: +5% stability, +50 political power.",
+   "fid": "wif_eng_the_reichsprotektorat",
+   "id": "eng000",
+   "mx": [],
+   "name": "The Reichsprotektorat",
+   "pre": [],
+   "x": 17,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The civil service stays at its desks. Its masters change. Every ministry gets a BUF commissar.\n\nEffect: +10% political power gain; -5% democratic popularity.",
+   "fid": "wif_eng_blackshirts_in_whitehall",
+   "id": "eng001",
+   "mx": [],
+   "name": "Blackshirts in Whitehall",
+   "pre": [
+    "eng000"
+   ],
+   "x": 3,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Regulation 18B was written to lock up fascists. It works just as well the other way round.\n\nEffect: +10% stability; -10% democratic popularity.",
+   "fid": "wif_eng_defence_regulations",
+   "id": "eng002",
+   "mx": [],
+   "name": "The Defence Regulations",
+   "pre": [
+    "eng001"
+   ],
+   "x": 3,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "A million and a half men with rifles under their beds. The rifles are collected; most of them.\n\nEffect: +3000 infantry equipment; A Defeated Nation is eased.",
+   "fid": "wif_eng_disarm_the_home_guard",
+   "id": "eng003",
+   "mx": [],
+   "name": "Disarm the Home Guard",
+   "pre": [
+    "eng002"
+   ],
+   "x": 1,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Every man, woman and child in England and Wales, with an address and an identity card.\n\nEffect: spirit 'The Register' (+10% stability); +5000 manpower.",
+   "fid": "wif_eng_the_national_register",
+   "id": "eng004",
+   "mx": [],
+   "name": "The National Register",
+   "pre": [
+    "eng002"
+   ],
+   "x": 5,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Churchill left behind cells of saboteurs in hides under the woods of Kent and Somerset. They have to be found before they find a reason to act.\n\nEffect: A Defeated Nation is eased; +10% stability.",
+   "fid": "wif_eng_hunt_the_auxiliary_units",
+   "id": "eng005",
+   "mx": [],
+   "name": "Hunt the Auxiliary Units",
+   "pre": [
+    "eng003",
+    "eng004"
+   ],
+   "x": 3,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Hostages, curfews, the camps on the Isle of Man reopened. Fear keeps England quiet.\n\nEffect: +15% stability, -10% war support; +10% fascism popularity.",
+   "fid": "wif_eng_the_iron_hand",
+   "id": "eng006",
+   "mx": [
+    "eng007"
+   ],
+   "name": "The Iron Hand",
+   "pre": [
+    "eng005"
+   ],
+   "x": 1,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "End bread rationing, reopen the football league, put the BBC to work. A fed and entertained England is a quiet England.\n\nEffect: +10% stability, +10% war support; spirit 'Bread and Circuses' (+5% stability, +5% consumer goods).",
+   "fid": "wif_eng_bread_and_circuses",
+   "id": "eng007",
+   "mx": [
+    "eng006"
+   ],
+   "name": "Bread and Circuses",
+   "pre": [
+    "eng005"
+   ],
+   "x": 5,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "No shots in the night, no leaflets in the post. England is quiet. Whether it is content is another question.\n\nEffect: A Defeated Nation is removed; +10% stability.",
+   "fid": "wif_eng_a_quiet_england",
+   "id": "eng008",
+   "mx": [],
+   "name": "A Quiet England",
+   "pre": [
+    "eng006",
+    "eng007"
+   ],
+   "x": 3,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Wales was left to Britain by the peace, but Wales was never asked. The valleys are restless and the Free Welsh look to Edinburgh.\n\nEffect: cores on Wales; -5% stability.",
+   "fid": "wif_eng_the_welsh_question",
+   "id": "eng009",
+   "mx": [],
+   "name": "The Welsh Question",
+   "pre": [
+    "eng004"
+   ],
+   "x": 7,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Germany's man in London has an office in Carlton House Terrace and a direct line to Berlin. Better to have him on our side.\n\nEffect: +25 German opinion of us; +50 political power.",
+   "fid": "wif_eng_the_reichsprotektor",
+   "id": "eng010",
+   "mx": [],
+   "name": "The Reichsprotektor",
+   "pre": [
+    "eng000"
+   ],
+   "x": 11,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Volunteers in German uniform with a Union Jack on the sleeve, sent wherever Berlin needs them.\n\nEffect: +25 German opinion of us; +25 army experience; -5% stability.",
+   "fid": "wif_eng_the_british_free_corps",
+   "id": "eng011",
+   "mx": [],
+   "name": "The British Free Corps",
+   "pre": [
+    "eng010"
+   ],
+   "x": 9,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "What is left of the Bank of England's gold is 'deposited' in the Reichsbank.\n\nEffect: +5% autonomy; -1 civilian factory's worth of output (offsite to Germany).",
+   "fid": "wif_eng_gold_to_berlin",
+   "id": "eng012",
+   "mx": [],
+   "name": "Gold to Berlin",
+   "pre": [
+    "eng010"
+   ],
+   "x": 11,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Liverpool dockers and Midlands machinists, recruited for German factories at German wages.\n\nEffect: Germany gets +2 offsite military factories; -5000 manpower; +25 German opinion of us.",
+   "fid": "wif_eng_workers_for_the_reich",
+   "id": "eng013",
+   "mx": [],
+   "name": "Workers for the Reich",
+   "pre": [
+    "eng010"
+   ],
+   "x": 13,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "Britain trades with Europe now, on Europe's terms, in Reichsmarks.\n\nEffect: +3 civilian factories; +10% trade opinion.",
+   "fid": "wif_eng_the_continental_market",
+   "id": "eng014",
+   "mx": [],
+   "name": "The Continental Market",
+   "pre": [
+    "eng011",
+    "eng012",
+    "eng013"
+   ],
+   "x": 11,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Loyal service earns a longer leash. Mosley asks Berlin for more say in British affairs, and Berlin listens - a little.\n\nEffect: +15% autonomy; +10% political power gain.",
+   "fid": "wif_eng_a_junior_partner",
+   "id": "eng015",
+   "mx": [],
+   "name": "A Junior Partner",
+   "pre": [
+    "eng014"
+   ],
+   "x": 11,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Canada took the dominions and the East. What remains is West Africa and the Sudan - and the habit of ruling.\n\nEffect: +5% stability; +10% defence in Africa.",
+   "fid": "wif_eng_what_remains_of_the_empire",
+   "id": "eng016",
+   "mx": [],
+   "name": "What Remains of the Empire",
+   "pre": [
+    "eng000"
+   ],
+   "x": 17,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Nigeria and the Gold Coast: twenty million people, the cocoa crop and the tin mines.\n\nEffect: +1 fort and +1000 infantry equipment in Nigeria and the Gold Coast; +10000 manpower.",
+   "fid": "wif_eng_lagos_and_accra",
+   "id": "eng017",
+   "mx": [],
+   "name": "Lagos and Accra",
+   "pre": [
+    "eng016"
+   ],
+   "x": 15,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Sudan borders Italy's Ethiopia and Germany's Egypt. The Defence Force is all that stands on the Nile.\n\nEffect: +1 fort in the Sudan; +500 infantry equipment.",
+   "fid": "wif_eng_the_sudan_defence_force",
+   "id": "eng018",
+   "mx": [],
+   "name": "The Sudan Defence Force",
+   "pre": [
+    "eng016"
+   ],
+   "x": 17,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The best harbour in West Africa, and the only one still flying the White Ensign.\n\nEffect: +1 naval base and +2 coastal forts in Sierra Leone.",
+   "fid": "wif_eng_freetown_station",
+   "id": "eng019",
+   "mx": [],
+   "name": "Freetown Naval Station",
+   "pre": [
+    "eng016"
+   ],
+   "x": 19,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "District officers who stayed on, governing as if nothing had happened, because for them almost nothing has.\n\nEffect: +10% resource output; +5% stability.",
+   "fid": "wif_eng_the_colonial_service",
+   "id": "eng020",
+   "mx": [],
+   "name": "The Colonial Service",
+   "pre": [
+    "eng017",
+    "eng018"
+   ],
+   "x": 16,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Royal West African Frontier Force and the King's African Rifles, now the backbone of the British Army.\n\nEffect: +15000 manpower; +10% army organisation.",
+   "fid": "wif_eng_african_regiments",
+   "id": "eng021",
+   "mx": [],
+   "name": "The African Regiments",
+   "pre": [
+    "eng018",
+    "eng019"
+   ],
+   "x": 18,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "A small empire, but an empire. Berlin lets Britain keep it because nobody else wants the trouble.\n\nEffect: spirit 'The Imperial Remnant' (+10% stability, +5% recruitable population).",
+   "fid": "wif_eng_the_imperial_remnant",
+   "id": "eng022",
+   "mx": [],
+   "name": "The Imperial Remnant",
+   "pre": [
+    "eng020",
+    "eng021"
+   ],
+   "x": 17,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "The battleships were handed over at Scapa Flow or scuttled in Plymouth Sound. What is left fits in Portsmouth harbour.\n\nEffect: +25 navy experience; +1 dockyard.",
+   "fid": "wif_eng_the_fleet_that_was",
+   "id": "eng023",
+   "mx": [],
+   "name": "The Fleet That Was",
+   "pre": [
+    "eng000"
+   ],
+   "x": 23,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "Every keel laid needs a signature from Wilhelmshaven. Raeder's staff are surprisingly willing - Britain is to guard the Channel for the Reich now.\n\nEffect: +25 German opinion of us; unlocks the shipyards.",
+   "fid": "wif_eng_kriegsmarine_permission",
+   "id": "eng024",
+   "mx": [],
+   "name": "Permission from the Kriegsmarine",
+   "pre": [
+    "eng023"
+   ],
+   "x": 21,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 105,
+   "desc": "Harland and Wolff is gone with Ulster. Vickers at Barrow, Cammell Laird at Birkenhead and Swan Hunter on the Tyne are still English.\n\nEffect: +3 dockyards.",
+   "fid": "wif_eng_reopen_the_yards",
+   "id": "eng025",
+   "mx": [],
+   "name": "Reopen the Yards",
+   "pre": [
+    "eng023"
+   ],
+   "x": 25,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Destroyers and flying boats to keep the Channel and the Irish Sea clear - of Americans and of Scottish gunrunners.\n\nEffect: +10% convoy escort efficiency; +10% naval detection.",
+   "fid": "wif_eng_coastal_command",
+   "id": "eng026",
+   "mx": [],
+   "name": "Coastal Command",
+   "pre": [
+    "eng024"
+   ],
+   "x": 21,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 105,
+   "desc": "Four cruisers, Britain's first new capital ships since the war.\n\nEffect: +20% naval production speed for 2 years; +1 dockyard.",
+   "fid": "wif_eng_a_cruiser_squadron",
+   "id": "eng027",
+   "mx": [],
+   "name": "A Cruiser Squadron",
+   "pre": [
+    "eng025"
+   ],
+   "x": 25,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 105,
+   "desc": "Not the Grand Fleet. Not even the Home Fleet of 1939. But a fleet, under the White Ensign, in British waters.\n\nEffect: spirit 'The Home Fleet' (+10% naval organisation, +10% naval speed); +1 naval base in Portsmouth.",
+   "fid": "wif_eng_the_home_fleet_reborn",
+   "id": "eng028",
+   "mx": [],
+   "name": "The Home Fleet Reborn",
+   "pre": [
+    "eng026",
+    "eng027"
+   ],
+   "x": 23,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Free Scotland swears it has nothing to do with it. Nevertheless the bombs on the Newcastle railway were made in Glasgow, and the men who planted them went home over the Cheviots.\n\nEffect: -5% stability; The Scottish Insurgency is revealed (it grows by itself until dealt with).",
+   "fid": "wif_eng_raiders_from_the_north",
+   "id": "eng029",
+   "mx": [],
+   "name": "Raiders from the North",
+   "pre": [
+    "eng000"
+   ],
+   "x": 29,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "Hadrian had the right idea.\n\nEffect: +2 forts in Northumberland and Cumbria; The Scottish Insurgency is eased.",
+   "fid": "wif_eng_fortify_the_border",
+   "id": "eng030",
+   "mx": [],
+   "name": "Fortify the Border",
+   "pre": [
+    "eng029"
+   ],
+   "x": 27,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Informers in every Tyneside pub, detectives on every train out of Carlisle.\n\nEffect: The Scottish Insurgency is eased; +5% stability.",
+   "fid": "wif_eng_special_branch_north",
+   "id": "eng031",
+   "mx": [],
+   "name": "Special Branch in the North",
+   "pre": [
+    "eng029"
+   ],
+   "x": 31,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "A gendarmerie for the north, recruited from men who know the hills.\n\nEffect: +2000 infantry equipment; +10% defence in Northumberland and Cumbria.",
+   "fid": "wif_eng_the_border_constabulary",
+   "id": "eng032",
+   "mx": [],
+   "name": "The Border Constabulary",
+   "pre": [
+    "eng030",
+    "eng031"
+   ],
+   "x": 29,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 70,
+   "desc": "If Edinburgh will not stop them, London will. One raid across the border, to burn the camps and come back.\n\nAvailable only if Scotland has no nuclear weapons and is not in a faction with a major.\nEffect: a war goal on Scotland (limited: the border states); +10% war support; -10% stability.",
+   "fid": "wif_eng_punitive_raid",
+   "id": "eng033",
+   "mx": [
+    "eng034"
+   ],
+   "name": "A Punitive Raid",
+   "pre": [
+    "eng032"
+   ],
+   "x": 27,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Wire, watchtowers and a closed frontier. Let the Scots keep their freedom on their side of it.\n\nEffect: +1 fort in every state bordering Scotland; The Scottish Insurgency is eased twice; +5% stability.",
+   "fid": "wif_eng_seal_the_border",
+   "id": "eng034",
+   "mx": [
+    "eng033"
+   ],
+   "name": "Seal the Border",
+   "pre": [
+    "eng032"
+   ],
+   "x": 31,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "The trains run to Edinburgh again, with soldiers on them.\n\nEffect: The Scottish Insurgency is removed; +10% stability.",
+   "fid": "wif_eng_the_north_is_quiet",
+   "id": "eng035",
+   "mx": [],
+   "name": "The North Is Quiet",
+   "pre": [
+    "eng033",
+    "eng034"
+   ],
+   "x": 29,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Berlin is at war with itself. The Reichsprotektor has stopped answering the telephone.\n\nAvailable once the German civil war has begun.\nEffect: -10% stability; +100 political power.",
+   "fid": "wif_eng_the_reich_divided",
+   "id": "eng036",
+   "mx": [],
+   "name": "The Reich Divided",
+   "pre": [],
+   "x": 12,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Tanks at Westminster, curfew from eight. The government must look stronger than it is.\n\nEffect: +15% stability for a year; -10% war support.",
+   "fid": "wif_eng_martial_law",
+   "id": "eng037",
+   "mx": [],
+   "name": "Martial Law",
+   "pre": [
+    "eng036"
+   ],
+   "x": 10,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 70,
+   "desc": "German grain shipments have stopped. Britain must feed itself or starve.\n\nEffect: +10% stability; -5% factory output for a year.",
+   "fid": "wif_eng_emergency_rationing",
+   "id": "eng038",
+   "mx": [],
+   "name": "Emergency Rationing",
+   "pre": [
+    "eng036"
+   ],
+   "x": 14,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The Americans are talking to British officers. MI5 is listening to the Americans.\n\nEffect: makes an American-sponsored coup less likely; +5% stability.",
+   "fid": "wif_eng_watch_the_generals",
+   "id": "eng039",
+   "mx": [],
+   "name": "Watch the Generals",
+   "pre": [
+    "eng037"
+   ],
+   "x": 10,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "Mosley brings in men from outside the BUF - civil servants, generals, even a few old Tories - to show the country it is still governed.\n\nEffect: +10% stability, +10% war support; +10% democratic popularity.",
+   "fid": "wif_eng_a_government_of_national_safety",
+   "id": "eng040",
+   "mx": [],
+   "name": "A Government of National Safety",
+   "pre": [
+    "eng038"
+   ],
+   "x": 14,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 105,
+   "desc": "The Reich may fall. England has stood alone before.\n\nEffect: +15% stability, +15% war support; +25% autonomy (if still a subject).",
+   "fid": "wif_eng_britain_endures",
+   "id": "eng041",
+   "mx": [],
+   "name": "Britain Endures",
+   "pre": [
+    "eng039",
+    "eng040"
+   ],
+   "x": 12,
+   "y": 10
+  }
+ ],
+ "name": "Reichsprotektorat Großbritannien (draft)",
+ "tag": "ENG",
+ "target": 2400,
+ "treeId": "wif_eng_protektorat_focus",
+ "updatedAt": 1794230378850
+}

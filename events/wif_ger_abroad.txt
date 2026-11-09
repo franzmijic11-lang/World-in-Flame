@@ -39,7 +39,14 @@ country_event = {
 
 	option = {
 		name = wif_ger_abroad.2.a
-		ai_chance = { base = 90 }
+		ai_chance = {
+			base = 90
+			# Watch the Generals (tools/gen_eng_protektorat_tree.py): 90% -> 30%
+			modifier = {
+				factor = 0.0476
+				ENG = { has_country_flag = wif_eng_watch_the_generals }
+			}
+		}
 		custom_effect_tooltip = wif_ger_abroad.2.a_tt
 		hidden_effect = {
 			wif_cw_british_coup = yes
