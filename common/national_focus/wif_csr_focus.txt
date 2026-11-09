@@ -424,7 +424,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_timed_idea = { idea = wif_csr_plans_east days = 365 }
+			add_timed_idea = { idea = wif_csr_plans_east_idea days = 365 }
 		}
 	}
 

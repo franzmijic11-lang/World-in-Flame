@@ -82,7 +82,7 @@ R = {
     'provisional_soviet': 'add_stability = 0.05\nadd_war_support = -0.05',
     'seal': 'add_political_power = 50',
     'feuds': 'add_stability = 0.05',
-    'strongman': 'add_ideas = wif_pws_strongman',
+    'strongman': 'add_ideas = wif_pws_strongman_idea',
     'elections': 'add_ideas = wif_pws_town_soviets',
     'constitution': 'add_stability = 0.05',
     'recognition': ('add_political_power = 50\nevery_neighbor_country = {\n'
@@ -97,7 +97,7 @@ R = {
     'trust_no_one': ('add_war_support = 0.05\nrandom_neighbor_country = {\n\tlimit = { wif_is_russian_warlord = yes }\n'
                      '\trandom_owned_controlled_state = {\n\t\tlimit = { any_neighbor_state = { is_owned_by = ROOT } }\n'
                      '\t\tadd_claim_by = ROOT\n\t}\n}'),
-    'trade': 'add_timed_idea = { idea = wif_pws_trade days = 365 }',
+    'trade': 'add_timed_idea = { idea = wif_pws_trade_idea days = 365 }',
     'fed': 'add_stability = 0.05',
     'cadre': 'army_experience = 25',
     'militia': 'add_manpower = 15000',
@@ -111,7 +111,7 @@ R = {
     'lorries': stock('motorized_equipment', 100),
     'border': 'add_ideas = wif_pws_border_posts',
     'standing': 'set_country_flag = wif_pws_standing_army\nwif_recalculate_battalion_cap = yes',
-    'inventory': 'add_tech_bonus = { name = wif_pws_inventory bonus = 0.5 uses = 1 category = industry }',
+    'inventory': 'add_tech_bonus = { name = wif_pws_inventory_bonus bonus = 0.5 uses = 1 category = industry }',
     'power': cap('add_building_construction = { type = infrastructure level = 1 instant_build = yes }'),
     'mines': cap('add_resource = { type = steel amount = 2 }'),
     'workshops': build('industrial_complex'),
@@ -166,9 +166,9 @@ FILTER = {'political': 'FOCUS_FILTER_POLITICAL', 'inner': 'FOCUS_FILTER_STABILIT
           'industry': 'FOCUS_FILTER_INDUSTRY', 'economy': 'FOCUS_FILTER_INDUSTRY'}
 
 IDEAS = {
-    'wif_pws_strongman': ('generic_secret_police', {'political_power_factor': 0.1, 'war_support_factor': 0.05}),
+    'wif_pws_strongman_idea': ('generic_secret_police', {'political_power_factor': 0.1, 'war_support_factor': 0.05}),
     'wif_pws_town_soviets': ('generic_democratic_drift_bonus', {'political_power_gain': 0.05, 'stability_factor': 0.05}),
-    'wif_pws_trade': ('generic_flexible_foreign_policy', {'trade_opinion_factor': 0.5}),
+    'wif_pws_trade_idea': ('generic_flexible_foreign_policy', {'trade_opinion_factor': 0.5}),
     'wif_pws_drill_manuals': ('generic_army_war_college', {'training_time_army_factor': -0.05}),
     'wif_pws_few_but_trained': ('generic_infantry_bonus', {'army_org_factor': 0.05, 'conscription_factor': -0.05}),
     'wif_pws_every_man_a_rifle': ('generic_manpower_bonus', {'conscription': 0.01, 'army_org_factor': -0.05}),
@@ -178,9 +178,9 @@ IDEAS = {
     'wif_pws_institute': ('generic_research_bonus', {'research_speed_factor': 0.03}),
 }
 IDEA_NAME = {
-    'wif_pws_strongman': ("The Strongman's Peace", 'One man decides, and the arguments end.'),
+    'wif_pws_strongman_idea': ("The Strongman's Peace", 'One man decides, and the arguments end.'),
     'wif_pws_town_soviets': ('Town Soviets', 'The towns choose their own councils - under supervision.'),
-    'wif_pws_trade': ('Trade Across the Lines', 'Grain for fuel, timber for rifles, with whoever is buying.'),
+    'wif_pws_trade_idea': ('Trade Across the Lines', 'Grain for fuel, timber for rifles, with whoever is buying.'),
     'wif_pws_drill_manuals': ('Old Army Drill Manuals', "The Red Army's regulations, reprinted on whatever paper there is."),
     'wif_pws_few_but_trained': ('Few but Trained', 'A small army that can fight, rather than a large one that cannot.'),
     'wif_pws_every_man_a_rifle': ('Every Man a Rifle', 'No professional army - only the whole people, armed.'),
@@ -377,7 +377,7 @@ def gen_loc(m):
     for k, (n, d) in IDEA_NAME.items():
         o.append(f' {k}:0 "{esc(n)}"')
         o.append(f' {k}_desc:0 "{esc(d)}"')
-    o.append(' wif_pws_inventory:0 "Inventory the Workshops"')
+    o.append(' wif_pws_inventory_bonus:0 "Inventory the Workshops"')
     write('localisation/english/wif_post_sme_l_english.yml', '\n'.join(o) + '\n', bom=True)
 
 

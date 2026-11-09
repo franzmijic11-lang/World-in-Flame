@@ -2,7 +2,7 @@
 
 ideas = {
 	country = {
-		wif_pws_strongman = {
+		wif_pws_strongman_idea = {
 			picture = generic_secret_police
 			allowed = { always = no }
 			removal_cost = -1
@@ -20,7 +20,7 @@ ideas = {
 				stability_factor = 0.05
 			}
 		}
-		wif_pws_trade = {
+		wif_pws_trade_idea = {
 			picture = generic_flexible_foreign_policy
 			allowed = { always = no }
 			removal_cost = -1

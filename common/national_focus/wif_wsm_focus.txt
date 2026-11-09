@@ -135,7 +135,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
-			add_ideas = wif_wsm_special_depts
+			add_ideas = wif_wsm_special_depts_idea
 		}
 	}
 
@@ -164,7 +164,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = wif_wsm_party_answers
+			add_ideas = wif_wsm_party_answers_idea
 		}
 	}
 
@@ -178,7 +178,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_ideas = wif_wsm_under_guard
+			add_ideas = wif_wsm_under_guard_idea
 		}
 	}
 
@@ -249,7 +249,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_ideas = wif_wsm_border_guards
+			add_ideas = wif_wsm_border_guards_idea
 		}
 	}
 
@@ -360,7 +360,7 @@ focus_tree = {
 		ai_will_do = { factor = 5 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = { name = wif_wsm_machines bonus = 0.5 uses = 2 category = industry }
+			add_tech_bonus = { name = wif_wsm_machines_bonus bonus = 0.5 uses = 2 category = industry }
 		}
 	}
 
@@ -459,7 +459,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = { name = wif_wsm_kyshtym bonus = 0.5 uses = 1 category = nuclear }
+			add_tech_bonus = { name = wif_wsm_kyshtym_bonus bonus = 0.5 uses = 1 category = nuclear }
 		}
 	}
 
@@ -572,7 +572,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_ideas = wif_wsm_prisoners_invent
+			add_ideas = wif_wsm_prisoners_invent_idea
 		}
 	}
 
@@ -633,7 +633,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = wif_wsm_curfew
+			add_ideas = wif_wsm_curfew_idea
 		}
 	}
 

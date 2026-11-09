@@ -44,8 +44,27 @@ wif_sme_strip_spirits = {
 	if = { limit = { has_idea = wif_pws_few_but_trained } remove_ideas = wif_pws_few_but_trained }
 	if = { limit = { has_idea = wif_pws_five_year_plan } remove_ideas = wif_pws_five_year_plan }
 	if = { limit = { has_idea = wif_pws_institute } remove_ideas = wif_pws_institute }
-	if = { limit = { has_idea = wif_pws_strongman } remove_ideas = wif_pws_strongman }
+	if = { limit = { has_idea = wif_pws_strongman_idea } remove_ideas = wif_pws_strongman_idea }
 	if = { limit = { has_idea = wif_pws_town_soviets } remove_ideas = wif_pws_town_soviets }
+	if = { limit = { has_idea = wif_sib_anarchists_1 } remove_ideas = wif_sib_anarchists_1 }
+	if = { limit = { has_idea = wif_sib_anarchists_3 } remove_ideas = wif_sib_anarchists_3 }
+	if = { limit = { has_idea = wif_sib_army_lost } remove_ideas = wif_sib_army_lost }
+	if = { limit = { has_idea = wif_sib_church_1 } remove_ideas = wif_sib_church_1 }
+	if = { limit = { has_idea = wif_sib_church_3 } remove_ideas = wif_sib_church_3 }
+	if = { limit = { has_idea = wif_sib_cut_off } remove_ideas = wif_sib_cut_off }
+	if = { limit = { has_idea = wif_sib_fear_1 } remove_ideas = wif_sib_fear_1 }
+	if = { limit = { has_idea = wif_sib_fear_3 } remove_ideas = wif_sib_fear_3 }
+	if = { limit = { has_idea = wif_sib_food_1 } remove_ideas = wif_sib_food_1 }
+	if = { limit = { has_idea = wif_sib_food_2 } remove_ideas = wif_sib_food_2 }
+	if = { limit = { has_idea = wif_sib_food_3 } remove_ideas = wif_sib_food_3 }
+	if = { limit = { has_idea = wif_sib_organs_1 } remove_ideas = wif_sib_organs_1 }
+	if = { limit = { has_idea = wif_sib_organs_3 } remove_ideas = wif_sib_organs_3 }
+	if = { limit = { has_idea = wif_sib_paranoia_1 } remove_ideas = wif_sib_paranoia_1 }
+	if = { limit = { has_idea = wif_sib_paranoia_3 } remove_ideas = wif_sib_paranoia_3 }
+	if = { limit = { has_idea = wif_sib_soldiers_republic_1 } remove_ideas = wif_sib_soldiers_republic_1 }
+	if = { limit = { has_idea = wif_sib_soldiers_republic_2 } remove_ideas = wif_sib_soldiers_republic_2 }
+	if = { limit = { has_idea = wif_sib_whites_1 } remove_ideas = wif_sib_whites_1 }
+	if = { limit = { has_idea = wif_sib_whites_3 } remove_ideas = wif_sib_whites_3 }
 	if = { limit = { has_idea = wif_sme_chelyabinsk_40 } remove_ideas = wif_sme_chelyabinsk_40 }
 	if = { limit = { has_idea = wif_sme_fascist_writers } remove_ideas = wif_sme_fascist_writers }
 	if = { limit = { has_idea = wif_sme_fascist_writers_turned } remove_ideas = wif_sme_fascist_writers_turned }

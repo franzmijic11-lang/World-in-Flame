@@ -20,14 +20,14 @@ wif_sibc_hunger = {
 wif_sibc_strip_tree_spirits = {
 	if = { limit = { has_idea = wif_csr_duma } remove_ideas = wif_csr_duma }
 	if = { limit = { has_idea = wif_csr_miners_fed } remove_ideas = wif_csr_miners_fed }
-	if = { limit = { has_idea = wif_csr_plans_east } remove_ideas = wif_csr_plans_east }
+	if = { limit = { has_idea = wif_csr_plans_east_idea } remove_ideas = wif_csr_plans_east_idea }
 	if = { limit = { has_idea = wif_csr_ruble } remove_ideas = wif_csr_ruble }
 	if = { limit = { has_idea = wif_csr_siberian_rifles } remove_ideas = wif_csr_siberian_rifles }
-	if = { limit = { has_idea = wif_fes_by_telephone } remove_ideas = wif_fes_by_telephone }
-	if = { limit = { has_idea = wif_fes_doctors } remove_ideas = wif_fes_doctors }
-	if = { limit = { has_idea = wif_fes_fronts } remove_ideas = wif_fes_fronts }
-	if = { limit = { has_idea = wif_fes_plan_west } remove_ideas = wif_fes_plan_west }
-	if = { limit = { has_idea = wif_fes_vozhd_alone } remove_ideas = wif_fes_vozhd_alone }
+	if = { limit = { has_idea = wif_fes_by_telephone_idea } remove_ideas = wif_fes_by_telephone_idea }
+	if = { limit = { has_idea = wif_fes_doctors_idea } remove_ideas = wif_fes_doctors_idea }
+	if = { limit = { has_idea = wif_fes_fronts_idea } remove_ideas = wif_fes_fronts_idea }
+	if = { limit = { has_idea = wif_fes_plan_west_idea } remove_ideas = wif_fes_plan_west_idea }
+	if = { limit = { has_idea = wif_fes_vozhd_alone_idea } remove_ideas = wif_fes_vozhd_alone_idea }
 	if = { limit = { has_idea = wif_nkvd } remove_ideas = wif_nkvd }
 	if = { limit = { has_idea = wif_nkvd_auditable } remove_ideas = wif_nkvd_auditable }
 	if = { limit = { has_idea = wif_nkvd_marshals_police } remove_ideas = wif_nkvd_marshals_police }
@@ -56,14 +56,14 @@ wif_sibc_strip_tree_spirits = {
 	if = { limit = { has_idea = wif_sib_whites_1 } remove_ideas = wif_sib_whites_1 }
 	if = { limit = { has_idea = wif_sib_whites_2 } remove_ideas = wif_sib_whites_2 }
 	if = { limit = { has_idea = wif_sib_whites_3 } remove_ideas = wif_sib_whites_3 }
-	if = { limit = { has_idea = wif_wsm_border_guards } remove_ideas = wif_wsm_border_guards }
-	if = { limit = { has_idea = wif_wsm_curfew } remove_ideas = wif_wsm_curfew }
+	if = { limit = { has_idea = wif_wsm_border_guards_idea } remove_ideas = wif_wsm_border_guards_idea }
+	if = { limit = { has_idea = wif_wsm_curfew_idea } remove_ideas = wif_wsm_curfew_idea }
 	if = { limit = { has_idea = wif_wsm_institute } remove_ideas = wif_wsm_institute }
-	if = { limit = { has_idea = wif_wsm_party_answers } remove_ideas = wif_wsm_party_answers }
+	if = { limit = { has_idea = wif_wsm_party_answers_idea } remove_ideas = wif_wsm_party_answers_idea }
 	if = { limit = { has_idea = wif_wsm_plan } remove_ideas = wif_wsm_plan }
-	if = { limit = { has_idea = wif_wsm_prisoners_invent } remove_ideas = wif_wsm_prisoners_invent }
-	if = { limit = { has_idea = wif_wsm_special_depts } remove_ideas = wif_wsm_special_depts }
-	if = { limit = { has_idea = wif_wsm_under_guard } remove_ideas = wif_wsm_under_guard }
+	if = { limit = { has_idea = wif_wsm_prisoners_invent_idea } remove_ideas = wif_wsm_prisoners_invent_idea }
+	if = { limit = { has_idea = wif_wsm_special_depts_idea } remove_ideas = wif_wsm_special_depts_idea }
+	if = { limit = { has_idea = wif_wsm_under_guard_idea } remove_ideas = wif_wsm_under_guard_idea }
 }
 
 # New White Army (NWA) out of FES: 562, 637, 874.

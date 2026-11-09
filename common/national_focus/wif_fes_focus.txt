@@ -182,7 +182,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_ideas = wif_fes_fronts
+			add_ideas = wif_fes_fronts_idea
 		}
 	}
 
@@ -215,7 +215,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			wif_sib_paranoia_ease = yes
-			add_ideas = wif_fes_by_telephone
+			add_ideas = wif_fes_by_telephone_idea
 		}
 	}
 
@@ -335,7 +335,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			wif_sib_paranoia_grow = yes
-			add_timed_idea = { idea = wif_fes_doctors days = 365 }
+			add_timed_idea = { idea = wif_fes_doctors_idea days = 365 }
 		}
 	}
 
@@ -407,7 +407,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			wif_sib_paranoia_max = yes
-			add_ideas = wif_fes_vozhd_alone
+			add_ideas = wif_fes_vozhd_alone_idea
 		}
 	}
 
@@ -449,7 +449,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_ARMY_XP }
 		completion_reward = {
-			add_timed_idea = { idea = wif_fes_plan_west days = 365 }
+			add_timed_idea = { idea = wif_fes_plan_west_idea days = 365 }
 		}
 	}
 

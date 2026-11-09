@@ -88,7 +88,7 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_INDUSTRY }
 	ai_will_do = { factor = 10 }
 	completion_reward = {
-		add_tech_bonus = { name = wif_pws_inventory bonus = 0.5 uses = 1 category = industry }
+		add_tech_bonus = { name = wif_pws_inventory_bonus bonus = 0.5 uses = 1 category = industry }
 	}
 }
 
@@ -369,7 +369,7 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_POLITICAL }
 	ai_will_do = { factor = 5 }
 	completion_reward = {
-		add_ideas = wif_pws_strongman
+		add_ideas = wif_pws_strongman_idea
 	}
 }
 
@@ -647,7 +647,7 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_POLITICAL }
 	ai_will_do = { factor = 10 }
 	completion_reward = {
-		add_timed_idea = { idea = wif_pws_trade days = 365 }
+		add_timed_idea = { idea = wif_pws_trade_idea days = 365 }
 	}
 }
 

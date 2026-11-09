@@ -289,7 +289,7 @@ ideas = {
 				army_org_factor = 0.05
 			}
 		}
-		wif_csr_plans_east = {
+		wif_csr_plans_east_idea = {
 			picture = generic_war_preparation
 			allowed = { always = no }
 			removal_cost = -1
@@ -297,7 +297,7 @@ ideas = {
 				army_attack_factor = 0.05
 			}
 		}
-		wif_fes_by_telephone = {
+		wif_fes_by_telephone_idea = {
 			picture = generic_disjointed_gov
 			allowed = { always = no }
 			removal_cost = -1
@@ -305,7 +305,7 @@ ideas = {
 				political_power_factor = -0.1
 			}
 		}
-		wif_fes_doctors = {
+		wif_fes_doctors_idea = {
 			picture = generic_prisoner
 			allowed = { always = no }
 			removal_cost = -1
@@ -313,7 +313,7 @@ ideas = {
 				research_speed_factor = -0.05
 			}
 		}
-		wif_fes_vozhd_alone = {
+		wif_fes_vozhd_alone_idea = {
 			picture = generic_pp_unity_bonus
 			allowed = { always = no }
 			removal_cost = -1
@@ -321,7 +321,7 @@ ideas = {
 				political_power_gain = 0.1
 			}
 		}
-		wif_fes_fronts = {
+		wif_fes_fronts_idea = {
 			picture = generic_army_war_college
 			allowed = { always = no }
 			removal_cost = -1
@@ -329,7 +329,7 @@ ideas = {
 				army_org_factor = 0.05
 			}
 		}
-		wif_fes_plan_west = {
+		wif_fes_plan_west_idea = {
 			picture = generic_war_preparation
 			allowed = { always = no }
 			removal_cost = -1
@@ -337,7 +337,7 @@ ideas = {
 				army_attack_factor = 0.05
 			}
 		}
-		wif_wsm_party_answers = {
+		wif_wsm_party_answers_idea = {
 			picture = generic_secret_police
 			allowed = { always = no }
 			removal_cost = -1
@@ -345,7 +345,7 @@ ideas = {
 				political_power_gain = 0.05
 			}
 		}
-		wif_wsm_curfew = {
+		wif_wsm_curfew_idea = {
 			picture = generic_oppression
 			allowed = { always = no }
 			removal_cost = -1
@@ -354,7 +354,7 @@ ideas = {
 				industrial_capacity_factory = -0.05
 			}
 		}
-		wif_wsm_special_depts = {
+		wif_wsm_special_depts_idea = {
 			picture = generic_secret_police
 			allowed = { always = no }
 			removal_cost = -1
@@ -370,7 +370,7 @@ ideas = {
 				research_speed_factor = 0.05
 			}
 		}
-		wif_wsm_under_guard = {
+		wif_wsm_under_guard_idea = {
 			picture = generic_prisoner
 			allowed = { always = no }
 			removal_cost = -1
@@ -379,7 +379,7 @@ ideas = {
 				stability_factor = -0.05
 			}
 		}
-		wif_wsm_prisoners_invent = {
+		wif_wsm_prisoners_invent_idea = {
 			picture = generic_research_bonus
 			allowed = { always = no }
 			removal_cost = -1
@@ -396,7 +396,7 @@ ideas = {
 				industrial_capacity_factory = 0.05
 			}
 		}
-		wif_wsm_border_guards = {
+		wif_wsm_border_guards_idea = {
 			picture = generic_fortify_the_borders
 			allowed = { always = no }
 			removal_cost = -1
