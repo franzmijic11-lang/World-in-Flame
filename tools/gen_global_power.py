@@ -540,6 +540,8 @@ wif_gp_calc_score = {
         limit = { is_special_project_completed = sp:sp_rockets_long_range_ballistic_missile }
         add_to_temp_variable = { s = 50 }
     }
+    # Space race and other milestones (tools/gen_space_race.py).
+    add_to_temp_variable = { s = wif_gp_bonus_score }
 
     # Low stability: up to -30%. Surrender progress: up to -50%. Lost capital: -25%.
     set_temp_variable = { m = 1 }
