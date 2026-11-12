@@ -92,6 +92,8 @@ wif_eng_strip_spirits = {
 # ENG scope, from the peace deal the moment Britain becomes a Reichsprotektorat.
 wif_eng_become_protektorat = {
 	set_country_flag = wif_eng_protektorat
+	# The King leaves for Ottawa before the strip removes his spirit
+	wif_eng_crown_to_canada = yes
 	wif_eng_strip_spirits = yes
 	# A Defeated Nation and The Scottish Insurgency (tools/gen_eng_protektorat_tree.py)
 	wif_eng_starting_spirits = yes
@@ -101,5 +103,28 @@ wif_eng_become_protektorat = {
 	load_focus_tree = {
 		tree = wif_eng_protektorat_focus
 		keep_completed = no
+	}
+}
+
+# ENG scope. Britain's monarch spirit goes to Canada with the King.
+wif_eng_crown_to_canada = {
+	if = {
+		limit = { country_exists = CAN }
+		if = {
+			limit = { has_idea = ENG_george_vi }
+			CAN = { add_ideas = wif_can_george_vi }
+		}
+		else_if = {
+			limit = { has_idea = george_v }
+			CAN = { add_ideas = wif_can_george_v }
+		}
+		else_if = {
+			limit = { has_idea = ENG_king_edward }
+			CAN = { add_ideas = wif_can_king_edward }
+		}
+		else_if = {
+			limit = { has_idea = ENG_king_edward_fascism }
+			CAN = { add_ideas = wif_can_king_edward }
+		}
 	}
 }

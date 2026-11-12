@@ -113,6 +113,8 @@ def gen_effects():
           '# ENG scope, from the peace deal the moment Britain becomes a Reichsprotektorat.',
           'wif_eng_become_protektorat = {',
           '\tset_country_flag = wif_eng_protektorat',
+          '\t# The King leaves for Ottawa before the strip removes his spirit',
+          '\twif_eng_crown_to_canada = yes',
           '\twif_eng_strip_spirits = yes',
           '\t# A Defeated Nation and The Scottish Insurgency (tools/gen_eng_protektorat_tree.py)',
           '\twif_eng_starting_spirits = yes',
@@ -124,6 +126,19 @@ def gen_effects():
           '\t\tkeep_completed = no',
           '\t}',
           '}', '']
+    o += ['# ENG scope. Britain\'s monarch spirit goes to Canada with the King.',
+          'wif_eng_crown_to_canada = {',
+          '\tif = {',
+          '\t\tlimit = { country_exists = CAN }']
+    first = True
+    for eng, can in CROWN:
+        kw = 'if' if first else 'else_if'
+        first = False
+        o += [f'\t\t{kw} = {{',
+              f'\t\t\tlimit = {{ has_idea = {eng} }}',
+              f'\t\t\tCAN = {{ add_ideas = {can} }}',
+              '\t\t}']
+    o += ['\t}', '}', '']
     write('common/scripted_effects/wif_eng_protektorat_effects.txt', '\n'.join(o))
     print(f'  {len(ideas)} spirits, {len(mods)} dynamic modifiers stripped')
 
@@ -248,10 +263,35 @@ def gen_advisor():
 ''')
 
 
+# Britain's monarch spirit -> Canada's copy of it (vanilla ideas are allowed for ENG only)
+CROWN = [('ENG_george_vi', 'wif_can_george_vi'), ('george_v', 'wif_can_george_v'),
+         ('ENG_king_edward', 'wif_can_king_edward'), ('ENG_king_edward_fascism', 'wif_can_king_edward')]
+CROWN_IDEAS = {
+    'wif_can_george_vi': ('george_vi_ns', 'traits = { popular_figurehead }', 'George VI in Ottawa',
+                          'The King would not reign under a German protector. He has crossed the Atlantic, and from Rideau Hall he is still the sovereign of everything the Empire kept.'),
+    'wif_can_george_v': ('george_v', 'traits = { popular_figurehead }', 'George V in Ottawa',
+                         'The old King has left London for Ottawa. His Empire rallies around him as it always has.'),
+    'wif_can_king_edward': ('king_edward', 'modifier = { stability_weekly = -0.001 }', 'Edward VIII in Ottawa',
+                            'Edward chose exile in Canada over a throne under German protection. Ottawa is not sure what to make of its new King.'),
+}
+
+
+def gen_crown_ideas():
+    o = [HEADER.rstrip('\n'), '# Britain\'s monarch, moved to Canada by wif_eng_crown_to_canada.', '', 'ideas = {', '\tcountry = {']
+    for k, (pic, body, _n, _d) in CROWN_IDEAS.items():
+        o += [f'\t\t{k} = {{', '\t\t\tallowed = { original_tag = CAN }', f'\t\t\tpicture = {pic}',
+              '\t\t\tremoval_cost = -1', f'\t\t\t{body}', '\t\t}']
+    o += ['\t}', '}', '']
+    write('common/ideas/wif_can_crown_ideas.txt', '\n'.join(o))
+
+
 def gen_loc():
     L = {}
     L[ADVISOR] = 'Siegfried Auchbagar'
     L[TRAIT] = 'Reichskommissar'
+    for k, (_p, _b, n, d) in CROWN_IDEAS.items():
+        L[k] = n
+        L[k + '_desc'] = d
     L[TRAIT + '_desc'] = 'Berlin\'s overseer in London. Every decree of the British government crosses his desk before it reaches the King.'
     for k in ('ENG_GER_autonomy_reichsprotectorate', 'ENG_GER_fascism_autonomy_reichsprotectorate',
               'ENG_GER_autonomy_puppet', 'ENG_GER_fascism_autonomy_puppet'):
@@ -264,6 +304,7 @@ def gen_loc():
 
 def main():
     gen_effects()
+    gen_crown_ideas()
     gen_placeholder_tree()
     splice_peace()
     gen_advisor()

@@ -1,6 +1,12 @@
 ﻿l_english:
  ENG_siegfried_auchbagar:0 "Siegfried Auchbagar"
  wif_eng_reichskommissar:0 "Reichskommissar"
+ wif_can_george_vi:0 "George VI in Ottawa"
+ wif_can_george_vi_desc:0 "The King would not reign under a German protector. He has crossed the Atlantic, and from Rideau Hall he is still the sovereign of everything the Empire kept."
+ wif_can_george_v:0 "George V in Ottawa"
+ wif_can_george_v_desc:0 "The old King has left London for Ottawa. His Empire rallies around him as it always has."
+ wif_can_king_edward:0 "Edward VIII in Ottawa"
+ wif_can_king_edward_desc:0 "Edward chose exile in Canada over a throne under German protection. Ottawa is not sure what to make of its new King."
  wif_eng_reichskommissar_desc:0 "Berlin's overseer in London. Every decree of the British government crosses his desk before it reaches the King."
  ENG_GER_autonomy_reichsprotectorate:0 "Reichsprotektorat Großbritannien"
  ENG_GER_autonomy_reichsprotectorate_DEF:0 "the Reichsprotektorat Großbritannien"
