@@ -33,4 +33,24 @@ wif_ue_campaign = {
 			hidden_effect = { wif_ue_player_sway = yes }
 		}
 	}
+	# Switch the party the player leads (also: console "event wif_ue.3").
+	wif_ue_switch_side = {
+		icon = generic_political_discourse
+		visible = {
+			is_ai = no
+			has_country_flag = wif_ue_open
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ue_no_running_tt
+				check_variable = { wif_ue_active < 1 }
+			}
+		}
+		cost = 0
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			custom_effect_tooltip = wif_ue_switch_side_tt
+			hidden_effect = { wif_ue_switch_side = yes }
+		}
+	}
 }

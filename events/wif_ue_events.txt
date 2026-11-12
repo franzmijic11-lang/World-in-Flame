@@ -31,6 +31,16 @@ country_event = {
 		set_variable = { wif_ue_player = 1 }
 	}
 }
+# Console: "event wif_ue.3" switches the party the player leads.
+country_event = {
+	id = wif_ue.3
+	title = wif_ue.3.t
+	desc = wif_ue.3.d
+	picture = GFX_report_event_usa_election_generic
+	is_triggered_only = yes
+	immediate = { wif_ue_switch_side = yes }
+	option = { name = wif_ue.3.a }
+}
 # The count: fence states are still out.
 country_event = {
 	id = wif_ue.20

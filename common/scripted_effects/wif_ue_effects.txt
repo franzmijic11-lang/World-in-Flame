@@ -6047,6 +6047,16 @@ wif_ue_monthly = {
 		wif_ue_tally = yes
 	}
 }
+# The player changes sides (decision, or console "event wif_ue.3").
+wif_ue_switch_side = {
+	if = {
+		limit = { check_variable = { wif_ue_player = 2 } }
+		set_variable = { wif_ue_player = 1 }
+	}
+	else = {
+		set_variable = { wif_ue_player = 2 }
+	}
+}
 # Player Sway State decision landed (FROM = the state).
 wif_ue_player_sway = {
 	set_temp_variable = { wif_ue_party = wif_ue_player }

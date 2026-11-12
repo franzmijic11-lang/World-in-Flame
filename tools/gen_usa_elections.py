@@ -205,6 +205,7 @@ ELECTIONS = [
     dict(year=1954, kind=2, day='1954.11.2', open='1954.5.2', cls=2, census=1950, cap=10, cost=200),
 ]
 PARTY = {1: ('d', 'Democratic'), 2: ('r', 'Republican')}
+TIER_LABEL = {1: '§BStrong Democratic§!', 2: '§BDemocratic§!', 3: '§YFence§!', 4: '§RRepublican§!', 5: '§RStrong Republican§!'}
 IDEOLOGY = {1: 'liberalism', 2: 'conservatism'}
 
 # Player and AI sway: 15-20 lean points per finished campaign decision.
@@ -781,6 +782,16 @@ wif_ue_monthly = {
 		wif_ue_tally = yes
 	}
 }
+# The player changes sides (decision, or console "event wif_ue.3").
+wif_ue_switch_side = {
+	if = {
+		limit = { check_variable = { wif_ue_player = 2 } }
+		set_variable = { wif_ue_player = 1 }
+	}
+	else = {
+		set_variable = { wif_ue_player = 2 }
+	}
+}
 # Player Sway State decision landed (FROM = the state).
 wif_ue_player_sway = {
 	set_temp_variable = { wif_ue_party = wif_ue_player }
@@ -894,6 +905,26 @@ def gen_decisions():
 			hidden_effect = {{ wif_ue_player_sway = yes }}
 		}}
 	}}
+	# Switch the party the player leads (also: console "event wif_ue.3").
+	wif_ue_switch_side = {{
+		icon = generic_political_discourse
+		visible = {{
+			is_ai = no
+			has_country_flag = wif_ue_open
+		}}
+		available = {{
+			custom_trigger_tooltip = {{
+				tooltip = wif_ue_no_running_tt
+				check_variable = {{ wif_ue_active < 1 }}
+			}}
+		}}
+		cost = 0
+		ai_will_do = {{ factor = 0 }}
+		complete_effect = {{
+			custom_effect_tooltip = wif_ue_switch_side_tt
+			hidden_effect = {{ wif_ue_switch_side = yes }}
+		}}
+	}}
 }}
 ''')
     # WiF copy of vanilla MTG_congress.txt: the lobbying decisions are gone
@@ -973,6 +1004,16 @@ country_event = {
 		name = wif_ue.2.a
 		set_variable = { wif_ue_player = 1 }
 	}
+}
+# Console: "event wif_ue.3" switches the party the player leads.
+country_event = {
+	id = wif_ue.3
+	title = wif_ue.3.t
+	desc = wif_ue.3.d
+	picture = GFX_report_event_usa_election_generic
+	is_triggered_only = yes
+	immediate = { wif_ue_switch_side = yes }
+	option = { name = wif_ue.3.a }
 }
 # The count: fence states are still out.
 country_event = {
@@ -1087,6 +1128,7 @@ def gen_loc():
         '§RRepublican [?wif_ue_t4|0]§! · §RStrong Republican [?wif_ue_t5|0]§!\n'
         'Safe for the Democrats: §B[?wif_ue_tdem|0]§!   Safe for the Republicans: §R[?wif_ue_trep|0]§!   '
         'Needed to win the presidency: §Y266§!\n\n'
+        + ''.join(f'{TIER_LABEL[t]}: ' + ''.join(f'[wif_ue_t{t}_{u[0]}]' for u in ALL) + '\n' for t in range(1, 6)) + '\n'
         'Campaign in a state to move it toward your party. Fence states are counted one by one on election night, '
         'and the result waits for every one of them. Campaigning closes a month before election day.')
     L['wif_ue_kind_1'] = 'Presidential Election'
@@ -1176,12 +1218,37 @@ def gen_loc():
             t.append(f'\ttext = {{ trigger = {{ check_variable = {{ wif_ue_nom_{pl} = {CAND_ID[k]} }} }} localization_key = wif_ue_cand_{k} }}')
         t.append('\ttext = { localization_key = wif_ue_nobody }\n}')
         s.append('\n'.join(t))
+    # One entry per state and tier: "Alabama, " when the state is in that tier.
+    for ab, name, *_ in ALL:
+        L_ = f'wif_ue_lean_{ab}'
+        conds = {1: f'check_variable = {{ {L_} < 20 }}',
+                 2: f'NOT = {{ check_variable = {{ {L_} < 20 }} }} check_variable = {{ {L_} < 40 }}',
+                 3: f'NOT = {{ check_variable = {{ {L_} < 40 }} }} NOT = {{ check_variable = {{ {L_} > 60 }} }}',
+                 4: f'check_variable = {{ {L_} > 60 }} NOT = {{ check_variable = {{ {L_} > 80 }} }}',
+                 5: f'check_variable = {{ {L_} > 80 }}'}
+        for t in range(1, 6):
+            c = conds[t] + (f' {active(ab)}' if ab in JOIN else '')
+            s.append(f'defined_text = {{\n\tname = wif_ue_t{t}_{ab}\n'
+                     f'\ttext = {{ trigger = {{ {c} }} localization_key = wif_ue_st_{ab} }}\n'
+                     '\ttext = { localization_key = wif_ue_nobody }\n}')
+    s.append('defined_text = {\n\tname = wif_ue_other_party\n'
+             '\ttext = { trigger = { check_variable = { wif_ue_player = 2 } } localization_key = wif_ue_party_d_long }\n'
+             '\ttext = { localization_key = wif_ue_party_r_long }\n}')
     s.append('defined_text = {\n\tname = wif_ue_nominees\n'
              '\ttext = { trigger = { check_variable = { wif_ue_kind = 1 } } localization_key = wif_ue_nominees_text }\n'
              '\ttext = { localization_key = wif_ue_nobody }\n}')
     write('common/scripted_localisation/wif_ue_scripted_loc.txt', '\n\n'.join(s) + '\n')
     with open(p('localisation/english/wif_ue_l_english.yml'), 'a', encoding='utf-8') as f:
         f.write(' wif_ue_nobody:0 ""\n')
+        for ab, name, *_ in ALL:
+            f.write(f' wif_ue_st_{ab}:0 "{name}, "\n')
+        f.write(' wif_ue_switch_side:0 "Switch to the [wif_ue_other_party]"\n')
+        f.write(' wif_ue_switch_side_desc:0 "Change which party you lead in this campaign. The party you leave is taken over by its own strategists."\n')
+        f.write(' wif_ue_switch_side_tt:0 "You now lead the §Y[wif_ue_other_party]§! campaign."\n')
+        f.write(' wif_ue_no_running_tt:0 "None of our campaigns is still running"\n')
+        f.write(' wif_ue.3.t:0 "Changing Sides"\n')
+        f.write(' wif_ue.3.d:0 "You now lead the §Y[wif_ue_player_party]§! campaign."\n')
+        f.write(' wif_ue.3.a:0 "So be it."\n')
         f.write(' wif_ue_nominees_text:0 "Nominees: §B[wif_ue_nom_d_name]§! (Democratic) against §R[wif_ue_nom_r_name]§! (Republican)."\n')
 
 

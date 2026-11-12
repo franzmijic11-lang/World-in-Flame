@@ -69,6 +69,1512 @@ defined_text = {
 }
 
 defined_text = {
+	name = wif_ue_t1_AL
+	text = { trigger = { check_variable = { wif_ue_lean_AL < 20 } } localization_key = wif_ue_st_AL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_AL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AL < 20 } } check_variable = { wif_ue_lean_AL < 40 } } localization_key = wif_ue_st_AL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_AL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AL < 40 } } NOT = { check_variable = { wif_ue_lean_AL > 60 } } } localization_key = wif_ue_st_AL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_AL
+	text = { trigger = { check_variable = { wif_ue_lean_AL > 60 } NOT = { check_variable = { wif_ue_lean_AL > 80 } } } localization_key = wif_ue_st_AL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_AL
+	text = { trigger = { check_variable = { wif_ue_lean_AL > 80 } } localization_key = wif_ue_st_AL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_AZ
+	text = { trigger = { check_variable = { wif_ue_lean_AZ < 20 } } localization_key = wif_ue_st_AZ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_AZ
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AZ < 20 } } check_variable = { wif_ue_lean_AZ < 40 } } localization_key = wif_ue_st_AZ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_AZ
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AZ < 40 } } NOT = { check_variable = { wif_ue_lean_AZ > 60 } } } localization_key = wif_ue_st_AZ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_AZ
+	text = { trigger = { check_variable = { wif_ue_lean_AZ > 60 } NOT = { check_variable = { wif_ue_lean_AZ > 80 } } } localization_key = wif_ue_st_AZ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_AZ
+	text = { trigger = { check_variable = { wif_ue_lean_AZ > 80 } } localization_key = wif_ue_st_AZ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_AR
+	text = { trigger = { check_variable = { wif_ue_lean_AR < 20 } } localization_key = wif_ue_st_AR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_AR
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AR < 20 } } check_variable = { wif_ue_lean_AR < 40 } } localization_key = wif_ue_st_AR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_AR
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AR < 40 } } NOT = { check_variable = { wif_ue_lean_AR > 60 } } } localization_key = wif_ue_st_AR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_AR
+	text = { trigger = { check_variable = { wif_ue_lean_AR > 60 } NOT = { check_variable = { wif_ue_lean_AR > 80 } } } localization_key = wif_ue_st_AR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_AR
+	text = { trigger = { check_variable = { wif_ue_lean_AR > 80 } } localization_key = wif_ue_st_AR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_CA
+	text = { trigger = { check_variable = { wif_ue_lean_CA < 20 } } localization_key = wif_ue_st_CA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_CA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CA < 20 } } check_variable = { wif_ue_lean_CA < 40 } } localization_key = wif_ue_st_CA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_CA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CA < 40 } } NOT = { check_variable = { wif_ue_lean_CA > 60 } } } localization_key = wif_ue_st_CA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_CA
+	text = { trigger = { check_variable = { wif_ue_lean_CA > 60 } NOT = { check_variable = { wif_ue_lean_CA > 80 } } } localization_key = wif_ue_st_CA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_CA
+	text = { trigger = { check_variable = { wif_ue_lean_CA > 80 } } localization_key = wif_ue_st_CA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_CO
+	text = { trigger = { check_variable = { wif_ue_lean_CO < 20 } } localization_key = wif_ue_st_CO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_CO
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CO < 20 } } check_variable = { wif_ue_lean_CO < 40 } } localization_key = wif_ue_st_CO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_CO
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CO < 40 } } NOT = { check_variable = { wif_ue_lean_CO > 60 } } } localization_key = wif_ue_st_CO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_CO
+	text = { trigger = { check_variable = { wif_ue_lean_CO > 60 } NOT = { check_variable = { wif_ue_lean_CO > 80 } } } localization_key = wif_ue_st_CO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_CO
+	text = { trigger = { check_variable = { wif_ue_lean_CO > 80 } } localization_key = wif_ue_st_CO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_CT
+	text = { trigger = { check_variable = { wif_ue_lean_CT < 20 } } localization_key = wif_ue_st_CT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_CT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CT < 20 } } check_variable = { wif_ue_lean_CT < 40 } } localization_key = wif_ue_st_CT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_CT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_CT < 40 } } NOT = { check_variable = { wif_ue_lean_CT > 60 } } } localization_key = wif_ue_st_CT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_CT
+	text = { trigger = { check_variable = { wif_ue_lean_CT > 60 } NOT = { check_variable = { wif_ue_lean_CT > 80 } } } localization_key = wif_ue_st_CT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_CT
+	text = { trigger = { check_variable = { wif_ue_lean_CT > 80 } } localization_key = wif_ue_st_CT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_DE
+	text = { trigger = { check_variable = { wif_ue_lean_DE < 20 } } localization_key = wif_ue_st_DE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_DE
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_DE < 20 } } check_variable = { wif_ue_lean_DE < 40 } } localization_key = wif_ue_st_DE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_DE
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_DE < 40 } } NOT = { check_variable = { wif_ue_lean_DE > 60 } } } localization_key = wif_ue_st_DE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_DE
+	text = { trigger = { check_variable = { wif_ue_lean_DE > 60 } NOT = { check_variable = { wif_ue_lean_DE > 80 } } } localization_key = wif_ue_st_DE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_DE
+	text = { trigger = { check_variable = { wif_ue_lean_DE > 80 } } localization_key = wif_ue_st_DE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_FL
+	text = { trigger = { check_variable = { wif_ue_lean_FL < 20 } } localization_key = wif_ue_st_FL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_FL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_FL < 20 } } check_variable = { wif_ue_lean_FL < 40 } } localization_key = wif_ue_st_FL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_FL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_FL < 40 } } NOT = { check_variable = { wif_ue_lean_FL > 60 } } } localization_key = wif_ue_st_FL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_FL
+	text = { trigger = { check_variable = { wif_ue_lean_FL > 60 } NOT = { check_variable = { wif_ue_lean_FL > 80 } } } localization_key = wif_ue_st_FL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_FL
+	text = { trigger = { check_variable = { wif_ue_lean_FL > 80 } } localization_key = wif_ue_st_FL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_GA
+	text = { trigger = { check_variable = { wif_ue_lean_GA < 20 } } localization_key = wif_ue_st_GA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_GA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_GA < 20 } } check_variable = { wif_ue_lean_GA < 40 } } localization_key = wif_ue_st_GA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_GA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_GA < 40 } } NOT = { check_variable = { wif_ue_lean_GA > 60 } } } localization_key = wif_ue_st_GA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_GA
+	text = { trigger = { check_variable = { wif_ue_lean_GA > 60 } NOT = { check_variable = { wif_ue_lean_GA > 80 } } } localization_key = wif_ue_st_GA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_GA
+	text = { trigger = { check_variable = { wif_ue_lean_GA > 80 } } localization_key = wif_ue_st_GA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_ID
+	text = { trigger = { check_variable = { wif_ue_lean_ID < 20 } } localization_key = wif_ue_st_ID }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_ID
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ID < 20 } } check_variable = { wif_ue_lean_ID < 40 } } localization_key = wif_ue_st_ID }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_ID
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ID < 40 } } NOT = { check_variable = { wif_ue_lean_ID > 60 } } } localization_key = wif_ue_st_ID }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_ID
+	text = { trigger = { check_variable = { wif_ue_lean_ID > 60 } NOT = { check_variable = { wif_ue_lean_ID > 80 } } } localization_key = wif_ue_st_ID }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_ID
+	text = { trigger = { check_variable = { wif_ue_lean_ID > 80 } } localization_key = wif_ue_st_ID }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_IL
+	text = { trigger = { check_variable = { wif_ue_lean_IL < 20 } } localization_key = wif_ue_st_IL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_IL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IL < 20 } } check_variable = { wif_ue_lean_IL < 40 } } localization_key = wif_ue_st_IL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_IL
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IL < 40 } } NOT = { check_variable = { wif_ue_lean_IL > 60 } } } localization_key = wif_ue_st_IL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_IL
+	text = { trigger = { check_variable = { wif_ue_lean_IL > 60 } NOT = { check_variable = { wif_ue_lean_IL > 80 } } } localization_key = wif_ue_st_IL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_IL
+	text = { trigger = { check_variable = { wif_ue_lean_IL > 80 } } localization_key = wif_ue_st_IL }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_IN
+	text = { trigger = { check_variable = { wif_ue_lean_IN < 20 } } localization_key = wif_ue_st_IN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_IN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IN < 20 } } check_variable = { wif_ue_lean_IN < 40 } } localization_key = wif_ue_st_IN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_IN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IN < 40 } } NOT = { check_variable = { wif_ue_lean_IN > 60 } } } localization_key = wif_ue_st_IN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_IN
+	text = { trigger = { check_variable = { wif_ue_lean_IN > 60 } NOT = { check_variable = { wif_ue_lean_IN > 80 } } } localization_key = wif_ue_st_IN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_IN
+	text = { trigger = { check_variable = { wif_ue_lean_IN > 80 } } localization_key = wif_ue_st_IN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_IA
+	text = { trigger = { check_variable = { wif_ue_lean_IA < 20 } } localization_key = wif_ue_st_IA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_IA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IA < 20 } } check_variable = { wif_ue_lean_IA < 40 } } localization_key = wif_ue_st_IA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_IA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_IA < 40 } } NOT = { check_variable = { wif_ue_lean_IA > 60 } } } localization_key = wif_ue_st_IA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_IA
+	text = { trigger = { check_variable = { wif_ue_lean_IA > 60 } NOT = { check_variable = { wif_ue_lean_IA > 80 } } } localization_key = wif_ue_st_IA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_IA
+	text = { trigger = { check_variable = { wif_ue_lean_IA > 80 } } localization_key = wif_ue_st_IA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_KS
+	text = { trigger = { check_variable = { wif_ue_lean_KS < 20 } } localization_key = wif_ue_st_KS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_KS
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_KS < 20 } } check_variable = { wif_ue_lean_KS < 40 } } localization_key = wif_ue_st_KS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_KS
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_KS < 40 } } NOT = { check_variable = { wif_ue_lean_KS > 60 } } } localization_key = wif_ue_st_KS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_KS
+	text = { trigger = { check_variable = { wif_ue_lean_KS > 60 } NOT = { check_variable = { wif_ue_lean_KS > 80 } } } localization_key = wif_ue_st_KS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_KS
+	text = { trigger = { check_variable = { wif_ue_lean_KS > 80 } } localization_key = wif_ue_st_KS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_KY
+	text = { trigger = { check_variable = { wif_ue_lean_KY < 20 } } localization_key = wif_ue_st_KY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_KY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_KY < 20 } } check_variable = { wif_ue_lean_KY < 40 } } localization_key = wif_ue_st_KY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_KY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_KY < 40 } } NOT = { check_variable = { wif_ue_lean_KY > 60 } } } localization_key = wif_ue_st_KY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_KY
+	text = { trigger = { check_variable = { wif_ue_lean_KY > 60 } NOT = { check_variable = { wif_ue_lean_KY > 80 } } } localization_key = wif_ue_st_KY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_KY
+	text = { trigger = { check_variable = { wif_ue_lean_KY > 80 } } localization_key = wif_ue_st_KY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_LA
+	text = { trigger = { check_variable = { wif_ue_lean_LA < 20 } } localization_key = wif_ue_st_LA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_LA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_LA < 20 } } check_variable = { wif_ue_lean_LA < 40 } } localization_key = wif_ue_st_LA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_LA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_LA < 40 } } NOT = { check_variable = { wif_ue_lean_LA > 60 } } } localization_key = wif_ue_st_LA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_LA
+	text = { trigger = { check_variable = { wif_ue_lean_LA > 60 } NOT = { check_variable = { wif_ue_lean_LA > 80 } } } localization_key = wif_ue_st_LA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_LA
+	text = { trigger = { check_variable = { wif_ue_lean_LA > 80 } } localization_key = wif_ue_st_LA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_ME
+	text = { trigger = { check_variable = { wif_ue_lean_ME < 20 } } localization_key = wif_ue_st_ME }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_ME
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ME < 20 } } check_variable = { wif_ue_lean_ME < 40 } } localization_key = wif_ue_st_ME }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_ME
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ME < 40 } } NOT = { check_variable = { wif_ue_lean_ME > 60 } } } localization_key = wif_ue_st_ME }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_ME
+	text = { trigger = { check_variable = { wif_ue_lean_ME > 60 } NOT = { check_variable = { wif_ue_lean_ME > 80 } } } localization_key = wif_ue_st_ME }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_ME
+	text = { trigger = { check_variable = { wif_ue_lean_ME > 80 } } localization_key = wif_ue_st_ME }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MD
+	text = { trigger = { check_variable = { wif_ue_lean_MD < 20 } } localization_key = wif_ue_st_MD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MD
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MD < 20 } } check_variable = { wif_ue_lean_MD < 40 } } localization_key = wif_ue_st_MD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MD
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MD < 40 } } NOT = { check_variable = { wif_ue_lean_MD > 60 } } } localization_key = wif_ue_st_MD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MD
+	text = { trigger = { check_variable = { wif_ue_lean_MD > 60 } NOT = { check_variable = { wif_ue_lean_MD > 80 } } } localization_key = wif_ue_st_MD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MD
+	text = { trigger = { check_variable = { wif_ue_lean_MD > 80 } } localization_key = wif_ue_st_MD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MA
+	text = { trigger = { check_variable = { wif_ue_lean_MA < 20 } } localization_key = wif_ue_st_MA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MA < 20 } } check_variable = { wif_ue_lean_MA < 40 } } localization_key = wif_ue_st_MA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MA < 40 } } NOT = { check_variable = { wif_ue_lean_MA > 60 } } } localization_key = wif_ue_st_MA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MA
+	text = { trigger = { check_variable = { wif_ue_lean_MA > 60 } NOT = { check_variable = { wif_ue_lean_MA > 80 } } } localization_key = wif_ue_st_MA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MA
+	text = { trigger = { check_variable = { wif_ue_lean_MA > 80 } } localization_key = wif_ue_st_MA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MI
+	text = { trigger = { check_variable = { wif_ue_lean_MI < 20 } } localization_key = wif_ue_st_MI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MI < 20 } } check_variable = { wif_ue_lean_MI < 40 } } localization_key = wif_ue_st_MI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MI < 40 } } NOT = { check_variable = { wif_ue_lean_MI > 60 } } } localization_key = wif_ue_st_MI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MI
+	text = { trigger = { check_variable = { wif_ue_lean_MI > 60 } NOT = { check_variable = { wif_ue_lean_MI > 80 } } } localization_key = wif_ue_st_MI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MI
+	text = { trigger = { check_variable = { wif_ue_lean_MI > 80 } } localization_key = wif_ue_st_MI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MN
+	text = { trigger = { check_variable = { wif_ue_lean_MN < 20 } } localization_key = wif_ue_st_MN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MN < 20 } } check_variable = { wif_ue_lean_MN < 40 } } localization_key = wif_ue_st_MN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MN < 40 } } NOT = { check_variable = { wif_ue_lean_MN > 60 } } } localization_key = wif_ue_st_MN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MN
+	text = { trigger = { check_variable = { wif_ue_lean_MN > 60 } NOT = { check_variable = { wif_ue_lean_MN > 80 } } } localization_key = wif_ue_st_MN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MN
+	text = { trigger = { check_variable = { wif_ue_lean_MN > 80 } } localization_key = wif_ue_st_MN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MS
+	text = { trigger = { check_variable = { wif_ue_lean_MS < 20 } } localization_key = wif_ue_st_MS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MS
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MS < 20 } } check_variable = { wif_ue_lean_MS < 40 } } localization_key = wif_ue_st_MS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MS
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MS < 40 } } NOT = { check_variable = { wif_ue_lean_MS > 60 } } } localization_key = wif_ue_st_MS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MS
+	text = { trigger = { check_variable = { wif_ue_lean_MS > 60 } NOT = { check_variable = { wif_ue_lean_MS > 80 } } } localization_key = wif_ue_st_MS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MS
+	text = { trigger = { check_variable = { wif_ue_lean_MS > 80 } } localization_key = wif_ue_st_MS }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MO
+	text = { trigger = { check_variable = { wif_ue_lean_MO < 20 } } localization_key = wif_ue_st_MO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MO
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MO < 20 } } check_variable = { wif_ue_lean_MO < 40 } } localization_key = wif_ue_st_MO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MO
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MO < 40 } } NOT = { check_variable = { wif_ue_lean_MO > 60 } } } localization_key = wif_ue_st_MO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MO
+	text = { trigger = { check_variable = { wif_ue_lean_MO > 60 } NOT = { check_variable = { wif_ue_lean_MO > 80 } } } localization_key = wif_ue_st_MO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MO
+	text = { trigger = { check_variable = { wif_ue_lean_MO > 80 } } localization_key = wif_ue_st_MO }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_MT
+	text = { trigger = { check_variable = { wif_ue_lean_MT < 20 } } localization_key = wif_ue_st_MT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_MT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MT < 20 } } check_variable = { wif_ue_lean_MT < 40 } } localization_key = wif_ue_st_MT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_MT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_MT < 40 } } NOT = { check_variable = { wif_ue_lean_MT > 60 } } } localization_key = wif_ue_st_MT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_MT
+	text = { trigger = { check_variable = { wif_ue_lean_MT > 60 } NOT = { check_variable = { wif_ue_lean_MT > 80 } } } localization_key = wif_ue_st_MT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_MT
+	text = { trigger = { check_variable = { wif_ue_lean_MT > 80 } } localization_key = wif_ue_st_MT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NE
+	text = { trigger = { check_variable = { wif_ue_lean_NE < 20 } } localization_key = wif_ue_st_NE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NE
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NE < 20 } } check_variable = { wif_ue_lean_NE < 40 } } localization_key = wif_ue_st_NE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NE
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NE < 40 } } NOT = { check_variable = { wif_ue_lean_NE > 60 } } } localization_key = wif_ue_st_NE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NE
+	text = { trigger = { check_variable = { wif_ue_lean_NE > 60 } NOT = { check_variable = { wif_ue_lean_NE > 80 } } } localization_key = wif_ue_st_NE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NE
+	text = { trigger = { check_variable = { wif_ue_lean_NE > 80 } } localization_key = wif_ue_st_NE }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NV
+	text = { trigger = { check_variable = { wif_ue_lean_NV < 20 } } localization_key = wif_ue_st_NV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NV
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NV < 20 } } check_variable = { wif_ue_lean_NV < 40 } } localization_key = wif_ue_st_NV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NV
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NV < 40 } } NOT = { check_variable = { wif_ue_lean_NV > 60 } } } localization_key = wif_ue_st_NV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NV
+	text = { trigger = { check_variable = { wif_ue_lean_NV > 60 } NOT = { check_variable = { wif_ue_lean_NV > 80 } } } localization_key = wif_ue_st_NV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NV
+	text = { trigger = { check_variable = { wif_ue_lean_NV > 80 } } localization_key = wif_ue_st_NV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NH
+	text = { trigger = { check_variable = { wif_ue_lean_NH < 20 } } localization_key = wif_ue_st_NH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NH
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NH < 20 } } check_variable = { wif_ue_lean_NH < 40 } } localization_key = wif_ue_st_NH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NH
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NH < 40 } } NOT = { check_variable = { wif_ue_lean_NH > 60 } } } localization_key = wif_ue_st_NH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NH
+	text = { trigger = { check_variable = { wif_ue_lean_NH > 60 } NOT = { check_variable = { wif_ue_lean_NH > 80 } } } localization_key = wif_ue_st_NH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NH
+	text = { trigger = { check_variable = { wif_ue_lean_NH > 80 } } localization_key = wif_ue_st_NH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NJ
+	text = { trigger = { check_variable = { wif_ue_lean_NJ < 20 } } localization_key = wif_ue_st_NJ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NJ
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NJ < 20 } } check_variable = { wif_ue_lean_NJ < 40 } } localization_key = wif_ue_st_NJ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NJ
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NJ < 40 } } NOT = { check_variable = { wif_ue_lean_NJ > 60 } } } localization_key = wif_ue_st_NJ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NJ
+	text = { trigger = { check_variable = { wif_ue_lean_NJ > 60 } NOT = { check_variable = { wif_ue_lean_NJ > 80 } } } localization_key = wif_ue_st_NJ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NJ
+	text = { trigger = { check_variable = { wif_ue_lean_NJ > 80 } } localization_key = wif_ue_st_NJ }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NM
+	text = { trigger = { check_variable = { wif_ue_lean_NM < 20 } } localization_key = wif_ue_st_NM }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NM
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NM < 20 } } check_variable = { wif_ue_lean_NM < 40 } } localization_key = wif_ue_st_NM }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NM
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NM < 40 } } NOT = { check_variable = { wif_ue_lean_NM > 60 } } } localization_key = wif_ue_st_NM }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NM
+	text = { trigger = { check_variable = { wif_ue_lean_NM > 60 } NOT = { check_variable = { wif_ue_lean_NM > 80 } } } localization_key = wif_ue_st_NM }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NM
+	text = { trigger = { check_variable = { wif_ue_lean_NM > 80 } } localization_key = wif_ue_st_NM }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NY
+	text = { trigger = { check_variable = { wif_ue_lean_NY < 20 } } localization_key = wif_ue_st_NY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NY < 20 } } check_variable = { wif_ue_lean_NY < 40 } } localization_key = wif_ue_st_NY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NY < 40 } } NOT = { check_variable = { wif_ue_lean_NY > 60 } } } localization_key = wif_ue_st_NY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NY
+	text = { trigger = { check_variable = { wif_ue_lean_NY > 60 } NOT = { check_variable = { wif_ue_lean_NY > 80 } } } localization_key = wif_ue_st_NY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NY
+	text = { trigger = { check_variable = { wif_ue_lean_NY > 80 } } localization_key = wif_ue_st_NY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_NC
+	text = { trigger = { check_variable = { wif_ue_lean_NC < 20 } } localization_key = wif_ue_st_NC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_NC
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NC < 20 } } check_variable = { wif_ue_lean_NC < 40 } } localization_key = wif_ue_st_NC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_NC
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_NC < 40 } } NOT = { check_variable = { wif_ue_lean_NC > 60 } } } localization_key = wif_ue_st_NC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_NC
+	text = { trigger = { check_variable = { wif_ue_lean_NC > 60 } NOT = { check_variable = { wif_ue_lean_NC > 80 } } } localization_key = wif_ue_st_NC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_NC
+	text = { trigger = { check_variable = { wif_ue_lean_NC > 80 } } localization_key = wif_ue_st_NC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_ND
+	text = { trigger = { check_variable = { wif_ue_lean_ND < 20 } } localization_key = wif_ue_st_ND }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_ND
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ND < 20 } } check_variable = { wif_ue_lean_ND < 40 } } localization_key = wif_ue_st_ND }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_ND
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_ND < 40 } } NOT = { check_variable = { wif_ue_lean_ND > 60 } } } localization_key = wif_ue_st_ND }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_ND
+	text = { trigger = { check_variable = { wif_ue_lean_ND > 60 } NOT = { check_variable = { wif_ue_lean_ND > 80 } } } localization_key = wif_ue_st_ND }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_ND
+	text = { trigger = { check_variable = { wif_ue_lean_ND > 80 } } localization_key = wif_ue_st_ND }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_OH
+	text = { trigger = { check_variable = { wif_ue_lean_OH < 20 } } localization_key = wif_ue_st_OH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_OH
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OH < 20 } } check_variable = { wif_ue_lean_OH < 40 } } localization_key = wif_ue_st_OH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_OH
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OH < 40 } } NOT = { check_variable = { wif_ue_lean_OH > 60 } } } localization_key = wif_ue_st_OH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_OH
+	text = { trigger = { check_variable = { wif_ue_lean_OH > 60 } NOT = { check_variable = { wif_ue_lean_OH > 80 } } } localization_key = wif_ue_st_OH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_OH
+	text = { trigger = { check_variable = { wif_ue_lean_OH > 80 } } localization_key = wif_ue_st_OH }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_OK
+	text = { trigger = { check_variable = { wif_ue_lean_OK < 20 } } localization_key = wif_ue_st_OK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_OK
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OK < 20 } } check_variable = { wif_ue_lean_OK < 40 } } localization_key = wif_ue_st_OK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_OK
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OK < 40 } } NOT = { check_variable = { wif_ue_lean_OK > 60 } } } localization_key = wif_ue_st_OK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_OK
+	text = { trigger = { check_variable = { wif_ue_lean_OK > 60 } NOT = { check_variable = { wif_ue_lean_OK > 80 } } } localization_key = wif_ue_st_OK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_OK
+	text = { trigger = { check_variable = { wif_ue_lean_OK > 80 } } localization_key = wif_ue_st_OK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_OR
+	text = { trigger = { check_variable = { wif_ue_lean_OR < 20 } } localization_key = wif_ue_st_OR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_OR
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OR < 20 } } check_variable = { wif_ue_lean_OR < 40 } } localization_key = wif_ue_st_OR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_OR
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_OR < 40 } } NOT = { check_variable = { wif_ue_lean_OR > 60 } } } localization_key = wif_ue_st_OR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_OR
+	text = { trigger = { check_variable = { wif_ue_lean_OR > 60 } NOT = { check_variable = { wif_ue_lean_OR > 80 } } } localization_key = wif_ue_st_OR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_OR
+	text = { trigger = { check_variable = { wif_ue_lean_OR > 80 } } localization_key = wif_ue_st_OR }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_PA
+	text = { trigger = { check_variable = { wif_ue_lean_PA < 20 } } localization_key = wif_ue_st_PA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_PA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_PA < 20 } } check_variable = { wif_ue_lean_PA < 40 } } localization_key = wif_ue_st_PA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_PA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_PA < 40 } } NOT = { check_variable = { wif_ue_lean_PA > 60 } } } localization_key = wif_ue_st_PA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_PA
+	text = { trigger = { check_variable = { wif_ue_lean_PA > 60 } NOT = { check_variable = { wif_ue_lean_PA > 80 } } } localization_key = wif_ue_st_PA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_PA
+	text = { trigger = { check_variable = { wif_ue_lean_PA > 80 } } localization_key = wif_ue_st_PA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_RI
+	text = { trigger = { check_variable = { wif_ue_lean_RI < 20 } } localization_key = wif_ue_st_RI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_RI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_RI < 20 } } check_variable = { wif_ue_lean_RI < 40 } } localization_key = wif_ue_st_RI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_RI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_RI < 40 } } NOT = { check_variable = { wif_ue_lean_RI > 60 } } } localization_key = wif_ue_st_RI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_RI
+	text = { trigger = { check_variable = { wif_ue_lean_RI > 60 } NOT = { check_variable = { wif_ue_lean_RI > 80 } } } localization_key = wif_ue_st_RI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_RI
+	text = { trigger = { check_variable = { wif_ue_lean_RI > 80 } } localization_key = wif_ue_st_RI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_SC
+	text = { trigger = { check_variable = { wif_ue_lean_SC < 20 } } localization_key = wif_ue_st_SC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_SC
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_SC < 20 } } check_variable = { wif_ue_lean_SC < 40 } } localization_key = wif_ue_st_SC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_SC
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_SC < 40 } } NOT = { check_variable = { wif_ue_lean_SC > 60 } } } localization_key = wif_ue_st_SC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_SC
+	text = { trigger = { check_variable = { wif_ue_lean_SC > 60 } NOT = { check_variable = { wif_ue_lean_SC > 80 } } } localization_key = wif_ue_st_SC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_SC
+	text = { trigger = { check_variable = { wif_ue_lean_SC > 80 } } localization_key = wif_ue_st_SC }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_SD
+	text = { trigger = { check_variable = { wif_ue_lean_SD < 20 } } localization_key = wif_ue_st_SD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_SD
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_SD < 20 } } check_variable = { wif_ue_lean_SD < 40 } } localization_key = wif_ue_st_SD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_SD
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_SD < 40 } } NOT = { check_variable = { wif_ue_lean_SD > 60 } } } localization_key = wif_ue_st_SD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_SD
+	text = { trigger = { check_variable = { wif_ue_lean_SD > 60 } NOT = { check_variable = { wif_ue_lean_SD > 80 } } } localization_key = wif_ue_st_SD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_SD
+	text = { trigger = { check_variable = { wif_ue_lean_SD > 80 } } localization_key = wif_ue_st_SD }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_TN
+	text = { trigger = { check_variable = { wif_ue_lean_TN < 20 } } localization_key = wif_ue_st_TN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_TN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_TN < 20 } } check_variable = { wif_ue_lean_TN < 40 } } localization_key = wif_ue_st_TN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_TN
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_TN < 40 } } NOT = { check_variable = { wif_ue_lean_TN > 60 } } } localization_key = wif_ue_st_TN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_TN
+	text = { trigger = { check_variable = { wif_ue_lean_TN > 60 } NOT = { check_variable = { wif_ue_lean_TN > 80 } } } localization_key = wif_ue_st_TN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_TN
+	text = { trigger = { check_variable = { wif_ue_lean_TN > 80 } } localization_key = wif_ue_st_TN }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_TX
+	text = { trigger = { check_variable = { wif_ue_lean_TX < 20 } } localization_key = wif_ue_st_TX }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_TX
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_TX < 20 } } check_variable = { wif_ue_lean_TX < 40 } } localization_key = wif_ue_st_TX }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_TX
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_TX < 40 } } NOT = { check_variable = { wif_ue_lean_TX > 60 } } } localization_key = wif_ue_st_TX }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_TX
+	text = { trigger = { check_variable = { wif_ue_lean_TX > 60 } NOT = { check_variable = { wif_ue_lean_TX > 80 } } } localization_key = wif_ue_st_TX }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_TX
+	text = { trigger = { check_variable = { wif_ue_lean_TX > 80 } } localization_key = wif_ue_st_TX }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_UT
+	text = { trigger = { check_variable = { wif_ue_lean_UT < 20 } } localization_key = wif_ue_st_UT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_UT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_UT < 20 } } check_variable = { wif_ue_lean_UT < 40 } } localization_key = wif_ue_st_UT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_UT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_UT < 40 } } NOT = { check_variable = { wif_ue_lean_UT > 60 } } } localization_key = wif_ue_st_UT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_UT
+	text = { trigger = { check_variable = { wif_ue_lean_UT > 60 } NOT = { check_variable = { wif_ue_lean_UT > 80 } } } localization_key = wif_ue_st_UT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_UT
+	text = { trigger = { check_variable = { wif_ue_lean_UT > 80 } } localization_key = wif_ue_st_UT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_VT
+	text = { trigger = { check_variable = { wif_ue_lean_VT < 20 } } localization_key = wif_ue_st_VT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_VT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_VT < 20 } } check_variable = { wif_ue_lean_VT < 40 } } localization_key = wif_ue_st_VT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_VT
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_VT < 40 } } NOT = { check_variable = { wif_ue_lean_VT > 60 } } } localization_key = wif_ue_st_VT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_VT
+	text = { trigger = { check_variable = { wif_ue_lean_VT > 60 } NOT = { check_variable = { wif_ue_lean_VT > 80 } } } localization_key = wif_ue_st_VT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_VT
+	text = { trigger = { check_variable = { wif_ue_lean_VT > 80 } } localization_key = wif_ue_st_VT }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_VA
+	text = { trigger = { check_variable = { wif_ue_lean_VA < 20 } } localization_key = wif_ue_st_VA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_VA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_VA < 20 } } check_variable = { wif_ue_lean_VA < 40 } } localization_key = wif_ue_st_VA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_VA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_VA < 40 } } NOT = { check_variable = { wif_ue_lean_VA > 60 } } } localization_key = wif_ue_st_VA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_VA
+	text = { trigger = { check_variable = { wif_ue_lean_VA > 60 } NOT = { check_variable = { wif_ue_lean_VA > 80 } } } localization_key = wif_ue_st_VA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_VA
+	text = { trigger = { check_variable = { wif_ue_lean_VA > 80 } } localization_key = wif_ue_st_VA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_WA
+	text = { trigger = { check_variable = { wif_ue_lean_WA < 20 } } localization_key = wif_ue_st_WA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_WA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WA < 20 } } check_variable = { wif_ue_lean_WA < 40 } } localization_key = wif_ue_st_WA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_WA
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WA < 40 } } NOT = { check_variable = { wif_ue_lean_WA > 60 } } } localization_key = wif_ue_st_WA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_WA
+	text = { trigger = { check_variable = { wif_ue_lean_WA > 60 } NOT = { check_variable = { wif_ue_lean_WA > 80 } } } localization_key = wif_ue_st_WA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_WA
+	text = { trigger = { check_variable = { wif_ue_lean_WA > 80 } } localization_key = wif_ue_st_WA }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_WV
+	text = { trigger = { check_variable = { wif_ue_lean_WV < 20 } } localization_key = wif_ue_st_WV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_WV
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WV < 20 } } check_variable = { wif_ue_lean_WV < 40 } } localization_key = wif_ue_st_WV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_WV
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WV < 40 } } NOT = { check_variable = { wif_ue_lean_WV > 60 } } } localization_key = wif_ue_st_WV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_WV
+	text = { trigger = { check_variable = { wif_ue_lean_WV > 60 } NOT = { check_variable = { wif_ue_lean_WV > 80 } } } localization_key = wif_ue_st_WV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_WV
+	text = { trigger = { check_variable = { wif_ue_lean_WV > 80 } } localization_key = wif_ue_st_WV }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_WI
+	text = { trigger = { check_variable = { wif_ue_lean_WI < 20 } } localization_key = wif_ue_st_WI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_WI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WI < 20 } } check_variable = { wif_ue_lean_WI < 40 } } localization_key = wif_ue_st_WI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_WI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WI < 40 } } NOT = { check_variable = { wif_ue_lean_WI > 60 } } } localization_key = wif_ue_st_WI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_WI
+	text = { trigger = { check_variable = { wif_ue_lean_WI > 60 } NOT = { check_variable = { wif_ue_lean_WI > 80 } } } localization_key = wif_ue_st_WI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_WI
+	text = { trigger = { check_variable = { wif_ue_lean_WI > 80 } } localization_key = wif_ue_st_WI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_WY
+	text = { trigger = { check_variable = { wif_ue_lean_WY < 20 } } localization_key = wif_ue_st_WY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_WY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WY < 20 } } check_variable = { wif_ue_lean_WY < 40 } } localization_key = wif_ue_st_WY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_WY
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_WY < 40 } } NOT = { check_variable = { wif_ue_lean_WY > 60 } } } localization_key = wif_ue_st_WY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_WY
+	text = { trigger = { check_variable = { wif_ue_lean_WY > 60 } NOT = { check_variable = { wif_ue_lean_WY > 80 } } } localization_key = wif_ue_st_WY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_WY
+	text = { trigger = { check_variable = { wif_ue_lean_WY > 80 } } localization_key = wif_ue_st_WY }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_AK
+	text = { trigger = { check_variable = { wif_ue_lean_AK < 20 } has_country_flag = wif_ue_in_AK } localization_key = wif_ue_st_AK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_AK
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AK < 20 } } check_variable = { wif_ue_lean_AK < 40 } has_country_flag = wif_ue_in_AK } localization_key = wif_ue_st_AK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_AK
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_AK < 40 } } NOT = { check_variable = { wif_ue_lean_AK > 60 } } has_country_flag = wif_ue_in_AK } localization_key = wif_ue_st_AK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_AK
+	text = { trigger = { check_variable = { wif_ue_lean_AK > 60 } NOT = { check_variable = { wif_ue_lean_AK > 80 } } has_country_flag = wif_ue_in_AK } localization_key = wif_ue_st_AK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_AK
+	text = { trigger = { check_variable = { wif_ue_lean_AK > 80 } has_country_flag = wif_ue_in_AK } localization_key = wif_ue_st_AK }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t1_HI
+	text = { trigger = { check_variable = { wif_ue_lean_HI < 20 } has_country_flag = wif_ue_in_HI } localization_key = wif_ue_st_HI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t2_HI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_HI < 20 } } check_variable = { wif_ue_lean_HI < 40 } has_country_flag = wif_ue_in_HI } localization_key = wif_ue_st_HI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t3_HI
+	text = { trigger = { NOT = { check_variable = { wif_ue_lean_HI < 40 } } NOT = { check_variable = { wif_ue_lean_HI > 60 } } has_country_flag = wif_ue_in_HI } localization_key = wif_ue_st_HI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t4_HI
+	text = { trigger = { check_variable = { wif_ue_lean_HI > 60 } NOT = { check_variable = { wif_ue_lean_HI > 80 } } has_country_flag = wif_ue_in_HI } localization_key = wif_ue_st_HI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_t5_HI
+	text = { trigger = { check_variable = { wif_ue_lean_HI > 80 } has_country_flag = wif_ue_in_HI } localization_key = wif_ue_st_HI }
+	text = { localization_key = wif_ue_nobody }
+}
+
+defined_text = {
+	name = wif_ue_other_party
+	text = { trigger = { check_variable = { wif_ue_player = 2 } } localization_key = wif_ue_party_d_long }
+	text = { localization_key = wif_ue_party_r_long }
+}
+
+defined_text = {
 	name = wif_ue_nominees
 	text = { trigger = { check_variable = { wif_ue_kind = 1 } } localization_key = wif_ue_nominees_text }
 	text = { localization_key = wif_ue_nobody }
