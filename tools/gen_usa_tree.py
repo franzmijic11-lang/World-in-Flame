@@ -170,8 +170,7 @@ R = {
                        'random_list = {\n\t50 = { set_temp_variable = { wif_usa_dd = -10 } wif_usa_dep_change = yes add_stability = 0.05 }\n'
                        '\t50 = { add_political_power = -100 add_timed_idea = { idea = wif_usa_court_revolt days = 365 } }\n}')),
     'wait_old_men': j(dep(-5), stab(0.05)),
-    'reform': j(dep(-5), stab(0.05), tt('wif_usa_reform_tt', 'THE DEPRESSION falls by §G1§! every month from now on.',
-                                        flag('wif_usa_reform'))),
+    'reform': j(dep(-5), stab(0.05)),
     'sec': j(dep(-5), tt('wif_usa_sec_tt', 'THE DEPRESSION can no longer rise by more than §Y10§! at once.', flag('wif_usa_sec')),
              sway('business', 4, False)),
     'wagner_act': j(dep(-5), idea('wif_usa_wagner_idea'), ws(-0.05), sway('industrial', 6)),
@@ -711,16 +710,6 @@ wif_usa_dep_start = {
 	}
 	wif_usa_dep_update = yes
 }
-wif_usa_monthly = {
-	if = {
-		limit = {
-			has_country_flag = wif_usa_reform
-			check_variable = { wif_usa_dep > 0 }
-		}
-		set_temp_variable = { wif_usa_dd = -1 }
-		wif_usa_dep_change = yes
-	}
-}
 '''
     write('common/scripted_effects/wif_usa_effects.txt', t)
     write('common/on_actions/wif_usa_on_actions.txt', HEADER + '''on_actions = {
@@ -735,9 +724,6 @@ wif_usa_monthly = {
 				USA = { wif_usa_dep_start = yes }
 			}
 		}
-	}
-	on_monthly_USA = {
-		effect = { wif_usa_monthly = yes }
 	}
 }
 ''')

@@ -13,7 +13,4 @@ on_actions = {
 			}
 		}
 	}
-	on_monthly_USA = {
-		effect = { wif_usa_monthly = yes }
-	}
 }

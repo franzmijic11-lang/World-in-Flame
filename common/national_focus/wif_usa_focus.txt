@@ -135,10 +135,6 @@ focus_tree = {
 				wif_usa_dep_change = yes
 			}
 			add_stability = 0.05
-			custom_effect_tooltip = wif_usa_reform_tt
-			hidden_effect = {
-				set_country_flag = wif_usa_reform
-			}
 		}
 	}
 
