@@ -1,0 +1,2 @@
+﻿l_english:
+ USA_congress_desc:0 "The House: §B[?USA.wif_ue_house_d|0] Democrats§! and §R[?USA.wif_ue_house_r|0] Republicans§!.\nThe Senate: §B[?USA.wif_ue_sen_d|0] Democrats§! and §R[?USA.wif_ue_sen_r|0] Republicans§!.\n\nThe President's party holds §Y[?USA.wif_ue_house_pct|0]%§! of the House and §Y[?USA.wif_ue_sen_pct|0]%§! of the Senate. Seats change only at elections: every two years the whole House and a third of the Senate."

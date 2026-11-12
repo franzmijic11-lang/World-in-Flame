@@ -1,0 +1,2244 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "The Supreme Court has struck down the NRA and the First New Deal is in pieces. Roosevelt goes back to Congress with a bolder programme.\n\nEffect: starts THE DEPRESSION mechanic. Depression is a value from 0 to 100 that starts at 80. The Great Depression spirit scales with it: up to -15% stability, -20% factory output, +15% consumer goods and -10% construction speed. At 0 the spirit is gone. Every New Deal focus lowers it; Relief, Recovery and Reform each work differently.",
+   "fid": "wif_usa_continue_new_deal",
+   "id": "usa000",
+   "mx": [],
+   "name": "Continue the New Deal",
+   "pre": [],
+   "x": 11,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Put the unemployed to work today, on anything that needs building.\n\nEffect: -8 Depression. +5% stability. Unlocks the WPA decisions: spend 50 PP to build infrastructure in a state at half cost.",
+   "fid": "wif_usa_relief",
+   "id": "usa001",
+   "mx": [],
+   "name": "Relief: The Works Progress Administration",
+   "pre": [
+    "usa000"
+   ],
+   "x": 0,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "Three million young men plant forests, fight floods and learn to march in step.\n\nEffect: -6 Depression. +1% recruitable population. Infantry training 10% faster.",
+   "fid": "wif_usa_ccc",
+   "id": "usa002",
+   "mx": [],
+   "name": "Civilian Conservation Corps",
+   "pre": [
+    "usa001"
+   ],
+   "x": 0,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "Nine farms in ten have no electricity. Change that.\n\nEffect: -6 Depression. +1 infrastructure in the 5 poorest core states.",
+   "fid": "wif_usa_rea",
+   "id": "usa003",
+   "mx": [],
+   "name": "Rural Electrification",
+   "pre": [
+    "usa002"
+   ],
+   "x": 0,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "The Great Plains are blowing away. Shelterbelts, soil conservation and relief for the Okies.\n\nEffect: -6 Depression. +5% stability. +3% recruitable population factor removed from the Dust Bowl spirit.",
+   "fid": "wif_usa_dust_bowl",
+   "id": "usa004",
+   "mx": [],
+   "name": "Rescue the Dust Bowl",
+   "pre": [
+    "usa003"
+   ],
+   "x": 0,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Not make-work but big projects: dams, bridges, airports, warships.\n\nEffect: -6 Depression. 2 civilian factories.",
+   "fid": "wif_usa_recovery",
+   "id": "usa005",
+   "mx": [],
+   "name": "Recovery: Public Works Administration",
+   "pre": [
+    "usa000"
+   ],
+   "x": 2,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "Slum clearance and cheap mortgages put the building trades back to work.\n\nEffect: -6 Depression. +10% construction speed for civilian factories for 2 years.",
+   "fid": "wif_usa_housing_act",
+   "id": "usa006",
+   "mx": [],
+   "name": "The Housing Act",
+   "pre": [
+    "usa005"
+   ],
+   "x": 2,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "A minimum wage and a forty-hour week.\n\nEffect: -5 Depression. -5% consumer goods. +5% stability.",
+   "fid": "wif_usa_flsa",
+   "id": "usa007",
+   "mx": [],
+   "name": "Fair Labor Standards Act",
+   "pre": [
+    "usa006"
+   ],
+   "x": 2,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 35,
+   "desc": "Morgenthau says the emergency is over and the deficit must go. He may be early.\n\nEffect: +100 political power and -5% consumer goods at once. If Depression is above 30 when this completes, the ROOSEVELT RECESSION fires: +20 Depression and -10% stability for 6 months.",
+   "fid": "wif_usa_balance_budget",
+   "id": "usa008",
+   "mx": [
+    "usa009"
+   ],
+   "name": "Balance the Budget",
+   "pre": [
+    "usa007"
+   ],
+   "x": 2,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Keynes writes to the President: cutting now would throw the country back into the pit. Keep spending.\n\nEffect: -8 Depression. +5% consumer goods for 2 years. The Roosevelt Recession can no longer fire.",
+   "fid": "wif_usa_spend_way_out",
+   "id": "usa009",
+   "mx": [
+    "usa008"
+   ],
+   "name": "Spend Our Way Out",
+   "pre": [
+    "usa007"
+   ],
+   "x": 4,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Five old men keep striking down the New Deal. Something has to give.\n\nEffect: -20 political power. Unlocks the two answers below.",
+   "fid": "wif_usa_court_question",
+   "id": "usa010",
+   "mx": [],
+   "name": "The Court Question",
+   "pre": [
+    "usa008",
+    "usa009"
+   ],
+   "x": 3,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 49,
+   "desc": "Six new justices, one for every judge over seventy.\n\nEffect: a gamble. 50%: the switch in time - Reform focuses take 25% less time and -10 Depression. 50%: Congress revolts - -10% stability and -100 political power for a year.",
+   "fid": "wif_usa_pack_court",
+   "id": "usa011",
+   "mx": [
+    "usa012"
+   ],
+   "name": "Pack the Court",
+   "pre": [
+    "usa010"
+   ],
+   "x": 2,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 49,
+   "desc": "Justices retire. Justices die. Roosevelt can be patient.\n\nEffect: -5 Depression. +5% stability. Reform focuses take 10% less time.",
+   "fid": "wif_usa_wait_old_men",
+   "id": "usa012",
+   "mx": [
+    "usa011"
+   ],
+   "name": "Wait Out the Nine Old Men",
+   "pre": [
+    "usa010"
+   ],
+   "x": 4,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Old-age pensions and unemployment insurance - the safety net that keeps the next crash from becoming the last one.\n\nEffect: -5 Depression. +5% stability. Depression falls by 1 every month while above 0.",
+   "fid": "wif_usa_reform",
+   "id": "usa013",
+   "mx": [],
+   "name": "Reform: The Social Security Act",
+   "pre": [
+    "usa000"
+   ],
+   "x": 4,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "The Securities and Exchange Commission and Glass-Steagall put a fence around the speculators.\n\nEffect: -5 Depression. The Depression can no longer rise by more than 10 from any single event.",
+   "fid": "wif_usa_sec",
+   "id": "usa014",
+   "mx": [],
+   "name": "Tame Wall Street",
+   "pre": [
+    "usa013"
+   ],
+   "x": 4,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Unions get the right to organise and bargain.\n\nEffect: -5 Depression. +5% factory output. -5% war support.",
+   "fid": "wif_usa_wagner_act",
+   "id": "usa015",
+   "mx": [],
+   "name": "The Wagner Act",
+   "pre": [
+    "usa014"
+   ],
+   "x": 4,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 56,
+   "desc": "Not a single day when it ended, but by now the breadlines are gone.\n\nEffect: sets Depression to 0 and removes the Great Depression. +10% stability. If Depression was already 0: 3 civilian factories instead.",
+   "fid": "wif_usa_recovery_achieved",
+   "id": "usa016",
+   "mx": [],
+   "name": "The Depression Is Over",
+   "pre": [
+    "usa004",
+    "usa011",
+    "usa012",
+    "usa015"
+   ],
+   "x": 1,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "Dams and power for the poorest valley in the country.\n\nEffect: -4 Depression. 1 civilian factory and +1 infrastructure in Tennessee.",
+   "fid": "wif_usa_tva",
+   "id": "usa017",
+   "mx": [],
+   "name": "Tennessee Valley Authority",
+   "pre": [
+    "usa000"
+   ],
+   "x": 8,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The Columbia River is harnessed. Cheap power for the Northwest.\n\nEffect: 2 civilian factories in Washington and Oregon. +1 infrastructure in Washington.",
+   "fid": "wif_usa_hydro",
+   "id": "usa018",
+   "mx": [],
+   "name": "Grand Coulee and Bonneville",
+   "pre": [
+    "usa017"
+   ],
+   "x": 6,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Continuous strip mills replace the old hand-rolling lines.\n\nEffect: +8 steel in Pennsylvania and +4 in Ohio. +5% factory output.",
+   "fid": "wif_usa_steel_mills",
+   "id": "usa019",
+   "mx": [],
+   "name": "Modernise the Steel Mills",
+   "pre": [
+    "usa017"
+   ],
+   "x": 10,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "If the rubber of Malaya is ever cut off, America must make its own.\n\nEffect: 1 synthetic refinery. Rubber research 50% faster.",
+   "fid": "wif_usa_synthetic_rubber",
+   "id": "usa020",
+   "mx": [],
+   "name": "Synthetic Rubber Programme",
+   "pre": [
+    "usa018"
+   ],
+   "x": 6,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "The bottleneck of every war economy is the machine that makes the machines.\n\nEffect: +10% production efficiency cap. +5% production efficiency growth.",
+   "fid": "wif_usa_machine_tools",
+   "id": "usa021",
+   "mx": [],
+   "name": "Machine Tools for Democracy",
+   "pre": [
+    "usa019"
+   ],
+   "x": 10,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "Knudsen of General Motors comes to Washington to put the country on a war footing.\n\nAvailable: only while the US is at war with a major power.\nEffect: 3 military factories. Unlocks the Defense Plant decisions.",
+   "fid": "wif_usa_opm",
+   "id": "usa022",
+   "mx": [],
+   "name": "Office of Production Management",
+   "pre": [
+    "usa020",
+    "usa021"
+   ],
+   "x": 8,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "Wedemeyer calculates what it would take to win a world war. The answer is everything.\n\nEffect: 4 military factories. -10% military factory construction cost for 2 years.",
+   "fid": "wif_usa_victory_program",
+   "id": "usa023",
+   "mx": [],
+   "name": "The Victory Program",
+   "pre": [
+    "usa022"
+   ],
+   "x": 6,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "An ugly duckling of a freighter, built in weeks.\n\nEffect: 2 dockyards. Convoys 25% cheaper to build.",
+   "fid": "wif_usa_liberty_ships",
+   "id": "usa024",
+   "mx": [],
+   "name": "Liberty Ships",
+   "pre": [
+    "usa022"
+   ],
+   "x": 10,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "The auto plants stop making cars and start making tanks and bombers.\n\nEffect: 4 military factories in Michigan. Armour and aircraft production +10%.",
+   "fid": "wif_usa_detroit",
+   "id": "usa025",
+   "mx": [],
+   "name": "Detroit Goes to War",
+   "pre": [
+    "usa023"
+   ],
+   "x": 6,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "Henry Kaiser builds ships like Ford built cars.\n\nEffect: 3 dockyards. +10% naval production.",
+   "fid": "wif_usa_kaiser_yards",
+   "id": "usa026",
+   "mx": [],
+   "name": "Kaiser's Yards",
+   "pre": [
+    "usa024"
+   ],
+   "x": 10,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "One board, one priority list, the whole economy.\n\nEffect: +10% factory output. Consumer goods -5%.",
+   "fid": "wif_usa_wpb",
+   "id": "usa027",
+   "mx": [],
+   "name": "War Production Board",
+   "pre": [
+    "usa025",
+    "usa026"
+   ],
+   "x": 8,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "U-boats sink the tankers, so the oil goes overland in the world's longest pipeline.\n\nEffect: 2 refineries. +20% oil from Texas.",
+   "fid": "wif_usa_big_inch",
+   "id": "usa028",
+   "mx": [],
+   "name": "The Big Inch",
+   "pre": [
+    "usa027"
+   ],
+   "x": 6,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 49,
+   "desc": "Every bomber is made of light metal, and there is never enough.\n\nAvailable: Improved Metal Working Plants (1942 tech) researched.\nEffect: 2 aluminium plants (WiF metal industry). +10% aircraft production.",
+   "fid": "wif_usa_aluminium",
+   "id": "usa029",
+   "mx": [],
+   "name": "Aluminium for the Air Forces",
+   "pre": [
+    "usa027"
+   ],
+   "x": 10,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 70,
+   "desc": "By now America out-builds the rest of the world combined.\n\nEffect: +10% factory output and dockyard output. 3 military factories.",
+   "fid": "wif_usa_miracle_production",
+   "id": "usa030",
+   "mx": [],
+   "name": "The Miracle of Production",
+   "pre": [
+    "usa028",
+    "usa029"
+   ],
+   "x": 8,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "Europe's universities are purging their best minds. America can take them in.\n\nEffect: unlocks the SCIENCE HAVEN decisions. Each one brings an emigre scientist (Einstein, Fermi, Szilard, Teller, von Karman, Bethe...) for 25-50 PP. Each scientist gives a permanent research bonus to one field. Scientists only become available once their home country has persecuted or expelled them.",
+   "fid": "wif_usa_science_haven",
+   "id": "usa031",
+   "mx": [],
+   "name": "A Haven for Science",
+   "pre": [
+    "usa060"
+   ],
+   "x": 14,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "The Emergency Committee in Aid of Displaced Foreign Scholars finds university posts for refugees.\n\nEffect: Science Haven decisions cost 25% less political power.",
+   "fid": "wif_usa_emergency_committee",
+   "id": "usa032",
+   "mx": [],
+   "name": "The Emergency Committee",
+   "pre": [
+    "usa031"
+   ],
+   "x": 12,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "Princeton becomes the place where physics happens.\n\nEffect: +5% research speed.",
+   "fid": "wif_usa_ias",
+   "id": "usa033",
+   "mx": [],
+   "name": "The Institute for Advanced Study",
+   "pre": [
+    "usa031"
+   ],
+   "x": 16,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "The immigration quotas are full. Write scientists an exception.\n\nEffect: 2 extra scientists become available at once. -5% war support (the restrictionists object).",
+   "fid": "wif_usa_quota",
+   "id": "usa034",
+   "mx": [],
+   "name": "Open the Quota for Scientists",
+   "pre": [
+    "usa032"
+   ],
+   "x": 12,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 35,
+   "desc": "Einstein signs a letter warning the President that a uranium bomb may be possible.\n\nEffect: +25% nuclear research. Unlocks The Uranium Committee.",
+   "fid": "wif_usa_einstein_letter",
+   "id": "usa035",
+   "mx": [],
+   "name": "The Einstein-Szilard Letter",
+   "pre": [
+    "usa033"
+   ],
+   "x": 16,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "Vannevar Bush organises the universities for war.\n\nEffect: +5% research speed. 2 research bonuses: electronics, industry.",
+   "fid": "wif_usa_ndrc",
+   "id": "usa036",
+   "mx": [],
+   "name": "National Defense Research Committee",
+   "pre": [
+    "usa034",
+    "usa035"
+   ],
+   "x": 14,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Bush gets a budget nobody audits and a direct line to the President.\n\nEffect: +1 RESEARCH SLOT.",
+   "fid": "wif_usa_osrd",
+   "id": "usa037",
+   "mx": [],
+   "name": "Office of Scientific Research and Development",
+   "pre": [
+    "usa036"
+   ],
+   "x": 14,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "The British bring the cavity magnetron in a black box. MIT builds radar around it.\n\nEffect: 2 research bonuses: radar.",
+   "fid": "wif_usa_rad_lab",
+   "id": "usa038",
+   "mx": [],
+   "name": "The Radiation Laboratory",
+   "pre": [
+    "usa037"
+   ],
+   "x": 12,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "Fermi builds a pile under the stands of a football stadium.\n\nEffect: +50% nuclear research for 2 years.",
+   "fid": "wif_usa_uranium_committee",
+   "id": "usa039",
+   "mx": [],
+   "name": "The Uranium Committee",
+   "pre": [
+    "usa037"
+   ],
+   "x": 16,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "A radio in every shell, so it bursts next to the plane.\n\nEffect: +10% anti-air attack. +5% naval anti-air.",
+   "fid": "wif_usa_proximity_fuze",
+   "id": "usa040",
+   "mx": [],
+   "name": "The Proximity Fuze",
+   "pre": [
+    "usa038"
+   ],
+   "x": 12,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Oak Ridge, Hanford, Los Alamos. The largest secret in history.\n\nEffect: nuclear special project progress +25%. Unlocks the atomic programme at Los Alamos (state 'New Mexico' gets a research facility).",
+   "fid": "wif_usa_manhattan",
+   "id": "usa041",
+   "mx": [],
+   "name": "The Manhattan Project",
+   "pre": [
+    "usa039"
+   ],
+   "x": 16,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 56,
+   "desc": "The war has taught the government that money and scientists, in large enough amounts, can do anything.\n\nEffect: +5% research speed. 3 research bonuses of your choice.",
+   "fid": "wif_usa_big_science",
+   "id": "usa042",
+   "mx": [],
+   "name": "Big Science",
+   "pre": [
+    "usa040",
+    "usa041"
+   ],
+   "x": 14,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Army is the 17th largest in the world, behind Portugal. That cannot last.\n\nEffect: +100 army experience. Unlocks the army, navy and air branches.",
+   "fid": "wif_usa_armed_forces",
+   "id": "usa043",
+   "mx": [],
+   "name": "Modernise the Armed Forces",
+   "pre": [],
+   "x": 32,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "A plan to put a trained army of 400,000 in the field in weeks.\n\nEffect: +1% recruitable population. -10% division training time.",
+   "fid": "wif_usa_pmp",
+   "id": "usa044",
+   "mx": [],
+   "name": "Protective Mobilization Plan",
+   "pre": [
+    "usa043"
+   ],
+   "x": 28,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The first peacetime draft in American history.\n\nEffect: +2% recruitable population. +5% war support.",
+   "fid": "wif_usa_selective_service",
+   "id": "usa045",
+   "mx": [],
+   "name": "Selective Service Act",
+   "pre": [
+    "usa044"
+   ],
+   "x": 26,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The only semi-automatic service rifle in the world.\n\nEffect: infantry weapons research 50% faster. +5% infantry soft attack.",
+   "fid": "wif_usa_garand",
+   "id": "usa046",
+   "mx": [],
+   "name": "The Garand Rifle",
+   "pre": [
+    "usa044"
+   ],
+   "x": 30,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "Four hundred thousand men in the swamps, and a generation of generals found and fired.\n\nEffect: +150 army experience. 2 new field marshal/general traits for the winner.",
+   "fid": "wif_usa_louisiana",
+   "id": "usa047",
+   "mx": [],
+   "name": "The Louisiana Maneuvers",
+   "pre": [
+    "usa045"
+   ],
+   "x": 26,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "After France, the cavalry loses the argument.\n\nEffect: armour research 50% faster. +10% armour organisation.",
+   "fid": "wif_usa_armored_force",
+   "id": "usa048",
+   "mx": [],
+   "name": "The Armored Force",
+   "pre": [
+    "usa046"
+   ],
+   "x": 30,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Marshall bets that ninety divisions, well equipped, are enough.\n\nEffect: +5% division attack and defence. -10% equipment upkeep... unlocks the Army decisions.",
+   "fid": "wif_usa_ninety_divisions",
+   "id": "usa049",
+   "mx": [],
+   "name": "The Ninety-Division Gamble",
+   "pre": [
+    "usa047",
+    "usa048"
+   ],
+   "x": 28,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Twenty per cent more navy.\n\nEffect: +100 navy experience. 2 dockyards.",
+   "fid": "wif_usa_vinson_act",
+   "id": "usa050",
+   "mx": [],
+   "name": "The Second Vinson Act",
+   "pre": [
+    "usa043"
+   ],
+   "x": 32,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "One fleet for the Atlantic, one for the Pacific, and neither borrowed from the other.\n\nEffect: 3 dockyards. +10% capital ship production.",
+   "fid": "wif_usa_two_ocean",
+   "id": "usa051",
+   "mx": [],
+   "name": "The Two-Ocean Navy Act",
+   "pre": [
+    "usa050"
+   ],
+   "x": 32,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "Battleships are the past. Flat-tops are the future.\n\nEffect: carrier research 50% faster. +10% naval air attack.",
+   "fid": "wif_usa_carrier_navy",
+   "id": "usa052",
+   "mx": [],
+   "name": "The Carrier Navy",
+   "pre": [
+    "usa051"
+   ],
+   "x": 32,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Twenty-four fleet carriers on order.\n\nEffect: +15% carrier production. +100 navy experience.",
+   "fid": "wif_usa_essex",
+   "id": "usa053",
+   "mx": [],
+   "name": "The Essex Class",
+   "pre": [
+    "usa052"
+   ],
+   "x": 32,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Five thousand planes is not an air force. Fifty thousand is.\n\nEffect: +100 air experience. 1 air base level in 3 states.",
+   "fid": "wif_usa_air_corps",
+   "id": "usa054",
+   "mx": [],
+   "name": "Expand the Air Corps",
+   "pre": [
+    "usa043"
+   ],
+   "x": 38,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "A bomber that defends itself.\n\nEffect: heavy bomber research 50% faster.",
+   "fid": "wif_usa_flying_fortress",
+   "id": "usa055",
+   "mx": [],
+   "name": "The Flying Fortress",
+   "pre": [
+    "usa054"
+   ],
+   "x": 36,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Lightning, the Thunderbolt and, soon, the Mustang.\n\nEffect: fighter research 50% faster.",
+   "fid": "wif_usa_pursuit",
+   "id": "usa056",
+   "mx": [],
+   "name": "Pursuit Fighters",
+   "pre": [
+    "usa054"
+   ],
+   "x": 40,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Hap Arnold gets an air force that is almost independent.\n\nEffect: +10% air superiority. +100 air experience.",
+   "fid": "wif_usa_aaf",
+   "id": "usa057",
+   "mx": [],
+   "name": "The Army Air Forces",
+   "pre": [
+    "usa055",
+    "usa056"
+   ],
+   "x": 38,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Roosevelt's number was called impossible. Industry beats it.\n\nEffect: +15% aircraft production. 2 military factories.",
+   "fid": "wif_usa_fifty_thousand",
+   "id": "usa058",
+   "mx": [],
+   "name": "Fifty Thousand Planes a Year",
+   "pre": [
+    "usa057"
+   ],
+   "x": 38,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "Army, Navy and Air plan one war together.\n\nEffect: +10% planning speed. +5% division and naval organisation. 1 extra command power per month.",
+   "fid": "wif_usa_jcs",
+   "id": "usa059",
+   "mx": [],
+   "name": "The Joint Chiefs of Staff",
+   "pre": [
+    "usa049",
+    "usa053",
+    "usa058"
+   ],
+   "x": 34,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Congress swears America will not be dragged into another European war.\n\nEffect: +10% stability. -10% war support. While active, the US cannot join a faction.",
+   "fid": "wif_usa_neutrality_act",
+   "id": "usa060",
+   "mx": [],
+   "name": "The Neutrality Act",
+   "pre": [
+    "usa000"
+   ],
+   "x": 20,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "No more Marines in Nicaragua. Partners, not protectorates.\n\nEffect: +25 opinion with every American nation. Their improve-relations cost halved.",
+   "fid": "wif_usa_good_neighbor",
+   "id": "usa061",
+   "mx": [],
+   "name": "The Good Neighbor Policy",
+   "pre": [
+    "usa060"
+   ],
+   "x": 18,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Roosevelt tests the water: aggressors should be quarantined like an epidemic.\n\nEffect: +5% war support. -5% stability if world tension is below 25%.",
+   "fid": "wif_usa_quarantine",
+   "id": "usa062",
+   "mx": [],
+   "name": "The Quarantine Speech",
+   "pre": [
+    "usa060"
+   ],
+   "x": 22,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "No European colony in the Americas may change hands.\n\nEffect: guarantee all Caribbean and South American nations. +10% war support.",
+   "fid": "wif_usa_havana",
+   "id": "usa063",
+   "mx": [],
+   "name": "The Act of Havana",
+   "pre": [
+    "usa061"
+   ],
+   "x": 18,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The democracies may buy arms, if they pay cash and carry them home.\n\nEffect: can trade equipment with Britain and France. +2 civilian factories when trading with them.",
+   "fid": "wif_usa_cash_and_carry",
+   "id": "usa064",
+   "mx": [],
+   "name": "Cash and Carry",
+   "pre": [
+    "usa062"
+   ],
+   "x": 22,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Bases from Greenland to the Galapagos.\n\nEffect: military access with every American nation. Coastal forts in the Canal Zone.",
+   "fid": "wif_usa_hemisphere_defense",
+   "id": "usa065",
+   "mx": [],
+   "name": "Hemisphere Defense",
+   "pre": [
+    "usa063"
+   ],
+   "x": 18,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Fifty old destroyers for the British, ninety-nine-year leases for America.\n\nEffect: give Britain 50 destroyers; gain naval bases in Newfoundland, Bermuda and the Caribbean.",
+   "fid": "wif_usa_destroyers_bases",
+   "id": "usa066",
+   "mx": [],
+   "name": "Destroyers for Bases",
+   "pre": [
+    "usa064"
+   ],
+   "x": 22,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 56,
+   "desc": "Lend your garden hose to a neighbour whose house is on fire.\n\nEffect: lend-lease costs 50% less. +10% war support.",
+   "fid": "wif_usa_lend_lease",
+   "id": "usa067",
+   "mx": [],
+   "name": "Lend-Lease",
+   "pre": [
+    "usa066"
+   ],
+   "x": 22,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "America will be the great arsenal of democracy.\n\nEffect: +10% factory output for lend-lease. -10% consumer goods.",
+   "fid": "wif_usa_arsenal_democracy",
+   "id": "usa068",
+   "mx": [],
+   "name": "The Arsenal of Democracy",
+   "pre": [
+    "usa067",
+    "usa065"
+   ],
+   "x": 20,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Roosevelt and Churchill on a cruiser off Newfoundland agree the war aims of a war America is not in.\n\nEffect: +100 opinion with Britain. +15% war support.",
+   "fid": "wif_usa_atlantic_charter",
+   "id": "usa069",
+   "mx": [],
+   "name": "The Atlantic Charter",
+   "pre": [
+    "usa067"
+   ],
+   "x": 22,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "US destroyers escort British convoys halfway across, and shoot first.\n\nEffect: +10% convoy escort efficiency. +10% war support.",
+   "fid": "wif_usa_undeclared_war",
+   "id": "usa070",
+   "mx": [],
+   "name": "The Undeclared War in the Atlantic",
+   "pre": [
+    "usa068",
+    "usa069"
+   ],
+   "x": 21,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "December 1941 - or whenever the Axis gives Congress the reason.\n\nEffect: available when at war with an Axis major or war support above 70%. Removes the Neutrality Act. Joins the Allies.",
+   "fid": "wif_usa_into_the_fight",
+   "id": "usa071",
+   "mx": [],
+   "name": "Into the Fight",
+   "pre": [
+    "usa070"
+   ],
+   "x": 21,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "The strongest enemy first. The Pacific must hold with what it has.\n\nEffect: +10% attack in Europe and Africa. AI: priority to the Atlantic.",
+   "fid": "wif_usa_germany_first",
+   "id": "usa072",
+   "mx": [
+    "usa073"
+   ],
+   "name": "Germany First",
+   "pre": [
+    "usa071"
+   ],
+   "x": 19,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Pearl Harbor is the wound the public wants avenged. MacArthur and King agree.\n\nEffect: +10% attack in Asia and the Pacific. +10% naval invasion capacity.",
+   "fid": "wif_usa_pacific_first",
+   "id": "usa073",
+   "mx": [
+    "usa072"
+   ],
+   "name": "Pacific First",
+   "pre": [
+    "usa071"
+   ],
+   "x": 23,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "The United Nations declaration: twenty-six nations, one war.\n\nEffect: +10% war support for every Allied member. +10% lend-lease to the Allies.",
+   "fid": "wif_usa_grand_alliance",
+   "id": "usa074",
+   "mx": [],
+   "name": "The Grand Alliance",
+   "pre": [
+    "usa072",
+    "usa073"
+   ],
+   "x": 21,
+   "y": 10
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "London has made peace with Berlin. Tokyo has dictated terms in the Pacific. For the first time since 1814, America has lost a war.\n\nAvailable: from 1945, if the United States accepted Germany's peace (wif_anglo_american_peace) AND Japan drove America out of Asia (wif_jap_america_out_of_asia).\nEffect: -10% stability. +10% war support. Unlocks the post-defeat tree.",
+   "fid": "wif_usa_beaten_not_defeated",
+   "id": "usa075",
+   "mx": [],
+   "name": "Beaten but not Defeated",
+   "pre": [
+    "usa128"
+   ],
+   "x": 14,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "PLACEHOLDER - Japan won in the Pacific, but Germany has been defeated.\n\nAvailable: from 1945, Japanese victory and German defeat (German defeat mechanic not built yet).\nTree to be designed later.",
+   "fid": "wif_usa_rising_sun_tiger",
+   "id": "usa076",
+   "mx": [],
+   "name": "A Rising Sun and a Tiger",
+   "pre": [
+    "usa128"
+   ],
+   "x": 19,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "PLACEHOLDER - Germany holds Europe, but Japan has been beaten.\n\nAvailable: from 1945, German victory (wif_anglo_american_peace) and Japanese defeat (mechanic not built yet).\nTree to be designed later.",
+   "fid": "wif_usa_fortress_europe_free_asia",
+   "id": "usa077",
+   "mx": [],
+   "name": "Fortress Europe, Free Asia",
+   "pre": [
+    "usa128"
+   ],
+   "x": 21,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "PLACEHOLDER - Germany and Japan are both defeated.\n\nAvailable: from 1945, both defeat mechanics (not built yet).\nTree to be designed later.",
+   "fid": "wif_usa_victory_achieved",
+   "id": "usa078",
+   "mx": [],
+   "name": "A Victory Achieved",
+   "pre": [
+    "usa128"
+   ],
+   "x": 23,
+   "y": 12
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 49,
+   "desc": "Every newspaper asks it. Every congressman has an answer.\n\nEffect: -5% stability. +50 political power.",
+   "fid": "wif_usa_who_lost",
+   "id": "usa079",
+   "mx": [],
+   "name": "Who Lost the World?",
+   "pre": [
+    "usa075"
+   ],
+   "x": 2,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 49,
+   "desc": "Pearl Harbor, the convoys, the peace: a committee room, cameras and a lot of generals under oath.\n\nEffect: -1 general and -1 admiral (retired in disgrace). +5% stability.",
+   "fid": "wif_usa_inquiry",
+   "id": "usa080",
+   "mx": [],
+   "name": "The Congressional Inquiry",
+   "pre": [
+    "usa079"
+   ],
+   "x": 2,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 56,
+   "desc": "Those who signed the peace and those who argued for it must go.\n\nEffect: +15% war support. -5% stability. Rearmament focuses 10% faster.",
+   "fid": "wif_usa_purge_appeasers",
+   "id": "usa081",
+   "mx": [
+    "usa082"
+   ],
+   "name": "Purge the Appeasers",
+   "pre": [
+    "usa080"
+   ],
+   "x": 0,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 56,
+   "desc": "Democrats and Republicans in one cabinet until the country is safe.\n\nEffect: +10% stability. +10% political power gain. Economy focuses 10% faster.",
+   "fid": "wif_usa_national_unity",
+   "id": "usa082",
+   "mx": [
+    "usa081"
+   ],
+   "name": "A Government of National Unity",
+   "pre": [
+    "usa080"
+   ],
+   "x": 4,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": true,
+   "branch": "political",
+   "days": 35,
+   "desc": "The first election since the defeat.\n\nEffect: event. The voters punish the party in power; the outcome sets who controls Congress until 1948.",
+   "fid": "wif_usa_midterms_46",
+   "id": "usa083",
+   "mx": [],
+   "name": "The 1946 Midterms",
+   "pre": [
+    "usa081",
+    "usa082"
+   ],
+   "x": 2,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": true,
+   "branch": "political",
+   "days": 56,
+   "desc": "Never again a disaster from divided command.\n\nEffect: +10% planning speed. Unlocks the two bodies below.",
+   "fid": "wif_usa_national_security_act",
+   "id": "usa084",
+   "mx": [],
+   "name": "The National Security Act",
+   "pre": [
+    "usa083"
+   ],
+   "x": 2,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": true,
+   "branch": "political",
+   "days": 49,
+   "desc": "One department, one secretary, one budget.\n\nEffect: -10% military advisor cost. +5% army, navy and air experience gain.",
+   "fid": "wif_usa_dept_defense",
+   "id": "usa085",
+   "mx": [],
+   "name": "A Department of Defense",
+   "pre": [
+    "usa084"
+   ],
+   "x": 0,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": true,
+   "branch": "political",
+   "days": 49,
+   "desc": "The President's own war room for a war that has no front line.\n\nEffect: Weltpolitik decisions cost 15% less political power.",
+   "fid": "wif_usa_nsc",
+   "id": "usa086",
+   "mx": [],
+   "name": "The National Security Council",
+   "pre": [
+    "usa084"
+   ],
+   "x": 4,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": true,
+   "branch": "political",
+   "days": 35,
+   "desc": "The country chooses who will lead the comeback.\n\nEffect: event. Choose between a candidate of revenge (+war support, faster rearmament) and a candidate of recovery (+stability, faster economy).",
+   "fid": "wif_usa_election_48",
+   "id": "usa087",
+   "mx": [],
+   "name": "The 1948 Election",
+   "pre": [
+    "usa085",
+    "usa086"
+   ],
+   "x": 2,
+   "y": 19
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 56,
+   "desc": "Whoever won, the country has stopped looking back.\n\nEffect: +10% stability. +10% war support. Removes the defeat spirits.",
+   "fid": "wif_usa_mandate_renewal",
+   "id": "usa088",
+   "mx": [],
+   "name": "A Mandate for Renewal",
+   "pre": [
+    "usa087"
+   ],
+   "x": 2,
+   "y": 20
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "The oceans did not protect us. Then the hemisphere must.\n\nEffect: +10% defence in the Americas. Unlocks the hemisphere branch.",
+   "fid": "wif_usa_fortress_america",
+   "id": "usa089",
+   "mx": [],
+   "name": "Fortress America",
+   "pre": [
+    "usa075"
+   ],
+   "x": 8,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "No power from outside the Americas will set foot here again.\n\nEffect: if a Global Power, claims Central America and South America for free (Weltpolitik). Otherwise +25 opinion with every American nation.",
+   "fid": "wif_usa_monroe_reborn",
+   "id": "usa090",
+   "mx": [],
+   "name": "The Monroe Doctrine Reborn",
+   "pre": [
+    "usa089"
+   ],
+   "x": 6,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Canada carries on the fight in Asia and leads what is left of the Commonwealth. Stand with it.\n\nEffect: +100 opinion with Canada. If Canada leads a faction, the US may join it - or invite Canada into its own.",
+   "fid": "wif_usa_continental_pact",
+   "id": "usa091",
+   "mx": [],
+   "name": "The Continental Pact",
+   "pre": [
+    "usa089"
+   ],
+   "x": 10,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 56,
+   "desc": "An attack on one American nation is an attack on all.\n\nEffect: American nations with 60+ opinion of the US join its faction (or a new one).",
+   "fid": "wif_usa_rio_treaty",
+   "id": "usa092",
+   "mx": [],
+   "name": "The Rio Treaty",
+   "pre": [
+    "usa090"
+   ],
+   "x": 6,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Radar lines across Canada and Alaska, so the bombers are seen coming.\n\nEffect: radar stations in Alaska and northern Canada (with Canadian consent). +10% air defence.",
+   "fid": "wif_usa_northern_defense",
+   "id": "usa093",
+   "mx": [],
+   "name": "Joint Defense of the North",
+   "pre": [
+    "usa091"
+   ],
+   "x": 10,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "The canal is the one thing that lets a one-ocean navy fight in two.\n\nEffect: coastal forts, anti-air and naval base in the Canal Zone.",
+   "fid": "wif_usa_panama_canal",
+   "id": "usa094",
+   "mx": [],
+   "name": "Fortify the Panama Canal",
+   "pre": [
+    "usa092"
+   ],
+   "x": 6,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Japan sits in Hawaii and the Kurils. Alaska is the front line now.\n\nEffect: +2 air base and coastal forts in Alaska and the Aleutians.",
+   "fid": "wif_usa_aleutian_wall",
+   "id": "usa095",
+   "mx": [],
+   "name": "The Aleutian Wall",
+   "pre": [
+    "usa093"
+   ],
+   "x": 10,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 56,
+   "desc": "From the Arctic to Cape Horn, one bloc.\n\nEffect: +20 influence in every American nation for the US's Global Power slot. +10% Sphere Cohesion.",
+   "fid": "wif_usa_hemispheric_bloc",
+   "id": "usa096",
+   "mx": [],
+   "name": "The Hemispheric Bloc",
+   "pre": [
+    "usa094",
+    "usa095"
+   ],
+   "x": 8,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 49,
+   "desc": "Hawaii is an Imperial Protectorate now. Americans have not forgotten.\n\nEffect: claims on Hawaii. Wargoal on the Hawaiian protectorate if war support is above 80%.",
+   "fid": "wif_usa_remember_hawaii",
+   "id": "usa097",
+   "mx": [],
+   "name": "Remember Hawaii",
+   "pre": [
+    "usa096"
+   ],
+   "x": 8,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Ten million men come home to an economy built for a war that was lost.\n\nEffect: 30% of military factories become civilian factories. Starts the DEFEAT RECESSION (-10% factory output, fades over 2 years).",
+   "fid": "wif_usa_reconversion",
+   "id": "usa098",
+   "mx": [],
+   "name": "Reconversion",
+   "pre": [
+    "usa075"
+   ],
+   "x": 14,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "College and a mortgage for every veteran - they fought, even if they lost.\n\nEffect: +5% stability. +5% research speed from 1948.",
+   "fid": "wif_usa_gi_bill",
+   "id": "usa099",
+   "mx": [],
+   "name": "The GI Bill",
+   "pre": [
+    "usa098"
+   ],
+   "x": 12,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "The war cost three hundred billion dollars and bought nothing. Pay it back.\n\nEffect: +10% political power gain. -5% consumer goods from 1947.",
+   "fid": "wif_usa_war_debt",
+   "id": "usa100",
+   "mx": [],
+   "name": "Pay Down the War Debt",
+   "pre": [
+    "usa098"
+   ],
+   "x": 16,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Levittown: a house, a lawn and a lot of new families.\n\nEffect: +3 civilian factories (construction boom). +1% recruitable population.",
+   "fid": "wif_usa_veteran_housing",
+   "id": "usa101",
+   "mx": [],
+   "name": "Houses for Veterans",
+   "pre": [
+    "usa099"
+   ],
+   "x": 12,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 49,
+   "desc": "Strikes, shortages and a dollar nobody trusts.\n\nEffect: ends the Defeat Recession early. +5% stability.",
+   "fid": "wif_usa_weather_recession",
+   "id": "usa102",
+   "mx": [],
+   "name": "Weather the Defeat Recession",
+   "pre": [
+    "usa100"
+   ],
+   "x": 16,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 56,
+   "desc": "Europe's Marshall Plan will never happen. Spend it on the Americas instead.\n\nEffect: give 5 civilian factories' worth of investment to American nations; +30 influence in each that receives it.",
+   "fid": "wif_usa_hemispheric_recovery",
+   "id": "usa103",
+   "mx": [],
+   "name": "Hemispheric Recovery Program",
+   "pre": [
+    "usa101",
+    "usa102"
+   ],
+   "x": 14,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 56,
+   "desc": "Forty thousand miles of road, built for evacuation as much as commerce.\n\nEffect: +1 infrastructure in every core state. +10% supply throughput in the US.",
+   "fid": "wif_usa_interstates",
+   "id": "usa104",
+   "mx": [],
+   "name": "The Interstate Highways",
+   "pre": [
+    "usa103"
+   ],
+   "x": 12,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 56,
+   "desc": "Televisions, cars, refrigerators. Defeat or not, Americans want to live well.\n\nEffect: +10% stability. -5% consumer goods (the economy is big enough to carry it).",
+   "fid": "wif_usa_consumer_boom",
+   "id": "usa105",
+   "mx": [],
+   "name": "The Consumer Boom",
+   "pre": [
+    "usa103"
+   ],
+   "x": 16,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "economy",
+   "days": 56,
+   "desc": "The richest country on earth is rich again.\n\nEffect: 4 civilian factories. +10% factory output.",
+   "fid": "wif_usa_prosperity_restored",
+   "id": "usa106",
+   "mx": [],
+   "name": "Prosperity Restored",
+   "pre": [
+    "usa104",
+    "usa105"
+   ],
+   "x": 14,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "America lost because it was ready too late. That will not happen twice.\n\nEffect: +15% war support. Unlocks the rearmament branch.",
+   "fid": "wif_usa_never_again",
+   "id": "usa107",
+   "mx": [],
+   "name": "Never Again Unarmed",
+   "pre": [
+    "usa075"
+   ],
+   "x": 20,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Los Alamos is reopened with every resource it asks for.\n\nEffect: nuclear special projects 25% faster. If the US has no bomb: +50% nuclear research.",
+   "fid": "wif_usa_atomic_program",
+   "id": "usa108",
+   "mx": [],
+   "name": "The Atomic Program",
+   "pre": [
+    "usa107"
+   ],
+   "x": 18,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "Curtis LeMay builds an air force whose only job is to reach the enemy's heart.\n\nEffect: +10% strategic bombing. +100 air experience.",
+   "fid": "wif_usa_sac",
+   "id": "usa109",
+   "mx": [],
+   "name": "Strategic Air Command",
+   "pre": [
+    "usa107"
+   ],
+   "x": 22,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 49,
+   "desc": "The world must see that America has the bomb.\n\nEffect: requires 1 nuke. Major news event; +15 credibility (Weltpolitik). Prestige race 'the Atomic Bomb' if not already won.",
+   "fid": "wif_usa_crossroads",
+   "id": "usa110",
+   "mx": [],
+   "name": "Operation Crossroads",
+   "pre": [
+    "usa108"
+   ],
+   "x": 18,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "The B-36: ten thousand miles of range. Berlin and Tokyo within reach from American soil.\n\nEffect: advanced large airframe research 50% faster. Intercontinental bomber special project 25% faster.",
+   "fid": "wif_usa_peacemaker",
+   "id": "usa111",
+   "mx": [],
+   "name": "The Peacemaker",
+   "pre": [
+    "usa109"
+   ],
+   "x": 22,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "Teller's hydrogen bomb. A thousand times the Hiroshima bomb.\n\nEffect: thermonuclear bomb research 50% faster.",
+   "fid": "wif_usa_the_super",
+   "id": "usa112",
+   "mx": [],
+   "name": "The Super",
+   "pre": [
+    "usa110"
+   ],
+   "x": 18,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 49,
+   "desc": "The Germans had jets in 1944. America will not be second again.\n\nEffect: jet engine special project 25% faster. +10% fighter agility.",
+   "fid": "wif_usa_jet_age",
+   "id": "usa113",
+   "mx": [],
+   "name": "Into the Jet Age",
+   "pre": [
+    "usa111"
+   ],
+   "x": 22,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 56,
+   "desc": "Rickover's submarine that never needs to surface.\n\nEffect: nuclear submarine special project 25% faster.",
+   "fid": "wif_usa_nautilus",
+   "id": "usa114",
+   "mx": [],
+   "name": "Project Nautilus",
+   "pre": [
+    "usa112"
+   ],
+   "x": 18,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Carriers big enough to fly jet bombers off.\n\nEffect: +15% carrier production. 2 dockyards.",
+   "fid": "wif_usa_supercarriers",
+   "id": "usa115",
+   "mx": [],
+   "name": "Supercarriers",
+   "pre": [
+    "usa113"
+   ],
+   "x": 22,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 56,
+   "desc": "Bombers, carriers and submarines - no enemy can strike without being struck.\n\nEffect: nuclear doctrine becomes Threat Launch (Weltpolitik). +10% war support. +5% division defence.",
+   "fid": "wif_usa_deterrent",
+   "id": "usa116",
+   "mx": [],
+   "name": "A Deterrent Second to None",
+   "pre": [
+    "usa114",
+    "usa115"
+   ],
+   "x": 20,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "If America cannot fight the victors openly, it will fight them everywhere else.\n\nEffect: unlocks the covert branch.",
+   "fid": "wif_usa_twilight",
+   "id": "usa117",
+   "mx": [],
+   "name": "The Long Twilight Struggle",
+   "pre": [
+    "usa075"
+   ],
+   "x": 26,
+   "y": 13
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "The OSS reborn, permanent and secret.\n\nEffect: intelligence agency upgrade. +1 operative slot. Fund Dissidents costs 25% less.",
+   "fid": "wif_usa_cia",
+   "id": "usa118",
+   "mx": [],
+   "name": "The Central Intelligence Agency",
+   "pre": [
+    "usa117"
+   ],
+   "x": 24,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "Broadcast the truth into the Reich and the Co-Prosperity Sphere.\n\nEffect: +2 influence a month in every nation with an Axis patron (not their subjects).",
+   "fid": "wif_usa_radio_free",
+   "id": "usa119",
+   "mx": [],
+   "name": "Radio Free World",
+   "pre": [
+    "usa117"
+   ],
+   "x": 28,
+   "y": 14
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "Scotland is free and Britain is a German protectorate. Keep the Scots armed.\n\nEffect: Smuggle Arms to Scotland decisions cost 50% less. +25 opinion with Scotland.",
+   "fid": "wif_usa_scottish_resistance",
+   "id": "usa120",
+   "mx": [],
+   "name": "Arm the Scottish Resistance",
+   "pre": [
+    "usa118"
+   ],
+   "x": 24,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "China is beaten but not quiet. Find the men still fighting.\n\nEffect: send 10,000 rifles and 50 PP to resistance groups in Japanese protectorates (decision). +10% resistance in Japanese-held China.",
+   "fid": "wif_usa_free_asia",
+   "id": "usa121",
+   "mx": [],
+   "name": "Friends in Free Asia",
+   "pre": [
+    "usa119"
+   ],
+   "x": 28,
+   "y": 15
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 49,
+   "desc": "India, Egypt, Indonesia - nations that want neither Berlin nor Tokyo.\n\nEffect: +25 opinion with every Non-Aligned Movement member. Influence campaigns in NAM nations are no longer halved for the US.",
+   "fid": "wif_usa_non_aligned",
+   "id": "usa122",
+   "mx": [],
+   "name": "Courting the Non-Aligned",
+   "pre": [
+    "usa120",
+    "usa121"
+   ],
+   "x": 26,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 56,
+   "desc": "Containment is for powers that won. America intends to take things back.\n\nEffect: Back Secessionists and Stoke Border Tensions cost 50% less. +10% war support.",
+   "fid": "wif_usa_rollback",
+   "id": "usa123",
+   "mx": [],
+   "name": "Rollback",
+   "pre": [
+    "usa122"
+   ],
+   "x": 26,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 56,
+   "desc": "A permanent joint staff for the whole hemisphere.\n\nEffect: faction members in the Americas get +10% defence and +5% division attack. +10% Sphere Cohesion.",
+   "fid": "wif_usa_inter_american_board",
+   "id": "usa124",
+   "mx": [],
+   "name": "The Inter-American Defense Board",
+   "pre": [
+    "usa097"
+   ],
+   "x": 8,
+   "y": 19
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "project",
+   "days": 70,
+   "desc": "A rocket that can reach Berlin from Florida in thirty minutes.\n\nEffect: long-range ballistic missile special project 25% faster (the ICBM prestige race).",
+   "fid": "wif_usa_atlas",
+   "id": "usa125",
+   "mx": [],
+   "name": "The Atlas Missile",
+   "pre": [
+    "usa116"
+   ],
+   "x": 20,
+   "y": 19
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 56,
+   "desc": "High-altitude cameras over Peenemuende and Kure. Know what they have.\n\nEffect: +20% intelligence on every Global Power. Reveals their nuke count in the Weltpolitik menu.",
+   "fid": "wif_usa_overflights",
+   "id": "usa126",
+   "mx": [],
+   "name": "Overflights of the Reich",
+   "pre": [
+    "usa123"
+   ],
+   "x": 26,
+   "y": 18
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "1952. Seven years after the defeat, the United States is once again a power the victors must reckon with.\n\nEffect: +15% stability, +15% war support, +10% factory output. Global Power score +20% (Weltpolitik). Removes every remaining defeat spirit.",
+   "fid": "wif_usa_america_stands",
+   "id": "usa127",
+   "mx": [],
+   "name": "America Stands Again",
+   "pre": [
+    "usa088",
+    "usa124",
+    "usa106",
+    "usa125",
+    "usa126"
+   ],
+   "x": 12,
+   "y": 21
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "1945. However the war has gone, the country has to decide what it is now.\n\nAvailable: from 1 January 1945. Effect: +50 political power. Unlocks the one 1945 branch whose conditions are met.",
+   "fid": "wif_usa_world_after_war",
+   "id": "usa128",
+   "mx": [],
+   "name": "The World After the War",
+   "pre": [
+    "usa016",
+    "usa030",
+    "usa042",
+    "usa074"
+   ],
+   "x": 11,
+   "y": 11
+  }
+ ],
+ "name": "United States 1936-1952 (WiF)",
+ "tag": "USA",
+ "target": 5110,
+ "treeId": "wif_usa_focus",
+ "updatedAt": 1794337008527
+}
