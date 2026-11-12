@@ -581,7 +581,7 @@ SCIENTISTS = [
 
 def fix_clashes(fids):
     """An idea named like a focus shares its loc key: rename such ideas to <name>_idea everywhere."""
-    for k in sorted(set(IDEAS) & set(fids), key=len, reverse=True):
+    for k in sorted(set(IDEAS) & set(fids), key=lambda x: (-len(x), x)):
         new = k + '_idea'
         IDEAS[new] = IDEAS.pop(k)
         pat = re.compile(r'\b' + re.escape(k) + r'\b')

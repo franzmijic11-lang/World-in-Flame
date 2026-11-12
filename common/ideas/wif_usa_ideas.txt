@@ -280,13 +280,13 @@ ideas = {
 				conscription = 0.02
 			}
 		}
-		wif_usa_northern_defense_idea = {
-			picture = generic_air_bonus
+		wif_usa_fortress_america_idea = {
+			picture = generic_fortify_the_borders
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				air_defence_factor = 0.1
+				army_defence_factor = 0.1
 			}
 		}
 		wif_usa_ninety_divisions_idea = {
@@ -299,13 +299,13 @@ ideas = {
 				army_defence_factor = 0.05
 			}
 		}
-		wif_usa_fortress_america_idea = {
-			picture = generic_fortify_the_borders
+		wif_usa_northern_defense_idea = {
+			picture = generic_air_bonus
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				army_defence_factor = 0.1
+				air_defence_factor = 0.1
 			}
 		}
 		wif_usa_victory_program_idea = {
@@ -317,24 +317,6 @@ ideas = {
 				production_speed_arms_factory_factor = 0.1
 			}
 		}
-		wif_usa_atomic_program_idea = {
-			picture = generic_research_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				special_project_speed_factor = 0.25
-			}
-		}
-		wif_usa_undeclared_war_idea = {
-			picture = generic_navy_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				convoy_escort_efficiency = 0.1
-			}
-		}
 		wif_usa_america_stands_idea = {
 			picture = generic_economic_increase
 			allowed = { always = no }
@@ -343,6 +325,15 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.1
 				stability_factor = 0.05
+			}
+		}
+		wif_usa_atomic_program_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				special_project_speed_factor = 0.25
 			}
 		}
 		wif_usa_fifty_thousand_idea = {
@@ -364,6 +355,15 @@ ideas = {
 				air_defence_factor = 0.05
 			}
 		}
+		wif_usa_undeclared_war_idea = {
+			picture = generic_navy_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				convoy_escort_efficiency = 0.1
+			}
+		}
 		wif_usa_armored_force_idea = {
 			picture = generic_armor
 			allowed = { always = no }
@@ -374,6 +374,15 @@ ideas = {
 				army_armor_defence_factor = 0.05
 			}
 		}
+		wif_usa_consumer_boom_idea = {
+			picture = generic_goods_red_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
 		wif_usa_germany_first_idea = {
 			picture = generic_army_war_college
 			allowed = { always = no }
@@ -381,6 +390,16 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				army_attack_factor = 0.05
+			}
+		}
+		wif_usa_machine_tools_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
 			}
 		}
 		wif_usa_pacific_first_idea = {
@@ -393,15 +412,6 @@ ideas = {
 				amphibious_invasion = 0.1
 			}
 		}
-		wif_usa_consumer_boom_idea = {
-			picture = generic_goods_red_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.05
-			}
-		}
 		wif_usa_supercarriers_idea = {
 			picture = generic_navy_carrier_bonus
 			allowed = { always = no }
@@ -409,16 +419,6 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				industrial_capacity_dockyard = 0.15
-			}
-		}
-		wif_usa_machine_tools_idea = {
-			picture = generic_production_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				production_factory_max_efficiency_factor = 0.1
-				production_factory_efficiency_gain_factor = 0.05
 			}
 		}
 		wif_usa_carrier_navy_idea = {
@@ -476,15 +476,6 @@ ideas = {
 				special_project_speed_factor = 0.25
 			}
 		}
-		wif_usa_two_ocean_idea = {
-			picture = generic_navy_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_dockyard = 0.1
-			}
-		}
 		wif_usa_aluminium_idea = {
 			picture = generic_air_bonus
 			allowed = { always = no }
@@ -513,6 +504,24 @@ ideas = {
 				special_project_speed_factor = 0.25
 			}
 		}
+		wif_usa_two_ocean_idea = {
+			picture = generic_navy_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_dockyard = 0.1
+			}
+		}
+		wif_usa_nautilus_idea = {
+			picture = generic_navy_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				special_project_speed_factor = 0.25
+			}
+		}
 		wif_usa_war_debt_idea = {
 			picture = generic_pp_unity_bonus
 			allowed = { always = no }
@@ -523,13 +532,13 @@ ideas = {
 				consumer_goods_factor = -0.05
 			}
 		}
-		wif_usa_nautilus_idea = {
-			picture = generic_navy_bonus
+		wif_usa_detroit_idea = {
+			picture = usa_general_motors
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				special_project_speed_factor = 0.25
+				industrial_capacity_factory = 0.05
 			}
 		}
 		wif_usa_gi_bill_idea = {
@@ -550,15 +559,6 @@ ideas = {
 				air_agility_factor = 0.1
 			}
 		}
-		wif_usa_detroit_idea = {
-			picture = usa_general_motors
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.05
-			}
-		}
 		wif_usa_garand_idea = {
 			picture = generic_infantry_bonus
 			allowed = { always = no }
@@ -566,15 +566,6 @@ ideas = {
 			removal_cost = -1
 			modifier = {
 				army_attack_factor = 0.03
-			}
-		}
-		wif_usa_essex_idea = {
-			picture = generic_navy_carrier_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_dockyard = 0.05
 			}
 		}
 		wif_usa_atlas_idea = {
@@ -586,7 +577,44 @@ ideas = {
 				special_project_speed_factor = 0.25
 			}
 		}
+		wif_usa_essex_idea = {
+			picture = generic_navy_carrier_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_dockyard = 0.05
+			}
+		}
 		wif_usa_ndrc_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		wif_usa_aaf_idea = {
+			picture = usa_us_air_force
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				air_superiority_efficiency = 0.1
+			}
+		}
+		wif_usa_cia_idea = {
+			picture = office_of_strategic_services
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				operative_slot = 1
+				decryption_factor = 0.1
+			}
+		}
+		wif_usa_ias_idea = {
 			picture = generic_research_bonus
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
@@ -607,23 +635,23 @@ ideas = {
 				command_power_gain = 0.03
 			}
 		}
-		wif_usa_cia_idea = {
-			picture = office_of_strategic_services
+		wif_usa_nsc_idea = {
+			picture = usa_war_department
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				operative_slot = 1
-				decryption_factor = 0.1
+				political_power_factor = 0.05
 			}
 		}
-		wif_usa_aaf_idea = {
-			picture = usa_us_air_force
+		wif_usa_pmp_idea = {
+			picture = generic_army_war_college
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
 			removal_cost = -1
 			modifier = {
-				air_superiority_efficiency = 0.1
+				conscription = 0.01
+				training_time_factor = -0.1
 			}
 		}
 		wif_usa_sac_idea = {
@@ -644,34 +672,6 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.1
 				consumer_goods_factor = -0.05
-			}
-		}
-		wif_usa_pmp_idea = {
-			picture = generic_army_war_college
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				conscription = 0.01
-				training_time_factor = -0.1
-			}
-		}
-		wif_usa_ias_idea = {
-			picture = generic_research_bonus
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				research_speed_factor = 0.05
-			}
-		}
-		wif_usa_nsc_idea = {
-			picture = usa_war_department
-			allowed = { always = no }
-			allowed_civil_war = { always = yes }
-			removal_cost = -1
-			modifier = {
-				political_power_factor = 0.05
 			}
 		}
 	}
