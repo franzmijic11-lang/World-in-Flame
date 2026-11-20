@@ -1282,6 +1282,7 @@ focus_tree = {
 		completion_reward = {
 			wif_cro_two_armies_remove = yes
 			add_ideas = wif_cro_hos_idea
+			custom_effect_tooltip = wif_cro_hos_sweeps_tt
 		}
 	}
 

@@ -150,6 +150,11 @@ wif_cro_begin = {
 		set_variable = { wif_cro_ps = 25 }
 		set_variable = { wif_cro_ps_rate = 1 }
 		set_variable = { wif_cro_grievance = 0 }
+		set_variable = { wif_cro_plan = 0 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
 		add_ideas = wif_cro_ustase_state_idea
 		add_ideas = wif_cro_rome_agreements_idea
 		add_ideas = wif_cro_two_armies_2
@@ -251,48 +256,119 @@ wif_cro_monthly = {
 			country_event = { id = wif_cro.16 }
 		}
 
-		# The month's attack
-		set_temp_variable = { wif_cro_chance = wif_cro_ps }
-		multiply_temp_variable = { wif_cro_chance = 0.5 }
-		if = { limit = { has_country_flag = wif_cro_village_militias } multiply_temp_variable = { wif_cro_chance = 0.75 } }
-		if = { limit = { check_variable = { wif_cro_ps > 89.9 } } multiply_temp_variable = { wif_cro_chance = 1.5 } }
-		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		# Tito's headquarters moves now and then by itself
+		random = {
+			chance = 15
+			wif_cro_move_headquarters = yes
+		}
+
+		# After a sweep found them, the Partisans lie low
 		if = {
-			limit = { check_variable = { wif_cro_roll < wif_cro_chance } }
-			wif_cro_partisan_attack = yes
+			limit = { NOT = { has_country_flag = wif_cro_partisans_hiding } }
+			wif_cro_partisans_act = yes
 		}
 	}
 }
 
-# CRO scope. One attack, chosen at random among those the Partisans are strong
-# enough for.
-wif_cro_partisan_attack = {
+# CRO scope. Each operation's minimum strength and cost, into temp variables
+# wif_cro_need / wif_cro_cost for the current plan.
+wif_cro_plan_numbers = {
+	if = { limit = { check_variable = { wif_cro_plan = 1 } } set_temp_variable = { wif_cro_need = 10 } set_temp_variable = { wif_cro_cost = 3 } }
+	else_if = { limit = { check_variable = { wif_cro_plan = 2 } } set_temp_variable = { wif_cro_need = 25 } set_temp_variable = { wif_cro_cost = 6 } }
+	else_if = { limit = { check_variable = { wif_cro_plan = 3 } } set_temp_variable = { wif_cro_need = 40 } set_temp_variable = { wif_cro_cost = 10 } }
+	else_if = { limit = { check_variable = { wif_cro_plan = 4 } } set_temp_variable = { wif_cro_need = 50 } set_temp_variable = { wif_cro_cost = 12 } }
+	else_if = { limit = { check_variable = { wif_cro_plan = 5 } } set_temp_variable = { wif_cro_need = 70 } set_temp_variable = { wif_cro_cost = 20 } }
+	else_if = { limit = { check_variable = { wif_cro_plan = 6 } } set_temp_variable = { wif_cro_need = 90 } set_temp_variable = { wif_cro_cost = 15 } }
+}
+
+# CRO scope. The Partisans pick an operation they can reach in about four
+# months - usually the best of those, sometimes one or two lower - and save
+# up for it.
+wif_cro_pick_plan = {
+	set_temp_variable = { wif_cro_reach = wif_cro_ps_rate }
+	multiply_temp_variable = { wif_cro_reach = 4 }
+	add_to_temp_variable = { wif_cro_reach = wif_cro_ps }
+	set_temp_variable = { wif_cro_best = 1 }
+	if = { limit = { NOT = { check_variable = { wif_cro_reach < 25 } } wif_cro_plan_2_possible = yes } set_temp_variable = { wif_cro_best = 2 } }
+	if = { limit = { NOT = { check_variable = { wif_cro_reach < 40 } } wif_cro_plan_3_possible = yes } set_temp_variable = { wif_cro_best = 3 } }
+	if = { limit = { NOT = { check_variable = { wif_cro_reach < 50 } } wif_cro_plan_4_possible = yes } set_temp_variable = { wif_cro_best = 4 } }
+	if = { limit = { NOT = { check_variable = { wif_cro_reach < 70 } } wif_cro_plan_5_possible = yes } set_temp_variable = { wif_cro_best = 5 } }
+	if = { limit = { NOT = { check_variable = { wif_cro_reach < 90 } } wif_cro_plan_6_possible = yes } set_temp_variable = { wif_cro_best = 6 } }
 	random_list = {
-		10 = { wif_cro_attack_ambush = yes }
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 25 } }
-			wif_cro_attack_railway = yes
+		55 = { set_variable = { wif_cro_plan = wif_cro_best } }
+		30 = { set_variable = { wif_cro_plan = wif_cro_best } subtract_from_variable = { wif_cro_plan = 1 } }
+		15 = { set_variable = { wif_cro_plan = wif_cro_best } subtract_from_variable = { wif_cro_plan = 2 } }
+	}
+	clamp_variable = { var = wif_cro_plan min = 1 max = 6 }
+	while_loop_effect = {
+		limit = { check_variable = { wif_cro_plan > 1 } NOT = { wif_cro_plan_possible = yes } }
+		subtract_from_variable = { wif_cro_plan = 1 }
+	}
+	set_variable = { wif_cro_plan_months = 0 }
+}
+
+# CRO scope. One month of Partisan decisions.
+wif_cro_partisans_act = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = wif_cro_plan }
+				check_variable = { wif_cro_plan < 1 }
+				NOT = { wif_cro_plan_possible = yes }
+			}
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 40 } }
-			modifier = { factor = 0 NOT = { owns_state = 109 } }
-			wif_cro_attack_zagreb = yes
+		wif_cro_pick_plan = yes
+	}
+	wif_cro_plan_numbers = yes
+	if = {
+		limit = { NOT = { check_variable = { wif_cro_ps < wif_cro_need } } }
+		# Ready: the more strength above what it needs, the sooner they strike
+		set_temp_variable = { wif_cro_chance = wif_cro_ps }
+		subtract_from_temp_variable = { wif_cro_chance = wif_cro_need }
+		add_to_temp_variable = { wif_cro_chance = 35 }
+		clamp_temp_variable = { var = wif_cro_chance min = 0 max = 85 }
+		if = { limit = { has_country_flag = wif_cro_village_militias } multiply_temp_variable = { wif_cro_chance = 0.75 } }
+		if = { limit = { check_variable = { wif_cro_ps > 89.9 } } multiply_temp_variable = { wif_cro_chance = 1.3 } }
+		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { wif_cro_roll < wif_cro_chance } }
+			wif_cro_execute_plan = yes
+			set_temp_variable = { wif_cro_pay = 0 }
+			subtract_from_temp_variable = { wif_cro_pay = wif_cro_cost }
+			add_to_variable = { wif_cro_ps = wif_cro_pay }
+			clamp_variable = { var = wif_cro_ps min = 10 max = 100 }
+			set_variable = { wif_cro_plan = 0 }
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 50 } }
-			modifier = { factor = 0 NOT = { any_state = { OR = { state = 103 state = 163 state = 105 state = 853 state = 852 } is_owned_by = ITA } } }
-			wif_cro_attack_dalmatia = yes
+	}
+	else = {
+		# Held below it: after four months they settle for less
+		add_to_variable = { wif_cro_plan_months = 1 }
+		if = {
+			limit = { check_variable = { wif_cro_plan_months > 3 } }
+			subtract_from_variable = { wif_cro_plan = 1 }
+			clamp_variable = { var = wif_cro_plan min = 1 max = 6 }
+			set_variable = { wif_cro_plan_months = 0 }
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 70 } }
-			modifier = { factor = 0 NOT = { any_owned_state = { wif_cro_can_be_liberated = yes } } }
-			modifier = { factor = 0 country_exists = YUG NOT = { YUG = { has_government = communism } } NOT = { has_war_with = YUG } }
-			wif_cro_attack_liberate = yes
-		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 90 } }
-			wif_cro_attack_assassination = yes
-		}
+	}
+}
+
+wif_cro_execute_plan = {
+	if = { limit = { check_variable = { wif_cro_plan = 1 } } wif_cro_attack_ambush = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 2 } } wif_cro_attack_railway = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 3 } } wif_cro_attack_zagreb = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 4 } } wif_cro_attack_dalmatia = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 5 } } wif_cro_attack_liberate = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 6 } } wif_cro_attack_assassination = yes }
+}
+
+# CRO scope. Tito's headquarters moves to the other mountain region.
+wif_cro_move_headquarters = {
+	if = {
+		limit = { check_variable = { wif_cro_base = 104 } }
+		set_variable = { wif_cro_base = 804 }
+	}
+	else = {
+		set_variable = { wif_cro_base = 104 }
 	}
 }
 
@@ -397,14 +473,38 @@ wif_cro_attack_assassination = {
 	country_event = { id = wif_cro.15 }
 }
 
-# CRO scope. The decisions.
-wif_cro_sweep = {
-	custom_effect_tooltip = wif_cro_sweep_tt
-	hidden_effect = {
-		wif_cro_ps_add = { n = -8 }
-		if = { limit = { has_country_flag = wif_cro_sweep_strong } wif_cro_ps_add = { n = -4 } }
+# CRO scope. A 30-day sweep of one region ends (the decision's remove_effect).
+# wif_cro_sweep_resolve = { s = 104 }
+wif_cro_sweep_resolve = {
+	clr_country_flag = wif_cro_sweep_running
+	if = {
+		limit = { check_variable = { wif_cro_base = $s$ } }
+		set_temp_variable = { wif_cro_odds = 55 }
+		if = { limit = { has_completed_focus = wif_cro_hrvatske_oruzane_snage } add_to_temp_variable = { wif_cro_odds = 15 } }
+		if = { limit = { has_country_flag = wif_cro_sweep_strong } add_to_temp_variable = { wif_cro_odds = 15 } }
+		if = { limit = { has_country_flag = wif_cro_base_known } add_to_temp_variable = { wif_cro_odds = 10 } }
+		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { wif_cro_roll < wif_cro_odds } }
+			wif_cro_ps_add = { n = -12 }
+			set_variable = { wif_cro_plan = 0 }
+			set_country_flag = { flag = wif_cro_partisans_hiding days = 60 }
+			wif_cro_move_headquarters = yes
+			clr_country_flag = wif_cro_base_known
+			army_experience = 10
+			country_event = { id = wif_cro.40 }
+		}
+		else = {
+			wif_cro_ps_add = { n = -5 }
+			wif_cro_move_headquarters = yes
+			clr_country_flag = wif_cro_base_known
+			country_event = { id = wif_cro.41 }
+		}
 	}
-	army_experience = 5
+	else = {
+		wif_cro_ps_add = { n = -3 }
+		country_event = { id = wif_cro.42 }
+	}
 }
 
 # CRO scope. The Rome Agreements, whichever form it is in.

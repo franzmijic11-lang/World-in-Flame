@@ -2,33 +2,147 @@
 
 wif_cro_partisans_category = {
 
-	wif_cro_anti_partisan_sweep = {
+	wif_cro_locate_headquarters = {
 		icon = generic_operation
-		cost = 50
+		cost = 15
+		days_re_enable = 45
+		visible = { has_country_flag = wif_cro_ndh }
+		complete_effect = {
+			set_country_flag = { flag = wif_cro_base_known days = 45 }
+			custom_effect_tooltip = wif_cro_locate_tt
+			hidden_effect = { country_event = { id = wif_cro.43 } }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 8 check_variable = { wif_cro_ps > 25 } NOT = { has_country_flag = wif_cro_base_known } }
+		}
+	}
+
+	wif_cro_sweep_bosnia = {
+		icon = generic_operation
+		cost = 25
 		days_re_enable = 60
+		days_remove = 30
 		visible = {
 			has_country_flag = wif_cro_ndh
 			NOT = { has_country_flag = wif_cro_sweep_cheap }
 		}
-		complete_effect = { wif_cro_sweep = yes }
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			104 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 1499 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1500 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 104 }
+		}
 		ai_will_do = {
 			base = 0
-			modifier = { add = 10 check_variable = { wif_cro_ps > 40 } }
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 104 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 104 } } }
 		}
 	}
 
-	wif_cro_anti_partisan_sweep_cheap = {
+	wif_cro_sweep_bosnia_cheap = {
 		icon = generic_operation
-		cost = 37
+		cost = 25
 		days_re_enable = 60
+		days_remove = 30
 		visible = {
 			has_country_flag = wif_cro_ndh
 			has_country_flag = wif_cro_sweep_cheap
 		}
-		complete_effect = { wif_cro_sweep = yes }
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			104 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 999 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 104 }
+		}
 		ai_will_do = {
 			base = 0
-			modifier = { add = 10 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 104 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 104 } } }
+		}
+	}
+
+	wif_cro_sweep_herzegovina = {
+		icon = generic_operation
+		cost = 25
+		days_re_enable = 60
+		days_remove = 30
+		visible = {
+			has_country_flag = wif_cro_ndh
+			NOT = { has_country_flag = wif_cro_sweep_cheap }
+		}
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			804 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 1499 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1500 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 804 }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 804 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 804 } } }
+		}
+	}
+
+	wif_cro_sweep_herzegovina_cheap = {
+		icon = generic_operation
+		cost = 25
+		days_re_enable = 60
+		days_remove = 30
+		visible = {
+			has_country_flag = wif_cro_ndh
+			has_country_flag = wif_cro_sweep_cheap
+		}
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			804 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 999 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 804 }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 804 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 804 } } }
 		}
 	}
 

@@ -43,6 +43,11 @@ ZAGREB, BOSNIA, HERZEGOVINA, DALMATIA, ZADAR, MONTENEGRO, LJUBLJANA, ISTRIA = 10
 MOUNTAINS = [BOSNIA, HERZEGOVINA]
 NDH_STATES = [ZAGREB, BOSNIA, HERZEGOVINA, DALMATIA]
 ITALIAN_BORDER = [DALMATIA, ZADAR, MONTENEGRO, LJUBLJANA, ISTRIA]
+# The Partisans' operations: plan number -> (name, strength needed, strength spent)
+OPERATIONS = {1: ('an ambush in the mountains', 10, 3), 2: ('railway sabotage', 25, 6), 3: ('bombings in Zagreb', 40, 10),
+              4: ('a strike into Italian Dalmatia', 50, 12), 5: ('the seizure of a mountain district', 70, 20),
+              6: ('the assassination of a minister', 90, 15)}
+SWEEP_REGIONS = {BOSNIA: 'bosnia', HERZEGOVINA: 'herzegovina'}
 
 
 def p(*a):
@@ -201,9 +206,10 @@ R = {
     'the_croatian_navy': j(xp('navy', 50), tt('wif_cro_river_base_tt', 'With §YRome\'s Faithful Ally§!: §G+1§! naval base in §YCroatia§!.',
                                               f'if = {{ limit = {{ has_completed_focus = wif_cro_romes_faithful_ally }} {ZAGREB} = {{ add_building_construction = {{ type = naval_base level = 1 instant_build = yes province = {{ all_provinces = yes limit_to_naval_base = yes }} }} }} }}')),
     'the_anti_partisan_air_wing': j(stock('small_plane_cas_airframe', 20), ps(-5)),
-    'hrvatske_oruzane_snage': j('wif_cro_two_armies_remove = yes', idea('wif_cro_hos_idea')),
+    'hrvatske_oruzane_snage': j('wif_cro_two_armies_remove = yes', idea('wif_cro_hos_idea'),
+                                tt('wif_cro_hos_sweeps_tt', "Sweeps on Tito's headquarters are §G15%§! more likely to succeed.")),
     'the_legion_comes_home': j(tt('wif_cro_veterans_tt', '§G2§! veteran infantry divisions.', j('wif_cro_templates = yes', units('Domobran Infantry', 2, 0.7))), xp('army', 50)),
-    'clear_the_mountains': j(ps(-10), tt('wif_cro_sweep_strong_tt', '§YAnti-Partisan Sweep§! lowers Partisan Strength by §G4§! more.', flag('wif_cro_sweep_strong')),
+    'clear_the_mountains': j(ps(-10), tt('wif_cro_sweep_strong_tt', "Sweeps on Tito's headquarters are §G15%§! more likely to succeed.", flag('wif_cro_sweep_strong')),
                              xp('army', 100), mp(-10000)),
     'the_army_of_the_croatian_state': j(idea('wif_cro_army_of_state_idea'), ws(0.10)),
     'hostage_laws': j(tt('wif_cro_hostage_tt', 'Unlocks the §YReprisals§! decision.\nPartisan Strength grows §R0.25§! a month faster, for good.',
@@ -270,7 +276,7 @@ R = {
     'a_croatian_industry': j(capital_building('industrial_complex', 3), idea('wif_cro_croatian_industry_idea')),
     # after the war
     'the_new_balkan_order': j(stab(0.10), pp(50)),
-    'the_partisan_problem': j(xp('army', 50), tt('wif_cro_sweep_cheap_tt', '§YAnti-Partisan Sweep§! costs §G25%§! less.', flag('wif_cro_sweep_cheap'))),
+    'the_partisan_problem': j(xp('army', 50), tt('wif_cro_sweep_cheap_tt', 'Anti-partisan sweeps need §G500§! fewer rifles.', flag('wif_cro_sweep_cheap'))),
     'hunt_the_partisans': j(ps(-15), mp(-20000), xp('army', 100)),
     'the_hunt_for_tito': j(ps(-10), tt('wif_cro_tito_escapes_tt', '§YTito escapes.§! Partisan Strength can still never fall below §R10§!.')),
     'peace_in_the_mountains': j(ps(-10), timed('wif_cro_lull_idea', 365),
@@ -618,6 +624,11 @@ wif_cro_begin = {
 		set_variable = { wif_cro_ps = 25 }
 		set_variable = { wif_cro_ps_rate = 1 }
 		set_variable = { wif_cro_grievance = 0 }
+		set_variable = { wif_cro_plan = 0 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
 		add_ideas = wif_cro_ustase_state_idea
 		add_ideas = wif_cro_rome_agreements_idea
 		add_ideas = wif_cro_two_armies_2
@@ -719,48 +730,110 @@ wif_cro_monthly = {
 			country_event = { id = wif_cro.16 }
 		}
 
-		# The month's attack
-		set_temp_variable = { wif_cro_chance = wif_cro_ps }
-		multiply_temp_variable = { wif_cro_chance = 0.5 }
-		if = { limit = { has_country_flag = wif_cro_village_militias } multiply_temp_variable = { wif_cro_chance = 0.75 } }
-		if = { limit = { check_variable = { wif_cro_ps > 89.9 } } multiply_temp_variable = { wif_cro_chance = 1.5 } }
-		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		# Tito's headquarters moves now and then by itself
+		random = {
+			chance = 15
+			wif_cro_move_headquarters = yes
+		}
+
+		# After a sweep found them, the Partisans lie low
 		if = {
-			limit = { check_variable = { wif_cro_roll < wif_cro_chance } }
-			wif_cro_partisan_attack = yes
+			limit = { NOT = { has_country_flag = wif_cro_partisans_hiding } }
+			wif_cro_partisans_act = yes
 		}
 	}
 }
 
-# CRO scope. One attack, chosen at random among those the Partisans are strong
-# enough for.
-wif_cro_partisan_attack = {
+# CRO scope. Each operation's minimum strength and cost, into temp variables
+# wif_cro_need / wif_cro_cost for the current plan.
+wif_cro_plan_numbers = {
+@NUMBERS@
+}
+
+# CRO scope. The Partisans pick an operation they can reach in about four
+# months - usually the best of those, sometimes one or two lower - and save
+# up for it.
+wif_cro_pick_plan = {
+	set_temp_variable = { wif_cro_reach = wif_cro_ps_rate }
+	multiply_temp_variable = { wif_cro_reach = 4 }
+	add_to_temp_variable = { wif_cro_reach = wif_cro_ps }
+	set_temp_variable = { wif_cro_best = 1 }
+@BEST@
 	random_list = {
-		10 = { wif_cro_attack_ambush = yes }
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 25 } }
-			wif_cro_attack_railway = yes
+		55 = { set_variable = { wif_cro_plan = wif_cro_best } }
+		30 = { set_variable = { wif_cro_plan = wif_cro_best } subtract_from_variable = { wif_cro_plan = 1 } }
+		15 = { set_variable = { wif_cro_plan = wif_cro_best } subtract_from_variable = { wif_cro_plan = 2 } }
+	}
+	clamp_variable = { var = wif_cro_plan min = 1 max = 6 }
+	while_loop_effect = {
+		limit = { check_variable = { wif_cro_plan > 1 } NOT = { wif_cro_plan_possible = yes } }
+		subtract_from_variable = { wif_cro_plan = 1 }
+	}
+	set_variable = { wif_cro_plan_months = 0 }
+}
+
+# CRO scope. One month of Partisan decisions.
+wif_cro_partisans_act = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_variable = wif_cro_plan }
+				check_variable = { wif_cro_plan < 1 }
+				NOT = { wif_cro_plan_possible = yes }
+			}
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 40 } }
-			modifier = { factor = 0 NOT = { owns_state = 109 } }
-			wif_cro_attack_zagreb = yes
+		wif_cro_pick_plan = yes
+	}
+	wif_cro_plan_numbers = yes
+	if = {
+		limit = { NOT = { check_variable = { wif_cro_ps < wif_cro_need } } }
+		# Ready: the more strength above what it needs, the sooner they strike
+		set_temp_variable = { wif_cro_chance = wif_cro_ps }
+		subtract_from_temp_variable = { wif_cro_chance = wif_cro_need }
+		add_to_temp_variable = { wif_cro_chance = 35 }
+		clamp_temp_variable = { var = wif_cro_chance min = 0 max = 85 }
+		if = { limit = { has_country_flag = wif_cro_village_militias } multiply_temp_variable = { wif_cro_chance = 0.75 } }
+		if = { limit = { check_variable = { wif_cro_ps > 89.9 } } multiply_temp_variable = { wif_cro_chance = 1.3 } }
+		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { wif_cro_roll < wif_cro_chance } }
+			wif_cro_execute_plan = yes
+			set_temp_variable = { wif_cro_pay = 0 }
+			subtract_from_temp_variable = { wif_cro_pay = wif_cro_cost }
+			add_to_variable = { wif_cro_ps = wif_cro_pay }
+			clamp_variable = { var = wif_cro_ps min = 10 max = 100 }
+			set_variable = { wif_cro_plan = 0 }
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 50 } }
-			modifier = { factor = 0 NOT = { any_state = { @BORDER@ is_owned_by = ITA } } }
-			wif_cro_attack_dalmatia = yes
+	}
+	else = {
+		# Held below it: after four months they settle for less
+		add_to_variable = { wif_cro_plan_months = 1 }
+		if = {
+			limit = { check_variable = { wif_cro_plan_months > 3 } }
+			subtract_from_variable = { wif_cro_plan = 1 }
+			clamp_variable = { var = wif_cro_plan min = 1 max = 6 }
+			set_variable = { wif_cro_plan_months = 0 }
 		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 70 } }
-			modifier = { factor = 0 NOT = { any_owned_state = { wif_cro_can_be_liberated = yes } } }
-			modifier = { factor = 0 country_exists = YUG NOT = { YUG = { has_government = communism } } NOT = { has_war_with = YUG } }
-			wif_cro_attack_liberate = yes
-		}
-		10 = {
-			modifier = { factor = 0 check_variable = { wif_cro_ps < 90 } }
-			wif_cro_attack_assassination = yes
-		}
+	}
+}
+
+wif_cro_execute_plan = {
+	if = { limit = { check_variable = { wif_cro_plan = 1 } } wif_cro_attack_ambush = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 2 } } wif_cro_attack_railway = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 3 } } wif_cro_attack_zagreb = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 4 } } wif_cro_attack_dalmatia = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 5 } } wif_cro_attack_liberate = yes }
+	else_if = { limit = { check_variable = { wif_cro_plan = 6 } } wif_cro_attack_assassination = yes }
+}
+
+# CRO scope. Tito's headquarters moves to the other mountain region.
+wif_cro_move_headquarters = {
+	if = {
+		limit = { check_variable = { wif_cro_base = 104 } }
+		set_variable = { wif_cro_base = 804 }
+	}
+	else = {
+		set_variable = { wif_cro_base = 104 }
 	}
 }
 
@@ -865,18 +938,68 @@ wif_cro_attack_assassination = {
 	country_event = { id = wif_cro.15 }
 }
 
-# CRO scope. The decisions.
-wif_cro_sweep = {
-	custom_effect_tooltip = wif_cro_sweep_tt
-	hidden_effect = {
-		wif_cro_ps_add = { n = -8 }
-		if = { limit = { has_country_flag = wif_cro_sweep_strong } wif_cro_ps_add = { n = -4 } }
+# CRO scope. A 30-day sweep of one region ends (the decision's remove_effect).
+# wif_cro_sweep_resolve = { s = 104 }
+wif_cro_sweep_resolve = {
+	clr_country_flag = wif_cro_sweep_running
+	if = {
+		limit = { check_variable = { wif_cro_base = $s$ } }
+		set_temp_variable = { wif_cro_odds = 55 }
+		if = { limit = { has_completed_focus = wif_cro_hrvatske_oruzane_snage } add_to_temp_variable = { wif_cro_odds = 15 } }
+		if = { limit = { has_country_flag = wif_cro_sweep_strong } add_to_temp_variable = { wif_cro_odds = 15 } }
+		if = { limit = { has_country_flag = wif_cro_base_known } add_to_temp_variable = { wif_cro_odds = 10 } }
+		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { wif_cro_roll < wif_cro_odds } }
+			wif_cro_ps_add = { n = -12 }
+			set_variable = { wif_cro_plan = 0 }
+			set_country_flag = { flag = wif_cro_partisans_hiding days = 60 }
+			wif_cro_move_headquarters = yes
+			clr_country_flag = wif_cro_base_known
+			army_experience = 10
+			country_event = { id = wif_cro.40 }
+		}
+		else = {
+			wif_cro_ps_add = { n = -5 }
+			wif_cro_move_headquarters = yes
+			clr_country_flag = wif_cro_base_known
+			country_event = { id = wif_cro.41 }
+		}
 	}
-	army_experience = 5
+	else = {
+		wif_cro_ps_add = { n = -3 }
+		country_event = { id = wif_cro.42 }
+	}
 }
 '''
 
-TRIGGERS = r'''# State scope, ROOT = Croatia: a mountain state the Partisans can take.
+TRIGGERS = r'''# CRO scope: can the Partisans carry out operation N at all?
+wif_cro_plan_2_possible = { always = yes }
+wif_cro_plan_3_possible = { owns_state = 109 }
+wif_cro_plan_4_possible = { any_state = { @BORDER@ is_owned_by = ITA } }
+wif_cro_plan_5_possible = {
+	any_owned_state = { wif_cro_can_be_liberated = yes }
+	OR = {
+		NOT = { country_exists = YUG }
+		YUG = { has_government = communism }
+		has_war_with = YUG
+	}
+}
+wif_cro_plan_6_possible = { always = yes }
+
+# CRO scope: is the current plan still possible?
+wif_cro_plan_possible = {
+	OR = {
+		check_variable = { wif_cro_plan = 1 }
+		AND = { check_variable = { wif_cro_plan = 2 } wif_cro_plan_2_possible = yes }
+		AND = { check_variable = { wif_cro_plan = 3 } wif_cro_plan_3_possible = yes }
+		AND = { check_variable = { wif_cro_plan = 4 } wif_cro_plan_4_possible = yes }
+		AND = { check_variable = { wif_cro_plan = 5 } wif_cro_plan_5_possible = yes }
+		AND = { check_variable = { wif_cro_plan = 6 } wif_cro_plan_6_possible = yes }
+	}
+}
+
+# State scope, ROOT = Croatia: a mountain state the Partisans can take.
 wif_cro_can_be_liberated = {
 	@MOUNTAINS@
 	is_owned_by = ROOT
@@ -886,57 +1009,7 @@ wif_cro_can_be_liberated = {
 '''
 
 DECISIONS = r'''wif_cro_partisans_category = {
-
-	wif_cro_anti_partisan_sweep = {
-		icon = generic_operation
-		cost = 50
-		days_re_enable = 60
-		visible = {
-			has_country_flag = wif_cro_ndh
-			NOT = { has_country_flag = wif_cro_sweep_cheap }
-		}
-		complete_effect = { wif_cro_sweep = yes }
-		ai_will_do = {
-			base = 0
-			modifier = { add = 10 check_variable = { wif_cro_ps > 40 } }
-		}
-	}
-
-	wif_cro_anti_partisan_sweep_cheap = {
-		icon = generic_operation
-		cost = 37
-		days_re_enable = 60
-		visible = {
-			has_country_flag = wif_cro_ndh
-			has_country_flag = wif_cro_sweep_cheap
-		}
-		complete_effect = { wif_cro_sweep = yes }
-		ai_will_do = {
-			base = 0
-			modifier = { add = 10 check_variable = { wif_cro_ps > 35 } }
-		}
-	}
-
-	wif_cro_reprisals = {
-		icon = generic_police_action
-		cost = 25
-		days_re_enable = 60
-		visible = {
-			has_country_flag = wif_cro_ndh
-			has_country_flag = wif_cro_hostage_laws
-		}
-		complete_effect = {
-			custom_effect_tooltip = wif_cro_reprisals_tt
-			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
-				add_to_variable = { wif_cro_grievance = 0.25 }
-			}
-		}
-		ai_will_do = {
-			base = 0
-			modifier = { add = 3 check_variable = { wif_cro_ps > 60 } }
-		}
-	}
+@CRO_DECISIONS@
 }
 
 wif_ita_croatia_category = {
@@ -1132,6 +1205,14 @@ ATTACK_EVENTS = [
      'The Partisans are no longer hiding. They are strong enough now to strike across the border into Italian territory.\n\nPartisan Strength has reached §R50§!.', 'They will be stopped.'),
     (18, 'GFX_report_event_generic_rally', 'The Mountains Are Theirs',
      'The Partisans are strong enough to take and hold whole districts.\n\nPartisan Strength has reached §R70§!.', 'We need every division.'),
+    (40, 'GFX_report_event_generic_rally', 'The Sweep Finds Them',
+     "The cordon closed on Tito's headquarters in [ROOT.GetWifCroBase]. The Partisans broke out with heavy losses and have gone to ground - their headquarters has had to move.", 'They will be back.'),
+    (41, 'GFX_report_event_generic_rally', 'They Slipped Away',
+     "The sweep found Tito's camp still warm. The Partisans had been warned, and slipped through the cordon before it closed. They have moved their headquarters.", 'Next time.'),
+    (42, 'GFX_report_event_generic_rally', 'Empty Forests',
+     'A month of marching through the forests found burned-out camps, a few stragglers and nothing else. Tito was never there.', 'Our intelligence was wrong.'),
+    (43, 'GFX_report_event_generic_rally', 'Where Tito Is',
+     "Informers, captured couriers and radio intercepts all point the same way. Tito's headquarters is in §Y[ROOT.GetWifCroBase]§!, and the Partisans are preparing §R[ROOT.GetWifCroPlan]§!.\n\nThe information will be good for about six weeks.", 'Send in the army.'),
     (21, 'GFX_report_event_generic_rally', 'Partisans in Dalmatia',
      "Croatia's Partisans have struck across the border into [wif_cro_attack_state.GetName]. An Italian garrison was ambushed and the local population is turning against us.\n\nWe can answer with Reprisals in Dalmatia.", 'Zagreb must do better.'),
 ]
@@ -1154,7 +1235,12 @@ def gen_events():
 def gen_mechanics():
     create = '\n'.join(f'\t\tif = {{ limit = {{ YUG = {{ owns_state = {s} }} }} CRO = {{ transfer_state = {s} }} }}' for s in NDH_STATES)
     t = HEADER + '# The Axis Croatia: how it is created, and Tito\'s Partisans.\n\n' + '\n'.join(tier_effects(s, len(v[1])) for s, v in SPIRITS.items())
-    t += EFFECTS.replace('@CREATE@', create).replace('@MOUNTAINS@', state_list(MOUNTAINS)).replace('@BORDER@', state_list(ITALIAN_BORDER))
+    numbers = '\n'.join(f'\t{"if" if i == 1 else "else_if"} = {{ limit = {{ check_variable = {{ wif_cro_plan = {i} }} }} '
+                        f'set_temp_variable = {{ wif_cro_need = {need} }} set_temp_variable = {{ wif_cro_cost = {c} }} }}'
+                        for i, (_, need, c) in OPERATIONS.items())
+    best = '\n'.join(f'\tif = {{ limit = {{ NOT = {{ check_variable = {{ wif_cro_reach < {need} }} }} wif_cro_plan_{i}_possible = yes }} set_temp_variable = {{ wif_cro_best = {i} }} }}'
+                      for i, (_, need, _c) in OPERATIONS.items() if i > 1)
+    t += EFFECTS.replace('@NUMBERS@', numbers).replace('@BEST@', best).replace('@CREATE@', create).replace('@MOUNTAINS@', state_list(MOUNTAINS)).replace('@BORDER@', state_list(ITALIAN_BORDER))
     t += '''
 # CRO scope. The Rome Agreements, whichever form it is in.
 wif_cro_rome_agreements_remove = {
@@ -1163,8 +1249,8 @@ wif_cro_rome_agreements_remove = {
 }
 '''
     write('common/scripted_effects/wif_cro_ndh_effects.txt', t)
-    write('common/scripted_triggers/wif_cro_ndh_triggers.txt', HEADER + TRIGGERS.replace('@MOUNTAINS@', state_list(MOUNTAINS)))
-    write('common/decisions/wif_cro_ndh_decisions.txt', HEADER + DECISIONS.replace('@BORDER@', state_list(ITALIAN_BORDER)))
+    write('common/scripted_triggers/wif_cro_ndh_triggers.txt', HEADER + TRIGGERS.replace('@MOUNTAINS@', state_list(MOUNTAINS)).replace('@BORDER@', state_list(ITALIAN_BORDER)))
+    write('common/decisions/wif_cro_ndh_decisions.txt', HEADER + DECISIONS.replace('@CRO_DECISIONS@', cro_decisions()).replace('@BORDER@', state_list(ITALIAN_BORDER)))
     write('common/decisions/categories/wif_cro_ndh_categories.txt', HEADER + CATEGORIES)
     write('common/on_actions/wif_cro_ndh_on_actions.txt', HEADER + '''on_actions = {
 	on_monthly_CRO = {
@@ -1175,6 +1261,116 @@ wif_cro_rome_agreements_remove = {
 	}
 }
 ''')
+
+
+def cro_decisions():
+    o = ['''
+	wif_cro_locate_headquarters = {
+		icon = generic_operation
+		cost = 15
+		days_re_enable = 45
+		visible = { has_country_flag = wif_cro_ndh }
+		complete_effect = {
+			set_country_flag = { flag = wif_cro_base_known days = 45 }
+			custom_effect_tooltip = wif_cro_locate_tt
+			hidden_effect = { country_event = { id = wif_cro.43 } }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 8 check_variable = { wif_cro_ps > 25 } NOT = { has_country_flag = wif_cro_base_known } }
+		}
+	}
+''']
+    for state, key in SWEEP_REGIONS.items():
+        for cheap in (False, True):
+            rifles = 1000 if cheap else 1500
+            name = f'wif_cro_sweep_{key}' + ('_cheap' if cheap else '')
+            vis = 'has_country_flag = wif_cro_sweep_cheap' if cheap else 'NOT = { has_country_flag = wif_cro_sweep_cheap }'
+            o.append(f'''
+	{name} = {{
+		icon = generic_operation
+		cost = 25
+		days_re_enable = 60
+		days_remove = 30
+		visible = {{
+			has_country_flag = wif_cro_ndh
+			{vis}
+		}}
+		available = {{
+			NOT = {{ has_country_flag = wif_cro_sweep_running }}
+			{state} = {{ is_controlled_by = ROOT }}
+			has_equipment = {{ infantry_equipment > {rifles - 1} }}
+			has_manpower > 1999
+		}}
+		complete_effect = {{
+			add_equipment_to_stockpile = {{ type = infantry_equipment amount = -{rifles} }}
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}}
+		remove_effect = {{
+			wif_cro_sweep_resolve = {{ s = {state} }}
+		}}
+		ai_will_do = {{
+			base = 0
+			modifier = {{ add = 4 check_variable = {{ wif_cro_ps > 35 }} }}
+			modifier = {{ add = 20 has_country_flag = wif_cro_base_known check_variable = {{ wif_cro_base = {state} }} }}
+			modifier = {{ factor = 0 has_country_flag = wif_cro_base_known NOT = {{ check_variable = {{ wif_cro_base = {state} }} }} }}
+		}}
+	}}
+''')
+    o.append('''
+	wif_cro_reprisals = {
+		icon = generic_police_action
+		cost = 25
+		days_re_enable = 60
+		visible = {
+			has_country_flag = wif_cro_ndh
+			has_country_flag = wif_cro_hostage_laws
+		}
+		complete_effect = {
+			custom_effect_tooltip = wif_cro_reprisals_tt
+			hidden_effect = {
+				wif_cro_ps_add = { n = -5 }
+				add_to_variable = { wif_cro_grievance = 0.25 }
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 3 check_variable = { wif_cro_ps > 60 } }
+		}
+	}''')
+    return ''.join(o)
+
+
+def gen_scripted_loc():
+    plan = '\n'.join(f'\ttext = {{ trigger = {{ check_variable = {{ wif_cro_plan = {i} }} }} localization_key = wif_cro_plan_{i} }}'
+                     for i in OPERATIONS)
+    write('common/scripted_localisation/wif_cro_ndh_scripted_loc.txt', HEADER + f'''defined_text = {{
+	name = GetWifCroBase
+	text = {{ trigger = {{ check_variable = {{ wif_cro_base = 104 }} }} localization_key = wif_cro_base_bosnia }}
+	text = {{ localization_key = wif_cro_base_herzegovina }}
+}}
+
+defined_text = {{
+	name = GetWifCroPlan
+{plan}
+	text = {{ localization_key = wif_cro_plan_0 }}
+}}
+
+defined_text = {{
+	name = GetWifCroIntel
+	text = {{ trigger = {{ has_country_flag = wif_cro_base_known }} localization_key = wif_cro_intel_known }}
+	text = {{ localization_key = wif_cro_intel_unknown }}
+}}
+''')
+    TT.update({f'wif_cro_plan_{i}': n for i, (n, _, _) in OPERATIONS.items()})
+    TT.update({
+        'wif_cro_plan_0': 'nothing yet',
+        'wif_cro_base_bosnia': 'Bosnia', 'wif_cro_base_herzegovina': 'Herzegovina',
+        'wif_cro_intel_known': "Tito's headquarters: §Y[ROOT.GetWifCroBase]§!. The Partisans are preparing §R[ROOT.GetWifCroPlan]§!.",
+        'wif_cro_intel_unknown': "Where Tito is, and what he plans, is unknown. §YLocate the Partisan Headquarters§! to find out.",
+    })
 
 
 def patch_yugoslavia():
@@ -1345,16 +1541,21 @@ def gen_loc(m):
     for k, v in TRIG.items():
         o.append(f' wif_cro_{k}_trigger_tt:0 "{esc(v)}"')
     TT.update({
-        'wif_cro_sweep_tt': 'Partisan Strength: §G-8§! (§G-12§! after §YClear the Mountains§!). It never falls below §R10§!.',
+        'wif_cro_sweep_tt': "A §Y30-day§! operation. If Tito's headquarters is there: a good chance of §G-12§! Partisan Strength and two months of quiet, otherwise §G-5§!. Anywhere else: §G-3§!.",
+        'wif_cro_locate_tt': "For §Y45 days§! we know where Tito's headquarters is and what the Partisans are preparing.",
         'wif_cro_reprisals_tt': 'Partisan Strength: §G-5§! now - and §R+0.25§! a month for good.',
         'wif_ita_dalmatia_reprisals_tt': "Croatia's Partisan Strength: §G-5§!. Compliance in our border states falls.",
         'wif_cro_supply_tt': "Croatia's Partisan Strength: §R+5§!.",
         'wif_cro_autonomy_loc': 'The Rome Agreements',
         'wif_cro_partisans_category': "Tito's Partisans",
         'wif_cro_partisans_category_desc': ('Partisan Strength: §R[?ROOT.wif_cro_ps|0]§!/100, rising [?ROOT.wif_cro_ps_rate|1] a month. It never falls below 10.\n'
-                                            'Every month there is a chance of an attack equal to half the Partisan Strength. At 25 they cut the railways, at 40 they bomb Zagreb, at 50 they strike into Italian Dalmatia, at 70 they take whole mountain districts, at 90 they act as a government.'),
-        'wif_cro_anti_partisan_sweep': 'Anti-Partisan Sweep', 'wif_cro_anti_partisan_sweep_desc': 'Encircle a district, comb the forests, burn what the Partisans could use.',
-        'wif_cro_anti_partisan_sweep_cheap': 'Anti-Partisan Sweep', 'wif_cro_anti_partisan_sweep_cheap_desc': 'The army has done this before.',
+                                            '[ROOT.GetWifCroIntel]\n\n'
+                                            'The Partisans save their strength for an operation and spend it when they strike: ambushes (10), railway sabotage (25), bombings in Zagreb (40), strikes into Italian Dalmatia (50), seizing a mountain district (70), assassinations (90). Sweep the region where Tito is to set them back.'),
+        'wif_cro_locate_headquarters': 'Locate the Partisan Headquarters', 'wif_cro_locate_headquarters_desc': 'Informers, couriers, radio intercepts - find out where Tito is and what he is planning.',
+        'wif_cro_sweep_bosnia': 'Sweep Bosnia', 'wif_cro_sweep_bosnia_desc': 'Encircle the Bosnian mountains and comb the forests.',
+        'wif_cro_sweep_bosnia_cheap': 'Sweep Bosnia', 'wif_cro_sweep_bosnia_cheap_desc': 'Encircle the Bosnian mountains and comb the forests.',
+        'wif_cro_sweep_herzegovina': 'Sweep Herzegovina', 'wif_cro_sweep_herzegovina_desc': 'Encircle the Herzegovinian karst and comb the valleys.',
+        'wif_cro_sweep_herzegovina_cheap': 'Sweep Herzegovina', 'wif_cro_sweep_herzegovina_cheap_desc': 'Encircle the Herzegovinian karst and comb the valleys.',
         'wif_cro_reprisals': 'Reprisals', 'wif_cro_reprisals_desc': 'Hostages shot for every soldier killed. It frightens the villages - and sends their sons to Tito.',
         'wif_ita_croatia_category': 'The Croatian Protectorate', 'wif_ita_croatia_category_desc': "Croatia is ours to protect - and its Partisans are our problem too. Croatia's Partisan Strength: [?CRO.wif_cro_ps|0]/100.",
         'wif_ita_operation_in_croatia': 'Italian Operation in Croatia', 'wif_ita_operation_in_croatia_desc': 'An Italian corps sweeps a Partisan district alongside the Home Guard.',
@@ -1383,6 +1584,7 @@ def main():
     gen_ideas()
     gen_mechanics()
     gen_events()
+    gen_scripted_loc()
     patch_yugoslavia()
     patch_peace()
     gen_loc(m)
