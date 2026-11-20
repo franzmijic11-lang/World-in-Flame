@@ -975,23 +975,26 @@ focus_tree = {
 			custom_effect_tooltip = wif_cro_croatise_tt
 			hidden_effect = {
 				if = {
+					limit = { 804 = { is_owned_by = ROOT } }
+					804 = {
+						add_core_of = ROOT
+					}
+				}
+				if = {
 					limit = { 104 = { is_owned_by = ROOT } }
 					104 = {
-						add_core_of = ROOT
 						add_compliance = 20
 					}
 				}
 				if = {
 					limit = { 1086 = { is_owned_by = ROOT } }
 					1086 = {
-						add_core_of = ROOT
 						add_compliance = 20
 					}
 				}
 				if = {
 					limit = { 804 = { is_owned_by = ROOT } }
 					804 = {
-						add_core_of = ROOT
 						add_compliance = 20
 					}
 				}

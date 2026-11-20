@@ -220,8 +220,10 @@ R = {
     'the_question_of_peoples': tt('wif_cro_peoples_tt', 'Unlocks the regime\'s policies towards the peoples of the state. Most of them add a §Rgrievance§! - Partisan Strength grows faster for good.'),
     'the_muslim_question': tt('wif_cro_muslim_q_tt', 'Unlocks the regime\'s Muslim policy.'),
     'bosnia_is_croatian_land': j(pp(100), stab(-0.10), ps(1), grievance(), flag('wif_cro_bosnia_croatian')),
-    'croatise_bosnia': j(tt('wif_cro_croatise_tt', 'Cores on §YBosnia§! and §YHerzegovina§! where we own them, and §G+20§! compliance there.',
-                            j(*(in_state(s, 'add_core_of = ROOT\nadd_compliance = 20') for s in MOUNTAINS))), stab(-0.10), grievance()),
+    # User's rule: Croatia may core Herzegovina, NEVER Bosnia or Banja Luka
+    'croatise_bosnia': j(tt('wif_cro_croatise_tt', 'A core on §YHerzegovina§! if we own it. §G+20§! compliance in §YBosnia§!, §YBanja Luka§! and §YHerzegovina§!.',
+                            j(in_state(HERZEGOVINA, 'add_core_of = ROOT'),
+                              *(in_state(s, 'add_compliance = 20') for s in MOUNTAINS))), stab(-0.10), grievance()),
     'muslim_memoranda': j(tt('wif_cro_memoranda_tt', 'With §YBosnia Is Croatian Land§!: the signatories are arrested (§G+50§! political power, a §Rgrievance§!). Otherwise Bosnia gets limited autonomy (§G+15%§! stability, §R-10%§! political power).',
                              j('if = { limit = { has_country_flag = wif_cro_bosnia_croatian } add_political_power = 50 add_to_variable = { wif_cro_grievance = 0.5 } }',
                                'else = { add_stability = 0.15 add_timed_idea = { idea = wif_cro_bosnian_autonomy_idea days = 730 } }'))),
