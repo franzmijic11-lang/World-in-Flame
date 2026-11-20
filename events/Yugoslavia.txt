@@ -540,6 +540,7 @@ country_event = {
 				}
 			}
 			puppet = CRO
+			if = { limit = { YUG = { owns_state = 1086 } } CRO = { transfer_state = 1086 } }	# Welt in Flammen: Banja Luka (tools/gen_balkan_map.py)
 			wif_cro_from_fate_of_yugoslavia = yes	# Welt in Flammen (tools/gen_cro_ndh.py)
 			annex_country = { target = YUG transfer_troops = no }
 
@@ -626,6 +627,7 @@ country_event = {
 				}				
 			}
 			puppet = CRO
+			if = { limit = { YUG = { owns_state = 1086 } } CRO = { transfer_state = 1086 } }	# Welt in Flammen: Banja Luka (tools/gen_balkan_map.py)
 			wif_cro_from_fate_of_yugoslavia = yes	# Welt in Flammen (tools/gen_cro_ndh.py)
 			puppet = YUG
 

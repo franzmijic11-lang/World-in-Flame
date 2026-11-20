@@ -982,6 +982,13 @@ focus_tree = {
 					}
 				}
 				if = {
+					limit = { 1086 = { is_owned_by = ROOT } }
+					1086 = {
+						add_core_of = ROOT
+						add_compliance = 20
+					}
+				}
+				if = {
 					limit = { 804 = { is_owned_by = ROOT } }
 					804 = {
 						add_core_of = ROOT

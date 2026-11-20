@@ -1,6 +1,6 @@
 import os, re, glob
 
-V = r"D:\Steam\steamapps\common\Hearts of Iron IV"
+V = r"C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV"   # the live install
 M = r"C:\Users\franz\OneDrive\Skrivbord\Dokument\Paradox Interactive\Hearts of Iron IV\mod\Welt_in_Flammen"
 OUT = os.path.join(M, "common", "scripted_effects", "wif_city_provinces.txt")
 
@@ -12,6 +12,8 @@ for line in open(os.path.join(V, "map", "definition.csv"), encoding="latin-1"):
     f = line.strip().split(";")
     if len(f) >= 7 and f[6] == "urban":
         urban.add(int(f[0]))
+# Real cities WiF adds from 1936 (tools/gen_capital_cities.py PERMANENT)
+urban |= {11899, 9627}   # Sarajevo, Ljubljana
 
 def parse(path):
     t = re.sub(r"#.*", "", open(path, encoding="utf-8-sig", errors="replace").read())

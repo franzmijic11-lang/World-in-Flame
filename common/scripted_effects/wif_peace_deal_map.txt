@@ -1005,6 +1005,14 @@ wif_peace_divide_the_allies = {
 		104 = { transfer_state_to = CRO }
 		104 = { clr_state_flag = wif_peace_allied_state }
 	}
+	# Banja Luka - Croatia (split from Bosnia by tools/gen_balkan_map.py)
+	if = {
+		limit = {
+			1086 = { wif_peace_carvable = yes }
+		}
+		1086 = { transfer_state_to = CRO }
+		1086 = { clr_state_flag = wif_peace_allied_state }
+	}
 	# Herzegovina - Croatia
 	if = {
 		limit = {

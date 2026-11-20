@@ -264,6 +264,7 @@ wif_gp_init_regions = {
 	971 = { set_variable = { wif_gp_region = 4 } }
 	973 = { set_variable = { wif_gp_region = 4 } }
 	974 = { set_variable = { wif_gp_region = 4 } }
+	1086 = { set_variable = { wif_gp_region = 4 } }
 	# Eastern Europe
 	11 = { set_variable = { wif_gp_region = 5 } }
 	12 = { set_variable = { wif_gp_region = 5 } }

@@ -40,14 +40,15 @@ P = 'wif_cro_'
 TT = {}
 
 ZAGREB, BOSNIA, HERZEGOVINA, DALMATIA, ZADAR, MONTENEGRO, LJUBLJANA, ISTRIA = 109, 104, 804, 103, 163, 105, 853, 852
-MOUNTAINS = [BOSNIA, HERZEGOVINA]
-NDH_STATES = [ZAGREB, BOSNIA, HERZEGOVINA, DALMATIA]
+BANJA_LUKA = 1086          # split from Bosnia by tools/gen_balkan_map.py
+MOUNTAINS = [BOSNIA, BANJA_LUKA, HERZEGOVINA]
+NDH_STATES = [ZAGREB, BOSNIA, BANJA_LUKA, HERZEGOVINA, DALMATIA]
 ITALIAN_BORDER = [DALMATIA, ZADAR, MONTENEGRO, LJUBLJANA, ISTRIA]
 # The Partisans' operations: plan number -> (name, strength needed, strength spent)
 OPERATIONS = {1: ('an ambush in the mountains', 10, 3), 2: ('railway sabotage', 25, 6), 3: ('bombings in Zagreb', 40, 10),
               4: ('a strike into Italian Dalmatia', 50, 12), 5: ('the seizure of a mountain district', 70, 20),
               6: ('the assassination of a minister', 90, 15)}
-SWEEP_REGIONS = {BOSNIA: 'bosnia', HERZEGOVINA: 'herzegovina'}
+SWEEP_REGIONS = {BOSNIA: 'bosnia', BANJA_LUKA: 'banja_luka', HERZEGOVINA: 'herzegovina'}
 
 
 def p(*a):
@@ -626,8 +627,9 @@ wif_cro_begin = {
 		set_variable = { wif_cro_grievance = 0 }
 		set_variable = { wif_cro_plan = 0 }
 		random_list = {
-			50 = { set_variable = { wif_cro_base = 104 } }
-			50 = { set_variable = { wif_cro_base = 804 } }
+			34 = { set_variable = { wif_cro_base = 104 } }
+			33 = { set_variable = { wif_cro_base = 1086 } }
+			33 = { set_variable = { wif_cro_base = 804 } }
 		}
 		add_ideas = wif_cro_ustase_state_idea
 		add_ideas = wif_cro_rome_agreements_idea
@@ -826,14 +828,28 @@ wif_cro_execute_plan = {
 	else_if = { limit = { check_variable = { wif_cro_plan = 6 } } wif_cro_attack_assassination = yes }
 }
 
-# CRO scope. Tito's headquarters moves to the other mountain region.
+# CRO scope. Tito's headquarters moves to one of the other two mountain
+# regions: Bosnia (104), Banja Luka (1086) or Herzegovina (804).
 wif_cro_move_headquarters = {
 	if = {
 		limit = { check_variable = { wif_cro_base = 104 } }
-		set_variable = { wif_cro_base = 804 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 1086 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { wif_cro_base = 1086 } }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
 	}
 	else = {
-		set_variable = { wif_cro_base = 104 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 1086 } }
+		}
 	}
 }
 
@@ -967,8 +983,18 @@ wif_cro_sweep_resolve = {
 		}
 	}
 	else = {
-		wif_cro_ps_add = { n = -3 }
-		country_event = { id = wif_cro.42 }
+		# Tito is elsewhere - but the sweep may still catch a local cell
+		random_list = {
+			40 = {
+				wif_cro_ps_add = { n = -6 }
+				army_experience = 5
+				country_event = { id = wif_cro.44 }
+			}
+			60 = {
+				wif_cro_ps_add = { n = -2 }
+				country_event = { id = wif_cro.42 }
+			}
+		}
 	}
 }
 '''
@@ -1211,6 +1237,8 @@ ATTACK_EVENTS = [
      "The sweep found Tito's camp still warm. The Partisans had been warned, and slipped through the cordon before it closed. They have moved their headquarters.", 'Next time.'),
     (42, 'GFX_report_event_generic_rally', 'Empty Forests',
      'A month of marching through the forests found burned-out camps, a few stragglers and nothing else. Tito was never there.', 'Our intelligence was wrong.'),
+    (44, 'GFX_report_event_generic_rally', 'A Cell Uncovered',
+     "Tito was never in the district - but the sweep stumbled on a Partisan cell: an arms cache, a courier network and the men who ran it. It is not the headquarters, but it hurts them.", 'Every cell counts.'),
     (43, 'GFX_report_event_generic_rally', 'Where Tito Is',
      "Informers, captured couriers and radio intercepts all point the same way. Tito's headquarters is in §Y[ROOT.GetWifCroBase]§!, and the Partisans are preparing §R[ROOT.GetWifCroPlan]§!.\n\nThe information will be good for about six weeks.", 'Send in the army.'),
     (21, 'GFX_report_event_generic_rally', 'Partisans in Dalmatia',
@@ -1349,6 +1377,7 @@ def gen_scripted_loc():
     write('common/scripted_localisation/wif_cro_ndh_scripted_loc.txt', HEADER + f'''defined_text = {{
 	name = GetWifCroBase
 	text = {{ trigger = {{ check_variable = {{ wif_cro_base = 104 }} }} localization_key = wif_cro_base_bosnia }}
+	text = {{ trigger = {{ check_variable = {{ wif_cro_base = 1086 }} }} localization_key = wif_cro_base_banja_luka }}
 	text = {{ localization_key = wif_cro_base_herzegovina }}
 }}
 
@@ -1367,7 +1396,7 @@ defined_text = {{
     TT.update({f'wif_cro_plan_{i}': n for i, (n, _, _) in OPERATIONS.items()})
     TT.update({
         'wif_cro_plan_0': 'nothing yet',
-        'wif_cro_base_bosnia': 'Bosnia', 'wif_cro_base_herzegovina': 'Herzegovina',
+        'wif_cro_base_bosnia': 'Bosnia', 'wif_cro_base_banja_luka': 'Banja Luka', 'wif_cro_base_herzegovina': 'Herzegovina',
         'wif_cro_intel_known': "Tito's headquarters: §Y[ROOT.GetWifCroBase]§!. The Partisans are preparing §R[ROOT.GetWifCroPlan]§!.",
         'wif_cro_intel_unknown': "Where Tito is, and what he plans, is unknown. §YLocate the Partisan Headquarters§! to find out.",
     })
@@ -1382,7 +1411,9 @@ def patch_yugoslavia():
     old = re.findall(r'\n(\t+)puppet = CRO\n', src)
     assert len(old) == 2, len(old)
     out = re.sub(r'\n(\t+)puppet = CRO\n',
-                 lambda m: f'\n{m.group(1)}puppet = CRO\n{m.group(1)}wif_cro_from_fate_of_yugoslavia = yes\t# Welt in Flammen (tools/gen_cro_ndh.py)\n', src)
+                 lambda m: (f'\n{m.group(1)}puppet = CRO\n'
+                            f'{m.group(1)}if = {{ limit = {{ YUG = {{ owns_state = {BANJA_LUKA} }} }} CRO = {{ transfer_state = {BANJA_LUKA} }} }}\t# Welt in Flammen: Banja Luka (tools/gen_balkan_map.py)\n'
+                            f'{m.group(1)}wif_cro_from_fate_of_yugoslavia = yes\t# Welt in Flammen (tools/gen_cro_ndh.py)\n'), src)
     with open(p('events', 'Yugoslavia.txt'), 'w', encoding='utf-8-sig', newline='') as fh:
         fh.write(out)
     print('wrote events/Yugoslavia.txt (vanilla copy + Fate of Yugoslavia hook)')
@@ -1541,7 +1572,7 @@ def gen_loc(m):
     for k, v in TRIG.items():
         o.append(f' wif_cro_{k}_trigger_tt:0 "{esc(v)}"')
     TT.update({
-        'wif_cro_sweep_tt': "A §Y30-day§! operation. If Tito's headquarters is there: a good chance of §G-12§! Partisan Strength and two months of quiet, otherwise §G-5§!. Anywhere else: §G-3§!.",
+        'wif_cro_sweep_tt': "A §Y30-day§! operation. If Tito's headquarters is there: a good chance of §G-12§! Partisan Strength and two months of quiet, otherwise §G-5§!. Anywhere else: a §Y40%§! chance to uncover a cell (§G-6§!), otherwise §G-2§!.",
         'wif_cro_locate_tt': "For §Y45 days§! we know where Tito's headquarters is and what the Partisans are preparing.",
         'wif_cro_reprisals_tt': 'Partisan Strength: §G-5§! now - and §R+0.25§! a month for good.',
         'wif_ita_dalmatia_reprisals_tt': "Croatia's Partisan Strength: §G-5§!. Compliance in our border states falls.",
@@ -1554,6 +1585,8 @@ def gen_loc(m):
         'wif_cro_locate_headquarters': 'Locate the Partisan Headquarters', 'wif_cro_locate_headquarters_desc': 'Informers, couriers, radio intercepts - find out where Tito is and what he is planning.',
         'wif_cro_sweep_bosnia': 'Sweep Bosnia', 'wif_cro_sweep_bosnia_desc': 'Encircle the Bosnian mountains and comb the forests.',
         'wif_cro_sweep_bosnia_cheap': 'Sweep Bosnia', 'wif_cro_sweep_bosnia_cheap_desc': 'Encircle the Bosnian mountains and comb the forests.',
+        'wif_cro_sweep_banja_luka': 'Sweep Banja Luka', 'wif_cro_sweep_banja_luka_desc': 'Encircle Kozara and the hills around Banja Luka.',
+        'wif_cro_sweep_banja_luka_cheap': 'Sweep Banja Luka', 'wif_cro_sweep_banja_luka_cheap_desc': 'Encircle Kozara and the hills around Banja Luka.',
         'wif_cro_sweep_herzegovina': 'Sweep Herzegovina', 'wif_cro_sweep_herzegovina_desc': 'Encircle the Herzegovinian karst and comb the valleys.',
         'wif_cro_sweep_herzegovina_cheap': 'Sweep Herzegovina', 'wif_cro_sweep_herzegovina_cheap_desc': 'Encircle the Herzegovinian karst and comb the valleys.',
         'wif_cro_reprisals': 'Reprisals', 'wif_cro_reprisals_desc': 'Hostages shot for every soldier killed. It frightens the villages - and sends their sons to Tito.',

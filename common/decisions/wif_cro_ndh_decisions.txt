@@ -82,6 +82,70 @@ wif_cro_partisans_category = {
 		}
 	}
 
+	wif_cro_sweep_banja_luka = {
+		icon = generic_operation
+		cost = 25
+		days_re_enable = 60
+		days_remove = 30
+		visible = {
+			has_country_flag = wif_cro_ndh
+			NOT = { has_country_flag = wif_cro_sweep_cheap }
+		}
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			1086 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 1499 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1500 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 1086 }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 1086 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 1086 } } }
+		}
+	}
+
+	wif_cro_sweep_banja_luka_cheap = {
+		icon = generic_operation
+		cost = 25
+		days_re_enable = 60
+		days_remove = 30
+		visible = {
+			has_country_flag = wif_cro_ndh
+			has_country_flag = wif_cro_sweep_cheap
+		}
+		available = {
+			NOT = { has_country_flag = wif_cro_sweep_running }
+			1086 = { is_controlled_by = ROOT }
+			has_equipment = { infantry_equipment > 999 }
+			has_manpower > 1999
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
+			add_manpower = -2000
+			set_country_flag = wif_cro_sweep_running
+			custom_effect_tooltip = wif_cro_sweep_tt
+		}
+		remove_effect = {
+			wif_cro_sweep_resolve = { s = 1086 }
+		}
+		ai_will_do = {
+			base = 0
+			modifier = { add = 4 check_variable = { wif_cro_ps > 35 } }
+			modifier = { add = 20 has_country_flag = wif_cro_base_known check_variable = { wif_cro_base = 1086 } }
+			modifier = { factor = 0 has_country_flag = wif_cro_base_known NOT = { check_variable = { wif_cro_base = 1086 } } }
+		}
+	}
+
 	wif_cro_sweep_herzegovina = {
 		icon = generic_operation
 		cost = 25

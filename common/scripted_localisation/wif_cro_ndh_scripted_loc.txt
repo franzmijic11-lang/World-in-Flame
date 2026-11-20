@@ -3,6 +3,7 @@
 defined_text = {
 	name = GetWifCroBase
 	text = { trigger = { check_variable = { wif_cro_base = 104 } } localization_key = wif_cro_base_bosnia }
+	text = { trigger = { check_variable = { wif_cro_base = 1086 } } localization_key = wif_cro_base_banja_luka }
 	text = { localization_key = wif_cro_base_herzegovina }
 }
 

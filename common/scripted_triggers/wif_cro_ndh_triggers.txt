@@ -28,7 +28,7 @@ wif_cro_plan_possible = {
 
 # State scope, ROOT = Croatia: a mountain state the Partisans can take.
 wif_cro_can_be_liberated = {
-	OR = { state = 104 state = 804 }
+	OR = { state = 104 state = 1086 state = 804 }
 	is_owned_by = ROOT
 	is_controlled_by = ROOT
 	NOT = { is_capital = yes }

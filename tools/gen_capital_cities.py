@@ -44,6 +44,14 @@ CITIES = {
     12187: (1084, 'Solikamsk', 'forest'),   # RNS
 }
 
+# Real cities from 1936, with no disguise: urban terrain and that is all.
+# Their city ground on the map is painted by tools/gen_balkan_map.py, and
+# tools/city_provinces.py counts them for the battalion cap.
+PERMANENT = {
+    11899: (104, 'Sarajevo',  'hills'),
+    9627:  (853, 'Ljubljana', 'hills'),
+}
+
 # Urban against the real terrain (common/terrain/00_terrain.txt):
 #   urban   move 1.2  attack -0.30  supply flow -0.20  truck attrition 0
 #   plains  move 1.0  attack  0     supply flow  0     truck attrition 0
@@ -79,14 +87,14 @@ def gen_definition():
     done = set()
     for i, line in enumerate(lines):
         f = line.rstrip(b'\r').split(b';')
-        if len(f) >= 7 and f[0].isdigit() and int(f[0]) in CITIES:
+        if len(f) >= 7 and f[0].isdigit() and (int(f[0]) in CITIES or int(f[0]) in PERMANENT):
             pid = int(f[0])
-            want = CITIES[pid][2].encode()
+            want = (CITIES.get(pid) or PERMANENT[pid])[2].encode()
             assert f[6] == want, f'province {pid} is {f[6]!r} in vanilla, expected {want!r} - recheck CITIES'
             f[6] = b'urban'
             lines[i] = b';'.join(f) + (b'\r' if line.endswith(b'\r') else b'')
             done.add(pid)
-    assert done == set(CITIES), f'missing provinces {set(CITIES) - done}'
+    assert done == set(CITIES) | set(PERMANENT), f'missing provinces {(set(CITIES) | set(PERMANENT)) - done}'
     p = os.path.join(MOD, 'map', 'definition.csv')
     open(p, 'wb').write(b'\n'.join(lines))
     print('wrote map/definition.csv,', len(done), 'provinces made urban')

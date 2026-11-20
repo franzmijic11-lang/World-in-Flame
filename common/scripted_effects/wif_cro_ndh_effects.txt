@@ -25,6 +25,7 @@ wif_cro_proclaim = {
 		limit = { NOT = { country_exists = CRO } }
 		if = { limit = { YUG = { owns_state = 109 } } CRO = { transfer_state = 109 } }
 		if = { limit = { YUG = { owns_state = 104 } } CRO = { transfer_state = 104 } }
+		if = { limit = { YUG = { owns_state = 1086 } } CRO = { transfer_state = 1086 } }
 		if = { limit = { YUG = { owns_state = 804 } } CRO = { transfer_state = 804 } }
 		if = { limit = { YUG = { owns_state = 103 } } CRO = { transfer_state = 103 } }
 	}
@@ -152,8 +153,9 @@ wif_cro_begin = {
 		set_variable = { wif_cro_grievance = 0 }
 		set_variable = { wif_cro_plan = 0 }
 		random_list = {
-			50 = { set_variable = { wif_cro_base = 104 } }
-			50 = { set_variable = { wif_cro_base = 804 } }
+			34 = { set_variable = { wif_cro_base = 104 } }
+			33 = { set_variable = { wif_cro_base = 1086 } }
+			33 = { set_variable = { wif_cro_base = 804 } }
 		}
 		add_ideas = wif_cro_ustase_state_idea
 		add_ideas = wif_cro_rome_agreements_idea
@@ -361,14 +363,28 @@ wif_cro_execute_plan = {
 	else_if = { limit = { check_variable = { wif_cro_plan = 6 } } wif_cro_attack_assassination = yes }
 }
 
-# CRO scope. Tito's headquarters moves to the other mountain region.
+# CRO scope. Tito's headquarters moves to one of the other two mountain
+# regions: Bosnia (104), Banja Luka (1086) or Herzegovina (804).
 wif_cro_move_headquarters = {
 	if = {
 		limit = { check_variable = { wif_cro_base = 104 } }
-		set_variable = { wif_cro_base = 804 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 1086 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { wif_cro_base = 1086 } }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 804 } }
+		}
 	}
 	else = {
-		set_variable = { wif_cro_base = 104 }
+		random_list = {
+			50 = { set_variable = { wif_cro_base = 104 } }
+			50 = { set_variable = { wif_cro_base = 1086 } }
+		}
 	}
 }
 
@@ -376,7 +392,7 @@ wif_cro_attack_ambush = {
 	add_manpower = -2000
 	add_stability = -0.01
 	random_owned_state = {
-		limit = { OR = { state = 104 state = 804 } }
+		limit = { OR = { state = 104 state = 1086 state = 804 } }
 		save_event_target_as = wif_cro_attack_state
 		damage_building = { type = infrastructure damage = 1 }
 	}
@@ -502,8 +518,18 @@ wif_cro_sweep_resolve = {
 		}
 	}
 	else = {
-		wif_cro_ps_add = { n = -3 }
-		country_event = { id = wif_cro.42 }
+		# Tito is elsewhere - but the sweep may still catch a local cell
+		random_list = {
+			40 = {
+				wif_cro_ps_add = { n = -6 }
+				army_experience = 5
+				country_event = { id = wif_cro.44 }
+			}
+			60 = {
+				wif_cro_ps_add = { n = -2 }
+				country_event = { id = wif_cro.42 }
+			}
+		}
 	}
 }
 

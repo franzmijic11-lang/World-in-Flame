@@ -1,0 +1,30 @@
+﻿# Welt in Flammen (tools/gen_balkan_map.py): split from Bosnia (104).
+state={
+	id=1086
+	name="STATE_1086" # Banja Luka
+	manpower = 477550 # 1/4 of vanilla Bosnia
+
+	state_category = rural
+
+	resources={
+		aluminium=3 # half of vanilla Bosnia's 7
+	}
+
+	history={
+		owner = YUG
+		victory_points = {
+			6983 3
+		}
+		buildings = {
+			infrastructure = 1
+		}
+		add_core_of = YUG
+		add_core_of = BOS
+	}
+
+	provinces={
+		9922 11572 6983 6957 3985 9586
+	}
+
+	local_supplies=0.0
+}

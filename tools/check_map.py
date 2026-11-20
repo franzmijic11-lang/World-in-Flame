@@ -25,7 +25,7 @@ Edit VANILLA and WORKSHOP below if the game ever moves.
 
 import os, re, glob, csv
 
-G = r"D:\Steam\steamapps\common\Hearts of Iron IV"
+G = r"C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV"   # the live install
 M = r"C:\Users\franz\OneDrive\Skrivbord\Dokument\Paradox Interactive\Hearts of Iron IV\mod\Welt_in_Flammen"
 
 

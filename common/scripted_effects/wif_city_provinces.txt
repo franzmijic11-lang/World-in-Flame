@@ -8,15 +8,15 @@
 # therefore measured off the map here and baked into a state variable.
 #
 # A CITY PROVINCE IS A PROVINCE WITH urban TERRAIN in map/definition.csv -
-# the ones that draw as built-up ground. There are 265 of them on the map.
-# State membership comes from history/states, with this mod's 28 overriding
+# the ones that draw as built-up ground. There are 269 of them on the map.
+# State membership comes from history/states, with this mod's 30 overriding
 # files applied on top of vanilla's, so the province moves this mod makes are
 # reflected here.
 #
 # Only states with at least one are listed. An unset variable reads as 0 in
 # HoI4, so every state omitted here correctly counts as having no city.
 #
-# 233 states have a city province: 204 with one, 26 with two, 3 with three.
+# 236 states have a city province: 206 with one, 27 with two, 3 with three.
 #
 # Run once from on_startup, guarded by a global flag - province membership
 # cannot change during a game, so this never needs repeating.
@@ -62,13 +62,14 @@ wif_seed_city_provinces = {
 	66 = { set_variable = { wif_city_provs = 1 } }
 	67 = { set_variable = { wif_city_provs = 1 } }
 	75 = { set_variable = { wif_city_provs = 1 } }
-	79 = { set_variable = { wif_city_provs = 1 } }
+	79 = { set_variable = { wif_city_provs = 2 } }
 	85 = { set_variable = { wif_city_provs = 1 } }
 	86 = { set_variable = { wif_city_provs = 1 } }
 	87 = { set_variable = { wif_city_provs = 1 } }
 	88 = { set_variable = { wif_city_provs = 2 } }
 	91 = { set_variable = { wif_city_provs = 1 } }
 	94 = { set_variable = { wif_city_provs = 1 } }
+	104 = { set_variable = { wif_city_provs = 1 } }
 	107 = { set_variable = { wif_city_provs = 1 } }
 	109 = { set_variable = { wif_city_provs = 1 } }
 	110 = { set_variable = { wif_city_provs = 1 } }
@@ -233,7 +234,9 @@ wif_seed_city_provinces = {
 	812 = { set_variable = { wif_city_provs = 1 } }
 	845 = { set_variable = { wif_city_provs = 1 } }
 	849 = { set_variable = { wif_city_provs = 1 } }
+	853 = { set_variable = { wif_city_provs = 1 } }
 	907 = { set_variable = { wif_city_provs = 1 } }
+	971 = { set_variable = { wif_city_provs = 1 } }
 	976 = { set_variable = { wif_city_provs = 1 } }
 	982 = { set_variable = { wif_city_provs = 1 } }
 	990 = { set_variable = { wif_city_provs = 1 } }

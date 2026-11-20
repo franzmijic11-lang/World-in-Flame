@@ -130,6 +130,15 @@ country_event = {
 }
 
 country_event = {
+	id = wif_cro.44
+	title = wif_cro.44.t
+	desc = wif_cro.44.d
+	picture = GFX_report_event_generic_rally
+	is_triggered_only = yes
+	option = { name = wif_cro.44.a }
+}
+
+country_event = {
 	id = wif_cro.43
 	title = wif_cro.43.t
 	desc = wif_cro.43.d

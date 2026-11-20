@@ -1,0 +1,35 @@
+﻿# Welt in Flammen (tools/gen_balkan_map.py): Banja Luka split off as state 1086; Sarajevo a city.
+
+state={
+	id=104
+	name="STATE_104"
+	manpower = 1432650 # 3/4 of vanilla 1910200 - Banja Luka (1086) has the rest
+	
+	
+	state_category = large_town # Sarajevo is a city, as Zagreb (WiF)
+	
+	resources={
+		aluminium=4 # vanilla 7 - Banja Luka (1086) has 3
+		coal = 2 # initial distribution
+	}
+
+	history={
+		owner = YUG
+		victory_points = {
+			11899 5 
+		}
+		buildings = {
+			infrastructure = 3
+			industrial_complex = 2
+			air_base = 2
+		}
+		add_core_of = YUG
+		add_core_of = BOS
+	}
+
+	provinces={
+		606 982 6614 6619 6799 9588 9591 11574 11741 11872 11899 
+	}
+
+	local_supplies=7.0 
+}

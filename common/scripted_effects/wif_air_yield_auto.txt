@@ -896,6 +896,7 @@ wif_air_yield_region_24 = {
 	853 = { if = { limit = { air_base > 0 controller = { wif_air_friend_of_root = yes } } add_to_variable = { ROOT.wif_air_cap = building_level@air_base } } }
 	934 = { if = { limit = { air_base > 0 controller = { wif_air_friend_of_root = yes } } add_to_variable = { ROOT.wif_air_cap = building_level@air_base } } }
 	970 = { if = { limit = { air_base > 0 controller = { wif_air_friend_of_root = yes } } add_to_variable = { ROOT.wif_air_cap = building_level@air_base } } }
+	1086 = { if = { limit = { air_base > 0 controller = { wif_air_friend_of_root = yes } } add_to_variable = { ROOT.wif_air_cap = building_level@air_base } } }
 	if = {
 		limit = { check_variable = { wif_air_cap > 0 } }
 		set_variable = { wif_air_region = 24 }
