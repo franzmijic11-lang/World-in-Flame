@@ -1,0 +1,1643 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 21,
+      "desc": "The war in the west is over and Italy stands on the winning side. From the Alps to the Horn of Africa, from Tirana to Tripoli, the Empire is larger than at any time since the Caesars. Now it has to be governed, defended and paid for - beside an ally that never lets Rome forget who won the war.\n\nThis tree replaces Italy's focus tree when Pax Romana is completed. It runs for about 7 years.\n\nSTARTING SPIRITS (proposed):\n- An Empire Too Large (negative, 3 tiers): -10% / -7% / -4% stability, +30% / +20% / +10% garrison manpower. The Administration branch loses a tier at The Great Division and The Ordered Empire and is removed by The Imperial Senate; Ministero dell'Impero and Polizia dell'Africa Italiana ease its garrison cost.\n- In Germany's Shadow (negative, 3 tiers, STARTS at tier 1 and GROWS): -5% / -10% / -15% political power, -10% trade opinion. Grows with every grievance in In Berlin's Shadow; removed by The Axis Is Dead.\n\nPEACE DEAL CHANGE (to build with the tree): when the Anglo-German peace is made, Ethiopia (ETH, if it still exists), French Somaliland (268) and British Somaliland (269) are annexed by Italian East Africa (AOI) - whether or not Italy fought. If AOI does not exist yet it is first released from Italy's East African states as an Italian puppet.\n\nEffect: +50 political power. +5% stability.",
+      "fid": "wif_ita_the_new_roman_order",
+      "id": "itp000",
+      "mx": [],
+      "name": "The New Roman Order",
+      "pre": [],
+      "x": 30,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "The old Ministry of Italian Africa cannot govern an empire on three continents. One ministry, one minister, one map.\n\nEffect: +10% political power gain for 2 years. -5% garrison manpower (An Empire Too Large).",
+      "fid": "wif_ita_ministry_of_the_empire",
+      "id": "itp001",
+      "mx": [],
+      "name": "Ministero dell'Impero",
+      "pre": [
+        "itp000"
+      ],
+      "x": 5,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Every holding of the Empire is assigned to an administration: the Kingdom proper, the governorates, the viceroyalty and the protectorates. Each answers to Rome in its own way.\n\nEffect: An Empire Too Large loses a tier. Unlocks the administrations below.",
+      "fid": "wif_ita_the_great_division",
+      "id": "itp002",
+      "mx": [],
+      "name": "The Great Division",
+      "pre": [
+        "itp001"
+      ],
+      "x": 5,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Governorates, not governments. Italian prefects, Italian law, Italian settlers.\n\nEffect: +15% resources from non-core states. +10% compliance gain. But -10% stability for 1 year, and our puppets get -10% stability.",
+      "fid": "wif_ita_rule_from_rome",
+      "id": "itp003",
+      "mx": [
+        "itp004"
+      ],
+      "name": "Rule from Rome",
+      "pre": [
+        "itp002"
+      ],
+      "x": 3,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Let the local elites govern under the fasces. Cheaper, quieter - and less Italian.\n\nEffect: our puppets get +10% stability and +10% factory output. -50% garrison manpower in occupied states. But -10% resources from non-core states.",
+      "fid": "wif_ita_self_governing_protectorates",
+      "id": "itp004",
+      "mx": [
+        "itp003"
+      ],
+      "name": "Self-Governing Protectorates",
+      "pre": [
+        "itp002"
+      ],
+      "x": 7,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "The Duke of Aosta governs Italian East Africa from Addis Ababa - Ethiopia, Eritrea and both Somalilands under one viceroy.\n\nEffect: Italian East Africa (AOI) gets +15% stability and +2 infrastructure in Addis Ababa. If Rule from Rome: AOI's autonomy falls. If Self-Governing: AOI gets 2 civilian factories.",
+      "fid": "wif_ita_viceroyalty_of_east_africa",
+      "id": "itp005",
+      "mx": [],
+      "name": "The Viceroyalty of East Africa",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 0,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Libya is no colony. Tripolitania and Cyrenaica become provinces of the Kingdom itself.\n\nEffect: cores on every Libyan state Italy owns. +1 infrastructure in Tripoli and Benghazi.",
+      "fid": "wif_ita_the_fourth_shore",
+      "id": "itp006",
+      "mx": [],
+      "name": "La Quarta Sponda",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 2,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 21,
+      "desc": "Rhodes, the Dodecanese and the Greek islands taken in the war, governed from the Palazzo del Governo in Rhodes.\n\nEffect: +1 naval base in Rhodes. +2 coastal forts in the Dodecanese. -25% resistance in the Aegean islands.",
+      "fid": "wif_ita_governorate_of_the_aegean",
+      "id": "itp007",
+      "mx": [],
+      "name": "Governorate of the Aegean",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 4,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 21,
+      "desc": "Victor Emmanuel is King of Italy, Emperor of Ethiopia and King of the Albanians. Tirana must feel it.\n\nEffect: Albania (if a puppet) loses 20% autonomy. +1 civilian factory in Tirana.",
+      "fid": "wif_ita_the_albanian_crown",
+      "id": "itp008",
+      "mx": [],
+      "name": "The Albanian Crown",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 6,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Egypt keeps its King and its parliament. Italy keeps the Canal.\n\nAvailable: Egypt is Italy's subject.\n\nEffect: +2 naval base in Suez (if Italian or Egyptian). +10% trade with Egypt. Egypt gets +10% stability.",
+      "fid": "wif_ita_the_cairo_residency",
+      "id": "itp009",
+      "mx": [],
+      "name": "The Cairo Residency",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 8,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Palestine and Transjordan, taken from Britain at the peace. Haifa's refinery and the Kirkuk pipeline end are Italy's now.\n\nAvailable: Italy owns a state in Palestine or Jordan.\n\nEffect: +1 refinery in Haifa. -25% resistance in the Levant.",
+      "fid": "wif_ita_the_levant_mandate",
+      "id": "itp010",
+      "mx": [],
+      "name": "The Levant Mandate",
+      "pre": [
+        "itp003",
+        "itp004"
+      ],
+      "x": 10,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "A colonial police reborn - motorised, armed and everywhere.\n\nEffect: -20% resistance growth in non-core states. An Empire Too Large loses its garrison penalty in Africa.",
+      "fid": "wif_ita_colonial_police",
+      "id": "itp011",
+      "mx": [],
+      "name": "Polizia dell'Africa Italiana",
+      "pre": [
+        "itp005",
+        "itp006"
+      ],
+      "x": 1,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Twenty thousand colonists to Libya in 1938 - now two hundred thousand, to Libya and the Ethiopian highlands.\n\nEffect: +100,000 manpower over 2 years. Libyan states get +1 building slot. -5% stability for 1 year.",
+      "fid": "wif_ita_the_settler_programme",
+      "id": "itp012",
+      "mx": [],
+      "name": "I Ventimila",
+      "pre": [
+        "itp006"
+      ],
+      "x": 5,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Clerks, engineers and magistrates trained in Rome for posts in Asmara, Cairo and Haifa.\n\nEffect: +10% political power gain. -10% occupation costs.",
+      "fid": "wif_ita_imperial_civil_service",
+      "id": "itp013",
+      "mx": [],
+      "name": "The Imperial Civil Service",
+      "pre": [
+        "itp009",
+        "itp010"
+      ],
+      "x": 9,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Every province has its governor, every governor his orders. The Empire is administered.\n\nEffect: An Empire Too Large loses a tier. +10% stability.",
+      "fid": "wif_ita_the_ordered_empire",
+      "id": "itp014",
+      "mx": [],
+      "name": "L'Impero Ordinato",
+      "pre": [
+        "itp011",
+        "itp012",
+        "itp013"
+      ],
+      "x": 5,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Senators from Asmara, Tripoli and Tirana sit in the Palazzo Madama. An empire that sits in Rome is an empire that stays.\n\nEffect: removes An Empire Too Large. +5% stability. Our puppets get +10% opinion of Italy.",
+      "fid": "wif_ita_the_imperial_senate",
+      "id": "itp015",
+      "mx": [],
+      "name": "The Imperial Senate",
+      "pre": [
+        "itp014"
+      ],
+      "x": 5,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 21,
+      "desc": "Germany looks east to Russia. Italy's future is the sea - and the two other powers that border it: Turkey and Spain.\n\nEffect: +25 opinion with Turkey and Spain.",
+      "fid": "wif_ita_a_mediterranean_policy",
+      "id": "itp016",
+      "mx": [],
+      "name": "A Mediterranean Policy",
+      "pre": [
+        "itp000"
+      ],
+      "x": 18,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Ankara has feared Italian guns on Rhodes since 1923. Rome renounces every claim on Anatolia, in writing.\n\nEffect: +50 opinion with Turkey. Italy drops any claims on Turkish states.",
+      "fid": "wif_ita_bury_the_dodecanese_quarrel",
+      "id": "itp017",
+      "mx": [],
+      "name": "Bury the Dodecanese Quarrel",
+      "pre": [
+        "itp016"
+      ],
+      "x": 14,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 21,
+      "desc": "Salazar is Spain's neighbour, Britain's oldest ally and nobody's fool. A friendly word from Rome costs nothing.\n\nEffect: +50 opinion with Portugal. +10% trade opinion with Portugal.",
+      "fid": "wif_ita_the_lisbon_overture",
+      "id": "itp018",
+      "mx": [],
+      "name": "The Lisbon Overture",
+      "pre": [
+        "itp016"
+      ],
+      "x": 18,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Seventy thousand Italians fought for Franco. The CTV's veterans become Italy's ambassadors to Madrid.\n\nEffect: +50 opinion with Spain. +25 army experience.",
+      "fid": "wif_ita_the_veterans_of_guadalajara",
+      "id": "itp019",
+      "mx": [],
+      "name": "The Veterans of Guadalajara",
+      "pre": [
+        "itp016"
+      ],
+      "x": 22,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Turkish chromium for Italian machine tools.\n\nEffect: +1 civilian factory. Turkey gets +1 civilian factory. +8 chromium to Italy from Turkey (trade).",
+      "fid": "wif_ita_trade_with_ankara",
+      "id": "itp020",
+      "mx": [],
+      "name": "Trade with Ankara",
+      "pre": [
+        "itp017"
+      ],
+      "x": 14,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Spain owes Rome five billion lire for the civil war. It will never pay. Forgive it, loudly.\n\nEffect: -50 political power. +75 opinion with Spain. Spain gets +10% stability.",
+      "fid": "wif_ita_forgive_the_war_debts",
+      "id": "itp021",
+      "mx": [],
+      "name": "Forgive the War Debts",
+      "pre": [
+        "itp019"
+      ],
+      "x": 22,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Bosporus stays Turkish, the Aegean stays Italian, and both sides agree who keeps the Russians and the Germans out.\n\nEffect: non-aggression pact with Turkey. +10% naval defence in the Aegean.",
+      "fid": "wif_ita_the_straits_understanding",
+      "id": "itp022",
+      "mx": [],
+      "name": "An Understanding on the Straits",
+      "pre": [
+        "itp020"
+      ],
+      "x": 13,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Italian officers teach at the Turkish War College; Turkish officers train with the Regia Aeronautica.\n\nEffect: Turkey gets +5% division attack and 50 army experience. +10 opinion each way.",
+      "fid": "wif_ita_military_mission_to_ankara",
+      "id": "itp023",
+      "mx": [],
+      "name": "Military Mission to Ankara",
+      "pre": [
+        "itp020"
+      ],
+      "x": 15,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Two Catholic, Latin, corporatist states - the natural partners of the Mediterranean.\n\nEffect: +10% political power gain for Spain. Italy and Spain share a research group.",
+      "fid": "wif_ita_latin_brotherhood",
+      "id": "itp024",
+      "mx": [],
+      "name": "Latin Brotherhood",
+      "pre": [
+        "itp021"
+      ],
+      "x": 21,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Rock is Britain's - or Germany's, if the peace gave it away. Rome tells Madrid it will back Spain's claim.\n\nEffect: Spain gets a claim on Gibraltar. +50 opinion with Spain. -25 opinion with whoever owns Gibraltar.",
+      "fid": "wif_ita_the_gibraltar_question",
+      "id": "itp025",
+      "mx": [],
+      "name": "The Gibraltar Question",
+      "pre": [
+        "itp021"
+      ],
+      "x": 23,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Signed in the Dolmabahce Palace. Twenty years of suspicion, ended in an afternoon.\n\nEffect: +100 opinion with Turkey. Turkey gets +5% stability.",
+      "fid": "wif_ita_italo_turkish_friendship",
+      "id": "itp026",
+      "mx": [],
+      "name": "The Italo-Turkish Friendship Treaty",
+      "pre": [
+        "itp022",
+        "itp023"
+      ],
+      "x": 14,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A treaty of friendship, trade and mutual consultation - everything short of an alliance, for now.\n\nEffect: +100 opinion with Spain. Italy and Spain get +10% trade opinion of each other.",
+      "fid": "wif_ita_hispano_italian_accord",
+      "id": "itp027",
+      "mx": [],
+      "name": "The Hispano-Italian Accord",
+      "pre": [
+        "itp024",
+        "itp025"
+      ],
+      "x": 22,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Tyrrhenian, the Aegean and the Atlantic gate. Three capitals that consult before they act.\n\nEffect: +10% stability. +25 opinion between Turkey and Spain.",
+      "fid": "wif_ita_the_three_seas",
+      "id": "itp028",
+      "mx": [],
+      "name": "The Three Seas Understanding",
+      "pre": [
+        "itp026",
+        "itp027"
+      ],
+      "x": 18,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 21,
+      "desc": "Italy won the war with Germany. Germany never lets Italy forget whose war it was.\n\nEffect: shows In Germany's Shadow. +5% war support.",
+      "fid": "wif_ita_in_berlins_shadow",
+      "id": "itp029",
+      "mx": [],
+      "name": "In Berlin's Shadow",
+      "pre": [
+        "itp000"
+      ],
+      "x": 30,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "German-speaking Bolzano listens to Berlin's radio, and Berlin has started to talk back.\n\nEffect: In Germany's Shadow grows a tier. +10% compliance and -25% resistance in South Tyrol. +1 fort on the Brenner.",
+      "fid": "wif_ita_the_south_tyrol_question",
+      "id": "itp030",
+      "mx": [],
+      "name": "The South Tyrol Question",
+      "pre": [
+        "itp029"
+      ],
+      "x": 26,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "Croatia was promised to Rome. Its factories are owned in Vienna and its ministers dine at the German legation.\n\nEffect: In Germany's Shadow grows a tier. Croatia gets +25 opinion of Italy.",
+      "fid": "wif_ita_rivals_in_zagreb",
+      "id": "itp031",
+      "mx": [],
+      "name": "Rivals in Zagreb",
+      "pre": [
+        "itp029"
+      ],
+      "x": 28,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "The port of Trieste handles more German trade than Italian. Its harbour master takes his orders from Hamburg.\n\nEffect: In Germany's Shadow grows a tier. +1 dockyard and +1 naval base in Trieste.",
+      "fid": "wif_ita_german_merchants_in_trieste",
+      "id": "itp032",
+      "mx": [],
+      "name": "German Merchants in Trieste",
+      "pre": [
+        "itp029"
+      ],
+      "x": 32,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "Kriegsmarine cruisers in Taranto, U-boat pens in La Spezia. The Mediterranean was supposed to be ours.\n\nEffect: In Germany's Shadow grows a tier. +10% naval doctrine speed. -15 opinion of Germany.",
+      "fid": "wif_ita_no_german_flag_on_our_sea",
+      "id": "itp033",
+      "mx": [],
+      "name": "No German Flag on Our Sea",
+      "pre": [
+        "itp029"
+      ],
+      "x": 34,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "Three hundred thousand Italians work in German factories. Italy needs them home.\n\nEffect: +50,000 manpower. +1 civilian factory. -15 opinion of Germany.",
+      "fid": "wif_ita_recall_our_workers",
+      "id": "itp034",
+      "mx": [],
+      "name": "Recall Our Workers",
+      "pre": [
+        "itp030",
+        "itp031"
+      ],
+      "x": 27,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "A contingency plan nobody signs and everybody reads: what Italy does if the Germans ever come over the Alps.\n\nEffect: +2 forts in every Italian state bordering Germany or its subjects. +10% defence on Italian core states.",
+      "fid": "wif_ita_piano_brennero",
+      "id": "itp035",
+      "mx": [],
+      "name": "Piano Brennero",
+      "pre": [
+        "itp031",
+        "itp032"
+      ],
+      "x": 31,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Arsenals in Sardinia and Sicily that appear on no German liaison officer's list.\n\nEffect: +2 military factories in Sicily and Sardinia. +2000 infantry equipment.",
+      "fid": "wif_ita_secret_rearmament",
+      "id": "itp036",
+      "mx": [],
+      "name": "Secret Rearmament",
+      "pre": [
+        "itp033"
+      ],
+      "x": 34,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Swallow the pride. As long as the Reich stands, Italy stands with it - and is paid for it.\n\nEffect: In Germany's Shadow loses a tier. Germany gives 3 military factories (offsite) and shares jet and rocket research. If Germany falls into civil war, The Axis Is Dead costs -15% stability.",
+      "fid": "wif_ita_the_loyal_ally",
+      "id": "itp037",
+      "mx": [
+        "itp038"
+      ],
+      "name": "The Loyal Ally",
+      "pre": [
+        "itp034",
+        "itp035"
+      ],
+      "x": 28,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Smile in Berlin, plan in Rome. Every agreement with Germany gets a clause that lets Italy out.\n\nEffect: +10% political power gain. -25 opinion of Germany. Turkey and Spain get +25 opinion of Italy.",
+      "fid": "wif_ita_a_quiet_distance",
+      "id": "itp038",
+      "mx": [
+        "itp037"
+      ],
+      "name": "A Quiet Distance",
+      "pre": [
+        "itp035",
+        "itp036"
+      ],
+      "x": 32,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 28,
+      "desc": "Whatever face Rome shows Berlin, the conclusion is the same: the Axis exists to serve Germany.\n\nEffect: +10% war support. Unlocks The Reich Divided, should the day come.",
+      "fid": "wif_ita_the_axis_is_a_cage",
+      "id": "itp039",
+      "mx": [],
+      "name": "The Axis Is a Cage",
+      "pre": [
+        "itp037",
+        "itp038"
+      ],
+      "x": 30,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 21,
+      "desc": "Speer, Goring, Bormann, the Wehrmacht and the SS are fighting over Hitler's inheritance. For the first time in a decade, nobody in Berlin is watching Rome.\n\nAvailable: the German civil war has begun (global flag wif_ger_civil_war_begun).\n\nEffect: +50 political power. -5% stability.",
+      "fid": "wif_ita_the_reich_divided",
+      "id": "itp040",
+      "mx": [],
+      "name": "The Reich Divided",
+      "pre": [
+        "itp039"
+      ],
+      "x": 38,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 21,
+      "desc": "Rome declares that the Pact of Steel died with the Reich that signed it.\n\nEffect: Italy leaves Germany's faction (and any German overlord). Removes In Germany's Shadow. -15% stability if we chose The Loyal Ally.",
+      "fid": "wif_ita_the_axis_is_dead",
+      "id": "itp041",
+      "mx": [],
+      "name": "The Axis Is Dead",
+      "pre": [
+        "itp040"
+      ],
+      "x": 36,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A new alliance for a new Mediterranean - with Rome at its head.\n\nEffect: Italy creates the faction 'The Roman Pact'. Anyone still allied to us from before (e.g. Spain via the vanilla Spanish-Italian Alliance) comes with us. Members are brought in by Invite Ankara, Invite Madrid and The Balkan Members.",
+      "fid": "wif_ita_the_roman_pact",
+      "id": "itp043",
+      "mx": [],
+      "name": "The Roman Pact",
+      "pre": [
+        "itp041"
+      ],
+      "x": 36,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "The only focus that brings Turkey into an Italian alliance.\n\nAvailable: The Italo-Turkish Friendship Treaty is completed.\n\nEffect: Turkey joins the Roman Pact.",
+      "fid": "wif_ita_invite_ankara",
+      "id": "itp045",
+      "mx": [],
+      "name": "Invite Ankara",
+      "pre": [
+        "itp043"
+      ],
+      "x": 34,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "The ONLY focus that brings Spain into an Italian alliance.\n\nAvailable: The Hispano-Italian Accord is completed.\n\nBypassed: if Spain is already in a faction with Italy (vanilla Spanish-Italian Alliance before Pax Romana) - it simply moves into the Roman Pact with us.\n\nEffect: Spain joins the Roman Pact. If we did The Lisbon Overture, Portugal joins as well.",
+      "fid": "wif_ita_invite_madrid",
+      "id": "itp046",
+      "mx": [],
+      "name": "Invite Madrid",
+      "pre": [
+        "itp043"
+      ],
+      "x": 36,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 21,
+      "desc": "Croatia, Montenegro, Greece and Albania - every Balkan state in Italy's orbit, under one treaty.\n\nEffect: every Balkan subject of Italy joins the Roman Pact. Free Balkan states with 50+ opinion of Italy are invited.",
+      "fid": "wif_ita_the_balkan_members",
+      "id": "itp047",
+      "mx": [],
+      "name": "The Balkan Members",
+      "pre": [
+        "itp043"
+      ],
+      "x": 38,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "One staff, in Rome, for every army and navy of the Pact.\n\nEffect: every Roman Pact member gets +5% division attack and defence and +10% naval coordination.",
+      "fid": "wif_ita_joint_mediterranean_command",
+      "id": "itp048",
+      "mx": [],
+      "name": "The Joint Mediterranean Command",
+      "pre": [
+        "itp045",
+        "itp046",
+        "itp047"
+      ],
+      "x": 36,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 21,
+      "desc": "Italy's army fought with 1918 rifles, its navy without radar, its air force with biplanes. Never again.\n\nEffect: +50 army, navy and air experience.",
+      "fid": "wif_ita_armed_forces_of_the_empire",
+      "id": "itp049",
+      "mx": [],
+      "name": "The Empire's Armed Forces",
+      "pre": [
+        "itp000"
+      ],
+      "x": 47,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "The Regia Marina lost three cruisers in one night because it could not see in the dark.\n\nEffect: +1 research bonus for radar and naval electronics. +10% naval night attack.",
+      "fid": "wif_ita_lessons_of_matapan",
+      "id": "itp050",
+      "mx": [],
+      "name": "The Lessons of Matapan",
+      "pre": [
+        "itp049"
+      ],
+      "x": 45,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Motorised divisions for the desert, mountain divisions for the Alps and the Balkans.\n\nEffect: +10% army doctrine speed. A free motorised and a free mountain template.",
+      "fid": "wif_ita_the_imperial_army",
+      "id": "itp051",
+      "mx": [],
+      "name": "L'Esercito Imperiale",
+      "pre": [
+        "itp049"
+      ],
+      "x": 47,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Campini flew a jet in 1940. Italy should have been first. It can still be second.\n\nEffect: +1 jet research bonus (100%). +5% air doctrine speed.",
+      "fid": "wif_ita_the_jet_age",
+      "id": "itp052",
+      "mx": [],
+      "name": "The Jet Age",
+      "pre": [
+        "itp049"
+      ],
+      "x": 49,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Two liners converted into Italy's first aircraft carriers.\n\nEffect: +1 carrier research bonus (100%). +10% carrier production for 2 years.",
+      "fid": "wif_ita_aquila_and_sparviero",
+      "id": "itp053",
+      "mx": [],
+      "name": "Aquila and Sparviero",
+      "pre": [
+        "itp050"
+      ],
+      "x": 45,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Libyan, Eritrean and Somali divisions to garrison the Empire, so Italians do not have to.\n\nEffect: a Colonial Division template and 6 divisions in Africa. -10% garrison manpower.",
+      "fid": "wif_ita_colonial_divisions",
+      "id": "itp054",
+      "mx": [],
+      "name": "Divisioni Coloniali",
+      "pre": [
+        "itp051"
+      ],
+      "x": 47,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Reggiane, Fiat and Caproni each get a jet contract.\n\nEffect: +10% fighter production. +1 jet engine research bonus.",
+      "fid": "wif_ita_the_sons_of_campini",
+      "id": "itp055",
+      "mx": [],
+      "name": "The Sons of Campini",
+      "pre": [
+        "itp052"
+      ],
+      "x": 49,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Two oceans to patrol now - the Mediterranean and the Indian.\n\nEffect: +2 dockyards in La Spezia and Taranto. +1 naval base in Massawa and Mogadishu.",
+      "fid": "wif_ita_the_imperial_fleet",
+      "id": "itp056",
+      "mx": [],
+      "name": "The Imperial Fleet",
+      "pre": [
+        "itp053"
+      ],
+      "x": 45,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Ansaldo's new medium tank, at last a match for anything on the road.\n\nEffect: +1 armour research bonus (100%). +10% tank production for 2 years.",
+      "fid": "wif_ita_armoured_legions",
+      "id": "itp057",
+      "mx": [],
+      "name": "Armoured Legions",
+      "pre": [
+        "itp054"
+      ],
+      "x": 47,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Benghazi, Asmara, Rhodes, Tirana - an air umbrella from the Alps to the Gulf of Aden.\n\nEffect: +2 air base in 4 imperial states.",
+      "fid": "wif_ita_air_bases_across_the_empire",
+      "id": "itp058",
+      "mx": [],
+      "name": "Air Bases Across the Empire",
+      "pre": [
+        "itp055"
+      ],
+      "x": 49,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Armed forces worthy of the Empire.\n\nEffect: +10% division organisation. +10% naval and air organisation. +100 army experience.",
+      "fid": "wif_ita_forze_armate_imperiali",
+      "id": "itp059",
+      "mx": [],
+      "name": "Forze Armate Imperiali",
+      "pre": [
+        "itp056",
+        "itp057",
+        "itp058"
+      ],
+      "x": 47,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 21,
+      "desc": "Autarky won the war; it will not win the peace.\n\nEffect: +1 civilian factory.",
+      "fid": "wif_ita_an_imperial_economy",
+      "id": "itp060",
+      "mx": [],
+      "name": "An Imperial Economy",
+      "pre": [
+        "itp000"
+      ],
+      "x": 55,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "economy",
+      "days": 35,
+      "desc": "Sell to Spain, Turkey and South America - not only to Germany.\n\nEffect: +20% trade opinion. -1 consumer goods factory equivalent (-5% consumer goods). -10 opinion of Germany.",
+      "fid": "wif_ita_trade_beyond_the_reich",
+      "id": "itp061",
+      "mx": [
+        "itp062"
+      ],
+      "name": "Trade Beyond the Reich",
+      "pre": [
+        "itp060"
+      ],
+      "x": 53,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "economy",
+      "days": 35,
+      "desc": "The Empire supplies the Empire.\n\nEffect: +10% resources in non-core states. +5% factory output. -10% trade opinion.",
+      "fid": "wif_ita_autarchia_imperiale",
+      "id": "itp062",
+      "mx": [
+        "itp061"
+      ],
+      "name": "Autarchia Imperiale",
+      "pre": [
+        "itp060"
+      ],
+      "x": 57,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Ardito Desio said there was oil under Libya in 1938. Find it.\n\nEffect: +20 oil in Cyrenaica and +10 in Tripolitania. +1 refinery in Tripoli.",
+      "fid": "wif_ita_oil_of_the_fourth_shore",
+      "id": "itp063",
+      "mx": [],
+      "name": "Oil of the Fourth Shore",
+      "pre": [
+        "itp061",
+        "itp062"
+      ],
+      "x": 53,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 28,
+      "desc": "Roads, dams and coffee plantations in Ethiopia's highlands.\n\nEffect: +1 infrastructure in 4 AOI states. AOI gets +2 civilian factories.",
+      "fid": "wif_ita_develop_the_highlands",
+      "id": "itp064",
+      "mx": [],
+      "name": "Develop the Highlands",
+      "pre": [
+        "itp061",
+        "itp062"
+      ],
+      "x": 55,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 28,
+      "desc": "The Istituto per la Ricostruzione Industriale owns half of Italian industry. Make it build.\n\nEffect: +2 civilian factories in northern Italy. +5% production efficiency cap.",
+      "fid": "wif_ita_iri_reborn",
+      "id": "itp065",
+      "mx": [],
+      "name": "IRI Reborn",
+      "pre": [
+        "itp061",
+        "itp062"
+      ],
+      "x": 57,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "economy",
+      "days": 28,
+      "desc": "Suez, Massawa, Aden - Italy holds the whole road from the Mediterranean to the Indian Ocean.\n\nEffect: +20 convoys. +1 naval base in Massawa.",
+      "fid": "wif_ita_the_red_sea_route",
+      "id": "itp066",
+      "mx": [],
+      "name": "The Red Sea Route",
+      "pre": [
+        "itp063"
+      ],
+      "x": 53,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Addis Ababa to Asmara to Massawa, and Tripoli to Benghazi to the Egyptian frontier.\n\nEffect: +1 infrastructure and +1 railway level in 6 African states.",
+      "fid": "wif_ita_the_imperial_railway",
+      "id": "itp067",
+      "mx": [],
+      "name": "The Imperial Railway",
+      "pre": [
+        "itp064"
+      ],
+      "x": 55,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Milan, Turin, Genoa - the industrial triangle doubles.\n\nEffect: +3 civilian factories and +1 military factory in Lombardy, Piedmont and Liguria.",
+      "fid": "wif_ita_northern_industry_expanded",
+      "id": "itp068",
+      "mx": [],
+      "name": "The Northern Triangle",
+      "pre": [
+        "itp065"
+      ],
+      "x": 57,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "One currency, one market, one Empire.\n\nEffect: +10% factory output. +10% construction speed.",
+      "fid": "wif_ita_the_imperial_market",
+      "id": "itp069",
+      "mx": [],
+      "name": "The Imperial Market",
+      "pre": [
+        "itp066",
+        "itp067",
+        "itp068"
+      ],
+      "x": 55,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Albania, Montenegro, Dalmatia, Croatia, Greece: five arrangements made in wartime haste. Peace demands one.\n\nEffect: +10% compliance in every Balkan state Italy owns.",
+      "fid": "wif_ita_consolidate_the_balkans",
+      "id": "itp070",
+      "mx": [],
+      "name": "Consolidate the Balkans",
+      "pre": [
+        "itp014",
+        "itp028"
+      ],
+      "x": 21,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Albania stops being a protectorate and becomes a part of the Kingdom.\n\nEffect: Italy annexes Albania (if a subject) and gets cores on its states. -5% stability for 1 year.",
+      "fid": "wif_ita_annex_albania",
+      "id": "itp071",
+      "mx": [],
+      "name": "One Crown, One Kingdom",
+      "pre": [
+        "itp070"
+      ],
+      "x": 15,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Queen Elena was a Montenegrin princess. Her family's throne is a gift Rome can give.\n\nEffect: Montenegro (if Italian-owned) is released as an Italian puppet under a Petrovic-Njegos regent, or integrated if we chose Rule from Rome.",
+      "fid": "wif_ita_the_montenegrin_throne",
+      "id": "itp072",
+      "mx": [],
+      "name": "The Montenegrin Throne",
+      "pre": [
+        "itp070"
+      ],
+      "x": 17,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Zara, Spalato, Cattaro - Venice's coast, Italy's again.\n\nEffect: cores on Dalmatia. +1 naval base in Split.",
+      "fid": "wif_ita_dalmazia_italiana",
+      "id": "itp073",
+      "mx": [],
+      "name": "Dalmazia Italiana",
+      "pre": [
+        "itp070"
+      ],
+      "x": 19,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Pavelic owes Italy his throne and hates it for that.\n\nAvailable: Croatia exists.\n\nEffect: +25 opinion of Italy in Croatia. Unlocks the Croatian choice.",
+      "fid": "wif_ita_the_croatian_question",
+      "id": "itp074",
+      "mx": [],
+      "name": "The Croatian Question",
+      "pre": [
+        "itp070"
+      ],
+      "x": 23,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 28,
+      "desc": "Athens is Italy's protectorate. It needs a government Greeks will obey.\n\nAvailable: Greece is Italy's subject.\n\nEffect: Greece gets +10% stability. -25% resistance in Greek states Italy owns.",
+      "fid": "wif_ita_the_greek_kingdom",
+      "id": "itp075",
+      "mx": [],
+      "name": "The Greek Kingdom",
+      "pre": [
+        "itp070"
+      ],
+      "x": 25,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "economy",
+      "days": 28,
+      "desc": "No borders for trade from Trieste to Durres.\n\nEffect: +1 civilian factory. Every Italian Balkan puppet gets +1 civilian factory.",
+      "fid": "wif_ita_adriatic_customs_union",
+      "id": "itp076",
+      "mx": [],
+      "name": "The Adriatic Customs Union",
+      "pre": [
+        "itp071",
+        "itp072",
+        "itp073"
+      ],
+      "x": 17,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Kingdom of Croatia had an Italian king who never set foot in it. Now it has an Italian governor.\n\nEffect: Italy annexes Croatia. Resistance in Croatian states +25%. In Germany's Shadow grows a tier (if not removed).",
+      "fid": "wif_ita_annex_croatia",
+      "id": "itp077",
+      "mx": [
+        "itp078"
+      ],
+      "name": "Annex Croatia",
+      "pre": [
+        "itp074"
+      ],
+      "x": 22,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "A Croatia that looks to Rome and not to Vienna is worth more than a Croatia that has to be occupied.\n\nEffect: Croatia becomes an Italian puppet (if it isn't) with +15% stability and joins any Italian faction.",
+      "fid": "wif_ita_a_loyal_croatia",
+      "id": "itp078",
+      "mx": [
+        "itp077"
+      ],
+      "name": "A Loyal Croatia",
+      "pre": [
+        "itp074"
+      ],
+      "x": 24,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Duke of Spoleto refused Croatia's crown. Perhaps he will take Greece's.\n\nEffect: Greece becomes a monarchy under a Savoy prince. Greece +20% stability and lower autonomy.",
+      "fid": "wif_ita_a_prince_for_athens",
+      "id": "itp079",
+      "mx": [],
+      "name": "A Prince for Athens",
+      "pre": [
+        "itp075"
+      ],
+      "x": 26,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Every port on the Adriatic flies the tricolour or a flag Rome chose.\n\nEffect: +2 coastal forts and +1 naval base in Durres, Split and Kotor. +10% naval defence in the Adriatic.",
+      "fid": "wif_ita_the_adriatic_is_italian",
+      "id": "itp080",
+      "mx": [],
+      "name": "Mare Nostrum Adriaticum",
+      "pre": [
+        "itp076"
+      ],
+      "x": 17,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Rome decides in the Balkans - not Berlin, not Belgrade, not Sofia.\n\nEffect: claims on every Balkan state with an Italian core or an Italian puppet's core. +25 opinion with Bulgaria.",
+      "fid": "wif_ita_the_balkan_order",
+      "id": "itp081",
+      "mx": [],
+      "name": "The Balkan Order",
+      "pre": [
+        "itp077",
+        "itp078",
+        "itp079"
+      ],
+      "x": 24,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Balkans are quiet for the first time since 1912 - Italy's quiet.\n\nEffect: +10% stability. -50% resistance in Balkan states Italy owns.",
+      "fid": "wif_ita_the_balkans_consolidated",
+      "id": "itp082",
+      "mx": [],
+      "name": "The Balkans Consolidated",
+      "pre": [
+        "itp080",
+        "itp081"
+      ],
+      "x": 21,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Italy has been a great power by courtesy since 1861. It intends to be one in fact.\n\nEffect: +15 global power standing (Cold War system: counts toward Italy becoming a Global Power). +10% political power gain.",
+      "fid": "wif_ita_italia_potenza_mondiale",
+      "id": "itp083",
+      "mx": [],
+      "name": "Italia, Potenza Mondiale",
+      "pre": [
+        "itp059",
+        "itp069"
+      ],
+      "x": 51,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 28,
+      "desc": "Based in Mogadishu and Massawa, flying the flag from Zanzibar to Bombay.\n\nEffect: +1 naval base in Mogadishu. Unlocks naval presence in the Indian Ocean region (global power claims).",
+      "fid": "wif_ita_indian_ocean_squadron",
+      "id": "itp084",
+      "mx": [],
+      "name": "The Indian Ocean Squadron",
+      "pre": [
+        "itp083"
+      ],
+      "x": 45,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Influence campaigns in the Balkans, the Levant, North Africa and Latin America.\n\nEffect: unlocks a free claim on the Balkans and the Middle East regions in the global power system. +10% influence gain.",
+      "fid": "wif_ita_the_roman_sphere",
+      "id": "itp085",
+      "mx": [],
+      "name": "The Roman Sphere",
+      "pre": [
+        "itp083"
+      ],
+      "x": 48,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Fermi left. Amaldi stayed - and Segre has come home.\n\nEffect: +3 nuclear breakthrough progress. +1 nuclear research bonus (100%).",
+      "fid": "wif_ita_progetto_atomico",
+      "id": "itp086",
+      "mx": [],
+      "name": "Progetto Atomico",
+      "pre": [
+        "itp083"
+      ],
+      "x": 51,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "Twelve million Italians in Argentina and Brazil. They are Rome's best ambassadors.\n\nEffect: +50 opinion with Argentina, Brazil and Uruguay. +10% trade with them.",
+      "fid": "wif_ita_the_latin_american_connection",
+      "id": "itp087",
+      "mx": [],
+      "name": "The Latin American Connection",
+      "pre": [
+        "itp083"
+      ],
+      "x": 54,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Italy will not watch the space race from the stands.\n\nEffect: +1 rocket research bonus (100%). Unlocks the space race projects (wif space race system) one tier early.",
+      "fid": "wif_ita_rockets_over_rome",
+      "id": "itp088",
+      "mx": [],
+      "name": "Rockets over Rome",
+      "pre": [
+        "itp083"
+      ],
+      "x": 57,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Carriers, cruisers and the bases to keep them at sea.\n\nEffect: +10% naval range. +2 dockyards.",
+      "fid": "wif_ita_blue_water_navy",
+      "id": "itp089",
+      "mx": [],
+      "name": "A Blue-Water Navy",
+      "pre": [
+        "itp084"
+      ],
+      "x": 45,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 28,
+      "desc": "When Washington and Berlin decide the world, Rome is in the room.\n\nEffect: +20 global power credibility. +25 opinion with every major.",
+      "fid": "wif_ita_a_seat_at_the_table",
+      "id": "itp090",
+      "mx": [],
+      "name": "A Seat at the Table",
+      "pre": [
+        "itp085",
+        "itp087"
+      ],
+      "x": 48,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "Effect: +2 nuclear bombs and a permanent +nuclear production bonus. Counts as a nuclear power for the Cold War doctrine system.",
+      "fid": "wif_ita_the_roman_bomb",
+      "id": "itp091",
+      "mx": [],
+      "name": "The Roman Bomb",
+      "pre": [
+        "itp086"
+      ],
+      "x": 51,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "An Italian satellite, launched from a platform off the Somali coast.\n\nEffect: one free satellite project in the space race system.",
+      "fid": "wif_ita_the_italian_satellite",
+      "id": "itp092",
+      "mx": [],
+      "name": "San Marco",
+      "pre": [
+        "itp088"
+      ],
+      "x": 57,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Not Washington's world, not Berlin's: Rome is the third pole.\n\nEffect: Italy counts as a Global Power in the Cold War system. +10% stability.",
+      "fid": "wif_ita_the_third_pole",
+      "id": "itp093",
+      "mx": [],
+      "name": "The Third Pole",
+      "pre": [
+        "itp089",
+        "itp090",
+        "itp091"
+      ],
+      "x": 51,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "Two thousand years after Augustus, the Mediterranean is at peace under Rome again.\n\nEffect: +15% stability. +10% political power gain. Every Italian subject gets +10% stability.",
+      "fid": "wif_ita_pax_romana_aeterna",
+      "id": "itp094",
+      "mx": [],
+      "name": "Pax Romana Aeterna",
+      "pre": [
+        "itp015",
+        "itp082",
+        "itp093"
+      ],
+      "x": 30,
+      "y": 12
+    }
+  ],
+  "name": "Italy - Pax Romana (WiF draft)",
+  "tag": "ITA",
+  "target": 2555,
+  "treeId": "wif_ita_pax_romana_focus",
+  "updatedAt": 1795205042690
+}

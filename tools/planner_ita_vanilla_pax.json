@@ -1,0 +1,76 @@
+{
+ "name": "Italy (vanilla + Pax Romana)",
+ "note": "Pax Romana and its three parents from planner map ita-vanilla (positions in planner coords)",
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Thanks to the power of our army and the unlimited fanaticism of the Italian irredentists loyal to our regime, Italy will finally record its signature in the annals of history, not as a mere secondary actor, but as the main protagonist. \\nBlood alone moves the wheels of history!",
+   "fid": "ITA_by_blood_alone",
+   "id": "ita123",
+   "mx": [],
+   "name": "By Blood Alone",
+   "pre": [
+    "ita122"
+   ],
+   "x": 76,
+   "y": 17
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 70,
+   "desc": "A state's power is proportional to its maritime position. It is time to claim total control of the Mediterranean, as it is the right of the Italian people to dominate the ancient sea that was the cradle of our civilization.",
+   "fid": "ITA_masters_of_the_mediterranean",
+   "id": "ita125",
+   "mx": [],
+   "name": "Masters of the Mediterranean",
+   "pre": [
+    "ita124"
+   ],
+   "x": 78,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "Just like the Romans did, we must develop powerful war machines that allow us to dominate the battlefield. We will design the ultimate tank to storm the front lines and strike terror into the hearts of our enemies.",
+   "fid": "ITA_modern_musculus",
+   "id": "ita185",
+   "mx": [],
+   "name": "Modern Musculus",
+   "pre": [
+    "ita183"
+   ],
+   "x": 107,
+   "y": 16
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 70,
+   "desc": "The war is won. Britain has made peace, France is Vichy's, and the Mediterranean is ringed by Italian and German flags. It is time for Italy to stop being Germany's partner in a war and start being an empire in its own right.\n\nPrerequisite: the end of any fascist line - By Blood Alone, Masters of the Mediterranean or Modern Musculus.\n\nAvailable: Italy is fascist; the Anglo-German peace has been made (global flag wif_anglo_american_peace); New Industrialization Program (industrial reforms) and Ferrea Mole Ferreo Cuore (military reforms) are both completed - checked here, not drawn as prerequisite lines.\n\nEffect: removes Italy's focus tree and loads the Pax Romana tree (7 years; map ita-pax-romana).\n\nPEACE DEAL CHANGE (to build): when the Anglo-German peace is made, Ethiopia (ETH, if it still exists), French Somaliland (268) and British Somaliland (269) are annexed by Italian East Africa (AOI), created first from Italy's East African states if it does not exist.",
+   "fid": "ITA_wif_pax_romana",
+   "id": "ita314",
+   "mx": [],
+   "name": "Pax Romana",
+   "pre": [
+    "ita123",
+    "ita125",
+    "ita185"
+   ],
+   "x": 78,
+   "y": 18
+  }
+ ]
+}
