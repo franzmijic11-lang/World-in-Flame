@@ -1238,7 +1238,7 @@ ATTACK_EVENTS = [
     (18, 'GFX_report_event_generic_rally', 'The Mountains Are Theirs',
      'The Partisans are strong enough to take and hold whole districts.\n\nPartisan Strength has reached §R70§!.', 'We need every division.'),
     (40, 'GFX_report_event_generic_rally', 'The Sweep Finds Them',
-     "The cordon closed on Tito's headquarters in [ROOT.GetWifCroBase]. The Partisans broke out with heavy losses and have gone to ground - their headquarters has had to move.", 'They will be back.'),
+     "The cordon closed on Tito's headquarters. The Partisans broke out with heavy losses and have gone to ground - their headquarters has had to move.", 'They will be back.'),
     (41, 'GFX_report_event_generic_rally', 'They Slipped Away',
      "The sweep found Tito's camp still warm. The Partisans had been warned, and slipped through the cordon before it closed. They have moved their headquarters.", 'Next time.'),
     (42, 'GFX_report_event_generic_rally', 'Empty Forests',
@@ -1246,7 +1246,7 @@ ATTACK_EVENTS = [
     (44, 'GFX_report_event_generic_rally', 'A Cell Uncovered',
      "Tito was never in the district - but the sweep stumbled on a Partisan cell: an arms cache, a courier network and the men who ran it. It is not the headquarters, but it hurts them.", 'Every cell counts.'),
     (43, 'GFX_report_event_generic_rally', 'Where Tito Is',
-     "Informers, captured couriers and radio intercepts all point the same way. Tito's headquarters is in §Y[ROOT.GetWifCroBase]§!, and the Partisans are preparing §R[ROOT.GetWifCroPlan]§!.\n\nThe information will be good for about six weeks.", 'Send in the army.'),
+     "Informers, captured couriers and radio intercepts all point the same way. Tito's headquarters is in [ROOT.GetWifCroBase], and the Partisans are preparing §R[ROOT.GetWifCroPlan]§!.\n\nThe information will be good for about six weeks.", 'Send in the army.'),
     (21, 'GFX_report_event_generic_rally', 'Partisans in Dalmatia',
      "Croatia's Partisans have struck across the border into [wif_cro_attack_state.GetName]. An Italian garrison was ambushed and the local population is turning against us.\n\nWe can answer with Reprisals in Dalmatia.", 'Zagreb must do better.'),
 ]
@@ -1403,8 +1403,9 @@ defined_text = {{
     TT.update({
         'wif_cro_plan_0': 'nothing yet',
         'wif_cro_base_bosnia': 'Bosnia', 'wif_cro_base_banja_luka': 'Banja Luka', 'wif_cro_base_herzegovina': 'Herzegovina',
-        'wif_cro_intel_known': "Tito's headquarters: §Y[ROOT.GetWifCroBase]§!. The Partisans are preparing §R[ROOT.GetWifCroPlan]§!.",
-        'wif_cro_intel_unknown': "Where Tito is, and what he plans, is unknown. §YLocate the Partisan Headquarters§! to find out.",
+        # Default text colour on purpose: yellow is unreadable on the decision panel
+        'wif_cro_intel_known': "Tito's headquarters: [ROOT.GetWifCroBase]. The Partisans are preparing §R[ROOT.GetWifCroPlan]§!.",
+        'wif_cro_intel_unknown': "Where Tito is, and what he plans, is unknown. Locate the Partisan Headquarters to find out.",
     })
 
 
