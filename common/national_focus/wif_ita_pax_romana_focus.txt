@@ -1046,6 +1046,29 @@ focus_tree = {
 	}
 
 	focus = {
+		id = wif_ita_survey_the_levant
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = wif_ita_the_levant_mandate }
+		x = 11
+		y = 5
+		cost = 4
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = wif_ita_survey_levant_tt
+			hidden_effect = {
+				680 = { if = { limit = { OWNER = { OR = { tag = ITA is_subject_of = ITA } } } add_resource = { type = oil amount = 12 } } }
+				454 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 454 resources = { oil } } } } }
+				455 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 455 resources = { oil } } } } }
+				553 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 553 resources = { oil } } } } }
+				554 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 554 resources = { oil } } } } }
+				677 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 677 resources = { oil } } } } }
+				680 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 680 resources = { oil } } } } }
+			}
+		}
+	}
+
+	focus = {
 		id = wif_ita_italo_turkish_friendship
 		icon = GFX_focus_generic_diplomatic_treaty
 		prerequisite = { focus = wif_ita_the_straits_understanding }
@@ -1144,6 +1167,86 @@ focus_tree = {
 	}
 
 	focus = {
+		id = wif_ita_protectorates_of_palestine_and_transjordan
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = wif_ita_survey_the_levant }
+		x = 10
+		y = 6
+		cost = 5
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ita_own_paljor_trigger_tt
+				OR = { owns_state = 454 owns_state = 455 }
+			}
+		}
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = wif_ita_release_paljor_tt
+			hidden_effect = {
+				if = {
+					limit = { any_owned_state = { is_core_of = PAL } }
+					if = { limit = { NOT = { country_exists = PAL } } release_puppet = PAL }
+					else = {
+						every_owned_state = { limit = { is_core_of = PAL } PAL = { transfer_state = PREV } }
+						if = { limit = { NOT = { PAL = { is_subject_of = ROOT } } } puppet = PAL }
+					}
+					set_autonomy = { target = PAL autonomy_state = autonomy_wif_ita_protectorate end_wars = no end_civil_wars = no }
+				}
+				if = {
+					limit = { any_owned_state = { is_core_of = JOR } }
+					if = { limit = { NOT = { country_exists = JOR } } release_puppet = JOR }
+					else = {
+						every_owned_state = { limit = { is_core_of = JOR } JOR = { transfer_state = PREV } }
+						if = { limit = { NOT = { JOR = { is_subject_of = ROOT } } } puppet = JOR }
+					}
+					set_autonomy = { target = JOR autonomy_state = autonomy_wif_ita_protectorate end_wars = no end_civil_wars = no }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = wif_ita_protectorates_of_syria_and_lebanon
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = { focus = wif_ita_survey_the_levant }
+		x = 12
+		y = 6
+		cost = 5
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = wif_ita_own_syrleb_trigger_tt
+				OR = { owns_state = 553 owns_state = 554 owns_state = 677 owns_state = 680 }
+			}
+		}
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = wif_ita_release_syrleb_tt
+			hidden_effect = {
+				if = {
+					limit = { any_owned_state = { is_core_of = SYR } }
+					if = { limit = { NOT = { country_exists = SYR } } release_puppet = SYR }
+					else = {
+						every_owned_state = { limit = { is_core_of = SYR } SYR = { transfer_state = PREV } }
+						if = { limit = { NOT = { SYR = { is_subject_of = ROOT } } } puppet = SYR }
+					}
+					set_autonomy = { target = SYR autonomy_state = autonomy_wif_ita_protectorate end_wars = no end_civil_wars = no }
+				}
+				if = {
+					limit = { any_owned_state = { is_core_of = LEB } }
+					if = { limit = { NOT = { country_exists = LEB } } release_puppet = LEB }
+					else = {
+						every_owned_state = { limit = { is_core_of = LEB } LEB = { transfer_state = PREV } }
+						if = { limit = { NOT = { LEB = { is_subject_of = ROOT } } } puppet = LEB }
+					}
+					set_autonomy = { target = LEB autonomy_state = autonomy_wif_ita_protectorate end_wars = no end_civil_wars = no }
+				}
+			}
+		}
+	}
+
+	focus = {
 		id = wif_ita_the_three_seas
 		icon = GFX_focus_ITA_mare_nostrum
 		prerequisite = { focus = wif_ita_italo_turkish_friendship }
@@ -1216,6 +1319,39 @@ focus_tree = {
 				every_subject_country = {
 					add_opinion_modifier = { target = ITA modifier = wif_ita_senate_opinion }
 				}
+			}
+		}
+	}
+
+	focus = {
+		id = wif_ita_the_levant_concessions
+		icon = GFX_focus_generic_stockpile_fuel
+		prerequisite = { focus = wif_ita_protectorates_of_palestine_and_transjordan }
+		prerequisite = { focus = wif_ita_protectorates_of_syria_and_lebanon }
+		x = 11
+		y = 7
+		cost = 5
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = wif_ita_concessions_tt
+			hidden_effect = {
+				454 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 454 resources = { oil } } } } }
+				455 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 455 resources = { oil } } } } }
+				553 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 553 resources = { oil } } } } }
+				554 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 554 resources = { oil } } } } }
+				677 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 677 resources = { oil } } } } }
+				680 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 680 resources = { oil } } } } }
+			}
+			custom_effect_tooltip = wif_ita_aleppo_oil_tt
+			hidden_effect = {
+				677 = { if = { limit = { OWNER = { OR = { tag = ITA is_subject_of = ITA } } } add_resource = { type = oil amount = 8 } } }
+				454 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 454 resources = { oil } } } } }
+				455 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 455 resources = { oil } } } } }
+				553 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 553 resources = { oil } } } } }
+				554 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 554 resources = { oil } } } } }
+				677 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 677 resources = { oil } } } } }
+				680 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 680 resources = { oil } } } } }
 			}
 		}
 	}
@@ -1345,6 +1481,30 @@ focus_tree = {
 			custom_effect_tooltip = wif_ita_gp_score_10_tt
 			hidden_effect = {
 				add_to_variable = { wif_gp_bonus_score = 10 }
+			}
+		}
+	}
+
+	focus = {
+		id = wif_ita_the_tripoli_pipeline
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = wif_ita_the_levant_concessions }
+		x = 11
+		y = 8
+		cost = 5
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = wif_ita_pipeline_tt
+			hidden_effect = {
+				553 = { if = { limit = { OWNER = { OR = { tag = ITA is_subject_of = ITA } } } add_extra_state_shared_building_slots = 1 add_building_construction = { type = synthetic_refinery level = 1 instant_build = yes } } }
+				680 = { if = { limit = { OWNER = { OR = { tag = ITA is_subject_of = ITA } } } add_resource = { type = oil amount = 10 } } }
+				454 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 454 resources = { oil } } } } }
+				455 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 455 resources = { oil } } } } }
+				553 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 553 resources = { oil } } } } }
+				554 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 554 resources = { oil } } } } }
+				677 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 677 resources = { oil } } } } }
+				680 = { if = { limit = { OWNER = { is_subject_of = ITA } } OWNER = { give_resource_rights = { receiver = ITA state = 680 resources = { oil } } } } }
 			}
 		}
 	}

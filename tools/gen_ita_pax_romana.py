@@ -82,6 +82,11 @@ AOI_STATES = [271, 843, 908, 842, 841, 550, 840, 839, 838, 837, 836, 835, 559, 8
 DALMATIA, ZADAR, MONTENEGRO, SPLIT = 103, 163, 105, 103
 ALBANIA = [44, 805, 934]
 GIBRALTAR = 118
+# The Levant: protectorate tag -> its states. Deir-az-Zur, Aleppo and Lebanon
+# are where the tree finds oil.
+LEVANT = {'PAL': [454], 'JOR': [455], 'LEB': [553], 'SYR': [554, 677, 680]}
+LEVANT_STATES = [s for v in LEVANT.values() for s in v]
+DEIR_AZ_ZUR, ALEPPO, LEBANON = 680, 677, 553
 BALKAN_TAGS = ['ALB', 'MNT', 'CRO', 'GRE', 'SER', 'SLV', 'BOS', 'MAC', 'KOS']
 
 
@@ -189,6 +194,29 @@ def shadow_grows():
     return 'wif_ita_shadow_grow = yes'
 
 
+def release_protectorate(tag):
+    """Release TAG from the states we own with its core, as an Italian Protectorate."""
+    return j(f'if = {{', f'\tlimit = {{ any_owned_state = {{ is_core_of = {tag} }} }}',
+             f'\tif = {{ limit = {{ NOT = {{ country_exists = {tag} }} }} release_puppet = {tag} }}',
+             f'\telse = {{',
+             f'\t\tevery_owned_state = {{ limit = {{ is_core_of = {tag} }} {tag} = {{ transfer_state = PREV }} }}',
+             f'\t\tif = {{ limit = {{ NOT = {{ {tag} = {{ is_subject_of = ROOT }} }} }} puppet = {tag} }}',
+             '\t}',
+             f'\tset_autonomy = {{ target = {tag} autonomy_state = autonomy_wif_ita_protectorate end_wars = no end_civil_wars = no }}',
+             '}')
+
+
+def levant_oil(state, n):
+    """Oil in a Levant state that is ours or a protectorate's."""
+    return f'{state} = {{ if = {{ limit = {{ OWNER = {{ OR = {{ tag = ITA is_subject_of = ITA }} }} }} add_resource = {{ type = oil amount = {n} }} }} }}'
+
+
+def levant_rights():
+    """Italy gets the oil of every Levant state an Italian subject owns."""
+    return '\n'.join(f'{s} = {{ if = {{ limit = {{ OWNER = {{ is_subject_of = ITA }} }} OWNER = {{ give_resource_rights = {{ receiver = ITA state = {s} resources = {{ oil }} }} }} }} }}'
+                     for s in LEVANT_STATES)
+
+
 def roman_pact_join(tag):
     return (f'if = {{ limit = {{ country_exists = {tag} NOT = {{ {tag} = {{ is_in_faction_with = ROOT }} }} }} '
             f'{tag} = {{ if = {{ limit = {{ is_in_faction = yes }} leave_faction = yes }} }} add_to_faction = {tag} }}')
@@ -220,6 +248,18 @@ R = {
                                   subject('EGY', stab(0.10)))), opinion('EGY', 'wif_ita_residency_opinion')),
     'the_levant_mandate': j(tt('wif_ita_levant_tt', 'In §YPalestine§!, if we own it: §G+1§! refinery.', in_state(PALESTINE, building('synthetic_refinery'))),
                             idea('wif_ita_levant_idea')),
+    'survey_the_levant': tt('wif_ita_survey_levant_tt', '§G+12§! oil in §YDeir-az-Zur§!, if it is ours or an Italian protectorate\'s. Italy holds the rights to any of it a protectorate owns.',
+                            j(levant_oil(DEIR_AZ_ZUR, 12), levant_rights())),
+    'protectorates_of_palestine_and_transjordan': tt('wif_ita_release_paljor_tt', '§YPalestine§! and §YTransjordan§! are released from the land we own there as §YItalian Protectorates§!.',
+                                                     j(release_protectorate('PAL'), release_protectorate('JOR'))),
+    'protectorates_of_syria_and_lebanon': tt('wif_ita_release_syrleb_tt', '§YSyria§! and §YLebanon§! are released from the land we own there as §YItalian Protectorates§!.',
+                                             j(release_protectorate('SYR'), release_protectorate('LEB'))),
+    'the_levant_concessions': j(tt('wif_ita_concessions_tt', 'Italy gets the §Yresource rights§! to the oil in every state of §YPalestine§!, §YTransjordan§!, §YSyria§! and §YLebanon§! that is an Italian protectorate.',
+                                   levant_rights()),
+                                tt('wif_ita_aleppo_oil_tt', '§G+8§! oil in §YAleppo§!.', j(levant_oil(ALEPPO, 8), levant_rights()))),
+    'the_tripoli_pipeline': tt('wif_ita_pipeline_tt', '§G+1§! refinery in §YLebanon§!. §G+10§! oil in §YDeir-az-Zur§!. Italy gets the resource rights to all of it.',
+                               j(f'{LEBANON} = {{ if = {{ limit = {{ OWNER = {{ OR = {{ tag = ITA is_subject_of = ITA }} }} }} add_extra_state_shared_building_slots = 1 add_building_construction = {{ type = synthetic_refinery level = 1 instant_build = yes }} }} }}',
+                                 levant_oil(DEIR_AZ_ZUR, 10), levant_rights())),
     'colonial_police': idea('wif_ita_pai_idea'),
     'the_settler_programme': j(timed('wif_ita_settlers_idea', 730), timed('wif_ita_settler_strain_idea', 365),
                                tt('wif_ita_settler_slots_tt', 'Every §YLibyan§! state we own gets §G+1§! building slot.', every_owned(LIBYA, 'add_extra_state_shared_building_slots = 1'))),
@@ -372,6 +412,8 @@ TRIG = {
     'egypt': '§YEgypt§! is our subject',
     'levant': 'We own a state in §YPalestine§! or §YJordan§!',
     'croatia': '§YCroatia§! exists',
+    'own_paljor': 'We own §YPalestine§! or §YJordan§!',
+    'own_syrleb': 'We own §YLebanon§!, §YDamascus§!, §YAleppo§! or §YDeir-az-Zur§!',
     'greece': '§YGreece§! is our subject',
     'turkey_treaty': 'Has completed §YThe Italo-Turkish Friendship Treaty§!',
     'spain_accord': 'Has completed §YThe Hispano-Italian Accord§!',
@@ -388,6 +430,8 @@ AVAILABLE = {
     'the_cairo_residency': ctt('egypt', 'country_exists = EGY EGY = { is_subject_of = ROOT }'),
     'the_levant_mandate': ctt('levant', f'OR = {{ owns_state = {PALESTINE} owns_state = {JORDAN} }}'),
     'the_croatian_question': ctt('croatia', 'country_exists = CRO'),
+    'protectorates_of_palestine_and_transjordan': ctt('own_paljor', 'OR = { owns_state = 454 owns_state = 455 }'),
+    'protectorates_of_syria_and_lebanon': ctt('own_syrleb', 'OR = { owns_state = 553 owns_state = 554 owns_state = 677 owns_state = 680 }'),
     'the_greek_kingdom': ctt('greece', 'country_exists = GRE GRE = { is_subject_of = ROOT }'),
     'invite_ankara': ctt('turkey_treaty', 'has_completed_focus = wif_ita_italo_turkish_friendship'),
     'invite_madrid': ctt('spain_accord', 'has_completed_focus = wif_ita_hispano_italian_accord'),
@@ -411,6 +455,11 @@ ICON = {
     'the_albanian_crown': 'GFX_focus_generic_befriend_albania',
     'the_cairo_residency': 'GFX_focus_generic_africa_defense',
     'the_levant_mandate': 'GFX_goal_generic_oil_refinery',
+    'survey_the_levant': 'GFX_goal_generic_oil_refinery',
+    'protectorates_of_palestine_and_transjordan': 'GFX_focus_generic_treaty',
+    'protectorates_of_syria_and_lebanon': 'GFX_focus_generic_diplomatic_treaty',
+    'the_levant_concessions': 'GFX_focus_generic_stockpile_fuel',
+    'the_tripoli_pipeline': 'GFX_goal_generic_construct_infrastructure',
     'colonial_police': 'GFX_focus_ITA_comandante_diavolo',
     'the_settler_programme': 'GFX_focus_generic_population_growth',
     'imperial_civil_service': 'GFX_focus_generic_national_security',
@@ -693,7 +742,69 @@ def idea_block(k, pic, mods):
             + mod_lines(mods, 4) + ['\t\t\t}', '\t\t}'])
 
 
+PROTECTORATE = """autonomy_state = {
+	id = autonomy_wif_ita_protectorate
+
+	default = no
+	is_puppet = yes
+
+	min_freedom_level = 0.5
+
+	manpower_influence = 0.7
+
+	rule = {
+		desc = "RULE_DESC_IS_A_SUBJECT"
+
+		can_not_declare_war = yes
+		can_decline_call_to_war = no
+		can_be_spymaster = no
+		contributes_operatives = no
+		can_create_collaboration_government = no
+	}
+
+	# Vanilla's Reichsprotektorat, for Italy
+	modifier = {
+		autonomy_manpower_share = 0.7
+		can_master_build_for_us = 1
+		conscription_factor = -0.25
+		extra_trade_to_overlord_factor = 0.6
+		overlord_trade_cost_factor = -0.6
+		cic_to_overlord_factor = 0.25
+		license_subject_master_purchase_cost = -1
+		autonomy_gain_global_factor = -0.3
+		peace_score_ratio_transferred_to_overlord = 0.05
+		lend_lease_tension_with_overlord = -0.30
+		faction_influence_contribution_factor = -0.25
+	}
+
+	ai_subject_wants_higher = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_lower = {
+		factor = 1.0
+	}
+
+	ai_overlord_wants_garrison = {
+		always = no
+	}
+
+	allowed = {
+		OVERLORD = { original_tag = ITA }
+	}
+
+	can_take_level = {
+	}
+
+	can_lose_level = {
+	}
+}
+"""
+PROTECTORATE_NAMES = {'PAL': 'Palestine', 'JOR': 'Transjordan', 'LEB': 'Lebanon', 'SYR': 'Syria'}
+
+
 def gen_ideas():
+    write('common/autonomous_states/wif_ita_protectorate.txt', HEADER + '# Set only by the Pax Romana tree (release_protectorate).\n' + PROTECTORATE)
     o = [HEADER.rstrip('\n'), 'ideas = {', '\tcountry = {']
     for s, (pic, tiers, _, _, _) in SPIRITS.items():
         for t, mods in enumerate(tiers, 1):
@@ -840,6 +951,11 @@ def gen_loc(m):
         o.append(f' {k}:0 "{esc(v2)}"')
     for k, v2 in TRIG.items():
         o.append(f' wif_ita_{k}_trigger_tt:0 "{esc(v2)}"')
+    o += [' autonomy_wif_ita_protectorate:0 "Italian Protectorate"',
+          ' autonomy_wif_ita_protectorate_desc:0 "Governed by its own notables under an Italian Resident. Rome keeps the garrisons, the foreign policy and the oil."']
+    for t, nm in PROTECTORATE_NAMES.items():
+        o += [f' {t}_ITA_autonomy_wif_ita_protectorate:0 "Italian Protectorate of {nm}"',
+              f' {t}_ITA_autonomy_wif_ita_protectorate_DEF:0 "the Italian Protectorate of {nm}"']
     o += [' wif_ita_autonomy_loc:0 "Pax Romana"',
           ' wif_ita_roman_pact:0 "The Roman Pact"',
           ' wif_ita_latin_research_name:0 "Latin Research Cooperation"',
