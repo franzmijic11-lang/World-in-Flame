@@ -1,4 +1,4 @@
-﻿# Welt in Flammen (tools/gen_balkan_map.py): Banja Luka split off as state 1086; Sarajevo a city.
+# Welt in Flammen (tools/gen_balkan_map.py): Banja Luka split off as state 1086; Sarajevo a city.
 
 state={
 	id=104

@@ -108,7 +108,7 @@ def world_hates(mod): return tt(f'wif_cro_world_{mod}_tt', 'Every country outsid
 def ps(n):
     key = f'wif_cro_ps_{"p" if n > 0 else "m"}{abs(n)}_tt'
     TT[key] = f'Partisan Strength: §{"R" if n > 0 else "G"}{n:+d}§!'
-    return j(f'custom_effect_tooltip = {key}', block('hidden_effect', f'wif_cro_ps_add = {{ n = {n} }}'))
+    return j(f'custom_effect_tooltip = {key}', block('hidden_effect', f'set_temp_variable = {{ wif_cro_ps_delta = {n} }} wif_cro_ps_add = yes'))
 
 
 def grievance(n='0.5'):
@@ -691,9 +691,12 @@ wif_cro_templates = {
 }
 
 # ---------------------------------------------------------------- Tito's Partisans
-# CRO scope. wif_cro_ps_add = { n = 5 } - never below 10, never above 100.
+# CRO scope. Adds the temp variable wif_cro_ps_delta to Partisan Strength -
+# never below 10, never above 100. HoI4 scripted effects take no parameters,
+# so callers set the temp variable first:
+#   set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes
 wif_cro_ps_add = {
-	add_to_variable = { wif_cro_ps = $n$ }
+	add_to_variable = { wif_cro_ps = wif_cro_ps_delta }
 	clamp_variable = { var = wif_cro_ps min = 10 max = 100 }
 }
 
@@ -955,11 +958,12 @@ wif_cro_attack_assassination = {
 }
 
 # CRO scope. A 30-day sweep of one region ends (the decision's remove_effect).
-# wif_cro_sweep_resolve = { s = 104 }
+# The region is passed in the temp variable wif_cro_sweep_state:
+#   set_temp_variable = { wif_cro_sweep_state = 104 } wif_cro_sweep_resolve = yes
 wif_cro_sweep_resolve = {
 	clr_country_flag = wif_cro_sweep_running
 	if = {
-		limit = { check_variable = { wif_cro_base = $s$ } }
+		limit = { check_variable = { wif_cro_base = wif_cro_sweep_state } }
 		set_temp_variable = { wif_cro_odds = 55 }
 		if = { limit = { has_completed_focus = wif_cro_hrvatske_oruzane_snage } add_to_temp_variable = { wif_cro_odds = 15 } }
 		if = { limit = { has_country_flag = wif_cro_sweep_strong } add_to_temp_variable = { wif_cro_odds = 15 } }
@@ -967,7 +971,7 @@ wif_cro_sweep_resolve = {
 		set_temp_variable_to_random = { var = wif_cro_roll min = 0 max = 100 }
 		if = {
 			limit = { check_variable = { wif_cro_roll < wif_cro_odds } }
-			wif_cro_ps_add = { n = -12 }
+			set_temp_variable = { wif_cro_ps_delta = -12 } wif_cro_ps_add = yes
 			set_variable = { wif_cro_plan = 0 }
 			set_country_flag = { flag = wif_cro_partisans_hiding days = 60 }
 			wif_cro_move_headquarters = yes
@@ -976,7 +980,7 @@ wif_cro_sweep_resolve = {
 			country_event = { id = wif_cro.40 }
 		}
 		else = {
-			wif_cro_ps_add = { n = -5 }
+			set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 			wif_cro_move_headquarters = yes
 			clr_country_flag = wif_cro_base_known
 			country_event = { id = wif_cro.41 }
@@ -986,12 +990,12 @@ wif_cro_sweep_resolve = {
 		# Tito is elsewhere - but the sweep may still catch a local cell
 		random_list = {
 			40 = {
-				wif_cro_ps_add = { n = -6 }
+				set_temp_variable = { wif_cro_ps_delta = -6 } wif_cro_ps_add = yes
 				army_experience = 5
 				country_event = { id = wif_cro.44 }
 			}
 			60 = {
-				wif_cro_ps_add = { n = -2 }
+				set_temp_variable = { wif_cro_ps_delta = -2 } wif_cro_ps_add = yes
 				country_event = { id = wif_cro.42 }
 			}
 		}
@@ -1057,7 +1061,7 @@ wif_ita_croatia_category = {
 			add_manpower = -3000
 			army_experience = 10
 			custom_effect_tooltip = wif_ita_croatia_operation_tt
-			hidden_effect = { CRO = { wif_cro_ps_add = { n = -6 } } }
+			hidden_effect = { CRO = { set_temp_variable = { wif_cro_ps_delta = -6 } wif_cro_ps_add = yes } }
 		}
 		ai_will_do = {
 			base = 0
@@ -1101,7 +1105,7 @@ wif_ita_dalmatia_category = {
 			hidden_effect = {
 				if = {
 					limit = { country_exists = CRO CRO = { has_country_flag = wif_cro_ndh } }
-					CRO = { wif_cro_ps_add = { n = -5 } }
+					CRO = { set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes }
 				}
 			}
 			every_owned_state = {
@@ -1137,7 +1141,7 @@ wif_cro_supply_category = {
 		complete_effect = {
 			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
 			custom_effect_tooltip = wif_cro_supply_tt
-			hidden_effect = { CRO = { wif_cro_ps_add = { n = 5 } } }
+			hidden_effect = { CRO = { set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes } }
 		}
 		ai_will_do = { base = 3 }
 	}
@@ -1337,7 +1341,7 @@ def cro_decisions():
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}}
 		remove_effect = {{
-			wif_cro_sweep_resolve = {{ s = {state} }}
+			set_temp_variable = {{ wif_cro_sweep_state = {state} }} wif_cro_sweep_resolve = yes
 		}}
 		ai_will_do = {{
 			base = 0
@@ -1359,7 +1363,7 @@ def cro_decisions():
 		complete_effect = {
 			custom_effect_tooltip = wif_cro_reprisals_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 				add_to_variable = { wif_cro_grievance = 0.25 }
 			}
 		}

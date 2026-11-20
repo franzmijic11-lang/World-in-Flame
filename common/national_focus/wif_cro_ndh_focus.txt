@@ -117,7 +117,7 @@ focus_tree = {
 			add_ideas = wif_cro_uns_idea
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -220,7 +220,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -298,7 +298,7 @@ focus_tree = {
 			add_stability = -0.05
 			custom_effect_tooltip = wif_cro_ps_p2_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 2 }
+				set_temp_variable = { wif_cro_ps_delta = 2 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -381,7 +381,7 @@ focus_tree = {
 			add_ideas = wif_cro_forced_labour_idea
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -432,7 +432,7 @@ focus_tree = {
 			add_timed_idea = { idea = wif_cro_peasant_anger_idea days = 365 }
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -532,7 +532,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -581,7 +581,7 @@ focus_tree = {
 			add_stability = -0.1
 			custom_effect_tooltip = wif_cro_ps_p1_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 1 }
+				set_temp_variable = { wif_cro_ps_delta = 1 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_grievance_tt
 			hidden_effect = {
@@ -641,7 +641,7 @@ focus_tree = {
 			add_stability = -0.1
 			custom_effect_tooltip = wif_cro_ps_p5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 5 }
+				set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_grievance_tt
 			hidden_effect = {
@@ -791,7 +791,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 			add_stability = -0.1
 		}
@@ -903,7 +903,7 @@ focus_tree = {
 			wif_cro_two_armies_ease = yes
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -957,7 +957,7 @@ focus_tree = {
 			add_equipment_to_stockpile = { type = small_plane_cas_airframe amount = 20 producer = ROOT }
 			custom_effect_tooltip = wif_cro_ps_m5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -1051,7 +1051,7 @@ focus_tree = {
 			add_stability = 0.05
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_grievance_tt
 			hidden_effect = {
@@ -1096,7 +1096,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_p5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 5 }
+				set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_grievance_tt
 			hidden_effect = {
@@ -1205,7 +1205,7 @@ focus_tree = {
 			add_ideas = wif_cro_labour_service_idea
 			custom_effect_tooltip = wif_cro_ps_p3_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 3 }
+				set_temp_variable = { wif_cro_ps_delta = 3 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -1342,7 +1342,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 			}
 			army_experience = 50
 			add_manpower = -15000
@@ -1365,7 +1365,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 			}
 			add_stability = -0.1
 			if = { limit = { country_exists = ITA } ITA = { add_opinion_modifier = { target = ROOT modifier = wif_cro_small_opinion } } }
@@ -1406,7 +1406,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_p5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 5 }
+				set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes
 			}
 			add_war_support = -0.1
 			custom_effect_tooltip = wif_cro_rumours_tt
@@ -1547,7 +1547,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_m5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -1564,7 +1564,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m10_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -10 }
+				set_temp_variable = { wif_cro_ps_delta = -10 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_sweep_strong_tt
 			hidden_effect = {
@@ -1715,7 +1715,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = wif_cro_ps_p5_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = 5 }
+				set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes
 			}
 		}
 	}
@@ -1858,7 +1858,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m15_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -15 }
+				set_temp_variable = { wif_cro_ps_delta = -15 } wif_cro_ps_add = yes
 			}
 			add_manpower = -20000
 			army_experience = 100
@@ -1877,7 +1877,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m10_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -10 }
+				set_temp_variable = { wif_cro_ps_delta = -10 } wif_cro_ps_add = yes
 			}
 			custom_effect_tooltip = wif_cro_tito_escapes_tt
 		}
@@ -1936,7 +1936,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = wif_cro_ps_m10_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -10 }
+				set_temp_variable = { wif_cro_ps_delta = -10 } wif_cro_ps_add = yes
 			}
 			add_timed_idea = { idea = wif_cro_lull_idea days = 365 }
 			custom_effect_tooltip = wif_cro_lull_tt

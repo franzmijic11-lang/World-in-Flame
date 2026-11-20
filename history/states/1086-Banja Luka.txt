@@ -1,4 +1,4 @@
-﻿# Welt in Flammen (tools/gen_balkan_map.py): split from Bosnia (104).
+# Welt in Flammen (tools/gen_balkan_map.py): split from Bosnia (104).
 state={
 	id=1086
 	name="STATE_1086" # Banja Luka

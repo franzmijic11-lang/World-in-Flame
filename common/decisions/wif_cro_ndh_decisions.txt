@@ -40,7 +40,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 104 }
+			set_temp_variable = { wif_cro_sweep_state = 104 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -72,7 +72,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 104 }
+			set_temp_variable = { wif_cro_sweep_state = 104 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -104,7 +104,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 1086 }
+			set_temp_variable = { wif_cro_sweep_state = 1086 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -136,7 +136,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 1086 }
+			set_temp_variable = { wif_cro_sweep_state = 1086 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -168,7 +168,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 804 }
+			set_temp_variable = { wif_cro_sweep_state = 804 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -200,7 +200,7 @@ wif_cro_partisans_category = {
 			custom_effect_tooltip = wif_cro_sweep_tt
 		}
 		remove_effect = {
-			wif_cro_sweep_resolve = { s = 804 }
+			set_temp_variable = { wif_cro_sweep_state = 804 } wif_cro_sweep_resolve = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -221,7 +221,7 @@ wif_cro_partisans_category = {
 		complete_effect = {
 			custom_effect_tooltip = wif_cro_reprisals_tt
 			hidden_effect = {
-				wif_cro_ps_add = { n = -5 }
+				set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes
 				add_to_variable = { wif_cro_grievance = 0.25 }
 			}
 		}
@@ -251,7 +251,7 @@ wif_ita_croatia_category = {
 			add_manpower = -3000
 			army_experience = 10
 			custom_effect_tooltip = wif_ita_croatia_operation_tt
-			hidden_effect = { CRO = { wif_cro_ps_add = { n = -6 } } }
+			hidden_effect = { CRO = { set_temp_variable = { wif_cro_ps_delta = -6 } wif_cro_ps_add = yes } }
 		}
 		ai_will_do = {
 			base = 0
@@ -295,7 +295,7 @@ wif_ita_dalmatia_category = {
 			hidden_effect = {
 				if = {
 					limit = { country_exists = CRO CRO = { has_country_flag = wif_cro_ndh } }
-					CRO = { wif_cro_ps_add = { n = -5 } }
+					CRO = { set_temp_variable = { wif_cro_ps_delta = -5 } wif_cro_ps_add = yes }
 				}
 			}
 			every_owned_state = {
@@ -331,7 +331,7 @@ wif_cro_supply_category = {
 		complete_effect = {
 			add_equipment_to_stockpile = { type = infantry_equipment amount = -1000 }
 			custom_effect_tooltip = wif_cro_supply_tt
-			hidden_effect = { CRO = { wif_cro_ps_add = { n = 5 } } }
+			hidden_effect = { CRO = { set_temp_variable = { wif_cro_ps_delta = 5 } wif_cro_ps_add = yes } }
 		}
 		ai_will_do = { base = 3 }
 	}

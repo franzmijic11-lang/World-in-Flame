@@ -83,8 +83,10 @@ def states():
     t = t.replace('state_category = town', 'state_category = large_town # Sarajevo is a city, as Zagreb (WiF)')
     assert 'large_town' in t and 'aluminium=4' in t and '1432650' in t
     hdr = '# Welt in Flammen (tools/gen_balkan_map.py): Banja Luka split off as state 1086; Sarajevo a city.\n'
-    open(p('history', 'states', '104-Bosnia.txt'), 'w', encoding='utf-8-sig', newline='\n').write(hdr + t)
-    open(p('history', 'states', '1086-Banja Luka.txt'), 'w', encoding='utf-8-sig', newline='\n').write(f'''# Welt in Flammen (tools/gen_balkan_map.py): split from Bosnia (104).
+    # NO BOM: a BOM in front of the leading comment breaks the parse of the
+    # whole state file, and the game then crashes at map load (2026-11-20).
+    open(p('history', 'states', '104-Bosnia.txt'), 'w', encoding='utf-8', newline='\n').write(hdr + t)
+    open(p('history', 'states', '1086-Banja Luka.txt'), 'w', encoding='utf-8', newline='\n').write(f'''# Welt in Flammen (tools/gen_balkan_map.py): split from Bosnia (104).
 state={{
 	id={BANJA_LUKA}
 	name="STATE_{BANJA_LUKA}" # Banja Luka
