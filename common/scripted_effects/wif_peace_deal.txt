@@ -160,6 +160,7 @@ wif_peace_deal = {
 	#     before the map hands it the two Somalilands
 	#     (common/scripted_effects/wif_peace_deal_italy.txt)
 	wif_peace_italian_east_africa = yes
+	wif_peace_croatia_cedes_dalmatia = yes	# tools/gen_cro_ndh.py
 
 	# 6. The map
 	wif_peace_divide_the_allies = yes

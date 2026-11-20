@@ -102,3 +102,23 @@ wif_peace_italian_east_africa = {
 		}
 	}
 }
+
+# GER scope (ROOT is the United States - tags only). At the final peace an Axis
+# Croatia still holding Dalmatia hands it to Italy, as long as Italy is not on
+# the Allied side (tools/gen_cro_ndh.py).
+wif_peace_croatia_cedes_dalmatia = {
+	if = {
+		limit = {
+			country_exists = ITA
+			country_exists = CRO
+			NOT = { ITA = { has_country_flag = wif_peace_allied } }
+			NOT = { CRO = { has_country_flag = wif_peace_allied } }
+		}
+		103 = {
+			if = {
+				limit = { is_owned_by = CRO }
+				transfer_state_to = ITA
+			}
+		}
+	}
+}
