@@ -137,7 +137,7 @@ wif_peace_divide_the_allies = {
 			268 = { wif_peace_carvable = yes }
 		}
 		if = {
-			limit = { wif_peace_italy_in_war = yes country_exists = AOI }
+			limit = { country_exists = AOI }	# AOI whether or not Italy fought (wif_peace_deal_italy.txt)
 			268 = { transfer_state_to = AOI }
 		}
 		else_if = {
@@ -464,7 +464,7 @@ wif_peace_divide_the_allies = {
 			269 = { wif_peace_carvable = yes }
 		}
 		if = {
-			limit = { wif_peace_italy_in_war = yes country_exists = AOI }
+			limit = { country_exists = AOI }	# AOI whether or not Italy fought (wif_peace_deal_italy.txt)
 			269 = { transfer_state_to = AOI }
 		}
 		else_if = {

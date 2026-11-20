@@ -17,11 +17,120 @@ wif_vichy_become_satellite = {
 		GER = {
 			set_autonomy = {
 				target = PREV
-				autonomous_state = autonomy_satellite
+				autonomy_state = autonomy_satellite
 				end_wars = no
 				end_civil_wars = no
 			}
 		}
+	}
+}
+
+# FRA scope, from the peace deal (wif_peace_vichy_takes_france) when France
+# never fell and becomes Vichy itself. Gives it what france.14 gives a real
+# Vichy: Petain at the head of the state, the Vichy focus tree, and none of
+# the Third Republic's national spirits.
+wif_vichy_from_france = {
+	set_country_flag = vichy_france
+	if = {
+		limit = { has_character = FRA_philippe_petain }
+		FRA_philippe_petain = {
+			add_country_leader_role = {
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = fascism_ideology
+					traits = { }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	wif_vichy_strip_republic_spirits = yes
+	load_focus_tree = {
+		tree = vichy_french_focus
+		keep_completed = no
+	}
+}
+
+# FRA scope. The Third Republic's and the Resistance's spirits from vanilla
+# common/ideas/france.txt. Laws, advisors and the Vichy-era spirits stay.
+wif_vichy_strip_republic_spirits = {
+	if = { limit = { has_idea = FRA_victors_of_wwi } remove_ideas = FRA_victors_of_wwi }
+	if = { limit = { has_idea = FRA_disjointed_government } remove_ideas = FRA_disjointed_government }
+	if = { limit = { has_idea = FRA_protected_by_the_maginot_line } remove_ideas = FRA_protected_by_the_maginot_line }
+	if = { limit = { has_idea = FRA_the_young_school } remove_ideas = FRA_the_young_school }
+	if = { limit = { has_idea = FRA_full_employment } remove_ideas = FRA_full_employment }
+	if = { limit = { has_idea = FRA_worker_shortage } remove_ideas = FRA_worker_shortage }
+	if = { limit = { has_idea = FRA_inefficient_economy_1 } remove_ideas = FRA_inefficient_economy_1 }
+	if = { limit = { has_idea = FRA_inefficient_economy_2 } remove_ideas = FRA_inefficient_economy_2 }
+	if = { limit = { has_idea = FRA_political_violence } remove_ideas = FRA_political_violence }
+	if = { limit = { has_idea = FRA_devalue_the_franc } remove_ideas = FRA_devalue_the_franc }
+	if = { limit = { has_idea = FRA_global_investments } remove_ideas = FRA_global_investments }
+	if = { limit = { has_idea = FRA_womens_suffrage } remove_ideas = FRA_womens_suffrage }
+	if = { limit = { has_idea = FRA_agricultural_collectivization } remove_ideas = FRA_agricultural_collectivization }
+	if = { limit = { has_idea = FRA_anti_fascist_immigrants } remove_ideas = FRA_anti_fascist_immigrants }
+	if = { limit = { has_idea = FRA_league_of_french_bolshevist_volunteers } remove_ideas = FRA_league_of_french_bolshevist_volunteers }
+	if = { limit = { has_idea = FRA_egalite_liberte_solidarite } remove_ideas = FRA_egalite_liberte_solidarite }
+	if = { limit = { has_idea = FRA_revolutionary_zeal } remove_ideas = FRA_revolutionary_zeal }
+	if = { limit = { has_idea = FRA_dirigisme } remove_ideas = FRA_dirigisme }
+	if = { limit = { has_idea = FRA_expanded_citizenship } remove_ideas = FRA_expanded_citizenship }
+	if = { limit = { has_idea = FRA_france_undividable } remove_ideas = FRA_france_undividable }
+	if = { limit = { has_idea = FRA_agricultural_protectionism } remove_ideas = FRA_agricultural_protectionism }
+	if = { limit = { has_idea = FRA_entrepeneurship } remove_ideas = FRA_entrepeneurship }
+	if = { limit = { has_idea = FRA_market_dynamism } remove_ideas = FRA_market_dynamism }
+	if = { limit = { has_idea = FRA_factory_strikes } remove_ideas = FRA_factory_strikes }
+	if = { limit = { has_idea = FRA_matignon_agreements } remove_ideas = FRA_matignon_agreements }
+	if = { limit = { has_idea = FRA_infantry_focus } remove_ideas = FRA_infantry_focus }
+	if = { limit = { has_idea = FRA_fortification_focus } remove_ideas = FRA_fortification_focus }
+	if = { limit = { has_idea = FRA_motorized_focus } remove_ideas = FRA_motorized_focus }
+	if = { limit = { has_idea = FRA_support_the_left_focus } remove_ideas = FRA_support_the_left_focus }
+	if = { limit = { has_idea = FRA_scw_intervention_republicans_focus } remove_ideas = FRA_scw_intervention_republicans_focus }
+	if = { limit = { has_idea = FRA_national_mobilization_focus } remove_ideas = FRA_national_mobilization_focus }
+	if = { limit = { has_idea = FRA_support_the_centre_focus } remove_ideas = FRA_support_the_centre_focus }
+	if = { limit = { has_idea = FRA_strengthen_government_support_focus } remove_ideas = FRA_strengthen_government_support_focus }
+	if = { limit = { has_idea = FRA_support_the_right_focus } remove_ideas = FRA_support_the_right_focus }
+	if = { limit = { has_idea = FRA_scw_intervention_nationalists_focus } remove_ideas = FRA_scw_intervention_nationalists_focus }
+	if = { limit = { has_idea = FRA_army_of_aggression_focus } remove_ideas = FRA_army_of_aggression_focus }
+	if = { limit = { has_idea = FRA_maquis } remove_ideas = FRA_maquis }
+	if = { limit = { has_idea = FRA_connections_to_trade_unions } remove_ideas = FRA_connections_to_trade_unions }
+	if = { limit = { has_idea = FRA_communist_cooperation } remove_ideas = FRA_communist_cooperation }
+	if = { limit = { has_idea = FRA_communist_cooperation_2 } remove_ideas = FRA_communist_cooperation_2 }
+	if = { limit = { has_idea = FRA_industrialist_connections } remove_ideas = FRA_industrialist_connections }
+	if = { limit = { has_idea = FRA_civil_and_military_organization } remove_ideas = FRA_civil_and_military_organization }
+	if = { limit = { has_idea = FRA_national_council_of_the_resistance } remove_ideas = FRA_national_council_of_the_resistance }
+	if = { limit = { has_idea = FRA_national_uprising } remove_ideas = FRA_national_uprising }
+	if = { limit = { has_idea = FRA_colonial_recruitment } remove_ideas = FRA_colonial_recruitment }
+	if = { limit = { has_idea = ABDA_corps_expeditionnaire_spirit } remove_ideas = ABDA_corps_expeditionnaire_spirit }
+}
+
+# GER scope. Requisition Territory from Our French Puppet: Franche-Comte,
+# Champagne and Picardy go to the Reich from whichever French government
+# holds them - the Vichy satellite, or the old France (in exile, or annexed
+# into Vichy later) while German or Axis troops occupy them. During the war
+# france.14 leaves these three with the old France, not with Vichy, so a
+# subject-only check never found them. The peace deal runs this again after
+# Vichy has annexed France, in case the focus was done before.
+wif_ger_requisition_french_states = {
+	every_state = {
+		limit = {
+			OR = {
+				state = 17	# Franche-Comte
+				state = 18	# Champagne
+				state = 785	# Picardy
+			}
+			OWNER = { original_tag = FRA }
+			# GER by tag, not ROOT: in the peace deal ROOT is the United States
+			OR = {
+				OWNER = { is_subject_of = GER }
+				CONTROLLER = {
+					OR = {
+						tag = GER
+						is_subject_of = GER
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		transfer_state_to = GER
 	}
 }
 

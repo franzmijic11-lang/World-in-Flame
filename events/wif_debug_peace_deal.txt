@@ -1,0 +1,42 @@
+add_namespace = wif_debug
+
+# Console test handles for the Anglo-American peace. Work from any country.
+#
+#   event wif_debug.21   Britain (+dominions), France, the USA, Yugoslavia,
+#                        Ethiopia and Greece go to war with Germany and Italy
+#                        (one faction each side), then the USA gets
+#                        Germany's offer (wif_usa_peace.1). The US decides:
+#                        the player if you play the US, otherwise the AI
+#                        (accepts about 90% of the time or more).
+#   event wif_debug.22   The same war, then the USA accepts at once - the
+#                        peace deal always runs.
+#
+# The war setup is common/scripted_effects/wif_debug_peace_deal.txt.
+
+country_event = {
+	id = wif_debug.21
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_allied_war_setup = yes
+		if = {
+			limit = { country_exists = USA }
+			USA = { country_event = { id = wif_usa_peace.1 } }
+		}
+	}
+}
+
+country_event = {
+	id = wif_debug.22
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		wif_debug_allied_war_setup = yes
+		if = {
+			limit = { country_exists = USA }
+			USA = { wif_debug_usa_accepts_peace = yes }
+		}
+	}
+}

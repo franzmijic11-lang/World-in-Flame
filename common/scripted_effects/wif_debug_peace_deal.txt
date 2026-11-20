@@ -1,0 +1,165 @@
+# Test handles for the Anglo-American peace (events/wif_debug_peace_deal.txt).
+#
+# wif_debug_allied_war_setup puts the board in the shape the peace deal
+# expects: Britain leading the Allies, with France, the United States, the
+# dominions (Canada, Australia, New Zealand, South Africa), Yugoslavia,
+# Ethiopia and Greece in its faction or under it as subjects; Germany leading
+# the Axis with Italy in it; and every Ally at war with both Germany and
+# Italy. Anything already in that shape is left alone. Any scope.
+wif_debug_allied_war_setup = {
+	# Germany leads the Axis, and Italy is in it - the peace deal only counts
+	# Italy as having fought (wif_peace_italy_in_war) if it is
+	GER = {
+		if = {
+			limit = {
+				is_in_faction = yes
+				NOT = { is_faction_leader = yes }
+			}
+			leave_faction = yes
+		}
+		if = {
+			limit = { is_in_faction = no }
+			create_faction = "Axis"
+		}
+	}
+	if = {
+		limit = {
+			country_exists = ITA
+			NOT = { ITA = { is_in_faction_with = GER } }
+			NOT = { ITA = { is_subject_of = GER } }
+		}
+		ITA = {
+			if = {
+				limit = { is_subject = yes }
+				OVERLORD = { end_puppet = PREV }
+			}
+			if = {
+				limit = { is_in_faction = yes }
+				leave_faction = yes
+			}
+		}
+		GER = { add_to_faction = ITA }
+	}
+
+	# Britain leads the Allies
+	ENG = {
+		if = {
+			limit = {
+				is_in_faction = yes
+				NOT = { is_faction_leader = yes }
+			}
+			leave_faction = yes
+		}
+		if = {
+			limit = { is_in_faction = no }
+			create_faction = "Allies"
+		}
+	}
+
+	# France, America, the free dominions, Yugoslavia, Ethiopia and Greece
+	# join it. Britain's own subjects already count through Britain.
+	every_country = {
+		limit = {
+			exists = yes
+			OR = {
+				tag = FRA
+				tag = USA
+				original_tag = CAN
+				original_tag = AST
+				original_tag = NZL
+				original_tag = SAF
+				tag = YUG
+				tag = ETH
+				tag = GRE
+			}
+			NOT = { is_subject_of = ENG }
+			NOT = { is_in_faction_with = ENG }
+		}
+		if = {
+			limit = { is_subject = yes }
+			OVERLORD = { end_puppet = PREV }
+		}
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		ENG = { add_to_faction = PREV }
+	}
+
+	# Everyone at war with Germany. Britain first, so its subjects are called
+	# in with it.
+	ENG = {
+		if = {
+			limit = { NOT = { has_war_with = GER } }
+			declare_war_on = {
+				target = GER
+				type = topple_government
+			}
+		}
+	}
+	every_country = {
+		limit = {
+			exists = yes
+			is_in_faction_with = ENG
+			NOT = { tag = ENG }
+			NOT = { has_war_with = GER }
+		}
+		declare_war_on = {
+			target = GER
+			type = topple_government
+		}
+	}
+	every_country = {
+		limit = {
+			exists = yes
+			is_subject_of = ENG
+			NOT = { has_war_with = GER }
+		}
+		declare_war_on = {
+			target = GER
+			type = topple_government
+		}
+	}
+
+	# ...and at war with Italy, in case calling Germany's allies in did not
+	# bring it in
+	if = {
+		limit = { country_exists = ITA }
+		every_country = {
+			limit = {
+				exists = yes
+				OR = {
+					tag = ENG
+					is_in_faction_with = ENG
+					is_subject_of = ENG
+				}
+				NOT = { has_war_with = ITA }
+			}
+			declare_war_on = {
+				target = ITA
+				type = topple_government
+			}
+		}
+	}
+}
+
+# USA scope. Exactly what option a of wif_usa_peace.1 (Accept) does, without
+# asking - events/wif_american_peace.txt is the original; keep the two in step.
+wif_debug_usa_accepts_peace = {
+	wif_peace_snapshot = yes
+	every_other_country = {
+		limit = {
+			is_major = yes
+			has_war_with = GER
+			is_in_faction_with = ROOT
+			OR = {
+				capital_scope = { is_on_continent = north_america }
+				capital_scope = { is_on_continent = south_america }
+			}
+		}
+		wif_settle_with_axis = yes
+	}
+	wif_settle_with_axis = yes
+	GER = { wif_peace_deal = yes }
+	GER = { country_event = { id = wif_usa_peace.2 } }
+}

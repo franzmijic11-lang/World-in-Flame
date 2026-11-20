@@ -1452,20 +1452,10 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = GER_requisition_territory_from_our_french_puppet_tt
 			hidden_effect = {
-				every_state = {
-					limit = {
-						OR = {
-							state = 17	# Franche-Comte
-							state = 18	# Champagne
-							state = 785	# Picardy
-						}
-						owner = {
-							original_tag = FRA
-							is_subject_of = GER
-						}
-					}
-					transfer_state_to = GER
-				}
+				# common/scripted_effects/wif_vichy_effects.txt - also takes
+				# them from the occupied old France, and the peace deal
+				# repeats it once Vichy has annexed France
+				wif_ger_requisition_french_states = yes
 			}
 		}
 	}

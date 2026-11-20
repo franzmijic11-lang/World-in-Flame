@@ -156,11 +156,23 @@ wif_peace_deal = {
 	#    before their land is divided
 	wif_peace_free_the_subjects = yes
 
+	# 5b. Ethiopia and Italy's Horn of Africa become Italian East Africa,
+	#     before the map hands it the two Somalilands
+	#     (common/scripted_effects/wif_peace_deal_italy.txt)
+	wif_peace_italian_east_africa = yes
+
 	# 6. The map
 	wif_peace_divide_the_allies = yes
 
 	# 7. The new order
 	wif_peace_set_up_the_new_order = yes
+
+	# The SS requisition, if Himmler already did it while the three states
+	# were still with the old France (common/scripted_effects/wif_vichy_effects.txt)
+	if = {
+		limit = { has_completed_focus = GER_requisition_territory_from_our_french_puppet }
+		wif_ger_requisition_french_states = yes
+	}
 
 	# 8. Canada takes over the Empire outside Europe
 	if = {
@@ -170,6 +182,7 @@ wif_peace_deal = {
 		}
 		wif_peace_raise_canadian_garrisons = yes
 		ENG = { wif_peace_hand_over_british_fleet = yes }
+		CAN = { wif_can_become_empire = yes }	# tools/gen_can_empire.py
 	}
 	wif_peace_canada_fights_japan = yes
 
@@ -451,6 +464,9 @@ wif_peace_vichy_takes_france = {
 				elections_allowed = no
 			}
 			set_cosmetic_tag = FRA_VICHY
+			# Petain, the Vichy tree and no Third Republic spirits
+			# (common/scripted_effects/wif_vichy_effects.txt)
+			wif_vichy_from_france = yes
 		}
 	}
 }
@@ -553,6 +569,12 @@ wif_peace_set_up_the_new_order = {
 				limit = { is_government_in_exile = yes }
 				end_exile = yes
 			}
+			# A France that was never conquered is nobody's subject yet:
+			# make it one first, then set the satellite level
+			if = {
+				limit = { NOT = { is_subject_of = GER } }
+				GER = { puppet = PREV }
+			}
 			if = {
 				limit = { has_dlc = "Death or Dishonor" }
 				GER = {
@@ -561,10 +583,6 @@ wif_peace_set_up_the_new_order = {
 						autonomy_state = autonomy_satellite
 					}
 				}
-			}
-			else_if = {
-				limit = { NOT = { is_subject_of = GER } }
-				GER = { puppet = PREV }
 			}
 		}
 	}

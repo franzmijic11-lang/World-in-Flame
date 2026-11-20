@@ -1,0 +1,104 @@
+# The Anglo-American peace: Italian East Africa.
+#
+# Called from wif_peace_deal (common/scripted_effects/wif_peace_deal.txt)
+# between step 5 (subjects set loose) and step 6 (the map). GER scope - but
+# ROOT is the United States there, so every country is named by tag.
+#
+# Whenever the peace is made, and whether or not Italy fought, Italian East
+# Africa (AOI) gets:
+#   - Ethiopia - annexed if it still exists, and any Ethiopian state Italy holds
+#   - Italy's own Eritrea and Somaliland
+#   - French Somaliland (268) and British Somaliland (269), which the map
+#     (wif_peace_deal_map.txt) hands to AOI once it exists
+# If AOI does not exist yet it is created from those states, exactly as
+# vanilla's decision in common/decisions/ITA.txt does, as an Italian puppet.
+# Skipped if Italy itself was on the Allied side or no longer exists.
+wif_peace_italian_east_africa = {
+	if = {
+		limit = {
+			country_exists = ITA
+			NOT = { ITA = { has_country_flag = wif_peace_allied } }
+		}
+		# Ethiopia, Eritrea, Italian Somaliland and Jubaland - whoever of
+		# Italy, its subjects or Ethiopia holds them
+		every_state = {
+			limit = {
+				OR = {
+					state = 271	# Shewa
+					state = 843	# Wello
+					state = 908	# Afar
+					state = 842	# Tigray
+					state = 841	# Begemder
+					state = 550	# Eritrea
+					state = 840	# Gojjam
+					state = 839	# Welega
+					state = 838	# Illubabor-Kaffa
+					state = 837	# Sidamo
+					state = 836	# Bale
+					state = 835	# Hararghe
+					state = 559	# Somaliland
+					state = 844	# Jubaland
+				}
+				OWNER = {
+					NOT = { original_tag = AOI }
+					OR = {
+						tag = ITA
+						is_subject_of = ITA
+						original_tag = ETH
+					}
+				}
+			}
+			set_state_flag = wif_peace_to_aoi
+		}
+		every_state = {
+			limit = { has_state_flag = wif_peace_to_aoi }
+			AOI = { transfer_state = PREV }
+			clr_state_flag = wif_peace_to_aoi
+		}
+		if = {
+			limit = { country_exists = AOI }
+			# Whatever is left of Ethiopia - a rump or a government in exile
+			if = {
+				limit = { country_exists = ETH }
+				AOI = {
+					annex_country = {
+						target = ETH
+						transfer_troops = no
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { AOI = { is_subject_of = ITA } } }
+				ITA = {
+					set_autonomy = {
+						target = AOI
+						autonomy_state = autonomy_puppet
+						end_wars = no
+						end_civil_wars = no
+					}
+				}
+			}
+			# Founded here rather than by Italy's decision: the same start
+			# vanilla gives it
+			if = {
+				limit = { NOT = { has_global_flag = italian_east_africa_flag } }
+				set_global_flag = italian_east_africa_flag
+				AOI = {
+					add_manpower = 100000
+					add_ideas = {
+						AOI_enrico_cerulli
+						AOI_africa_orientale_italiana_idea
+					}
+					add_offsite_building = { type = industrial_complex level = 4 }
+					add_offsite_building = { type = arms_factory level = 4 }
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 5000
+						producer = ITA
+					}
+					set_cosmetic_tag = AOI_Italian
+				}
+			}
+		}
+	}
+}
