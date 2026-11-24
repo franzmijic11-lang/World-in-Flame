@@ -14,6 +14,30 @@ wif_jap_china_peace = {
 		limit = { wif_jap_china_peace_is_chinese = yes }
 		set_country_flag = wif_jcp_chinese
 	}
+	# The Northwestern Army Group: CHI's retreat to eastern Gansu.
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = { has_country_flag = wif_jcp_chinese }
+		}
+		set_global_flag = wif_jcp_nwa
+		every_state = {
+			limit = {
+				OR = { state = 283 state = 753 state = 1045 }
+				NOT = { is_owned_by = CHI }
+				OWNER = { has_country_flag = wif_jcp_chinese }
+			}
+			set_state_flag = wif_jcp_to_CHI
+		}
+	}
+	# A player on Nationalist China moves to RNG once it exists (user, 2026-11-23).
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = { is_ai = no }
+		}
+		set_global_flag = wif_jcp_chi_player
+	}
 	if = {
 		limit = { NOT = { country_exists = GXC } }
 		set_global_flag = wif_jcp_reform_GXC
@@ -33,6 +57,10 @@ wif_jap_china_peace = {
 	if = {
 		limit = { NOT = { country_exists = SIK } }
 		set_global_flag = wif_jcp_reform_SIK
+	}
+	if = {
+		limit = { NOT = { country_exists = PRC } }
+		set_global_flag = wif_jcp_reform_PRC
 	}
 
 	# 2. What changes hands - only land whose owner is at war with Japan.
@@ -97,6 +125,12 @@ wif_jap_china_peace = {
 	}
 
 	# 5. The land changes hands, now that nobody is at war over it.
+	#    First the Northwestern Army's new home, so CHI never runs out of land.
+	every_state = {
+		limit = { has_state_flag = wif_jcp_to_CHI }
+		clr_state_flag = wif_jcp_to_CHI
+		transfer_state_to = CHI
+	}
 	every_state = {
 		limit = { has_state_flag = wif_jcp_to_JAP }
 		clr_state_flag = wif_jcp_to_JAP
@@ -140,6 +174,77 @@ wif_jap_china_peace = {
 			autonomous_state = autonomy_wtt_imperial_associate
 			end_wars = no
 			end_civil_wars = no
+		}
+	}
+	# The Northwestern Army Group (CHI): new capital, name, leader, infantry, truce.
+	if = {
+		limit = {
+			has_global_flag = wif_jcp_nwa
+			country_exists = CHI
+		}
+		clr_global_flag = wif_jcp_nwa
+		CHI = {
+			set_cosmetic_tag = CHI_wif_nwa
+			set_country_flag = wif_nwa
+			if = { limit = { owns_state = 283 } set_capital = { state = 283 } }
+			every_owned_state = { add_core_of = CHI }
+			create_country_leader = {
+				name = "Hu Zongnan"
+				picture = "GFX_portrait_chi_hu_zongnan"
+				expire = "1975.1.1"
+				ideology = despotism
+				traits = { }
+			}
+			division_template = {
+				name = "Northwestern Infantry"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = CHI }
+			wif_nwa_tree_setup = yes	# tools/gen_china_occupation.py
+		}
+		# create_unit needs a STATE scope
+		283 = {
+			if = {
+				limit = { is_owned_by = CHI }
+				create_unit = { division = "division_template = \"Northwestern Infantry\" start_experience_factor = 0.3" owner = CHI count = 5 }
+			}
+		}
+		753 = {
+			if = {
+				limit = { is_owned_by = CHI }
+				create_unit = { division = "division_template = \"Northwestern Infantry\" start_experience_factor = 0.3" owner = CHI count = 4 }
+			}
+		}
+		1045 = {
+			if = {
+				limit = { is_owned_by = CHI }
+				create_unit = { division = "division_template = \"Northwestern Infantry\" start_experience_factor = 0.3" owner = CHI count = 3 }
+			}
+		}
+		every_country = {
+			limit = {
+				has_country_flag = wif_jcp_chinese
+				NOT = { tag = CHI }
+			}
+			CHI = { set_truce = { target = PREV days = 730 } }
+		}
+	}
+	# RNG's tree, the Three Resistances and the Hollow Economy (tools/gen_china_occupation.py)
+	if = { limit = { country_exists = RNG } RNG = { wif_rng_setup = yes } }
+	# The Nationalist player becomes RNG.
+	if = {
+		limit = { has_global_flag = wif_jcp_chi_player }
+		clr_global_flag = wif_jcp_chi_player
+		if = {
+			limit = { country_exists = RNG }
+			RNG = { change_tag_from = CHI }
 		}
 	}
 
@@ -208,7 +313,7 @@ wif_jap_china_peace = {
 		clr_global_flag = wif_jcp_reform_XSM
 		every_state = {
 			limit = {
-				OR = { state = 754 state = 283 state = 604 state = 616 state = 753 state = 755 state = 756 state = 1040 state = 1044 state = 1045 }
+				OR = { state = 754 state = 604 state = 616 state = 755 state = 756 state = 1040 state = 1044 }
 				OWNER = { has_country_flag = wif_jcp_chinese }
 			}
 			transfer_state_to = XSM
@@ -217,15 +322,12 @@ wif_jap_china_peace = {
 			limit = { country_exists = XSM }
 			XSM = {
 				if = { limit = { owns_state = 754 } set_capital = { state = 754 } }
-				else_if = { limit = { owns_state = 283 } set_capital = { state = 283 } }
 				else_if = { limit = { owns_state = 604 } set_capital = { state = 604 } }
 				else_if = { limit = { owns_state = 616 } set_capital = { state = 616 } }
-				else_if = { limit = { owns_state = 753 } set_capital = { state = 753 } }
 				else_if = { limit = { owns_state = 755 } set_capital = { state = 755 } }
 				else_if = { limit = { owns_state = 756 } set_capital = { state = 756 } }
 				else_if = { limit = { owns_state = 1040 } set_capital = { state = 1040 } }
 				else_if = { limit = { owns_state = 1044 } set_capital = { state = 1044 } }
-				else_if = { limit = { owns_state = 1045 } set_capital = { state = 1045 } }
 			}
 		}
 	}
@@ -252,6 +354,24 @@ wif_jap_china_peace = {
 			}
 		}
 	}
+	if = {
+		limit = { has_global_flag = wif_jcp_reform_PRC }
+		clr_global_flag = wif_jcp_reform_PRC
+		every_state = {
+			limit = {
+				OR = { state = 1032 state = 1046 }
+				OWNER = { has_country_flag = wif_jcp_chinese }
+			}
+			transfer_state_to = PRC
+		}
+		if = {
+			limit = { country_exists = PRC }
+			PRC = {
+				if = { limit = { owns_state = 1032 } set_capital = { state = 1032 } }
+				else_if = { limit = { owns_state = 1046 } set_capital = { state = 1046 } }
+			}
+		}
+	}
 
 	# 7. Every warlord still standing, re-formed ones included, has no
 	#    diplomatic standing - the splinter-state spirit the Russian warlords
@@ -275,6 +395,9 @@ wif_jap_china_peace = {
 		clr_country_flag = wif_jcp_enemy
 		clr_country_flag = wif_jcp_chinese
 	}
+
+	# The PRC's post-defeat tree (tools/gen_china_occupation.py) - after the re-forming above.
+	if = { limit = { country_exists = PRC } PRC = { wif_prc_setup = yes } }
 
 	# Sent once: major = yes already shows it to every country. Sending it to
 	# every_country made each player see it once per country in the game.

@@ -10,3 +10,6 @@
  wif_jap_china_peace.2.a:0 "We cannot hold it from here."
  wif_jap_china_peace.2.b:0 "Lodge a formal protest."
  wif_jap_china_peace.2.c:0 "Embargo Japan."
+ CHI_wif_nwa:0 "Northwestern Army Group"
+ CHI_wif_nwa_DEF:0 "the Northwestern Army Group"
+ CHI_wif_nwa_ADJ:0 "Northwestern"

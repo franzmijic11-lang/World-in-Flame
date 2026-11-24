@@ -1,0 +1,1088 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "China has surrendered. Japan holds the coast; Wang Jingwei's RNG holds the interior for Tokyo. What is left of the Nationalist government has fallen back to eastern Gansu behind the Central Army's last divisions. In Lanzhou, General Hu Zongnan - once the man who blockaded Yan'an from Xi'an - now commands a state that is little more than an army with a capital.\n\nThe Northwestern Army Group still calls itself the government of China. Almost nobody else does.\n\nHOW CHI BECOMES THE NORTHWESTERN ARMY GROUP (BUILT 2026-11-24, untested - tools/gen_jap_china_peace.py): when Japan's dictated peace fires, Nationalist China does not vanish.\n- It takes Gansu (283, Lanzhou - the new capital), Gannan (753) and Guyuan (1045) from whichever Chinese country holds them (normally the Ma clique), and keeps whatever else it still owns (normally Ganzi/Chamdo).\n- It becomes the Northwestern Army Group (cosmetic tag CHI_wif_nwa, flag wif_nwa), led by Hu Zongnan.\n- It gets 12 divisions of basic 6-battalion 'Northwestern Infantry' (5 Gansu, 4 Gannan, 3 Guyuan) and 3000 rifles.\n- It has a 2-year truce with every other Chinese country, so the Ma clique cannot take its land back at once.\n- The Ma clique is never re-formed on these three states.\n- A PLAYER on Nationalist China is still moved to RNG (the user's earlier rule) - say if the player should stay with the Northwestern Army instead.\n\nThis tree loads with it (to build: wif_nwa_focus). LENGTH: about 8 years, ending around 1950-52 in step with the RNG and PRC trees. The last focus, The March Back East, waits for RNG's collapse (wif_rng_collapse_begun) or 1951. The real crisis comes in a later addition.\n\nSTARTING SPIRITS (proposed):\n- The Retreat to the Northwest: -15% stability, -10% war support, -10% division organisation. Removed by the army branch.\n- Refugee Columns: +5% recruitable population, +10% consumer goods - officers, officials and their families from every lost province.\n- A Government Without a Country: -20% political power gain. Eased by the legitimacy focuses.\n\nFUNDING THE RESISTANCE IN RNG (decisions, to build - the Nationalist side of the RNG tree's Three Resistances):\n  Fund the Loyalist Army:\n    Smuggle Officers Through the Lines - 25 political power: Loyalist Army +3.\n    Send Silver - 50 political power: +4, and their Assassination needs 10 less strength for 180 days.\n    Juntong Instructors (after Dai Li's Juntong) - 50 political power: Loyalist operations against mines and factories cost 10% less.\n    Name the Target - 35 political power: choose the Loyalists' next operation.\n  Fund the Liberation League:\n    Fund the League - 25 political power: Liberation League +3, League Allegiance -10 (towards the Nationalists).\n  Each funding decision raises Japan's suspicion (opinion -5, stacking); at -50 Japan may launch a Punitive Expedition against Lanzhou.\n\nLEAGUE ALLEGIANCE: shared with the PRC tree (-100 Nationalist to +100 Communist).\n\nTHE BLOCKADE OF YAN'AN: the PRC starts with The Blockade. This tree can keep it up (Tighten the Blockade) or lift it (A New United Front, if both sides choose it).\n\nEffect: +50 political power. Hu Zongnan leads. Starting spirits as above.",
+      "fid": "wif_nwa_root",
+      "id": "nwa000",
+      "mx": [],
+      "name": "The Retreat to the Northwest",
+      "pre": [],
+      "x": 27,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Ministries move into temples and warehouses on the Yellow River. The flag of the Republic still flies.\n\nEffect: Lanzhou +1 civilian factory, +1 infrastructure.",
+      "fid": "wif_nwa_lanzhou_capital",
+      "id": "nwa001",
+      "mx": [],
+      "name": "The Capital at Lanzhou",
+      "pre": [
+        "nwa000"
+      ],
+      "x": 6,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Chiang Kai-shek resigned after the surrender. Some officers want him back; others blame him for everything.\n\nEffect: choose what becomes of Chiang.",
+      "fid": "wif_nwa_generalissimo",
+      "id": "nwa002",
+      "mx": [],
+      "name": "The Generalissimo's Fate",
+      "pre": [
+        "nwa001"
+      ],
+      "x": 6,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Chiang flies into Lanzhou and takes back the chairmanship. Hu Zongnan, his most loyal general, steps aside.\n\nEffect: Chiang Kai-shek leads. +10% stability, +5% war support. PRC opinion -25.",
+      "fid": "wif_nwa_chiang_returns",
+      "id": "nwa003",
+      "mx": [
+        "nwa004"
+      ],
+      "name": "The Generalissimo Returns",
+      "pre": [
+        "nwa002"
+      ],
+      "x": 4,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Chiang stays in retirement. Hu Zongnan governs in the name of a Republic that has no president.\n\nEffect: Hu Zongnan stays. +10% political power gain. -5% stability for 1 year.",
+      "fid": "wif_nwa_chiang_finished",
+      "id": "nwa004",
+      "mx": [
+        "nwa003"
+      ],
+      "name": "The Generalissimo Is Finished",
+      "pre": [
+        "nwa002"
+      ],
+      "x": 8,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Every county is run by an officer. Civilians may advise.\n\nEffect: +5% stability, +10% war support. -10% political power cost of military decisions.",
+      "fid": "wif_nwa_military_government",
+      "id": "nwa005",
+      "mx": [],
+      "name": "Military Government",
+      "pre": [
+        "nwa003",
+        "nwa004"
+      ],
+      "x": 4,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Lanzhou still claims all of China, and says so in every broadcast and every embassy that will listen.\n\nEffect: claims on every RNG state. Removes A Government Without a Country's political power penalty.",
+      "fid": "wif_nwa_legitimate_government",
+      "id": "nwa006",
+      "mx": [],
+      "name": "The Legitimate Government of China",
+      "pre": [
+        "nwa003",
+        "nwa004"
+      ],
+      "x": 8,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "The secret service follows the government west - and keeps its agents behind in every RNG city.\n\nEffect: +1 operative. Unlocks Juntong Instructors. Loyalist Army +3.",
+      "fid": "wif_nwa_juntong",
+      "id": "nwa007",
+      "mx": [],
+      "name": "Dai Li's Juntong",
+      "pre": [
+        "nwa005"
+      ],
+      "x": 4,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Lanzhou reminds the country that Wang Jingwei has stolen Sun Yat-sen's words.\n\nEffect: League Allegiance -10. +5% stability.",
+      "fid": "wif_nwa_three_principles",
+      "id": "nwa008",
+      "mx": [],
+      "name": "The Three Principles Restored",
+      "pre": [
+        "nwa006"
+      ],
+      "x": 8,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Discipline, cleanliness, obedience - and the army's portrait in every schoolroom.\n\nEffect: +5% stability, +2% recruitable population.",
+      "fid": "wif_nwa_new_life",
+      "id": "nwa009",
+      "mx": [],
+      "name": "The New Life Movement Revived",
+      "pre": [
+        "nwa007"
+      ],
+      "x": 4,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Delegates from every lost province - most of them refugees - meet in Lanzhou.\n\nEffect: +10% political power gain. League Allegiance -5.",
+      "fid": "wif_nwa_national_assembly",
+      "id": "nwa010",
+      "mx": [],
+      "name": "A National Assembly in Exile",
+      "pre": [
+        "nwa008"
+      ],
+      "x": 8,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Corruption lost China once. The worst grain hoarders and black marketeers are shot in public.\n\nEffect: +10% stability, -10% consumer goods. Removes Refugee Columns' consumer goods penalty.",
+      "fid": "wif_nwa_clean_house",
+      "id": "nwa011",
+      "mx": [],
+      "name": "Clean House",
+      "pre": [
+        "nwa009",
+        "nwa010"
+      ],
+      "x": 6,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Eight years after the surrender, the Republic still has a government, an army and a flag.\n\nEffect: +10% war support, +10% stability.",
+      "fid": "wif_nwa_still_china",
+      "id": "nwa012",
+      "mx": [],
+      "name": "We Are Still China",
+      "pre": [
+        "nwa011"
+      ],
+      "x": 6,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The old dream of the Northwest Development plans, now the only plan there is.\n\nEffect: +1 civilian factory. +10% construction speed.",
+      "fid": "wif_nwa_develop_northwest",
+      "id": "nwa013",
+      "mx": [],
+      "name": "Develop the Northwest",
+      "pre": [
+        "nwa000"
+      ],
+      "x": 17,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The arsenal machinery that made it out of Xi'an is set up again by the river.\n\nEffect: +1 military factory.",
+      "fid": "wif_nwa_lanzhou_arsenal",
+      "id": "nwa014",
+      "mx": [],
+      "name": "The Lanzhou Arsenal",
+      "pre": [
+        "nwa013"
+      ],
+      "x": 15,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Engineers and craftsmen from Shanghai and Wuhan set up shop in Lanzhou's back streets.\n\nEffect: +1 civilian factory.",
+      "fid": "wif_nwa_refugee_workshops",
+      "id": "nwa015",
+      "mx": [],
+      "name": "Refugee Workshops",
+      "pre": [
+        "nwa013"
+      ],
+      "x": 19,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "A power station on the river for the arsenal and the city.\n\nEffect: +1 civilian factory. +5% factory output.",
+      "fid": "wif_nwa_yellow_river_power",
+      "id": "nwa016",
+      "mx": [],
+      "name": "Power on the Yellow River",
+      "pre": [
+        "nwa014"
+      ],
+      "x": 15,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The Northwest's one great export - sold to whoever will buy.\n\nEffect: +0.25 political power a day. -5% consumer goods.",
+      "fid": "wif_nwa_wool_hides",
+      "id": "nwa017",
+      "mx": [],
+      "name": "Wool and Hides",
+      "pre": [
+        "nwa015"
+      ],
+      "x": 19,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The road west along the Hexi Corridor - the only road out that Japan does not watch.\n\nEffect: +1 infrastructure in Gansu, Gannan and Guyuan. +2 to every resource we import.",
+      "fid": "wif_nwa_gansu_xinjiang_road",
+      "id": "nwa018",
+      "mx": [],
+      "name": "The Gansu-Xinjiang Highway",
+      "pre": [
+        "nwa016",
+        "nwa017"
+      ],
+      "x": 17,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "China's only real oilfield is at Yumen, in the Ma clique's Jiuquan. We need it more than they do.\n\nEffect: war goal on whoever owns Jiuquan (756). If we own it: +8 oil there.",
+      "fid": "wif_nwa_yumen_oil",
+      "id": "nwa019",
+      "mx": [],
+      "name": "Claim the Yumen Oilfield",
+      "pre": [
+        "nwa018"
+      ],
+      "x": 15,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "A machine works, a textile mill and a flour mill - the beginnings of an industry.\n\nEffect: +2 civilian factories.",
+      "fid": "wif_nwa_lanzhou_works",
+      "id": "nwa020",
+      "mx": [],
+      "name": "The Lanzhou Works",
+      "pre": [
+        "nwa018"
+      ],
+      "x": 19,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Everything is built for the day the army marches east.\n\nEffect: +1 military factory, +10% factory output.",
+      "fid": "wif_nwa_war_economy_nw",
+      "id": "nwa021",
+      "mx": [],
+      "name": "A War Economy Without a War",
+      "pre": [
+        "nwa019",
+        "nwa020"
+      ],
+      "x": 17,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Lanzhou now makes its own rifles, mortars and shells.\n\nEffect: +1 military factory. +10% infantry equipment production efficiency cap.",
+      "fid": "wif_nwa_arsenal_northwest",
+      "id": "nwa022",
+      "mx": [],
+      "name": "The Arsenal of the Northwest",
+      "pre": [
+        "nwa021"
+      ],
+      "x": 17,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Whampoa officers, survivors of a dozen lost battles. They are the state.\n\nEffect: +2 Northwestern Infantry divisions. +5% division organisation.",
+      "fid": "wif_nwa_central_army_remnants",
+      "id": "nwa023",
+      "mx": [],
+      "name": "The Central Army's Remnants",
+      "pre": [
+        "nwa000"
+      ],
+      "x": 27,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "The best divisions are grouped as the First Army, under Hu's own command.\n\nEffect: +10% division attack. Hu Zongnan available as field marshal (or general if he leads the state).",
+      "fid": "wif_nwa_first_army",
+      "id": "nwa024",
+      "mx": [],
+      "name": "Hu Zongnan's First Army",
+      "pre": [
+        "nwa023"
+      ],
+      "x": 25,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Men who made their way west alone, through RNG and Japanese lines.\n\nEffect: +2 generals. -10% training time.",
+      "fid": "wif_nwa_officers_every_province",
+      "id": "nwa025",
+      "mx": [],
+      "name": "Officers from Every Lost Province",
+      "pre": [
+        "nwa023"
+      ],
+      "x": 29,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "No more retreating. Not one more county.\n\nEffect: removes The Retreat to the Northwest.",
+      "fid": "wif_nwa_end_the_retreat",
+      "id": "nwa026",
+      "mx": [],
+      "name": "End the Retreat",
+      "pre": [
+        "nwa024",
+        "nwa025"
+      ],
+      "x": 27,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The plateau breeds horses and riders.\n\nEffect: +2 cavalry divisions. +10% cavalry attack.",
+      "fid": "wif_nwa_gansu_cavalry",
+      "id": "nwa027",
+      "mx": [],
+      "name": "Horsemen of Gansu",
+      "pre": [
+        "nwa026"
+      ],
+      "x": 25,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "A new military academy at Lanzhou, on the old Whampoa model.\n\nEffect: +15% army experience gain. +5% division organisation.",
+      "fid": "wif_nwa_whampoa_west",
+      "id": "nwa028",
+      "mx": [],
+      "name": "Whampoa in the West",
+      "pre": [
+        "nwa026"
+      ],
+      "x": 29,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Bunkers and gun lines on the passes - against the Ma, the Communists and the Japanese alike.\n\nEffect: +2 land forts in Gansu and Guyuan.",
+      "fid": "wif_nwa_fortify_corridor",
+      "id": "nwa029",
+      "mx": [],
+      "name": "Fortify the Hexi Corridor",
+      "pre": [
+        "nwa027"
+      ],
+      "x": 25,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Divisions trained for the hills between us and Yan'an.\n\nEffect: +10% attack and defence in hills and mountains.",
+      "fid": "wif_nwa_mountain_divisions",
+      "id": "nwa030",
+      "mx": [],
+      "name": "Mountain Divisions",
+      "pre": [
+        "nwa028"
+      ],
+      "x": 29,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "The Northwestern Army Group is reorganised for one purpose: to go back.\n\nEffect: +4 Northwestern Infantry divisions. +5% war support.",
+      "fid": "wif_nwa_army_of_return",
+      "id": "nwa031",
+      "mx": [],
+      "name": "The Army of the Return",
+      "pre": [
+        "nwa029",
+        "nwa030"
+      ],
+      "x": 27,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The march orders are printed. Only the date is missing.\n\nEffect: +10% attack for 1 year after RNG's collapse begins.",
+      "fid": "wif_nwa_ready_to_march",
+      "id": "nwa032",
+      "mx": [],
+      "name": "Ready to March",
+      "pre": [
+        "nwa031"
+      ],
+      "x": 27,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Behind RNG's lines, Nationalist officers still lead guerrilla bands in the name of the Republic.\n\nEffect: unlocks the decisions to fund the Loyalist Army. Loyalist Army +3.",
+      "fid": "wif_nwa_loyalists",
+      "id": "nwa033",
+      "mx": [],
+      "name": "The Loyal and Patriotic Army",
+      "pre": [
+        "nwa000"
+      ],
+      "x": 38,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Safe roads for officers going east - and for those coming back.\n\nEffect: Smuggle Officers Through the Lines gives +1 more. +1 general a year from returning officers.",
+      "fid": "wif_nwa_officer_routes",
+      "id": "nwa034",
+      "mx": [],
+      "name": "Officer Routes",
+      "pre": [
+        "nwa033"
+      ],
+      "x": 35,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Smuggled silver dollars buy more than rifles in RNG's starving towns.\n\nEffect: Send Silver costs 25% less.",
+      "fid": "wif_nwa_silver_lines",
+      "id": "nwa035",
+      "mx": [],
+      "name": "Silver Across the Lines",
+      "pre": [
+        "nwa033"
+      ],
+      "x": 38,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The League has no party. It should be ours.\n\nEffect: unlocks the decision to fund the Liberation League. League Allegiance -10.",
+      "fid": "wif_nwa_win_league",
+      "id": "nwa036",
+      "mx": [],
+      "name": "Win the Liberation League",
+      "pre": [
+        "nwa033"
+      ],
+      "x": 42,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Loyalist engineers know the mines of Daye and Jiangxi - many of them built them.\n\nEffect: Loyalist operations against mines cost 20% less strength. Each mine they wreck adds RNG Economic Decay +3 instead of +2.",
+      "fid": "wif_nwa_saboteurs_mines",
+      "id": "nwa037",
+      "mx": [],
+      "name": "Wreck Tokyo's Mines",
+      "pre": [
+        "nwa034"
+      ],
+      "x": 35,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Juntong assassins hunt RNG ministers, Japanese advisers and labour bosses.\n\nEffect: Loyalist Assassination needs 15 less strength. RNG -5% stability.",
+      "fid": "wif_nwa_assassins",
+      "id": "nwa038",
+      "mx": [],
+      "name": "Kill the Collaborators",
+      "pre": [
+        "nwa035"
+      ],
+      "x": 38,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Trained officers join the League's bands - and bring the Republic's flag with them.\n\nEffect: League Allegiance -10. Liberation League operations +10% success.",
+      "fid": "wif_nwa_league_officers",
+      "id": "nwa039",
+      "mx": [],
+      "name": "Officers for the League",
+      "pre": [
+        "nwa036"
+      ],
+      "x": 42,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Mountain districts in Sichuan and Guizhou where the Republic's flag still flies at night.\n\nEffect: the Loyalists' Liberated District needs 10 less strength. A Loyalist liberated district can join the Northwestern Army Group (decision).",
+      "fid": "wif_nwa_loyalist_districts",
+      "id": "nwa040",
+      "mx": [],
+      "name": "Loyalist Districts",
+      "pre": [
+        "nwa037"
+      ],
+      "x": 35,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Nationalist soldiers sit in RNG's labour camps. Break them out.\n\nEffect: Loyalist Free a Labour Column and Break Open a Labour Camp cost 25% less; freed men join our army: +1000 / +3000 manpower.",
+      "fid": "wif_nwa_free_officers",
+      "id": "nwa041",
+      "mx": [],
+      "name": "Free the Prisoners",
+      "pre": [
+        "nwa038"
+      ],
+      "x": 38,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Nationalist officers run the League's committees.\n\nEffect: League Allegiance -25. The PRC's League funding becomes 50% cheaper (they know what we are doing). Liberation League -0.25 monthly growth for good.",
+      "fid": "wif_nwa_league_ours",
+      "id": "nwa042",
+      "mx": [
+        "nwa043"
+      ],
+      "name": "The League Is Ours",
+      "pre": [
+        "nwa039"
+      ],
+      "x": 41,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Let the League be broad; just make sure it remembers who armed it.\n\nEffect: League Allegiance -10. Liberation League +0.5 monthly growth for good.",
+      "fid": "wif_nwa_league_free",
+      "id": "nwa043",
+      "mx": [
+        "nwa042"
+      ],
+      "name": "A Free League",
+      "pre": [
+        "nwa039"
+      ],
+      "x": 43,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "From Sichuan to Hunan, the Republic has a shadow government waiting.\n\nEffect: Loyalist Army +0.5 monthly growth for good. RNG -5% stability.",
+      "fid": "wif_nwa_one_republic",
+      "id": "nwa044",
+      "mx": [],
+      "name": "One Republic Behind the Lines",
+      "pre": [
+        "nwa040",
+        "nwa041",
+        "nwa042",
+        "nwa043"
+      ],
+      "x": 38,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Orders to every Loyalist band: hold your strength for the day the army comes back.\n\nEffect: the Loyalist Army's strength cap rises from 100 to 120.",
+      "fid": "wif_nwa_signal_east",
+      "id": "nwa045",
+      "mx": [],
+      "name": "Waiting for the Signal",
+      "pre": [
+        "nwa044"
+      ],
+      "x": 38,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Ma clique wants its land back, the Communists sit at Yan'an, Japan and RNG hold everything east. The truce will not last for ever.\n\nEffect: +5% war support. Shows the truce timers.",
+      "fid": "wif_nwa_neighbours",
+      "id": "nwa046",
+      "mx": [],
+      "name": "Enemies on Every Side",
+      "pre": [
+        "nwa000"
+      ],
+      "x": 51,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Ma clique lost three provinces to us. They will not forget.\n\nEffect: choose how to deal with the Ma.",
+      "fid": "wif_nwa_ma_question",
+      "id": "nwa047",
+      "mx": [],
+      "name": "The Ma Question",
+      "pre": [
+        "nwa046"
+      ],
+      "x": 47,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Silver, titles and a share of the Yumen oil. Ma Bufang was a Nationalist general once.\n\nEffect: non-aggression pact with the Ma clique. -50 political power. +2 cavalry divisions (Ma Bufang's horsemen).",
+      "fid": "wif_nwa_buy_ma",
+      "id": "nwa048",
+      "mx": [
+        "nwa049"
+      ],
+      "name": "Buy Off the Ma",
+      "pre": [
+        "nwa047"
+      ],
+      "x": 45,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 70,
+      "desc": "The Ma clique is a feudal relic sitting on our oil. When the truce ends, we march.\n\nEffect: war goal on the Ma clique (from the end of the truce). +10% attack against them.",
+      "fid": "wif_nwa_break_ma",
+      "id": "nwa049",
+      "mx": [
+        "nwa048"
+      ],
+      "name": "Break the Ma Clique",
+      "pre": [
+        "nwa047"
+      ],
+      "x": 49,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Hu Zongnan spent years blockading Yan'an. The Communists remember.\n\nEffect: choose how to deal with the PRC.",
+      "fid": "wif_nwa_yanan_question",
+      "id": "nwa050",
+      "mx": [],
+      "name": "The Yan'an Question",
+      "pre": [
+        "nwa046"
+      ],
+      "x": 55,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Not one bale of cotton, not one rifle into the Border Region.\n\nEffect: the PRC's Blockade spirit cannot fall below tier 2 while we hold Guyuan. PRC opinion -25. Our League funding moves Allegiance 50% further.",
+      "fid": "wif_nwa_blockade_yanan",
+      "id": "nwa051",
+      "mx": [
+        "nwa052"
+      ],
+      "name": "Tighten the Blockade of Yan'an",
+      "pre": [
+        "nwa050"
+      ],
+      "x": 53,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Old enemies, one occupier. Lanzhou offers Yan'an a truce and a common cause.\n\nEffect: if the PRC also chose A New United Front: non-aggression pact, The Blockade loses a tier, both sides' League funding moves Allegiance half as far.",
+      "fid": "wif_nwa_united_front",
+      "id": "nwa052",
+      "mx": [
+        "nwa051"
+      ],
+      "name": "A New United Front",
+      "pre": [
+        "nwa050"
+      ],
+      "x": 57,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Beyond the Hexi Corridor lies Sheng Shicai's Xinjiang - and the roads to the outside world.\n\nEffect: Xinjiang opinion +25. +1 to every resource we import.",
+      "fid": "wif_nwa_xinjiang",
+      "id": "nwa053",
+      "mx": [],
+      "name": "The Road to Xinjiang",
+      "pre": [
+        "nwa048",
+        "nwa049"
+      ],
+      "x": 47,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Whether as rivals or partners, we keep our eyes on the Communists.\n\nEffect: +10% defence against the PRC. Unlocks war goals against the PRC (for the later crisis).",
+      "fid": "wif_nwa_pressure_yanan",
+      "id": "nwa054",
+      "mx": [],
+      "name": "Pressure on Yan'an",
+      "pre": [
+        "nwa051",
+        "nwa052"
+      ],
+      "x": 55,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A government no one recognises needs friends.",
+      "fid": "wif_nwa_world_beyond",
+      "id": "nwa055",
+      "mx": [],
+      "name": "Friends Beyond the Mountains",
+      "pre": [
+        "nwa053",
+        "nwa054"
+      ],
+      "x": 51,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Available only if the United States is or has been at war with Japan. The Republic's ambassador still has an office in Washington.\n\nEffect: USA opinion +25. USA may send lend-lease.",
+      "fid": "wif_nwa_washington",
+      "id": "nwa056",
+      "mx": [
+        "nwa057",
+        "nwa058"
+      ],
+      "name": "Appeal to Washington",
+      "pre": [
+        "nwa055"
+      ],
+      "x": 47,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Mule trains from British India through Lhasa and Chamdo.\n\nEffect: Britain opinion +15. +500 infantry equipment a year while we hold Ganzi (752).",
+      "fid": "wif_nwa_tibetan_road",
+      "id": "nwa057",
+      "mx": [
+        "nwa056",
+        "nwa058"
+      ],
+      "name": "The Tibetan Road to India",
+      "pre": [
+        "nwa055"
+      ],
+      "x": 51,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Republic owes nothing to the foreigners who abandoned it.\n\nEffect: +10% stability, +5% war support.",
+      "fid": "wif_nwa_stand_alone",
+      "id": "nwa058",
+      "mx": [
+        "nwa056",
+        "nwa057"
+      ],
+      "name": "Stand Alone",
+      "pre": [
+        "nwa055"
+      ],
+      "x": 55,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 70,
+      "desc": "Somewhere in the world, an embassy still flies our flag.\n\nEffect: +10% political power gain.",
+      "fid": "wif_nwa_recognised",
+      "id": "nwa059",
+      "mx": [],
+      "name": "Recognised Somewhere",
+      "pre": [
+        "nwa056",
+        "nwa057",
+        "nwa058"
+      ],
+      "x": 51,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Available once RNG's collapse has begun (wif_rng_collapse_begun) or from 1951. The banners are unrolled; the Northwestern Army Group turns to face the east.\n\nTHIS IS THE BUILD-UP'S END - the real crisis comes in a later addition.\n\nEffect: sets flag wif_nwa_march (the hook for the later crisis). +10% war support. Loyalist Army +10. League Allegiance -10. Claims on every RNG state.",
+      "fid": "wif_nwa_march_east",
+      "id": "nwa060",
+      "mx": [],
+      "name": "The March Back East",
+      "pre": [
+        "nwa012",
+        "nwa022",
+        "nwa032",
+        "nwa045",
+        "nwa059"
+      ],
+      "x": 27,
+      "y": 10
+    }
+  ],
+  "name": "Northwestern Army Group (WiF draft)",
+  "tag": "CHI",
+  "target": 2920,
+  "treeId": "wif_nwa_focus",
+  "updatedAt": 1795516346855
+}

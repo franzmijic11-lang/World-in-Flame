@@ -1,0 +1,1322 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "China has surrendered. Japan holds the coast, Wang Jingwei's Reorganized National Government (RNG) holds the interior for Tokyo, and the rump Nationalist government - the Northwestern Army - holds the far northwest. The Communists are left with the poor loess hills around Yan'an, blockaded on every side. There is no help from Moscow: the Soviet Union is gone, and Stalin sits in Irkutsk with only his most loyal men.\n\nThe Party's answer is the one it has always had: survive, organise, and let the enemy's own rule recruit for it.\n\nHOW PRC GETS THIS TREE (to build): when Japan's dictated peace fires (tools/gen_jap_china_peace.py) and PRC still exists, it loads this tree (wif_prc_focus) in place of the vanilla one. PRC is not re-formed if it was destroyed.\n\nLENGTH: about 8 years, ending around 1950-52 - in step with the RNG tree. The last focus, A Single Spark, waits for RNG's collapse (wif_rng_collapse_begun) or 1951. The real crisis comes in a later addition; this tree is the build-up.\n\nSTARTING SPIRITS (proposed):\n- After the Surrender: -10% stability, -10% war support. Removed by The Party Survives.\n- The Blockade (3 tiers): Japan and RNG to the east, the Northwestern Army to the west. Tier 3: -30% trade, +10% consumer goods, -20% construction speed. Economy focuses lower it a tier; Break the Blockade removes it.\n- No Help from Moscow: -10% research speed, no lend-lease from anyone. Eased by the foreign branch.\n\nFUNDING THE RESISTANCE IN RNG (decisions, to build - the PRC side of the RNG tree's Three Resistances):\n  Fund the Communist Guerrillas:\n    Send Cadres South - 25 political power: Communist Guerrillas +3.\n    Send Rifles - 1000 infantry equipment: +4.\n    Guerrilla Instructors - 50 political power: their operations cost 10% less strength for 180 days.\n    Name the Target - 35 political power: choose the Communists' next operation instead of letting them plan.\n  Fund the Liberation League:\n    Fund the League - 25 political power: Liberation League +3, League Allegiance +10.\n    Send Organisers to the Factories - 50 political power: Strike in the Factories needs 10 less strength for 180 days, Allegiance +5.\n  Each funding decision raises Japan's suspicion (opinion -5, stacking). At -50 Japan may launch a Punitive Expedition against Yan'an (a Japanese decision).\n\nLEAGUE ALLEGIANCE (new, shared with the Northwestern Army): -100 (Nationalist) to +100 (Communist), starts at 0. PRC funding pushes it up, the Northwestern Army's funding pushes it down. When the League liberates a district: at +50 or more it is a Communist-led liberated area that PRC can bring into the Border Region; at -50 or less it answers to the Northwestern Army; in between it stands alone. The later crisis will read it.\n\nTHE UNDERGROUND RAILWAY: once built, every Free a Labour Column and Break Open a Labour Camp by the Communists or a pro-Communist League sends people north: PRC +1000 / +3000 manpower.\n\nEffect: +50 political power. Mao Zedong leads. Starting spirits as above.",
+      "fid": "wif_prc_root",
+      "id": "prc000",
+      "mx": [],
+      "name": "After the Surrender",
+      "pre": [],
+      "x": 27,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The Central Committee meets in the caves of Yan'an. The war is lost; the Party is not.\n\nEffect: removes After the Surrender. +5% stability.",
+      "fid": "wif_prc_party_survives",
+      "id": "prc001",
+      "mx": [],
+      "name": "The Party Survives",
+      "pre": [
+        "prc000"
+      ],
+      "x": 6,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Study sessions, self-criticism and confession. Every cadre must learn to think as the Chairman thinks.\n\nEffect: +10% political power gain. -5% stability for 180 days.",
+      "fid": "wif_prc_rectification",
+      "id": "prc002",
+      "mx": [],
+      "name": "The Rectification Movement",
+      "pre": [
+        "prc001"
+      ],
+      "x": 4,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "From the masses, to the masses: cadres live in the villages, eat what the peasants eat, and listen.\n\nEffect: +5% stability, +2% recruitable population.",
+      "fid": "wif_prc_mass_line",
+      "id": "prc003",
+      "mx": [],
+      "name": "The Mass Line",
+      "pre": [
+        "prc001"
+      ],
+      "x": 8,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Art must serve the workers, peasants and soldiers. Writers who disagree learn to keep silent.\n\nEffect: +10% war support. Liberation League Allegiance +5 (the songs travel south).",
+      "fid": "wif_prc_yanan_forum",
+      "id": "prc004",
+      "mx": [],
+      "name": "The Yan'an Forum on Literature and Art",
+      "pre": [
+        "prc002"
+      ],
+      "x": 2,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Kang Sheng's security service 'rescues' cadres who have 'lost their footing': night interrogations, forced confessions, thousands accused of being Nationalist spies.\n\nEffect: +15% political power gain, -10% stability for 1 year. Northwestern Army spies in Yan'an are rooted out - and many innocents with them.",
+      "fid": "wif_prc_rescue_campaign",
+      "id": "prc005",
+      "mx": [
+        "prc006"
+      ],
+      "name": "The Rescue Campaign",
+      "pre": [
+        "prc002"
+      ],
+      "x": 4,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Mao halts the worst of the confessions and apologises - a little.\n\nEffect: +5% stability. -5% political power gain.",
+      "fid": "wif_prc_persuasion",
+      "id": "prc006",
+      "mx": [
+        "prc005"
+      ],
+      "name": "Rectification by Persuasion",
+      "pre": [
+        "prc002"
+      ],
+      "x": 6,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Landlords keep their land but must cut their rents. The peasants notice who made them.\n\nEffect: +5% stability, +1% recruitable population.",
+      "fid": "wif_prc_rent_reduction",
+      "id": "prc007",
+      "mx": [],
+      "name": "Rent and Interest Reduction",
+      "pre": [
+        "prc003"
+      ],
+      "x": 8,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Thousands of students who fled the occupied cities are trained as cadres.\n\nEffect: +10% research speed. Send Cadres South costs 10 less.",
+      "fid": "wif_prc_kangda",
+      "id": "prc008",
+      "mx": [],
+      "name": "Cadre Schools",
+      "pre": [
+        "prc003"
+      ],
+      "x": 10,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Yangge dances and new operas, performed in every village and smuggled into RNG on handbills.\n\nEffect: Liberation League Allegiance +5. Communist Guerrillas +0.25 monthly growth for good.",
+      "fid": "wif_prc_lu_xun_academy",
+      "id": "prc009",
+      "mx": [],
+      "name": "The Lu Xun Academy of Arts",
+      "pre": [
+        "prc004"
+      ],
+      "x": 2,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "political",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). The writer who mocked the leaders' privileges in 'Wild Lilies' is branded a Trotskyist, held for years, and finally executed. Every intellectual in Yan'an knows his name.\n\nEffect: -5% stability, -10% research speed for 1 year. Liberation League Allegiance -10 (students in RNG hear of it).",
+      "fid": "wif_prc_wang_shiwei",
+      "id": "prc010",
+      "mx": [],
+      "name": "Wang Shiwei",
+      "pre": [
+        "prc005"
+      ],
+      "x": 4,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "In the Border Region, the landlords' land is divided. Some landlords leave; some are killed.\n\nEffect: +5% recruitable population, +10% stability. Communist Guerrillas +0.5 monthly growth for good (the news spreads into RNG's starving villages).",
+      "fid": "wif_prc_land_to_tiller",
+      "id": "prc011",
+      "mx": [],
+      "name": "Land to the Tiller",
+      "pre": [
+        "prc007",
+        "prc008"
+      ],
+      "x": 10,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Mao Zedong Thought is written into the Party constitution. The Chairman stands alone at the top.\n\nEffect: +10% political power gain, +10% stability.",
+      "fid": "wif_prc_seventh_congress",
+      "id": "prc012",
+      "mx": [],
+      "name": "The Seventh Party Congress",
+      "pre": [
+        "prc005",
+        "prc006"
+      ],
+      "x": 6,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The Party's organiser builds a cadre system ready to run a country.\n\nEffect: -10% political advisor cost. +1 political advisor slot.",
+      "fid": "wif_prc_liu_shaoqi",
+      "id": "prc013",
+      "mx": [],
+      "name": "Liu Shaoqi's Organisation",
+      "pre": [
+        "prc012"
+      ],
+      "x": 4,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Zhou courts students, merchants, minor parties and Northwestern Army officers alike.\n\nEffect: League Allegiance +10. Northwestern Army opinion +10.",
+      "fid": "wif_prc_zhou_enlai",
+      "id": "prc014",
+      "mx": [],
+      "name": "Zhou Enlai's United Front Work",
+      "pre": [
+        "prc012"
+      ],
+      "x": 8,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Membership passes one million - most of them in the hills of RNG, not in Yan'an.\n\nEffect: +10% stability. Communist Guerrillas +5.",
+      "fid": "wif_prc_party_million",
+      "id": "prc015",
+      "mx": [],
+      "name": "A Party of a Million",
+      "pre": [
+        "prc013",
+        "prc014"
+      ],
+      "x": 6,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Shadow county governments wait in the guerrilla areas for the day RNG falls.\n\nEffect: liberated districts brought into the Border Region start with no resistance and +20% compliance.",
+      "fid": "wif_prc_ready_to_govern",
+      "id": "prc016",
+      "mx": [],
+      "name": "Ready to Govern",
+      "pre": [
+        "prc015"
+      ],
+      "x": 6,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The Shaan-Gan-Ning Border Region: a few hundred thousand peasants, no railway, no industry, and the most organised government in China.\n\nEffect: +1 civilian factory.",
+      "fid": "wif_prc_border_government",
+      "id": "prc017",
+      "mx": [],
+      "name": "The Border Region Government",
+      "pre": [
+        "prc000"
+      ],
+      "x": 17,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Nobody will help us, so we will help ourselves.\n\nEffect: The Blockade -1 tier.",
+      "fid": "wif_prc_self_reliance",
+      "id": "prc018",
+      "mx": [],
+      "name": "Self-Reliance",
+      "pre": [
+        "prc017"
+      ],
+      "x": 15,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Soldiers, cadres and students all farm, spin and build. Even Mao keeps a vegetable plot.\n\nEffect: +10% factory output, +5% construction speed.",
+      "fid": "wif_prc_production_campaign",
+      "id": "prc019",
+      "mx": [],
+      "name": "The Great Production Campaign",
+      "pre": [
+        "prc017"
+      ],
+      "x": 19,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The 359th Brigade turns a wilderness valley into farmland and feeds itself.\n\nEffect: -10% consumer goods. +1 civilian factory.",
+      "fid": "wif_prc_nanniwan",
+      "id": "prc020",
+      "mx": [],
+      "name": "Nanniwan",
+      "pre": [
+        "prc018"
+      ],
+      "x": 15,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Village cooperatives pool tools, draught animals and labour.\n\nEffect: +10% construction speed.",
+      "fid": "wif_prc_cooperatives",
+      "id": "prc021",
+      "mx": [],
+      "name": "Cooperatives",
+      "pre": [
+        "prc019"
+      ],
+      "x": 19,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Salt from the northern lakes is the Border Region's one export - sold across the lines to anyone who pays.\n\nEffect: +0.25 political power a day. The Blockade -1 tier.",
+      "fid": "wif_prc_salt_trade",
+      "id": "prc022",
+      "mx": [],
+      "name": "The Salt of the Border Region",
+      "pre": [
+        "prc020"
+      ],
+      "x": 13,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Mule trains slip through RNG's blockhouses with cloth, medicine and rifles - bribes paid in salt and silver.\n\nEffect: unlocks Send Rifles. +2 to every resource we import.",
+      "fid": "wif_prc_smuggling",
+      "id": "prc023",
+      "mx": [],
+      "name": "Smuggling Across the Lines",
+      "pre": [
+        "prc020",
+        "prc021"
+      ],
+      "x": 17,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Workshops dug into the loess make rifles, grenades and mines by hand.\n\nEffect: +1 military factory. +10% infantry equipment production efficiency cap.",
+      "fid": "wif_prc_cave_arsenals",
+      "id": "prc024",
+      "mx": [],
+      "name": "Cave Arsenals",
+      "pre": [
+        "prc021",
+        "prc101"
+      ],
+      "x": 21,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "China's oldest oil wells, at Yanchang in northern Shaanxi, are put back to work.\n\nEffect: +4 oil in the capital state.",
+      "fid": "wif_prc_yanchang_oil",
+      "id": "prc025",
+      "mx": [],
+      "name": "The Yanchang Oil Wells",
+      "pre": [
+        "prc022"
+      ],
+      "x": 13,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The Border Region issues its own money, backed by salt and grain rather than by Tokyo.\n\nEffect: +5% stability. -5% consumer goods.",
+      "fid": "wif_prc_border_bank",
+      "id": "prc026",
+      "mx": [],
+      "name": "The Border Region Bank",
+      "pre": [
+        "prc023"
+      ],
+      "x": 17,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Cloth is the blockade's worst shortage. Every household spins.\n\nEffect: -5% consumer goods.",
+      "fid": "wif_prc_spinning_wheels",
+      "id": "prc027",
+      "mx": [],
+      "name": "A Spinning Wheel in Every Cave",
+      "pre": [
+        "prc025"
+      ],
+      "x": 13,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Border Region agents dump forged and hoarded Central Reserve Bank notes back into RNG's markets.\n\nEffect: RNG Economic Decay +5 now and +0.25 a month for good. Japan's opinion -10.",
+      "fid": "wif_prc_economic_war",
+      "id": "prc028",
+      "mx": [],
+      "name": "Economic War on the Reserve Bank",
+      "pre": [
+        "prc026"
+      ],
+      "x": 17,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The blockade is still there; it no longer matters.\n\nEffect: removes The Blockade. +1 civilian factory.",
+      "fid": "wif_prc_break_blockade",
+      "id": "prc029",
+      "mx": [],
+      "name": "Break the Blockade",
+      "pre": [
+        "prc027",
+        "prc028",
+        "prc104"
+      ],
+      "x": 15,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Yan'an is no longer a refuge. It is the rear base for the war still to come.\n\nEffect: +10% factory output, +1 military factory.",
+      "fid": "wif_prc_base_for_country",
+      "id": "prc030",
+      "mx": [],
+      "name": "A Base for the Whole Country",
+      "pre": [
+        "prc029"
+      ],
+      "x": 15,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The divisions that came back from the war are rebuilt around their surviving officers.\n\nEffect: +3 infantry divisions. Zhu De and Peng Dehuai available as field marshals.",
+      "fid": "wif_prc_rebuild_army",
+      "id": "prc031",
+      "mx": [],
+      "name": "Rebuild the Eighth Route Army",
+      "pre": [
+        "prc000"
+      ],
+      "x": 27,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Where we fought the Japanese head-on, we lost.\n\nEffect: +10% army experience gain.",
+      "fid": "wif_prc_lessons_defeat",
+      "id": "prc032",
+      "mx": [],
+      "name": "The Lessons of Defeat",
+      "pre": [
+        "prc031"
+      ],
+      "x": 25,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "With no Soviet aid, the enemy is the quartermaster: captured rifles, bought rifles, rifles traded for salt.\n\nEffect: +2000 infantry equipment. RNG's Endless Levies leak twice as many rifles to us.",
+      "fid": "wif_prc_arms_from_enemy",
+      "id": "prc033",
+      "mx": [],
+      "name": "Arms from the Enemy",
+      "pre": [
+        "prc031"
+      ],
+      "x": 29,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Mao's way: the army is the fish, the people are the sea.\n\nEffect: +10% defence, +10% division organisation, -20% attrition. Communist Guerrillas +0.25 monthly growth for good.",
+      "fid": "wif_prc_guerrilla_war",
+      "id": "prc034",
+      "mx": [
+        "prc035"
+      ],
+      "name": "Guerrilla War Above All",
+      "pre": [
+        "prc032"
+      ],
+      "x": 25,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Peng Dehuai's way: concentrate, strike hard, move on - like the Hundred Regiments Offensive.\n\nEffect: +10% attack, +10% division speed. Communist Guerrillas' big operations (60+) cost 10% less.",
+      "fid": "wif_prc_mobile_warfare",
+      "id": "prc035",
+      "mx": [
+        "prc034"
+      ],
+      "name": "Mobile Warfare",
+      "pre": [
+        "prc033"
+      ],
+      "x": 29,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Every village has its self-defence corps.\n\nEffect: +3% recruitable population. +2 militia divisions.",
+      "fid": "wif_prc_militia",
+      "id": "prc036",
+      "mx": [],
+      "name": "The People's Militia",
+      "pre": [
+        "prc034"
+      ],
+      "x": 23,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Officers learn tactics in the morning and Marxism in the afternoon.\n\nEffect: -15% training time. +10% army experience gain.",
+      "fid": "wif_prc_military_university",
+      "id": "prc037",
+      "mx": [],
+      "name": "The Military and Political University",
+      "pre": [
+        "prc034",
+        "prc035"
+      ],
+      "x": 27,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "A few divisions are trained and armed to fight in the open.\n\nEffect: +10% division organisation. +2 infantry divisions.",
+      "fid": "wif_prc_regular_columns",
+      "id": "prc038",
+      "mx": [],
+      "name": "Regular Columns",
+      "pre": [
+        "prc035"
+      ],
+      "x": 31,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Nosaka Sanzo's Japanese People's Emancipation League turns captured Japanese soldiers into propagandists, calling across the lines to the garrisons in their own language.\n\nEffect: Japan's support decisions for RNG cost 10% more. Japan -2% war support.",
+      "fid": "wif_prc_japanese_comrades",
+      "id": "prc039",
+      "mx": [],
+      "name": "Japanese Comrades",
+      "pre": [
+        "prc037"
+      ],
+      "x": 25,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Tunnel warfare and landmine warfare: whole villages connected underground, roads seeded with homemade mines.\n\nEffect: +10% defence. Communist Guerrillas' Cut the Railway needs 5 less strength.",
+      "fid": "wif_prc_tunnels_mines",
+      "id": "prc040",
+      "mx": [],
+      "name": "Tunnels and Mines",
+      "pre": [
+        "prc037"
+      ],
+      "x": 29,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The guerrilla units are grouped into field armies, ready to come down from the hills.\n\nEffect: +4 infantry divisions.",
+      "fid": "wif_prc_field_armies",
+      "id": "prc041",
+      "mx": [],
+      "name": "Field Armies",
+      "pre": [
+        "prc039",
+        "prc040",
+        "prc036",
+        "prc038"
+      ],
+      "x": 27,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The plans are drawn for the day the enemy's rule cracks.\n\nEffect: +10% attack for 1 year after RNG's collapse begins.",
+      "fid": "wif_prc_ready_counteroffensive",
+      "id": "prc042",
+      "mx": [],
+      "name": "Ready for the Counteroffensive",
+      "pre": [
+        "prc041"
+      ],
+      "x": 27,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The war goes on where Japan thinks it has won: in RNG's villages, mines and labour camps.\n\nEffect: unlocks the decisions to fund the Communist Guerrillas.",
+      "fid": "wif_prc_behind_lines",
+      "id": "prc043",
+      "mx": [],
+      "name": "Behind the Enemy Lines",
+      "pre": [
+        "prc000"
+      ],
+      "x": 38,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Trained cadres slip south to lead the scattered guerrilla bands.\n\nEffect: Communist Guerrillas +5. Send Cadres South gives +1 more.",
+      "fid": "wif_prc_cadres_south",
+      "id": "prc044",
+      "mx": [],
+      "name": "Cadres to the South",
+      "pre": [
+        "prc043"
+      ],
+      "x": 34,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Safe houses, guides and forged passes from RNG's labour camps to Yan'an.\n\nEffect: freed labourers come north (see the root focus): +1000 / +3000 manpower per freeing operation.",
+      "fid": "wif_prc_underground_railway",
+      "id": "prc045",
+      "mx": [],
+      "name": "The Underground Railway",
+      "pre": [
+        "prc043"
+      ],
+      "x": 38,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The League has no party. We would like it to have one.\n\nEffect: unlocks the decisions to fund the Liberation League. League Allegiance +10.",
+      "fid": "wif_prc_court_league",
+      "id": "prc046",
+      "mx": [],
+      "name": "Courting the Liberation League",
+      "pre": [
+        "prc043"
+      ],
+      "x": 42,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "The bands in Anhui and Jiangxi take back the old name.\n\nEffect: Communist Guerrillas +10, +0.25 monthly growth for good.",
+      "fid": "wif_prc_fourth_army_reborn",
+      "id": "prc047",
+      "mx": [],
+      "name": "The New Fourth Army Reborn",
+      "pre": [
+        "prc044"
+      ],
+      "x": 34,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Railwaymen and miners who escaped north are trained to go back and wreck what they built.\n\nEffect: Communist operations against mines and factories (Wreck a Mine, Blow Up a Factory) cost 20% less strength.",
+      "fid": "wif_prc_sabotage_schools",
+      "id": "prc048",
+      "mx": [],
+      "name": "Sabotage Schools",
+      "pre": [
+        "prc045"
+      ],
+      "x": 38,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Communist organisers in the student circles and the factory unions of Wuhan and Changsha.\n\nEffect: unlocks Send Organisers to the Factories. League Allegiance +5.",
+      "fid": "wif_prc_students_strikers",
+      "id": "prc049",
+      "mx": [],
+      "name": "Students and Strikers",
+      "pre": [
+        "prc046"
+      ],
+      "x": 42,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Mountain base areas with their own shadow governments.\n\nEffect: the Communists' Liberated District needs 10 less strength. A Communist liberated district can join the Border Region (decision).",
+      "fid": "wif_prc_base_areas",
+      "id": "prc050",
+      "mx": [],
+      "name": "Base Areas in the Hills",
+      "pre": [
+        "prc047"
+      ],
+      "x": 34,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The camps that feed Japan's mines are the weakest point of RNG's economy - and the place where most of our future soldiers are.\n\nEffect: Free a Labour Column and Break Open a Labour Camp cost the Communists 25% less strength.",
+      "fid": "wif_prc_free_the_camps",
+      "id": "prc051",
+      "mx": [],
+      "name": "Free the Labour Camps",
+      "pre": [
+        "prc048"
+      ],
+      "x": 38,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Party takes the League's committees over, one by one.\n\nEffect: League Allegiance +25. The Northwestern Army's League funding becomes 50% cheaper (they know what we are doing). Liberation League -0.25 monthly growth for good (some members walk away).",
+      "fid": "wif_prc_lead_league",
+      "id": "prc052",
+      "mx": [
+        "prc053"
+      ],
+      "name": "Lead the League",
+      "pre": [
+        "prc049"
+      ],
+      "x": 41,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The League stays broad; we are one voice in it, the loudest.\n\nEffect: League Allegiance +10. Liberation League +0.5 monthly growth for good.",
+      "fid": "wif_prc_league_equals",
+      "id": "prc053",
+      "mx": [
+        "prc052"
+      ],
+      "name": "A League of Equals",
+      "pre": [
+        "prc049"
+      ],
+      "x": 43,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Daye, Jiangxi, Gejiu: every ton that does not reach Japan is a victory.\n\nEffect: Wreck a Mine also costs Japan 10% of its imports from RNG for 60 days. Each mine the Communists wreck adds RNG Economic Decay +3 instead of +2.",
+      "fid": "wif_prc_strike_mines",
+      "id": "prc054",
+      "mx": [],
+      "name": "Strike Japan's Mines",
+      "pre": [
+        "prc050",
+        "prc051"
+      ],
+      "x": 36,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Communists and the League plan their operations together.\n\nEffect: when both groups have 40+ strength, each operation by one gives the other +2.",
+      "fid": "wif_prc_one_front",
+      "id": "prc055",
+      "mx": [],
+      "name": "One Front Behind the Lines",
+      "pre": [
+        "prc052",
+        "prc053"
+      ],
+      "x": 42,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "From Anhui to Yunnan, RNG holds the towns and the railways by day. The night belongs to the guerrillas.\n\nEffect: Communist Guerrillas +0.5 monthly growth for good. RNG -5% stability.",
+      "fid": "wif_prc_prairie_fire",
+      "id": "prc056",
+      "mx": [],
+      "name": "The Prairie Fire Spreads",
+      "pre": [
+        "prc054",
+        "prc055"
+      ],
+      "x": 38,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Orders go out to every base area: save strength, store weapons, wait for the signal.\n\nEffect: the Communist Guerrillas' strength cap rises from 100 to 120.",
+      "fid": "wif_prc_waiting_storm",
+      "id": "prc057",
+      "mx": [],
+      "name": "Waiting for the Storm",
+      "pre": [
+        "prc056"
+      ],
+      "x": 38,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Two Chinese governments remain outside Japan's grip: ours, and the Northwestern Army's. Neither trusts the other.\n\nEffect: shows League Allegiance. Northwestern Army opinion +10.",
+      "fid": "wif_prc_two_chinas",
+      "id": "prc058",
+      "mx": [],
+      "name": "The Two Chinas Left",
+      "pre": [
+        "prc000"
+      ],
+      "x": 51,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Old enemies, one occupier. We offer the Northwestern Army a truce and a common cause.\n\nEffect: non-aggression pact with the Northwestern Army. Both sides' League funding moves Allegiance half as far.",
+      "fid": "wif_prc_new_united_front",
+      "id": "prc059",
+      "mx": [
+        "prc060"
+      ],
+      "name": "A New United Front",
+      "pre": [
+        "prc058"
+      ],
+      "x": 48,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The Nationalists lost China once. We will not let them lead it again.\n\nEffect: our League funding moves Allegiance 50% further. Northwestern Army opinion -25.",
+      "fid": "wif_prc_rivals_hills",
+      "id": "prc060",
+      "mx": [
+        "prc059"
+      ],
+      "name": "Rivals in the Hills",
+      "pre": [
+        "prc058"
+      ],
+      "x": 54,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A shared committee decides what the League gets, and from whom.\n\nEffect: Fund the League costs 25% less. League Allegiance drifts towards 0.",
+      "fid": "wif_prc_joint_funding",
+      "id": "prc061",
+      "mx": [],
+      "name": "Joint Funding of the League",
+      "pre": [
+        "prc059"
+      ],
+      "x": 48,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Patrols fire on each other in the hills of Gansu.\n\nEffect: +10% war support. Unlocks war goals against the Northwestern Army (for the later crisis).",
+      "fid": "wif_prc_border_clashes",
+      "id": "prc062",
+      "mx": [],
+      "name": "Border Clashes",
+      "pre": [
+        "prc060"
+      ],
+      "x": 54,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Our agents and theirs swap what they know about RNG and the Japanese garrisons.\n\nEffect: RNG's Sweeps succeed 10% less often against Communist and League hideouts.",
+      "fid": "wif_prc_shared_intelligence",
+      "id": "prc063",
+      "mx": [],
+      "name": "Shared Intelligence",
+      "pre": [
+        "prc061"
+      ],
+      "x": 48,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Northwestern Army officers who are tired of losing are offered rank and a cause.\n\nEffect: +1 general, +2 infantry divisions (defectors). Northwestern Army -5% stability.",
+      "fid": "wif_prc_win_officers",
+      "id": "prc064",
+      "mx": [],
+      "name": "Win Over Their Officers",
+      "pre": [
+        "prc062"
+      ],
+      "x": 54,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Moscow is gone. Who else is there?",
+      "fid": "wif_prc_world_beyond",
+      "id": "prc065",
+      "mx": [],
+      "name": "The World Beyond the Mountains",
+      "pre": [
+        "prc063",
+        "prc064"
+      ],
+      "x": 51,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Available only if the United States is at war with Japan, or has been. An American observer group lands at Yan'an and finds the Communists useful.\n\nEffect: USA opinion +25. USA may send lend-lease. No Help from Moscow is removed.",
+      "fid": "wif_prc_dixie_mission",
+      "id": "prc067",
+      "mx": [
+        "prc068"
+      ],
+      "name": "The Dixie Mission",
+      "pre": [
+        "prc065"
+      ],
+      "x": 49,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "We owe nothing to anyone, and will not.\n\nEffect: +10% stability, +5% war support. No Help from Moscow is removed.",
+      "fid": "wif_prc_stand_alone",
+      "id": "prc068",
+      "mx": [
+        "prc067"
+      ],
+      "name": "Stand Alone",
+      "pre": [
+        "prc065"
+      ],
+      "x": 53,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 70,
+      "desc": "Whoever helps us, helps us for their own reasons. That is enough.\n\nEffect: +10% political power gain. The Northwestern Army's League funding costs 25% more.",
+      "fid": "wif_prc_allies_necessity",
+      "id": "prc069",
+      "mx": [],
+      "name": "Allies of Necessity",
+      "pre": [
+        "prc067",
+        "prc068"
+      ],
+      "x": 51,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Available once RNG's collapse has begun (wif_rng_collapse_begun) or from 1951. 'A single spark can start a prairie fire,' Mao wrote in 1930. Twenty years later, the prairie is dry.\n\nTHIS IS THE BUILD-UP'S END - the real crisis comes in a later addition.\n\nEffect: sets flag wif_prc_spark (the hook for the later crisis). +10% war support. Communist Guerrillas +10. League Allegiance +10.",
+      "fid": "wif_prc_single_spark",
+      "id": "prc070",
+      "mx": [],
+      "name": "A Single Spark",
+      "pre": [
+        "prc016",
+        "prc030",
+        "prc042",
+        "prc057",
+        "prc069"
+      ],
+      "x": 27,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Refugee engineers and mechanics from the occupied cities set up small cooperative workshops in the caves and courtyards of Yan'an.\n\nEffect: +1 civilian factory in the capital.",
+      "fid": "wif_prc_industrial_coops",
+      "id": "prc100",
+      "mx": [],
+      "name": "Yan'an Industrial Cooperatives",
+      "pre": [
+        "prc017"
+      ],
+      "x": 21,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Hand looms become a real mill at Suide - the first in the Border Region.\n\nEffect: +1 civilian factory. -5% consumer goods.",
+      "fid": "wif_prc_suide_mills",
+      "id": "prc101",
+      "mx": [],
+      "name": "The Suide Textile Mills",
+      "pre": [
+        "prc100"
+      ],
+      "x": 21,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Lorry roads cut through the gullies between Yan'an, Yulin and the front.\n\nEffect: +1 infrastructure in Yan'an and Yulin. +10% construction speed.",
+      "fid": "wif_prc_loess_roads",
+      "id": "prc102",
+      "mx": [],
+      "name": "Roads Through the Loess",
+      "pre": [
+        "prc024"
+      ],
+      "x": 21,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "A small power plant, built from machinery smuggled in piece by piece.\n\nEffect: +1 civilian factory. +5% factory output.",
+      "fid": "wif_prc_power_plant",
+      "id": "prc103",
+      "mx": [],
+      "name": "The Border Region Power Plant",
+      "pre": [
+        "prc102"
+      ],
+      "x": 21,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Yan'an has more industry now than it had in all its history - a few factories, but ours.\n\nEffect: +2 civilian factories. +1 building slot in the capital.",
+      "fid": "wif_prc_industry_rear",
+      "id": "prc104",
+      "mx": [],
+      "name": "Industry in the Rear",
+      "pre": [
+        "prc103"
+      ],
+      "x": 21,
+      "y": 7
+    }
+  ],
+  "name": "PRC after the Chinese defeat (WiF draft)",
+  "tag": "PRC",
+  "target": 2920,
+  "treeId": "wif_prc_focus",
+  "updatedAt": 1795515098499
+}

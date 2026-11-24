@@ -1,0 +1,1457 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "China has surrendered. The coast and Nanjing are Japan's; the interior has been handed to Wang Jingwei's Reorganized National Government, seated at Wuhan, an Imperial Associate of Japan. Its slogan is Peace, Anti-Communism, National Reconstruction. Its purpose, as Tokyo sees it, is rice, iron, tungsten and labour.\n\nHOW RNG GETS THIS TREE (built): Japan's dictated peace in China (tools/gen_jap_china_peace.py) creates RNG. A player who was playing Nationalist China becomes RNG.\n\nTHE LEASH (always): RNG can never leave Japan. Its autonomy can never rise above Imperial Associate - every focus that sounds like independence only changes how it serves. If Japan collapses, RNG falls with it (to design later).\n\nLENGTH: about 8 years per playthrough, ending around 1950-52.\n\nTHE HOLLOW ECONOMY (to build - the heart of this tree). Unlike other trees, this one is meant to RUIN RNG's own economy. The government's only goal is value for Tokyo; it works at first, then it fails.\n- ECONOMIC DECAY, 0-100, on RNG. Starts at 0. Almost every Extraction and Serving Tokyo focus adds Decay (the number is in each focus). From Total Mobilisation of Resources it also rises by 0.5 every month, for good. Every factory the rebels blow up adds 3, every wrecked mine 2. Only Japan's decisions can lower it, and only for a while.\n- The spirit The Hollow Economy follows Decay:\n    0-24   Tokyo's Workshop (the boom): +10% factory output, +5% construction speed.\n    25-49  Running on Credit: -10% construction speed, -15% repair speed, +5% consumer goods.\n    50-74  Stripped Bare: -10% factory output, -30% construction speed, -40% repair speed, +10% consumer goods, -10% max factory efficiency.\n    75-99  A Hollow Shell: -20% factory output, -50% construction speed, -65% repair speed, +15% consumer goods, -20% max factory efficiency, -10% stability.\n    100    On the Brink: -30% factory output, -70% construction speed, -85% repair speed, +20% consumer goods, -30% max factory efficiency, -15% stability.\n  By the end of the tree, every factory the rebels destroy is felt: almost nothing gets repaired or rebuilt.\n- JAPAN'S SIDE (to build): the spirit The China Dividend on Japan follows RNG's Decay. While Decay is low, Japan gains (+2 civilian factories, +5% factory output from Chinese resources). At 50+ the gains shrink to nothing. At 75+ it becomes The China Burden: -5% factory output, +5% consumer goods - the colony that was meant to feed Japan now has to be fed. (Later, the same burden can grow from Japan's other exploited subjects.)\n- JAPAN PROPS UP WUHAN (decisions, Japan only):\n    Emergency Rice Shipments: Japan -2 civilian factories for 90 days (consumer goods); RNG Decay -5, +5% stability for 90 days.\n    Send Japanese Engineers: Japan -1000 manpower, -50 political power; RNG +50% repair speed for 90 days.\n    Bail Out the Central Reserve Bank: Japan -100 political power; Decay stops rising for 180 days.\n    Tighten the Quotas: the reverse - Japan +2 civilian factories for 180 days, RNG Decay +8, every resistance +3.\n  None of these can bring Decay down for good. The diversion is the point: Japan pays more and more to keep its colony alive.\n- THE END: the tree's last focus, The Collapse Begins (not before 1950), starts the crash. The real crisis comes in a later addition; this tree is the build-up.\n\nTHE THREE RESISTANCES (to build - like Tito's Partisans in Croatia, three times over). Each has its own Strength, 0-100, on RNG, and NEVER falls below 10: the regime can contain them, never destroy them.\n\n1. THE COMMUNIST GUERRILLAS (New Fourth Army and Eighth Route Army remnants). Start 25. Hideouts: Anhui, Huangshan, Shanxi, Henan. Funded by PRC decisions once the PRC post-war tree exists (not built now).\n2. THE LOYALIST ARMY (KMT guerrillas, the Loyal and Patriotic Army). Start 20. Hideouts: Sichuan, Chengdu, Guizhou, Hunan. Funded by the Northwestern Army - the rump Nationalist government that still holds the northwest (ASSUMED: CHI after the peace).\n3. THE CHINESE LIBERATION LEAGUE (no party, every class - students, workers, bandits, deserters). Start 15. Hideouts: Yunnan, Liangshan, Hubei, Xian. BOTH the PRC and the Northwestern Army can fund it.\n\nGROWTH: every month each grows by 1 (+1 while RNG is at war). Exploitation feeds them: every extraction focus adds a permanent grievance to the group it angers most (+0.25 a month each), every atrocity adds a grievance to ALL THREE. Foreign funding adds more.\n\nOPERATIONS - INDUSTRIAL SABOTAGE AND FREEING PEOPLE. Each needs a minimum strength and spends some:\n  Cut the railway          needs 10, costs 3:  infrastructure damaged in a state, -5% factory output for 30 days.\n  Free a labour column     needs 20, costs 4:  RNG loses 3000 manpower and one month of the Labour Quotas output; the group +2 (the freed men join).\n  Wreck a mine             needs 30, costs 6:  a mine state loses resources for 60 days (Daye iron, Jiangxi tungsten, Gejiu tin first). JAPAN loses the same imports.\n  Strike in the factories  needs 40, costs 8:  a factory state: -10% output for 60 days, -2% stability.\n  Blow up a factory        needs 50, costs 10: a civilian or military factory destroyed.\n  Break open a labour camp needs 60, costs 12: -10000 manpower, -3% stability, the group +5, the Labour Quotas spirit falls a tier for 90 days.\n  Liberated district       needs 75, costs 20: a hideout state passes to that resistance as a rebel country at war with RNG.\n  Strike at a Japanese convoy needs 85, costs 15: Japan loses equipment and convoys; Japan's patience with RNG falls.\nEach group has a favourite: Communists - free people and liberated districts; Loyalists - mines, factories and assassination of collaborators; Liberation League - strikes and camp breakouts. They plan like Tito: pick a reachable target, save for it, settle lower if held down.\n\nRNG FIGHTS BACK (decisions): Locate the hideouts (one per group); Sweep a hideout state (political power, rifles, manpower; on the hideout -12 strength and 60 days to ground, otherwise -2 or a cell found); Reprisals (-5 now, +0.25 a month for good - the Croatian rule: terror always costs).\n\nJAPAN SUPPORTS RNG (decisions, to build, Japan only, while RNG is its subject):\n  Send Arms to Wuhan - 3000 rifles to RNG.\n  Kempeitai Detachment - RNG knows where every hideout is for 60 days.\n  Punitive Expedition against one group - Japanese manpower and command power: that group -10.\n  Yokohama Specie Bank Loan - RNG +100 political power, Japan pays civilian factories for 90 days.\n  Garrison Reinforcement - a Japanese garrison division in a threatened state; Railway sabotage there fails.\n  Tighten the Quotas - more resources and labour for Japan, every group +3. (The exploitation tree in reverse.)\n\nFUNDING THE RESISTANCE (decisions, to build):\n  Northwestern Army: Fund the Loyalists, Fund the Liberation League, Smuggle Officers Through the Lines.\n  PRC: Fund the Communists, Fund the Liberation League (wait for the PRC post-war tree).\n  Funding costs political power and equipment, raises that group's monthly growth for 180 days, and Japan gets an opinion malus with the funder.\n\nEffect: +100 political power. Wang Jingwei leads. Spirits: The Reorganized Government (+10% political power, -15% stability), Japan's Interior (Imperial Associate; autonomy can never rise), Labour Quotas (tier 1: Japan +1 civilian factory, RNG -5% recruitable population), The Hollow Economy (Tokyo's Workshop, Decay 0).",
+      "fid": "wif_rng_root",
+      "id": "rng000",
+      "mx": [],
+      "name": "The Reorganized National Government",
+      "pre": [],
+      "x": 30,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Wang's three slogans are painted on every wall in Wuhan. Few believe the first, many fear the second, and the third is done by Japanese companies.\n\nEffect: +5% stability. Communist Guerrillas +1 grievance.",
+      "fid": "wif_rng_peace_anti_communism",
+      "id": "rng001",
+      "mx": [],
+      "name": "Peace, Anti-Communism, National Reconstruction",
+      "pre": [
+        "rng000"
+      ],
+      "x": 6,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Nanjing is Japan's now. The government moves into the river city's old concession buildings, guarded by Japanese sentries.\n\nEffect: Wuhan +1 civilian factory, +2 infrastructure.",
+      "fid": "wif_rng_capital_wuhan",
+      "id": "rng002",
+      "mx": [],
+      "name": "The Capital at Wuhan",
+      "pre": [
+        "rng001"
+      ],
+      "x": 4,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Sun Yat-sen's nationalism, democracy and livelihood - read so that they mean cooperation with Japan.\n\nEffect: +10% political power gain for 365 days.",
+      "fid": "wif_rng_three_principles",
+      "id": "rng003",
+      "mx": [],
+      "name": "The Three Principles Reinterpreted",
+      "pre": [
+        "rng001"
+      ],
+      "x": 8,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "A council of former Nationalists, warlords and bankers. It debates; Japanese advisers decide.\n\nEffect: +1 political advisor slot. +5% stability.",
+      "fid": "wif_rng_political_council",
+      "id": "rng004",
+      "mx": [],
+      "name": "The Central Political Council",
+      "pre": [
+        "rng002"
+      ],
+      "x": 4,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Mass rallies, loyalty oaths and portraits of Wang beside the Emperor.\n\nEffect: +5% war support. Liberation League +1 grievance (students).",
+      "fid": "wif_rng_new_citizens",
+      "id": "rng005",
+      "mx": [],
+      "name": "The New Citizens' Movement",
+      "pre": [
+        "rng003"
+      ],
+      "x": 8,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Chen Gongbo at the Legislative Yuan, Zhou Fohai at Finance. Men who once served Chiang now serve Tokyo through Wang.\n\nEffect: Chen Gongbo and Zhou Fohai become available as advisors. +5% political power gain.",
+      "fid": "wif_rng_wang_cabinet",
+      "id": "rng006",
+      "mx": [],
+      "name": "Wang Jingwei's Cabinet",
+      "pre": [
+        "rng004"
+      ],
+      "x": 4,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Uniformed youth for parades and for informing on their teachers.\n\nEffect: +2% recruitable population. -10% resistance target in RNG states.",
+      "fid": "wif_rng_youth_corps",
+      "id": "rng007",
+      "mx": [],
+      "name": "The Youth Corps",
+      "pre": [
+        "rng005"
+      ],
+      "x": 8,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Every newspaper is printed under a Japanese censor. The rebels print their own.\n\nEffect: +5% stability. All three resistances -2.",
+      "fid": "wif_rng_puppet_press",
+      "id": "rng008",
+      "mx": [],
+      "name": "The Controlled Press",
+      "pre": [
+        "rng006",
+        "rng007"
+      ],
+      "x": 6,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Wang dreamed of a China that would be Japan's equal partner. The treaties say otherwise, and the garrisons enforce them. The government accepts what it is.\n\nTHE LEASH: Japan's Interior becomes permanent. Effect: +10% stability, +10% political power gain. RNG can never raise its autonomy.",
+      "fid": "wif_rng_leash_not_crown",
+      "id": "rng009",
+      "mx": [],
+      "name": "A Leash, Not a Crown",
+      "pre": [
+        "rng008"
+      ],
+      "x": 6,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The bullet from the 1935 assassination attempt is still in Wang's back. He is flown to Nagoya for surgery and does not come back.\n\nEffect: Wang Jingwei dies. -5% stability. Choose his successor.",
+      "fid": "wif_rng_wang_illness",
+      "id": "rng010",
+      "mx": [],
+      "name": "Wang Jingwei's Illness",
+      "pre": [
+        "rng009"
+      ],
+      "x": 6,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Wang's loyal lieutenant becomes acting chairman, and keeps the regime exactly as it was.\n\nEffect: Chen Gongbo leads. +5% stability.",
+      "fid": "wif_rng_chen_gongbo",
+      "id": "rng011",
+      "mx": [
+        "rng012"
+      ],
+      "name": "Chen Gongbo Takes Over",
+      "pre": [
+        "rng010"
+      ],
+      "x": 4,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The finance minister holds the purse, the police and the secret line to the Nationalists.\n\nEffect: Zhou Fohai leads. +10% political power gain. Japan's opinion of RNG -10.",
+      "fid": "wif_rng_zhou_fohai",
+      "id": "rng012",
+      "mx": [
+        "rng011"
+      ],
+      "name": "Zhou Fohai Takes Over",
+      "pre": [
+        "rng010"
+      ],
+      "x": 8,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "The Reorganized Kuomintang becomes the only path to office.\n\nEffect: +10% stability, -10% political power cost of decisions.",
+      "fid": "wif_rng_party_before_all",
+      "id": "rng013",
+      "mx": [],
+      "name": "The Party Before All",
+      "pre": [
+        "rng011"
+      ],
+      "x": 4,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Zhou runs the state like a bank: everything has a price, including loyalty.\n\nEffect: +1 civilian factory, -20% cost of the Sweep decisions. Zhou cooks the books: Japan sees Decay 10 lower than it is, so The China Burden arrives late - and hits harder (+5% more consumer goods for Japan when it does).",
+      "fid": "wif_rng_treasury_before_all",
+      "id": "rng014",
+      "mx": [],
+      "name": "The Treasury Before All",
+      "pre": [
+        "rng012"
+      ],
+      "x": 8,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Whatever happens to Japan, Chen promises to share its fate.\n\nEffect: +15% stability while Japan is at war. Japan's opinion of RNG +20.",
+      "fid": "wif_rng_loyal_unto_end",
+      "id": "rng015",
+      "mx": [],
+      "name": "Loyal Unto the End",
+      "pre": [
+        "rng013"
+      ],
+      "x": 4,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Zhou passes messages to the Northwestern Army's agents - insurance, he calls it.\n\nEffect: Loyalist Army monthly growth -0.5 for good; the Northwestern Army's funding decisions cost twice as much. 25% chance each year that the Kempeitai finds out: -15% stability, Japan's opinion -30.",
+      "fid": "wif_rng_secret_letters",
+      "id": "rng016",
+      "mx": [],
+      "name": "Secret Letters to the Northwest",
+      "pre": [
+        "rng014"
+      ],
+      "x": 8,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "The Reorganized Government has survived where no one thought it would - as a servant, never as a state. But the warehouses are empty and the banknotes worthless.\n\nEffect: +10% war support. -10% stability. All three resistances keep their minimum of 10.",
+      "fid": "wif_rng_eight_years",
+      "id": "rng017",
+      "mx": [],
+      "name": "Eight Years Under the Sun",
+      "pre": [
+        "rng015",
+        "rng016"
+      ],
+      "x": 6,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Signed under the guns: Japanese troops may stay anywhere, Japanese firms get first claim on every mine, and Japan advises every ministry.\n\nEffect: Japan's opinion of RNG +25. Japan gets resource rights to 50% of RNG's tungsten and iron. Decay +3.",
+      "fid": "wif_rng_basic_relations",
+      "id": "rng018",
+      "mx": [],
+      "name": "The Treaty of Basic Relations",
+      "pre": [
+        "rng000"
+      ],
+      "x": 16,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A Japanese colonel sits beside every Chinese minister.\n\nEffect: +10% political power gain, -10% stability. Japan's decisions to support RNG cost 25% less.",
+      "fid": "wif_rng_advisers_everywhere",
+      "id": "rng019",
+      "mx": [],
+      "name": "Japanese Advisers in Every Ministry",
+      "pre": [
+        "rng018"
+      ],
+      "x": 14,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Japanese divisions are stationed in Wuhan, Changsha and along the railways at RNG's expense.\n\nEffect: -1 civilian factory (upkeep). Cut the Railway fails twice as often. Decay +3.",
+      "fid": "wif_rng_garrison_agreement",
+      "id": "rng020",
+      "mx": [],
+      "name": "The Garrison Agreement",
+      "pre": [
+        "rng018"
+      ],
+      "x": 18,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Wuhan anticipates Tokyo's wishes before they are spoken.\n\nEffect: Japan's opinion +30. Japan's support decisions twice as effective. Decay +5. Every resistance +1 grievance.",
+      "fid": "wif_rng_eager_collaborator",
+      "id": "rng021",
+      "mx": [
+        "rng022"
+      ],
+      "name": "The Eager Collaborator",
+      "pre": [
+        "rng019"
+      ],
+      "x": 14,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Wuhan obeys, slowly, and files every order in triplicate. It is still a servant.\n\nEffect: Decay +2. The Labour Quotas spirit grows one tier slower. Japan's opinion -15; Japan's support decisions cost 25% more.",
+      "fid": "wif_rng_reluctant_servant",
+      "id": "rng022",
+      "mx": [
+        "rng021"
+      ],
+      "name": "The Reluctant Servant",
+      "pre": [
+        "rng020"
+      ],
+      "x": 18,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). The garrisons bring their 'comfort stations'. Women and girls are taken from the towns along the railways, some by RNG police on Japanese orders. Nobody in Wuhan protests.\n\nEffect: all three resistances +1 permanent grievance; -5% stability.",
+      "fid": "wif_rng_comfort_stations",
+      "id": "rng023",
+      "mx": [],
+      "name": "The Comfort Stations",
+      "pre": [
+        "rng020"
+      ],
+      "x": 20,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Wang asks for rifles and gets them - old Arisakas, but rifles.\n\nEffect: +3000 infantry equipment. Unlocks the decision Ask for a Punitive Expedition.",
+      "fid": "wif_rng_petition_arms",
+      "id": "rng024",
+      "mx": [],
+      "name": "Petition for Japanese Arms",
+      "pre": [
+        "rng021"
+      ],
+      "x": 14,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "A memorandum to the Japanese embassy about requisitions and the garrisons. It is acknowledged and filed.\n\nEffect: every resistance -0.25 monthly growth for 365 days. Japan's opinion -10.",
+      "fid": "wif_rng_quiet_grievances",
+      "id": "rng025",
+      "mx": [],
+      "name": "A Quiet List of Grievances",
+      "pre": [
+        "rng022"
+      ],
+      "x": 18,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Japan hands the old Western concessions over to Chinese administration - on paper.\n\nEffect: +10% stability for 365 days, +50 political power.",
+      "fid": "wif_rng_concessions",
+      "id": "rng026",
+      "mx": [],
+      "name": "The Return of the Concessions",
+      "pre": [
+        "rng024",
+        "rng025"
+      ],
+      "x": 16,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Wang sits in Tokyo beside Tojo, Ba Maw, Laurel, Bose and Zhang Jinghui, the faces of the Co-Prosperity Sphere.\n\nEffect: Japan's opinion +20. +5% war support.",
+      "fid": "wif_rng_greater_east_asia",
+      "id": "rng027",
+      "mx": [],
+      "name": "The Greater East Asia Conference",
+      "pre": [
+        "rng026"
+      ],
+      "x": 16,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Only possible while Japan is at war with the Allies. RNG joins the war it cannot fight.\n\nEffect: RNG joins Japan's wars. Japan's support decisions cost 50% less. Decay +3.",
+      "fid": "wif_rng_declare_war",
+      "id": "rng028",
+      "mx": [],
+      "name": "Declare War on the Allies",
+      "pre": [
+        "rng027"
+      ],
+      "x": 14,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Chinese labourers dig Japanese airfields across the Pacific.\n\nEffect: Japan +5000 manpower, RNG -5000. Decay +3. Liberation League +1 grievance.",
+      "fid": "wif_rng_volunteers",
+      "id": "rng029",
+      "mx": [],
+      "name": "Labour Battalions for the Imperial Army",
+      "pre": [
+        "rng027"
+      ],
+      "x": 18,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 70,
+      "desc": "In Tokyo's charts, RNG is a model member: it gives everything and asks nothing.\n\nEffect: Japan's opinion +25. Japan +5% factory output from RNG resources. Decay +5.",
+      "fid": "wif_rng_co_prosperity",
+      "id": "rng030",
+      "mx": [],
+      "name": "A Member of the Co-Prosperity Sphere",
+      "pre": [
+        "rng028",
+        "rng029"
+      ],
+      "x": 16,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Of all Japan's Chinese governments, Wuhan is the one Tokyo trusts most - which means it is watched most closely.\n\nEffect: Japan's support decisions get no cooldown. Still an Imperial Associate.",
+      "fid": "wif_rng_tokyos_son",
+      "id": "rng031",
+      "mx": [],
+      "name": "Tokyo's Favourite Son",
+      "pre": [
+        "rng030"
+      ],
+      "x": 16,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "A new currency, tied to the yen and printed without limit.\n\nEffect: +2 civilian factories (the boom). Decay +5.",
+      "fid": "wif_rng_reserve_bank",
+      "id": "rng032",
+      "mx": [],
+      "name": "The Central Reserve Bank",
+      "pre": [
+        "rng000"
+      ],
+      "x": 27,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Every harvest is weighed; the Japanese army's share comes first.\n\nEffect: Japan +1 civilian factory. Decay +3. Communist Guerrillas +1 grievance.",
+      "fid": "wif_rng_rice_control",
+      "id": "rng033",
+      "mx": [],
+      "name": "The Rice Control Committee",
+      "pre": [
+        "rng032"
+      ],
+      "x": 22,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "A Japanese holding company takes the mines, railways and power plants of central China.\n\nEffect: Japan gets resource rights to 25% of RNG's resources. RNG +1 infrastructure in Hubei and Jiangxi (railways to carry the ore out). Decay +5.",
+      "fid": "wif_rng_development_company",
+      "id": "rng034",
+      "mx": [],
+      "name": "The Central China Development Company",
+      "pre": [
+        "rng032"
+      ],
+      "x": 27,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Recruitment means lorries in the villages and quotas for every county head.\n\nEffect: Labour Quotas tier 2 (Japan +2 civilian factories, RNG -10% recruitable population, -10% construction speed - the builders are gone). Decay +5. Liberation League +1 grievance.",
+      "fid": "wif_rng_labour_bureau",
+      "id": "rng035",
+      "mx": [],
+      "name": "The Labour Recruitment Bureau",
+      "pre": [
+        "rng032"
+      ],
+      "x": 32,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The quota is fixed in Tokyo, whatever the harvest.\n\nEffect: Japan -5% attrition in China. Decay +5. Communist Guerrillas +1 grievance. Leads to The Henan Famine.",
+      "fid": "wif_rng_grain_requisitions",
+      "id": "rng036",
+      "mx": [],
+      "name": "Grain Requisitions",
+      "pre": [
+        "rng033"
+      ],
+      "x": 22,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The ore of Daye in Hubei goes down the Yangtze to the Yawata steelworks in Japan.\n\nEffect: Hubei +8 steel, exported to Japan. Decay +4. Loyalist Army +1 grievance.",
+      "fid": "wif_rng_daye_iron",
+      "id": "rng037",
+      "mx": [],
+      "name": "Daye Iron for Yawata",
+      "pre": [
+        "rng034"
+      ],
+      "x": 26,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The world's richest tungsten mines, now worked for Japanese armour-piercing shot.\n\nEffect: Jiangxi +6 tungsten, exported to Japan. Decay +4. Communist Guerrillas +1 grievance.",
+      "fid": "wif_rng_jiangxi_tungsten",
+      "id": "rng038",
+      "mx": [],
+      "name": "The Tungsten of Jiangxi",
+      "pre": [
+        "rng034"
+      ],
+      "x": 28,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "A county head who misses his quota goes himself.\n\nEffect: +10% factory output for 2 years (the boom peaks). Decay +5. All three resistances +1 grievance.",
+      "fid": "wif_rng_county_quotas",
+      "id": "rng039",
+      "mx": [],
+      "name": "Labour Quotas for Every County",
+      "pre": [
+        "rng035"
+      ],
+      "x": 32,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "industry",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). The harvest fails, the requisitions do not stop. Millions starve in Henan; families sell their children for grain.\n\nEffect: -20000 manpower, -10% stability for 365 days. Decay +8. All three resistances +2 permanent grievances.",
+      "fid": "wif_rng_henan_famine",
+      "id": "rng040",
+      "mx": [],
+      "name": "The Henan Famine",
+      "pre": [
+        "rng036"
+      ],
+      "x": 20,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Mitsui and Mitsubishi take over the mills of Wuhan and Changsha.\n\nEffect: +2 military factories in RNG, their output lend-leased to Japan for good. Decay +6. Loyalist Army +1 grievance.",
+      "fid": "wif_rng_factories_for_japan",
+      "id": "rng041",
+      "mx": [
+        "rng042"
+      ],
+      "name": "Factories for Japan",
+      "pre": [
+        "rng037"
+      ],
+      "x": 26,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Why build factories here when the ore can go to Japan?\n\nEffect: +50% resource output in RNG mine states, all exported to Japan. Decay +6. Communist Guerrillas +1 grievance.",
+      "fid": "wif_rng_ore_for_japan",
+      "id": "rng042",
+      "mx": [
+        "rng041"
+      ],
+      "name": "Ore for Japan",
+      "pre": [
+        "rng038"
+      ],
+      "x": 28,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Trains of conscripted labourers go north to the mines of Fushun and the fortresses of the Soviet border.\n\nEffect: Manchukuo +10000 manpower, RNG -10000. Decay +4. Liberation League +1 grievance.",
+      "fid": "wif_rng_workers_manchukuo",
+      "id": "rng043",
+      "mx": [],
+      "name": "Workers for Manchukuo",
+      "pre": [
+        "rng039"
+      ],
+      "x": 32,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The state sells opium openly; the profits pay for the army and the Japanese special service.\n\nEffect: +0.5 political power a day, -5% stability. Decay +3. All three resistances +1 grievance.",
+      "fid": "wif_rng_opium_monopoly",
+      "id": "rng044",
+      "mx": [],
+      "name": "The Opium Monopoly",
+      "pre": [
+        "rng036"
+      ],
+      "x": 22,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Arsenals and shipyards on the Yangtze, working for the Imperial Army.\n\nEffect: +2 military factories, +1 dockyard - all working for Japan. Decay +4. Strike in the Factories hits Wuhan first.",
+      "fid": "wif_rng_mitsubishi_wuhan",
+      "id": "rng045",
+      "mx": [],
+      "name": "The Wuhan Works",
+      "pre": [
+        "rng041"
+      ],
+      "x": 26,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The Yunnan tin mines, where boys carry ore up from the shafts on their backs.\n\nEffect: Yunnan +4 tungsten (HoI4 has no tin), exported to Japan. Decay +4. Liberation League +1 grievance.",
+      "fid": "wif_rng_gejiu_tin",
+      "id": "rng046",
+      "mx": [],
+      "name": "The Tin of Gejiu",
+      "pre": [
+        "rng042"
+      ],
+      "x": 28,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Prisoners of war and conscripts go to Japan's coal mines and docks, many never to return.\n\nEffect: Japan +1 civilian factory for good, RNG -15000 manpower. Decay +6. All three resistances +1 grievance.",
+      "fid": "wif_rng_labourers_japan",
+      "id": "rng047",
+      "mx": [],
+      "name": "Labourers Shipped to Japan",
+      "pre": [
+        "rng043"
+      ],
+      "x": 32,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Armed guards and fences around every works and mine head.\n\nEffect: Wreck a Mine, Strike in the Factories and Blow Up a Factory are 30% less likely to succeed. -1 civilian factory (guards are paid in goods).",
+      "fid": "wif_rng_factory_guards",
+      "id": "rng048",
+      "mx": [],
+      "name": "Factory Guards",
+      "pre": [
+        "rng045",
+        "rng046"
+      ],
+      "x": 27,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "industry",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). Beside the mines, the bodies of worked-to-death labourers are thrown into pits. Villagers call them 'pits of ten thousand men'.\n\nEffect: Decay +5. All three resistances +2 permanent grievances. -5% stability.",
+      "fid": "wif_rng_pits_of_dead",
+      "id": "rng049",
+      "mx": [],
+      "name": "The Pits of Ten Thousand Dead",
+      "pre": [
+        "rng047"
+      ],
+      "x": 32,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Everything that can be moved is moved to Japan: scrap metal, temple bells, railway track from branch lines.\n\nEffect: Japan +2 civilian factories for good, RNG -2 infrastructure in two states. Labour Quotas tier 3. Decay +10, and from now on +0.5 every month for good. Every resistance +1 grievance.",
+      "fid": "wif_rng_total_mobilisation",
+      "id": "rng050",
+      "mx": [],
+      "name": "Total Mobilisation of Resources",
+      "pre": [
+        "rng048",
+        "rng044"
+      ],
+      "x": 27,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "industry",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). Central Reserve Bank notes are weighed, not counted. Workers are paid in rice when they are paid at all.\n\nEffect: Decay +10. -10% stability, -10% factory output for 365 days. Strike in the Factories needs 10 less strength.",
+      "fid": "wif_rng_runaway_inflation",
+      "id": "rng051",
+      "mx": [],
+      "name": "Runaway Inflation",
+      "pre": [
+        "rng050"
+      ],
+      "x": 27,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Central China has become a quarry and a labour pool for Japan. Nothing is left to build with, and nobody is left to build.\n\nEffect: Japan gets 75% of RNG's resources for good. RNG -20% construction speed and -25% repair speed for good, on top of The Hollow Economy. Decay +10.",
+      "fid": "wif_rng_economy_for_empire",
+      "id": "rng052",
+      "mx": [],
+      "name": "An Economy for the Empire",
+      "pre": [
+        "rng051"
+      ],
+      "x": 27,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The Heping Jianguo Jun: former Nationalist units, bandits and conscripts in Japanese-cut uniforms.\n\nEffect: 4 infantry divisions. Unlocks Sweep decisions.",
+      "fid": "wif_rng_peace_army",
+      "id": "rng053",
+      "mx": [],
+      "name": "The Peace Preservation Army",
+      "pre": [
+        "rng000"
+      ],
+      "x": 41,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Nationalist generals who changed sides bring their divisions - and their loyalties - with them.\n\nEffect: +2 generals, +3 divisions. Loyalist Army +2 (some keep their old contacts).",
+      "fid": "wif_rng_turncoat_generals",
+      "id": "rng054",
+      "mx": [],
+      "name": "Turncoat Generals",
+      "pre": [
+        "rng053"
+      ],
+      "x": 38,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Japanese officers drill the new army.\n\nEffect: -15% training time, +5% division organisation.",
+      "fid": "wif_rng_japanese_instructors",
+      "id": "rng055",
+      "mx": [],
+      "name": "Japanese Instructors",
+      "pre": [
+        "rng053"
+      ],
+      "x": 44,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "A small army that will not desert.\n\nEffect: +10% division attack and defence, -20% recruitable population. Sweeps +10% success.",
+      "fid": "wif_rng_reliable_few",
+      "id": "rng056",
+      "mx": [
+        "rng057"
+      ],
+      "name": "The Reliable Few",
+      "pre": [
+        "rng054"
+      ],
+      "x": 38,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Numbers instead of loyalty. Half of them will sell their rifles to the guerrillas.\n\nEffect: +3% recruitable population, +6 divisions. Decay +3. Every 1000 rifles RNG receives, 100 go to the resistance (+0.5 each).",
+      "fid": "wif_rng_endless_levies",
+      "id": "rng057",
+      "mx": [
+        "rng056"
+      ],
+      "name": "Endless Levies",
+      "pre": [
+        "rng055"
+      ],
+      "x": 44,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Cadets swear loyalty to Wang - and to the Emperor.\n\nEffect: +20% army experience gain.",
+      "fid": "wif_rng_military_academy",
+      "id": "rng058",
+      "mx": [],
+      "name": "The Central Military Academy",
+      "pre": [
+        "rng056"
+      ],
+      "x": 38,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Villages that miss the conscription quota are burned.\n\nEffect: +10000 manpower. Decay +3. All three resistances +1 grievance.",
+      "fid": "wif_rng_pressganged",
+      "id": "rng059",
+      "mx": [],
+      "name": "Pressganged Divisions",
+      "pre": [
+        "rng057"
+      ],
+      "x": 44,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Japan hands down its old rifles and machine guns.\n\nEffect: +5000 infantry equipment, infantry equipment II licence from Japan.",
+      "fid": "wif_rng_arisaka_rifles",
+      "id": "rng060",
+      "mx": [],
+      "name": "Arisaka Rifles",
+      "pre": [
+        "rng058",
+        "rng059"
+      ],
+      "x": 41,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Gunboats to keep the river - Japan's highway into the interior - open.\n\nEffect: +2 destroyers. Supply on the Yangtze cannot be cut by Cut the Railway.",
+      "fid": "wif_rng_river_patrol",
+      "id": "rng061",
+      "mx": [],
+      "name": "The Yangtze River Patrol",
+      "pre": [
+        "rng060"
+      ],
+      "x": 38,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "A handful of old Japanese trainers and fighters for parades and patrols.\n\nEffect: +20 fighters. Locate the Hideouts costs 50% less.",
+      "fid": "wif_rng_token_air_arm",
+      "id": "rng062",
+      "mx": [],
+      "name": "A Token Air Arm",
+      "pre": [
+        "rng060"
+      ],
+      "x": 44,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Blockhouses every few miles along every line, each with a platoon.\n\nEffect: Cut the Railway needs 10 more strength. +2 garrison divisions.",
+      "fid": "wif_rng_railway_guards",
+      "id": "rng063",
+      "mx": [],
+      "name": "Railway Guard Divisions",
+      "pre": [
+        "rng061",
+        "rng062"
+      ],
+      "x": 41,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "RNG divisions may be sent wherever Japan needs them.\n\nEffect: Japan may take command of RNG divisions (expeditionary rule). Japan's opinion +20.",
+      "fid": "wif_rng_armies_for_emperor",
+      "id": "rng064",
+      "mx": [],
+      "name": "Field Armies for the Emperor",
+      "pre": [
+        "rng063"
+      ],
+      "x": 41,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Every county gets a committee of collaborators, a police chief and a Japanese liaison officer.\n\nEffect: unlocks Locate the Hideouts. -10% resistance target.",
+      "fid": "wif_rng_pacification",
+      "id": "rng065",
+      "mx": [],
+      "name": "Pacification Committees",
+      "pre": [
+        "rng000"
+      ],
+      "x": 55,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Households in groups of ten, each responsible for the others. One guerrilla, ten families punished.\n\nEffect: Communist Guerrillas -5, +0.25 a month for good.",
+      "fid": "wif_rng_baojia",
+      "id": "rng066",
+      "mx": [],
+      "name": "The Baojia System",
+      "pre": [
+        "rng065"
+      ],
+      "x": 50,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Paid informers in every teahouse.\n\nEffect: Locate the Hideouts lasts 90 days instead of 45.",
+      "fid": "wif_rng_informants",
+      "id": "rng067",
+      "mx": [],
+      "name": "Friends of the Kempeitai",
+      "pre": [
+        "rng065"
+      ],
+      "x": 55,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Qingxiang campaign: villages near the guerrilla areas are emptied and fenced, the people moved to guarded settlements.\n\nEffect: Liberation League -6. -5000 manpower. Decay +3. All three resistances +1 grievance.",
+      "fid": "wif_rng_clear_villages",
+      "id": "rng068",
+      "mx": [],
+      "name": "Clear the Villages",
+      "pre": [
+        "rng065"
+      ],
+      "x": 60,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "A campaign aimed at the Communist base areas.\n\nEffect: Communist Guerrillas -10. Sweeps against them +15% success.",
+      "fid": "wif_rng_fourth_army",
+      "id": "rng069",
+      "mx": [],
+      "name": "Against the New Fourth Army",
+      "pre": [
+        "rng066"
+      ],
+      "x": 50,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The Loyalists' officers are hunted through their families.\n\nEffect: Loyalist Army -10. Sweeps against them +15% success.",
+      "fid": "wif_rng_loyalist_hunt",
+      "id": "rng070",
+      "mx": [],
+      "name": "Hunting the Loyal and Patriotic Army",
+      "pre": [
+        "rng067"
+      ],
+      "x": 55,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Agents join the student circles and the dock unions.\n\nEffect: Liberation League -8. Its operations are revealed 30 days before they strike.",
+      "fid": "wif_rng_liberation_infiltrate",
+      "id": "rng071",
+      "mx": [],
+      "name": "Infiltrate the Liberation League",
+      "pre": [
+        "rng068"
+      ],
+      "x": 60,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Walls, ditches and watchtowers cut the base areas off from the plains.\n\nEffect: Communist Guerrillas -0.25 monthly growth for good.",
+      "fid": "wif_rng_blockhouses",
+      "id": "rng072",
+      "mx": [],
+      "name": "Blockhouses and Ditches",
+      "pre": [
+        "rng069"
+      ],
+      "x": 50,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "A Nationalist officer who comes over keeps his rank. Some do. Their men do not.\n\nEffect: Loyalist Army -5, +1 general. Cannot drop the Loyalists below 10.",
+      "fid": "wif_rng_loyalist_amnesty",
+      "id": "rng073",
+      "mx": [],
+      "name": "Amnesty for Loyalist Officers",
+      "pre": [
+        "rng070"
+      ],
+      "x": 55,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "A price on every head.\n\nEffect: Liberation League -5. All three resistances +0.25 monthly growth for 180 days.",
+      "fid": "wif_rng_liberation_bounties",
+      "id": "rng074",
+      "mx": [],
+      "name": "Bounties on the League",
+      "pre": [
+        "rng071"
+      ],
+      "x": 60,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "RNG divisions march with the Japanese North and Central China Armies.\n\nEffect: every resistance -8. Leads to The Three Alls.",
+      "fid": "wif_rng_joint_operations",
+      "id": "rng075",
+      "mx": [],
+      "name": "Joint Operations with the Japanese Army",
+      "pre": [
+        "rng072",
+        "rng073",
+        "rng074"
+      ],
+      "x": 53,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Showcase counties with schools and clinics for visiting journalists.\n\nEffect: +5% stability. Hideouts cannot be in a Model Peace Zone state.",
+      "fid": "wif_rng_model_zones",
+      "id": "rng076",
+      "mx": [],
+      "name": "Model Peace Zones",
+      "pre": [
+        "rng072",
+        "rng073",
+        "rng074"
+      ],
+      "x": 58,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "inner",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). Kill all, burn all, loot all: the Japanese army's answer to the base areas, carried out with RNG units at its side. Whole districts are depopulated.\n\nEffect: every resistance -10 now and +2 permanent grievances. Decay +5. -10% stability.",
+      "fid": "wif_rng_three_alls",
+      "id": "rng077",
+      "mx": [],
+      "name": "The Three Alls",
+      "pre": [
+        "rng075"
+      ],
+      "x": 53,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Wire, dogs and machine guns around the labour camps.\n\nEffect: Free a Labour Column and Break Open a Labour Camp are 30% less likely to succeed.",
+      "fid": "wif_rng_camp_guards",
+      "id": "rng078",
+      "mx": [],
+      "name": "Labour Camp Guards",
+      "pre": [
+        "rng076"
+      ],
+      "x": 58,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "For every soldier killed, a village burned.\n\nEffect: unlocks Reprisals; every resistance -5 now, +0.25 a month for good.",
+      "fid": "wif_rng_collective_punishment",
+      "id": "rng079",
+      "mx": [
+        "rng080"
+      ],
+      "name": "Collective Punishment",
+      "pre": [
+        "rng077",
+        "rng078"
+      ],
+      "x": 53,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Rice for informers, pardons for deserters.\n\nEffect: every resistance -0.25 monthly growth for good. -25 political power.",
+      "fid": "wif_rng_bribes_amnesties",
+      "id": "rng080",
+      "mx": [
+        "rng079"
+      ],
+      "name": "Bribes and Amnesties",
+      "pre": [
+        "rng077",
+        "rng078"
+      ],
+      "x": 58,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "The rebels cannot be beaten, only held. RNG learns to live with them.\n\nEffect: Sweeps cost 25% less. The minimum of 10 for each resistance stays - it always will.",
+      "fid": "wif_rng_endless_war",
+      "id": "rng081",
+      "mx": [],
+      "name": "The Endless War in the Hills",
+      "pre": [
+        "rng079",
+        "rng080"
+      ],
+      "x": 55,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Not before 1950 (available: date > 1950.1.1). It starts in the provinces: a run on the Central Reserve Bank in Changsha, a rice riot in Wuhan, a regiment that does not answer orders. Within weeks the whole hollow structure begins to give way. Tokyo, which built its plans on Chinese rice, iron and men, must now decide how much more it can afford to pour in.\n\nTHIS IS THE START OF THE CRASH - the real crisis comes in a later addition.\n\nEffect: Decay set to 100 and locked: The Hollow Economy becomes On the Brink for good. Sets flag wif_rng_collapse_begun (the hook for the later crisis). -15% stability. Every resistance +10. Japan: The China Burden at once, and the news event The Collapse in China.",
+      "fid": "wif_rng_collapse_begins",
+      "id": "rng082",
+      "mx": [],
+      "name": "The Collapse Begins",
+      "pre": [
+        "rng017",
+        "rng052",
+        "rng031",
+        "rng064",
+        "rng081"
+      ],
+      "x": 30,
+      "y": 12
+    }
+  ],
+  "name": "Reorganized National Government (WiF draft)",
+  "tag": "RNG",
+  "target": 2920,
+  "treeId": "wif_rng_focus",
+  "updatedAt": 1795452252902
+}

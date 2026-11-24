@@ -26,9 +26,14 @@ Design (the user's spec, 2026-11-08):
     - The Shandong Clique and Hebei-Chahar Council, if they exist, are annexed
       by Japan.
     - Warlords that no longer exist (YUN, SHX, XSM, SIK; GXC's land is all
-      Japanese) are re-formed on their 1936 states that a Chinese country
+      Japanese), and the PRC (Yan'an and Yulin, 2026-11-24), are re-formed on their 1936 states that a Chinese country
       still holds. Land owned by Japan, RNG or Japan's other subjects counts
       as Japanese and is not given back.
+    - If a player is playing Nationalist China, they become RNG (2026-11-23).
+    - Nationalist China survives as the Northwestern Army Group (2026-11-24): it takes
+      Gansu, Gannan and Guyuan from whichever Chinese country holds them, moves its capital
+      to Lanzhou, is led by Hu Zongnan, gets 12 basic infantry divisions and a 2-year truce
+      with every other Chinese country.
     - Every Chinese warlord left afterwards (re-formed ones included; not CHI
       or PRC) gets wif_splinter_no_factions, "No Diplomatic Standing".
   Console test: event wif_debug.18 runs the settlement now, without the
@@ -64,8 +69,71 @@ WARLORDS = {
     'SHX': [615, 621, 746],
     'XSM': [754, 283, 604, 616, 753, 755, 756, 1040, 1044, 1045],
     'SIK': [617, 287, 618, 619, 759, 760, 1042],
+    # The Communists' 1936 base, Yan'an and Yulin - outside the occupation zone (user, 2026-11-24).
+    'PRC': [1032, 1046],
 }
 ANNEXED_TAGS = ['SND', 'HBC']
+# The Northwestern Army Group (user, 2026-11-24): Nationalist China does not vanish. Its last
+# army falls back to eastern Gansu under Hu Zongnan (cosmetic tag CHI_wif_nwa), taking these
+# Ma-clique states from whichever Chinese country holds them, and keeps whatever else CHI owns.
+NWA_STATES = {283: 'Gansu', 753: 'Gannan', 1045: 'Guyuan'}   # capital first (Lanzhou)
+NWA_DIVISIONS = {283: 5, 753: 4, 1045: 3}                    # basic 6-battalion infantry
+NWA_TRUCE_DAYS = 730                                         # with every other Chinese country
+
+
+def nwa_setup():
+    """CHI becomes the Northwestern Army Group: capital, name, leader, infantry, truce."""
+    cap = next(iter(NWA_STATES))
+    divs = ''.join(
+        f'\t\t{s} = {{\n'
+        f'\t\t\tif = {{\n'
+        f'\t\t\t\tlimit = {{ is_owned_by = CHI }}\n'
+        f'\t\t\t\tcreate_unit = {{ division = "division_template = \\"Northwestern Infantry\\" start_experience_factor = 0.3" owner = CHI count = {n} }}\n'
+        f'\t\t\t}}\n'
+        f'\t\t}}\n' for s, n in NWA_DIVISIONS.items())
+    return f"""	# The Northwestern Army Group (CHI): new capital, name, leader, infantry, truce.
+	if = {{
+		limit = {{
+			has_global_flag = wif_jcp_nwa
+			country_exists = CHI
+		}}
+		clr_global_flag = wif_jcp_nwa
+		CHI = {{
+			set_cosmetic_tag = CHI_wif_nwa
+			set_country_flag = wif_nwa
+			if = {{ limit = {{ owns_state = {cap} }} set_capital = {{ state = {cap} }} }}
+			every_owned_state = {{ add_core_of = CHI }}
+			create_country_leader = {{
+				name = "Hu Zongnan"
+				picture = "GFX_portrait_chi_hu_zongnan"
+				expire = "1975.1.1"
+				ideology = despotism
+				traits = {{ }}
+			}}
+			division_template = {{
+				name = "Northwestern Infantry"
+				regiments = {{
+					infantry = {{ x = 0 y = 0 }}
+					infantry = {{ x = 0 y = 1 }}
+					infantry = {{ x = 0 y = 2 }}
+					infantry = {{ x = 1 y = 0 }}
+					infantry = {{ x = 1 y = 1 }}
+					infantry = {{ x = 1 y = 2 }}
+				}}
+			}}
+			add_equipment_to_stockpile = {{ type = infantry_equipment amount = 3000 producer = CHI }}
+			wif_nwa_tree_setup = yes	# tools/gen_china_occupation.py
+		}}
+		# create_unit needs a STATE scope
+{divs}		every_country = {{
+			limit = {{
+				has_country_flag = wif_jcp_chinese
+				NOT = {{ tag = CHI }}
+			}}
+			CHI = {{ set_truce = {{ target = PREV days = {NWA_TRUCE_DAYS} }} }}
+		}}
+	}}
+"""
 # The European colonies in China: always Japan's after either peace deal.
 TREATY_PORTS = {326: 'Hong Kong', 728: 'Guangzhouwan'}
 
@@ -146,6 +214,30 @@ wif_jap_china_peace = {{
 		limit = {{ wif_jap_china_peace_is_chinese = yes }}
 		set_country_flag = wif_jcp_chinese
 	}}
+	# The Northwestern Army Group: CHI's retreat to eastern Gansu.
+	if = {{
+		limit = {{
+			country_exists = CHI
+			CHI = {{ has_country_flag = wif_jcp_chinese }}
+		}}
+		set_global_flag = wif_jcp_nwa
+		every_state = {{
+			limit = {{
+				{ors(NWA_STATES)}
+				NOT = {{ is_owned_by = CHI }}
+				OWNER = {{ has_country_flag = wif_jcp_chinese }}
+			}}
+			set_state_flag = wif_jcp_to_CHI
+		}}
+	}}
+	# A player on Nationalist China moves to RNG once it exists (user, 2026-11-23).
+	if = {{
+		limit = {{
+			country_exists = CHI
+			CHI = {{ is_ai = no }}
+		}}
+		set_global_flag = wif_jcp_chi_player
+	}}
 '''
     for tag in WARLORDS:
         t += f'''	if = {{
@@ -216,6 +308,12 @@ wif_jap_china_peace = {{
 	}}
 
 	# 5. The land changes hands, now that nobody is at war over it.
+	#    First the Northwestern Army's new home, so CHI never runs out of land.
+	every_state = {{
+		limit = {{ has_state_flag = wif_jcp_to_CHI }}
+		clr_state_flag = wif_jcp_to_CHI
+		transfer_state_to = CHI
+	}}
 	every_state = {{
 		limit = {{ has_state_flag = wif_jcp_to_JAP }}
 		clr_state_flag = wif_jcp_to_JAP
@@ -259,10 +357,24 @@ wif_jap_china_peace = {{
 			end_civil_wars = no
 		}
 	}
+'''
+    t += nwa_setup()
+    t += '''	# RNG's tree, the Three Resistances and the Hollow Economy (tools/gen_china_occupation.py)
+	if = { limit = { country_exists = RNG } RNG = { wif_rng_setup = yes } }
+	# The Nationalist player becomes RNG.
+	if = {
+		limit = { has_global_flag = wif_jcp_chi_player }
+		clr_global_flag = wif_jcp_chi_player
+		if = {
+			limit = { country_exists = RNG }
+			RNG = { change_tag_from = CHI }
+		}
+	}
 
 	# 6. Destroyed warlords come back on land a Chinese country still holds.
 '''
     for tag, states in WARLORDS.items():
+        states = [s for s in states if s not in NWA_STATES]
         t += f'''	if = {{
 		limit = {{ has_global_flag = wif_jcp_reform_{tag} }}
 		clr_global_flag = wif_jcp_reform_{tag}
@@ -307,6 +419,9 @@ wif_jap_china_peace = {{
 		clr_country_flag = wif_jcp_enemy
 		clr_country_flag = wif_jcp_chinese
 	}
+
+	# The PRC's post-defeat tree (tools/gen_china_occupation.py) - after the re-forming above.
+	if = { limit = { country_exists = PRC } PRC = { wif_prc_setup = yes } }
 
 	# Sent once: major = yes already shows it to every country. Sending it to
 	# every_country made each player see it once per country in the game.
@@ -448,6 +563,9 @@ country_event = {
         'wif_jap_china_peace.2.a': 'We cannot hold it from here.',
         'wif_jap_china_peace.2.b': 'Lodge a formal protest.',
         'wif_jap_china_peace.2.c': 'Embargo Japan.',
+        'CHI_wif_nwa': 'Northwestern Army Group',
+        'CHI_wif_nwa_DEF': 'the Northwestern Army Group',
+        'CHI_wif_nwa_ADJ': 'Northwestern',
     }
     write('localisation/english/wif_jap_china_peace_l_english.yml',
           'l_english:\n' + ''.join(f' {k}:0 "{v}"\n' for k, v in L.items()), bom=True, crlf=False)
