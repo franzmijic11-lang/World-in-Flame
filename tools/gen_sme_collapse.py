@@ -91,15 +91,32 @@ ZWF = dict(tag='ZWF', name='West Russian Army Front', adj='Army Front', file='We
 
 # Points for taking a city (state id: points). Losing one the SME took costs
 # double. Pre-war SME states are scored separately (-40, Gorky -55).
+# 2026-11-24 (user): EVERY Ostschild state with a city scores now, not only the
+# 23 hand-picked ones. So that the SME still has to push just as deep, the pool
+# stays at about the old 250 points: the hand-picked cities keep their order
+# (x0.632: Moscow 13, the 15s 9, the 10s 6, the 5s 3) and every other city is
+# worth 1 (up to 3 VP), 2 (up to 10 VP) or 3 (more). Total 243; the win stays
+# at +170, about 70% of the pool. Odessa, Vinnytsia and Balta-Tiraspol are German
+# after the surrender, not Ostschild, so they do not score.
 CITIES = {
-    255: 5, 239: 5, 260: 5, 254: 5, 264: 5,          # Penza Saratov Voronezh Ryazan Tikhvin
-    217: 10, 195: 10, 247: 10, 248: 10, 223: 10,     # Stalingrad Leningrad Kalinin Yaroslavl Tula
-    219: 20,                                         # Moscow
-    236: 5, 821: 5,                                  # Astrakhan Grozny
-    229: 15, 231: 15,                                # Baku Tiflis
-    234: 10,                                         # Krasnodar
-    227: 15, 221: 15, 202: 15, 206: 15, 808: 15, 812: 15,  # Stalino Kharkov Kiev Minsk Riga Tallinn
-    242: 15,                                         # Smolensk
+    219: 13,  # Moscow
+    202: 9, 206: 9, 221: 9, 227: 9, 229: 9, 231: 9,  # Kiev, Minsk, Kharkov, Stalino, Azerbaijan, Georgia
+    242: 9, 808: 9, 812: 9,  # Smolensk, Rīga, Harju
+    195: 6, 217: 6, 223: 6, 234: 6, 247: 6, 248: 6,  # Leningrad, Stalingrad, Tula, Krasnodar, Kalinin, Yaroslavl
+    137: 3, 218: 3, 226: 3, 236: 3, 239: 3, 254: 3,  # Crimea, Rostov, Dnipropetrovsk, Astrakhan, Saratov, Ryazan
+    255: 3, 260: 3, 264: 3, 821: 3,  # Penza, Voronezh, Tikhvin, Chechnya-Ingushetia
+    11: 2, 93: 2, 95: 2, 189: 2, 190: 2, 191: 2,  # Kaunas, Wołyn, Nowogródek, Žemaitija, Kurzeme, Tartu
+    203: 2, 207: 2, 214: 2, 220: 2, 222: 2, 224: 2,  # Cherkasy, Vitebsk, Arkhangelsk, Kursk, Orel, Bryansk
+    225: 2, 230: 2, 232: 2, 241: 2, 252: 2, 263: 2,  # Sumy, Armenia, Dagestan, Gomel, Gorky, Novgorod
+    809: 2, 810: 2,  # Zemgale, Latgale
+    12: 1, 13: 1, 94: 1, 96: 1, 193: 1, 194: 1,  # Vidzeme, Pärnu, Polesie, Wilejka, Chernigov, Mozyr
+    196: 1, 197: 1, 199: 1, 200: 1, 201: 1, 204: 1,  # Kherson, Mykolaiv, Proskuriv, Zaporozhe, Zhytomyr, Bobruysk
+    205: 1, 208: 1, 209: 1, 210: 1, 228: 1, 233: 1,  # Kaluga, Luga, Pskov, Nevel, Voroshilovgrad, Sochi
+    235: 1, 237: 1, 238: 1, 240: 1, 243: 1, 244: 1,  # Stavropol, Kalmykia, Volgodonsk, Belgorod, Roslavl, Volkhov
+    245: 1, 246: 1, 250: 1, 253: 1, 257: 1, 258: 1,  # Millerovo, Rzhev, Ulyanovsky, Ivanovo, Tambov, Lipetsk
+    259: 1, 265: 1, 351: 1, 784: 1, 811: 1, 813: 1,  # Poltava, Mikhaylovka, Vologda, Vilna, Saaremaa, Virumaa
+    814: 1, 815: 1, 826: 1, 827: 1, 828: 1, 879: 1,  # Sūduva, Aukštaitija, Abkhazia, Kabardino-Balkaria, North Ossetia, Kargopol
+    880: 1,  # Kotlas
 }
 
 SPRITES_PORTRAIT = ['kasparov', 'raziv', 'pavlov', 'voznesensky', 'dobrovolsky', 'yeltsin',

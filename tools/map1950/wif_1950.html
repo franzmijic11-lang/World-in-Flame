@@ -1,0 +1,435 @@
+<title>Welt in Flammen 1950</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600;700&family=Source+Sans+3:wght@400;600;700&family=Source+Code+Pro:wght@400;500&display=swap">
+<style>
+/* Layout: a captured staff atlas - the world map fills the sheet, a ledger of the selected
+   power and the gilded post-war states sits beside it. */
+:root {
+  --bg: #e9e6dc;          /* atlas table */
+  --sheet: #f6f4ec;       /* panels */
+  --ink: #23221d;
+  --muted: #67645a;
+  --rule: #cfcabb;
+  --sea: #b9c6c6;
+  --land-edge: rgba(35, 34, 29, .55);
+  --gold: #c9971c;
+  --gold-halo: rgba(60, 40, 0, .55);
+  --sel: #b8321f;
+  --halo: rgba(246, 244, 236, .92);
+  --f-display: "Cormorant SC", "Times New Roman", serif;
+  --f-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Source Code Pro", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171a; --sheet: #1d2024; --ink: #e8e4d8; --muted: #a29d8f; --rule: #33373d;
+    --sea: #1f3138; --land-edge: rgba(10, 10, 10, .7); --gold: #e8b53a; --gold-halo: rgba(0, 0, 0, .75);
+    --sel: #ff7a5e; --halo: rgba(20, 22, 25, .9); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171a; --sheet: #1d2024; --ink: #e8e4d8; --muted: #a29d8f; --rule: #33373d;
+  --sea: #1f3138; --land-edge: rgba(10, 10, 10, .7); --gold: #e8b53a; --gold-halo: rgba(0, 0, 0, .75);
+  --sel: #ff7a5e; --halo: rgba(20, 22, 25, .9); color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px; display: flex; flex-direction: column; gap: 10px;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--sel); outline-offset: 2px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+h1 { font-family: var(--f-display); font-size: 28px; letter-spacing: .03em; margin: 0; line-height: 1.1; text-wrap: balance; }
+.sub { color: var(--muted); font-size: 14px; }
+.work { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 12px; }
+.mapwrap { position: relative; min-width: 0; min-height: 360px; background: var(--sea); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+svg#map { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; user-select: none; }
+svg#map.panning { cursor: grabbing; }
+.st { stroke: var(--land-edge); stroke-opacity: .35; stroke-width: .5; vector-effect: non-scaling-stroke; cursor: pointer; }
+.st:hover { filter: brightness(1.12); }
+.nat { fill: none; stroke: var(--land-edge); stroke-width: 1.1; vector-effect: non-scaling-stroke; pointer-events: none; }
+.gold-under { fill: none; stroke: var(--gold-halo); stroke-width: 4.2; vector-effect: non-scaling-stroke; pointer-events: none; stroke-linejoin: round; }
+.gold { fill: none; stroke: var(--gold); stroke-width: 2.4; vector-effect: non-scaling-stroke; pointer-events: none; stroke-linejoin: round; }
+.selline { fill: none; stroke: var(--sel); stroke-width: 2; stroke-dasharray: 5 3; vector-effect: non-scaling-stroke; pointer-events: none; }
+.lbl { font-family: var(--f-display); font-weight: 700; text-anchor: middle; fill: var(--ink); paint-order: stroke; stroke: var(--halo); stroke-width: 2.2px; stroke-linejoin: round; pointer-events: none; letter-spacing: .04em; }
+svg#map.nolabels .lbl { display: none; }
+.mapbar { position: absolute; left: 10px; top: 10px; display: flex; flex-wrap: wrap; gap: 6px; max-width: calc(100% - 20px); }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: var(--sheet); }
+.seg button { border: 0; background: var(--sheet); padding: 4px 10px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--rule); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); font-weight: 600; }
+.zoom { position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: var(--sheet); }
+.zoom button { border: 0; background: var(--sheet); width: 32px; height: 30px; cursor: pointer; font-size: 17px; }
+.zoom button + button { border-top: 1px solid var(--rule); }
+.tip { position: absolute; pointer-events: none; background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 6px 9px; font-size: 13px; max-width: 260px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+.tip b { display: block; }
+.tip span { color: var(--muted); display: block; }
+aside { min-width: 0; display: flex; flex-direction: column; gap: 12px; overflow: auto; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 9px; }
+.panel h2 { font-family: var(--f-display); font-size: 19px; margin: 0; line-height: 1.15; display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.panel h2 small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-weight: 400; }
+.hint { color: var(--muted); font-size: 13px; margin: 0; }
+.swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; border: 1px solid var(--land-edge); flex: none; }
+dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 12px; margin: 0; font-size: 14px; }
+dt { color: var(--muted); }
+dd { margin: 0; font-variant-numeric: tabular-nums; min-width: 0; }
+.treebadge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink); }
+.treebadge::before { content: ""; width: 18px; height: 0; border-top: 3px solid var(--gold); box-shadow: 0 0 0 1px var(--gold-halo); }
+.row { display: flex; flex-wrap: wrap; gap: 6px; }
+.btn { border: 1px solid var(--rule); background: var(--sheet); border-radius: 4px; padding: 5px 11px; cursor: pointer; }
+.btn:hover:not(:disabled) { border-color: var(--muted); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: #1a1406; font-weight: 700; }
+.list { display: flex; flex-direction: column; gap: 2px; max-height: 340px; overflow: auto; }
+.item { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 3px; border: 0; background: none; text-align: left; cursor: pointer; width: 100%; }
+.item:hover { background: var(--bg); }
+.item.on { background: var(--bg); box-shadow: inset 3px 0 0 var(--sel); }
+.item .t { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.item .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--rule); border-radius: 12px; padding: 1px 8px 1px 5px; font-size: 13px; background: var(--bg); cursor: pointer; }
+.why { font-size: 13px; color: var(--muted); max-height: 140px; overflow: auto; margin: 0; padding-left: 16px; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); font-family: var(--f-display); font-size: 20px; }
+@media (max-width: 860px) {
+  body { height: auto; }
+  .work { grid-template-columns: minmax(0, 1fr); }
+  .mapwrap { height: 62vh; }
+}
+</style>
+
+<header>
+  <h1>Welt in Flammen · 1950</h1>
+  <span class="sub">One possible world after a German and Japanese victory, drawn state by state from the mod's own peace deals</span>
+</header>
+
+<main class="work">
+  <section class="mapwrap" aria-label="World map, 1950">
+    <svg id="map" role="img" aria-label="World map in 1950"></svg>
+    <div class="loading" id="loading">Drawing the world…</div>
+    <div class="mapbar">
+      <div class="seg" role="group" aria-label="Which borders">
+        <button id="v50" type="button" aria-pressed="true">1950</button>
+        <button id="v36" type="button" aria-pressed="false">1936</button>
+      </div>
+      <div class="seg"><button id="tLabels" type="button" aria-pressed="true">Names</button><button id="tMulti" type="button" aria-pressed="false" title="Click several countries to select them together">Multi-select</button></div>
+    </div>
+    <div class="zoom">
+      <button id="zIn" type="button" aria-label="Zoom in">+</button>
+      <button id="zOut" type="button" aria-label="Zoom out">−</button>
+      <button id="zEur" type="button" aria-label="Europe and Asia" title="Eurasia">⤢</button>
+      <button id="zWorld" type="button" aria-label="Whole world" title="Whole world">◎</button>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+  </section>
+
+  <aside>
+    <section class="panel" id="selPanel">
+      <h2>Selection <small id="selCount"></small></h2>
+      <div id="selBody"><p class="hint">Click a country on the map. Turn on Multi-select (or hold Shift) to pick several.</p></div>
+      <div class="row">
+        <button class="btn primary" id="hlBtn" type="button" disabled>Highlight selected</button>
+        <button class="btn" id="clearSel" type="button" disabled>Clear selection</button>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>Gold borders <small id="goldCount"></small></h2>
+      <p class="hint">Gold marks a country with a Welt in Flammen post-war focus tree. Highlight or unhighlight any country from the selection above.</p>
+      <div class="list" id="goldList"></div>
+      <div class="row">
+        <button class="btn" id="resetGold" type="button">Only focus-tree countries</button>
+        <button class="btn" id="clearGold" type="button">Remove all gold</button>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>How this map was made</h2>
+      <p class="hint">Start from the 1936 map, then apply in order: the Anglo-German peace map, the Reichskommissariate, the Soviet surrender and the Central Asian breakup, Popov's, Stalin's and Yagoda's Siberia, Japan's dictated peace in China and America out of Asia. Choices where the mod branches: Italy fought, Germany stayed fascist, the Reichskommissariate exist, and neither the German nor the SME collapse has happened yet. Hover a state to see why it changed hands.</p>
+    </section>
+  </aside>
+</main>
+
+<script>
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('map');
+  const tip = document.getElementById('tip');
+  const KEY = 'wif1950-gold';
+  let W = 2816, H = 1024, STATES = [], C = {}, view = { x: 0, y: 0, w: 2816, h: 1024 };
+  let mode = 'o'; // 'o' = 1950, 'o36' = 1936
+  const sel = new Set();
+  let gold = new Set();
+  let multi = false;
+  const layer = {};
+
+  function el(name, attrs, parent) {
+    const e = document.createElementNS(NS, name);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function treeSet() { return new Set(Object.keys(C).filter(t => C[t].tree)); }
+  function loadGold() {
+    try { const v = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(v)) return new Set(v); } catch (e) {}
+    return treeSet();
+  }
+  function saveGold() { try { localStorage.setItem(KEY, JSON.stringify([...gold])); } catch (e) {} }
+  function nameOf(t) { return (C[t] && C[t].name) || t; }
+  function colorOf(t) { return (C[t] && C[t].color) || '#9a9a9a'; }
+
+  // ---- edges: every state outline cut into unit grid edges, so country borders can be
+  // ---- drawn as the edges whose two sides belong to different owners.
+  const edges = new Map(); // key -> [stateIndexA, stateIndexB]
+  let STRIDE = (2816 + 1) * 2;
+  function addEdges(path, idx) {
+    const tok = path.match(/[MmHhVvZz]|-?\d+(?:\.\d+)?/g);
+    let x = 0, y = 0, i = 0, cmd = '';
+    while (i < tok.length) {
+      const t = tok[i];
+      if (/[A-Za-z]/.test(t)) { cmd = t; i++; if (cmd === 'z' || cmd === 'Z') continue; }
+      if (cmd === 'M') { x = +tok[i]; y = +tok[i + 1]; i += 2; cmd = 'L'; continue; }
+      if (cmd === 'm') { x += +tok[i]; y += +tok[i + 1]; i += 2; continue; }
+      const d = +tok[i]; i++;
+      if (cmd === 'h') {
+        const a = Math.min(x, x + d), b = Math.max(x, x + d);
+        for (let k = a; k < b; k++) push(k * 2 + y * STRIDE, idx);
+        x += d;
+      } else if (cmd === 'v') {
+        const a = Math.min(y, y + d), b = Math.max(y, y + d);
+        for (let k = a; k < b; k++) push(x * 2 + 1 + k * STRIDE, idx);
+        y += d;
+      }
+    }
+  }
+  function push(k, idx) {
+    const e = edges.get(k);
+    if (!e) edges.set(k, [idx, -1]);
+    else if (e[0] !== idx && e[1] === -1) e[1] = idx;
+  }
+  // Build a merged outline path for the edges a predicate accepts.
+  function outline(pred) {
+    const hs = new Map(), vs = new Map();
+    for (const [k, e] of edges) {
+      const oa = STATES[e[0]][mode], ob = e[1] >= 0 ? STATES[e[1]][mode] : null;
+      if (!pred(oa, ob)) continue;
+      const row = Math.floor(k / STRIDE), r = k - row * STRIDE, col = r >> 1;
+      if ((r & 1) === 0) { (hs.get(row) || hs.set(row, []).get(row)).push(col); }
+      else { (vs.get(col) || vs.set(col, []).get(col)).push(row); }
+    }
+    let d = '';
+    for (const [y, xs] of hs) {
+      xs.sort((a, b) => a - b);
+      let s = xs[0], p = xs[0];
+      for (let i = 1; i <= xs.length; i++) {
+        if (i < xs.length && xs[i] === p + 1) { p = xs[i]; continue; }
+        d += `M${s} ${y}h${p + 1 - s}`;
+        if (i < xs.length) { s = p = xs[i]; }
+      }
+    }
+    for (const [x, ys] of vs) {
+      ys.sort((a, b) => a - b);
+      let s = ys[0], p = ys[0];
+      for (let i = 1; i <= ys.length; i++) {
+        if (i < ys.length && ys[i] === p + 1) { p = ys[i]; continue; }
+        d += `M${x} ${s}v${p + 1 - s}`;
+        if (i < ys.length) { s = p = ys[i]; }
+      }
+    }
+    return d;
+  }
+
+  // ---- drawing
+  function build() {
+    svg.innerHTML = '';
+    layer.states = el('g', {}, svg);
+    STATES.forEach((s, i) => {
+      s.el = el('path', { d: s.p, class: 'st', 'data-i': i }, layer.states);
+    });
+    layer.nat = el('path', { class: 'nat' }, svg);
+    layer.goldU = el('path', { class: 'gold-under' }, svg);
+    layer.gold = el('path', { class: 'gold' }, svg);
+    layer.sel = el('path', { class: 'selline' }, svg);
+    layer.labels = el('g', {}, svg);
+    paint();
+  }
+  function paint() {
+    STATES.forEach(s => s.el.setAttribute('fill', colorOf(s[mode])));
+    layer.nat.setAttribute('d', outline((a, b) => a !== b));
+    drawGold();
+    drawSel();
+    drawLabels();
+  }
+  function drawGold() {
+    const d = gold.size ? outline((a, b) => a !== b && (gold.has(a) || gold.has(b))) : '';
+    layer.goldU.setAttribute('d', d);
+    layer.gold.setAttribute('d', d);
+    renderGoldList();
+  }
+  function drawSel() {
+    layer.sel.setAttribute('d', sel.size ? outline((a, b) => a !== b && (sel.has(a) || sel.has(b))) : '');
+    renderSel();
+  }
+  function drawLabels() {
+    layer.labels.innerHTML = '';
+    const by = {};
+    STATES.forEach(s => { (by[s[mode]] = by[s[mode]] || []).push(s); });
+    for (const t in by) {
+      const list = by[t];
+      const big = list.reduce((a, b) => (b.c > a.c ? b : a));
+      let sx = 0, sy = 0, sw = 0;
+      for (const s of list) {
+        if (Math.hypot(s.lp[0] - big.lp[0], s.lp[1] - big.lp[1]) > 140) continue;
+        sx += s.lp[0] * s.c; sy += s.lp[1] * s.c; sw += s.c;
+      }
+      if (sw < 150) continue;
+      const fs = Math.max(5, Math.min(24, Math.sqrt(sw) / 7));
+      const txt = el('text', { x: (sx / sw).toFixed(1), y: (sy / sw).toFixed(1), class: 'lbl', 'font-size': fs.toFixed(1) }, layer.labels);
+      txt.textContent = shortName(t);
+    }
+  }
+  function shortName(t) {
+    const n = nameOf(t);
+    return n.replace(/^Reichskommissariat /, 'RK ').replace(/ \(.*\)$/, '');
+  }
+
+  // ---- panels
+  function renderSel() {
+    const body = document.getElementById('selBody');
+    document.getElementById('selCount').textContent = sel.size ? `${sel.size} selected` : '';
+    document.getElementById('clearSel').disabled = !sel.size;
+    const hl = document.getElementById('hlBtn');
+    hl.disabled = !sel.size;
+    const allGold = sel.size && [...sel].every(t => gold.has(t));
+    hl.textContent = allGold ? 'Unhighlight selected' : 'Highlight selected';
+    if (!sel.size) { body.innerHTML = '<p class="hint">Click a country on the map. Turn on Multi-select (or hold Shift) to pick several.</p>'; return; }
+    if (sel.size > 1) {
+      body.innerHTML = '<div class="chips">' + [...sel].map(t => `<span class="chip" data-t="${t}"><i class="swatch" style="background:${colorOf(t)}"></i>${esc(shortName(t))}</span>`).join('') + '</div>';
+      body.querySelectorAll('.chip').forEach(c => c.onclick = () => { sel.delete(c.dataset.t); drawSel(); });
+      return;
+    }
+    const t = [...sel][0], c = C[t] || {};
+    const owned = STATES.filter(s => s[mode] === t);
+    const whys = {};
+    owned.forEach(s => { if (s.o !== s.o36 && mode === 'o') whys[s.why] = (whys[s.why] || 0) + 1; });
+    body.innerHTML = `
+      <h2 style="justify-content:flex-start"><i class="swatch" style="background:${colorOf(t)}"></i>${esc(c.name || t)}</h2>
+      <dl>
+        <dt>Tag</dt><dd>${t}</dd>
+        <dt>States</dt><dd>${owned.length}</dd>
+        ${c.overlord ? `<dt>Subject of</dt><dd>${esc(nameOf(c.overlord))}</dd>` : ''}
+        <dt>Border</dt><dd>${gold.has(t) ? 'Gold' : 'Plain'}</dd>
+      </dl>
+      ${c.tree ? `<span class="treebadge">Post-war tree: ${esc(c.tree)}</span>` : ''}
+      ${Object.keys(whys).length ? `<ul class="why">${Object.entries(whys).map(([w, n]) => `<li>${esc(w)} (${n})</li>`).join('')}</ul>` : ''}`;
+  }
+  function renderGoldList() {
+    const list = document.getElementById('goldList');
+    const tags = [...gold].filter(t => C[t]).sort((a, b) => nameOf(a).localeCompare(nameOf(b)));
+    document.getElementById('goldCount').textContent = `${tags.length}`;
+    list.innerHTML = tags.map(t => `<button class="item${sel.has(t) ? ' on' : ''}" type="button" data-t="${t}"><i class="swatch" style="background:${colorOf(t)}"></i><span class="nm">${esc(nameOf(t))}</span><span class="t">${t}</span></button>`).join('')
+      || '<p class="hint">No gold borders. Select countries and press Highlight.</p>';
+    list.querySelectorAll('.item').forEach(b => b.onclick = () => { pick(b.dataset.t, multi); zoomTo(b.dataset.t); });
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+  function pick(t, add) {
+    if (add) { sel.has(t) ? sel.delete(t) : sel.add(t); }
+    else { if (sel.size === 1 && sel.has(t)) sel.clear(); else { sel.clear(); sel.add(t); } }
+    drawSel(); renderGoldList();
+  }
+  function zoomTo(t) {
+    const list = STATES.filter(s => s[mode] === t);
+    if (!list.length) return;
+    const big = list.reduce((a, b) => (b.c > a.c ? b : a));
+    const near = list.filter(s => Math.hypot(s.lp[0] - big.lp[0], s.lp[1] - big.lp[1]) < 260);
+    const xs = near.map(s => s.lp[0]), ys = near.map(s => s.lp[1]);
+    const x0 = Math.min(...xs) - 60, x1 = Math.max(...xs) + 60, y0 = Math.min(...ys) - 40, y1 = Math.max(...ys) + 40;
+    fit(x0, y0, x1 - x0, y1 - y0);
+  }
+
+  // ---- view
+  function setView() { svg.setAttribute('viewBox', `${view.x} ${view.y} ${view.w} ${view.h}`); }
+  function fit(x, y, w, h) {
+    const r = svg.clientWidth / Math.max(1, svg.clientHeight);
+    if (w / h > r) { const nh = w / r; y -= (nh - h) / 2; h = nh; } else { const nw = h * r; x -= (nw - w) / 2; w = nw; }
+    view = { x, y, w, h }; setView();
+  }
+  function zoom(f, cx, cy) {
+    const nw = Math.min(W * 1.4, Math.max(40, view.w * f)), k = nw / view.w;
+    if (cx === undefined) { cx = view.x + view.w / 2; cy = view.y + view.h / 2; }
+    view = { x: cx - (cx - view.x) * k, y: cy - (cy - view.y) * k, w: nw, h: view.h * k }; setView();
+  }
+  function toMap(ev) {
+    const r = svg.getBoundingClientRect();
+    return [view.x + (ev.clientX - r.left) / r.width * view.w, view.y + (ev.clientY - r.top) / r.height * view.h];
+  }
+  svg.addEventListener('wheel', ev => { ev.preventDefault(); const [x, y] = toMap(ev); zoom(ev.deltaY > 0 ? 1.18 : 1 / 1.18, x, y); }, { passive: false });
+  let drag = null;
+  svg.addEventListener('pointerdown', ev => { drag = { x: ev.clientX, y: ev.clientY, v: { ...view }, moved: false }; svg.setPointerCapture(ev.pointerId); });
+  svg.addEventListener('pointermove', ev => {
+    if (drag) {
+      const dx = ev.clientX - drag.x, dy = ev.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 4) { drag.moved = true; svg.classList.add('panning'); }
+      if (drag.moved) {
+        const r = svg.getBoundingClientRect();
+        view.x = drag.v.x - dx / r.width * view.w; view.y = drag.v.y - dy / r.height * view.h; setView();
+      }
+      tip.hidden = true;
+      return;
+    }
+    const i = ev.target.getAttribute && ev.target.getAttribute('data-i');
+    if (i === null || i === undefined) { tip.hidden = true; return; }
+    const s = STATES[+i], wrap = svg.parentNode.getBoundingClientRect();
+    tip.innerHTML = `<b>${esc(s.n)}</b><span>${esc(nameOf(s[mode]))}</span>` +
+      (mode === 'o' && s.o !== s.o36 ? `<span>1936: ${esc(nameOf(s.o36))}</span><span>${esc(s.why)}</span>` : '');
+    tip.hidden = false;
+    const x = ev.clientX - wrap.left + 14, y = ev.clientY - wrap.top + 14;
+    tip.style.left = Math.min(x, wrap.width - tip.offsetWidth - 8) + 'px';
+    tip.style.top = Math.min(y, wrap.height - tip.offsetHeight - 8) + 'px';
+  });
+  svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+  svg.addEventListener('pointerup', ev => {
+    const wasDrag = drag && drag.moved; drag = null; svg.classList.remove('panning');
+    if (wasDrag) return;
+    const hit = document.elementFromPoint(ev.clientX, ev.clientY);
+    const i = hit && hit.getAttribute && hit.getAttribute('data-i');
+    if (i === null || i === undefined) return;
+    pick(STATES[+i][mode], multi || ev.shiftKey || ev.ctrlKey || ev.metaKey);
+  });
+
+  // ---- controls
+  function press(id, on) { document.getElementById(id).setAttribute('aria-pressed', on ? 'true' : 'false'); }
+  document.getElementById('v50').onclick = () => { mode = 'o'; press('v50', 1); press('v36', 0); sel.clear(); paint(); };
+  document.getElementById('v36').onclick = () => { mode = 'o36'; press('v50', 0); press('v36', 1); sel.clear(); paint(); };
+  document.getElementById('tLabels').onclick = () => { const on = svg.classList.toggle('nolabels'); press('tLabels', !on); };
+  document.getElementById('tMulti').onclick = () => { multi = !multi; press('tMulti', multi); };
+  document.getElementById('zIn').onclick = () => zoom(1 / 1.4);
+  document.getElementById('zOut').onclick = () => zoom(1.4);
+  document.getElementById('zEur').onclick = () => fit(1300, 120, 1300, 560);
+  document.getElementById('zWorld').onclick = () => fit(0, 0, W, H);
+  document.getElementById('hlBtn').onclick = () => {
+    const allGold = [...sel].every(t => gold.has(t));
+    sel.forEach(t => allGold ? gold.delete(t) : gold.add(t));
+    saveGold(); drawGold(); renderSel();
+  };
+  document.getElementById('clearSel').onclick = () => { sel.clear(); drawSel(); renderGoldList(); };
+  document.getElementById('resetGold').onclick = () => { gold = treeSet(); saveGold(); drawGold(); renderSel(); };
+  document.getElementById('clearGold').onclick = () => { gold = new Set(); saveGold(); drawGold(); renderSel(); };
+  window.addEventListener('resize', () => setView());
+
+  // ---- load
+  Promise.all([fetch('world.json').then(r => r.json()), fetch('states.json').then(r => r.json())]).then(([world, states]) => {
+    W = world.w; H = world.h; STRIDE = (W + 1) * 2; C = world.countries; STATES = states;
+    STATES.forEach((s, i) => addEdges(s.p, i));
+    gold = loadGold();
+    build();
+    fit(1300, 120, 1300, 560);
+    document.getElementById('loading').hidden = true;
+  }).catch(err => {
+    document.getElementById('loading').textContent = 'The map data did not load: ' + err.message;
+  });
+})();
+</script>

@@ -140,7 +140,8 @@ wif_nsr_revolt = {
 #
 # Guarded on SME still existing - it forms out of the Soviet collapse and may
 # well have been finished off before Moskowien ever comes apart. If it is gone,
-# the three states simply stay where they are.
+# the four states simply stay where they are. Vologda (351) added 2026-11-24
+# at the user's request: the SME's march takes Vologda too.
 #
 # No war declaration. SME reaches Moskowien through a white peace with Germany,
 # and this is a land grab against an administration that has stopped being able
@@ -153,11 +154,13 @@ wif_sme_eastern_annexation = {
 		252 = { transfer_state_to = SME }
 		879 = { transfer_state_to = SME }
 		880 = { transfer_state_to = SME }
+		351 = { transfer_state_to = SME }
 
 		SME = {
 			add_state_core = 252
 			add_state_core = 879
 			add_state_core = 880
+			add_state_core = 351
 		}
 	}
 }
