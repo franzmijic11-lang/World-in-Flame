@@ -115,6 +115,17 @@ SP_PUSH = {
                             'sp_rockets_long_range_ballistic_missile'],
 }
 
+# WiF SAMs (tools/gen_wif_sam.py): the Wasserfall project unlocks the WiF
+# heat-seeking SAM instead of the retired vanilla one. (old, new, expected count)
+SAM_PROJECT_SWAP = [
+    ('\t\t\tsam_missile_equipment_1\n', '\t\t\twif_hs_sam_equipment_1 # WiF: was sam_missile_equipment_1\n', 1),
+    ('\t\t\t\t\t\t\t\tsam_missile_equipment = {', '\t\t\t\t\t\t\t\twif_hs_sam_equipment = { # WiF: was sam_missile_equipment', 1),
+    # SAMs are SAM Battery ammunition now, not rocket-site units: the project grants the battery.
+    ('\t\t\tcustom_effect_tooltip = {\n\t\t\t\tlocalization_key = SP_ROCKET_SITE_REMINDER_PROJECT\n'
+     '\t\t\t\tPROJECT = sp_rockets_ground_to_air_missile\n\t\t\t}\n',
+     '\t\t\tset_technology = { wif_sam_battery_tech = 1 popup = no } # WiF: was the rocket-site reminder\n', 1),
+]
+
 IMMUNE_IDEAS = ['wif_cw_no_diplomatic_standing', 'wif_splinter_no_factions']
 
 
@@ -4492,9 +4503,17 @@ def gen_special_projects():
             else:
                 block = block.rstrip('\n') + '\n\n\tai_will_do = {\n\t\tbase = 1\n' + push + '\t}\n'
             text = text[:m.start()] + block + text[end:]
+        extra = ''
+        if fname == 'rocket_projects.txt':
+            for old, new, count in SAM_PROJECT_SWAP:
+                assert text.count(old) == count, (old, text.count(old))
+                text = text.replace(old, new)
+            extra = ('# It also makes sp_rockets_ground_to_air_missile unlock the WiF heat-seeking SAM\n'
+                     '# (SAM_PROJECT_SWAP, see tools/gen_wif_sam.py).\n')
         header = (f'# WiF COPY of vanilla common/special_projects/projects/{fname} - written by\n'
                   '# tools/gen_global_power.py, which adds a Nuclear Ambition AI modifier to\n'
-                  f'# {", ".join(projects)}. Re-run the generator after a game update.\n\n')
+                  f'# {", ".join(projects)}. Re-run the generator after a game update.\n'
+                  + extra + '\n')
         path = os.path.join(MOD, 'common', 'special_projects', 'projects', fname)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, 'w', encoding='utf-8', newline='') as f:

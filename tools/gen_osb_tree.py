@@ -733,8 +733,32 @@ def gen_raids():
         return re.sub(r'(ai_will_do = \{\n\t\t\tbase = [\d.]+\n)',
                       r'\1\t\t\tmodifier = {\n\t\t\t\tfactor = 5 # WiF: the Ordensstaat\'s First Strike Doctrine\n\t\t\t\thas_country_flag = wif_osb_first_strike\n\t\t\t}\n', b, count=1)
 
+    def sam_intercept(b):
+        """Nuclear MISSILE strikes can be shot down by a SAM Battery in the target state
+        (wif_sam_intercept_nuke, tools/gen_wif_sam.py): wrap each victim_effects in the roll."""
+        out_b, pos, n = '', 0, 0
+        for m in re.finditer(r'\n(\t+)victim_effects = \{', b):
+            d, k = 1, m.end()
+            while d:
+                d += {'{': 1, '}': -1}.get(b[k], 0)
+                k += 1
+            ind = m.group(1)
+            body = b[m.end():k - 1]
+            out_b += b[pos:m.end()] + (
+                f'\n{ind}\tvar:target_state = {{ wif_sam_intercept_nuke = yes }} # WiF: SAM Battery\n'
+                f'{ind}\tif = {{\n{ind}\t\tlimit = {{ check_variable = {{ wif_t_intercepted = 1 }} }}\n'
+                f'{ind}\t\tvar:target_state = {{ controller = {{ country_event = {{ id = wif_sam.1 }} }} }}\n'
+                f'{ind}\t\tvar:actor_country = {{ country_event = {{ id = wif_sam.1 }} }}\n'
+                f'{ind}\t}}\n{ind}\telse = {{' + body + f'}}\n{ind}}}')
+            pos = k
+            n += 1
+        assert n == 2, n   # success + critical_success
+        return out_b + b[pos:]
+
     for name, b in blocks:
         assert re.search(r'\n\t\tvisible = \{', b), name
+        if 'missile' in name:
+            b = sam_intercept(b)
         # the vanilla type: hidden from a country with Cheap Fire
         v = re.sub(r'\n\t\tvisible = \{', '\n\t\tvisible = {\n\t\t\tNOT = { has_country_flag = wif_osb_cheap_fire } # WiF', b, count=1)
         out.append(add_ai(v))
@@ -753,7 +777,9 @@ def gen_raids():
             '# tools/gen_osb_tree.py - RE-RUN after a game update. Each vanilla nuclear raid\n'
             '# is hidden from a country with wif_osb_cheap_fire (the Ordensstaat\'s Cheap\n'
             '# Fire), which gets an _osb copy at a quarter of the command power instead.\n'
-            '# wif_osb_first_strike multiplies every nuclear raid\'s AI weight by 5.\n\n'
+            '# wif_osb_first_strike multiplies every nuclear raid\'s AI weight by 5.\n'
+            '# Nuclear MISSILE strikes roll against a SAM Battery in the target state first\n'
+            '# (wif_sam_intercept_nuke, tools/gen_wif_sam.py).\n\n'
             + src[:body_start] + '\n' + '\n\n'.join(out) + '\n' + src[end:])
     write('common/raids/nuclear_raids.txt', text, crlf=False)
     return loc

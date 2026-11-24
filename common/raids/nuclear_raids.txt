@@ -3,6 +3,8 @@
 # is hidden from a country with wif_osb_cheap_fire (the Ordensstaat's Cheap
 # Fire), which gets an _osb copy at a quarter of the command power instead.
 # wif_osb_first_strike multiplies every nuclear raid's AI weight by 5.
+# Nuclear MISSILE strikes roll against a SAM Battery in the target state first
+# (wif_sam_intercept_nuke, tools/gen_wif_sam.py).
 
 types = {
 	nuclear_strike = {
@@ -642,6 +644,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -658,6 +667,7 @@ types = {
 						}
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
@@ -665,6 +675,13 @@ types = {
 				}
 
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -679,6 +696,7 @@ types = {
 							use_nuke = no #will consume nuke if specified
 						}
 					}
+				}
 				}
 			}
 		}
@@ -820,6 +838,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -836,6 +861,7 @@ types = {
 						}
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
@@ -843,6 +869,13 @@ types = {
 				}
 
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -857,6 +890,7 @@ types = {
 							use_nuke = no #will consume nuke if specified
 						}
 					}
+				}
 				}
 			}
 		}
@@ -997,6 +1031,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -1014,6 +1055,7 @@ types = {
 						PHI_cobalt_sea_achievement = yes
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
@@ -1021,6 +1063,13 @@ types = {
 				}
 
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -1036,6 +1085,7 @@ types = {
 						}
 						PHI_cobalt_sea_achievement = yes
 					}
+				}
 				}
 			}
 		}
@@ -1177,6 +1227,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -1194,6 +1251,7 @@ types = {
 						PHI_cobalt_sea_achievement = yes
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
@@ -1201,6 +1259,13 @@ types = {
 				}
 
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_nuclear = yes
@@ -1216,6 +1281,7 @@ types = {
 						}
 						PHI_cobalt_sea_achievement = yes
 					}
+				}
 				}
 			}
 		}
@@ -1876,6 +1942,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -1894,12 +1967,20 @@ types = {
 						}
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -1915,6 +1996,7 @@ types = {
 							nuke_type = thermonuclear_bomb
 						}
 					}
+				}
 				}
 			}
 		}
@@ -2056,6 +2138,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2074,12 +2163,20 @@ types = {
 						}
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2095,6 +2192,7 @@ types = {
 							nuke_type = thermonuclear_bomb
 						}
 					}
+				}
 				}
 			}
 		}
@@ -2235,6 +2333,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2254,12 +2359,20 @@ types = {
 						PHI_cobalt_sea_achievement = yes
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2276,6 +2389,7 @@ types = {
 						}
 						PHI_cobalt_sea_achievement = yes
 					}
+				}
 				}
 			}
 		}
@@ -2417,6 +2531,13 @@ types = {
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2436,12 +2557,20 @@ types = {
 						PHI_cobalt_sea_achievement = yes
 					}
 				}
+				}
 			}
 			critical_success = {
 			    custom_sound = raid_result_critical_success_nuclear
 				actor_effects = {
 				}
 				victim_effects = {
+					var:target_state = { wif_sam_intercept_nuke = yes } # WiF: SAM Battery
+					if = {
+						limit = { check_variable = { wif_t_intercepted = 1 } }
+						var:target_state = { controller = { country_event = { id = wif_sam.1 } } }
+						var:actor_country = { country_event = { id = wif_sam.1 } }
+					}
+					else = {
 					var:actor_country = { save_global_event_target_as = nuclear_gandhi_actor_country }  
 					var:target_state = {
 						bathe_in_hellfire_thermonuclear = yes
@@ -2458,6 +2587,7 @@ types = {
 						}
 						PHI_cobalt_sea_achievement = yes
 					}
+				}
 				}
 			}
 		}

@@ -1,0 +1,4 @@
+﻿l_english:
+ wif_debug.24.t:0 "SAM Battery status"
+ wif_debug.24.d:0 "§YBelgium§!\nHS-SAM hit chance: §G[?global.wif_samt_hs|0]%§!   RD-SAM: §G[?global.wif_samt_rd|0]%§!\nEnemy planes deployed: [?global.wif_samt_planes|0] (CAS: [?global.wif_samt_cas|0])\nMissiles in stock: HS [?global.wif_samt_hs_stock|0], RD [?global.wif_samt_rd_stock|0]   Fired so far: §R[?global.wif_samt_fired|0]§!\nCountry AA hit chance bonus: [?global.wif_samt_cf|2]\n\n§YState 6§!\nBattery level: [?global.wif_samt_lvl|0]   Missiles used last week: [?global.wif_samt_used|0]\nDays since last bombing: [?global.wif_samt_bombed|0]\nHit chance this week: §G[?global.wif_samt_hit|1]%§!\nFire control factor set: [?global.wif_samt_factor|2]   Read back from the state: [?global.wif_samt_state_mod|2]"
+ wif_debug.24.a:0 "Noted"

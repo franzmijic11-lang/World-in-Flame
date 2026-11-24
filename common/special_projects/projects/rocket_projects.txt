@@ -1,6 +1,8 @@
 # WiF COPY of vanilla common/special_projects/projects/rocket_projects.txt - written by
 # tools/gen_global_power.py, which adds a Nuclear Ambition AI modifier to
 # sp_rockets_ballistic_missile, sp_rockets_medium_range_ballistic_missile, sp_rockets_long_range_ballistic_missile. Re-run the generator after a game update.
+# It also makes sp_rockets_ground_to_air_missile unlock the WiF heat-seeking SAM
+# (SAM_PROJECT_SWAP, see tools/gen_wif_sam.py).
 
 
 
@@ -938,15 +940,12 @@ sp_rockets_ground_to_air_missile = {
 
 	project_output = {
 		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_ROCKET_SITE_REMINDER_PROJECT
-				PROJECT = sp_rockets_ground_to_air_missile
-			}
+			set_technology = { wif_sam_battery_tech = 1 popup = no } # WiF: was the rocket-site reminder
 
 		}
 
 		enable_equipments = {
-			sam_missile_equipment_1
+			wif_hs_sam_equipment_1 # WiF: was sam_missile_equipment_1
 		}
 		
 	}
@@ -1077,7 +1076,7 @@ sp_rockets_ground_to_air_missile = {
 						add_equipment_bonus = {
 							name = sp_surface_air_missile_warhead_detonation_bonus
 							bonus = {
-								sam_missile_equipment = {
+								wif_hs_sam_equipment = { # WiF: was sam_missile_equipment
 									air_attack = 0.1
 								}
 							}
