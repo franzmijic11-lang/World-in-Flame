@@ -1,0 +1,790 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The Soviet Union has surrendered. From Rowno, a provincial town in Volhynia chosen because it is not Kiev, Reichskommissar Erich Koch rules the richest farmland in Europe for one purpose: to feed the Reich. Koch's own words set the tone: if he finds a Ukrainian worthy of sitting at his table, he will have him shot.\n\nTHE TREE (draft): Reichskommissariat Ukraine (RKU), from its creation to the German civil war. About 4.7 years of short focuses (35-49 days), roughly 1945 to 1950, before the German civil war.\n\nTHE UKRAINIAN RESISTANCE - FROM DAY ONE (to build). Unlike Moskowien, RKU does not have to unlock its terror problem: the raids start the day the Reichskommissariat exists. It is Moskowien's mechanic (wif_rkm.20 and the on_daily_RKM countdown), copied for RKU with 'Russian' replaced by 'Ukrainian':\n- A Ukrainian Resistance raid hits a random RKU state on a countdown: buildings damaged, garrison and civilians killed, 2000-10000 manpower lost. The base delay is 120 days (between Moskowien's SS path, 60, and other paths, 180). Some focuses shorten or lengthen it, as on Moskowien.\n- After each raid a 45-day window opens the Chase the Terrorists decisions (Moskowien's wif_chase_terrorists category, copied): send the police on foot, the mechanised version, and so on, with the same six outcomes from Complete Success to Total Defeat (events wif_rkm.25-.30 copied as RKU events, Ukrainian partisans instead of Russian). These decisions are available FROM THE START, not after a focus.\n- The SME's Arm the Partisans decision gets an RKU twin, so the SME can arm Ukrainian partisans too.\n\nTHEY CANNOT PACIFY UKRAINE. As with Moskowien, most of the land never settles. Compliance in RKU states is capped low (proposed: no RKU state rises above 35% compliance except the cored ones). The Volhynian and Polesian forests (Wolyn, Chernigov, Zhytomyr outside Hegewald) are the UPA's and the Soviet partisans' home ground for good.\n\nCORING (to build):\n- KIEV (202), like Stabilise Moskau: a request to Berlin for resources and German settlers 'taken from the Reich', and a 'cleansing' of the city by murder and starvation: Kiev loses 50-65% of its population, then becomes a core.\n- THE FARMLANDS: the plains of Poltava (259), Cherkasy (203) and Kharkov (221), and the Dnieper states (Dnipropetrovsk 226, Zaporozhe 200, Kherson 196, Mykolaiv 197). (The request said 'Danube'; Ukraine's river here is the Dnieper - say if you meant something else.) Each is cored by 'dealing with the local populace' - deportation, labour drafts and starvation - and bringing in German farmers to take the farms. Each coring costs manpower and stability and raises the raid rate for a while.\n- HEGEWALD (Zhytomyr 201) and GOTENGAU (Crimea 137): Himmler's two real settlement projects, cored the same way.\n- Nothing else: Wolyn, Chernigov, Sumy, Stalino, Voroshilovgrad and Proskuriv are never cored.\n\nEXTRA GRAIN FOR THE REICH (decision, to build). Germany's focus Ukrainian Grain for German Tables already gives RKU grain requisitions. On top of that RKU can, as often as it likes:\n- Send Extra Grain to the Reich: Germany's Facade Economy consumer-goods growth (wif_ger_facade_monthly) slows by 0.25 points a month for 180 days - the shops in Germany stay full a little longer.\n- RKU pays: -10000 manpower (starvation), -5% stability, and the next Ukrainian Resistance raid comes 15 days sooner. Each use also adds a stacking 'Hunger' level (3 tiers) that raises the cost of the next one.\n\nTHE COLONIAL POLICE (the 'military' path): it never becomes an army. At most it spawns a handful of fully equipped, near-zero experience infantry divisions: 'Colonial Police' (3x1: three infantry battalions) and 'Colonial Police Regiment' (3x2: six infantry battalions).\n\nEffect: Erich Koch rules from Rowno. The Ukrainian Resistance raids start. Spirits: Koch's Kingdom (+15% political power, -20% stability), The Breadbasket of the Reich (+30% local resources, -15% recruitable population), Untermenschen (-20% compliance growth, no Ukrainian advisors).",
+      "fid": "wif_rku_root",
+      "id": "rku000",
+      "mx": [],
+      "name": "Koch's Kingdom",
+      "pre": [],
+      "x": 26,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Kiev is too Ukrainian to be a capital. The Reichskommissariat governs from a Volhynian market town.\n\nEffect: capital to Wolyn (93). +1 civilian factory there. +10% political power gain.",
+      "fid": "wif_rku_rowno",
+      "id": "rku001",
+      "mx": [],
+      "name": "The Capital at Rowno",
+      "pre": [
+        "rku000"
+      ],
+      "x": 4,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Ukrainians are not to be educated beyond the fourth grade, may not use parks or trams reserved for Germans, and are to be addressed as subjects, not citizens.\n\nEffect: +10% political power gain. -5% stability. Ukrainian Resistance raids 10 days sooner.",
+      "fid": "wif_rku_untermensch_decree",
+      "id": "rku002",
+      "mx": [],
+      "name": "The Untermensch Decree",
+      "pre": [
+        "rku001"
+      ],
+      "x": 2,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The nationalists who hoped for a Ukraine under German protection are arrested; their leaders go to Sachsenhausen.\n\nEffect: -10% stability. The OUN's hope dies - the UPA goes to the forests: Ukrainian Resistance raids 15 days sooner, for good.",
+      "fid": "wif_rku_no_ukrainian_state",
+      "id": "rku003",
+      "mx": [],
+      "name": "No Ukrainian State",
+      "pre": [
+        "rku001"
+      ],
+      "x": 6,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Every district gets a German Gebietskommissar, most of them party men nobody wanted at home.\n\nEffect: +10% political power gain. -5% stability.",
+      "fid": "wif_rku_reich_officials",
+      "id": "rku004",
+      "mx": [],
+      "name": "Officials from the Reich",
+      "pre": [
+        "rku002"
+      ],
+      "x": 2,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Secondary schools and universities are shut. Ukraine needs labourers, not graduates.\n\nEffect: -10% research speed, +5% recruitable population for labour.",
+      "fid": "wif_rku_close_the_schools",
+      "id": "rku005",
+      "mx": [],
+      "name": "Close the Schools",
+      "pre": [
+        "rku003"
+      ],
+      "x": 6,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "Koch reports directly to Hitler and Goring, over the heads of Rosenberg's ministry.\n\nEffect: Germany's opinion +25. +15% political power gain.",
+      "fid": "wif_rku_tribute_to_berlin",
+      "id": "rku006",
+      "mx": [],
+      "name": "Tribute to Berlin",
+      "pre": [
+        "rku004",
+        "rku005"
+      ],
+      "x": 4,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Every order from Berlin is carried out to the letter.\n\nEffect: autonomy towards Germany falls. Germany's support requests are always answered.",
+      "fid": "wif_rku_obedient_servant",
+      "id": "rku007",
+      "mx": [
+        "rku008"
+      ],
+      "name": "The Reich's Obedient Servant",
+      "pre": [
+        "rku006"
+      ],
+      "x": 2,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Koch runs Ukraine like an East Prussian estate - his estate.\n\nEffect: +20% political power gain, -10% stability. Germany's opinion -10.",
+      "fid": "wif_rku_koch_kingdom",
+      "id": "rku008",
+      "mx": [
+        "rku007"
+      ],
+      "name": "Koch's Private Fiefdom",
+      "pre": [
+        "rku006"
+      ],
+      "x": 6,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "Years on, the Reichskommissariat still stands - on a population that hates it.\n\nEffect: +10% stability, +10% war support.",
+      "fid": "wif_rku_rk_endures",
+      "id": "rku009",
+      "mx": [],
+      "name": "The Reichskommissariat Endures",
+      "pre": [
+        "rku007",
+        "rku008"
+      ],
+      "x": 4,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Every village has a quota. Villages that miss it are 'investigated'.\n\nEffect: +10% local resources. -5% stability.",
+      "fid": "wif_rku_grain_quotas",
+      "id": "rku010",
+      "mx": [],
+      "name": "Grain Quotas",
+      "pre": [
+        "rku000"
+      ],
+      "x": 13,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The Soviet collective farms are renamed 'community farms' and kept: nothing collects grain better.\n\nEffect: +10% resource output. The peasants who hoped to get their land back now know better: raids 5 days sooner.",
+      "fid": "wif_rku_community_farms",
+      "id": "rku011",
+      "mx": [],
+      "name": "Keep the Collective Farms",
+      "pre": [
+        "rku010"
+      ],
+      "x": 11,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Railheads ringed with barbed wire, where the harvest is weighed and loaded.\n\nEffect: +1 infrastructure in Poltava, Kharkov and Cherkasy.",
+      "fid": "wif_rku_grain_collection",
+      "id": "rku012",
+      "mx": [],
+      "name": "The Grain Collection Points",
+      "pre": [
+        "rku010"
+      ],
+      "x": 15,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The harvest belongs to Germany first, the Wehrmacht second, Ukraine last.\n\nEffect: unlocks the decision Send Extra Grain to the Reich (slows the Facade Economy's consumer-goods rise in Germany, starves Ukraine).",
+      "fid": "wif_rku_bread_for_the_reich",
+      "id": "rku013",
+      "mx": [],
+      "name": "Bread for the Reich",
+      "pre": [
+        "rku011",
+        "rku012"
+      ],
+      "x": 13,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Checkpoints around Kiev and Kharkov stop peasants bringing food into the cities. The cities are meant to shrink.\n\nEffect: -20000 manpower. Leads to The Kharkov Famine.",
+      "fid": "wif_rku_close_the_cities",
+      "id": "rku014",
+      "mx": [],
+      "name": "Close the Cities",
+      "pre": [
+        "rku013"
+      ],
+      "x": 11,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Grain, cattle, sunflower oil, the black soil itself - dug up and sent to the Reich by the trainload.\n\nEffect: Germany +1 civilian factory for good. Send Extra Grain to the Reich costs 25% less manpower.",
+      "fid": "wif_rku_rail_west",
+      "id": "rku015",
+      "mx": [],
+      "name": "Every Train Goes West",
+      "pre": [
+        "rku013"
+      ],
+      "x": 15,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": true,
+      "branch": "industry",
+      "days": 35,
+      "desc": "AUTO-COMPLETES (consequence). With the roads closed, Kharkov starves. Tens of thousands die in the city that was the capital of Soviet Ukraine.\n\nEffect: -30000 manpower, -10% stability for a year. Ukrainian Resistance raids 15 days sooner, for good.",
+      "fid": "wif_rku_kharkov_famine",
+      "id": "rku016",
+      "mx": [],
+      "name": "The Kharkov Famine",
+      "pre": [
+        "rku014"
+      ],
+      "x": 11,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "Backe's plan, written before the invasion, foresaw millions of 'superfluous eaters' starving so that the Reich could eat. Koch carries it out.\n\nEffect: Send Extra Grain to the Reich slows the Facade Economy by 0.35 instead of 0.25. Every use costs 15000 manpower instead of 10000.",
+      "fid": "wif_rku_hunger_plan",
+      "id": "rku017",
+      "mx": [],
+      "name": "The Hunger Plan",
+      "pre": [
+        "rku016",
+        "rku015"
+      ],
+      "x": 13,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The sugar beet and sunflower fields of the Right Bank are put to work for the Reich's margarine factories.\n\nEffect: Germany -5% consumer goods for a year.",
+      "fid": "wif_rku_sunflower_oil",
+      "id": "rku018",
+      "mx": [],
+      "name": "Sunflower Oil and Sugar",
+      "pre": [
+        "rku015"
+      ],
+      "x": 17,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "Ukraine feeds the Reich. Ukraine starves.\n\nEffect: Germany +5% stability. RKU -10% stability, -15% recruitable population for good.",
+      "fid": "wif_rku_breadbasket",
+      "id": "rku019",
+      "mx": [],
+      "name": "The Breadbasket of Europe",
+      "pre": [
+        "rku017",
+        "rku018"
+      ],
+      "x": 15,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Ukraine has forty million people. The Reich's plans for it have room for far fewer.\n\nEffect: unlocks the settlement and coring focuses.",
+      "fid": "wif_rku_the_population_question",
+      "id": "rku020",
+      "mx": [],
+      "name": "The Population Question",
+      "pre": [
+        "rku000"
+      ],
+      "x": 24,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The ravine outside Kiev where, in two days in 1941, the SS shot 33,771 Jews - and where the shooting never really stopped.\n\nEffect: -5% stability. All Ukrainian Resistance raids 10 days sooner for good. Kiev's population -5%.",
+      "fid": "wif_rku_babi_yar",
+      "id": "rku021",
+      "mx": [],
+      "name": "Babi Yar",
+      "pre": [
+        "rku020"
+      ],
+      "x": 21,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Labour recruitment becomes round-ups: young Ukrainians are loaded onto trains to the Reich's factories, marked with the OST badge.\n\nEffect: -30000 manpower. Germany +2% factory output for 2 years. Raids 10 days sooner.",
+      "fid": "wif_rku_ostarbeiter",
+      "id": "rku022",
+      "mx": [],
+      "name": "Ostarbeiter",
+      "pre": [
+        "rku020"
+      ],
+      "x": 24,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Ukraine's ethnic German villages become the Reich's first foothold.\n\nEffect: +2% recruitable population. Unlocks the German Farmers decisions.",
+      "fid": "wif_rku_volksdeutsche",
+      "id": "rku023",
+      "mx": [],
+      "name": "The Volksdeutsche",
+      "pre": [
+        "rku020"
+      ],
+      "x": 27,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Kiev is to be a German city. Its people are to be starved out, deported or shot.\n\nEffect: unlocks the request to Berlin for Kiev's resettlement (like Stabilise Moskau).",
+      "fid": "wif_rku_cleansing_kiev",
+      "id": "rku024",
+      "mx": [],
+      "name": "Cleansing Kiev",
+      "pre": [
+        "rku021"
+      ],
+      "x": 21,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "For every German killed, a village burned with its people.\n\nEffect: the Chase the Terrorists decisions have +10% success. Raids 10 days sooner.",
+      "fid": "wif_rku_burn_villages",
+      "id": "rku025",
+      "mx": [],
+      "name": "Burn the Villages",
+      "pre": [
+        "rku022"
+      ],
+      "x": 24,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Settlers from the Reich are promised Ukrainian farms - with the Ukrainians removed.\n\nEffect: unlocks the farmland coring decisions (Poltava, Cherkasy, Kharkov).",
+      "fid": "wif_rku_german_farmers",
+      "id": "rku026",
+      "mx": [],
+      "name": "German Farmers for the Black Earth",
+      "pre": [
+        "rku023"
+      ],
+      "x": 27,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "AFTER Berlin sends the settlers and resources: Kiev loses 50-65% of its people. German officials, families and their servants are 'taken from the Reich' to replace them.\n\nEffect: core on Kiev (202). -15% stability for a year. Raids hit Kiev twice as often for a year.",
+      "fid": "wif_rku_kiev_resettled",
+      "id": "rku027",
+      "mx": [],
+      "name": "Kiev Resettled",
+      "pre": [
+        "rku024"
+      ],
+      "x": 21,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "The great river's farmland - Dnipropetrovsk, Zaporozhe, Kherson and Mykolaiv - is opened to German settlement.\n\nEffect: unlocks the Dnieper coring decisions (226, 200, 196, 197).",
+      "fid": "wif_rku_the_dnieper",
+      "id": "rku028",
+      "mx": [],
+      "name": "The Dnieper Farms",
+      "pre": [
+        "rku026",
+        "rku025"
+      ],
+      "x": 26,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Himmler's own model colony near Zhytomyr: 10,000 Ukrainians expelled, Volksdeutsche brought in, his field headquarters in the middle.\n\nEffect: core on Zhytomyr (201) - but only the Hegewald district settles; the forests around it stay hostile.",
+      "fid": "wif_rku_hegewald",
+      "id": "rku029",
+      "mx": [],
+      "name": "Hegewald",
+      "pre": [
+        "rku027"
+      ],
+      "x": 23,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Crimea is to become 'Gotenland', settled by South Tyroleans and Germans from Palestine. The Tatars and Russians are to go.\n\nEffect: core on Crimea (137). -20000 manpower. Raids 10 days sooner for a year.",
+      "fid": "wif_rku_gotengau",
+      "id": "rku030",
+      "mx": [],
+      "name": "Gotengau",
+      "pre": [
+        "rku028"
+      ],
+      "x": 28,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "German villages stand in the black earth, fortified, armed - and surrounded.\n\nEffect: cored states: +10% compliance growth. Every other RKU state stays capped (35%).",
+      "fid": "wif_rku_the_settler_frontier",
+      "id": "rku031",
+      "mx": [],
+      "name": "The Settler Frontier",
+      "pre": [
+        "rku029",
+        "rku030"
+      ],
+      "x": 26,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Auxiliary police battalions, recruited from collaborators, criminals and the desperate.\n\nEffect: 2 'Colonial Police' divisions (3x1 infantry, fully equipped, almost no experience).",
+      "fid": "wif_rku_schutzmannschaft",
+      "id": "rku032",
+      "mx": [],
+      "name": "The Schutzmannschaft",
+      "pre": [
+        "rku000"
+      ],
+      "x": 34,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "German police officers to command them - and watch them.\n\nEffect: -10% training time. +10% division organisation.",
+      "fid": "wif_rku_ordnungspolizei",
+      "id": "rku033",
+      "mx": [],
+      "name": "Ordnungspolizei Command",
+      "pre": [
+        "rku032"
+      ],
+      "x": 32,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Captured Soviet rifles and old Mausers.\n\nEffect: +3000 infantry equipment.",
+      "fid": "wif_rku_rifles_from_reich",
+      "id": "rku034",
+      "mx": [],
+      "name": "Rifles from Reich Depots",
+      "pre": [
+        "rku032"
+      ],
+      "x": 36,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "The battalions are grouped into regiments for anti-partisan sweeps.\n\nEffect: 2 'Colonial Police Regiment' divisions (3x2 infantry, fully equipped, almost no experience).",
+      "fid": "wif_rku_colonial_regiments",
+      "id": "rku035",
+      "mx": [],
+      "name": "Colonial Police Regiments",
+      "pre": [
+        "rku033",
+        "rku034"
+      ],
+      "x": 34,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Blockhouses along every line west.\n\nEffect: Ukrainian Resistance raids damage 1 less building level.",
+      "fid": "wif_rku_railway_watch",
+      "id": "rku036",
+      "mx": [],
+      "name": "The Railway Watch",
+      "pre": [
+        "rku035"
+      ],
+      "x": 32,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "There are no more men to recruit who would not desert.\n\nEffect: 1 'Colonial Police Regiment' and 2 'Colonial Police' divisions. This is all RKU will ever have.",
+      "fid": "wif_rku_last_police",
+      "id": "rku037",
+      "mx": [],
+      "name": "Every Last Policeman",
+      "pre": [
+        "rku035"
+      ],
+      "x": 36,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "'Bandit fighting' - the word for war on the villages.\n\nEffect: the Chase the Terrorists decisions cost 25% less.",
+      "fid": "wif_rku_bandenbekaempfung",
+      "id": "rku038",
+      "mx": [],
+      "name": "Bandenbekampfung",
+      "pre": [
+        "rku000"
+      ],
+      "x": 42,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The UPA's home ground. Every sweep finds burned-out camps and mined roads.\n\nEffect: the first sweep of Volhynia: Raids 20 days later, once. The forests stay theirs.",
+      "fid": "wif_rku_forests_volhynia",
+      "id": "rku039",
+      "mx": [],
+      "name": "The Forests of Volhynia",
+      "pre": [
+        "rku038"
+      ],
+      "x": 40,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Kovpak's raiders from the north and Soviet cells in the cities - armed, when the SME can manage it, from across the front.\n\nEffect: the SME's Arm the Ukrainian Partisans costs it 25% more.",
+      "fid": "wif_rku_soviet_partisans",
+      "id": "rku040",
+      "mx": [],
+      "name": "The Soviet Partisans",
+      "pre": [
+        "rku038"
+      ],
+      "x": 44,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "A few districts around the railheads and the settler villages are declared 'pacified'.\n\nEffect: +20% compliance in up to 4 states - never more.",
+      "fid": "wif_rku_pacification_zones",
+      "id": "rku041",
+      "mx": [],
+      "name": "Pacification Zones",
+      "pre": [
+        "rku039",
+        "rku040"
+      ],
+      "x": 42,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Hostages from every village, shot when the railway is cut.\n\nEffect: raids 15 days later for good. -10% stability.",
+      "fid": "wif_rku_collective_responsibility",
+      "id": "rku042",
+      "mx": [
+        "rku043"
+      ],
+      "name": "Collective Responsibility",
+      "pre": [
+        "rku041"
+      ],
+      "x": 40,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Turn the OUN's rival factions against each other and against the Soviets.\n\nEffect: raids 10 days later for good. Germany's opinion -10.",
+      "fid": "wif_rku_ukrainian_auxiliaries",
+      "id": "rku043",
+      "mx": [
+        "rku042"
+      ],
+      "name": "Use the Nationalists",
+      "pre": [
+        "rku041"
+      ],
+      "x": 44,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Ukraine cannot be pacified. Koch's police can only keep the railways open.\n\nEffect: Chase the Terrorists decisions +10% success. The compliance cap stays.",
+      "fid": "wif_rku_endless_partisan_war",
+      "id": "rku044",
+      "mx": [],
+      "name": "The Endless Partisan War",
+      "pre": [
+        "rku042",
+        "rku043"
+      ],
+      "x": 42,
+      "y": 5
+    }
+  ],
+  "name": "Reichskommissariat Ukraine (WiF draft)",
+  "tag": "RKU",
+  "target": 1720,
+  "treeId": "wif_rku_focus",
+  "updatedAt": 1795523705873
+}

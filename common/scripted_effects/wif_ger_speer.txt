@@ -80,6 +80,10 @@ wif_ger_facade_recalc_rate = {
 		}
 		subtract_from_variable = { wif_ger_facade_rate = 0.001 }
 	}
+	# Extra grain sent by Reichskommissariat Ukraine (tools/gen_rku.py).
+	wif_ger_facade_rku_extra_grain = yes
+	# Extra oil and Black Gold from Reichskommissariat Kaukasien (tools/gen_rkk.py).
+	wif_ger_facade_rkk_extra_oil = yes
 	# The Oil of the Caucasus, while RKK is.
 	if = {
 		limit = {

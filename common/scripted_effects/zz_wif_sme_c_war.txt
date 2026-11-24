@@ -226,9 +226,11 @@ wif_sme_war_daily = {
 		if = {
 			limit = {
 				NOT = { has_state_flag = wif_sme_city_held }
-				controller = { tag = SME }
+				controller = { OR = { tag = SME wif_is_sme_side_partisan = yes } }	# tools/gen_rku.py: the Ukrainian uprising scores for the SME
 			}
 			set_state_flag = wif_sme_city_held
+			if = { limit = { controller = { wif_is_sme_side_partisan = yes } } set_state_flag = wif_sme_city_ukr }	# tools/gen_rko.py: Ostland risings score 1:1 too
+			else = { clr_state_flag = wif_sme_city_ukr }
 			add_to_variable = { global.wif_sme_score = wif_sme_pts }
 			set_variable = { global.wif_sme_gain = 1 }
 		}
@@ -239,7 +241,9 @@ wif_sme_war_daily = {
 			}
 			clr_state_flag = wif_sme_city_held
 			set_temp_variable = { wif_sme_loss = wif_sme_pts }
-			multiply_temp_variable = { wif_sme_loss = 2 }
+			# A city the Ukrainian partisans lose costs only its value, never double.
+			if = { limit = { NOT = { has_state_flag = wif_sme_city_ukr } } multiply_temp_variable = { wif_sme_loss = 2 } }
+			clr_state_flag = wif_sme_city_ukr
 			subtract_from_variable = { global.wif_sme_score = wif_sme_loss }
 		}
 	}

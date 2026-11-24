@@ -1487,3 +1487,23 @@ IFS = {
 	color = rgb { 226 140 52 }
 	color_ui = rgb { 255 181 79 }
 }
+UKS = {
+	color = rgb { 176 34 34 }
+	color_ui = rgb { 216 74 74 }
+}
+UFS = {
+	color = rgb { 150 160 60 }
+	color_ui = rgb { 190 200 100 }
+}
+UNS = {
+	color = rgb { 70 50 40 }
+	color_ui = rgb { 110 90 80 }
+}
+FBR = {
+	color = rgb { 40 100 70 }
+	color_ui = rgb { 80 140 110 }
+}
+RKS = {
+	color = rgb { 70 90 120 }
+	color_ui = rgb { 110 130 160 }
+}
