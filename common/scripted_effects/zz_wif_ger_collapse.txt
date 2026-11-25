@@ -217,8 +217,8 @@ wif_cw_subject_to_oslo = {
 wif_cw_form_oslo_government = {
 	GAG = {
 		if = {
-			limit = { owns_state = 110 }
-			set_capital = { state = 110 }
+			limit = { owns_state = 127 }
+			set_capital = { state = 127 }
 		}
 		else = {
 			random_owned_state = {
@@ -838,6 +838,11 @@ wif_cw_form_bormanns_germany = {
 			transfer_state_to = BOR
 		}
 	}
+	# WiF: Narvik (Nordland, 144) goes to Reichskommissariat Norwegen, not to Oslo.
+	if = {
+		limit = { country_exists = RKG 144 = { is_owned_by = ROOT } }
+		144 = { transfer_state_to = RKG }
+	}
 	every_owned_state = {
 		limit = { NOT = { is_core_of = GER } }
 		if = {
@@ -862,20 +867,21 @@ wif_ger_collapse_of_the_reich = {
 	# Protectorate instead of being handed to Oslo with the other subjects.
 	wif_cw_form_protectorate = yes
 
-	# ---- 2. Oslo: the German Administrative Government --------------------
+	# ---- 2. Dover: the German Administrative Government -------------------
 	# It forms first, so the navy, the faction and the subjects are handed
-	# over before anything is split. Oslofjord if it is German or held by a
-	# German subject; Holstein otherwise, which then drops out of Speer's share.
+	# over before anything is split. Dover (Sussex, 127) if it is German or held
+	# by a German subject; Holstein otherwise, which then drops out of Speer's
+	# share. (WiF 2026-11-25: no longer Oslo - Reichskommissariat Norwegen keeps it.)
 	if = {
 		limit = {
-			110 = {
+			127 = {
 				OR = {
 					is_owned_by = GER
 					owner = { is_subject_of = GER }
 				}
 			}
 		}
-		110 = { transfer_state_to = GAG }
+		127 = { transfer_state_to = GAG }
 	}
 	else_if = {
 		limit = { 58 = { is_owned_by = GER } }

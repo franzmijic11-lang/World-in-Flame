@@ -3616,6 +3616,16 @@ GER_reichskommissariats = {
 			}
 
 			custom_effect_tooltip = GER_reichskommissariat_norwegen_effect_tt
+			custom_effect_tooltip = wif_ger_keeps_narvik_tt
+			# WiF: Narvik stays German. If a subject of ours holds it, it comes to us.
+			hidden_effect = {
+				144 = {
+					if = {
+						limit = { owner = { is_subject_of = ROOT } }
+						transfer_state_to = ROOT
+					}
+				}
+			}
 
 			set_autonomy = { 
 				target = RKG 
@@ -3629,6 +3639,7 @@ GER_reichskommissariats = {
 						NOT = {
 							state = 110
 						}
+						NOT = { state = 144 }	# WiF: Germany keeps Narvik (Nordland)
 						OR = {
 							is_owned_by = ROOT
 							owner = { is_subject_of = ROOT }
@@ -3643,6 +3654,7 @@ GER_reichskommissariats = {
 						NOT = {
 							state = 110
 						}
+						NOT = { state = 144 }	# WiF: Germany keeps Narvik (Nordland)
 						NOT = {
 							OR = {
 								is_owned_by = ROOT
