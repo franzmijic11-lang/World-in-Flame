@@ -1,0 +1,1193 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "Norway has fallen. Reichskommissariat Norwegen (RKG) is ruled from Oslo by a German official, Josef Terboven - or, if Berlin chose to use a local puppet, by Vidkun Quisling of the Nasjonal Samling (vanilla event wuw_GER_reichskommissariats.3). Norway is 'Germanic': in Nazi theory its people are to be won for a Greater Germanic Reich, not removed. But its coast is a fortress, its waterfalls power the Reich's aluminium and heavy water, and its people mostly hate the occupation.\n\nTHE TREE (draft): like the Generalgouvernement it forms early (1940-41) and must last to the German civil war and beyond - about 11 years. Four eras (to build as 'available' gates):\n1. THE OCCUPATION (from creation).\n2. THE WAR IN THE EAST (Germany at war with the Soviet Union, or the Soviet Union gone): the Arctic front, Kirkenes, the convoys.\n3. AFTER THE VICTORY (the Soviet Union gone): the Germanic Reich, Nordstern.\n4. AFTER THE REICH (the German civil war has begun): Donitz's German Administrative Government forms in DOVER (built 2026-11-25), not Oslo - Oslo stays ours - and Narvik comes to us instead of to Dover.\n\nNARVIK (built, 2026-11-25): when the Reichskommissariat forms, Germany keeps Nordland (144, Narvik) - the ore port and the U-boat base. When the Reich falls apart, Narvik goes to the Reichskommissariat, not to Donitz's German Administrative Government - which now sits in Dover, so the Reichskommissariat also keeps Oslo.\n\n10 STATES: Oslofjord (110, capital - kept even when the Reich falls), Vestlandet (142, Bergen), Trondelag (143), Opplandene (920), Telemark (921, Rjukan), Agder (922), Helgeland (923), Troms (924), Finnmark (925); Nordland (144) only after the Reich falls.\n\nNO LOYAL SEPARATION (user, 2026-11-25): a Reichskommissar knows how fragile his position is without German backing. The ONE break-off is QUISLING'S COUP - only if the Reich did NOT choose Quisling (the Terboven path) and only after the Reich has fallen apart: Quisling turns the Norwegian fascists against the Reichskommissar and proclaims an independent Norwegian National State - still fascist, still racist. It stays open to Swedish attack (the future Swedish tree, a friend's work), and once the Ostschild war is over a reunited Germany gets a decision: reinvade Norway, or leave it (BUILT 2026-11-25, waiting for the flag wif_rkg_quisling_state). A democratic Norway can only come from outside, through Sweden.\n\nCORING: only Quisling's independent Norwegian National State (the coup) cores Norway - all of it. A loyal Reichskommissariat never cores; without the coup it returns to the Reich at reunification like every other RK.\n\nTHE RESISTANCE (proposal): Milorg and Kompani Linge - sabotage, not open war: a meter like the Forest Brothers' (start 15, floor 10) whose attacks hit factories, the aluminium works, the heavy water plant and shipping. Open question.\n\nEffect: the Reichskommissar rules from Skaugum. Spirits: Festung Norwegen (+25% coastal fort effectiveness, -10% stability) and A Germanic People (+10% compliance growth).",
+      "fid": "wif_rkg_root",
+      "id": "rkg000",
+      "mx": [],
+      "name": "Reichskommissariat Norwegen",
+      "pre": [],
+      "x": 26,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "Terboven moves into Skaugum, the Crown Prince's residence. The King and the government are in London.\n\nEffect: +50 political power.",
+      "fid": "wif_rkg_skaugum",
+      "id": "rkg001",
+      "mx": [],
+      "name": "The Reichskommissar at Skaugum",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 5,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "Norwegian ministers appointed by the Reichskommissar, most of them from the Nasjonal Samling.\n\nEffect: +10% political power. Unlocks the choice of rule.",
+      "fid": "wif_rkg_kommissarische_staatsrate",
+      "id": "rkg002",
+      "mx": [],
+      "name": "The Commissarial Councillors",
+      "pre": [
+        "rkg001"
+      ],
+      "x": 5,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "Terboven rules directly and trusts no Norwegian - not even Quisling.\n\nEffect: spirit 'Terboven's Regime': +15% political power, -10% compliance growth. Resistance grievance +0.5. No cores ever.",
+      "fid": "wif_rkg_terboven_regime",
+      "id": "rkg003",
+      "mx": [
+        "rkg004"
+      ],
+      "name": "Terboven's Regime",
+      "pre": [
+        "rkg002"
+      ],
+      "x": 3,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "1 February 1942: at Akershus, Quisling is made Minister-President of a 'national government' - under the Reichskommissar's eye.\n\nEffect: Quisling leads. Spirit 'The National Government': +10% stability, +10% compliance growth.",
+      "fid": "wif_rkg_act_of_state",
+      "id": "rkg004",
+      "mx": [
+        "rkg003"
+      ],
+      "name": "The Act of State",
+      "pre": [
+        "rkg002"
+      ],
+      "x": 7,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "Terboven's answer to sabotage: a state of emergency, mass arrests, executions.\n\nEffect: Resistance Strength -10. Trondelag -15 compliance. Grievance +0.25.",
+      "fid": "wif_rkg_martial_law",
+      "id": "rkg005",
+      "mx": [],
+      "name": "Martial Law in Trondheim",
+      "pre": [
+        "rkg003"
+      ],
+      "x": 3,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "One party, its uniformed Hird, its Fuhrer - Quisling.\n\nEffect: +15% political power. 1 'Hirden' division (3x1 infantry).",
+      "fid": "wif_rkg_nasjonal_samling",
+      "id": "rkg006",
+      "mx": [],
+      "name": "The Nasjonal Samling State",
+      "pre": [
+        "rkg004"
+      ],
+      "x": 7,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "In the SS vision Norway is not a colony but a member of a Germanic Reich - on Berlin's terms.\n\nAvailable: the Soviet Union has fallen.\nEffect: +10% stability. Germany's opinion +25.",
+      "fid": "wif_rkg_germanic_reich",
+      "id": "rkg007",
+      "mx": [],
+      "name": "The Greater Germanic Reich",
+      "pre": [
+        "rkg005",
+        "rkg006"
+      ],
+      "x": 5,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "Terboven's goal: Norway annexed outright as a German Gau.\n\nEffect: cosmetic name 'Gau Norwegen'. +15% political power. Resistance grievance +0.5.",
+      "fid": "wif_rkg_reichsgau_norwegen",
+      "id": "rkg008",
+      "mx": [
+        "rkg009"
+      ],
+      "name": "Gau Norwegen",
+      "pre": [
+        "rkg007"
+      ],
+      "x": 3,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "Quisling dreamed of a free Norway allied to Germany. Berlin never allowed it, and he never dared to insist: the Nasjonal Samling governs a Germanic province inside the Reich, and only German bayonets keep it in power.\n\nEffect: +10% stability, +10% compliance growth. Germany's opinion +25.",
+      "fid": "wif_rkg_nordic_state",
+      "id": "rkg009",
+      "mx": [
+        "rkg008"
+      ],
+      "name": "Quisling's Germanic Province",
+      "pre": [
+        "rkg007"
+      ],
+      "x": 7,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "A 'Germanic' people that refuses to be won: the churches, the schools, the courts and the sports clubs all resist the new order.\n\nEffect: unlocks the policies towards Norwegian society.",
+      "fid": "wif_rkg_norwegian_question",
+      "id": "rkg010",
+      "mx": [],
+      "name": "The Norwegian Question",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 13,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "1942: thousands of teachers refuse to join the NS teachers' union. A thousand are arrested and shipped north to forced labour at Kirkenes. The union is never formed.\n\nEffect: -5% stability. Grievance +0.25. -10% research speed for a year.",
+      "fid": "wif_rkg_teachers_front",
+      "id": "rkg011",
+      "mx": [],
+      "name": "The Teachers Front",
+      "pre": [
+        "rkg010"
+      ],
+      "x": 11,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Every bishop of the Church of Norway resigns rather than serve the regime; the clergy follow.\n\nEffect: -5% stability. Grievance +0.25.",
+      "fid": "wif_rkg_church_struggle",
+      "id": "rkg012",
+      "mx": [],
+      "name": "The Church Struggle",
+      "pre": [
+        "rkg010"
+      ],
+      "x": 13,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Norwegian athletes refuse to compete in any event organised by the regime - for the whole occupation.\n\nEffect: -5% war support.",
+      "fid": "wif_rkg_sports_strike",
+      "id": "rkg013",
+      "mx": [],
+      "name": "The Sports Strike",
+      "pre": [
+        "rkg010"
+      ],
+      "x": 15,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "The prison camps for Norwegian prisoners: hostages, resisters, and those caught listening to the BBC.\n\nEffect: Resistance Strength -5. Grievance +0.25.",
+      "fid": "wif_rkg_grini_falstad",
+      "id": "rkg014",
+      "mx": [],
+      "name": "Grini and Falstad",
+      "pre": [
+        "rkg011",
+        "rkg012"
+      ],
+      "x": 11,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "Where the German security police shoot Norwegian hostages and resisters.\n\nEffect: Resistance attacks 20% less likely for a year. Grievance +0.5.",
+      "fid": "wif_rkg_trandum",
+      "id": "rkg015",
+      "mx": [],
+      "name": "The Trandum Forest",
+      "pre": [
+        "rkg012"
+      ],
+      "x": 13,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "April 1942: after two Gestapo men were killed in a firefight, the fishing village of Telavag was razed, its men sent to Sachsenhausen and its women and children interned.\n\nEffect: Resistance Strength -10. -5% stability. Grievance +0.5.",
+      "fid": "wif_rkg_telavag",
+      "id": "rkg016",
+      "mx": [],
+      "name": "Telavag",
+      "pre": [
+        "rkg013"
+      ],
+      "x": 15,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "26 November 1942: Norwegian police round up the country's Jews; 529 are shipped on the Donau to Stettin and on to Auschwitz. Of the 772 Norwegian Jews deported, 34 survive.\n\nEffect: -5% stability. Germany's opinion +10. Grievance +0.25.",
+      "fid": "wif_rkg_jews_of_norway",
+      "id": "rkg017",
+      "mx": [],
+      "name": "The Jews of Norway",
+      "pre": [
+        "rkg014",
+        "rkg015"
+      ],
+      "x": 12,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "SS maternity homes for the children of German soldiers and Norwegian women - the 'valuable blood' of the Germanic future.\n\nEffect: +5% recruitable population. Compliance +5 everywhere.",
+      "fid": "wif_rkg_lebensborn",
+      "id": "rkg018",
+      "mx": [],
+      "name": "Lebensborn in Norway",
+      "pre": [
+        "rkg015",
+        "rkg016"
+      ],
+      "x": 14,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "Norway's own state police, run by the Nasjonal Samling, and the Rinnan gang's informers and torturers in Trondheim.\n\nEffect: Resistance attacks 25% less likely. Grievance +0.25.",
+      "fid": "wif_rkg_state_police",
+      "id": "rkg019",
+      "mx": [],
+      "name": "The Statspolitiet",
+      "pre": [
+        "rkg017",
+        "rkg018"
+      ],
+      "x": 13,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 63,
+      "desc": "Civil servants, police and teachers must swear loyalty to the regime - or lose their jobs and their pensions.\n\nAvailable: the Soviet Union has fallen.\nEffect: +10% stability, +10% political power. Grievance +0.25.",
+      "fid": "wif_rkg_loyalty_oath",
+      "id": "rkg020",
+      "mx": [],
+      "name": "The Loyalty Oath",
+      "pre": [
+        "rkg019"
+      ],
+      "x": 13,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Norwegian banks, shipping and industry are placed under German trustees.\n\nEffect: +1 civilian factory in Oslofjord.",
+      "fid": "wif_rkg_wirtschaft_norwegen",
+      "id": "rkg021",
+      "mx": [],
+      "name": "Norwegian Assets for the Reich",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 21,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 63,
+      "desc": "The Ofoten line carries Swedish iron to German Narvik. The Reichskommissariat keeps it running.\n\nEffect: Germany: +4 steel (Narvik). +1 infrastructure in Troms.",
+      "fid": "wif_rkg_ore_railway",
+      "id": "rkg022",
+      "mx": [],
+      "name": "The Ore Railway",
+      "pre": [
+        "rkg021"
+      ],
+      "x": 19,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 63,
+      "desc": "The hydroelectric works at Rjukan in Telemark make fertiliser - and heavy water, the one thing German atomic research cannot do without.\n\nEffect: +1 civilian factory in Telemark. Germany: +10% nuclear research for two years.",
+      "fid": "wif_rkg_norsk_hydro",
+      "id": "rkg023",
+      "mx": [],
+      "name": "Norsk Hydro",
+      "pre": [
+        "rkg021"
+      ],
+      "x": 21,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Norway's fishing fleet works for German tables; Norwegians queue for what is left.\n\nEffect: Germany: -2% consumer goods for a year. -5% stability.",
+      "fid": "wif_rkg_fisheries",
+      "id": "rkg024",
+      "mx": [],
+      "name": "Fish for the Reich",
+      "pre": [
+        "rkg021"
+      ],
+      "x": 23,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "Goring's plan to make Norway the Reich's aluminium works, on cheap waterfall power.\n\nEffect: +6 aluminium in Vestlandet. +1 civilian factory in Vestlandet.",
+      "fid": "wif_rkg_nordag",
+      "id": "rkg025",
+      "mx": [],
+      "name": "Nordag Aluminium",
+      "pre": [
+        "rkg022",
+        "rkg023"
+      ],
+      "x": 20,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "The railway north to Bodo and beyond, built by Soviet prisoners of war who died by the thousand in the camps along it.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: +2 infrastructure in Helgeland and Trondelag. -10% stability. Grievance +0.25.",
+      "fid": "wif_rkg_nordlandsbanen",
+      "id": "rkg026",
+      "mx": [],
+      "name": "The Nordland Railway",
+      "pre": [
+        "rkg023",
+        "rkg024"
+      ],
+      "x": 22,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 63,
+      "desc": "Power stations on every great waterfall, wired for German industry.\n\nEffect: +10% factory output. +1 civilian factory in Telemark.",
+      "fid": "wif_rkg_hydro_power",
+      "id": "rkg027",
+      "mx": [],
+      "name": "Waterfalls for the Reich",
+      "pre": [
+        "rkg025",
+        "rkg026"
+      ],
+      "x": 21,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "Norway is to be the Reich's power plant and aluminium smelter for a generation.\n\nAvailable: the Soviet Union has fallen.\nEffect: +2 military factories in Oslofjord. Germany: +2% factory output for good.",
+      "fid": "wif_rkg_north_industry",
+      "id": "rkg028",
+      "mx": [],
+      "name": "The Northern Industrial Region",
+      "pre": [
+        "rkg027"
+      ],
+      "x": 21,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 42,
+      "desc": "Hitler is convinced the Allies will land in Norway. Hundreds of thousands of German troops garrison the coast.\n\nEffect: +2 coastal forts in Oslofjord, Vestlandet and Trondelag.",
+      "fid": "wif_rkg_festung_norwegen",
+      "id": "rkg029",
+      "mx": [],
+      "name": "Festung Norwegen",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 29,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 63,
+      "desc": "Batterie Dietl and Batterie Trondenes: battleship guns in concrete, covering the approaches to Narvik and the north.\n\nEffect: +2 coastal forts in Troms and Finnmark.",
+      "fid": "wif_rkg_coastal_batteries",
+      "id": "rkg030",
+      "mx": [],
+      "name": "The Coastal Batteries",
+      "pre": [
+        "rkg029"
+      ],
+      "x": 27,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 63,
+      "desc": "Dora in Trondheim, Bruno in Bergen: concrete pens for the U-boat war in the Atlantic and the Arctic.\n\nEffect: +1 dockyard in Trondelag and +1 in Vestlandet.",
+      "fid": "wif_rkg_uboat_pens",
+      "id": "rkg031",
+      "mx": [],
+      "name": "The U-Boat Pens",
+      "pre": [
+        "rkg029"
+      ],
+      "x": 29,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 63,
+      "desc": "Norwegian volunteers for the war against the Soviet Union, later the SS-regiment 'Norge'.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: 2 'Norwegian Legion' divisions (3x2 infantry, some experience).",
+      "fid": "wif_rkg_norwegian_legion",
+      "id": "rkg032",
+      "mx": [],
+      "name": "Den Norske Legion",
+      "pre": [
+        "rkg029"
+      ],
+      "x": 31,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 63,
+      "desc": "From Kirkenes the Wehrmacht's mountain troops face Murmansk across the tundra.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: +1 infrastructure in Finnmark. 1 'Gebirgsjager' division (3x2 mountaineers).",
+      "fid": "wif_rkg_arctic_front",
+      "id": "rkg033",
+      "mx": [],
+      "name": "The Arctic Front",
+      "pre": [
+        "rkg030",
+        "rkg031"
+      ],
+      "x": 28,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 63,
+      "desc": "The Norwegian branch of the Germanic SS: politically reliable, racially 'Germanic'.\n\nEffect: 1 'Germanske SS' division. Resistance attacks 10% less likely.",
+      "fid": "wif_rkg_germanske_ss",
+      "id": "rkg034",
+      "mx": [],
+      "name": "Germanske SS Norge",
+      "pre": [
+        "rkg031",
+        "rkg032"
+      ],
+      "x": 30,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 91,
+      "desc": "Hitler's plan for a new German city of 300,000 and the Reich's greatest naval base beside Trondheim - begun at last.\n\nAvailable: the Soviet Union has fallen.\nEffect: +2 dockyards and +2 civilian factories in Trondelag.",
+      "fid": "wif_rkg_nordstern",
+      "id": "rkg035",
+      "mx": [],
+      "name": "Nordstern",
+      "pre": [
+        "rkg033",
+        "rkg034"
+      ],
+      "x": 29,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 91,
+      "desc": "The Reich's northern flank: if the Reich ever falls silent, Norway can hold its own coast.\n\nEffect: +10% defence. 2 'Festungs' divisions (3x2 infantry).",
+      "fid": "wif_rkg_northern_bastion",
+      "id": "rkg036",
+      "mx": [],
+      "name": "The Northern Bastion",
+      "pre": [
+        "rkg035"
+      ],
+      "x": 29,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The Home Front: Milorg's secret army, the civil resistance, the underground press - all answering to the government in London.\n\nEffect: unlocks the resistance counter-measures.",
+      "fid": "wif_rkg_hjemmefronten",
+      "id": "rkg037",
+      "mx": [],
+      "name": "Hjemmefronten",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 36,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Fishing boats run agents, weapons and refugees between Shetland and the Norwegian coast through the winter dark.\n\nEffect: unlocks 'Patrol the Coast' (cuts the resistance's supply: Strength -5).",
+      "fid": "wif_rkg_shetland_bus",
+      "id": "rkg038",
+      "mx": [],
+      "name": "The Shetland Bus",
+      "pre": [
+        "rkg037"
+      ],
+      "x": 34,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Norwegian commandos trained by the British. In February 1943 six of them blew up the heavy water plant at Vemork.\n\nEffect: Norsk Hydro's heavy water is guarded: resistance attacks on Telemark do half the damage.",
+      "fid": "wif_rkg_kompani_linge",
+      "id": "rkg039",
+      "mx": [],
+      "name": "Kompani Linge",
+      "pre": [
+        "rkg037"
+      ],
+      "x": 36,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "The intelligence network that reports every German ship and gun position to London.\n\nEffect: -10% enemy intel on us. Resistance attacks 10% less likely.",
+      "fid": "wif_rkg_xu",
+      "id": "rkg040",
+      "mx": [],
+      "name": "XU",
+      "pre": [
+        "rkg037"
+      ],
+      "x": 38,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Henry Rinnan's gang of Norwegian infiltrators and torturers, working for the German security police from the 'Gang Monastery' in Trondheim.\n\nEffect: Resistance Strength -10. Grievance +0.5.",
+      "fid": "wif_rkg_rinnan",
+      "id": "rkg041",
+      "mx": [],
+      "name": "Sonderabteilung Lola",
+      "pre": [
+        "rkg038",
+        "rkg039"
+      ],
+      "x": 35,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Sweeps through the forests of Opplandene and Telemark for the secret army's arms dumps.\n\nEffect: unlocks 'Forest Sweep' against the resistance.",
+      "fid": "wif_rkg_milorg_hunt",
+      "id": "rkg042",
+      "mx": [],
+      "name": "Hunting Milorg",
+      "pre": [
+        "rkg039",
+        "rkg040"
+      ],
+      "x": 37,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "The resistance cannot be broken - only kept from striking.\n\nEffect: sweeps +25% success. The resistance's floor of 10 remains.",
+      "fid": "wif_rkg_never_quiet",
+      "id": "rkg043",
+      "mx": [],
+      "name": "Norway Is Never Quiet",
+      "pre": [
+        "rkg041",
+        "rkg042"
+      ],
+      "x": 36,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "The Reich is at war with itself. Across the North Sea, in Dover, Grand Admiral Donitz has formed a German Administrative Government with the fleet and the Reich's subjects - ourselves among them. Oslo is still ours.\n\nAvailable: the German civil war has begun.\nEffect: +10% war support. +50 political power.",
+      "fid": "wif_rkg_silence_from_berlin",
+      "id": "rkg044",
+      "mx": [],
+      "name": "Silence from Berlin",
+      "pre": [
+        "rkg000"
+      ],
+      "x": 43,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "With the Reich gone, German Narvik comes to the Reichskommissariat instead of to Oslo.\n\nAvailable: we own Nordland (144).\nEffect: +4 steel and +1 dockyard in Nordland.",
+      "fid": "wif_rkg_narvik_ours",
+      "id": "rkg045",
+      "mx": [],
+      "name": "Narvik Is Ours",
+      "pre": [
+        "rkg044"
+      ],
+      "x": 41,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "Donitz has the fleet and the Reich's diplomacy. We stand under his flag until Germany is whole - there is nowhere else to stand.\n\nEffect: +10% stability. Dover's opinion +50.",
+      "fid": "wif_rkg_donitz_loyal",
+      "id": "rkg046",
+      "mx": [
+        "rkg062"
+      ],
+      "name": "Loyal to Dover",
+      "pre": [
+        "rkg044"
+      ],
+      "x": 43,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "Without Berlin, the Reichskommissar is one German official and a few thousand collaborators among three million Norwegians who hate them. He doubles the guards and does not leave Skaugum.\n\nEffect: +2 'Festungs' divisions. Resistance attacks 25% less likely. -10% political power.",
+      "fid": "wif_rkg_own_path",
+      "id": "rkg047",
+      "mx": [],
+      "name": "A Fragile Regime",
+      "pre": [
+        "rkg044"
+      ],
+      "x": 45,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "The Reichskommissariat's only future is a German one. It holds Norway for whoever wins the civil war.\n\nEffect: +10% stability. When the Reich reunites, we keep Narvik.",
+      "fid": "wif_rkg_reich_returns",
+      "id": "rkg048",
+      "mx": [],
+      "name": "Waiting for the Reich",
+      "pre": [
+        "rkg045",
+        "rkg046",
+        "rkg047"
+      ],
+      "x": 43,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "Whatever its name, Norway is part of the order the Reich has built across Europe.\n\nAvailable: the Soviet Union has fallen.\nEffect: +10% stability. +100 political power.",
+      "fid": "wif_rkg_new_europe",
+      "id": "rkg049",
+      "mx": [],
+      "name": "Norway in the New Europe",
+      "pre": [
+        "rkg008",
+        "rkg009"
+      ],
+      "x": 5,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "Young Norwegians are sent to Germany to serve, train and settle in the East.\n\nEffect: +5% recruitable population. Germany's opinion +15.",
+      "fid": "wif_rkg_germanic_volunteers",
+      "id": "rkg050",
+      "mx": [],
+      "name": "The Germanic Volunteer Programme",
+      "pre": [
+        "rkg049"
+      ],
+      "x": 5,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 91,
+      "desc": "Membership of the Nasjonal Samling's youth organisation is made compulsory. Parents protest by the tens of thousands.\n\nEffect: +5% recruitable population. Grievance +0.25.",
+      "fid": "wif_rkg_youth_service",
+      "id": "rkg051",
+      "mx": [],
+      "name": "The NS Youth Service",
+      "pre": [
+        "rkg020"
+      ],
+      "x": 13,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 91,
+      "desc": "The compulsory labour service: young Norwegians build roads and fortifications for the Wehrmacht.\n\nEffect: +10% construction speed. -10000 manpower.",
+      "fid": "wif_rkg_arbeidstjenesten",
+      "id": "rkg052",
+      "mx": [],
+      "name": "Arbeidstjenesten",
+      "pre": [
+        "rkg051"
+      ],
+      "x": 13,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "Vemork is rebuilt and guarded like a fortress: the Reich's atomic programme depends on it.\n\nEffect: Germany: +15% nuclear research. +1 civilian factory in Telemark.",
+      "fid": "wif_rkg_heavy_water_programme",
+      "id": "rkg053",
+      "mx": [],
+      "name": "The Heavy Water Programme",
+      "pre": [
+        "rkg028"
+      ],
+      "x": 21,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "The iron mines at Kirkenes in Finnmark, worked again for German steel.\n\nEffect: +6 steel in Finnmark. +1 infrastructure in Finnmark.",
+      "fid": "wif_rkg_sydvaranger",
+      "id": "rkg054",
+      "mx": [],
+      "name": "Sydvaranger",
+      "pre": [
+        "rkg053"
+      ],
+      "x": 21,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 91,
+      "desc": "Undersea cables carry Norwegian waterfall power to German industry.\n\nEffect: Germany: +3% factory output for good.",
+      "fid": "wif_rkg_power_cable",
+      "id": "rkg055",
+      "mx": [],
+      "name": "A Cable to the Reich",
+      "pre": [
+        "rkg054"
+      ],
+      "x": 21,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 91,
+      "desc": "The Atlantic Wall's northern half: every fjord mouth from Kristiansand to Kirkenes fortified.\n\nEffect: +2 coastal forts in every coastal state.",
+      "fid": "wif_rkg_atlantikwall_nord",
+      "id": "rkg056",
+      "mx": [],
+      "name": "Atlantikwall Nord",
+      "pre": [
+        "rkg036"
+      ],
+      "x": 29,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 91,
+      "desc": "The Kriegsmarine's heavy ships are based in the northern fjords for good.\n\nAvailable: the Soviet Union has fallen.\nEffect: +2 dockyards in Vestlandet. +10% navy organisation.",
+      "fid": "wif_rkg_northern_fleet_base",
+      "id": "rkg057",
+      "mx": [],
+      "name": "The Northern Fleet Base",
+      "pre": [
+        "rkg056"
+      ],
+      "x": 29,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Milorg has hidden thousands of British weapons in the forests, waiting for the day it is ordered to rise.\n\nEffect: Resistance Strength -10 if found (a 50% chance).",
+      "fid": "wif_rkg_arms_dumps",
+      "id": "rkg058",
+      "mx": [],
+      "name": "The Arms Dumps",
+      "pre": [
+        "rkg043"
+      ],
+      "x": 36,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Ten Norwegians for every German killed.\n\nEffect: resistance attacks 25% less likely. Grievance +0.5.",
+      "fid": "wif_rkg_reprisal_policy",
+      "id": "rkg059",
+      "mx": [],
+      "name": "The Reprisal Policy",
+      "pre": [
+        "rkg058"
+      ],
+      "x": 36,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 63,
+      "desc": "The Reichskommissar still sits at Skaugum. Without Berlin, Oslo is the only German capital in the north.\n\nEffect: +10% political power. +10% stability.",
+      "fid": "wif_rkg_trondheim_capital",
+      "id": "rkg060",
+      "mx": [],
+      "name": "Oslo Holds",
+      "pre": [
+        "rkg048"
+      ],
+      "x": 43,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 91,
+      "desc": "From Kristiansand to Kirkenes, the Reichskommissariat holds the north for whoever rules Germany next.\n\nEffect: +10% stability, +10% war support.",
+      "fid": "wif_rkg_northern_reich",
+      "id": "rkg061",
+      "mx": [],
+      "name": "The Northern Reich",
+      "pre": [
+        "rkg060"
+      ],
+      "x": 43,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Berlin passed Quisling over for Terboven. Now Berlin is silent, and the Minister-President who never was calls out the Hird. Norwegian fascists seize Akershus, the police go over to them, and Terboven escapes to Germany with his staff.\n\nAvailable: the German civil war has begun.\nAvailable: completed Terboven's Regime (the Reich did not choose Quisling).\nEffect: Vidkun Quisling leads. We leave the Reich and Dover: an independent Norwegian National State (flag wif_rkg_quisling_state) - fascist, racist, and alone. Cores on every Norwegian state we hold, Nordland included. Terboven flees to Germany. German garrison divisions are disbanded; the Hird takes their weapons. Sweden may attack us (future Swedish tree). When the Ostschild war is over, a reunited Germany decides whether to reinvade: if it beats us, the cores are removed, Quisling is shot, and Terboven returns as Reichskommissar (BUILT).",
+      "fid": "wif_rkg_quisling_turns",
+      "id": "rkg062",
+      "mx": [
+        "rkg046"
+      ],
+      "name": "Quisling Turns",
+      "pre": [
+        "rkg044"
+      ],
+      "x": 48,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Quisling's Norway at last: a one-party state under the Nasjonal Samling, with a Fører and a Riksting of estates.\n\nEffect: +15% political power. Cosmetic name 'Norwegian National State', the Nasjonal Samling flag.",
+      "fid": "wif_rkg_national_state",
+      "id": "rkg063",
+      "mx": [],
+      "name": "The Norwegian National State",
+      "pre": [
+        "rkg062"
+      ],
+      "x": 48,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "The party militia and the veterans of the Norwegian Legion are all the army Norway has.\n\nEffect: 3 'Hird' divisions (3x2 infantry, low experience). +10% war support.",
+      "fid": "wif_rkg_hird_army",
+      "id": "rkg064",
+      "mx": [],
+      "name": "The Hird Becomes an Army",
+      "pre": [
+        "rkg062"
+      ],
+      "x": 50,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Independence changes nothing for those the regime has marked: the racial laws stay, and so does the forced sterilisation of the Romani travellers ('tatere') that Norway had begun before the war.\n\nEffect: +5% stability. -5% war support. Resistance grievance +0.5.",
+      "fid": "wif_rkg_racial_state",
+      "id": "rkg065",
+      "mx": [],
+      "name": "The Racial Laws Stay",
+      "pre": [
+        "rkg063"
+      ],
+      "x": 48,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "Sweden has always sheltered Norwegian refugees and the resistance. Without the Reich, it may come for us.\n\nEffect: +2 land forts in Opplandene, Trondelag and Troms.",
+      "fid": "wif_rkg_swedish_border",
+      "id": "rkg066",
+      "mx": [],
+      "name": "The Swedish Border",
+      "pre": [
+        "rkg064"
+      ],
+      "x": 50,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 63,
+      "desc": "A reunited Reich will remember who drove out its Reichskommissar. Quisling prepares to plead - or to fight.\n\nEffect: +10% defence. +10% stability.",
+      "fid": "wif_rkg_if_the_reich_returns",
+      "id": "rkg067",
+      "mx": [],
+      "name": "If the Reich Comes Back",
+      "pre": [
+        "rkg065",
+        "rkg066"
+      ],
+      "x": 49,
+      "y": 5
+    }
+  ],
+  "name": "Reichskommissariat Norwegen (WiF draft)",
+  "tag": "RKG",
+  "target": 3990,
+  "treeId": "wif_rkg_focus",
+  "updatedAt": 1795624591056
+}

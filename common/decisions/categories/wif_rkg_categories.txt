@@ -1,0 +1,13 @@
+# Germany's answer to Quisling's Norwegian National State (RK Norwegen tree, Quisling Turns).
+wif_ger_norway_question_category = {
+	icon = GFX_decision_category_generic_political_actions
+	allowed = { original_tag = GER }
+	visible = {
+		has_global_flag = wif_ger_reunified
+		OR = { has_global_flag = wif_sme_war_won has_global_flag = wif_sme_war_lost }
+		country_exists = RKG
+		RKG = { has_country_flag = wif_rkg_quisling_state }
+		NOT = { has_global_flag = wif_ger_norway_decided }
+	}
+	priority = 70
+}

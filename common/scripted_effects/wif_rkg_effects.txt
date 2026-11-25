@@ -1,0 +1,47 @@
+# on_capitulation_immediate (ROOT capitulated, FROM the winner): Quisling's Norway beaten by the
+# reunited Reich (user, 2026-11-25): no peace conference. Its cores on Norway are removed,
+# Quisling is killed, and the old Reichskommissar - Josef Terboven, who fled to Germany in
+# the coup - is reinstated to rule Norway as a German Reichskommissariat.
+# (Without the coup, RKG simply returns to the Reich at reunification like every other RK:
+# wif_cw_reunify.)
+wif_rkg_on_capitulation = {
+	if = {
+		limit = { tag = RKG has_country_flag = wif_rkg_quisling_state FROM = { tag = GER } }
+		clr_country_flag = wif_rkg_quisling_state
+		drop_cosmetic_tag = yes
+		every_state = {
+			limit = { is_core_of = RKG }
+			remove_core_of = RKG
+		}
+		# Quisling is shot.
+		if = {
+			limit = { has_character = NOR_vidkun_quisling }
+			if = {
+				limit = { has_country_leader = { character = NOR_vidkun_quisling ruling_only = yes } }
+				kill_country_leader = yes
+			}
+			else = { retire_character = NOR_vidkun_quisling }
+		}
+		# Terboven comes back from Germany (or is found wherever he is).
+		if = {
+			limit = { country_exists = GER GER = { has_character = NOR_josef_terboven } }
+			GER = { set_nationality = { target_country = RKG character = NOR_josef_terboven } }
+		}
+		else_if = {
+			limit = { NOT = { has_character = NOR_josef_terboven } NOT = { any_country = { has_character = NOR_josef_terboven } } }
+			recruit_character = NOR_josef_terboven
+		}
+		if = {
+			limit = { has_character = NOR_josef_terboven }
+			NOR_josef_terboven = { promote_character = yes }
+		}
+		set_politics = { ruling_party = fascism elections_allowed = no }
+		GER = {
+			if = { limit = { NOT = { RKG = { is_subject_of = GER } } } puppet = RKG }
+			set_autonomy = { target = RKG autonomy_state = autonomy_reichskommissariat end_wars = no end_civil_wars = no }
+		}
+		if = { limit = { NOT = { has_idea = GER_german_controlled_reichskommissariat } } add_ideas = GER_german_controlled_reichskommissariat }
+		GER = { white_peace = RKG }
+		news_event = { id = wif_rkg.2 days = 1 }
+	}
+}

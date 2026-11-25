@@ -1,0 +1,3 @@
+on_actions = {
+	on_capitulation_immediate = { effect = { wif_rkg_on_capitulation = yes } }
+}

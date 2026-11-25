@@ -1,0 +1,38 @@
+# Germany's answer to Quisling's Norwegian National State. The flag wif_rkg_quisling_state is set
+# by the RK Norwegen focus 'Quisling Turns' (planner map rkg-wif; the tree is not built yet).
+# Beaten Norway: cores removed, Quisling killed, Terboven back (wif_rkg_effects.txt).
+# Available once the Reich has reunited and the Ostschild war (the First West Russian War) is over.
+wif_ger_norway_question_category = {
+
+	wif_ger_reinvade_norway = {
+		icon = GFX_decision_generic_army_support
+		cost = 50
+		fire_only_once = yes
+		available = {
+			has_war = no
+			RKG = { NOT = { has_war_with = ROOT } }
+		}
+		complete_effect = {
+			set_global_flag = wif_ger_norway_decided
+			set_global_flag = wif_ger_norway_reinvaded
+			custom_effect_tooltip = wif_ger_reinvade_norway_tt
+			declare_war_on = { target = RKG type = annex_everything }
+		}
+		ai_will_do = { base = 70 }
+	}
+
+	wif_ger_leave_norway = {
+		icon = generic_political_discourse
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = wif_ger_norway_decided
+			custom_effect_tooltip = wif_ger_leave_norway_tt
+			hidden_effect = {
+				RKG = { add_opinion_modifier = { target = ROOT modifier = wif_ger_left_norway_opinion } }
+				add_opinion_modifier = { target = RKG modifier = wif_ger_left_norway_opinion }
+			}
+		}
+		ai_will_do = { base = 30 }
+	}
+}

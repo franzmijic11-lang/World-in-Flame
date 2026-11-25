@@ -1,0 +1,12 @@
+add_namespace = wif_rkg
+
+# The Reich has taken Norway back from Quisling.
+news_event = {
+	id = wif_rkg.2
+	title = wif_rkg.2.t
+	desc = wif_rkg.2.desc
+	picture = GFX_news_event_german_soldiers
+	major = yes
+	is_triggered_only = yes
+	option = { name = wif_rkg.2.a }
+}

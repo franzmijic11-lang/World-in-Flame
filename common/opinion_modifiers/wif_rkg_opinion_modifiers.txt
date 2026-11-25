@@ -1,0 +1,5 @@
+opinion_modifiers = {
+	wif_ger_left_norway_opinion = {
+		value = 25
+	}
+}
