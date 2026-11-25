@@ -1,0 +1,1375 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Poland has fallen. What the Reich did not annex outright becomes the Generalgouvernement: from the Wawel castle in Krakau, Generalgouverneur Hans Frank rules Krakau, Warschau, Radom (Kielce) and Lublin - Galicia (Lemberg, Stanislau) follows after the attack on the Soviet Union. Hitler's instructions were plain: the Generalgouvernement is a reservoir of labour for the Reich, its leadership class is to be destroyed, and in the end it is to be German land, emptied of Poles and Jews.\n\nTHE TREE (draft v2): Generalgouvernement (GEN). It forms when Poland falls (Germany's Generalgouvernement decision, 1939-40) - years before the eastern Reichskommissariate - so it is built to last until the German civil war, around 1952: about 12 years of focuses. Written in a factual, historical voice. Every persecution focus costs the regime: stability, manpower, and strength for the Home Army.\n\nTHREE ERAS (to build: 'available' gates):\n1. THE OCCUPATION (from creation): consolidation, the first massacres, the ghettos, Krakau as the 'German' capital, the staging ground for the war in the East.\n2. THE WAR IN THE EAST (Germany at war with the Soviet Union, or the Soviet Union gone): Galicia, Operation Reinhard, Generalplan Ost, Aktion Zamosc, the Home Army war.\n3. AFTER THE VICTORY (the Soviet Union has fallen: the SME exists or SOV does not): the Pabst Plan, the deportations east, settlement and annexation as Reichsgau Weichselland.\n\n6 STATES: Krakau (88, capital), Warschau (10), Kielce/Radom (90), Lublin (92), Lemberg (91) and Stanislau (89) - the last two from Germany's eastern expansion decision.\n\nNO CORING, EVER (user, 2026-11-24): the Generalgouvernement can never core anything. The tree only reaches the early 1950s, and the Poles have been occupied so often in their history that they know how to resist. Expulsion and settlement only change compliance, population and the economy - never cores.\n\nTHE HOME ARMY (Armia Krajowa) - BOTH mechanics (user: 'the Poles are angry and will do anything'):\n1. A Strength meter like the Forest Brothers (start 20, floor 15, +1 a month plus grievances; every atrocity focus adds grievance). Each month an attack with chance Strength/2 %: ambushes (10), rail sabotage (25), assassinations of SS officers (40), the destruction of a factory or depot (55), a liberated forest district in Kielce or Lublin for 180 days (70), a coordinated strike across the Generalgouvernement (90).\n2. Raids on a countdown, like Moskowien's, from day one (base 120 days): buildings, garrison and civilians hit; Chase the Terrorists decisions copied (Polish partisans). The Allies (or the SME, once it exists) can arm them.\n\nTHE OSTSCHILD CHOICE: when the Reich falls apart (Contact Lost with Germania), the Generalgouvernement is asked to join the Ostschild.\n- JOIN: allies to share policing with - spirit 'Ostschild Police Pact' (garrisons need 25% fewer troops, +10% compliance growth) - but it is pulled into the SME war. Only WARSAW rises.\n- STAND ALONE: 'Our Own Resources' (+15% political power, +10% local resources) - but no help. Both WARSAW AND KRAKAU rise.\n(The AI weighs both: more likely to join if the Home Army is strong.)\n\nTHE FINAL UPRISING (scripted, once): Warsaw (10) - and Krakau (88) if GEN stood alone - goes to POL (the Polish Underground State: democratic, no diplomatic standing) with Home Army divisions (Warsaw 4, Krakau 3: 3x2 infantry, experienced, half equipped). POL is at war with GEN.\n- If GEN (or a reunited Reich) crushes it - POL capitulates - its land goes straight back to GEN, and the Poles can NEVER rise again (no more uprisings; the meter and raids go on).\n- If GEN capitulates to it: Poland is reborn with every GEN state but Galicia (which goes to Ukraine's partisans if they exist, otherwise to Poland). A reunited Reich declares war on it; if Poland capitulates to the Reich, the land goes back to a re-established Generalgouvernement - and Poland can never rise again.\n\nTHE DOUBLE-OCCUPATION BUG (user): when an uprising takes GEN land (including vanilla's Warsaw Uprising operation) and GEN or Germany retakes a state, the state stayed POL-owned and German-controlled, so it showed as occupied twice. Fix: every day, any GEN state owned by a Polish rising but controlled by GEN or a German-side country is handed straight back to GEN, owner and controller.\n\nEffect: Hans Frank rules from the Wawel. Spirits: Nebenland des Reiches (+15% political power, -20% stability, -30% compliance growth) and The Reservoir of Labour (-20% recruitable population, Germany +3% factory output).",
+      "fid": "wif_gen_root",
+      "id": "gen000",
+      "mx": [],
+      "name": "The Generalgouvernement",
+      "pre": [],
+      "x": 28,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Hans Frank lives in the castle of the Polish kings and has himself painted like one. His wife calls herself the Queen of Poland.\n\nEffect: +50 political power.",
+      "fid": "wif_gen_wawel",
+      "id": "gen001",
+      "mx": [],
+      "name": "Frank on the Wawel",
+      "pre": [
+        "gen000"
+      ],
+      "x": 5,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "The capital of the Generalgouvernement is Krakau. Warsaw, the Polish capital, is to be reduced to a provincial town.\n\nEffect: capital Krakau (88). Warschau -10 compliance. +5% stability.",
+      "fid": "wif_gen_krakau_capital",
+      "id": "gen002",
+      "mx": [],
+      "name": "Krakau, Not Warsaw",
+      "pre": [
+        "gen001"
+      ],
+      "x": 5,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "Not a state, not a protectorate: an 'adjacent land of the Reich', with no Polish government of any kind.\n\nEffect: +10% political power. No Polish advisors can ever be appointed.",
+      "fid": "wif_gen_nebenland",
+      "id": "gen003",
+      "mx": [],
+      "name": "Nebenland des Reiches",
+      "pre": [
+        "gen002"
+      ],
+      "x": 5,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Frank wins his long feud with the SS: the Generalgouverneur rules, and the police answer to him - and his fortune grows from what is confiscated.\n\nEffect: spirit 'Frank's Court': +15% political power, -10% stability (corruption). Labour quotas cost 25% less.",
+      "fid": "wif_gen_frank_kingdom",
+      "id": "gen004",
+      "mx": [
+        "gen005"
+      ],
+      "name": "Frank's Kingdom",
+      "pre": [
+        "gen003"
+      ],
+      "x": 3,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Higher SS and Police Leader Kruger and Lublin's Odilo Globocnik win instead. Frank keeps the castle; the SS keeps everything else.\n\nEffect: spirit 'The SS State': -10% stability, atrocity focuses take 20% less time, Home Army grievance +0.5.",
+      "fid": "wif_gen_ss_state",
+      "id": "gen005",
+      "mx": [
+        "gen004"
+      ],
+      "name": "The SS State",
+      "pre": [
+        "gen003"
+      ],
+      "x": 7,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "Art looted from Polish museums and churches - Leonardo's Lady with an Ermine among it - decorates the Wawel.\n\nEffect: +100 political power. Home Army grievance +0.25.",
+      "fid": "wif_gen_krakau_court",
+      "id": "gen006",
+      "mx": [],
+      "name": "The Krakau Court",
+      "pre": [
+        "gen004"
+      ],
+      "x": 3,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 49,
+      "desc": "The SS and Police Leader of Lublin gets a free hand for the 'settlement of the East'.\n\nEffect: Aktion Zamosc and Operation Reinhard focuses take 30% less time.",
+      "fid": "wif_gen_globocnik",
+      "id": "gen007",
+      "mx": [],
+      "name": "Globocnik in Lublin",
+      "pre": [
+        "gen005"
+      ],
+      "x": 7,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Frank's office diary records it all, in his own words: 'We must annihilate the Jews wherever we find them.' 'If I put up a poster for every seven Poles shot, the forests of Poland would not suffice to make the paper.'\n\nEffect: +10% political power. Germany's opinion +10.",
+      "fid": "wif_gen_frank_diaries",
+      "id": "gen008",
+      "mx": [],
+      "name": "Frank's Diaries",
+      "pre": [
+        "gen006",
+        "gen007"
+      ],
+      "x": 5,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "The Soviet Union has fallen. The Generalgouvernement is no longer the edge of the Reich, but its hinterland - and the plans made for after the war can begin.\n\nAvailable: the Soviet Union has fallen.\nEffect: +10% stability. +100 political power.",
+      "fid": "wif_gen_victory_in_the_east",
+      "id": "gen009",
+      "mx": [],
+      "name": "Victory in the East",
+      "pre": [
+        "gen008"
+      ],
+      "x": 5,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "Berlin sets the timetable: the Generalgouvernement is to be German within fifteen to twenty years.\n\nEffect: spirit 'The Timetable': +10% political power, -10% compliance growth for Poles.",
+      "fid": "wif_gen_colony_with_deadline",
+      "id": "gen010",
+      "mx": [],
+      "name": "A Colony With a Deadline",
+      "pre": [
+        "gen009"
+      ],
+      "x": 5,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "The Reich Ministry of the Interior drafts the incorporation of the Generalgouvernement as a Gau.\n\nEffect: Germany's opinion +20. +5% stability.",
+      "fid": "wif_gen_annexation_plan",
+      "id": "gen011",
+      "mx": [],
+      "name": "The Annexation Plan",
+      "pre": [
+        "gen010"
+      ],
+      "x": 5,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 70,
+      "desc": "The final goal: the Generalgouvernement becomes a German Gau on the Vistula, its people gone.\n\nAvailable: completed Krakau, a German City, Aktion Zamosc and The Pabst Plan.\nEffect: cosmetic name 'Reichsgau Weichselland'. +15% stability. Germany's opinion +50. (A name on a map: the land is still not ours.)",
+      "fid": "wif_gen_reichsgau_weichselland",
+      "id": "gen012",
+      "mx": [],
+      "name": "Reichsgau Weichselland",
+      "pre": [
+        "gen011"
+      ],
+      "x": 5,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Hitler, 1940: the Poles are 'born for low labour'. The occupation is built to make a nation disappear.\n\nEffect: unlocks the persecution of the Poles. Every focus here adds Home Army grievance.",
+      "fid": "wif_gen_polish_question",
+      "id": "gen013",
+      "mx": [],
+      "name": "The Polish Question",
+      "pre": [
+        "gen000"
+      ],
+      "x": 14,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "The 'Extraordinary Pacification Action' of 1940: thousands of Polish politicians, teachers, priests and professionals were rounded up and shot, many in the Palmiry forest outside Warsaw.\n\nEffect: -10% stability. -10000 manpower. Home Army grievance +0.5. Polish compliance +10 (terror).",
+      "fid": "wif_gen_ab_aktion",
+      "id": "gen014",
+      "mx": [],
+      "name": "AB-Aktion",
+      "pre": [
+        "gen013"
+      ],
+      "x": 11,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "The professors of the Jagiellonian University were summoned to a lecture and arrested on the spot; many died in Sachsenhausen.\n\nEffect: -10% research speed (permanent spirit). Home Army grievance +0.25.",
+      "fid": "wif_gen_sonderaktion_krakau",
+      "id": "gen015",
+      "mx": [],
+      "name": "Sonderaktion Krakau",
+      "pre": [
+        "gen013"
+      ],
+      "x": 14,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Himmler's memorandum: Polish children are to learn only 'simple arithmetic up to 500 at most, writing one's name, and that it is God's law to obey the Germans'.\n\nEffect: spirit 'No Schools for Poles': -15% research speed, +5% recruitable population (labour).",
+      "fid": "wif_gen_count_to_500",
+      "id": "gen016",
+      "mx": [],
+      "name": "Count to Five Hundred",
+      "pre": [
+        "gen013"
+      ],
+      "x": 17,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "The Gestapo prisons of Warsaw and Krakau, where the arrested are tortured, shot in the courtyard, or sent to Auschwitz on the next transport.\n\nEffect: Home Army Strength -5. Home Army grievance +0.25.",
+      "fid": "wif_gen_pawiak",
+      "id": "gen017",
+      "mx": [],
+      "name": "Pawiak and Montelupich",
+      "pre": [
+        "gen014"
+      ],
+      "x": 11,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Street round-ups: a tram is stopped, a street is sealed, and everyone inside goes to forced labour in the Reich, to a camp, or to a wall.\n\nEffect: unlocks the decision 'Round-Up' (-15000 Polish manpower, Germany +1% factory output for 90 days, Home Army Strength +3).",
+      "fid": "wif_gen_lapanka",
+      "id": "gen018",
+      "mx": [],
+      "name": "Lapanka",
+      "pre": [
+        "gen014",
+        "gen015"
+      ],
+      "x": 14,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Monuments torn down, libraries burned, Chopin banned, place names germanised, museums shipped to the Reich.\n\nEffect: Polish compliance -10. Germany +50 political power. Home Army grievance +0.25.",
+      "fid": "wif_gen_cultural_destruction",
+      "id": "gen019",
+      "mx": [],
+      "name": "Erasing Poland",
+      "pre": [
+        "gen016"
+      ],
+      "x": 17,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Hostages shot in public, their names on red posters: fifty or a hundred Poles for every German killed.\n\nEffect: Home Army attacks 20% less likely for a year, then grievance +0.5 for good.",
+      "fid": "wif_gen_public_executions",
+      "id": "gen020",
+      "mx": [],
+      "name": "Red Posters",
+      "pre": [
+        "gen017",
+        "gen018"
+      ],
+      "x": 12,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Over a million Poles are taken to Germany, marked with a 'P' on their clothes, forbidden to ride trams, enter churches with Germans, or love a German on pain of death.\n\nEffect: -40000 manpower. Germany +3% factory output for two years.",
+      "fid": "wif_gen_ostarbeiter",
+      "id": "gen021",
+      "mx": [],
+      "name": "Forced Labour in the Reich",
+      "pre": [
+        "gen018",
+        "gen019"
+      ],
+      "x": 16,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Official rations for Poles fall to a few hundred calories a day; the black market is the only way to live, and smuggling food is punishable by death.\n\nEffect: spirit 'Starvation Rations' (2 years): -0.3% population a month, -10% stability. Germany: -2% consumer goods.",
+      "fid": "wif_gen_hunger_rations",
+      "id": "gen022",
+      "mx": [],
+      "name": "Rations for Poles",
+      "pre": [
+        "gen020",
+        "gen021"
+      ],
+      "x": 14,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "The Generalgouvernement's purpose, as Frank put it: a 'reservoir of labour' for the Reich.\n\nEffect: -50000 manpower. Germany: +5% factory output and +5% construction speed for two years.",
+      "fid": "wif_gen_labour_reservoir",
+      "id": "gen023",
+      "mx": [],
+      "name": "The Labour Reservoir",
+      "pre": [
+        "gen022"
+      ],
+      "x": 14,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Generalplan Ost assigned 20 million Poles to 'resettlement' in the east. Now the trains run to Moskowien's new camp at Ryazan: a Polish district at a time, east past the border, in winter as in summer.\n\nAvailable: the Soviet Union has fallen.\nEffect: every state -15% population (to Moskowien's camps: Moskowien +30000 manpower as forced labour). -10% stability. Home Army grievance +0.5.",
+      "fid": "wif_gen_deportations_east",
+      "id": "gen024",
+      "mx": [],
+      "name": "Deportations to Ryazan",
+      "pre": [
+        "gen023"
+      ],
+      "x": 14,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "SS examiners sort the Poles who are left: the 'Germanisable' to the Reich, the rest to the trains.\n\nEffect: +5% recruitable population. -20000 manpower.",
+      "fid": "wif_gen_germanisable_poles",
+      "id": "gen025",
+      "mx": [],
+      "name": "The Racial Examinations",
+      "pre": [
+        "gen024"
+      ],
+      "x": 12,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "No Polish university, newspaper, theatre or parish priest remains. Those who taught, wrote or led are dead, in camps, or in Siberia.\n\nEffect: Home Army Strength -10. Polish compliance +10 (despair).",
+      "fid": "wif_gen_polish_intelligentsia_gone",
+      "id": "gen026",
+      "mx": [],
+      "name": "A Nation Without a Head",
+      "pre": [
+        "gen024"
+      ],
+      "x": 16,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "In the Reich's maps there is no Poland any more, only the Vistula land.\n\nEffect: every state -10% population. +10% stability. Germany's opinion +20.",
+      "fid": "wif_gen_end_of_poland",
+      "id": "gen027",
+      "mx": [],
+      "name": "Finis Poloniae",
+      "pre": [
+        "gen025",
+        "gen026"
+      ],
+      "x": 14,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Warsaw, Krakau, Lublin: the Jews of the Generalgouvernement were sealed into ghettos behind walls and barbed wire, where hunger and typhus killed tens of thousands.\n\nEffect: -5% stability. Home Army grievance +0.25.",
+      "fid": "wif_gen_ghettos",
+      "id": "gen028",
+      "mx": [],
+      "name": "The Ghettos",
+      "pre": [
+        "gen000"
+      ],
+      "x": 22,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "The Nisko plan of 1939-40: Jews deported from the Reich and Vienna dumped in a 'reservation' near Lublin - a first experiment in mass deportation.\n\nEffect: Lublin -10000 population.",
+      "fid": "wif_gen_lublin_reservation",
+      "id": "gen029",
+      "mx": [],
+      "name": "The Lublin Reservation",
+      "pre": [
+        "gen028"
+      ],
+      "x": 20,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Jewish forced labour digs the 'Otto Line' anti-tank ditches on the Soviet border and the river works of Lublin district.\n\nEffect: +1 infrastructure in Lublin and Kielce. -5% stability.",
+      "fid": "wif_gen_labour_camps",
+      "id": "gen030",
+      "mx": [],
+      "name": "The Jewish Labour Camps",
+      "pre": [
+        "gen028"
+      ],
+      "x": 24,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 70,
+      "desc": "Belzec, Sobibor and Treblinka were built in the Generalgouvernement for one purpose. Around 1.7 million Jews were murdered there in 1942 and 1943, most of them on the day they arrived.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: -10% stability. Germany's opinion +10. Home Army grievance +0.5.",
+      "fid": "wif_gen_operation_reinhard",
+      "id": "gen031",
+      "mx": [],
+      "name": "Operation Reinhard",
+      "pre": [
+        "gen029",
+        "gen030"
+      ],
+      "x": 22,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "In April 1943 the remaining Jews of the Warsaw ghetto rose against the final deportation and fought for nearly a month. Jurgen Stroop's report was titled 'The Jewish Quarter of Warsaw Is No More'.\n\nEffect: Warschau: -100000 population. -5% stability.",
+      "fid": "wif_gen_warsaw_ghetto",
+      "id": "gen032",
+      "mx": [],
+      "name": "The Warsaw Ghetto",
+      "pre": [
+        "gen031"
+      ],
+      "x": 20,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "The camp on the edge of Krakau, run by Amon Goth, who shot prisoners from his balcony.\n\nEffect: Krakau -20000 population. +1 military factory in Krakau (camp labour).",
+      "fid": "wif_gen_plaszow",
+      "id": "gen033",
+      "mx": [],
+      "name": "Plaszow",
+      "pre": [
+        "gen031"
+      ],
+      "x": 22,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "The concentration and extermination camp on the edge of Lublin, in full view of the city.\n\nEffect: Lublin: -30000 population. Unlocks Ostindustrie.",
+      "fid": "wif_gen_majdanek",
+      "id": "gen034",
+      "mx": [],
+      "name": "Majdanek",
+      "pre": [
+        "gen031"
+      ],
+      "x": 24,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "'Harvest Festival': on 3-4 November 1943, around 42,000 Jews were shot at Majdanek, Trawniki and Poniatowa while music played over loudspeakers. It was the largest single massacre of the Holocaust.\n\nEffect: -10% stability. Home Army grievance +0.5.",
+      "fid": "wif_gen_erntefest",
+      "id": "gen035",
+      "mx": [],
+      "name": "Aktion Erntefest",
+      "pre": [
+        "gen032",
+        "gen033",
+        "gen034"
+      ],
+      "x": 22,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "The cover-up: prisoners are forced to dig up the mass graves and burn the bodies. The camps are ploughed under and farms built over them.\n\nEffect: +5% stability.",
+      "fid": "wif_gen_aktion_1005",
+      "id": "gen036",
+      "mx": [],
+      "name": "Aktion 1005",
+      "pre": [
+        "gen035"
+      ],
+      "x": 22,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Before the war a tenth of Poland's people were Jews. In the Generalgouvernement of the 1950s there are none, and it is forbidden to say where they went.\n\nAvailable: the Soviet Union has fallen.\nEffect: +5% stability. Germany's opinion +10.",
+      "fid": "wif_gen_the_silence",
+      "id": "gen037",
+      "mx": [],
+      "name": "The Silence",
+      "pre": [
+        "gen036"
+      ],
+      "x": 22,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 35,
+      "desc": "Anyone with a German grandparent may sign the list - and gets better rations, a better flat, and the hatred of their neighbours.\n\nEffect: +5% stability. +5% recruitable population.",
+      "fid": "wif_gen_volksdeutsche",
+      "id": "gen038",
+      "mx": [],
+      "name": "The Volksdeutsche List",
+      "pre": [
+        "gen000"
+      ],
+      "x": 32,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Frank's propaganda calls Krakau an 'ancient German city'. The Polish population of the centre is expelled, the Jewish quarter emptied, the streets renamed: Adolf-Hitler-Platz, Reichsstrasse.\n\nEffect: Krakau (88): -50000 population, +15 compliance, +1 building slot. (Never a core: the Poles do not stop being Polish.)",
+      "fid": "wif_gen_krakau_german",
+      "id": "gen039",
+      "mx": [],
+      "name": "Krakau, a German City",
+      "pre": [
+        "gen038"
+      ],
+      "x": 30,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "'Nur fur Deutsche': the best districts of every town are cleared for German officials and their families.\n\nEffect: +5% stability. Polish compliance -5.",
+      "fid": "wif_gen_german_quarters",
+      "id": "gen040",
+      "mx": [],
+      "name": "German Quarters Only",
+      "pre": [
+        "gen038"
+      ],
+      "x": 34,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "The SS master plan: 80-85% of the Poles are to be removed to the east within a generation; the rest Germanised or worked to death.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: unlocks the settlement of the Generalgouvernement.",
+      "fid": "wif_gen_generalplan_ost",
+      "id": "gen041",
+      "mx": [],
+      "name": "Generalplan Ost",
+      "pre": [
+        "gen039",
+        "gen040"
+      ],
+      "x": 32,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Polish children judged 'racially valuable' are taken from their families, given German names and sent to German homes through Lebensborn. Tens of thousands never returned.\n\nEffect: Home Army grievance +0.5. -5000 manpower.",
+      "fid": "wif_gen_kidnapped_children",
+      "id": "gen042",
+      "mx": [],
+      "name": "The Stolen Children",
+      "pre": [
+        "gen041"
+      ],
+      "x": 30,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Around 110,000 Poles were driven from the villages of the Zamosc region at gunpoint, families split, children sent to camps - and German settlers moved into their houses. The region answered with a peasant uprising.\n\nEffect: Lublin (92): -100000 population, +1 building slot, +10 compliance. Home Army Strength +10.",
+      "fid": "wif_gen_aktion_zamosc",
+      "id": "gen043",
+      "mx": [],
+      "name": "Aktion Zamosc",
+      "pre": [
+        "gen041"
+      ],
+      "x": 34,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "German farmers from Bessarabia, Bukovina and the Reich take over the farms of the expelled - in villages behind fences, with armed guards.\n\nEffect: Krakau, Lublin and Warschau +1 building slot, +10% compliance growth.",
+      "fid": "wif_gen_settler_villages",
+      "id": "gen044",
+      "mx": [],
+      "name": "Settler Villages",
+      "pre": [
+        "gen042",
+        "gen043"
+      ],
+      "x": 32,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "'The New German City of Warsaw': a 1940 plan to reduce the Polish capital to a German town of 130,000. Now it is carried out: the city is emptied, its people deported, its old town demolished.\n\nAvailable: the Soviet Union has fallen.\nEffect: Warschau (10): -60% of its population. -15% stability for a year. Home Army Strength +15. (The final uprising, if it comes, is smaller in an emptied Warsaw: 3 divisions instead of 4.)",
+      "fid": "wif_gen_pabst_plan",
+      "id": "gen045",
+      "mx": [],
+      "name": "The Pabst Plan",
+      "pre": [
+        "gen044"
+      ],
+      "x": 32,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Half-timbered houses where the Royal Castle stood, a Volkshalle on the Vistula, and a railway station for the Reich's settlers.\n\nEffect: +2 civilian factories and +1 building slot in Warschau.",
+      "fid": "wif_gen_new_warsaw",
+      "id": "gen046",
+      "mx": [],
+      "name": "Neue Deutsche Stadt Warschau",
+      "pre": [
+        "gen045"
+      ],
+      "x": 32,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 49,
+      "desc": "Soldier-settlers on the old Soviet border, armed and organised in villages.\n\nEffect: +5% recruitable population. Home Army attacks in Lublin 25% less likely.",
+      "fid": "wif_gen_wehrbauern",
+      "id": "gen047",
+      "mx": [],
+      "name": "Wehrbauern on the Bug",
+      "pre": [
+        "gen046"
+      ],
+      "x": 30,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "German towns, German farms, German schools from Krakau to Lublin.\n\nEffect: Krakau, Lublin and Warschau +15% factory output and +10% compliance growth.",
+      "fid": "wif_gen_weichselland_settled",
+      "id": "gen048",
+      "mx": [],
+      "name": "The Vistula Land Settled",
+      "pre": [
+        "gen046"
+      ],
+      "x": 34,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 70,
+      "desc": "Berlin declares the deadline met. It is not: the Poles are still there, and still Polish.\n\nEffect: +10% stability. Germany's opinion +25. Still no cores.",
+      "fid": "wif_gen_germanisation_complete",
+      "id": "gen049",
+      "mx": [],
+      "name": "German Land",
+      "pre": [
+        "gen047",
+        "gen048"
+      ],
+      "x": 32,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "The railways of the Generalgouvernement, run by the Reich: the trains east to the front and the camps, the trains west with grain and labourers.\n\nEffect: +1 infrastructure in all states.",
+      "fid": "wif_gen_ostbahn",
+      "id": "gen050",
+      "mx": [],
+      "name": "The Ostbahn",
+      "pre": [
+        "gen000"
+      ],
+      "x": 40,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "Every village must deliver its quota. Farmers who fail are shot or sent to camps.\n\nEffect: Germany: -2% consumer goods for a year. -5% stability.",
+      "fid": "wif_gen_kontingente",
+      "id": "gen051",
+      "mx": [],
+      "name": "The Grain Kontingente",
+      "pre": [
+        "gen050"
+      ],
+      "x": 38,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "Roads, bridges and railways to the Soviet border, built for the coming attack.\n\nEffect: +1 infrastructure in Warschau, Lublin and Kielce. Germany: +10% supply in the east for the war (staging).",
+      "fid": "wif_gen_otto_programm",
+      "id": "gen052",
+      "mx": [],
+      "name": "The Otto Programme",
+      "pre": [
+        "gen050"
+      ],
+      "x": 42,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The Generalgouvernement becomes the staging area for Barbarossa: three army groups camp in its fields and towns.\n\nEffect: Germany: +5% war support. -5% stability (requisitions).",
+      "fid": "wif_gen_aufmarschgebiet",
+      "id": "gen053",
+      "mx": [],
+      "name": "Aufmarschgebiet Ost",
+      "pre": [
+        "gen051",
+        "gen052"
+      ],
+      "x": 40,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The SS's own company, using Jewish and Polish slave labour in the camps around Lublin.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: +2 military factories in Lublin. Home Army grievance +0.25.",
+      "fid": "wif_gen_ostindustrie",
+      "id": "gen054",
+      "mx": [],
+      "name": "Ostindustrie GmbH",
+      "pre": [
+        "gen053"
+      ],
+      "x": 38,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The oil fields of Drohobycz and Boryslaw in Galicia, taken over by a Reich company.\n\nAvailable: we own Lemberg (91) or Stanislau (89).\nEffect: +6 oil and +1 synthetic refinery in Galicia.",
+      "fid": "wif_gen_karpathen_oel",
+      "id": "gen055",
+      "mx": [],
+      "name": "Karpathen-Ol AG",
+      "pre": [
+        "gen053"
+      ],
+      "x": 42,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The steelworks of the pre-war Polish Central Industrial District, run by the Reichswerke Hermann Goring.\n\nEffect: +2 civilian factories in Kielce, +4 steel.",
+      "fid": "wif_gen_stalowa_wola",
+      "id": "gen056",
+      "mx": [],
+      "name": "Stalowa Wola",
+      "pre": [
+        "gen054"
+      ],
+      "x": 38,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "The Polish aircraft works at Mielec builds Heinkel parts with labour from the camp next door.\n\nEffect: +1 military factory in Krakau. Germany +5% air production speed for two years.",
+      "fid": "wif_gen_mielec",
+      "id": "gen057",
+      "mx": [],
+      "name": "Heinkel at Mielec",
+      "pre": [
+        "gen054",
+        "gen055"
+      ],
+      "x": 40,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 49,
+      "desc": "Drohobycz refinery rebuilt for the Wehrmacht.\n\nEffect: +1 synthetic refinery in Lemberg.",
+      "fid": "wif_gen_galician_refineries",
+      "id": "gen058",
+      "mx": [],
+      "name": "The Galician Refineries",
+      "pre": [
+        "gen055"
+      ],
+      "x": 42,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Everything the Generalgouvernement makes goes west. Nothing is built for the people who live there.\n\nEffect: +1 civilian factory in Krakau. Germany +2% factory output for good.",
+      "fid": "wif_gen_colony_economy",
+      "id": "gen059",
+      "mx": [],
+      "name": "A Colony for the Reich",
+      "pre": [
+        "gen056",
+        "gen057",
+        "gen058"
+      ],
+      "x": 40,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "The Reich's highway to the east, from Lemberg into Ukraine, built by Jewish and Soviet prisoners who were shot when they could no longer work.\n\nAvailable: the Soviet Union has fallen.\nEffect: +2 infrastructure in Lemberg and Krakau. -10000 manpower.",
+      "fid": "wif_gen_dg_iv",
+      "id": "gen060",
+      "mx": [],
+      "name": "Durchgangsstrasse IV",
+      "pre": [
+        "gen059"
+      ],
+      "x": 38,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "Factories are finally built in the Generalgouvernement - in the German towns, for German workers.\n\nAvailable: the Soviet Union has fallen.\nEffect: +1 civilian factory in Krakau, Lublin and Warschau.",
+      "fid": "wif_gen_settler_industry",
+      "id": "gen061",
+      "mx": [],
+      "name": "Industry for the Settlers",
+      "pre": [
+        "gen059"
+      ],
+      "x": 42,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 70,
+      "desc": "From Krakau to Warsaw, a German industrial region on the old Polish land.\n\nEffect: +2 military factories in Krakau. +10% factory output.",
+      "fid": "wif_gen_vistula_industry",
+      "id": "gen062",
+      "mx": [],
+      "name": "The Vistula Industrial Region",
+      "pre": [
+        "gen060",
+        "gen061"
+      ],
+      "x": 40,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "After the attack on the Soviet Union, eastern Galicia is added to the Generalgouvernement as its fifth district. The Germans favour the Ukrainians here: their own committee, schools and police - against the Poles.\n\nAvailable: we own Lemberg (91).\nEffect: Lemberg and Stanislau +15 compliance.",
+      "fid": "wif_gen_distrikt_galizien",
+      "id": "gen063",
+      "mx": [],
+      "name": "Distrikt Galizien",
+      "pre": [
+        "gen000"
+      ],
+      "x": 47,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Volodymyr Kubijovyc's committee in Krakau: the one native body the Generalgouvernement tolerates.\n\nEffect: +10% political power. Galician states +10% compliance growth.",
+      "fid": "wif_gen_ukrainian_committee",
+      "id": "gen064",
+      "mx": [],
+      "name": "The Ukrainian Central Committee",
+      "pre": [
+        "gen063"
+      ],
+      "x": 46,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Ukrainian volunteers in a Waffen-SS division, to fight the Soviets - and the Poles.\n\nEffect: 2 'Galician Volunteer' divisions (3x2 infantry, some experience).",
+      "fid": "wif_gen_ss_galizien",
+      "id": "gen065",
+      "mx": [],
+      "name": "The Galician SS Division",
+      "pre": [
+        "gen063"
+      ],
+      "x": 48,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "The camp on Janowska Street in Lemberg, where the Jews of the city were murdered in the Piaski ravine behind it.\n\nEffect: Lemberg -50000 population. -5% stability.",
+      "fid": "wif_gen_janowska",
+      "id": "gen066",
+      "mx": [],
+      "name": "Janowska",
+      "pre": [
+        "gen064"
+      ],
+      "x": 46,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Ukrainian police in Polish villages, Polish police in Ukrainian ones. The hatred is useful.\n\nEffect: Home Army attacks in Galicia 50% less likely. Galicia's Poles: -10 compliance. Home Army grievance +0.25.",
+      "fid": "wif_gen_divide_and_rule",
+      "id": "gen067",
+      "mx": [],
+      "name": "Divide and Rule",
+      "pre": [
+        "gen065"
+      ],
+      "x": 48,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 49,
+      "desc": "Galicia is the Generalgouvernement's bridge to the Reichskommissariat Ukraine - and its oil.\n\nEffect: +10% stability in Galicia. +1 infrastructure in Stanislau.",
+      "fid": "wif_gen_galician_frontier",
+      "id": "gen068",
+      "mx": [],
+      "name": "The Galician Frontier",
+      "pre": [
+        "gen066",
+        "gen067"
+      ],
+      "x": 47,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The pre-war Polish police, kept on in navy-blue uniforms under German command. Many of them also work for the underground.\n\nEffect: 2 'Ordnungsdienst' divisions (3x1 infantry, low experience). Home Army attacks 10% less likely.",
+      "fid": "wif_gen_blue_police",
+      "id": "gen069",
+      "mx": [],
+      "name": "The Blue Police",
+      "pre": [
+        "gen000"
+      ],
+      "x": 54,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Volksdeutsche auxiliaries for 'special duties': guarding, round-ups, executions.\n\nEffect: 1 'Sonderdienst' division. Round-Up decisions cost 25% less.",
+      "fid": "wif_gen_sonderdienst",
+      "id": "gen070",
+      "mx": [],
+      "name": "The Sonderdienst",
+      "pre": [
+        "gen069"
+      ],
+      "x": 52,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Young Poles conscripted into labour battalions under German command.\n\nEffect: +10% construction speed. -10000 manpower.",
+      "fid": "wif_gen_baudienst",
+      "id": "gen071",
+      "mx": [],
+      "name": "The Baudienst",
+      "pre": [
+        "gen069"
+      ],
+      "x": 56,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "Behind the occupation there is a whole secret Poland: courts, schools, newspapers, a parliament, and an army of hundreds of thousands answering to London.\n\nEffect: the Home Army's operations are revealed (see its Strength in the decisions). +5% stability (we know the enemy).",
+      "fid": "wif_gen_underground_state",
+      "id": "gen072",
+      "mx": [],
+      "name": "The Underground State",
+      "pre": [
+        "gen070",
+        "gen071"
+      ],
+      "x": 54,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "In February 1944 the Home Army shot SS-Brigadefuhrer Franz Kutschera, the 'executioner of Warsaw', in front of his headquarters. His successors travel in armoured cars.\n\nAvailable: Germany is at war with the Soviet Union, or the Soviet Union has fallen.\nEffect: Home Army assassinations do not cost us advisors. +10% stability.",
+      "fid": "wif_gen_kutschera",
+      "id": "gen073",
+      "mx": [],
+      "name": "After Kutschera",
+      "pre": [
+        "gen072"
+      ],
+      "x": 52,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "Sweeps through the forests of Kielce and Lublin, where the Home Army's 'forest units' live.\n\nEffect: unlocks Forest Sweep decisions against the Home Army.",
+      "fid": "wif_gen_anti_partisan",
+      "id": "gen074",
+      "mx": [],
+      "name": "Bandenbekampfung",
+      "pre": [
+        "gen072"
+      ],
+      "x": 56,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "Villages suspected of feeding partisans are burned with their people - Michniow, Sochy, and hundreds more.\n\nEffect: Home Army Strength -10 now, grievance +0.5 for good. -5% stability.",
+      "fid": "wif_gen_pacification_villages",
+      "id": "gen075",
+      "mx": [],
+      "name": "Pacification of the Villages",
+      "pre": [
+        "gen073",
+        "gen074"
+      ],
+      "x": 54,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "If the Poles ever rise in Warsaw, the city will be destroyed street by street - as Himmler ordered in 1944: 'every inhabitant is to be killed'.\n\nEffect: +2 land forts in Warschau. 2 'Ordnungsdienst' divisions. If the final uprising comes, Warsaw rises with 1 division fewer.",
+      "fid": "wif_gen_fortress_warsaw",
+      "id": "gen076",
+      "mx": [],
+      "name": "Festung Warschau",
+      "pre": [
+        "gen075"
+      ],
+      "x": 52,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 49,
+      "desc": "Garrison divisions of older men and police, permanently stationed in the Generalgouvernement.\n\nAvailable: the Soviet Union has fallen.\nEffect: 2 'Ordnungsdienst Regiment' divisions (3x2 infantry).",
+      "fid": "wif_gen_security_divisions",
+      "id": "gen077",
+      "mx": [],
+      "name": "Sicherungsdivisionen",
+      "pre": [
+        "gen075"
+      ],
+      "x": 56,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "A decade of terror has not broken the underground. It can be hunted, never destroyed.\n\nEffect: Forest Sweeps +25% success. The Home Army's floor of 15 remains.",
+      "fid": "wif_gen_never_surrenders",
+      "id": "gen078",
+      "mx": [],
+      "name": "The Home Army Never Surrenders",
+      "pre": [
+        "gen076",
+        "gen077"
+      ],
+      "x": 54,
+      "y": 7
+    }
+  ],
+  "name": "Generalgouvernement (WiF draft)",
+  "tag": "GEN",
+  "target": 4067,
+  "treeId": "wif_gen_focus",
+  "updatedAt": 1795553522058
+}
