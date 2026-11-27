@@ -86,46 +86,56 @@ focus_tree = {
 			}
 
 			# Dead or out of politics by 1945:
-			#   Nils Flyg          died 1943
-			#   Ernst Linder       died 1943
-			#   Gosta Bagge        left the government and the Hogern leadership, 1944
-			#   Olof Thornell      retired as Supreme Commander, 1944
-			#   Charles de Champs  long retired from the navy
-			#   Erik Palmstierna   left public life after London, 1937
-			#   Rickard Sandler    county governor from 1941, out of national politics
-			#   Birger Furugard    left politics after his party collapsed, 1936
-			#   Carl Lindhagen     left the Riksdag in 1940
-			#   Raoul Wallenberg   disappeared in Budapest, January 1945
-			#   Per Albin Hansson  removed by design: the Unity Government replaces him
-			#   Per Sylvan         Chief of the Army to 1940, then retired
-			#   Oscar Nygren       retired from the army, 1941
-			#   Torsten Friis      left the air force, 1942
-			#   Ivar Holmquist     Chief of the Army to March 1944
-			#   Fabian Tamm        Chief of the Navy to March 1945
-			#   Axel Rappe         died 1945
-			#   Herman Eriksson    left the government, September 1944
-			#   K. G. Westman      left the government, August 1943
+			#   Per Albin Hansson   removed by design: the Unity Government replaces him
+			# Dead:
+			#   Nils Flyg           died 1943
+			#   Ernst Linder        died 1943
+			#   K. G. Westman       died January 1944
+			#   Axel Rappe          died October 1945 (served to 1944)
+			#   Raoul Wallenberg    disappeared in Budapest, January 1945
+			# Out of politics or out of service:
+			#   Charles de Champs   Chief of the Navy to 1939
+			#   Per Sylvan          Chief of the Army to 1940
+			#   Oscar Nygren        retired from the army, 1941
+			#   Torsten Friis       left the air force, 1942
+			#   Claes Lindsstrom    commanding admiral to 1942, then retired
+			#   Erik af Edholm      placed in the reserve, 1944
+			#   Olof Thornell       retired as Supreme Commander, 1944
+			#   Ivar Holmquist      Chief of the Army to March 1944
+			#   Fabian Tamm         Chief of the Navy to March 1945
+			#   Erik Palmstierna    diplomat to 1937, then left public life
+			#   Ebba Palmstierna    suffragette, never held office
+			#   Konrad Hallgren     his party dissolved in 1930; became an archivist
+			#   Birger Furugard     left politics after his party collapsed, 1936
+			#   Carl Lindhagen      left the Riksdag in 1940
+			#   Karl Kilbom         left the Riksdag at the end of 1944
+			#   Herman Eriksson     left the government September 1944, then a diplomat
+			# NOT removed, though they left office: Gosta Bagge (Riksdag to 1947)
+			# and Rickard Sandler (governor, and First Chamber to 1964).
 			custom_effect_tooltip = SWE_the_costs_of_the_war_retire_tt
 			hidden_effect = {
 				if = { limit = { has_character = SWE_per_albin_hansson } retire_character = SWE_per_albin_hansson }
+				if = { limit = { has_character = SWE_nils_flyg } retire_character = SWE_nils_flyg }
+				if = { limit = { has_character = SWE_ernst_linder } retire_character = SWE_ernst_linder }
+				if = { limit = { has_character = SWE_karl_gustav_westman } retire_character = SWE_karl_gustav_westman }
+				if = { limit = { has_character = SWE_axel_rappe } retire_character = SWE_axel_rappe }
+				if = { limit = { has_character = SWE_raoul_wallenberg } retire_character = SWE_raoul_wallenberg }
+				if = { limit = { has_character = SWE_charles_de_champs } retire_character = SWE_charles_de_champs }
 				if = { limit = { has_character = SWE_per_sylvan } retire_character = SWE_per_sylvan }
 				if = { limit = { has_character = SWE_oscar_nygren } retire_character = SWE_oscar_nygren }
 				if = { limit = { has_character = SWE_torsten_friis } retire_character = SWE_torsten_friis }
+				if = { limit = { has_character = SWE_claes_lindstrom } retire_character = SWE_claes_lindstrom }
+				if = { limit = { has_character = SWE_erik_af_edholm } retire_character = SWE_erik_af_edholm }
+				if = { limit = { has_character = SWE_olof_thornell } retire_character = SWE_olof_thornell }
 				if = { limit = { has_character = SWE_ivar_holmquist } retire_character = SWE_ivar_holmquist }
 				if = { limit = { has_character = SWE_fabian_tamm } retire_character = SWE_fabian_tamm }
-				if = { limit = { has_character = SWE_axel_rappe } retire_character = SWE_axel_rappe }
-				if = { limit = { has_character = SWE_herman_eriksson } retire_character = SWE_herman_eriksson }
-				if = { limit = { has_character = SWE_karl_gustav_westman } retire_character = SWE_karl_gustav_westman }
-				if = { limit = { has_character = SWE_nils_flyg } retire_character = SWE_nils_flyg }
-				if = { limit = { has_character = SWE_ernst_linder } retire_character = SWE_ernst_linder }
-				if = { limit = { has_character = SWE_gosta_bagge } retire_character = SWE_gosta_bagge }
-				if = { limit = { has_character = SWE_olof_thornell } retire_character = SWE_olof_thornell }
-				if = { limit = { has_character = SWE_charles_de_champs } retire_character = SWE_charles_de_champs }
 				if = { limit = { has_character = SWE_erik_palmstierna } retire_character = SWE_erik_palmstierna }
-				if = { limit = { has_character = SWE_rickard_sandler } retire_character = SWE_rickard_sandler }
+				if = { limit = { has_character = SWE_ebba_palmstierna } retire_character = SWE_ebba_palmstierna }
+				if = { limit = { has_character = SWE_konrad_hallgren } retire_character = SWE_konrad_hallgren }
 				if = { limit = { has_character = SWE_birger_furugard } retire_character = SWE_birger_furugard }
 				if = { limit = { has_character = SWE_carl_lindhagen } retire_character = SWE_carl_lindhagen }
-				if = { limit = { has_character = SWE_raoul_wallenberg } retire_character = SWE_raoul_wallenberg }
+				if = { limit = { has_character = SWE_karl_kilbom } retire_character = SWE_karl_kilbom }
+				if = { limit = { has_character = SWE_herman_eriksson } retire_character = SWE_herman_eriksson }
 			}
 
 			custom_effect_tooltip = generic_skip_one_line_tt
