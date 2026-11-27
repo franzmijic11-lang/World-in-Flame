@@ -12,6 +12,9 @@
 #   - the seven trade laws other than closed_economy each have one line in
 #     available: NOT = { wif_has_warlord_spirit = yes }
 #   - closed_economy gains allowed_to_remove, so a warlord cannot drop it.
+#   - every trade law's available: NOT = { wif_is_burgundian_system = yes } (the
+#     Burgundian System has its own closed economy, common/ideas/wif_burgundian_system.txt)
+#   - war_economy gains allowed_to_remove: the Burgundian System cannot leave it.
 # The economy laws above are vanilla, untouched. WiF's own economy laws live in
 # common/ideas/wif_economy_laws.txt, which merges into the same group.
 #
@@ -512,6 +515,11 @@ ideas = {
 
 		war_economy = {
 
+
+			# Welt in Flammen: the Burgundian System forces War Economy.
+			allowed_to_remove = {
+				NOT = { wif_is_burgundian_system = yes }
+			}
 
 			available = {
 				has_war_support > 0.5
@@ -1175,6 +1183,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 			}
 
 
@@ -1251,6 +1260,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 				if = {
 					limit = {
@@ -1356,6 +1366,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 
 				if = {
@@ -1462,6 +1473,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 				OR = {
 					AND = {
@@ -1623,6 +1635,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 			}
 
@@ -1672,6 +1685,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 			}
 
@@ -1729,6 +1743,7 @@ ideas = {
 
 
 			available = {
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 				has_war = yes
 
@@ -1876,6 +1891,7 @@ ideas = {
 				# trade policy, and the option is greyed out rather than reverted
 				# a week later.
 				NOT = { wif_has_warlord_spirit = yes }
+				NOT = { wif_is_burgundian_system = yes }	# Welt in Flammen: the Burgundian System keeps its own closed economy
 
 				always = no
 			}

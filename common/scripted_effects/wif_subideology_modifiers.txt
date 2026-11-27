@@ -12,6 +12,19 @@
 # is not a substitute for listing it.
 wif_apply_subideology_modifiers = {
 
+	# The Burgundian System (fascism): its statistics and its forced laws.
+	if = {
+		limit = {
+			has_country_leader_ideology = burgundian_system
+			NOT = { has_dynamic_modifier = { modifier = wif_ideology_burgundian_system } }
+		}
+		add_dynamic_modifier = { modifier = wif_ideology_burgundian_system }
+	}
+	if = {
+		limit = { has_country_leader_ideology = burgundian_system }
+		wif_burgundian_system_laws = yes
+	}
+
 	if = {
 		limit = {
 			has_country_leader_ideology = despotism
@@ -101,4 +114,16 @@ wif_apply_subideology_modifiers = {
 		}
 		add_dynamic_modifier = { modifier = wif_ideology_neutrality_default }
 	}
+}
+
+# The Burgundian System forces three laws: All Adults Serve, War Economy and the
+# Burgundian Closed Economy. War Economy and the Burgundian Closed Economy cannot be
+# left while the ideology is held (allowed_to_remove in common/ideas/_economic.txt and
+# common/ideas/wif_burgundian_system.txt); conscription laws live in vanilla's
+# _manpower.txt, which WiF does not copy, so All Adults Serve is put back here every
+# week (and on every change of government) instead.
+wif_burgundian_system_laws = {
+	if = { limit = { NOT = { has_idea = all_adults_serve } } add_ideas = all_adults_serve }
+	if = { limit = { NOT = { has_idea = war_economy } } add_ideas = war_economy }
+	if = { limit = { NOT = { has_idea = wif_burgundian_closed_economy } } add_ideas = wif_burgundian_closed_economy }
 }

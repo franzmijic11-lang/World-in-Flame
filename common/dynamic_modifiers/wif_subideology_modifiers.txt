@@ -197,3 +197,19 @@ wif_ideology_neutrality_default = {
 	navy_intel_to_others = 20.0
 	airforce_intel_to_others = 10.0
 }
+
+# The Burgundian System (fascism group). Unlike the neutrality types above, the fascism
+# group keeps its own modifiers, so these are DELTAS on top of them:
+#   lend-lease tension: group 0.50 + 0.51 = 1.01 - lend-lease needs over 100% world tension
+#   (more still on its closed economy, which adds 0.40);
+#   intel to others: group 15/10/10/10, minus the same = 0 - the Order gives away nothing.
+wif_ideology_burgundian_system = {
+	enable = { always = yes }
+	remove_trigger = { NOT = { has_country_leader_ideology = burgundian_system } }
+
+	lend_lease_tension = 0.51
+	civilian_intel_to_others = -15.0
+	army_intel_to_others = -10.0
+	navy_intel_to_others = -10.0
+	airforce_intel_to_others = -10.0
+}

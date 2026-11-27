@@ -7,4 +7,8 @@ spriteTypes = {
 		name = "GFX_wif_moskowien_civil_war"
 		texturefile = "gfx/event_pictures/wif_moskowien_civil_war.dds"
 	}
+	spriteType = {
+		name = "GFX_wif_osb_agartha"
+		texturefile = "gfx/event_pictures/wif_osb_agartha.dds"
+	}
 }

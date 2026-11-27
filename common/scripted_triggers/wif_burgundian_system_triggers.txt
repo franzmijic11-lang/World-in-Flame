@@ -1,0 +1,5 @@
+# The Burgundian System: the Ordensstaat's own fascism (common/ideologies/00_ideologies.txt).
+
+wif_is_burgundian_system = {
+	has_country_leader_ideology = burgundian_system
+}

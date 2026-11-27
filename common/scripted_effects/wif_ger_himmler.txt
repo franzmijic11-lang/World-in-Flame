@@ -321,7 +321,7 @@ wif_ger_himmler_to_osb = {
 			character = GER_heinrich_himmler
 			promote_leader = yes
 			country_leader = {
-				ideology = nazism
+				ideology = burgundian_system	# the Burgundian System (00_ideologies.txt)
 				# common/country_leader/wif_osb_traits.txt; also makes the AI favour militia
 				traits = { wif_osb_lord_of_the_landwehr }
 			}
@@ -336,7 +336,13 @@ wif_ger_himmler_to_osb = {
 wif_osb_setup = {
 	save_event_target_as = wif_tech_donor
 	OSB = {
+		# The capital is Nancy, in Franche-Comte (user, 2026-11-27) - Alsace-Lorraine if not.
 		if = {
+			limit = { owns_state = 17 }
+			set_victory_points = { province = 11516 value = 10 }	# Nancy outranks Besancon, so the capital sits there
+			set_capital = { state = 17 }
+		}
+		else_if = {
 			limit = { owns_state = 28 }
 			set_capital = { state = 28 }
 		}

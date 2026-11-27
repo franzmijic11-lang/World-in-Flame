@@ -1742,7 +1742,7 @@
    "auto": false,
    "branch": "inner",
    "days": 70,
-   "desc": "The expeditions return - those that return - with stories the Grand Master chooses to believe.\n\nEffect: +10% stability, +10% war support.",
+   "desc": "The Agartha expedition did not come back with stories. It came back with an envoy - tall, fair, robed in blue, a star burning in his palm - and the Grand Master knelt before him.\n\nAvailable: the Order is fascist.\nEffect: event 'The Gate Beneath Nancy': Agartha pledges itself to the Order's plans. A gate opens beneath Nancy, which becomes the capital. While the Order is fascist and holds Franche-Comte, Agartha secretly sends +250 of every resource there - gone the day anyone else owns or occupies it, back when the Order retakes it. +10% stability, +10% war support.",
    "fid": "wif_osb_the_hollow_earth",
    "id": "osb101",
    "mx": [],
@@ -1760,33 +1760,16 @@
    "auto": false,
    "branch": "inner",
    "days": 70,
-   "desc": "Fire on every hilltop of the Order on the longest night.\n\nEffect: +10% war support.",
-   "fid": "wif_osb_the_solstice_rites",
-   "id": "osb102",
-   "mx": [],
-   "name": "The Solstice Rites",
-   "pre": [
-    "osb101"
-   ],
-   "x": 36,
-   "y": 9
-  },
-  {
-   "after": [],
-   "any": false,
-   "auto": false,
-   "branch": "inner",
-   "days": 70,
-   "desc": "Himmler no longer speaks of politics, only of destiny, rebirth and the coming age. The Order obeys a prophet now.\n\nEffect: spirit 'The Prophet of the Order' (+20% war support, +10% stability, -20% political power gain).",
+   "desc": "Himmler no longer speaks of politics, only of the world below and the age it will bring. The Order obeys a prophet now - and the prophet obeys Agartha.\n\nEffect: spirit 'The Herald of Agartha' (+20% war support, +10% stability, -20% political power gain).",
    "fid": "wif_osb_himmler_ascends",
    "id": "osb103",
    "mx": [],
-   "name": "The Grand Master Ascends",
+   "name": "The Herald of Agartha",
    "pre": [
-    "osb102"
+    "agartha_the_inner_sun"
    ],
    "x": 36,
-   "y": 10
+   "y": 11
   },
   {
    "after": [],
@@ -1974,11 +1957,63 @@
    ],
    "x": 14,
    "y": 12
+  },
+  {
+   "id": "agartha_the_oath_of_silence",
+   "fid": "wif_osb_the_oath_of_silence",
+   "name": "The Oath of Silence",
+   "desc": "No one outside the Order may ever know. The world would laugh - and if it believed, others would seek the way down. The envoy, who shares every obsession of his hosts, names the Jews first among those who must never find it.\n\nEffect: spirit 'The Oath of Silence' (+25% encryption, +15% enemy operative detection). Every foreign claim to Franche-Comte's resources is cancelled.",
+   "days": 70,
+   "x": 35,
+   "y": 9,
+   "branch": "inner",
+   "pre": [
+    "osb101"
+   ],
+   "any": false,
+   "mx": [],
+   "after": [],
+   "auto": false
+  },
+  {
+   "id": "agartha_the_envoys_counsel",
+   "fid": "wif_osb_the_envoys_counsel",
+   "name": "The Envoy's Counsel",
+   "desc": "Every night the Grand Master sits with the envoy beneath Nancy. In the morning his scientists receive new instructions.\n\nEffect: nuclear and rocket research +50% (2 uses).",
+   "days": 70,
+   "x": 37,
+   "y": 9,
+   "branch": "inner",
+   "pre": [
+    "osb101"
+   ],
+   "any": false,
+   "mx": [],
+   "after": [],
+   "auto": false
+  },
+  {
+   "id": "agartha_the_inner_sun",
+   "fid": "wif_osb_the_inner_sun",
+   "name": "The Inner Sun",
+   "desc": "At the centre of the hollow world burns a sun of its own - the true Black Sun, the Grand Master is told, of which the one in his hall is only an image.\n\nEffect: spirit 'The Light from Below' (+10% research speed, +5% factory output).",
+   "days": 70,
+   "x": 36,
+   "y": 10,
+   "branch": "inner",
+   "pre": [
+    "agartha_the_oath_of_silence",
+    "agartha_the_envoys_counsel"
+   ],
+   "any": true,
+   "mx": [],
+   "after": [],
+   "auto": false
   }
  ],
  "name": "Ordensstaat Burgund (satellite, draft)",
  "tag": "OSB",
  "target": 7700,
  "treeId": "wif_osb_focus",
- "updatedAt": 1794231880525
+ "updatedAt": 1795810300392
 }

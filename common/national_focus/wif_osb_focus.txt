@@ -999,7 +999,7 @@ focus_tree = {
 
 	focus = {
 		id = wif_osb_the_black_sun
-		icon = GFX_focus_ETH_the_lion_and_the_sun
+		icon = GFX_focus_OSB_the_black_sun
 		prerequisite = { focus = wif_osb_the_thule_inheritance }
 		prerequisite = { focus = wif_osb_knights_of_the_order }
 		x = 36
@@ -1552,16 +1552,23 @@ focus_tree = {
 
 	focus = {
 		id = wif_osb_the_hollow_earth
-		icon = GFX_focus_ETH_an_empire_in_the_shade_of_the_sun
+		icon = GFX_focus_OSB_the_hollow_earth
 		prerequisite = { focus = wif_osb_into_the_ice focus = wif_osb_through_persia }
 		x = 36
 		y = 8
 		cost = 10
+		available = {
+			has_government = fascism
+		}
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_stability = 0.1
 			add_war_support = 0.1
+			custom_effect_tooltip = wif_osb_hollow_earth_tt
+			hidden_effect = {
+				country_event = { id = wif_osb_agartha.1 }
+			}
 		}
 	}
 
@@ -1714,16 +1721,40 @@ focus_tree = {
 	}
 
 	focus = {
-		id = wif_osb_the_solstice_rites
-		icon = GFX_focus_GER_our_place_in_the_sun
+		id = wif_osb_the_oath_of_silence
+		icon = GFX_focus_generic_secret_service_agency
 		prerequisite = { focus = wif_osb_the_hollow_earth }
-		x = 36
+		x = 35
 		y = 9
 		cost = 10
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_war_support = 0.1
+			add_ideas = wif_osb_oath_of_silence
+			custom_effect_tooltip = wif_osb_oath_tt
+			hidden_effect = {
+				wif_osb_agartha_seal = yes
+			}
+		}
+	}
+
+	focus = {
+		id = wif_osb_the_envoys_counsel
+		icon = GFX_focus_generic_nuclear_development
+		prerequisite = { focus = wif_osb_the_hollow_earth }
+		x = 37
+		y = 9
+		cost = 10
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				name = wif_osb_research
+				bonus = 0.5
+				uses = 2
+				category = nuclear
+				category = rocketry
+			}
 		}
 	}
 
@@ -1801,16 +1832,16 @@ focus_tree = {
 	}
 
 	focus = {
-		id = wif_osb_himmler_ascends
-		icon = GFX_focus_GER_fuhrerprinzip_himmler
-		prerequisite = { focus = wif_osb_the_solstice_rites }
+		id = wif_osb_the_inner_sun
+		icon = GFX_focus_ETH_an_empire_in_the_shade_of_the_sun
+		prerequisite = { focus = wif_osb_the_oath_of_silence focus = wif_osb_the_envoys_counsel }
 		x = 36
 		y = 10
 		cost = 10
 		ai_will_do = { factor = 10 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_ideas = wif_osb_prophet
+			add_ideas = wif_osb_light_from_below
 		}
 	}
 
@@ -1853,6 +1884,20 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_equipment_to_stockpile = { type = nuclear_missile_equipment_1 amount = 5 producer = ROOT }
+		}
+	}
+
+	focus = {
+		id = wif_osb_himmler_ascends
+		icon = GFX_focus_GER_fuhrerprinzip_himmler
+		prerequisite = { focus = wif_osb_the_inner_sun }
+		x = 36
+		y = 11
+		cost = 10
+		ai_will_do = { factor = 10 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = wif_osb_prophet
 		}
 	}
 

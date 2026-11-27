@@ -34,6 +34,12 @@ Also writes / patches:
     equal to infantry after two, better after three); Himmler's trait
     wif_osb_lord_of_the_landwehr (set by hand in wif_ger_himmler_to_osb) and an
     AI strategy + AI template that make the AI favour militia.
+  - Agartha (2026-11-27, gen_agartha): The Hollow Earth (fascist only) fires
+    wif_osb_agartha.1 - the envoy, the gate beneath Nancy, Nancy (Franche-Comte,
+    state 17) the capital. While OSB is fascist and owns AND controls the state,
+    it has +250 of six resources (global flag wif_osb_agartha_flowing; checked
+    weekly and on every control change); foreign resource rights there are
+    removed. Console: wif_osb_agartha.990 on OSB. Icon art in tools/art/osb.
 """
 import json, math, os, re
 
@@ -248,8 +254,12 @@ R = {
     'agartha': j(ws(0.10), pp(-50)),
     'into_the_ice': j(bonus('wif_osb_research', ['naval_equipment'], 1.0), stab(-0.05)),
     'through_persia': j(ws(0.05), stab(-0.05)),
-    'the_hollow_earth': j(stab(0.10), ws(0.10)),
-    'the_solstice_rites': ws(0.10),
+    # Agartha is found (user, 2026-11-27): event wif_osb_agartha.1, the gate beneath Nancy,
+    # +250 of every resource in Franche-Comte while the Order is fascist and holds it.
+    'the_hollow_earth': j(stab(0.10), ws(0.10), tt('wif_osb_hollow_earth_tt', 'country_event = { id = wif_osb_agartha.1 }')),
+    'the_oath_of_silence': j(idea('wif_osb_oath_of_silence'), tt('wif_osb_oath_tt', 'wif_osb_agartha_seal = yes')),
+    'the_envoys_counsel': bonus('wif_osb_research', ['nuclear', 'rocketry'], 0.5, 2),
+    'the_inner_sun': idea('wif_osb_light_from_below'),
     'himmler_ascends': idea('wif_osb_prophet'),
     # The Order Alone
     'the_reich_burns': j(stab(0.10), pp(100)),
@@ -268,6 +278,7 @@ R = {
 }
 
 AVAILABLE = {
+    'the_hollow_earth': 'has_government = fascism',
     'the_reich_burns': j('custom_trigger_tooltip = {', '\ttooltip = wif_osb_civil_war_trigger_tt',
                          '\thas_global_flag = wif_ger_civil_war_begun', '}'),
 }
@@ -327,10 +338,11 @@ ICON = {
     'the_grand_master': 'GFX_focus_GER_ascension_of_himmler', 'the_ahnenerbe': 'GFX_focus_TUR_the_sun_language_theory',
     'a_new_wewelsburg': 'GFX_focus_POL_the_castle', 'the_rune_scholars': 'GFX_focus_TUR_the_sun_language_theory',
     'the_crypt_of_twelve': 'GFX_focus_CZE_appeal_to_the_castle', 'the_thule_inheritance': 'GFX_focus_GER_our_place_in_the_sun',
-    'knights_of_the_order': 'GFX_focus_HUN_strenghten_the_order_of_vitez', 'the_black_sun': 'GFX_focus_ETH_the_lion_and_the_sun',
+    'knights_of_the_order': 'GFX_focus_HUN_strenghten_the_order_of_vitez', 'the_black_sun': 'GFX_focus_OSB_the_black_sun',
     'hyperborea': 'GFX_focus_JAP_isolate_oceania', 'agartha': 'GFX_focus_PRC_reclaim_tibet',
     'into_the_ice': 'GFX_focus_JAP_isolate_oceania', 'through_persia': 'GFX_focus_PER_embrace_opulence',
-    'the_hollow_earth': 'GFX_focus_ETH_an_empire_in_the_shade_of_the_sun', 'the_solstice_rites': 'GFX_focus_GER_our_place_in_the_sun',
+    'the_hollow_earth': 'GFX_focus_OSB_the_hollow_earth', 'the_oath_of_silence': 'GFX_focus_generic_secret_service_agency',
+    'the_envoys_counsel': 'GFX_focus_generic_nuclear_development', 'the_inner_sun': 'GFX_focus_ETH_an_empire_in_the_shade_of_the_sun',
     'himmler_ascends': 'GFX_focus_GER_fuhrerprinzip_himmler',
     'the_reich_burns': 'GFX_focus_GER_brest_litovsk_borders', 'leave_the_axis': 'GFX_goal_generic_political_pressure',
     'no_allies_no_masters': 'GFX_focus_JAP_isolate_oceania', 'pacts_of_silence': 'GFX_focus_IRQ_discuss_a_new_treaty',
@@ -379,7 +391,9 @@ IDEAS = {   # key: (picture, modifiers, name, desc)
     'wif_osb_nuclear_production_2': ('generic_research_bonus', {'nuclear_production_factor': 0.35}, 'The Black Sun Arsenal', 'Enough fire to burn Europe twice over.'),
     'wif_osb_ahnenerbe': ('generic_research_bonus', {'research_speed_factor': -0.05}, 'The Ahnenerbe', 'Archaeologists, runologists and astrologers - much of what they research is nonsense.'),
     'wif_osb_knights': ('generic_infantry_bonus', {'army_org_factor': 0.10}, 'Knights of the Order', 'Twelve SS generals sworn at a round table.'),
-    'wif_osb_prophet': ('generic_political_support', {'war_support_factor': 0.20, 'stability_factor': 0.10, 'political_power_factor': -0.20}, 'The Prophet of the Order', 'Himmler speaks only of destiny, rebirth and the coming age.'),
+    'wif_osb_prophet': ('generic_political_support', {'war_support_factor': 0.20, 'stability_factor': 0.10, 'political_power_factor': -0.20}, 'The Herald of Agartha', 'Himmler speaks only of the world below and the age it will bring.'),
+    'wif_osb_oath_of_silence': ('generic_secret_police', {'encryption_factor': 0.25, 'enemy_operative_detection_chance_factor': 0.15}, 'The Oath of Silence', 'No one outside the Order may ever know what lies beneath Nancy.'),
+    'wif_osb_light_from_below': ('generic_research_bonus', {'research_speed_factor': 0.10, 'industrial_capacity_factory': 0.05}, 'The Light from Below', "The inner sun of Agartha lights the Order's laboratories."),
     'wif_osb_guns_outward_idea': ('generic_infantry_bonus', {'army_attack_factor': 0.10, 'army_defence_factor': 0.10}, 'Guns Outward', 'Every gun of the Order points out.'),
     'wif_osb_trust_no_treaty_idea': ('generic_infantry_bonus', {'army_defence_factor': 0.10}, 'Trust No Treaty', 'Nobody expects the pacts to be kept.'),
 }
@@ -408,7 +422,122 @@ TOOLTIPS = {
     'wif_osb_hatred_tt': 'We §Rpermanently dislike§! every other country (§R-50§! opinion), including countries that appear later.',
     'wif_osb_civil_war_trigger_tt': 'The §YGerman civil war§! has begun',
     'wif_osb_research': 'The Order\'s Research',
+    # Agartha (user, 2026-11-27)
+    'wif_osb_hollow_earth_tt': 'Event: §YThe Gate Beneath Nancy§!.',
+    'wif_osb_oath_tt': 'Every foreign claim to the resources of §YFranche-Comte§! is cancelled.',
+    'wif_osb_agartha.1.t': 'The Gate Beneath Nancy',
+    'wif_osb_agartha.1.desc': ('The Agartha expedition has come home - and it has not come home alone. With it walks an envoy of the inner world: tall, fair, '
+                               'robed in the blue of a sky no one in Burgundy has ever seen, a star burning in the palm of his raised hand.\\n\\n'
+                               'Before the Grand Master and the twelve knights he speaks of Agartha, the kingdom beneath the crust of the Earth, and of the '
+                               'Order\'s plans for a pure Aryan Europe. Agartha, he says, has watched the Order for a long time. It approves, and it will help.\\n\\n'
+                               'But it will help in secret. No one outside the Order may ever learn that Agartha has been found. The world would not believe it - '
+                               'and if it did, the envoy warns, others would seek the way down too. He names the Jews first among them, an obsession the Grand '
+                               'Master shares to the letter. So there will be no announcement, no expedition report, no photograph.\\n\\n'
+                               'That night a gate opens in the rock beneath Nancy. From now on Nancy is the capital of the Order, and through the gate, unseen '
+                               'and unrecorded, the riches of the inner world begin to flow into Franche-Comte.'),
+    'wif_osb_agartha.1.a': 'The secret dies with the Order.',
+    'wif_osb_agartha.1.a_tt': ('§YNancy§! becomes the capital of the Order.\\n§YAgartha\'s gifts§!: while the Order is §Yfascist§! and owns and controls '
+                               '§YFranche-Comte§!, the state has §G+250§! oil, steel, aluminium, rubber, tungsten and chromium. If anyone else owns or occupies it, '
+                               'the gifts stop - and return only when the Order takes it back. No other country may hold resource rights there.'),
+    'wif_osb_agartha.990.t': '[WiF debug] The Gate Beneath Nancy',
+    'wif_osb_agartha.990.a': 'Run it.',
 }
+
+FRANCHE_COMTE = 17     # holds Nancy (VP 11516) - the Order's capital once Agartha is found
+AGARTHA_RESOURCES = ['oil', 'steel', 'aluminium', 'rubber', 'tungsten', 'chromium']
+
+
+def gen_agartha():
+    """Agartha is found (user, 2026-11-27): the event, the gate beneath Nancy and the gifts."""
+    add = lambda n: ' '.join(f'add_resource = {{ type = {r} amount = {n} state = {FRANCHE_COMTE} }}' for r in AGARTHA_RESOURCES)
+    write('common/scripted_effects/wif_osb_agartha.txt', HEADER + f'''# OSB scope (event wif_osb_agartha.1): Agartha is found; the gate opens beneath Nancy.
+wif_osb_agartha_found = {{
+	set_global_flag = wif_osb_agartha_found
+	if = {{
+		limit = {{ owns_state = {FRANCHE_COMTE} }}
+		set_victory_points = {{ province = 11516 value = 10 }}	# Nancy outranks Besancon, so the capital sits there
+		set_capital = {{ state = {FRANCHE_COMTE} }}
+	}}
+	wif_osb_agartha_check = yes
+}}
+
+# Any scope. Agartha's gifts flow while the Order is fascist and owns AND controls
+# Franche-Comte; they stop the moment it does not, and come back when it does again.
+# The resources live on the state, so they are taken away again, not just ignored.
+wif_osb_agartha_check = {{
+	if = {{
+		limit = {{
+			has_global_flag = wif_osb_agartha_found
+			NOT = {{ has_global_flag = wif_osb_agartha_flowing }}
+			country_exists = OSB
+			OSB = {{ has_government = fascism }}
+			{FRANCHE_COMTE} = {{ is_owned_by = OSB is_controlled_by = OSB }}
+		}}
+		set_global_flag = wif_osb_agartha_flowing
+		{add(250)}
+		wif_osb_agartha_seal = yes
+	}}
+	else_if = {{
+		limit = {{
+			has_global_flag = wif_osb_agartha_flowing
+			NOT = {{
+				AND = {{
+					country_exists = OSB
+					OSB = {{ has_government = fascism }}
+					{FRANCHE_COMTE} = {{ is_owned_by = OSB is_controlled_by = OSB }}
+				}}
+			}}
+		}}
+		clr_global_flag = wif_osb_agartha_flowing
+		{add(-250)}
+	}}
+}}
+
+# Any scope. No one but the Order may draw on Agartha's gifts: every foreign
+# resource right on Franche-Comte is cancelled. (There is no trigger that can
+# see resource rights, so they are removed instead of checked.)
+wif_osb_agartha_seal = {{
+	every_country = {{
+		limit = {{ NOT = {{ tag = OSB }} }}
+		remove_resource_rights = {FRANCHE_COMTE}
+	}}
+}}
+''')
+    write('common/on_actions/wif_osb_agartha_on_actions.txt', HEADER + '''on_actions = {
+	on_weekly_OSB = {
+		effect = {
+			wif_osb_agartha_check = yes
+			if = { limit = { has_global_flag = wif_osb_agartha_flowing } wif_osb_agartha_seal = yes }
+		}
+	}
+	# ROOT new controller, FROM old controller - the gifts stop or return at once.
+	on_state_control_changed = {
+		effect = {
+			if = { limit = { has_global_flag = wif_osb_agartha_found } wif_osb_agartha_check = yes }
+		}
+	}
+}
+''')
+    write('events/wif_osb_agartha.txt', HEADER + '''add_namespace = wif_osb_agartha
+
+# OSB: The Hollow Earth - Agartha is found.
+country_event = {
+	id = wif_osb_agartha.1
+	title = wif_osb_agartha.1.t
+	desc = wif_osb_agartha.1.desc
+	picture = GFX_wif_osb_agartha
+	is_triggered_only = yes
+	option = {
+		name = wif_osb_agartha.1.a
+		custom_effect_tooltip = wif_osb_agartha.1.a_tt
+		hidden_effect = { wif_osb_agartha_found = yes }
+	}
+}
+
+# Console test (fire on OSB).
+country_event = { id = wif_osb_agartha.990 title = wif_osb_agartha.990.t desc = wif_osb_agartha.990.t picture = GFX_wif_osb_agartha is_triggered_only = yes
+	option = { name = wif_osb_agartha.990.a country_event = { id = wif_osb_agartha.1 } } }
+''')
 
 
 # ------------------------------------------------------------------ generation
@@ -490,7 +619,7 @@ wif_osb_new_leader_hausser = {
 		limit = { has_character = GER_paul_hausser }
 		GER_paul_hausser = {
 			add_country_leader_role = {
-				country_leader = { ideology = nazism traits = { } expire = "1999.1.1" }
+				country_leader = { ideology = burgundian_system traits = { } expire = "1999.1.1" }
 				promote_leader = yes
 			}
 		}
@@ -500,7 +629,7 @@ wif_osb_new_leader_hausser = {
 			name = "Paul Hausser"
 			picture = GFX_portrait_GER_paul_hausser
 			expire = "1999.1.1"
-			ideology = nazism
+			ideology = burgundian_system
 			traits = { }
 		}
 	}
@@ -516,7 +645,7 @@ wif_osb_new_leader_council = {
 		limit = { has_character = GER_sepp_dietrich }
 		GER_sepp_dietrich = {
 			add_country_leader_role = {
-				country_leader = { ideology = nazism traits = { } expire = "1999.1.1" }
+				country_leader = { ideology = burgundian_system traits = { } expire = "1999.1.1" }
 				promote_leader = yes
 			}
 		}
@@ -526,7 +655,7 @@ wif_osb_new_leader_council = {
 			name = "Sepp Dietrich"
 			picture = GFX_portrait_GER_sepp_dietrich
 			expire = "1999.1.1"
-			ideology = nazism
+			ideology = burgundian_system
 			traits = { }
 		}
 	}
@@ -814,6 +943,7 @@ def main():
     gen_tree(m, by_id)
     gen_ideas()
     gen_effects()
+    gen_agartha()
     patch_ceiling()
     splice_satellite()
     raid_loc = gen_raids()

@@ -160,6 +160,14 @@ ideologies = {
 				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
 			}
 
+			# Welt in Flammen: the Burgundian System - only the Ordensstaat Burgund holds it,
+			# and it is never handed out to random fascist leaders. Its statistics and forced
+			# laws: common/dynamic_modifiers/wif_subideology_modifiers.txt and
+			# common/scripted_effects/wif_subideology_modifiers.txt (wif_burgundian_system_laws).
+			burgundian_system = {
+				can_be_randomly_selected = no
+			}
+
 		}
 
 		dynamic_faction_names = {

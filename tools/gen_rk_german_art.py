@@ -26,7 +26,8 @@ OLD = []
 # Every German subject the Reich can set up: the Reichskommissariate, the
 # Generalgouvernement and the two Bohemian protectorates (vanilla + WiF tags).
 RK_TAGS = ['RKB', 'RKN', 'RKG', 'RKU', 'RKO', 'RKK', 'RKT', 'RKM', 'RKL', 'GEN', 'RKH', 'RKI', 'RKC', 'RGB', 'RKA',
-           'RNA', 'RKV', 'RAN', 'RCO', 'RUS', 'RHD', 'RAR', 'ROA', 'RAA', 'RKF', 'RKR', 'RKZ', 'BMP', 'RKS']
+           'RNA', 'RKV', 'RAN', 'RCO', 'RUS', 'RHD', 'RAR', 'ROA', 'RAA', 'RKF', 'RKR', 'RKZ', 'BMP', 'RKS',
+           'OSB']   # the Ordensstaat Burgund too (user, 2026-11-27)
 
 
 def warlord_tags():

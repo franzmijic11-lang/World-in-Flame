@@ -1,0 +1,45 @@
+# The Burgundian Closed Economy - the trade law of the Burgundian System.
+#
+# Vanilla's Closed Economy, made absolute: nothing is exported (min_export 0) and the
+# country cannot use the international market. An overlord's extra share of a subject's
+# trade multiplies that export, so at 0 it gets nothing either.
+#
+# DO NOT add negative extra_trade_to_overlord_factor / resources_to_overlord_factor
+# here. They were tried (2026-11-27): the engine does not floor them at zero, so a
+# NEGATIVE share to the overlord runs the other way - Burgundy drained Germany of
+# its resources.
+#
+# Only a Burgundian System country can see or take it, and it cannot leave it while it
+# holds the ideology; the other trade laws are closed to it (common/ideas/_economic.txt).
+# Merges into vanilla's trade_laws group - a NEW idea, so this is not a duplicate.
+
+ideas = {
+	trade_laws = {
+		law = yes
+		use_list_view = yes
+
+		wif_burgundian_closed_economy = {
+			visible = { wif_is_burgundian_system = yes }
+			available = { wif_is_burgundian_system = yes }
+			allowed_to_remove = { NOT = { wif_is_burgundian_system = yes } }
+
+			rule = {
+				can_access_market = no
+				desc = can_not_access_market_closed_economy
+			}
+
+			cost = 0
+			removal_cost = -1
+
+			modifier = {
+				min_export = 0
+				lend_lease_tension = 0.40
+				cic_construction_boost = -0.1
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = { factor = 1000 }
+		}
+	}
+}

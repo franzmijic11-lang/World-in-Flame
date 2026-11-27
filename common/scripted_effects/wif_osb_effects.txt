@@ -24,7 +24,7 @@ wif_osb_new_leader_hausser = {
 		limit = { has_character = GER_paul_hausser }
 		GER_paul_hausser = {
 			add_country_leader_role = {
-				country_leader = { ideology = nazism traits = { } expire = "1999.1.1" }
+				country_leader = { ideology = burgundian_system traits = { } expire = "1999.1.1" }
 				promote_leader = yes
 			}
 		}
@@ -34,7 +34,7 @@ wif_osb_new_leader_hausser = {
 			name = "Paul Hausser"
 			picture = GFX_portrait_GER_paul_hausser
 			expire = "1999.1.1"
-			ideology = nazism
+			ideology = burgundian_system
 			traits = { }
 		}
 	}
@@ -50,7 +50,7 @@ wif_osb_new_leader_council = {
 		limit = { has_character = GER_sepp_dietrich }
 		GER_sepp_dietrich = {
 			add_country_leader_role = {
-				country_leader = { ideology = nazism traits = { } expire = "1999.1.1" }
+				country_leader = { ideology = burgundian_system traits = { } expire = "1999.1.1" }
 				promote_leader = yes
 			}
 		}
@@ -60,7 +60,7 @@ wif_osb_new_leader_council = {
 			name = "Sepp Dietrich"
 			picture = GFX_portrait_GER_sepp_dietrich
 			expire = "1999.1.1"
-			ideology = nazism
+			ideology = burgundian_system
 			traits = { }
 		}
 	}
