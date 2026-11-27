@@ -9,4 +9,16 @@ spriteTypes = {
 		name = "GFX_focus_SME_meet_with_the_devil"
 		texturefile = "gfx/interface/goals/sme/focus_SME_meet_with_the_devil.dds"
 	}
+	spriteType = {
+		name = "GFX_focus_SWE_the_dark_sun_over_europe"
+		texturefile = "gfx/interface/goals/wif/focus_SWE_the_dark_sun_over_europe.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_OSB_the_black_sun"
+		texturefile = "gfx/interface/goals/wif/focus_OSB_the_black_sun.dds"
+	}
+	spriteType = {
+		name = "GFX_focus_OSB_the_hollow_earth"
+		texturefile = "gfx/interface/goals/wif/focus_OSB_the_hollow_earth.dds"
+	}
 }

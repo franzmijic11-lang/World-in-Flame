@@ -10061,7 +10061,7 @@ focus_tree = {
 	# swaps this whole tree for common/national_focus/wif_swe_dark_sun.txt.
 	focus = {
 		id = SWE_the_dark_sun_over_europe
-		icon = GFX_focus_SWE_as_the_barometer_falls
+		icon = GFX_focus_SWE_the_dark_sun_over_europe
 		prerequisite = { focus = SWE_the_cross_we_bear }
 		x = 0
 		y = 1
