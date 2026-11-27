@@ -1,0 +1,2464 @@
+{
+  "focuses": [
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Ataturk's Republic: secular, nationalist, poor, and sitting on the Straits between every great power of the coming war. Its whole policy - under Ataturk and, from 1938, Ismet Inonu, the 'Milli Sef' - is to stay out: to balance Britain against Germany and both against the Soviet Union, sell chromium to whoever pays, and fight no one.\n\nTHE TREE (WiF draft v2): the vanilla tree's spirit, rebuilt WIDE around that balancing act - with the vanilla MILITARY tree kept as it is (its 20 focuses keep their vanilla ids and rewards). No communist path (an Allied-victory scenario may add one later).\n\nTWO ROADS from 'The Balancing Act':\n1. THE HISTORICAL ROAD - Lean Towards the Allies: Adana, Hardihood, Cicero, Cairo, the chromium embargo, the break with Berlin, Molotov's demands, war on the Axis in February 1945 and the San Francisco Conference. It ENDS IN 1945 (to be expanded for Allied-victory scenarios). If Germany wins instead, 'Bow to the Victor' jumps across into the German-aligned tree's post-war half.\n2. WAIT FOR THE VICTOR: armed neutrality, German transit, the generals' tour of the Eastern Front, chromium for the Reich - until Germany has beaten the Western Allies OR the Soviet Union. Then Turkey joins Germany, and the road runs to about 1950: Turan (Azerbaijan against Kaukasien's ambitions, Batum and Kars, the Crimean Tatars, Turkestan), Iraq cut off from beaten Britain (Mosul, Kirkuk, Rashid Ali, a protectorate in Baghdad), and - when the Reich falls apart and Rome invites Turkey into its Pact - influence in Bulgaria and Romania and a Turkish Black Sea.\n\nSYRIA (Axis road): ask Vichy for northern Syria late in the tree; if it refuses, march in when the Reich falls apart - Syria (with Lebanon) is made independent and armed from Vichy's garrison and stockpile, and Turkey has 45 days of limited war to win it, or be humiliated.\n\nKUWAIT (Axis road): a political minigame - Turkish Influence at the Sheikh's court against Unrest stoked against the cut-off British and Canadian garrison - to make Kuwait Turkish.\n\nCHOICES ALONG THE WAY: Bayar or Saydam; the Istanbul Route or Closed Doors; the Kemalist State or the Turanist Movement; Mosul annexed or Iraq ruled through Rashid Ali; Montreux rewritten or Straits shared with Rome.\n\nEffect: +10% stability. Spirit 'Peace at Home, Peace in the World' (Ataturk's motto): -25% war support, +15% stability, -10% justify war goal time.",
+      "fid": "wif_tur_root",
+      "id": "tur000",
+      "mx": [],
+      "name": "Peace at Home, Peace in the World",
+      "pre": [],
+      "x": 30,
+      "y": 0
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "Republicanism, nationalism, populism, etatism, secularism, reformism: the Kemalist creed, written into the constitution in 1937.\n\nEffect: +10% stability. +50 political power.",
+      "fid": "wif_tur_six_arrows",
+      "id": "tur001",
+      "mx": [],
+      "name": "The Six Arrows",
+      "pre": [
+        "tur000"
+      ],
+      "x": 5,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "The Halkevleri: reading rooms, theatres and lecture halls in every town, carrying the revolution to the people.\n\nEffect: +10% stability. +5% research speed.",
+      "fid": "wif_tur_peoples_houses",
+      "id": "tur002",
+      "mx": [],
+      "name": "The People's Houses",
+      "pre": [
+        "tur001"
+      ],
+      "x": 2,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "Ataturk's last intellectual passion: Turkish as the mother of all languages. The Turkish Language Association purges Arabic and Persian words.\n\nEffect: +10% political power. Turkic nations +10 opinion.",
+      "fid": "wif_tur_language_reform",
+      "id": "tur003",
+      "mx": [],
+      "name": "The Sun Language Theory",
+      "pre": [
+        "tur001"
+      ],
+      "x": 5,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "The Sanjak of Alexandretta, a third Turkish, belongs to French Syria. Ataturk wants it back before he dies.\n\nEffect: claim on Hatay. France's opinion -10.",
+      "fid": "wif_tur_hatay_question",
+      "id": "tur004",
+      "mx": [],
+      "name": "The Hatay Question",
+      "pre": [
+        "tur001"
+      ],
+      "x": 8,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "1937-38: the army crushes the Kurdish Alevi uprising in Dersim, renamed Tunceli. Villages are bombed and burned; thousands are killed and thousands more deported to the west. The Tunceli Law keeps the province under military rule.\n\nEffect: +10% compliance in the east. -5% stability. Kurdish unrest -25 (for a decade).",
+      "fid": "wif_tur_dersim",
+      "id": "tur005",
+      "mx": [],
+      "name": "Dersim",
+      "pre": [
+        "tur002"
+      ],
+      "x": 2,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "10 November 1938, 9:05 in the morning, Dolmabahce Palace. The clocks in the palace are stopped at the hour of his death. The nation mourns.\n\nEffect: -10% stability for 90 days. Ismet Inonu becomes President.",
+      "fid": "wif_tur_ataturk_dies",
+      "id": "tur006",
+      "mx": [],
+      "name": "Ataturk Is Dead",
+      "pre": [
+        "tur003",
+        "tur002"
+      ],
+      "x": 5,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "1938: under French and Turkish supervision, the sanjak becomes the 'Republic of Hatay' - with a Turkish majority in its assembly.\n\nEffect: Hatay +25 opinion. France's opinion -10.",
+      "fid": "wif_tur_hatay_state",
+      "id": "tur007",
+      "mx": [],
+      "name": "The State of Hatay",
+      "pre": [
+        "tur004"
+      ],
+      "x": 8,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "1940: peasant children trained as teachers - and as builders and farmers - and sent back to their villages: Kemalism carried into Anatolia.\n\nEffect: +10% research speed. +5% stability.",
+      "fid": "wif_tur_village_institutes",
+      "id": "tur008",
+      "mx": [],
+      "name": "The Village Institutes",
+      "pre": [
+        "tur002"
+      ],
+      "x": 2,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "Ismet Inonu, the hero of the Inonu battles and of Lausanne, becomes President - the 'National Chief'. His face replaces Ataturk's on the banknotes.\n\nEffect: +15% political power.",
+      "fid": "wif_tur_milli_sef",
+      "id": "tur009",
+      "mx": [],
+      "name": "Milli Sef",
+      "pre": [
+        "tur006"
+      ],
+      "x": 5,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "Celal Bayar, the banker of the Is Bank, stays Prime Minister: a lighter hand for private enterprise.\n\nEffect: +10% factory output. -10% political power.",
+      "fid": "wif_tur_keep_bayar",
+      "id": "tur010",
+      "mx": [
+        "tur011"
+      ],
+      "name": "Keep Bayar",
+      "pre": [
+        "tur009"
+      ],
+      "x": 3,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "January 1939: Inonu replaces Bayar with Refik Saydam, a loyal statist doctor. The state runs the economy.\n\nEffect: +15% political power. -10% civilian factory construction cost.",
+      "fid": "wif_tur_saydam_cabinet",
+      "id": "tur011",
+      "mx": [
+        "tur010"
+      ],
+      "name": "The Saydam Cabinet",
+      "pre": [
+        "tur009"
+      ],
+      "x": 7,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "June 1939: the Hatay assembly votes to join Turkey - with French consent, the price of keeping Turkey out of Germany's camp. Most of its Armenians leave for Syria.\n\nEffect: Hatay becomes Turkish and a core.",
+      "fid": "wif_tur_annex_hatay",
+      "id": "tur012",
+      "mx": [],
+      "name": "Annex Hatay",
+      "pre": [
+        "tur007"
+      ],
+      "x": 9,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "1940: emergency powers over prices, labour and property for a country mobilised but not at war.\n\nEffect: +10% war support. -5% consumer goods.",
+      "fid": "wif_tur_national_protection_law",
+      "id": "tur013",
+      "mx": [],
+      "name": "The National Protection Law",
+      "pre": [
+        "tur010",
+        "tur011"
+      ],
+      "x": 5,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "1941: the non-Muslim men of twenty age classes - Greeks, Armenians, Jews - are called up into unarmed labour battalions and sent to build roads in Anatolia.\n\nEffect: +10% construction speed. -5% stability. Minorities -20 compliance.",
+      "fid": "wif_tur_twenty_classes",
+      "id": "tur014",
+      "mx": [],
+      "name": "The Twenty Classes",
+      "pre": [
+        "tur013"
+      ],
+      "x": 3,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "1942: bread is rationed in the cities. Profiteers grow rich; civil servants go hungry.\n\nEffect: -5% stability. -10% consumer goods.",
+      "fid": "wif_tur_bread_ration",
+      "id": "tur015",
+      "mx": [],
+      "name": "The Bread Ration",
+      "pre": [
+        "tur013"
+      ],
+      "x": 7,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "The 1942 capital tax: assessed arbitrarily, and up to ten times higher for Greeks, Armenians and Jews than for Muslim Turks. Those who could not pay had their property auctioned and were sent to labour camps at Askale in the eastern winter.\n\nEffect: +150 political power. +1 civilian factory. -10% stability. Unlocks Askale.",
+      "fid": "wif_tur_varlik_vergisi",
+      "id": "tur016",
+      "mx": [],
+      "name": "Varlik Vergisi",
+      "pre": [
+        "tur014",
+        "tur015"
+      ],
+      "x": 5,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "Some 1,400 men who could not pay the tax break stones in the snow at Askale. Twenty-one die. Their businesses pass into Muslim Turkish hands.\n\nEffect: +1 civilian factory. -5% stability. Germany +10 opinion, Allies -10.",
+      "fid": "wif_tur_askale",
+      "id": "tur017",
+      "mx": [],
+      "name": "Askale",
+      "pre": [
+        "tur016"
+      ],
+      "x": 3,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 35,
+      "desc": "March 1944: under Allied criticism the tax is repealed and the prisoners released. The property is not returned.\n\nEffect: +5% stability. Allies +15 opinion.",
+      "fid": "wif_tur_repeal_the_tax",
+      "id": "tur018",
+      "mx": [
+        "tur017"
+      ],
+      "name": "Repeal the Tax",
+      "pre": [
+        "tur016"
+      ],
+      "x": 7,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "1944: Inonu cracks down on the pan-Turkists - the Racism-Turanism Trials put Nihal Atsiz and his circle in prison.\n\nEffect: +10% stability. Allied opinion +15.",
+      "fid": "wif_tur_kemalist_state",
+      "id": "tur019",
+      "mx": [
+        "tur020"
+      ],
+      "name": "The Kemalist State",
+      "pre": [
+        "tur017",
+        "tur018"
+      ],
+      "x": 3,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "political",
+      "days": 56,
+      "desc": "The pan-Turkists around Nihal Atsiz and the officers who read him are not arrested - they are listened to.\n\nEffect: +10% war support. Germany's opinion +15. Pan-Turkist focuses take 20% less time.",
+      "fid": "wif_tur_turanist_movement",
+      "id": "tur020",
+      "mx": [
+        "tur019"
+      ],
+      "name": "The Turanist Movement",
+      "pre": [
+        "tur017",
+        "tur018"
+      ],
+      "x": 7,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "June 1945: Bayar, Menderes, Koraltan and Koprulu ask for real democracy inside the CHP. The one-party state starts to crack. (To be continued in an Allied-victory scenario.)\n\nEffect: +10% stability. Democratic popularity +10%.",
+      "fid": "wif_tur_memorandum_of_four",
+      "id": "tur021",
+      "mx": [],
+      "name": "The Memorandum of the Four",
+      "pre": [
+        "tur019"
+      ],
+      "x": 3,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "political",
+      "days": 42,
+      "desc": "The bozkurt, the grey wolf that led the Turks out of Ergenekon, becomes the symbol of a movement - and of a generation of officers.\n\nEffect: +10% war support. +5% division attack.",
+      "fid": "wif_tur_grey_wolves",
+      "id": "tur022",
+      "mx": [],
+      "name": "The Grey Wolf",
+      "pre": [
+        "tur020"
+      ],
+      "x": 7,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The state builds the industry private capital will not.\n\nEffect: +1 civilian factory. -10% civilian factory construction cost.",
+      "fid": "wif_tur_etatism",
+      "id": "tur023",
+      "mx": [],
+      "name": "Continue the Policy of Etatism",
+      "pre": [
+        "tur000"
+      ],
+      "x": 18,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Ataturk's own bank finances the new industries.\n\nEffect: +10% political power. +1 civilian factory.",
+      "fid": "wif_tur_is_bank",
+      "id": "tur024",
+      "mx": [],
+      "name": "Fully Integrate the Is Bank",
+      "pre": [
+        "tur023"
+      ],
+      "x": 13,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Textiles, paper, glass, cement - the first state factories.\n\nEffect: +2 civilian factories.",
+      "fid": "wif_tur_first_five_year_plan",
+      "id": "tur025",
+      "mx": [],
+      "name": "The First Five-Year Plan",
+      "pre": [
+        "tur023"
+      ],
+      "x": 16,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The state textile and industrial holding.\n\nEffect: +1 civilian factory. +5% factory output.",
+      "fid": "wif_tur_sumerbank",
+      "id": "tur026",
+      "mx": [],
+      "name": "Sumerbank",
+      "pre": [
+        "tur023"
+      ],
+      "x": 20,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Every September the world's pavilions in Izmir: Germany's the largest.\n\nEffect: +10% trade opinion. +1 civilian factory in Izmir.",
+      "fid": "wif_tur_izmir_fair",
+      "id": "tur027",
+      "mx": [],
+      "name": "The Izmir International Fair",
+      "pre": [
+        "tur023"
+      ],
+      "x": 23,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The state mining bank, founded 1935: copper, coal, chromium.\n\nEffect: +4 tungsten (Uludag). +1 civilian factory.",
+      "fid": "wif_tur_etibank",
+      "id": "tur028",
+      "mx": [],
+      "name": "Etibank",
+      "pre": [
+        "tur024"
+      ],
+      "x": 13,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Heavy industry, mines and power.\n\nEffect: +2 civilian factories, +1 military factory.",
+      "fid": "wif_tur_second_five_year_plan",
+      "id": "tur029",
+      "mx": [],
+      "name": "The Second Five-Year Plan",
+      "pre": [
+        "tur024",
+        "tur025"
+      ],
+      "x": 15,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Turkey's first integrated steelworks, built with British loans and opened in 1939.\n\nEffect: +6 steel. +1 military factory.",
+      "fid": "wif_tur_karabuk",
+      "id": "tur030",
+      "mx": [],
+      "name": "Karabuk Steelworks",
+      "pre": [
+        "tur025"
+      ],
+      "x": 17,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The Black Sea coal basin, worked by labour conscripts.\n\nEffect: +10% factory output.",
+      "fid": "wif_tur_zonguldak",
+      "id": "tur031",
+      "mx": [],
+      "name": "Zonguldak Coal",
+      "pre": [
+        "tur025",
+        "tur026"
+      ],
+      "x": 19,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The Cukurova plain grows the cotton for Sumerbank's mills.\n\nEffect: +1 civilian factory in Adana.",
+      "fid": "wif_tur_adana_cotton",
+      "id": "tur032",
+      "mx": [],
+      "name": "Adana Cotton",
+      "pre": [
+        "tur026",
+        "tur027"
+      ],
+      "x": 21,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "The lines reach Sivas, Erzurum and Diyarbakir.\n\nEffect: +1 infrastructure in every eastern state.",
+      "fid": "wif_tur_eastern_railways",
+      "id": "tur033",
+      "mx": [],
+      "name": "Railways to the East",
+      "pre": [
+        "tur027"
+      ],
+      "x": 23,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Copper from the mountains of Diyarbakir.\n\nEffect: +4 aluminium (copper and bauxite) in Diyarbakir.",
+      "fid": "wif_tur_ergani_copper",
+      "id": "tur034",
+      "mx": [],
+      "name": "Ergani Copper",
+      "pre": [
+        "tur028"
+      ],
+      "x": 13,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Turkey is one of the world's great chromium producers - and both Britain and Germany need it for steel. Turkey sells to both.\n\nEffect: +8 chromium. +10% trade opinion with every major.",
+      "fid": "wif_tur_chromium",
+      "id": "tur035",
+      "mx": [],
+      "name": "Chromium for Everyone",
+      "pre": [
+        "tur029",
+        "tur030"
+      ],
+      "x": 16,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "The iron mine at Divrigi feeds Karabuk.\n\nEffect: +6 steel in Sivas.",
+      "fid": "wif_tur_divrigi_iron",
+      "id": "tur036",
+      "mx": [],
+      "name": "Divrigi Iron",
+      "pre": [
+        "tur030",
+        "tur031"
+      ],
+      "x": 18,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 35,
+      "desc": "Wheat speculators and smugglers grow rich on the war; the 'war rich' become a byword.\n\nEffect: +10% factory output. -5% stability.",
+      "fid": "wif_tur_war_profiteers",
+      "id": "tur037",
+      "mx": [],
+      "name": "The War Rich",
+      "pre": [
+        "tur032"
+      ],
+      "x": 21,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Dams, roads and schools for eastern Anatolia - and garrisons for the Kurdish provinces.\n\nEffect: +2 building slots in eastern states. +1 civilian factory.",
+      "fid": "wif_tur_develop_the_east",
+      "id": "tur038",
+      "mx": [],
+      "name": "Develop the East",
+      "pre": [
+        "tur033"
+      ],
+      "x": 23,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "From 1933 Istanbul University took in over a hundred German and Austrian professors driven out by the Nazis - surgeons, economists, architects - and built a modern university around them.\n\nEffect: +1 research slot.",
+      "fid": "wif_tur_refugee_professors",
+      "id": "tur039",
+      "mx": [],
+      "name": "The Professors from Germany",
+      "pre": [
+        "tur029",
+        "tur035"
+      ],
+      "x": 17,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "A million men under arms in a country at peace: the economy is run as if at war.\n\nEffect: +2 military factories. -10% stability.",
+      "fid": "wif_tur_mobilised_economy",
+      "id": "tur040",
+      "mx": [],
+      "name": "The Mobilised Economy",
+      "pre": [
+        "tur034",
+        "tur035"
+      ],
+      "x": 15,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 42,
+      "desc": "Tobacco, salt, alcohol, matches: the state's monopolies fund the budget.\n\nEffect: -10% consumer goods.",
+      "fid": "wif_tur_state_monopolies",
+      "id": "tur041",
+      "mx": [],
+      "name": "State Monopolies",
+      "pre": [
+        "tur036",
+        "tur037"
+      ],
+      "x": 19,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Hydroelectric dams on the upper Euphrates and the Kizilirmak.\n\nEffect: +10% factory output in eastern states. +1 civilian factory.",
+      "fid": "wif_tur_east_anatolian_dams",
+      "id": "tur042",
+      "mx": [],
+      "name": "Dams of the East",
+      "pre": [
+        "tur038"
+      ],
+      "x": 23,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Karabuk, Zonguldak, Kayseri, Izmit: Turkey makes its own steel, cloth and aircraft.\n\nEffect: +2 civilian factories, +10% factory output.",
+      "fid": "wif_tur_industrial_turkey",
+      "id": "tur043",
+      "mx": [],
+      "name": "An Industrial Turkey",
+      "pre": [
+        "tur040",
+        "tur041",
+        "tur042"
+      ],
+      "x": 18,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "industry",
+      "days": 56,
+      "desc": "Whoever wins, Turkey must be richer when the war is over.\n\nEffect: +2 civilian factories, +10% research speed.",
+      "fid": "wif_tur_postwar_plan",
+      "id": "tur044",
+      "mx": [],
+      "name": "The Post-War Development Plan",
+      "pre": [
+        "tur043"
+      ],
+      "x": 18,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Neutral, but not passive: Ankara talks to everyone and promises nothing.\n\nEffect: +10% stability. Unlocks the treaties.",
+      "fid": "wif_tur_active_neutrality",
+      "id": "tur045",
+      "mx": [],
+      "name": "Active Neutrality",
+      "pre": [
+        "tur000"
+      ],
+      "x": 30,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "1937: non-aggression with Iran, Iraq and Afghanistan - a quiet eastern border.\n\nEffect: Iran, Iraq and Afghanistan +25 opinion. Non-aggression pacts with them.",
+      "fid": "wif_tur_saadabad_pact",
+      "id": "tur046",
+      "mx": [],
+      "name": "The Saadabad Pact",
+      "pre": [
+        "tur045"
+      ],
+      "x": 26,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "1936: the Straits are Turkish again, to fortify and to close to warships in wartime.\n\nEffect: +2 coastal forts on the Straits. +10% stability.",
+      "fid": "wif_tur_montreux",
+      "id": "tur047",
+      "mx": [],
+      "name": "The Montreux Convention",
+      "pre": [
+        "tur045"
+      ],
+      "x": 28,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "1937: 'unknown' Italian submarines sink ships bound for Spain. Turkey joins the Nyon patrols in the Aegean.\n\nEffect: +10% navy experience. Britain and France +10 opinion.",
+      "fid": "wif_tur_nyon",
+      "id": "tur048",
+      "mx": [],
+      "name": "The Nyon Patrols",
+      "pre": [
+        "tur045"
+      ],
+      "x": 30,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "With Greece, Yugoslavia and Romania: a pact against revisionists that will not survive the war.\n\nEffect: Greece, Yugoslavia and Romania +20 opinion.",
+      "fid": "wif_tur_balkan_entente",
+      "id": "tur049",
+      "mx": [],
+      "name": "The Balkan Entente",
+      "pre": [
+        "tur045"
+      ],
+      "x": 32,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "The 1925 friendship treaty with Moscow, renewed every ten years - and less trusted every year.\n\nEffect: Soviet Union +15 opinion.",
+      "fid": "wif_tur_soviet_friendship",
+      "id": "tur050",
+      "mx": [],
+      "name": "The Soviet Treaty",
+      "pre": [
+        "tur045"
+      ],
+      "x": 34,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "October 1939: mutual assistance with Britain and France - with an escape clause for any war with the Soviet Union.\n\nEffect: Britain and France +25 opinion. +2000 infantry equipment (British credits).",
+      "fid": "wif_tur_tripartite_treaty",
+      "id": "tur051",
+      "mx": [],
+      "name": "The Tripartite Treaty",
+      "pre": [
+        "tur047",
+        "tur046",
+        "tur048"
+      ],
+      "x": 27,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "October 1939: the Foreign Minister waits three weeks in Moscow while Molotov signs with Ribbentrop - and asks for bases on the Straits. He comes home with nothing.\n\nEffect: Soviet Union -20 opinion. +10% war support.",
+      "fid": "wif_tur_saracoglu_moscow",
+      "id": "tur052",
+      "mx": [],
+      "name": "Saracoglu in Moscow",
+      "pre": [
+        "tur049",
+        "tur050",
+        "tur048"
+      ],
+      "x": 31,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "June 1941, four days before Barbarossa: friendship and non-aggression with Germany - while the British treaty stays in force.\n\nEffect: Germany +25 opinion. Non-aggression pact with Germany.",
+      "fid": "wif_tur_german_friendship_treaty",
+      "id": "tur053",
+      "mx": [],
+      "name": "The German-Turkish Treaty",
+      "pre": [
+        "tur049",
+        "tur050"
+      ],
+      "x": 34,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "March 1941: German armies stand in Bulgaria, on the Thracian border. Ankara signs a non-aggression declaration with Sofia and prays.\n\nEffect: Bulgaria +20 opinion. +2 land forts in Eastern Thrace.",
+      "fid": "wif_tur_bulgarian_front",
+      "id": "tur054",
+      "mx": [],
+      "name": "The Bulgarian Front",
+      "pre": [
+        "tur051"
+      ],
+      "x": 27,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "May 1941: Rashid Ali's coup in Iraq asks for German help. Germany asks Turkey for transit. Turkey says no.\n\nEffect: Britain +15 opinion. Germany -10 opinion.",
+      "fid": "wif_tur_rashid_ali_1941",
+      "id": "tur055",
+      "mx": [],
+      "name": "No Road to Baghdad",
+      "pre": [
+        "tur051",
+        "tur052"
+      ],
+      "x": 29,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "June 1941: British and Free French troops take Syria and Lebanon from Vichy, on Turkey's southern border.\n\nEffect: +1 land fort in Hatay. +5% war support.",
+      "fid": "wif_tur_vichy_syria",
+      "id": "tur056",
+      "mx": [],
+      "name": "The Fall of Vichy Syria",
+      "pre": [
+        "tur052"
+      ],
+      "x": 31,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "April 1941: Greece falls; its refugees cross the Aegean, and the famine in Athens begins. Turkey sends the Kurtulus with food.\n\nEffect: Greece +25 opinion. -5% consumer goods.",
+      "fid": "wif_tur_greek_refugees",
+      "id": "tur057",
+      "mx": [],
+      "name": "Greece Falls",
+      "pre": [
+        "tur053"
+      ],
+      "x": 33,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "Every side courts Turkey; Turkey disappoints every side a little. Sooner or later Ankara must decide which way it leans.\n\nEffect: +10% political power. Unlocks the refugees question and the two roads.",
+      "fid": "wif_tur_balancing_act",
+      "id": "tur058",
+      "mx": [],
+      "name": "The Balancing Act",
+      "pre": [
+        "tur054",
+        "tur055",
+        "tur056",
+        "tur057"
+      ],
+      "x": 30,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Jewish refugees from the Balkans reach Palestine through Istanbul; Turkish consuls like Necdet Kent in Marseille and Selahattin Ulkumen on Rhodes save those they can.\n\nEffect: Allies +20 opinion. Germany -10 opinion. +5% stability.",
+      "fid": "wif_tur_istanbul_route",
+      "id": "tur059",
+      "mx": [
+        "tur060"
+      ],
+      "name": "The Istanbul Route",
+      "pre": [
+        "tur058"
+      ],
+      "x": 28,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "February 1942: the Struma, crammed with 768 Jewish refugees from Romania, is towed out of Istanbul into the Black Sea without an engine. A Soviet submarine sinks her. One man survives.\n\nEffect: Germany +10 opinion. Allies -15 opinion. -5% stability.",
+      "fid": "wif_tur_closed_doors",
+      "id": "tur060",
+      "mx": [
+        "tur059"
+      ],
+      "name": "Closed Doors",
+      "pre": [
+        "tur058"
+      ],
+      "x": 32,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The historical road: neutral, but leaning towards the side that will win.\n\nEffect: Allied opinion +20. Unlocks the historical branch (to 1945).",
+      "fid": "wif_tur_lean_west",
+      "id": "tur061",
+      "mx": [
+        "tur062"
+      ],
+      "name": "Lean Towards the Allies",
+      "pre": [
+        "tur059",
+        "tur060"
+      ],
+      "x": 28,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Turkey will join no one until it knows who wins - and then it will join the winner.\n\nEffect: +10% war support. Unlocks armed neutrality and the road to the Axis.",
+      "fid": "wif_tur_wait_for_victor",
+      "id": "tur062",
+      "mx": [
+        "tur061"
+      ],
+      "name": "Wait for the Victor",
+      "pre": [
+        "tur059",
+        "tur060"
+      ],
+      "x": 32,
+      "y": 7
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "January 1943: Churchill flies to Adana in person to bring Turkey into the war. Inonu listens politely and asks for more arms.\n\nEffect: +5000 infantry equipment and 50 fighters from Britain.",
+      "fid": "wif_tur_adana_conference",
+      "id": "tur063",
+      "mx": [],
+      "name": "The Adana Conference",
+      "pre": [
+        "tur061"
+      ],
+      "x": 25,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The Allied plan to base aircraft in Anatolia - if Turkey enters the war.\n\nEffect: +1 air base in Izmir and Adana. +5% war support.",
+      "fid": "wif_tur_hardihood",
+      "id": "tur064",
+      "mx": [],
+      "name": "Operation Hardihood",
+      "pre": [
+        "tur061"
+      ],
+      "x": 27,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "1943-44: the British ambassador's valet in Ankara photographs the embassy's secrets and sells them to the Germans. Turkish intelligence watches, and says nothing to anyone.\n\nEffect: +10% decryption. Britain -5 opinion.",
+      "fid": "wif_tur_cicero_allies",
+      "id": "tur065",
+      "mx": [],
+      "name": "Cicero",
+      "pre": [
+        "tur061"
+      ],
+      "x": 29,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "December 1943: Roosevelt and Churchill press Inonu again. Again he asks for time.\n\nEffect: Allied opinion +15. -5% war support.",
+      "fid": "wif_tur_cairo_conference",
+      "id": "tur066",
+      "mx": [],
+      "name": "The Cairo Conference",
+      "pre": [
+        "tur063"
+      ],
+      "x": 25,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Lend-lease reaches Turkey through Syria and Iraq.\n\nEffect: +1 military factory. +10% army equipment.",
+      "fid": "wif_tur_allied_arms",
+      "id": "tur067",
+      "mx": [],
+      "name": "Allied Arms",
+      "pre": [
+        "tur064"
+      ],
+      "x": 27,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "April 1944: under Allied pressure the chromium shipments to Germany stop.\n\nEffect: Germany -25 opinion. Allied opinion +20.",
+      "fid": "wif_tur_chromium_embargo",
+      "id": "tur068",
+      "mx": [],
+      "name": "Stop the Chromium",
+      "pre": [
+        "tur065"
+      ],
+      "x": 29,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "August 1944: Turkey breaks off relations with Germany.\n\nEffect: Germany -50 opinion. The non-aggression pact with Germany ends.",
+      "fid": "wif_tur_break_with_berlin",
+      "id": "tur069",
+      "mx": [
+        "tur070"
+      ],
+      "name": "Break with Berlin",
+      "pre": [
+        "tur066",
+        "tur067",
+        "tur068"
+      ],
+      "x": 26,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Germany has won. The Allies Turkey leaned towards are beaten or gone, and Ankara must make its peace with the new order - quickly.\n\nAvailable: Germany has beaten the Western Allies (Britain capitulated or made peace) or the Soviet Union.\nEffect: Allied opinion -50, Germany +25. Leads into the Axis road's post-war branches.",
+      "fid": "wif_tur_bow_to_victor",
+      "id": "tur070",
+      "mx": [
+        "tur069"
+      ],
+      "name": "Bow to the Victor",
+      "pre": [
+        "tur066",
+        "tur067",
+        "tur068"
+      ],
+      "x": 29,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "March 1945: Moscow refuses to renew the 1925 treaty and wants Kars, Ardahan and bases on the Straits.\n\nEffect: +10% war support. Soviet Union -25 opinion. +2 land forts in Kars.",
+      "fid": "wif_tur_molotov_demands",
+      "id": "tur071",
+      "mx": [],
+      "name": "Molotov's Demands",
+      "pre": [
+        "tur069"
+      ],
+      "x": 25,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "23 February 1945: a symbolic declaration of war on Germany and Japan, the price of a seat at the peace.\n\nAvailable: 1945, and Germany has not won.\nEffect: join the Allies. War with Germany and Japan.",
+      "fid": "wif_tur_war_on_the_axis",
+      "id": "tur072",
+      "mx": [],
+      "name": "Declare War on the Axis",
+      "pre": [
+        "tur069"
+      ],
+      "x": 27,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "A founding member of the United Nations. (The historical road ends here - to be expanded for Allied-victory scenarios.)\n\nEffect: +15% stability. +10% political power.",
+      "fid": "wif_tur_san_francisco",
+      "id": "tur073",
+      "mx": [],
+      "name": "The San Francisco Conference",
+      "pre": [
+        "tur071",
+        "tur072"
+      ],
+      "x": 26,
+      "y": 12
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "A million men mobilised to make sure no one marches through Anatolia.\n\nEffect: +10% army defence. +5% war support.",
+      "fid": "wif_tur_armed_neutrality",
+      "id": "tur074",
+      "mx": [],
+      "name": "Armed Neutrality",
+      "pre": [
+        "tur062"
+      ],
+      "x": 32,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Franz von Papen, Hitler's ambassador in Ankara, offers Turkey everything it wants once the war is won.\n\nEffect: Germany +20 opinion. +50 political power.",
+      "fid": "wif_tur_von_papen",
+      "id": "tur075",
+      "mx": [],
+      "name": "Ambassador von Papen",
+      "pre": [
+        "tur062"
+      ],
+      "x": 34,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "German 'merchant' ships and landing craft pass the Straits into the Black Sea. Britain protests; Ankara counts the tonnage another way.\n\nEffect: Germany +15 opinion. Britain -15 opinion.",
+      "fid": "wif_tur_german_transit",
+      "id": "tur076",
+      "mx": [],
+      "name": "Ships Through the Straits",
+      "pre": [
+        "tur062"
+      ],
+      "x": 36,
+      "y": 8
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "October 1941: Generals Erkilet and Erden tour the Eastern Front as Hitler's guests, and talk with the Turkic prisoners of war in German camps.\n\nEffect: +10% army experience gain. Pan-Turkist focuses unlocked earlier.",
+      "fid": "wif_tur_generals_tour",
+      "id": "tur077",
+      "mx": [],
+      "name": "The Generals at the Front",
+      "pre": [
+        "tur074",
+        "tur075"
+      ],
+      "x": 33,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Von Papen's best source: the British ambassador's valet, 'Cicero', photographing the embassy safe. Turkey sees everything and warns no one.\n\nEffect: Germany +10 opinion. +10% decryption.",
+      "fid": "wif_tur_cicero_axis",
+      "id": "tur078",
+      "mx": [],
+      "name": "Cicero",
+      "pre": [
+        "tur075",
+        "tur076"
+      ],
+      "x": 35,
+      "y": 9
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The Clodius agreement: Turkish chromium for German weapons.\n\nEffect: +2 military factories (German machine tools). Germany +15 opinion.",
+      "fid": "wif_tur_chromium_for_reich",
+      "id": "tur079",
+      "mx": [],
+      "name": "Chromium for the Reich",
+      "pre": [
+        "tur077",
+        "tur078"
+      ],
+      "x": 34,
+      "y": 10
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 35,
+      "desc": "Germany has won one of its two great wars. Turkey's waiting is over.\n\nAvailable: Germany has beaten the Western Allies (Britain capitulated or made peace) or the Soviet Union.\nEffect: unlocks joining the Axis.",
+      "fid": "wif_tur_victor_emerges",
+      "id": "tur080",
+      "mx": [],
+      "name": "The Victor Emerges",
+      "pre": [
+        "tur079"
+      ],
+      "x": 34,
+      "y": 11
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Turkey enters Germany's alliance - late, cheaply, and on the winning side.\n\nEffect: join Germany's faction. +15% war support.",
+      "fid": "wif_tur_join_the_axis",
+      "id": "tur081",
+      "mx": [],
+      "name": "Join the Axis",
+      "pre": [
+        "tur080"
+      ],
+      "x": 34,
+      "y": 12
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "In a Europe ruled from Berlin and Rome, Turkey is the strongest of the lesser powers - and the gateway to the Middle East.\n\nEffect: +10% stability. Unlocks Turan, Iraq and the Straits.",
+      "fid": "wif_tur_new_order_turkey",
+      "id": "tur082",
+      "mx": [],
+      "name": "Turkey in the New Order",
+      "pre": [
+        "tur081",
+        "tur070"
+      ],
+      "x": 37,
+      "y": 13
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "A Turkic world from the Bosporus to Central Asia: the old pan-Turkist dream, now with a victorious ally willing to listen.\n\nEffect: +10% war support. Unlocks the Turkic claims.",
+      "fid": "wif_tur_turan",
+      "id": "tur083",
+      "mx": [],
+      "name": "The Dream of Turan",
+      "pre": [
+        "tur082"
+      ],
+      "x": 33,
+      "y": 14
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Batum was Ottoman until 1878; Kars and Ardahan were Russian until 1918. With the Soviet Union gone, Ankara asks for Batum.\n\nAvailable: the Soviet Union has fallen.\nEffect: claim on Adjara/Batum (part of Georgia, Kaukasien). Kaukasien -15 opinion.",
+      "fid": "wif_tur_batum_kars",
+      "id": "tur084",
+      "mx": [],
+      "name": "Batum and Kars",
+      "pre": [
+        "tur083"
+      ],
+      "x": 31,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Baku's Azerbaijanis are Turks. Kaukasien's Reichskommissar may disagree.\n\nEffect: claim on Azerbaijan (229). Kaukasien -25 opinion; -50 if Kaukasien put its capital in Baku.",
+      "fid": "wif_tur_azerbaijan_turkish",
+      "id": "tur085",
+      "mx": [],
+      "name": "Azerbaijan Is Turkish",
+      "pre": [
+        "tur083"
+      ],
+      "x": 33,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Ankara asks Berlin to protect the Tatars of Crimea - and to let them come to Turkey.\n\nEffect: +20000 manpower (Tatar refugees). Ukraine's opinion -10.",
+      "fid": "wif_tur_crimean_tatars",
+      "id": "tur086",
+      "mx": [],
+      "name": "The Crimean Tatars",
+      "pre": [
+        "tur083"
+      ],
+      "x": 35,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Turkic prisoners of war who fought for Germany come 'home' to Turkey - and form a legion.\n\nEffect: 2 'Turkestan Legion' divisions (3x2 infantry, some experience).",
+      "fid": "wif_tur_turkestan_legion",
+      "id": "tur087",
+      "mx": [],
+      "name": "The Turkestan Legion",
+      "pre": [
+        "tur084",
+        "tur085"
+      ],
+      "x": 31,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Uzbeks, Kazakhs, Turkmens, Kyrgyz: the Turkic peoples of former Soviet Central Asia.\n\nEffect: Turkic Central Asian states +50 opinion. +10% political power.",
+      "fid": "wif_tur_turkestan_brothers",
+      "id": "tur088",
+      "mx": [],
+      "name": "Our Brothers in Turkestan",
+      "pre": [
+        "tur085",
+        "tur086"
+      ],
+      "x": 34,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 56,
+      "desc": "Turkey as the elder brother of every Turkic nation.\n\nEffect: +15% war support. Claims on Turkic lands in the Caucasus.",
+      "fid": "wif_tur_turanist_state",
+      "id": "tur089",
+      "mx": [],
+      "name": "The Turanist State",
+      "pre": [
+        "tur087",
+        "tur088"
+      ],
+      "x": 33,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "With Britain beaten, Iraq's British garrison and advisers are gone, and Baghdad is alone between Turkey, Iran and Italy's Levant.\n\nAvailable: Britain has capitulated or made peace.\nEffect: unlocks the Iraqi focuses. Iraq -20 opinion.",
+      "fid": "wif_tur_iraq_cut_off",
+      "id": "tur090",
+      "mx": [],
+      "name": "Iraq Cut Off",
+      "pre": [
+        "tur082"
+      ],
+      "x": 40,
+      "y": 14
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Mosul was Ottoman until 1918, and Turkey never stopped claiming it.\n\nEffect: claim on Mosul.",
+      "fid": "wif_tur_mosul_vilayet",
+      "id": "tur091",
+      "mx": [],
+      "name": "The Mosul Vilayet",
+      "pre": [
+        "tur090"
+      ],
+      "x": 38,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "The fields the British held are unguarded.\n\nEffect: claim on Kirkuk.",
+      "fid": "wif_tur_kirkuk_oil",
+      "id": "tur092",
+      "mx": [],
+      "name": "The Oil of Kirkuk",
+      "pre": [
+        "tur090"
+      ],
+      "x": 40,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "The man who rose against Britain in 1941 waits in exile, ready to govern Iraq for whoever puts him back.\n\nEffect: Iraq's fascist popularity +20%.",
+      "fid": "wif_tur_rashid_ali",
+      "id": "tur093",
+      "mx": [],
+      "name": "Rashid Ali Returns",
+      "pre": [
+        "tur090"
+      ],
+      "x": 42,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 56,
+      "desc": "Turkish divisions cross the border to 'restore order' in Iraq.\n\nEffect: war goal on Iraq. +10% attack against Iraq.",
+      "fid": "wif_tur_seize_iraq",
+      "id": "tur094",
+      "mx": [],
+      "name": "Seize Iraq",
+      "pre": [
+        "tur091",
+        "tur092"
+      ],
+      "x": 39,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "The vilayet comes home; the rest of Iraq is left to its fate.\n\nEffect: Mosul and Kirkuk become Turkish cores. Iraq -50 opinion.",
+      "fid": "wif_tur_annex_mosul",
+      "id": "tur095",
+      "mx": [
+        "tur096"
+      ],
+      "name": "Annex Mosul",
+      "pre": [
+        "tur094"
+      ],
+      "x": 38,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "A Turkish-guided government in Baghdad under Rashid Ali - and Kirkuk's oil for Turkey.\n\nEffect: Iraq becomes our puppet. +6 oil.",
+      "fid": "wif_tur_rashid_ali_government",
+      "id": "tur096",
+      "mx": [
+        "tur095"
+      ],
+      "name": "Rashid Ali's Government",
+      "pre": [
+        "tur094",
+        "tur093"
+      ],
+      "x": 41,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "More Kurds now live under Ankara than ever - in the east, in Mosul, in the mountains. Some of them have not forgotten Dersim.\n\nEffect: +10% compliance in Mosul. -5% stability.",
+      "fid": "wif_tur_kurdish_question",
+      "id": "tur097",
+      "mx": [],
+      "name": "The Kurdish Question",
+      "pre": [
+        "tur095",
+        "tur096"
+      ],
+      "x": 40,
+      "y": 18
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Hatay was the price of Turkish neutrality in 1939. In the New Order, Ankara asks Vichy for the rest of the old Aleppo province: a request between friends of the Reich.\n\nAvailable: 1947 or later. Vichy France owns Syria.\nEffect: Vichy decides (event). If it agrees: Aleppo (677) and Deir-az-Zur (680) are transferred to us and cored; Vichy +25 opinion. If it refuses: Vichy -25 opinion, and 'March into Syria' becomes possible once the Reich falls apart.",
+      "fid": "wif_tur_ask_vichy_for_syria",
+      "id": "tur098",
+      "mx": [],
+      "name": "Ask Vichy for Syria",
+      "pre": [
+        "tur082"
+      ],
+      "x": 53,
+      "y": 13
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "To the Ottomans Kuwait was a district of the Basra vilayet; to Britain, since 1899, a protectorate. Britain is beaten - but a British and Canadian garrison still holds Kuwait town, cut off and answering to Ottawa.\n\nTHE KUWAIT GAME (to build): two meters, shown in a decision category.\n- TURKISH INFLUENCE (0-100): won at the Sheikh's court and among the pearl merchants.\n- UNREST (0-100): stoked in the souks, the harbour and among the tribes against the garrison.\nOur decisions (political power, money, rifles): Ottoman Nostalgia (radio from Ankara), Fund the Merchants, Bribe the Al Sabah Cousins, Arab Clubs and Newspapers, Dock Strikes, Rifles for the Tribes, A Martyr in the Souk.\nThe garrison answers every month (an event): curfews, arrests, deportations, Canadian reinforcements by sea - cutting Unrest, and raising it again later if too harsh. If the garrison catches our agents, Influence falls and our relations with Canada sour.\nOUTCOMES: Influence 75+ - the Sheikh asks for Turkish protection (Kuwait becomes our subject). Unrest 75+ - Kuwait rises; the garrison is besieged and we may intervene (war on the garrison's owner over Kuwait only). Both at 60+ - the best result: a rising that invites us in.\n\nAvailable: completed Iraq Cut Off. Kuwait is still held by Britain, Canada or a Commonwealth country.\nEffect: unlocks The Kuwait Game decisions.",
+      "fid": "wif_tur_kuwait_question",
+      "id": "tur099",
+      "mx": [],
+      "name": "The Kuwait Question",
+      "pre": [
+        "tur090"
+      ],
+      "x": 44,
+      "y": 18
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "In 1938 Kuwait's merchants forced an elected council on the Sheikh, and looked to Iraq rather than Britain. Their sons can be made to look to Ankara.\n\nEffect: Unrest decisions +25% effect. Unrest +10.",
+      "fid": "wif_tur_majlis_movement",
+      "id": "tur100",
+      "mx": [],
+      "name": "The Majlis Movement",
+      "pre": [
+        "tur099"
+      ],
+      "x": 43,
+      "y": 19
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "Sheikh Ahmad al-Jaber has outlived his British protectors' power. His cousins and rivals have prices.\n\nEffect: Influence decisions +25% effect. Influence +10.",
+      "fid": "wif_tur_sheikhs_court",
+      "id": "tur101",
+      "mx": [],
+      "name": "The Sheikh's Court",
+      "pre": [
+        "tur099"
+      ],
+      "x": 45,
+      "y": 19
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "The garrison is exhausted, the souks are restless, the Sheikh is listening. One more push.\n\nAvailable: Influence or Unrest at least 75.\nEffect: Kuwait's rising or the Sheikh's request - whichever we earned - happens now.",
+      "fid": "wif_tur_kuwait_crisis",
+      "id": "tur102",
+      "mx": [],
+      "name": "The Kuwait Crisis",
+      "pre": [
+        "tur100",
+        "tur101"
+      ],
+      "x": 44,
+      "y": 20
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "inner",
+      "days": 42,
+      "desc": "The Turkish flag over Kuwait town, for the first time since 1914 - and the oil of Burgan, found by the British in 1938 and never pumped, is ours.\n\nAvailable: Kuwait is our subject or we hold it.\nEffect: Kuwait annexed (or kept as a protectorate) and cored. +8 oil.",
+      "fid": "wif_tur_kuwait_turkish",
+      "id": "tur103",
+      "mx": [],
+      "name": "Kuwait Is Turkish",
+      "pre": [
+        "tur102"
+      ],
+      "x": 44,
+      "y": 21
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "With the Soviet fleet gone, who needs Montreux?\n\nEffect: unlocks the choice of Straits regime.",
+      "fid": "wif_tur_straits_question",
+      "id": "tur104",
+      "mx": [],
+      "name": "The Straits Question",
+      "pre": [
+        "tur082"
+      ],
+      "x": 46,
+      "y": 14
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The Straits are Turkish alone: closed to every warship Turkey does not invite.\n\nEffect: +3 coastal forts on the Straits. Italy -15 opinion.",
+      "fid": "wif_tur_rewrite_montreux",
+      "id": "tur105",
+      "mx": [
+        "tur106"
+      ],
+      "name": "Rewrite Montreux",
+      "pre": [
+        "tur104"
+      ],
+      "x": 45,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Rome and Berlin may pass whenever they like - in return for friendship.\n\nEffect: Italy and Germany +25 opinion.",
+      "fid": "wif_tur_shared_straits",
+      "id": "tur106",
+      "mx": [
+        "tur105"
+      ],
+      "name": "Share the Straits",
+      "pre": [
+        "tur104"
+      ],
+      "x": 47,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The Reich is at war with itself. Its allies must find new friends - and Rome is offering.\n\nAvailable: the German civil war has begun.\nEffect: +10% political power.",
+      "fid": "wif_tur_reich_divided",
+      "id": "tur107",
+      "mx": [],
+      "name": "The Reich Divided",
+      "pre": [
+        "tur082"
+      ],
+      "x": 50,
+      "y": 15
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "With the Reich at war with itself, Vichy has no one to protect it. If France would not give Syria, Turkey will take it.\n\nAvailable: the German civil war has begun.\nAvailable: Vichy France still owns Syria (it did not give it to us).\nEffect (to build): SYRIA BECOMES INDEPENDENT - with Lebanon (553). Every French division stationed in Syria and Lebanon becomes Syrian, and Syria gets 10% of Vichy's whole stockpile. Then Turkey invades in a LIMITED WAR that no one else can join, on a 45-day timer:\n- If Syria capitulates in time: we annex the territory we hold and core northern Syria (Aleppo 677, Deir-az-Zur 680).\n- If Syria holds out for 45 days: white peace, Vichy re-annexes Syria and Lebanon, and we get a temporary humiliation (spirit 'The Syrian Humiliation': -15% stability, -15% war support, -20% political power for a year).",
+      "fid": "wif_tur_march_into_syria",
+      "id": "tur108",
+      "mx": [],
+      "name": "March into Syria",
+      "pre": [
+        "tur107"
+      ],
+      "x": 53,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Aleppo, an Ottoman city for four hundred years, is Turkish again.\n\nAvailable: we own Aleppo (677).\nEffect: +1 civilian factory in Aleppo. +10% compliance in northern Syria. +5% stability.",
+      "fid": "wif_tur_aleppo_vilayet",
+      "id": "tur109",
+      "mx": [],
+      "name": "The Aleppo Vilayet",
+      "pre": [
+        "tur108",
+        "tur098"
+      ],
+      "x": 54,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Italy's Pact of Rome invites Turkey: the two Mediterranean powers, together while Germany burns.\n\nAvailable: Italy's Pact of Rome exists.\nEffect: join Italy's faction. Italy +50 opinion.",
+      "fid": "wif_tur_pact_of_rome",
+      "id": "tur110",
+      "mx": [],
+      "name": "The Invitation from Rome",
+      "pre": [
+        "tur107"
+      ],
+      "x": 50,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "The border with Bulgaria, guaranteed by Rome and Ankara together.\n\nEffect: +2 land forts in Eastern Thrace. Bulgaria +15 opinion.",
+      "fid": "wif_tur_thrace_guarantee",
+      "id": "tur111",
+      "mx": [],
+      "name": "A Guarantee for Thrace",
+      "pre": [
+        "tur105",
+        "tur106"
+      ],
+      "x": 46,
+      "y": 16
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Bulgaria lost its German patron. Ankara offers trade, a frontier guarantee in Thrace and advisers to the regents of the boy-Tsar Simeon.\n\nEffect: Bulgaria +50 opinion; Bulgarian influence +25%.",
+      "fid": "wif_tur_sofia",
+      "id": "tur112",
+      "mx": [],
+      "name": "Influence in Sofia",
+      "pre": [
+        "tur110",
+        "tur111"
+      ],
+      "x": 46,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Romania's oil and its Black Sea coast: worth courting while Berlin cannot.\n\nEffect: Romania +50 opinion; Romanian influence +25%.",
+      "fid": "wif_tur_bucharest",
+      "id": "tur113",
+      "mx": [],
+      "name": "Influence in Bucharest",
+      "pre": [
+        "tur110"
+      ],
+      "x": 48,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "With the Soviet fleet gone and the Germans busy, the Black Sea is Turkey's lake.\n\nEffect: +2 dockyards. +10% navy organisation.",
+      "fid": "wif_tur_black_sea",
+      "id": "tur114",
+      "mx": [],
+      "name": "Master of the Black Sea",
+      "pre": [
+        "tur110"
+      ],
+      "x": 50,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 42,
+      "desc": "Romanian oil, paid for in Turkish chromium and cotton.\n\nEffect: +6 oil (trade). Romania +15 opinion.",
+      "fid": "wif_tur_romanian_oil",
+      "id": "tur115",
+      "mx": [],
+      "name": "Oil from Ploesti",
+      "pre": [
+        "tur110"
+      ],
+      "x": 52,
+      "y": 17
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "From Thrace to the Danube, Ankara's word counts - under Rome's umbrella.\n\nAvailable: Bulgaria or Romania is in our or Italy's faction.\nEffect: Bulgaria and Romania join our sphere: +15% stability, +10% political power.",
+      "fid": "wif_tur_balkan_sphere",
+      "id": "tur116",
+      "mx": [],
+      "name": "The Turkish Balkan Sphere",
+      "pre": [
+        "tur112",
+        "tur113",
+        "tur114",
+        "tur115"
+      ],
+      "x": 48,
+      "y": 18
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "By 1950 Turkey is the strongest state between the Adriatic and Iran - still Kemalist, still careful, and on the winning side.\n\nEffect: +15% stability, +10% factory output.",
+      "fid": "wif_tur_regional_power",
+      "id": "tur117",
+      "mx": [],
+      "name": "A Regional Power",
+      "pre": [
+        "tur089",
+        "tur097",
+        "tur116"
+      ],
+      "x": 40,
+      "y": 19
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "diplomacy",
+      "days": 56,
+      "desc": "Ataturk's Republic has outlived its founder and survived the war that broke Europe. What it becomes now is up to Ankara.\n\nEffect: +10% political power, +10% stability.",
+      "fid": "wif_tur_second_republic",
+      "id": "tur118",
+      "mx": [],
+      "name": "The Republic at Twenty-Seven",
+      "pre": [
+        "tur117"
+      ],
+      "x": 40,
+      "y": 20
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Even though our armies emerged from the War of Liberation victorious against the Entente and the Ottomans, our nation paid the price for freedom in blood. We must never again allow a disaster of such a devastating scale to strike our country again. We must learn from our past mistakes, and study our victories.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_learning_from_the_great_war",
+      "id": "TUR_learning_from_the_great_war",
+      "mx": [],
+      "name": "Learning from the Great War",
+      "pre": [],
+      "x": 59,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "We have fallen behind the curve when it comes to technological innovations in warfare. To avoid a repeat of the bloodshed of our past, we must quickly modernize our tactics and our equipment.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_modernising_the_army",
+      "id": "TUR_modernising_the_army",
+      "mx": [],
+      "name": "Modernizing the Army",
+      "pre": [
+        "TUR_learning_from_the_great_war"
+      ],
+      "x": 59,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "We are proud of having such an old and venerable academy dedicated to military and civilian aviation. We should put a greater focus on our air warfare efforts.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_hava_okulu",
+      "id": "TUR_hava_okulu",
+      "mx": [],
+      "name": "Hava Okulu",
+      "pre": [],
+      "x": 74,
+      "y": 1
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Our nation is very large, and it is vital that our air force be able to cover every inch of [ROOT.GetAdjective] territory.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_expand_the_air_bases",
+      "id": "TUR_expand_the_air_bases",
+      "mx": [],
+      "name": "Expand the Air Bases",
+      "pre": [
+        "TUR_hava_okulu"
+      ],
+      "x": 74,
+      "y": 2
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "It is an ambitious goal but one that is pursued out of necessity. Sooner or later, all armies will be mechanized. We must simply decide whether we prepared to undertake such an effort now, or wait until it becomes more viable in the future.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_mechanising_our_army",
+      "id": "TUR_mechanising_our_army",
+      "mx": [
+        "TUR_embrace_military_tradition"
+      ],
+      "name": "Mechanizing Our Army",
+      "pre": [
+        "TUR_modernising_the_army"
+      ],
+      "x": 57,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The Ottoman Empire used to menace the entire continent of Europe. Sure, some mistakes were made - but by looking to the past perhaps we might once again have an army capable of marching all the way to the gates of Vienna and beyond.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_embrace_military_tradition",
+      "id": "TUR_embrace_military_tradition",
+      "mx": [
+        "TUR_mechanising_our_army"
+      ],
+      "name": "Embrace Military Tradition",
+      "pre": [
+        "TUR_modernising_the_army"
+      ],
+      "x": 61,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "We have become too reliant upon the foreign designs of armored vehicles. We shall design our very own [ROOT.GetAdjective] tank - the Kırıkkale Tank!\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_the_kirikkale_tank",
+      "id": "TUR_the_kirikkale_tank",
+      "mx": [],
+      "name": "The Kırıkkale Tank",
+      "pre": [
+        "TUR_mechanising_our_army"
+      ],
+      "x": 56,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Why throw men at a problem when bullets and shells are far more expendable? We must make a greater effort to save the lives of our soldiers through the use of overwhelming firepower.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_superiority_of_arms",
+      "id": "TUR_superiority_of_arms",
+      "mx": [],
+      "name": "Superiority of Arms",
+      "pre": [
+        "TUR_embrace_military_tradition",
+        "TUR_mechanising_our_army"
+      ],
+      "x": 59,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Anatolia is a defender's dream and an invader's worst nightmare. We know our country, and we should train to utilize the natural defenses of our nation to make any invasion a hard-fought battle.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_utilising_our_terrain",
+      "id": "TUR_utilising_our_terrain",
+      "mx": [],
+      "name": "Utilizing Our Terrain",
+      "pre": [
+        "TUR_embrace_military_tradition"
+      ],
+      "x": 62,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Field Marshal Fevzi Çakmak has proposed building a defensive line of fortifications around Edirne and the Bosporus Straits. While there has been some trepidation among officials about pursuing the project, ultimately the benefits outweigh the costs and it is about time we got started on the fortline.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_construct_the_cakmak_line",
+      "id": "TUR_construct_the_cakmak_line",
+      "mx": [],
+      "name": "Construct the Çakmak Line",
+      "pre": [
+        "TUR_superiority_of_arms"
+      ],
+      "x": 59,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Our aviation industry is old and well-respected, but few distinctly [ROOT.GetAdjective] plane designs have met the standards for production. We must work to change that.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_accelerate_native_fighter_designs",
+      "id": "TUR_accelerate_native_fighter_designs",
+      "mx": [],
+      "name": "Accelerate Native Fighter Designs",
+      "pre": [
+        "TUR_expand_the_air_bases"
+      ],
+      "x": 74,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Our ocean is our natural barrier against invasion and we must care for it just as we would a land border.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_patrol_the_seas",
+      "id": "TUR_patrol_the_seas",
+      "mx": [
+        "TUR_invoke_the_methods_of_mehmed_ii"
+      ],
+      "name": "Patrol the Seas",
+      "pre": [
+        "TUR_accelerate_native_fighter_designs"
+      ],
+      "x": 72,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "We learned from Mehmed II that when a problem seems insurmountable, a big cannon will usually prove to be a very viable solution.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_invoke_the_methods_of_mehmed_ii",
+      "id": "TUR_invoke_the_methods_of_mehmed_ii",
+      "mx": [
+        "TUR_patrol_the_seas"
+      ],
+      "name": "Invoke the Methods of Mehmed II",
+      "pre": [
+        "TUR_accelerate_native_fighter_designs"
+      ],
+      "x": 76,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "We must work to defend our air space in the case of an aerial attack from the seas or from one of our neighbors' territories.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_turkish_air_defense_platforms",
+      "id": "TUR_turkish_air_defense_platforms",
+      "mx": [],
+      "name": "Turkish Air Defense Platforms",
+      "pre": [
+        "TUR_patrol_the_seas",
+        "TUR_invoke_the_methods_of_mehmed_ii"
+      ],
+      "x": 74,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "By expanding the Gölcük Naval Base we will be able to support our strategic goals in the strait and Aegean sea.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_expand_the_golcuk_naval_base",
+      "id": "TUR_expand_the_golcuk_naval_base",
+      "mx": [],
+      "name": "Expand the Gölcük Naval Base",
+      "pre": [
+        "TUR_modernising_the_army",
+        "TUR_expand_the_air_bases"
+      ],
+      "x": 66,
+      "y": 3
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "We have centered our naval efforts around Çanakkale and the Straits for far too long. It is time to finally act on our plans to expand the Port of Mersin.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_relocate_from_yildiz_palace",
+      "id": "TUR_relocate_from_yildiz_palace",
+      "mx": [],
+      "name": "Relocate from Yıldız Palace",
+      "pre": [
+        "TUR_expand_the_golcuk_naval_base"
+      ],
+      "x": 66,
+      "y": 4
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "The Ottoman Fleet was truly impressive, and if there is at least one thing worthy of mourning from the fallen empire it would be the illustrious navy it wielded. We can honor that legacy with a more modern navy today.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_the_legacy_of_osmanli_donanmasi",
+      "id": "TUR_the_legacy_of_osmanli_donanmasi",
+      "mx": [
+        "TUR_the_path_of_the_wolf"
+      ],
+      "name": "The Legacy of the Osmanlı Donanması",
+      "pre": [
+        "TUR_relocate_from_yildiz_palace"
+      ],
+      "x": 64,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 35,
+      "desc": "Like the wolf, we must always be on the prowl. We shall stay low, and attack when our enemy least expects it. We have the mindset of wolves, and the submarine is the perfect tool to exercise that mindset.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_the_path_of_the_wolf",
+      "id": "TUR_the_path_of_the_wolf",
+      "mx": [
+        "TUR_the_legacy_of_osmanli_donanmasi"
+      ],
+      "name": "The Path of the Wolf",
+      "pre": [
+        "TUR_relocate_from_yildiz_palace"
+      ],
+      "x": 68,
+      "y": 5
+    },
+    {
+      "after": [],
+      "any": true,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "It is said the best offence is a good defense, and our official stance is that we do not disagree!\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_fortified_defensive_bases",
+      "id": "TUR_fortified_defensive_bases",
+      "mx": [],
+      "name": "Fortified Defensive Bases",
+      "pre": [
+        "TUR_construct_the_cakmak_line",
+        "TUR_the_legacy_of_osmanli_donanmasi",
+        "TUR_the_path_of_the_wolf",
+        "TUR_turkish_air_defense_platforms"
+      ],
+      "x": 66,
+      "y": 6
+    },
+    {
+      "after": [],
+      "any": false,
+      "auto": false,
+      "branch": "military",
+      "days": 70,
+      "desc": "Our armed forces have become truly modern and are no longer the shade they had become after the terrible War of Independence. We could take on the world in our current state. We should be proud of how far we have come.\n\n(Vanilla focus, kept unchanged.)",
+      "fid": "TUR_turk_silahli_kuvvetleri",
+      "id": "TUR_turk_silahli_kuvvetleri",
+      "mx": [],
+      "name": "Türk Silahlı Kuvvetleri",
+      "pre": [
+        "TUR_fortified_defensive_bases"
+      ],
+      "x": 66,
+      "y": 7
+    }
+  ],
+  "name": "Turkey (WiF draft)",
+  "tag": "TUR",
+  "target": 5341,
+  "treeId": "wif_tur_focus",
+  "updatedAt": 1795723257191
+}
