@@ -1,0 +1,1630 @@
+{
+ "focuses": [
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Germany has won in the West and in the East, and Bulgaria stood with it from the first. Macedonia, Thrace and the Dobruja are Bulgarian; the Aegean is in sight from Bulgarian hills. Thirty years after Neuilly, Sofia has its revenge - and must now live in the Reich's Europe.\n\nTHE FOCUS (in the vanilla tree, after The Eastern Front): works for whoever rules in Sofia - the Tsar, a regency, a general or a fascist leader - and the new tree never names who rules.\nAvailable: no war; Germany has won on both fronts (Britain beaten or at peace, the Soviet Union broken); Bulgaria in Germany's faction or its subject.\nEffect: like Totaler Sieg - the whole Bulgarian tree is WIPED and replaced by this post-war tree (1946-1952), where 'A New Europe, a New Balkans' reappears completed. +10% stability.\n\nBRANCHES: The State (the crown and its regents, the Ratniks and the Legions, Berlin's demand for Bulgaria's Jews, the partisans in the mountains) - The New Lands (Macedonia, Thrace and the Aegean coast, the IMRO, the Greeks of Thrace, San Stefano at last) - The Economy (tobacco, roses, Pernik coal, the Aegean ports, +1 research slot) - The Army (occupation duty, the Maybach tanks, the Aegean fleet, the Rhodope line) - Bulgaria in the New Europe (Berlin, Rome, Ankara, Bucharest; the Reich Divided as in Hungary's tree: stand with the Axis and choose a side, stand by the winner, or turn to Rome if the SS wins; the Reich reunified).",
+   "fid": "wif_bulv_new_europe_new_balkans",
+   "id": "bv000",
+   "mx": [],
+   "name": "A New Europe, a New Balkans",
+   "pre": [],
+   "x": 37,
+   "y": 0
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The war is won. The palace, the generals of the Military League and the street movements all claim the victory as theirs.\n\nEffect: +50 political power. Unlocks the state.",
+   "fid": "wif_bulv_who_governs_sofia",
+   "id": "bv001",
+   "mx": [],
+   "name": "Who Governs in Sofia",
+   "pre": [
+    "bv000"
+   ],
+   "x": 7,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Whoever governs, governs in the name of the Tsar - of Boris, of the boy Simeon, of the regents who rule for him.\n\nEffect: +10% stability.",
+   "fid": "wif_bulv_the_crown",
+   "id": "bv002",
+   "mx": [],
+   "name": "The Crown of the Third Kingdom",
+   "pre": [
+    "bv001"
+   ],
+   "x": 3,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "In March 1943 Bulgaria handed 11,343 Jews from occupied Thrace and Macedonia to the Germans - and refused to hand over its own 48,000, after the deputy speaker Dimitar Peshev, the Church and the public protested. Victorious Germany asks again.\n\nEffect: the choice below.",
+   "fid": "wif_bulv_berlins_demand",
+   "id": "bv003",
+   "mx": [],
+   "name": "Berlin's Demand",
+   "pre": [
+    "bv001"
+   ],
+   "x": 7,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The Ratniks and the Union of Bulgarian National Legions marched for the Axis. Now they want the state.\n\nEffect: fascism +5%. Unlocks the choice below.",
+   "fid": "wif_bulv_legions_question",
+   "id": "bv004",
+   "mx": [],
+   "name": "The Ratniks and the Legions",
+   "pre": [
+    "bv001"
+   ],
+   "x": 11,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The police directorate of the capital, with files on every school, union and village.\n\nEffect: -25% resistance growth. +5% stability.",
+   "fid": "wif_bulv_state_security",
+   "id": "bv005",
+   "mx": [],
+   "name": "State Security",
+   "pre": [
+    "bv002"
+   ],
+   "x": 2,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Communist and agrarian partisans still hold out in the Balkan range and the Sredna Gora.\n\nEffect: unlocks the choice below.",
+   "fid": "wif_bulv_partisans_in_the_mountains",
+   "id": "bv006",
+   "mx": [],
+   "name": "The Partisans in the Mountains",
+   "pre": [
+    "bv002"
+   ],
+   "x": 4,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "As in 1943: forty-three deputies sign a protest, the Metropolitans Stefan and Kiril stand at the station, and the trains leave empty. The Jews of Bulgaria proper stay.\n\nEffect: Germany -50 opinion. +10% stability. -5% war support.",
+   "fid": "wif_bulv_the_peshev_letter",
+   "id": "bv007",
+   "mx": [
+    "bv008"
+   ],
+   "name": "The Peshev Letter",
+   "pre": [
+    "bv003"
+   ],
+   "x": 6,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "In 1943 only the Jews of the new lands were sent to Treblinka. In this Europe Sofia gives the rest as well: 48,000 people, assembled in the provinces and put on the trains north.\n\nEffect: Germany +50 opinion. -15% stability. Free nations -50 opinion. +2 civilian factories (seized property).",
+   "fid": "wif_bulv_the_trains_from_thrace",
+   "id": "bv008",
+   "mx": [
+    "bv007"
+   ],
+   "name": "The Trains from Sofia",
+   "pre": [
+    "bv003"
+   ],
+   "x": 8,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Uniforms banned, leaders given posts, street fighters sent to the army.\n\nEffect: fascism -10%, +15% stability.",
+   "fid": "wif_bulv_tame_the_legions",
+   "id": "bv009",
+   "mx": [
+    "bv010"
+   ],
+   "name": "Tame the Legions",
+   "pre": [
+    "bv004"
+   ],
+   "x": 10,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Professor Tsankov's men and the Legionaries take the ministries.\n\nEffect: fascism +15%. -10% stability. +15% political power.",
+   "fid": "wif_bulv_legions_in_power",
+   "id": "bv010",
+   "mx": [
+    "bv009"
+   ],
+   "name": "The Legions in Power",
+   "pre": [
+    "bv004"
+   ],
+   "x": 12,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Gendarmerie and army sweep the mountains; villages that fed the partisans are burned.\n\nEffect: -50% resistance in core states. -10% stability.",
+   "fid": "wif_bulv_crush_the_partisans",
+   "id": "bv011",
+   "mx": [
+    "bv012"
+   ],
+   "name": "Crush the Partisans",
+   "pre": [
+    "bv006"
+   ],
+   "x": 3,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Those who come down from the mountains with their rifles keep their lives.\n\nEffect: +10% stability. +5000 manpower.",
+   "fid": "wif_bulv_amnesty",
+   "id": "bv012",
+   "mx": [
+    "bv011"
+   ],
+   "name": "The Amnesty",
+   "pre": [
+    "bv006"
+   ],
+   "x": 5,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Propaganda for a Greater Bulgaria in every school and newspaper.\n\nEffect: +10% war support. +5% stability.",
+   "fid": "wif_bulv_the_fatherland_union",
+   "id": "bv013",
+   "mx": [],
+   "name": "One Fatherland",
+   "pre": [
+    "bv007",
+    "bv008"
+   ],
+   "x": 7,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "A council of the Crown, the army and the party that governs above parliament.\n\nEffect: +10% political power. +5% factory output.",
+   "fid": "wif_bulv_the_supreme_council",
+   "id": "bv014",
+   "mx": [],
+   "name": "The Supreme Council",
+   "pre": [
+    "bv009",
+    "bv010"
+   ],
+   "x": 11,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Every newspaper licensed, every editor a member.\n\nEffect: -10% stability, +15% political power.",
+   "fid": "wif_bulv_the_press_directorate",
+   "id": "bv015",
+   "mx": [],
+   "name": "The Press Directorate",
+   "pre": [
+    "bv013",
+    "bv014"
+   ],
+   "x": 9,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "Whatever was done in the mountains, the villages are quiet now.\n\nEffect: +5% stability. +5% recruitable population.",
+   "fid": "wif_bulv_order_in_the_villages",
+   "id": "bv016",
+   "mx": [],
+   "name": "Order in the Villages",
+   "pre": [
+    "bv011",
+    "bv012"
+   ],
+   "x": 3,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "The Third Bulgarian Kingdom is governed - firmly.\n\nEffect: +15% stability.",
+   "fid": "wif_bulv_a_kingdom_consolidated",
+   "id": "bv017",
+   "mx": [],
+   "name": "A Kingdom Consolidated",
+   "pre": [
+    "bv016",
+    "bv015",
+    "bv005"
+   ],
+   "x": 7,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "political",
+   "days": 35,
+   "desc": "A small kingdom that came out of the war larger than at any time since the tsars of Tarnovo.\n\nAvailable: 1950.\nEffect: +10% stability, +10% political power.",
+   "fid": "wif_bulv_bulgaria_at_mid_century",
+   "id": "bv018",
+   "mx": [],
+   "name": "Bulgaria at Mid-Century",
+   "pre": [
+    "bv017"
+   ],
+   "x": 7,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Vardar Macedonia, Western Thrace, the Aegean coast: Bulgarian at last, and to be governed as Bulgarian.\n\nEffect: +10% compliance growth in the new lands.",
+   "fid": "wif_bulv_the_new_lands",
+   "id": "bv019",
+   "mx": [],
+   "name": "The New Lands",
+   "pre": [
+    "bv000"
+   ],
+   "x": 22,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Kavala and Dedeagach: Bulgaria's window on the White Sea, lost in 1919, regained.\n\nEffect: +1 naval base and +1 dockyard on the Aegean.",
+   "fid": "wif_bulv_the_aegean_coast",
+   "id": "bv020",
+   "mx": [],
+   "name": "The Aegean Coast",
+   "pre": [
+    "bv019"
+   ],
+   "x": 17,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "The King Boris University opens in Skopje in 1943 - Bulgarian, of course.\n\nEffect: +5% research speed. +10% compliance in Macedonia.",
+   "fid": "wif_bulv_skopje_university",
+   "id": "bv021",
+   "mx": [],
+   "name": "The University of Skopje",
+   "pre": [
+    "bv019"
+   ],
+   "x": 19,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Are the Macedonians Bulgarians? Sofia says yes. Many Macedonians are no longer sure.\n\nEffect: unlocks the choice below.",
+   "fid": "wif_bulv_macedonian_question",
+   "id": "bv022",
+   "mx": [],
+   "name": "The Macedonian Question",
+   "pre": [
+    "bv019"
+   ],
+   "x": 23,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Three hundred thousand Greeks live in Bulgaria's Thrace.\n\nEffect: unlocks Thrace.",
+   "fid": "wif_bulv_the_greeks_of_thrace",
+   "id": "bv023",
+   "mx": [],
+   "name": "The Greeks of Thrace",
+   "pre": [
+    "bv019"
+   ],
+   "x": 27,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Bulgarian schools, Bulgarian priests, Bulgarian names on the shop signs.\n\nEffect: +10% political power. -10% stability. Minorities resist.",
+   "fid": "wif_bulv_bulgarisation",
+   "id": "bv024",
+   "mx": [
+    "bv025"
+   ],
+   "name": "Bulgarisation",
+   "pre": [
+    "bv022"
+   ],
+   "x": 22,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Ivan Mihailov's Internal Macedonian Revolutionary Organisation gets its autonomous Macedonia - under the Bulgarian crown.\n\nEffect: +10% stability. +15% compliance growth in Macedonia. IMRO militias (2 militia divisions).",
+   "fid": "wif_bulv_imro_autonomy",
+   "id": "bv025",
+   "mx": [
+    "bv024"
+   ],
+   "name": "An IMRO Autonomy",
+   "pre": [
+    "bv022"
+   ],
+   "x": 24,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "September 1941: Greeks rise at Drama, and the Bulgarian army answers by killing some 3,000 people in Drama, Doxato and the villages. Colonists from Bulgaria take the empty farms.\n\nEffect: -25% resistance in Thrace. -10% stability. Greece -50 opinion.",
+   "fid": "wif_bulv_drama_uprising",
+   "id": "bv026",
+   "mx": [],
+   "name": "Drama, 1941",
+   "pre": [
+    "bv023"
+   ],
+   "x": 27,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "The Bulgarian Church takes over the dioceses of Macedonia and Thrace.\n\nEffect: +10% compliance in the new lands. Serbia and Greece -15 opinion.",
+   "fid": "wif_bulv_the_exarchate",
+   "id": "bv027",
+   "mx": [],
+   "name": "The Bulgarian Exarchate",
+   "pre": [
+    "bv024"
+   ],
+   "x": 20,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Yugoslav partisans cross into the mountains around Ohrid and Prilep.\n\nEffect: event: sweep the mountains (-resistance, -stability) or seal the border (+2 forts).",
+   "fid": "wif_bulv_tito_in_macedonia",
+   "id": "bv028",
+   "mx": [],
+   "name": "Tito's Men in Macedonia",
+   "pre": [
+    "bv024",
+    "bv025"
+   ],
+   "x": 22,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "The lake and the see of St Clement, the cradle of Bulgarian letters.\n\nEffect: +10% stability. +1 civilian factory in Macedonia.",
+   "fid": "wif_bulv_ohrid",
+   "id": "bv029",
+   "mx": [],
+   "name": "Ohrid",
+   "pre": [
+    "bv025"
+   ],
+   "x": 25,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "Bulgarian families on the farms of Thrace.\n\nEffect: +10% compliance in Thrace. -5000 manpower.",
+   "fid": "wif_bulv_settle_thrace",
+   "id": "bv030",
+   "mx": [],
+   "name": "Settle Thrace",
+   "pre": [
+    "bv026"
+   ],
+   "x": 27,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "The new border with Serbia must be held.\n\nEffect: +3 land forts in Macedonia.",
+   "fid": "wif_bulv_the_morava_line",
+   "id": "bv031",
+   "mx": [],
+   "name": "The Morava Line",
+   "pre": [
+    "bv027",
+    "bv028"
+   ],
+   "x": 21,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "From the Danube to the Aegean.\n\nEffect: +1 civilian factory in Thrace. +10% stability.",
+   "fid": "wif_bulv_the_white_sea",
+   "id": "bv032",
+   "mx": [],
+   "name": "Bulgaria on the White Sea",
+   "pre": [
+    "bv029",
+    "bv030",
+    "bv020"
+   ],
+   "x": 26,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "inner",
+   "days": 35,
+   "desc": "In 1878 the Treaty of San Stefano drew a Greater Bulgaria that the Great Powers tore up within months. Seventy years later it is real.\n\nEffect: cores on Macedonia and Thrace (if owned). +15% stability.",
+   "fid": "wif_bulv_san_stefano",
+   "id": "bv033",
+   "mx": [],
+   "name": "The Bulgaria of San Stefano",
+   "pre": [
+    "bv031",
+    "bv032"
+   ],
+   "x": 24,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The war orders stop, the Reich's markets open.\n\nEffect: +1 civilian factory.",
+   "fid": "wif_bulv_peace_economy",
+   "id": "bv034",
+   "mx": [],
+   "name": "The Peace Economy",
+   "pre": [
+    "bv000"
+   ],
+   "x": 37,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Bulgaria grows the Reich's cigarettes: Reemtsma buys the whole Thracian crop.\n\nEffect: -5% consumer goods. Germany +15 opinion.",
+   "fid": "wif_bulv_tobacco",
+   "id": "bv035",
+   "mx": [],
+   "name": "Tobacco for the Reich",
+   "pre": [
+    "bv034"
+   ],
+   "x": 31,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The coal of Pernik powers Sofia's industry.\n\nEffect: +4 steel (coal and iron). +1 civilian factory.",
+   "fid": "wif_bulv_pernik",
+   "id": "bv036",
+   "mx": [],
+   "name": "The Pernik Mines",
+   "pre": [
+    "bv034"
+   ],
+   "x": 34,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Kazanlak's rose oil sells for its weight in gold.\n\nEffect: +100 political power. +10% trade opinion.",
+   "fid": "wif_bulv_rose_valley",
+   "id": "bv037",
+   "mx": [],
+   "name": "The Rose Valley",
+   "pre": [
+    "bv034"
+   ],
+   "x": 37,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Kavala and Dedeagach, linked to Plovdiv by rail.\n\nEffect: +1 infrastructure in Thrace. +1 dockyard.",
+   "fid": "wif_bulv_aegean_ports",
+   "id": "bv038",
+   "mx": [],
+   "name": "The Aegean Ports",
+   "pre": [
+    "bv034"
+   ],
+   "x": 40,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The Black Sea ports, free of the Soviet fleet.\n\nEffect: +1 civilian factory in Varna.",
+   "fid": "wif_bulv_black_sea_trade",
+   "id": "bv039",
+   "mx": [],
+   "name": "Varna and Burgas",
+   "pre": [
+    "bv034"
+   ],
+   "x": 43,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Iron ore near Sofia - enough for a steel works.\n\nEffect: +6 steel.",
+   "fid": "wif_bulv_kremikovtsi",
+   "id": "bv040",
+   "mx": [],
+   "name": "The Kremikovtsi Ore",
+   "pre": [
+    "bv035",
+    "bv036"
+   ],
+   "x": 31,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "New lines to Skopje and Kavala.\n\nEffect: +1 infrastructure in Macedonia and Thrace.",
+   "fid": "wif_bulv_state_railways",
+   "id": "bv041",
+   "mx": [],
+   "name": "The State Railways",
+   "pre": [
+    "bv036"
+   ],
+   "x": 34,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Rifles and shells made at home.\n\nEffect: +2 military factories.",
+   "fid": "wif_bulv_sofia_works",
+   "id": "bv042",
+   "mx": [],
+   "name": "The Sofia Arms Works",
+   "pre": [
+    "bv037"
+   ],
+   "x": 37,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Hydro-electric power from the Rila and the Iskar gorge.\n\nEffect: +10% factory output.",
+   "fid": "wif_bulv_iskar_dams",
+   "id": "bv043",
+   "mx": [],
+   "name": "The Iskar Dams",
+   "pre": [
+    "bv038"
+   ],
+   "x": 40,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Bulgaria's village cooperatives - the strongest in the Balkans - buy tractors together.\n\nEffect: +5% stability. +1 civilian factory.",
+   "fid": "wif_bulv_cooperatives",
+   "id": "bv044",
+   "mx": [],
+   "name": "The Cooperatives",
+   "pre": [
+    "bv039"
+   ],
+   "x": 43,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Sofia trains its own engineers at last.\n\nEffect: +1 research slot.",
+   "fid": "wif_bulv_the_polytechnic",
+   "id": "bv045",
+   "mx": [],
+   "name": "The State Polytechnic",
+   "pre": [
+    "bv040",
+    "bv041"
+   ],
+   "x": 33,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "A planned town of chemical works and power stations on the Maritsa.\n\nEffect: +2 civilian factories.",
+   "fid": "wif_bulv_dimitrovgrad",
+   "id": "bv046",
+   "mx": [],
+   "name": "A New Industrial Town",
+   "pre": [
+    "bv042"
+   ],
+   "x": 37,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Light in every village.\n\nEffect: +5% stability. +5% factory output.",
+   "fid": "wif_bulv_electrify",
+   "id": "bv047",
+   "mx": [],
+   "name": "Electrify the Villages",
+   "pre": [
+    "bv043",
+    "bv044"
+   ],
+   "x": 41,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Bulgaria sells to the Reich at the Reich's prices - and asks for factories in return.\n\nEffect: +2 civilian factories. Germany +15 opinion.",
+   "fid": "wif_bulv_grossraum_partner",
+   "id": "bv048",
+   "mx": [
+    "bv049"
+   ],
+   "name": "A Partner in the Grossraum",
+   "pre": [
+    "bv046"
+   ],
+   "x": 37,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Our own currency, our own prices.\n\nEffect: +10% factory output. Germany -15 opinion.",
+   "fid": "wif_bulv_a_strong_lev",
+   "id": "bv049",
+   "mx": [
+    "bv048"
+   ],
+   "name": "A Strong Lev",
+   "pre": [
+    "bv046"
+   ],
+   "x": 39,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Trade with Bucharest, Ankara, Belgrade and Zagreb.\n\nEffect: +1 civilian factory. +10% trade opinion.",
+   "fid": "wif_bulv_balkan_market",
+   "id": "bv050",
+   "mx": [],
+   "name": "The Balkan Market",
+   "pre": [
+    "bv047"
+   ],
+   "x": 41,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "The garden of the Balkans has factories.\n\nEffect: +10% factory output. +1 military factory.",
+   "fid": "wif_bulv_industrial_bulgaria",
+   "id": "bv051",
+   "mx": [],
+   "name": "An Industrial Bulgaria",
+   "pre": [
+    "bv045",
+    "bv048",
+    "bv049",
+    "bv050"
+   ],
+   "x": 37,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "industry",
+   "days": 35,
+   "desc": "Richer than ever before.\n\nAvailable: 1950.\nEffect: +10% factory output, +10% research speed.",
+   "fid": "wif_bulv_economy_1952",
+   "id": "bv052",
+   "mx": [],
+   "name": "The Economy of 1952",
+   "pre": [
+    "bv051"
+   ],
+   "x": 37,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Bulgarian army fought little and occupied much. Now it must become a real army.\n\nEffect: +15 army experience.",
+   "fid": "wif_bulv_army_after_victory",
+   "id": "bv053",
+   "mx": [],
+   "name": "The Army After Victory",
+   "pre": [
+    "bv000"
+   ],
+   "x": 52,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Bulgarian divisions still garrison southern Serbia for the Reich, as they did from 1942.\n\nEffect: +10 army experience. Germany +15 opinion.",
+   "fid": "wif_bulv_occupation_corps",
+   "id": "bv054",
+   "mx": [],
+   "name": "The Occupation Corps",
+   "pre": [
+    "bv053"
+   ],
+   "x": 47,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Rila, Pirin and Rhodope: Bulgaria is a mountain country.\n\nEffect: mountaineer research +50%.",
+   "fid": "wif_bulv_mountain_troops",
+   "id": "bv055",
+   "mx": [],
+   "name": "The Mountain Troops",
+   "pre": [
+    "bv053"
+   ],
+   "x": 49,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "German instructors and German doctrine.\n\nEffect: land doctrine cost -50% (2 uses).",
+   "fid": "wif_bulv_army_reform",
+   "id": "bv056",
+   "mx": [],
+   "name": "Reform the Army",
+   "pre": [
+    "bv053"
+   ],
+   "x": 52,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "In 1943 Germany sold Bulgaria Panzer IVs and assault guns under the 'Maybach' programme. More can be bought.\n\nEffect: armour research +50%. +50 medium tanks.",
+   "fid": "wif_bulv_maybach_programme",
+   "id": "bv057",
+   "mx": [],
+   "name": "The Maybach Programme",
+   "pre": [
+    "bv053"
+   ],
+   "x": 55,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Vazdushni Voyski, with German fighters and Bulgarian DAR aircraft.\n\nEffect: +1 air base in Sofia. +10 air experience.",
+   "fid": "wif_bulv_air_force",
+   "id": "bv058",
+   "mx": [],
+   "name": "The Royal Air Force",
+   "pre": [
+    "bv053"
+   ],
+   "x": 58,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Years of hunting partisans in Serbia and Macedonia.\n\nEffect: +10% army organisation regain.",
+   "fid": "wif_bulv_counter_insurgency",
+   "id": "bv059",
+   "mx": [],
+   "name": "Counter-Insurgency",
+   "pre": [
+    "bv054"
+   ],
+   "x": 47,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The Sofia academy, reorganised on the German model.\n\nEffect: -10% training time. +5% army experience gain.",
+   "fid": "wif_bulv_military_academy",
+   "id": "bv060",
+   "mx": [],
+   "name": "The Military Academy",
+   "pre": [
+    "bv055",
+    "bv056"
+   ],
+   "x": 50,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "A real armoured division, built around the Maybach tanks.\n\nEffect: 1 armoured division.",
+   "fid": "wif_bulv_armoured_brigade",
+   "id": "bv061",
+   "mx": [],
+   "name": "The Armoured Brigade",
+   "pre": [
+    "bv057"
+   ],
+   "x": 55,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The State Aircraft Workshops at Bozhurishte build Bulgarian designs.\n\nEffect: fighter research +50%. +1 military factory.",
+   "fid": "wif_bulv_dar_aircraft",
+   "id": "bv062",
+   "mx": [],
+   "name": "DAR Aircraft",
+   "pre": [
+    "bv058"
+   ],
+   "x": 58,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Bunkers in the passes to the south and the west.\n\nEffect: +3 land forts in Thrace and Macedonia.",
+   "fid": "wif_bulv_rhodope_line",
+   "id": "bv063",
+   "mx": [],
+   "name": "The Rhodope Line",
+   "pre": [
+    "bv059",
+    "bv060"
+   ],
+   "x": 48,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Twenty divisions in peacetime.\n\nEffect: 2 infantry divisions. +10% army organisation.",
+   "fid": "wif_bulv_standing_army",
+   "id": "bv064",
+   "mx": [],
+   "name": "A Standing Army",
+   "pre": [
+    "bv060"
+   ],
+   "x": 52,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Torpedo boats and submarines at Kavala.\n\nEffect: naval research +50%. +1 dockyard.",
+   "fid": "wif_bulv_aegean_fleet",
+   "id": "bv065",
+   "mx": [],
+   "name": "The Aegean Fleet",
+   "pre": [
+    "bv061"
+   ],
+   "x": 55,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "Varna's small fleet, rebuilt.\n\nEffect: +10% navy organisation. +10 navy experience.",
+   "fid": "wif_bulv_black_sea_flotilla",
+   "id": "bv066",
+   "mx": [],
+   "name": "The Black Sea Flotilla",
+   "pre": [
+    "bv062"
+   ],
+   "x": 58,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "An army for a kingdom of three seas.\n\nEffect: +10% army organisation. +10% division attack.",
+   "fid": "wif_bulv_army_of_1950",
+   "id": "bv067",
+   "mx": [],
+   "name": "The Army of 1950",
+   "pre": [
+    "bv063",
+    "bv064",
+    "bv065",
+    "bv066"
+   ],
+   "x": 52,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "military",
+   "days": 35,
+   "desc": "The first Bulgarian jet squadron.\n\nAvailable: 1948.\nEffect: jet research +100% (2 uses).",
+   "fid": "wif_bulv_jets",
+   "id": "bv068",
+   "mx": [],
+   "name": "German Jets",
+   "pre": [
+    "bv067"
+   ],
+   "x": 52,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Berlin rules the continent. Bulgaria, the most faithful of its Balkan allies, wants its reward to last.\n\nEffect: +50 political power.",
+   "fid": "wif_bulv_new_europe",
+   "id": "bv069",
+   "mx": [],
+   "name": "Bulgaria in the New Europe",
+   "pre": [
+    "bv000"
+   ],
+   "x": 68,
+   "y": 1
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Bulgaria owes its new lands to the Reich.\n\nEffect: Germany +25 opinion.",
+   "fid": "wif_bulv_berlin_first",
+   "id": "bv070",
+   "mx": [],
+   "name": "Berlin First",
+   "pre": [
+    "bv069"
+   ],
+   "x": 61,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The Tsaritsa Giovanna is a princess of Savoy. Rome is Sofia's second friend.\n\nEffect: Italy +25 opinion.",
+   "fid": "wif_bulv_the_savoy_link",
+   "id": "bv071",
+   "mx": [],
+   "name": "The Savoy Link",
+   "pre": [
+    "bv069"
+   ],
+   "x": 64,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "What is left of Serbia remembers Macedonia.\n\nEffect: +10% war support. Intelligence on Serbia.",
+   "fid": "wif_bulv_watch_belgrade",
+   "id": "bv072",
+   "mx": [],
+   "name": "Watching Belgrade",
+   "pre": [
+    "bv069"
+   ],
+   "x": 67,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Craiova gave back Southern Dobruja peacefully. Bucharest is a neighbour, not an enemy.\n\nEffect: Romania +25 opinion.",
+   "fid": "wif_bulv_the_dobruja_friendship",
+   "id": "bv073",
+   "mx": [],
+   "name": "The Dobruja Settled",
+   "pre": [
+    "bv069"
+   ],
+   "x": 70,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Turkey courts the Balkans - and watches its Bulgarian Turks.\n\nEffect: Turkey +25 opinion.",
+   "fid": "wif_bulv_ankara",
+   "id": "bv074",
+   "mx": [],
+   "name": "The Turkish Neighbour",
+   "pre": [
+    "bv069"
+   ],
+   "x": 73,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Hungary, too, was cheated in 1919 - and has its own quarrel with Bucharest.\n\nEffect: Hungary +25 opinion.",
+   "fid": "wif_bulv_budapest",
+   "id": "bv075",
+   "mx": [],
+   "name": "Friends in Budapest",
+   "pre": [
+    "bv069"
+   ],
+   "x": 76,
+   "y": 2
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Sofia hosts the victors over Bolshevism.\n\nEffect: +10% stability. Germany +15 opinion.",
+   "fid": "wif_bulv_anti_comintern",
+   "id": "bv076",
+   "mx": [],
+   "name": "The Anti-Comintern Congress",
+   "pre": [
+    "bv070"
+   ],
+   "x": 61,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Albania and Montenegro are Italy's; Macedonia is Bulgaria's. A border to agree.\n\nEffect: Italy and Albania +15 opinion.",
+   "fid": "wif_bulv_adriatic_ambitions",
+   "id": "bv077",
+   "mx": [],
+   "name": "Rome and the Adriatic",
+   "pre": [
+    "bv071"
+   ],
+   "x": 64,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "What is left of Greece wants Thrace back.\n\nEffect: +2 land forts on the Greek border. Greece -15 opinion.",
+   "fid": "wif_bulv_greek_question",
+   "id": "bv078",
+   "mx": [],
+   "name": "The Greek Question",
+   "pre": [
+    "bv072"
+   ],
+   "x": 67,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Bucharest, Sofia and Ankara agree to keep the Black Sea quiet.\n\nEffect: Romania and Turkey +15 opinion.",
+   "fid": "wif_bulv_black_sea_pact",
+   "id": "bv079",
+   "mx": [],
+   "name": "A Black Sea Understanding",
+   "pre": [
+    "bv073",
+    "bv074"
+   ],
+   "x": 71,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Sofia and Budapest trade and plan together.\n\nEffect: Hungary +15 opinion. +1 civilian factory.",
+   "fid": "wif_bulv_danube_friends",
+   "id": "bv080",
+   "mx": [],
+   "name": "The Danube Friends",
+   "pre": [
+    "bv075"
+   ],
+   "x": 75,
+   "y": 3
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The Reich is at war with itself. Its guarantees of the new borders are worth what its armies can enforce.\n\nAvailable: the German civil war has begun.\nEffect: +10% political power. Unlocks Bulgaria's choices.",
+   "fid": "wif_bulv_reich_divided",
+   "id": "bv081",
+   "mx": [],
+   "name": "The Reich Divided",
+   "pre": [
+    "bv076",
+    "bv077",
+    "bv078",
+    "bv079",
+    "bv080"
+   ],
+   "x": 68,
+   "y": 4
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Bulgaria owes everything to the Reich. Whatever happens in Berlin, Sofia stays in the Axis - and in whichever Germany comes out of the war.\n\nEffect: Bulgaria stays in the German faction through the civil war and remains in it after reunification. +10% stability.",
+   "fid": "wif_bulv_stand_with_the_axis",
+   "id": "bv082",
+   "mx": [
+    "bv083"
+   ],
+   "name": "Stand with the Axis",
+   "pre": [
+    "bv081"
+   ],
+   "x": 70,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Italy's Pact of Rome wants Bulgaria - and the Tsaritsa's family is in Rome.\n\nAvailable: Italy leads a faction.\nEffect: join Italy's faction.",
+   "fid": "wif_bulv_join_rome",
+   "id": "bv083",
+   "mx": [
+    "bv082"
+   ],
+   "name": "The Invitation from Rome",
+   "pre": [
+    "bv081"
+   ],
+   "x": 65,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Greece and Turkey will look at Thrace while Berlin cannot protect it.\n\nEffect: +3 land forts in Thrace. +15% defence on core territory.",
+   "fid": "wif_bulv_hold_thrace",
+   "id": "bv084",
+   "mx": [],
+   "name": "Hold Thrace",
+   "pre": [
+    "bv081"
+   ],
+   "x": 75,
+   "y": 5
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Sofia keeps its army at home and its ambassadors polite.\n\nCompletes itself when the German civil war ends - unless the SS has won.\nEffect: Bulgaria stays with the reunified Reich. +10% stability, +100 political power.",
+   "fid": "wif_bulv_stand_by_the_winner",
+   "id": "bv086",
+   "mx": [],
+   "name": "Wait and Stand By the Winner",
+   "pre": [
+    "bv082"
+   ],
+   "x": 70,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The SS has won the civil war. Sofia does not trust Reinhard Heydrich - and the Tsar's court has never trusted the SS.\n\nCompletes itself when the SS wins the civil war; never available otherwise.\nEffect: Bulgaria leaves the German faction for Italy's Pact of Rome. The reunified Reich -50 opinion. +10% war support.",
+   "fid": "wif_bulv_dark_dawn",
+   "id": "bv087",
+   "mx": [],
+   "name": "A Dark Dawn over Germany",
+   "pre": [
+    "bv082"
+   ],
+   "x": 67,
+   "y": 6
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "With Rome behind it and Berlin no friend, Sofia governs for itself.\n\nEffect: +10% stability. +2 land forts on the Serbian border.",
+   "fid": "wif_bulv_tarnovo_constitution",
+   "id": "bv088",
+   "mx": [],
+   "name": "The Tarnovo Crown",
+   "pre": [
+    "bv083",
+    "bv087"
+   ],
+   "x": 65,
+   "y": 7
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Germany is one again - and asks who stood where in its civil war.\n\nAvailable: Germany has been reunified after the civil war.\nEffect: unlocks the choice below. If Bulgaria backed the winning side, the Reich +50 opinion; if it fought against it, -50.",
+   "fid": "wif_bulv_reich_returns",
+   "id": "bv089",
+   "mx": [],
+   "name": "The Reich Returns",
+   "pre": [
+    "bv086",
+    "bv088",
+    "bv084"
+   ],
+   "x": 70,
+   "y": 8
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Back into Berlin's faction.\n\nEffect: join Germany's faction. Germany +25 opinion.",
+   "fid": "wif_bulv_bow_to_the_reich",
+   "id": "bv090",
+   "mx": [
+    "bv091"
+   ],
+   "name": "Bow to the Reich",
+   "pre": [
+    "bv089"
+   ],
+   "x": 69,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": false,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "Bulgaria stays its own master.\n\nEffect: +15% war support. Germany -50 opinion. Leave the German faction.",
+   "fid": "wif_bulv_defy_the_reich",
+   "id": "bv091",
+   "mx": [
+    "bv090"
+   ],
+   "name": "Defy the Reich",
+   "pre": [
+    "bv089"
+   ],
+   "x": 71,
+   "y": 9
+  },
+  {
+   "after": [],
+   "any": true,
+   "auto": false,
+   "branch": "diplomacy",
+   "days": 35,
+   "desc": "The Third Bulgarian Kingdom has outlived the Reich's war with itself.\n\nAvailable: 1951.\nEffect: +15% stability. +10% factory output.",
+   "fid": "wif_bulv_bulgaria_1952",
+   "id": "bv092",
+   "mx": [],
+   "name": "Bulgaria in 1952",
+   "pre": [
+    "bv090",
+    "bv091"
+   ],
+   "x": 70,
+   "y": 10
+  }
+ ],
+ "name": "Bulgaria - Victorious (WiF draft)",
+ "tag": "BUL",
+ "target": 2835,
+ "treeId": "wif_bul_victory_focus",
+ "updatedAt": 1795814007999
+}

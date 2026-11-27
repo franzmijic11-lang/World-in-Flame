@@ -187,7 +187,7 @@ wif_cw_italy_and_the_south = {
 			limit = { has_country_flag = wif_cw_reich_middle_east }
 			wif_cw_join_pact_of_rome = yes
 		}
-		BUL = { wif_cw_join_pact_of_rome = yes }
+		BUL = { if = { limit = { NOT = { has_country_flag = wif_bulv_victorious } } wif_cw_join_pact_of_rome = yes } }	# a victorious Bulgaria decides in its own tree (gen_bul_victory.py)
 		ALB = { wif_cw_join_pact_of_rome = yes }
 		MNT = { wif_cw_join_pact_of_rome = yes }
 		CRO = { wif_cw_join_pact_of_rome = yes }
