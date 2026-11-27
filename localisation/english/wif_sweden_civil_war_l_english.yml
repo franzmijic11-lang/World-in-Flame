@@ -10,10 +10,10 @@
  # === The side-choice focuses ===
  SWE_for_kung_och_fosterland:0 "För Kung och Fosterland"
  SWE_for_kung_och_fosterland_desc:0 "The government has the Riksdag. The King has the army, or most of it, and the farmers, and a thousand years of Sweden behind him. We stand with the Crown."
- SWE_for_kung_och_fosterland_tt:0 "§YWe play the counter-revolution.§! The build-up for the Swedish civil war begins: win the garrisons for the Crown before the rising. When it comes, we become the Kingdom of Sweden under Gustaf V and the communist government holds the states it won.\nOpens §YThe Nordic Defense Council§!."
+ SWE_for_kung_och_fosterland_tt:0 "§YWe play the counter-revolution.§! The build-up for the Swedish civil war begins: win the garrisons for the Crown before the rising. When it comes, we become the Kingdom of Sweden under Gustaf V and the communist government holds the states it won."
  SWE_for_arbetarnas_revolution:0 "För arbetarnas revolution"
  SWE_for_arbetarnas_revolution_desc:0 "The reaction is gathering in the officers' messes and the manor houses. Let it come. The workers took Sweden at the ballot box, and they will hold it with rifles if they have to."
- SWE_for_arbetarnas_revolution_tt:0 "§YWe play the revolution.§! The build-up for the Swedish civil war begins: hold the garrisons for the workers before the Crown rises. When it does, the royalists take the states they won.\nOpens §YThe Nordic Defense Council§!."
+ SWE_for_arbetarnas_revolution_tt:0 "§YWe play the revolution.§! The build-up for the Swedish civil war begins: hold the garrisons for the workers before the Crown rises. When it does, the royalists take the states they won."
 
  # === Category ======================================================
  wif_swe_cw_category:0 "The Coming Storm"

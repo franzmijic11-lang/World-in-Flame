@@ -4721,8 +4721,9 @@ focus_tree = {
 
 	# Welt in Flammen: the side choice of the civil war build-up
 	# (common/scripted_effects/wif_swe_civil_war_effects.txt). Each starts the
-	# build-up from its side. Either one also opens the Nordic Defense Council,
-	# so both Swedens keep that branch.
+	# build-up from its side. Neither leads anywhere else in the tree: the
+	# revolutionary road is a dead end, and does not open the Nordic Defense
+	# Council.
 	#
 	# While the civil war is fought every other focus in this tree is locked
 	# (wif_swe_cw_not_fighting in its available block, see
@@ -5212,10 +5213,11 @@ focus_tree = {
 		y = 2
 		#mutually_exclusive = {focus = SWE_finlands_cause_is_ours}
 		cost = 10
-		# Welt in Flammen: either civil war side choice opens it too, so a Sweden
-		# that went down the communist road (which excludes The Old Enemy Stirs)
-		# still has the Nordic Defense Council, on both sides of the war.
-		prerequisite = { focus = SWE_the_old_enemy_stirs focus = SWE_for_kung_och_fosterland focus = SWE_for_arbetarnas_revolution }
+		# Welt in Flammen: the civil war side choices (SWE_for_kung_och_fosterland
+		# / SWE_for_arbetarnas_revolution) used to open it too. They no longer
+		# do - the revolutionary road leads nowhere in this tree, so a Sweden
+		# that took it does not get the Nordic Defense Council.
+		prerequisite = { focus = SWE_the_old_enemy_stirs }
 		relative_position_id = SWE_the_old_enemy_stirs
 		mutually_exclusive = { focus = SWE_prevent_a_red_dictatorship }
 
