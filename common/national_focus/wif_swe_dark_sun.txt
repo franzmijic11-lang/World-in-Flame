@@ -60,8 +60,8 @@ focus_tree = {
 
 			# The other leaders of the Quartet: potential leaders from now on.
 			# Hjalmarson and Erlander can also be hired as advisors (not while
-			# leading). Pehrsson-Bramstorp and Per Albin Hansson already have
-			# their vanilla leader roles.
+			# leading). Pehrsson-Bramstorp already has his vanilla leader role.
+			# Per Albin Hansson is retired below.
 			custom_effect_tooltip = SWE_the_costs_of_the_war_quartet_tt
 			hidden_effect = {
 				recruit_character = SWE_jarl_hjalmarson
@@ -96,8 +96,26 @@ focus_tree = {
 			#   Birger Furugard    left politics after his party collapsed, 1936
 			#   Carl Lindhagen     left the Riksdag in 1940
 			#   Raoul Wallenberg   disappeared in Budapest, January 1945
+			#   Per Albin Hansson  removed by design: the Unity Government replaces him
+			#   Per Sylvan         Chief of the Army to 1940, then retired
+			#   Oscar Nygren       retired from the army, 1941
+			#   Torsten Friis      left the air force, 1942
+			#   Ivar Holmquist     Chief of the Army to March 1944
+			#   Fabian Tamm        Chief of the Navy to March 1945
+			#   Axel Rappe         died 1945
+			#   Herman Eriksson    left the government, September 1944
+			#   K. G. Westman      left the government, August 1943
 			custom_effect_tooltip = SWE_the_costs_of_the_war_retire_tt
 			hidden_effect = {
+				if = { limit = { has_character = SWE_per_albin_hansson } retire_character = SWE_per_albin_hansson }
+				if = { limit = { has_character = SWE_per_sylvan } retire_character = SWE_per_sylvan }
+				if = { limit = { has_character = SWE_oscar_nygren } retire_character = SWE_oscar_nygren }
+				if = { limit = { has_character = SWE_torsten_friis } retire_character = SWE_torsten_friis }
+				if = { limit = { has_character = SWE_ivar_holmquist } retire_character = SWE_ivar_holmquist }
+				if = { limit = { has_character = SWE_fabian_tamm } retire_character = SWE_fabian_tamm }
+				if = { limit = { has_character = SWE_axel_rappe } retire_character = SWE_axel_rappe }
+				if = { limit = { has_character = SWE_herman_eriksson } retire_character = SWE_herman_eriksson }
+				if = { limit = { has_character = SWE_karl_gustav_westman } retire_character = SWE_karl_gustav_westman }
 				if = { limit = { has_character = SWE_nils_flyg } retire_character = SWE_nils_flyg }
 				if = { limit = { has_character = SWE_ernst_linder } retire_character = SWE_ernst_linder }
 				if = { limit = { has_character = SWE_gosta_bagge } retire_character = SWE_gosta_bagge }
