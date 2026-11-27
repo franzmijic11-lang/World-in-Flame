@@ -1,0 +1,60 @@
+# The Organisation of Free Nations (WiF, 2026-11-26).
+# The USA's Negotiated Settlement (wif_negotiated_settlement, 5 years, no factions) comes from
+# the German separate peace (wif_settle_with_axis) and is renewed by the Japanese peace
+# (wif_jap_aooa_effects.txt). When it runs out, a democratic USA founds the Organisation of
+# Free Nations, and Canada and what remains of its Commonwealth join it, their own faction
+# dissolved.
+
+# USA scope, weekly.
+wif_ofn_weekly = {
+	if = {
+		limit = { has_idea = wif_negotiated_settlement }
+		set_country_flag = wif_usa_bound_by_settlement
+	}
+	else_if = {
+		limit = {
+			has_country_flag = wif_usa_bound_by_settlement
+			NOT = { has_global_flag = wif_ofn_formed }
+			has_government = democratic
+			has_capitulated = no
+		}
+		wif_ofn_form = yes
+	}
+}
+
+# USA scope.
+wif_ofn_form = {
+	set_global_flag = wif_ofn_formed
+	clr_country_flag = wif_usa_bound_by_settlement
+	# Canada and every remaining member of its Commonwealth: its faction and its subjects.
+	if = {
+		limit = { country_exists = CAN }
+		every_country = {
+			limit = {
+				NOT = { tag = USA }
+				OR = {
+					tag = CAN
+					is_subject_of = CAN
+					is_in_faction_with = CAN
+				}
+			}
+			set_country_flag = wif_ofn_joiner
+		}
+		CAN = {
+			if = { limit = { is_faction_leader = yes } dismantle_faction = yes }
+			else_if = { limit = { is_in_faction = yes } leave_faction = yes }
+		}
+	}
+	if = { limit = { is_in_faction = yes } leave_faction = yes }
+	create_faction_from_template = {
+		template = wif_faction_template_ofn
+		name = wif_ofn_faction
+	}
+	every_country = {
+		limit = { has_country_flag = wif_ofn_joiner }
+		clr_country_flag = wif_ofn_joiner
+		if = { limit = { is_in_faction = yes } leave_faction = yes }
+		USA = { add_to_faction = PREV }
+	}
+	news_event = { id = wif_ofn.1 days = 1 }
+}

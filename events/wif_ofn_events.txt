@@ -1,0 +1,19 @@
+add_namespace = wif_ofn
+
+news_event = {
+	id = wif_ofn.1
+	title = wif_ofn.1.t
+	desc = wif_ofn.1.desc
+	picture = GFX_news_event_generic_sign_treaty1
+	major = yes
+	is_triggered_only = yes
+	option = { name = wif_ofn.1.a }
+}
+
+country_event = {
+	id = wif_ofn.990
+	title = "WiF debug: the Organisation of Free Nations"
+	desc = "The USA founds it now, as if its settlement had run out."
+	is_triggered_only = yes
+	option = { name = "Found it" USA = { wif_ofn_form = yes } }
+}

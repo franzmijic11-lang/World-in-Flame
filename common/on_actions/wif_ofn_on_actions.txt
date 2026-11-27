@@ -1,0 +1,3 @@
+on_actions = {
+	on_weekly_USA = { effect = { wif_ofn_weekly = yes } }
+}
