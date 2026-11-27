@@ -29,6 +29,12 @@ wif_cw_check_for_winner = {
 			}
 		}
 		set_global_flag = wif_ger_civil_war_won
+		# WiF Hungary (tools/gen_hun_victory.py): who won.
+		if = { limit = { tag = SPG } set_global_flag = wif_cw_winner_spg }
+		if = { limit = { tag = GOR } set_global_flag = wif_cw_winner_gor }
+		if = { limit = { tag = DWM } set_global_flag = wif_cw_winner_dwm }
+		if = { limit = { tag = BOR } set_global_flag = wif_cw_winner_bor }
+		if = { limit = { tag = SSR } set_global_flag = wif_cw_winner_ssr }
 		country_event = { id = wif_ger_collapse.9 }
 	}
 }
