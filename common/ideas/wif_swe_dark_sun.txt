@@ -1,0 +1,24 @@
+# The Dark Sun over Europe: Sweden after Germany's Totaler Sieg.
+# Added by SWE_the_costs_of_the_war (common/national_focus/wif_swe_dark_sun.txt).
+ideas = {
+	country = {
+
+		# Mobilisation was paid for on credit and the bill has come in. The
+		# state taxes everything it can reach and still has to keep the
+		# shops supplied.
+		SWE_high_debt_high_taxes = {
+			picture = gre_debt_to_the_ifc
+			allowed = {
+				original_tag = SWE
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.20
+			}
+		}
+	}
+}

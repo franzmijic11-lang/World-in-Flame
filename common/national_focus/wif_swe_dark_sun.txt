@@ -1,0 +1,117 @@
+# The Dark Sun over Europe: Sweden after Germany's Totaler Sieg.
+#
+# Loaded by SWE_the_dark_sun_over_europe (common/national_focus/sweden.txt,
+# below The Cross We Bear), which needs Germany to have won - the flag
+# GER_totaler_sieg_achieved that GER_totaler_sieg sets. The whole Swedish tree
+# is replaced by this one. keep_completed = yes, so every has_completed_focus
+# check on the old tree (ideas, advisors, events) keeps working.
+#
+# The first focus, The Costs of the War, sets up the post-war country: war
+# debts, the Democratic Unity Government, the Fight for the Soul of the
+# Fatherland balance (events/wif_swe_dark_sun.txt,
+# common/bop/wif_swe_soul_of_the_fatherland.txt), and clears out the men who
+# were dead or out of politics by 1945.
+
+focus_tree = {
+	id = wif_swe_dark_sun_focus
+
+	country = {
+		factor = 0
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1200 }
+	initial_show_position = {
+		x = 0
+		y = 0
+	}
+
+	focus = {
+		id = SWE_the_costs_of_the_war
+		icon = GFX_focus_SWE_rations
+		x = 0
+		y = 0
+		cost = 5 # 35 days
+
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		completion_reward = {
+			add_ideas = SWE_high_debt_high_taxes
+			add_stability = -0.10
+
+			# The Democratic Unity Government takes over. The four democratic
+			# parties govern as one, so the ruling party must be democratic.
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = { NOT = { has_government = democratic } }
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+				}
+			}
+			recruit_character = SWE_democratic_unity_government
+			promote_character = SWE_democratic_unity_government
+
+			# The other leaders of the Quartet: potential leaders from now on.
+			# Hjalmarson and Erlander can also be hired as advisors (not while
+			# leading). Pehrsson-Bramstorp and Per Albin Hansson already have
+			# their vanilla leader roles.
+			custom_effect_tooltip = SWE_the_costs_of_the_war_quartet_tt
+			hidden_effect = {
+				recruit_character = SWE_jarl_hjalmarson
+				recruit_character = SWE_bertil_ohlin
+				if = {
+					limit = { NOT = { has_character = SWE_tage_erlander } }
+					recruit_character = SWE_tage_erlander
+				}
+				# Runtime, not in SWE.txt: Erlander is recruited at game start,
+				# and a static socialist leader role would compete with
+				# Hansson from 1936.
+				SWE_tage_erlander = {
+					add_country_leader_role = {
+						country_leader = {
+							ideology = socialism
+							traits = { wif_swe_erlander_leader }
+							expire = "1975.1.1.1"
+						}
+						promote_leader = no
+					}
+				}
+			}
+
+			# Dead or out of politics by 1945:
+			#   Nils Flyg          died 1943
+			#   Ernst Linder       died 1943
+			#   Gosta Bagge        left the government and the Hogern leadership, 1944
+			#   Olof Thornell      retired as Supreme Commander, 1944
+			#   Charles de Champs  long retired from the navy
+			#   Erik Palmstierna   left public life after London, 1937
+			#   Rickard Sandler    county governor from 1941, out of national politics
+			#   Birger Furugard    left politics after his party collapsed, 1936
+			#   Carl Lindhagen     left the Riksdag in 1940
+			#   Raoul Wallenberg   disappeared in Budapest, January 1945
+			custom_effect_tooltip = SWE_the_costs_of_the_war_retire_tt
+			hidden_effect = {
+				if = { limit = { has_character = SWE_nils_flyg } retire_character = SWE_nils_flyg }
+				if = { limit = { has_character = SWE_ernst_linder } retire_character = SWE_ernst_linder }
+				if = { limit = { has_character = SWE_gosta_bagge } retire_character = SWE_gosta_bagge }
+				if = { limit = { has_character = SWE_olof_thornell } retire_character = SWE_olof_thornell }
+				if = { limit = { has_character = SWE_charles_de_champs } retire_character = SWE_charles_de_champs }
+				if = { limit = { has_character = SWE_erik_palmstierna } retire_character = SWE_erik_palmstierna }
+				if = { limit = { has_character = SWE_rickard_sandler } retire_character = SWE_rickard_sandler }
+				if = { limit = { has_character = SWE_birger_furugard } retire_character = SWE_birger_furugard }
+				if = { limit = { has_character = SWE_carl_lindhagen } retire_character = SWE_carl_lindhagen }
+				if = { limit = { has_character = SWE_raoul_wallenberg } retire_character = SWE_raoul_wallenberg }
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			country_event = { id = wif_swe_dark_sun.1 }
+		}
+	}
+}

@@ -1,0 +1,65 @@
+﻿l_english:
+
+ # The Dark Sun over Europe - Sweden after Germany's Totaler Sieg
+ SWE_the_dark_sun_over_europe:0 "The Dark Sun over Europe"
+ SWE_the_dark_sun_over_europe_desc:0 "Berlin has won. From the Atlantic to the Urals the continent answers to one government, and Sweden is an island of parliaments in a German sea. The war we armed for is over without us, and the peace will be harder."
+ SWE_the_dark_sun_over_europe_trigger_tt:0 "§YGermany§! has completed §YTotaler Sieg§!"
+ SWE_the_dark_sun_over_europe_tt:0 "§RThe Swedish focus tree is replaced§! by §YThe Dark Sun over Europe§!."
+
+ SWE_the_costs_of_the_war:0 "The Costs of the War"
+ SWE_the_costs_of_the_war_desc:0 "Six years of mobilisation were paid for on credit. The bill has arrived together with the new Europe, and no single party will put its name to either. The four democratic parties will govern together, and answer together."
+ SWE_the_costs_of_the_war_quartet_tt:0 "The §YDemocratic Unity Government§! takes power.\n§YJarl Hjalmarson§!, §YBertil Ohlin§!, §YTage Erlander§!, §YAxel Pehrsson-Bramstorp§! and §YPer Albin Hansson§! become potential leaders. §YHjalmarson§! and §YErlander§! can be hired as political advisors."
+ SWE_the_costs_of_the_war_retire_tt:0 "Those dead or out of politics by 1945 leave public life: §YNils Flyg§!, §YErnst Linder§!, §YGösta Bagge§!, §YOlof Thörnell§!, §YCharles de Champs§!, §YErik Palmstierna§!, §YRickard Sandler§!, §YBirger Furugård§!, §YCarl Lindhagen§! and §YRaoul Wallenberg§!."
+
+ SWE_high_debt_high_taxes:0 "High Debt, High Taxes"
+ SWE_high_debt_high_taxes_desc:0 "The defence loans fall due and the treasury taxes everything it can reach. The state that collects so much is expected to keep the shops full in return."
+
+ # Event
+ wif_swe_dark_sun.1.t:0 "The Fight for the Soul of the Fatherland"
+ wif_swe_dark_sun.1.desc:0 "The Riksdag has never been so united, or so afraid. Social Democrats, Högern, Folkpartiet and Bondeförbundet sit together in one cabinet to keep the country they know. Against them stand three men who say that the age of parliaments has ended in Europe and should end in Sweden too, and who have friends in Berlin to say so with them.\n\nWhich of them speaks for Sweden will be decided in the coming years, in the Riksdag and on the street."
+ wif_swe_dark_sun.1.a:0 "Sweden must choose."
+
+ # Balance of power
+ SWE_soul_of_the_fatherland_balance:0 "The Soul of the Fatherland"
+ SWE_soul_of_the_fatherland_balance_desc:0 "The four democratic parties hold the Riksdag together. Hitler's Trio wants to bring Sweden into the new Europe."
+ SWE_soul_of_the_fatherland_neutral:0 "The Riksdag Sits"
+ SWE_soul_of_the_fatherland_neutral_desc:0 "The chamber argues, the street waits, and nothing is settled yet."
+
+ SWE_democratic_quartet_side:0 "The Democratic Quartet"
+ SWE_democratic_quartet_1:0 "Common Cause"
+ SWE_democratic_quartet_1_desc:0 "The four parties vote together when it matters, and quarrel only when it doesn't."
+ SWE_democratic_quartet_2:0 "One Cabinet"
+ SWE_democratic_quartet_2_desc:0 "Party lines hold below the cabinet table and not above it."
+ SWE_democratic_quartet_3:0 "The People's Riksdag"
+ SWE_democratic_quartet_3_desc:0 "The country has rallied to its parliament. The men from Berlin's newspapers are speaking to empty halls."
+ SWE_democratic_quartet_4:0 "The Last Free North"
+ SWE_democratic_quartet_4_desc:0 "Whatever Europe has become, Sweden is governed by the people it elects, and means to remain so."
+
+ SWE_hitlers_trio_side:0 "Hitler's Trio"
+ SWE_hitlers_trio_1:0 "Voices in the Street"
+ SWE_hitlers_trio_1_desc:0 "Their papers sell, and their meetings are full."
+ SWE_hitlers_trio_2:0 "Friends in Berlin"
+ SWE_hitlers_trio_2_desc:0 "The German legation receives them openly, and the newspapers have noticed."
+ SWE_hitlers_trio_3:0 "The New Order Knocks"
+ SWE_hitlers_trio_3_desc:0 "Officers and businessmen ask aloud whether the Riksdag is worth what it costs."
+ SWE_hitlers_trio_4:0 "A Swedish Reich"
+ SWE_hitlers_trio_4_desc:0 "The democratic parties hold their offices and less and less else."
+
+ # Characters
+ SWE_democratic_unity_government:0 "Democratic Unity Government"
+ SWE_jarl_hjalmarson:0 "Jarl Hjalmarson"
+ SWE_bertil_ohlin:0 "Bertil Ohlin"
+
+ # Traits
+ wif_swe_democratic_unity_government:0 "Government of National Unity"
+ wif_swe_democratic_unity_government_desc:0 "Four parties, one cabinet. It holds the country together, and every decision takes a week of meetings."
+ wif_swe_hjalmarson_leader:0 "Uncompromising Anti-Communist"
+ wif_swe_hjalmarson_leader_desc:0 "Högern's hardest voice against Moscow, and just as hard on anyone who would trade Swedish liberty for German favour."
+ wif_swe_ohlin_leader:0 "Stockholm School Economist"
+ wif_swe_ohlin_leader_desc:0 "Free trade, sound money and a leaner state, from the economist who taught a generation how trade works."
+ wif_swe_erlander_leader:0 "Architect of the People's Home"
+ wif_swe_erlander_leader_desc:0 "Patient, unassuming, and never in a hurry. Consensus is made over long dinners, and it lasts."
+ wif_swe_hjalmarson_advisor:0 "Party Secretary of Högern"
+ wif_swe_hjalmarson_advisor_desc:0 "He keeps the right of the coalition loyal to the Riksdag rather than to Berlin."
+ wif_swe_erlander_advisor:0 "Minister of Education"
+ wif_swe_erlander_advisor_desc:0 "Schools, universities and the research councils, built for the country Sweden means to be after the war."

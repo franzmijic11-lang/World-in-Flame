@@ -10056,6 +10056,48 @@ focus_tree = {
 		}
 	}
 
+	# Welt in Flammen: the Dark Sun over Europe. Once Germany has won its war
+	# (GER_totaler_sieg sets GER_totaler_sieg_achieved on the Reich), Sweden
+	# swaps this whole tree for common/national_focus/wif_swe_dark_sun.txt.
+	focus = {
+		id = SWE_the_dark_sun_over_europe
+		icon = GFX_focus_SWE_as_the_barometer_falls
+		prerequisite = { focus = SWE_the_cross_we_bear }
+		x = 0
+		y = 1
+		relative_position_id = SWE_the_cross_we_bear
+		cost = 5 # 35 days
+
+		available = {
+			wif_swe_cw_not_fighting = yes # Welt in Flammen: not while the civil war is fought
+			custom_trigger_tooltip = {
+				tooltip = SWE_the_dark_sun_over_europe_trigger_tt
+				any_country = {
+					original_tag = GER
+					has_country_flag = GER_totaler_sieg_achieved
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			custom_effect_tooltip = SWE_the_dark_sun_over_europe_tt
+			hidden_effect = {
+				load_focus_tree = {
+					tree = wif_swe_dark_sun_focus
+					keep_completed = yes
+				}
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+
 
 	focus = {
 		id = SWE_research_slot_2

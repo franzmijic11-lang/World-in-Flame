@@ -1,0 +1,94 @@
+# The Dark Sun over Europe: the men of the Democratic Quartet.
+#
+# Sweden after Germany's Totaler Sieg (common/national_focus/wif_swe_dark_sun.txt).
+# The four democratic parties hold the Riksdag together as a Democratic Unity
+# Government while Hitler's Trio works on the country from the right - see
+# common/bop/wif_swe_soul_of_the_fatherland.txt.
+#
+# NONE OF THESE IS RECRUITED AT GAME START. SWE_the_costs_of_the_war recruits
+# them (recruit_character works at runtime as well as in history). Their
+# country_leader roles are therefore inert until then and cannot take the
+# Swedish leadership away from Per Albin Hansson in 1936.
+#
+# Tage Erlander already exists in vanilla's common/characters/SWE.txt and is
+# recruited at game start, so a character id cannot be redefined here: his
+# advisor role is added to his entry in SWE.txt, and his country leader role
+# is added by the focus at runtime (a static one would compete with Hansson for
+# the socialist leadership from day one).
+#
+# THE LEADER IS NEVER HIS OWN ADVISOR. Every advisor role here carries
+# is_country_leader = no, as vanilla's Pehrsson-Bramstorp does.
+characters = {
+
+	# The government itself. No single man leads Sweden after the war: the
+	# four party leaders govern as one cabinet, and the portrait is vanilla's
+	# empty Riksdag chamber.
+	SWE_democratic_unity_government = {
+		name = SWE_democratic_unity_government
+		portraits = {
+			civilian = {
+				large = GFX_portrait_SWE_fallen_riksdag
+				small = "GFX_portrait_SWE_fallen_riksdag_small"
+			}
+		}
+		country_leader = {
+			ideology = liberalism
+			traits = { wif_swe_democratic_unity_government }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+
+	# Jarl Hjalmarson, Hogern. Party secretary in the 1940s and leader from
+	# 1950; the right's sharpest anti-communist and the conservative seat of
+	# the Quartet.
+	SWE_jarl_hjalmarson = {
+		name = SWE_jarl_hjalmarson
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_hjalmarson.png"
+				small = "gfx/leaders/SWE/Portrait_wif_hjalmarson_small.png"
+			}
+		}
+		country_leader = {
+			ideology = conservatism
+			traits = { wif_swe_hjalmarson_leader }
+			expire = "1975.1.1.1"
+			id = -1
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_jarl_hjalmarson
+			cost = 150
+			allowed = {
+				original_tag = SWE
+			}
+			visible = {
+				has_completed_focus = SWE_the_costs_of_the_war
+			}
+			available = {
+				is_country_leader = no
+			}
+			traits = { wif_swe_hjalmarson_advisor }
+		}
+	}
+
+	# Bertil Ohlin, Folkpartiet. Stockholm School economist (the Nobel came
+	# later), Minister of Commerce in the wartime coalition, party leader from
+	# 1944. Leader only: as an advisor he would duplicate what the
+	# Quartet already gives.
+	SWE_bertil_ohlin = {
+		name = SWE_bertil_ohlin
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_ohlin.png"
+			}
+		}
+		country_leader = {
+			ideology = liberalism
+			traits = { wif_swe_ohlin_leader }
+			expire = "1975.1.1.1"
+			id = -1
+		}
+	}
+}

@@ -25,6 +25,9 @@
 # Alva and Gunnar Myrdal are deliberately not locked - see the note in the
 # trigger file.
 #
+# THIRD REASON: Tage Erlander gets a new portrait and an advisor role for the
+# Dark Sun over Europe tree (common/national_focus/wif_swe_dark_sun.txt).
+#
 # RE-SYNC THIS ON A GAME PATCH. Diff it against vanilla and re-apply the ten
 # lines rather than hand-merging.
 characters={
@@ -42,13 +45,32 @@ characters={
 		}
 	}
 
+	# Welt in Flammen: the Dark Sun over Europe. New portrait (1949
+	# photograph, source in tools/art/swe), and an advisor role for the
+	# Democratic Unity Government. His country leader role is added at runtime
+	# by SWE_the_costs_of_the_war - see common/characters/wif_swe_dark_sun_characters.txt.
 	SWE_tage_erlander={
 		name=SWE_tage_erlander
 		portraits={
 			civilian={
-				large=GFX_portrait_SWE_tage_erlander
-				small = "GFX_portrait_SWE_tage_erlander_small"
+				large = "gfx/leaders/SWE/Portrait_wif_erlander.png"
+				small = "gfx/leaders/SWE/Portrait_wif_erlander_small.png"
 			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = SWE_tage_erlander_dark_sun
+			cost = 150
+			allowed = {
+				original_tag = SWE
+			}
+			visible = {
+				has_completed_focus = SWE_the_costs_of_the_war
+			}
+			available = {
+				is_country_leader = no
+			}
+			traits = { wif_swe_erlander_advisor }
 		}
 	}
 

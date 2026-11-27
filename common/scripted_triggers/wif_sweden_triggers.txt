@@ -25,11 +25,17 @@
 # keep them on. Add them here if that judgement should change.
 
 # Passes unless a bourgeois party won. Put on Social Democratic politicians.
+# The Dark Sun over Europe (common/national_focus/wif_swe_dark_sun.txt): once
+# The Costs of the War seats the Democratic Unity Government, all four parties
+# govern together, so neither election lock applies and the cabinet is open.
 wif_swe_socialist_ministry_allowed = {
-	NOT = {
-		OR = {
-			has_country_flag = SWE_1936_bondeforbundet_won
-			has_country_flag = SWE_1936_hogern_won
+	OR = {
+		has_completed_focus = SWE_the_costs_of_the_war
+		NOT = {
+			OR = {
+				has_country_flag = SWE_1936_bondeforbundet_won
+				has_country_flag = SWE_1936_hogern_won
+			}
 		}
 	}
 }
@@ -54,14 +60,18 @@ wif_swe_cabinet_unlocked = {
 	OR = {
 		NOT = { has_government = democratic }
 		has_completed_focus = SWE_coalition_war_cabinet
+		has_completed_focus = SWE_the_costs_of_the_war
 	}
 }
 
 # Passes unless the Social Democrats won. Put on Hogern, Bondeforbundet and
 # Folkpartiet politicians.
 wif_swe_bourgeois_ministry_allowed = {
-	NOT = {
-		has_country_flag = SWE_1936_socialdemokraterna_won
+	OR = {
+		has_completed_focus = SWE_the_costs_of_the_war
+		NOT = {
+			has_country_flag = SWE_1936_socialdemokraterna_won
+		}
 	}
 }
 

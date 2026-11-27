@@ -13,4 +13,18 @@ spriteTypes = {
 		name = "GFX_bop_SME_council_side"
 		texturefile = "gfx/interface/bop/wif_bop_sme_council.dds"
 	}
+
+	# Sweden, the Fight for the Soul of the Fatherland.
+	# The Democratic Quartet reuses vanilla's council-around-a-table icon.
+	spriteType = {
+		name = "GFX_bop_SWE_democratic_quartet_side"
+		texturefile = "gfx/interface/bop/bop_SWI_centralization_council_side.dds"
+	}
+
+	# Hitler's Trio: vanilla's focus_SWE_counter_revolution, desaturated and
+	# fitted to 72x88 (built in the 2026-11-27 session; source is vanilla).
+	spriteType = {
+		name = "GFX_bop_SWE_hitlers_trio_side"
+		texturefile = "gfx/interface/bop/wif_bop_swe_hitlers_trio.dds"
+	}
 }

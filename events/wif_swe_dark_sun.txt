@@ -1,0 +1,27 @@
+# The Dark Sun over Europe: Sweden after Germany's Totaler Sieg.
+# Tree: common/national_focus/wif_swe_dark_sun.txt
+# Balance of power: common/bop/wif_swe_soul_of_the_fatherland.txt
+
+add_namespace = wif_swe_dark_sun
+
+# The Fight for the Soul of the Fatherland. Fired by SWE_the_costs_of_the_war;
+# opens the Democratic Quartet vs Hitler's Trio balance at dead centre.
+country_event = {
+	id = wif_swe_dark_sun.1
+	title = wif_swe_dark_sun.1.t
+	desc = wif_swe_dark_sun.1.desc
+	picture = GFX_report_event_SWE_riksdag
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = wif_swe_dark_sun.1.a
+		set_power_balance = {
+			id = SWE_soul_of_the_fatherland_balance
+			left_side = SWE_democratic_quartet_side
+			right_side = SWE_hitlers_trio_side
+			set_default = yes
+		}
+	}
+}

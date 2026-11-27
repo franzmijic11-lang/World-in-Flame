@@ -1,0 +1,77 @@
+# Leader and advisor traits for the Dark Sun over Europe (Sweden after Germany's
+# Totaler Sieg). Characters in common/characters/wif_swe_dark_sun_characters.txt
+# and, for Erlander, common/characters/SWE.txt.
+#
+# Advisor traits are named for the post, because the game prints the trait name
+# as the job title under the portrait.
+
+leader_traits = {
+
+	### Country leaders
+
+	# Four parties in one cabinet. It holds the country together, nobody
+	# trusts anybody, and every decision takes a week of meetings.
+	wif_swe_democratic_unity_government = {
+		random = no
+		sprite = 13
+
+		drift_defence_factor = 0.25
+		war_support_factor = 0.05
+		political_power_factor = -0.10
+	}
+
+	# Hjalmarson: the anti-communist right, firm on defence.
+	wif_swe_hjalmarson_leader = {
+		random = no
+		sprite = 13
+
+		stability_factor = 0.05
+		war_support_factor = 0.05
+		drift_defence_factor = 0.15
+	}
+
+	# Ohlin: the economist. Free trade and a cheaper state.
+	wif_swe_ohlin_leader = {
+		random = no
+		sprite = 13
+
+		consumer_goods_factor = -0.05
+		production_speed_buildings_factor = 0.05
+		political_power_factor = 0.05
+	}
+
+	# Erlander: the long premiership, the People's Home, consensus by
+	# Harpsund dinner. Added to him at runtime by SWE_the_costs_of_the_war.
+	wif_swe_erlander_leader = {
+		random = no
+		sprite = 13
+
+		stability_factor = 0.10
+		production_speed_industrial_complex_factor = 0.05
+		democratic_drift = 0.03
+	}
+
+	### Advisors
+
+	# Hjalmarson as Hogern's party secretary: keeps the right of the coalition
+	# loyal to the Riksdag rather than to Berlin.
+	wif_swe_hjalmarson_advisor = {
+		random = no
+		sprite = 12
+
+		stability_factor = 0.05
+		fascism_drift = -0.03
+		war_support_factor = 0.03
+	}
+
+	# Erlander as Minister of Education (1945): schools, universities, the
+	# research council.
+	wif_swe_erlander_advisor = {
+		random = no
+		sprite = 13
+
+		research_speed_factor = 0.05
+		stability_factor = 0.03
+		democratic_drift = 0.03
+	}
+}

@@ -1,0 +1,137 @@
+# Sweden's balance of power after Germany's Totaler Sieg: the Fight for the
+# Soul of the Fatherland. Created by event wif_swe_dark_sun.1, which the focus
+# SWE_the_costs_of_the_war fires.
+#
+# LEFT, NEGATIVE: the Democratic Quartet. Social Democrats, Hogern, Folkpartiet
+# and Bondeforbundet - the four parties of the wartime unity government,
+# holding the Riksdag together against the new Europe. Icon: vanilla's council
+# around a table (the Swiss Federal Council's), four men in one cabinet.
+#
+# RIGHT, POSITIVE: Hitler's Trio. The Swedish National Socialists, who say that
+# Germany has won and Sweden had better learn to live in its Europe. Icon:
+# vanilla's Swedish fascist hammer-and-fists (focus_SWE_counter_revolution),
+# turned to silver in the balance-of-power style -
+# gfx/interface/bop/wif_bop_swe_hitlers_trio.dds.
+#
+# Same orientation as vanilla's Italy and this mod's SME: getting it backwards
+# swaps every modifier, so move icons and localisation along with the ranges.
+#
+# Nothing moves it yet: it is created and then waits for events, focuses and
+# decisions to push it with add_power_balance_value.
+SWE_soul_of_the_fatherland_balance = {
+	initial_value = 0
+
+	left_side = SWE_democratic_quartet_side
+	right_side = SWE_hitlers_trio_side
+
+	### Neither side. The Riksdag sits; the street waits.
+	range = {
+		id = SWE_soul_of_the_fatherland_neutral
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+	}
+
+	### The Democratic Quartet
+	side = {
+		id = SWE_democratic_quartet_side
+		icon = GFX_bop_SWE_democratic_quartet_side
+
+		range = {
+			id = SWE_democratic_quartet_1
+			min = -0.30
+			max = -0.10
+			modifier = {
+				democratic_drift = 0.03
+				stability_factor = 0.02
+			}
+		}
+
+		range = {
+			id = SWE_democratic_quartet_2
+			min = -0.60
+			max = -0.30
+			modifier = {
+				democratic_drift = 0.05
+				stability_factor = 0.05
+				fascism_acceptance = -25
+			}
+		}
+
+		range = {
+			id = SWE_democratic_quartet_3
+			min = -0.90
+			max = -0.60
+			modifier = {
+				democratic_drift = 0.08
+				stability_factor = 0.08
+				political_power_factor = 0.05
+				fascism_acceptance = -50
+			}
+		}
+
+		range = {
+			id = SWE_democratic_quartet_4
+			min = -1.00
+			max = -0.90
+			modifier = {
+				democratic_drift = 0.10
+				stability_factor = 0.12
+				political_power_factor = 0.10
+				fascism_acceptance = -75
+			}
+		}
+	}
+
+	### Hitler's Trio
+	side = {
+		id = SWE_hitlers_trio_side
+		icon = GFX_bop_SWE_hitlers_trio_side
+
+		range = {
+			id = SWE_hitlers_trio_1
+			min = 0.10
+			max = 0.30
+			modifier = {
+				fascism_drift = 0.03
+				stability_factor = -0.02
+			}
+		}
+
+		range = {
+			id = SWE_hitlers_trio_2
+			min = 0.30
+			max = 0.60
+			modifier = {
+				fascism_drift = 0.05
+				stability_factor = -0.05
+				war_support_factor = 0.05
+			}
+		}
+
+		range = {
+			id = SWE_hitlers_trio_3
+			min = 0.60
+			max = 0.90
+			modifier = {
+				fascism_drift = 0.08
+				stability_factor = -0.08
+				war_support_factor = 0.08
+				democratic_acceptance = -50
+			}
+		}
+
+		range = {
+			id = SWE_hitlers_trio_4
+			min = 0.90
+			max = 1.00
+			modifier = {
+				fascism_drift = 0.12
+				stability_factor = -0.12
+				war_support_factor = 0.10
+				democratic_acceptance = -75
+			}
+		}
+	}
+}
