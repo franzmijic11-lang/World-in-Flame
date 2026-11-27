@@ -75,13 +75,13 @@ characters = {
 
 	# Bertil Ohlin, Folkpartiet. Stockholm School economist (the Nobel came
 	# later), Minister of Commerce in the wartime coalition, party leader from
-	# 1944. Leader only: as an advisor he would duplicate what the
-	# Quartet already gives.
+	# 1944. Leader, and advisor while someone else leads.
 	SWE_bertil_ohlin = {
 		name = SWE_bertil_ohlin
 		portraits = {
 			civilian = {
 				large = "gfx/leaders/SWE/Portrait_wif_ohlin.png"
+				small = "gfx/leaders/SWE/Portrait_wif_ohlin_small.png"
 			}
 		}
 		country_leader = {
@@ -89,6 +89,16 @@ characters = {
 			traits = { wif_swe_ohlin_leader }
 			expire = "1975.1.1.1"
 			id = -1
+		}
+		# Minister of Commerce in the wartime coalition, 1944-45.
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_bertil_ohlin
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_ohlin_advisor }
 		}
 	}
 
@@ -177,6 +187,152 @@ characters = {
 			visible = { has_completed_focus = SWE_the_costs_of_the_war }
 			available = { is_country_leader = no }
 			traits = { wif_swe_kock_advisor }
+		}
+	}
+
+	### More of the Quartet: at least four advisors for each party.
+	### Moderates: Hjalmarson, Ivar Anderson, Hastad, Heckscher.
+	### Folkpartiet: Ohlin, Andersson i Rasjon, Elon Andersson (and vanilla's Bergquist).
+	### Bondeforbundet: Hedlund, Norup, Eliasson (and vanilla's Pehrsson-Bramstorp).
+	### Social Democrats: Erlander, Moller, Vougt, Kock.
+
+	# Ivar Anderson, Moderates. Editor-in-chief of Svenska Dagbladet, First Chamber 1941-48.
+	SWE_ivar_anderson = {
+		name = SWE_ivar_anderson
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_ivar_anderson.png"
+				small = "gfx/leaders/SWE/Portrait_wif_ivar_anderson_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_ivar_anderson
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_ivar_anderson_advisor }
+		}
+	}
+
+	# Elis Hastad, Moderates. Political scientist and Riksdag member from the 1940s, later county governor.
+	SWE_elis_hastad = {
+		name = SWE_elis_hastad
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_hastad.png"
+				small = "gfx/leaders/SWE/Portrait_wif_hastad_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_elis_hastad
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_hastad_advisor }
+		}
+	}
+
+	# Gunnar Heckscher, Moderates. Uppsala political scientist, a later party leader.
+	SWE_gunnar_heckscher = {
+		name = SWE_gunnar_heckscher
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_heckscher.png"
+				small = "gfx/leaders/SWE/Portrait_wif_heckscher_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_gunnar_heckscher
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_heckscher_advisor }
+		}
+	}
+
+	# Gustaf Andersson i Rasjon, Folkpartiet. Party leader 1935-44, Minister of Communications 1939-44, Riksdag to 1948.
+	SWE_gustaf_andersson_i_rasjon = {
+		name = SWE_gustaf_andersson_i_rasjon
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_rasjon.png"
+				small = "gfx/leaders/SWE/Portrait_wif_rasjon_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_gustaf_andersson_i_rasjon
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_rasjon_advisor }
+		}
+	}
+
+	# Elon Andersson, Folkpartiet. Bollnas newspaperman and one of Ohlin's closest allies in the Riksdag.
+	SWE_elon_andersson = {
+		name = SWE_elon_andersson
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_elon.png"
+				small = "gfx/leaders/SWE/Portrait_wif_elon_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_elon_andersson
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_elon_andersson_advisor }
+		}
+	}
+
+	# Sam Norup, Bondeforbundet. Scanian farmer, one of the party's leading men of the 1940s and 50s, later Minister of Agriculture.
+	SWE_sam_norup = {
+		name = SWE_sam_norup
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_norup.png"
+				small = "gfx/leaders/SWE/Portrait_wif_norup_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_sam_norup
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_norup_advisor }
+		}
+	}
+
+	# Lars Eliasson, Bondeforbundet. Party secretary from 1947.
+	SWE_lars_eliasson = {
+		name = SWE_lars_eliasson
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_eliasson.png"
+				small = "gfx/leaders/SWE/Portrait_wif_eliasson_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_lars_eliasson
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_eliasson_advisor }
 		}
 	}
 }

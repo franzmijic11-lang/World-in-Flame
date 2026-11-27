@@ -110,4 +110,59 @@ leader_traits = {
 		stability_factor = 0.03
 		democratic_drift = 0.03
 	}
+
+	### More of the Quartet (one trait per advisor; named for the post)
+
+	# Moderates
+	wif_swe_ivar_anderson_advisor = {	# editor of Svenska Dagbladet
+		random = no
+		sprite = 15
+		war_support_factor = 0.03
+		drift_defence_factor = 0.15
+	}
+	wif_swe_hastad_advisor = {	# constitutional scholar
+		random = no
+		sprite = 13
+		stability_factor = 0.03
+		political_power_factor = 0.05
+	}
+	wif_swe_heckscher_advisor = {	# the party's young theorist
+		random = no
+		sprite = 13
+		democratic_drift = 0.03
+		political_power_factor = 0.05
+	}
+
+	# Folkpartiet
+	wif_swe_ohlin_advisor = {	# Minister of Commerce
+		random = no
+		sprite = 10
+		trade_opinion_factor = 0.15
+		consumer_goods_factor = -0.02
+	}
+	wif_swe_rasjon_advisor = {	# Minister of Communications
+		random = no
+		sprite = 16
+		production_speed_infrastructure_factor = 0.15
+		production_speed_rail_way_factor = 0.15
+	}
+	wif_swe_elon_andersson_advisor = {	# provincial organiser
+		random = no
+		sprite = 13
+		stability_factor = 0.05
+	}
+
+	# Bondeforbundet
+	wif_swe_norup_advisor = {	# the farmers' spokesman
+		random = no
+		sprite = 16
+		stability_factor = 0.03
+		consumer_goods_factor = -0.02
+	}
+	wif_swe_eliasson_advisor = {	# party secretary
+		random = no
+		sprite = 13
+		political_power_factor = 0.05
+		drift_defence_factor = 0.10
+	}
 }

@@ -139,6 +139,13 @@ focus_tree = {
 				recruit_character = SWE_allan_vougt
 				recruit_character = SWE_gunnar_hedlund
 				recruit_character = SWE_karin_kock
+				recruit_character = SWE_ivar_anderson
+				recruit_character = SWE_elis_hastad
+				recruit_character = SWE_gunnar_heckscher
+				recruit_character = SWE_gustaf_andersson_i_rasjon
+				recruit_character = SWE_elon_andersson
+				recruit_character = SWE_sam_norup
+				recruit_character = SWE_lars_eliasson
 				if = {
 					limit = { NOT = { has_character = SWE_tage_erlander } }
 					recruit_character = SWE_tage_erlander
