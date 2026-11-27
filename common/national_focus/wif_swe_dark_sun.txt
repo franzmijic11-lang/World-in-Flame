@@ -22,15 +22,16 @@ focus_tree = {
 	default = no
 
 	continuous_focus_position = { x = 50 y = 1200 }
+	# The first focus sits in the middle of the screen: x = 9 is roughly half
+	# a 1080p focus view, and the view opens on it.
 	initial_show_position = {
-		x = 0
-		y = 0
+		focus = SWE_the_costs_of_the_war
 	}
 
 	focus = {
 		id = SWE_the_costs_of_the_war
 		icon = GFX_focus_SWE_rations
-		x = 0
+		x = 9
 		y = 0
 		cost = 5 # 35 days
 
@@ -55,8 +56,75 @@ focus_tree = {
 					elections_allowed = no
 				}
 			}
+
+			# The democratic party becomes Samlingsregeringen. Its sub-ideology
+			# follows who won in 1936: Hogern -> conservatism, Bondeforbundet ->
+			# liberalism, the Social Democrats (or no result) -> socialism.
+			# The fascists become SEP-NSAP-SNF and the non-aligned the Unaligned
+			# Bloc. Popularity is set outright: 65 / 25 / 10, no communists.
+			custom_effect_tooltip = SWE_the_costs_of_the_war_parties_tt
+			hidden_effect = {
+				set_party_name = {
+					ideology = democratic
+					long_name = SWE_samlingsregeringen_party_long
+					name = SWE_samlingsregeringen_party
+				}
+				set_party_name = {
+					ideology = fascism
+					long_name = SWE_sep_nsap_snf_party_long
+					name = SWE_sep_nsap_snf_party
+				}
+				set_party_name = {
+					ideology = neutrality
+					long_name = SWE_unaligned_bloc_party_long
+					name = SWE_unaligned_bloc_party
+				}
+			}
+			set_popularities = {
+				democratic = 65
+				fascism = 25
+				neutrality = 10
+				communism = 0
+			}
 			recruit_character = SWE_democratic_unity_government
-			promote_character = SWE_democratic_unity_government
+			if = {
+				limit = { has_country_flag = SWE_1936_hogern_won }
+				SWE_democratic_unity_government = {
+					add_country_leader_role = {
+						country_leader = {
+							ideology = conservatism
+							traits = { wif_swe_democratic_unity_government }
+							expire = "1975.1.1.1"
+						}
+						promote_leader = yes
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = SWE_1936_bondeforbundet_won }
+				SWE_democratic_unity_government = {
+					add_country_leader_role = {
+						country_leader = {
+							ideology = liberalism
+							traits = { wif_swe_democratic_unity_government }
+							expire = "1975.1.1.1"
+						}
+						promote_leader = yes
+					}
+				}
+			}
+			else = {
+				SWE_democratic_unity_government = {
+					add_country_leader_role = {
+						country_leader = {
+							ideology = socialism
+							traits = { wif_swe_democratic_unity_government }
+							expire = "1975.1.1.1"
+						}
+						promote_leader = yes
+					}
+				}
+			}
 
 			# The other leaders of the Quartet: potential leaders from now on.
 			# Hjalmarson and Erlander can also be hired as advisors (not while
@@ -66,6 +134,11 @@ focus_tree = {
 			hidden_effect = {
 				recruit_character = SWE_jarl_hjalmarson
 				recruit_character = SWE_bertil_ohlin
+				# The Unity Government's ministers (advisors only)
+				recruit_character = SWE_gustav_moller
+				recruit_character = SWE_allan_vougt
+				recruit_character = SWE_gunnar_hedlund
+				recruit_character = SWE_karin_kock
 				if = {
 					limit = { NOT = { has_character = SWE_tage_erlander } }
 					recruit_character = SWE_tage_erlander
@@ -110,10 +183,13 @@ focus_tree = {
 			#   Carl Lindhagen      left the Riksdag in 1940
 			#   Karl Kilbom         left the Riksdag at the end of 1944
 			#   Herman Eriksson     left the government September 1944, then a diplomat
-			# NOT removed, though they left office: Gosta Bagge (Riksdag to 1947)
-			# and Rickard Sandler (governor, and First Chamber to 1964).
+			#   Gosta Bagge         left the cabinet and the Hogern leadership in
+			#                       1944 (in the Riksdag to 1947; removed by design,
+			#                       Hjalmarson leads the Moderates in this timeline)
+			# NOT removed: Rickard Sandler (governor, and First Chamber to 1964).
 			custom_effect_tooltip = SWE_the_costs_of_the_war_retire_tt
 			hidden_effect = {
+				if = { limit = { has_character = SWE_gosta_bagge } retire_character = SWE_gosta_bagge }
 				if = { limit = { has_character = SWE_per_albin_hansson } retire_character = SWE_per_albin_hansson }
 				if = { limit = { has_character = SWE_nils_flyg } retire_character = SWE_nils_flyg }
 				if = { limit = { has_character = SWE_ernst_linder } retire_character = SWE_ernst_linder }

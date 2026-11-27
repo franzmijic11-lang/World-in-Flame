@@ -23,6 +23,11 @@ characters = {
 	# The government itself. No single man leads Sweden after the war: the
 	# four party leaders govern as one cabinet, and the portrait is vanilla's
 	# empty Riksdag chamber.
+	#
+	# NO STATIC LEADER ROLE. Its sub-ideology follows the 1936 election
+	# (Hogern won -> conservatism, Bondeforbundet -> liberalism, Social
+	# Democrats -> socialism), so SWE_the_costs_of_the_war adds the role at
+	# runtime with the right ideology.
 	SWE_democratic_unity_government = {
 		name = SWE_democratic_unity_government
 		portraits = {
@@ -31,17 +36,12 @@ characters = {
 				small = "GFX_portrait_SWE_fallen_riksdag_small"
 			}
 		}
-		country_leader = {
-			ideology = liberalism
-			traits = { wif_swe_democratic_unity_government }
-			expire = "1965.1.1.1"
-			id = -1
-		}
 	}
 
-	# Jarl Hjalmarson, Hogern. Party secretary in the 1940s and leader from
-	# 1950; the right's sharpest anti-communist and the conservative seat of
-	# the Quartet.
+	# Jarl Hjalmarson. Historically Hogern's party secretary and its leader
+	# from 1950; in this timeline he already leads the Moderates (as Hogern is
+	# called here) when the war ends. The right's sharpest anti-communist and
+	# the conservative seat of the Quartet.
 	SWE_jarl_hjalmarson = {
 		name = SWE_jarl_hjalmarson
 		portraits = {
@@ -89,6 +89,94 @@ characters = {
 			traits = { wif_swe_ohlin_leader }
 			expire = "1975.1.1.1"
 			id = -1
+		}
+	}
+
+	### The Unity Government's ministers. Advisors only, all hired after
+	### The Costs of the War. Photos from Wikimedia Commons, sources in
+	### tools/art/swe.
+
+	# Gustav Moller, Social Democrat. Minister for Social Affairs 1932-38 and
+	# 1939-51: pensions, child allowances, unemployment insurance.
+	SWE_gustav_moller = {
+		name = SWE_gustav_moller
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_moller.png"
+				small = "gfx/leaders/SWE/Portrait_wif_moller_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_gustav_moller
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_moller_advisor }
+		}
+	}
+
+	# Allan Vougt, Social Democrat. Minister of Defence 1945-51.
+	SWE_allan_vougt = {
+		name = SWE_allan_vougt
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_vougt.png"
+				small = "gfx/leaders/SWE/Portrait_wif_vougt_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_allan_vougt
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_vougt_advisor }
+		}
+	}
+
+	# Gunnar Hedlund, Bondeforbundet. Riksdag from 1942, party leader from
+	# 1949, the shrewdest tactician of the farmers' party.
+	SWE_gunnar_hedlund = {
+		name = SWE_gunnar_hedlund
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_hedlund.png"
+				small = "gfx/leaders/SWE/Portrait_wif_hedlund_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_gunnar_hedlund
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_hedlund_advisor }
+		}
+	}
+
+	# Karin Kock, economist. Sweden's first woman minister (1947), then
+	# Minister of Supply - the woman to ration a country in debt.
+	SWE_karin_kock = {
+		name = SWE_karin_kock
+		gender = female
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/Portrait_wif_kock.png"
+				small = "gfx/leaders/SWE/Portrait_wif_kock_small.png"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = SWE_karin_kock
+			cost = 150
+			allowed = { original_tag = SWE }
+			visible = { has_completed_focus = SWE_the_costs_of_the_war }
+			available = { is_country_leader = no }
+			traits = { wif_swe_kock_advisor }
 		}
 	}
 }

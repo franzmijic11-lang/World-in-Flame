@@ -15,13 +15,38 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	# For King, Rights and Welfare: the Democratic Quartet. Opens the balance
+	# 0.20 to the left, inside the Quartet's first band.
 	option = {
 		name = wif_swe_dark_sun.1.a
+		ai_chance = { base = 80 }
 		set_power_balance = {
 			id = SWE_soul_of_the_fatherland_balance
 			left_side = SWE_democratic_quartet_side
 			right_side = SWE_hitlers_trio_side
 			set_default = yes
+		}
+		add_power_balance_value = {
+			id = SWE_soul_of_the_fatherland_balance
+			value = -0.20
+			tooltip_side = SWE_democratic_quartet_side
+		}
+	}
+
+	# One People, One Land, Three Leaders: Hitler's Trio. 0.20 to the right.
+	option = {
+		name = wif_swe_dark_sun.1.b
+		ai_chance = { base = 20 }
+		set_power_balance = {
+			id = SWE_soul_of_the_fatherland_balance
+			left_side = SWE_democratic_quartet_side
+			right_side = SWE_hitlers_trio_side
+			set_default = yes
+		}
+		add_power_balance_value = {
+			id = SWE_soul_of_the_fatherland_balance
+			value = 0.20
+			tooltip_side = SWE_hitlers_trio_side
 		}
 	}
 }

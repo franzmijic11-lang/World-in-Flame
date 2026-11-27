@@ -64,6 +64,42 @@ leader_traits = {
 		war_support_factor = 0.03
 	}
 
+	# Moller, Minister for Social Affairs: the welfare state holds the
+	# home front together.
+	wif_swe_moller_advisor = {
+		random = no
+		sprite = 16
+
+		stability_factor = 0.07
+		democratic_drift = 0.02
+	}
+
+	# Vougt, Minister of Defence.
+	wif_swe_vougt_advisor = {
+		random = no
+		sprite = 12
+
+		war_support_factor = 0.05
+		production_speed_arms_factory_factor = 0.10
+	}
+
+	# Hedlund, the farmers' party tactician.
+	wif_swe_hedlund_advisor = {
+		random = no
+		sprite = 13
+
+		political_power_factor = 0.10
+		stability_factor = 0.02
+	}
+
+	# Kock at the Supply Board: rationing a country in debt.
+	wif_swe_kock_advisor = {
+		random = no
+		sprite = 10
+
+		consumer_goods_factor = -0.05
+	}
+
 	# Erlander as Minister of Education (1945): schools, universities, the
 	# research council.
 	wif_swe_erlander_advisor = {
